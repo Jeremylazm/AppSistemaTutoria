@@ -17,6 +17,7 @@ namespace WinFormsFix
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormLogin());
+            //Prueba si funciona
         }
     }
 }
