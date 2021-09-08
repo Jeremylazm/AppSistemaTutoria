@@ -9,5 +9,6 @@
     
      steps:
        - checkout
-       - run: dotnet build
-       - run: dotnet test
+       - run:
+          name: "Build Application according to some given configuration"
+          command: dotnet.exe build --configuration Release
