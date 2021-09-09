@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -83,7 +85,7 @@ namespace CapaPresentaciones
                         byte[] Perfil = new byte[0];
                         using (MemoryStream MemoriaPerfil = new MemoryStream())
                         {
-                            imgPerfil.Image.Save(MemoriaPerfil, imgPerfil.Image.RawFormat);
+                            imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
                             Perfil = MemoriaPerfil.ToArray();
                         }
                         ObjEntidad.Perfil = Perfil;
@@ -122,7 +124,7 @@ namespace CapaPresentaciones
                             byte[] Perfil = new byte[0];
                             using (MemoryStream MemoriaPerfil = new MemoryStream())
                             {
-                                imgPerfil.Image.Save(MemoriaPerfil, imgPerfil.Image.RawFormat);
+                                imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
                                 Perfil = MemoriaPerfil.ToArray();
                             }
                             ObjEntidad.Perfil = Perfil;
@@ -165,6 +167,7 @@ namespace CapaPresentaciones
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
+            Program.Evento = 0;
             Close();
         }
 
@@ -176,17 +179,42 @@ namespace CapaPresentaciones
             //NuevoRegistro.Dispose();
         }
 
+        public Image HacerImagenCircular(Image img)
+        {
+            int x = img.Width / 2;
+            int y = img.Height / 2;
+            int r = Math.Min(x, y);
+            //int r = x;
+
+            Bitmap tmp = null;
+            tmp = new Bitmap(2 * r, 2 * r);
+            using (Graphics g = Graphics.FromImage(tmp))
+            {
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.TranslateTransform(tmp.Width / 2, tmp.Height / 2);
+                GraphicsPath gp = new GraphicsPath();
+                gp.AddEllipse(0 - r, 0 - r, 2 * r, 2 * r);
+                Region rg = new Region(gp);
+                g.SetClip(rg, CombineMode.Replace);
+                Bitmap bmp = new Bitmap(img);
+                g.DrawImage(bmp, new Rectangle(-r, -r, 2 * r, 2 * r), new Rectangle(x - r, y - r, 2 * r, 2 * r), GraphicsUnit.Pixel);
+
+            }
+
+            return tmp;
+        }
+
         private void btnSubirPerfil_Click(object sender, EventArgs e)
         {
             try
             {
                 OpenFileDialog Archivo = new OpenFileDialog();
-                Archivo.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+                Archivo.Filter = "Archivos de Imagen | *.jpg; *.jpeg; *.png; *.gif; *.tif";
                 Archivo.Title = "Subir Perfil";
 
                 if (Archivo.ShowDialog() == DialogResult.OK)
                 {
-                    imgPerfil.Image = Image.FromFile(Archivo.FileName);
+                    imgPerfil.Image = HacerImagenCircular(Image.FromFile(Archivo.FileName));
                 }
             }
             catch (Exception)

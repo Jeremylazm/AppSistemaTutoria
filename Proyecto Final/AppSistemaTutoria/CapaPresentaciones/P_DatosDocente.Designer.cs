@@ -740,6 +740,7 @@
             this.btnRestablecerPerfil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnRestablecerPerfil.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnRestablecerPerfil.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRestablecerPerfil.Click += new System.EventHandler(this.btnRestablecerPerfil_Click);
             // 
             // btnSubirPerfil
             // 
@@ -775,6 +776,7 @@
             this.btnSubirPerfil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnSubirPerfil.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnSubirPerfil.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubirPerfil.Click += new System.EventHandler(this.btnSubirPerfil_Click);
             // 
             // imgPerfil
             // 
@@ -908,6 +910,6 @@
         private Bunifu.Framework.UI.BunifuThinButton2 BordeadoMenu;
         private Bunifu.Framework.UI.BunifuFlatButton btnRestablecerPerfil;
         private Bunifu.Framework.UI.BunifuFlatButton btnSubirPerfil;
-        private Otros_Controles.JALMCircularPictureBox imgPerfil;
+        public Otros_Controles.JALMCircularPictureBox imgPerfil;
     }
 }

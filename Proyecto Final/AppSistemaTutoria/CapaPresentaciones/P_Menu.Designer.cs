@@ -42,6 +42,7 @@
             this.BordeadoContenedor = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnContenedor = new System.Windows.Forms.Panel();
             this.pnLateral = new System.Windows.Forms.Panel();
+            this.btnTutorados = new Bunifu.Framework.UI.BunifuFlatButton();
             this.imgPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
             this.btnDocentes = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnEstudiantes = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -202,6 +203,7 @@
             // pnLateral
             // 
             this.pnLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.pnLateral.Controls.Add(this.btnTutorados);
             this.pnLateral.Controls.Add(this.imgPerfil);
             this.pnLateral.Controls.Add(this.btnDocentes);
             this.pnLateral.Controls.Add(this.btnEstudiantes);
@@ -217,6 +219,41 @@
             this.pnLateral.Name = "pnLateral";
             this.pnLateral.Size = new System.Drawing.Size(173, 600);
             this.pnLateral.TabIndex = 4;
+            // 
+            // btnTutorados
+            // 
+            this.btnTutorados.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnTutorados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnTutorados.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTutorados.BorderRadius = 7;
+            this.btnTutorados.ButtonText = "Tutorados";
+            this.btnTutorados.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTutorados.DisabledColor = System.Drawing.Color.Gray;
+            this.btnTutorados.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnTutorados.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnTutorados.Iconimage")));
+            this.btnTutorados.Iconimage_right = null;
+            this.btnTutorados.Iconimage_right_Selected = null;
+            this.btnTutorados.Iconimage_Selected = null;
+            this.btnTutorados.IconMarginLeft = 0;
+            this.btnTutorados.IconMarginRight = 0;
+            this.btnTutorados.IconRightVisible = true;
+            this.btnTutorados.IconRightZoom = 0D;
+            this.btnTutorados.IconVisible = true;
+            this.btnTutorados.IconZoom = 50D;
+            this.btnTutorados.IsTab = false;
+            this.btnTutorados.Location = new System.Drawing.Point(5, 468);
+            this.btnTutorados.Name = "btnTutorados";
+            this.btnTutorados.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnTutorados.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
+            this.btnTutorados.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnTutorados.selected = true;
+            this.btnTutorados.Size = new System.Drawing.Size(161, 40);
+            this.btnTutorados.TabIndex = 46;
+            this.btnTutorados.Text = "Tutorados";
+            this.btnTutorados.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnTutorados.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnTutorados.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTutorados.Click += new System.EventHandler(this.btnTutorados_Click);
             // 
             // imgPerfil
             // 
@@ -521,5 +558,6 @@
         private System.Windows.Forms.Label lblAcceso;
         private System.Windows.Forms.Label lblDatos;
         private Otros_Controles.JALMCircularPictureBox imgPerfil;
+        private Bunifu.Framework.UI.BunifuFlatButton btnTutorados;
     }
 }

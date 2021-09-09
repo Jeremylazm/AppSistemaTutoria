@@ -992,11 +992,11 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnSubirPerfil;
         public Otros_Controles.JALMCircularPictureBox imgPerfil;
         private Bunifu.Framework.UI.BunifuFlatButton btnCambiarContraseña;
-        private Bunifu.Framework.UI.BunifuFlatButton btnGuardar;
         private Otros_Controles.JALMToggleButton ckbEFisico;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblPermisoEFisico;
         private Otros_Controles.JALMToggleButton ckbEMental;
         public System.Windows.Forms.SplitContainer splitContainer1;
+        public Bunifu.Framework.UI.BunifuFlatButton btnGuardar;
     }
 }

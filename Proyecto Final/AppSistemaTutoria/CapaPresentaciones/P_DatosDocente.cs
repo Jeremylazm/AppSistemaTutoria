@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
@@ -14,6 +18,7 @@ namespace CapaPresentaciones
         {
             InitializeComponent();
             LlenarComboBox();
+            ValidarPerfil();
         }
 
         private void MensajeConfirmacion(string Mensaje)
@@ -36,6 +41,14 @@ namespace CapaPresentaciones
             txtDireccion.Clear();
             txtTelefono.Clear();
             txtCodigo.Focus();
+        }
+
+        private void ValidarPerfil()
+        {
+            if (imgPerfil.Image == Image.FromFile("C:/Users/Jeremylazm/Desktop/Documentos/AppSistemaTutoria/CapaPresentaciones/Iconos/Perfil Docente.png"))
+            {
+                btnRestablecerPerfil.Visible = false;
+            }
         }
 
         private void LlenarComboBox()
@@ -69,6 +82,13 @@ namespace CapaPresentaciones
                 {
                     try
                     {
+                        byte[] Perfil = new byte[0];
+                        using (MemoryStream MemoriaPerfil = new MemoryStream())
+                        {
+                            imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
+                            Perfil = MemoriaPerfil.ToArray();
+                        }
+                        ObjEntidad.Perfil = Perfil;
                         ObjEntidad.CodDocente = txtCodigo.Text;
                         ObjEntidad.APaterno = txtAPaterno.Text.ToUpper();
                         ObjEntidad.AMaterno = txtAMaterno.Text.ToUpper();
@@ -101,6 +121,13 @@ namespace CapaPresentaciones
                         Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                         if (Opcion == DialogResult.OK)
                         {
+                            byte[] Perfil = new byte[0];
+                            using (MemoryStream MemoriaPerfil = new MemoryStream())
+                            {
+                                imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
+                                Perfil = MemoriaPerfil.ToArray();
+                            }
+                            ObjEntidad.Perfil = Perfil;
                             ObjEntidad.CodDocente = txtCodigo.Text;
                             ObjEntidad.APaterno = txtAPaterno.Text.ToUpper();
                             ObjEntidad.AMaterno = txtAMaterno.Text.ToUpper();
@@ -108,11 +135,11 @@ namespace CapaPresentaciones
                             ObjEntidad.Email = txtEmail.Text + lblDominioEmail.Text;
                             ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
                             ObjEntidad.Telefono = txtTelefono.Text;
-                            ObjEntidad.Categoria = cxtCategoria.SelectedValue.ToString();
-                            ObjEntidad.Subcategoria = cxtSubcategoria.SelectedValue.ToString();
-                            ObjEntidad.Regimen = cxtRegimen.SelectedValue.ToString();
+                            ObjEntidad.Categoria = cxtCategoria.SelectedItem.ToString();
+                            ObjEntidad.Subcategoria = cxtSubcategoria.SelectedItem.ToString();
+                            ObjEntidad.Regimen = cxtRegimen.SelectedItem.ToString();
                             ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
-                            ObjEntidad.Estado = cxtEstado.SelectedValue.ToString();
+                            ObjEntidad.Estado = cxtEstado.SelectedItem.ToString();
 
                             ObjNegocio.EditarRegistros(ObjEntidad);
                             MensajeConfirmacion("Registro editado exitosamente");
@@ -121,9 +148,9 @@ namespace CapaPresentaciones
                             Close();
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        MensajeError("Error al editar el registro");
+                        MensajeError("Error al editar el registro " + ex);
                     }
                 }
             }
@@ -140,6 +167,7 @@ namespace CapaPresentaciones
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
+            Program.Evento = 0;
             Close();
         }
 
@@ -197,6 +225,55 @@ namespace CapaPresentaciones
                     cxtRegimen.SelectedItem = "TIEMPO PARCIAL";
                 }
             }
+        }
+
+        public Image HacerImagenCircular(Image img)
+        {
+            int x = img.Width / 2;
+            int y = img.Height / 2;
+            int r = Math.Min(x, y);
+            //int r = x;
+
+            Bitmap tmp = null;
+            tmp = new Bitmap(2 * r, 2 * r);
+            using (Graphics g = Graphics.FromImage(tmp))
+            {
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.TranslateTransform(tmp.Width / 2, tmp.Height / 2);
+                GraphicsPath gp = new GraphicsPath();
+                gp.AddEllipse(0 - r, 0 - r, 2 * r, 2 * r);
+                Region rg = new Region(gp);
+                g.SetClip(rg, CombineMode.Replace);
+                Bitmap bmp = new Bitmap(img);
+                g.DrawImage(bmp, new Rectangle(-r, -r, 2 * r, 2 * r), new Rectangle(x - r, y - r, 2 * r, 2 * r), GraphicsUnit.Pixel);
+
+            }
+
+            return tmp;
+        }
+
+        private void btnSubirPerfil_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog Archivo = new OpenFileDialog();
+                Archivo.Filter = "Archivos de Imagen | *.jpg; *.jpeg; *.png; *.gif; *.tif"; 
+                Archivo.Title = "Subir Perfil";
+
+                if (Archivo.ShowDialog() == DialogResult.OK)
+                {
+                    imgPerfil.Image = HacerImagenCircular(Image.FromFile(Archivo.FileName));
+                }
+            }
+            catch (Exception)
+            {
+                MensajeError("Error al subir perfil");
+            }
+        }
+
+        private void btnRestablecerPerfil_Click(object sender, EventArgs e)
+        {
+            imgPerfil.Image = Image.FromFile("C:/Users/Jeremylazm/Desktop/Documentos/AppSistemaTutoria/CapaPresentaciones/Iconos/Perfil Docente.png");
         }
     }
 }

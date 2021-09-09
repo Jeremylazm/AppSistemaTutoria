@@ -172,62 +172,6 @@ CREATE TABLE TFichaTutoria
 );
 GO
 
-/* *************************** TABLA DOCENTE CONTRATADO *************************** */
---IF EXISTS (SELECT * 
---				FROM SYSOBJECTS
---				WHERE NAME = 'TDocente_Contratado')
---	DROP TABLE TDocente_Contratado
---GO
---CREATE TABLE TDocente_Contratado
---(
---	-- Lista de atributos
---	CodDocente tyCodDocente,
---	Categoria VARCHAR(2) NOT NULL,
---	Horas INT NOT NULL,
---	Clasificacion VARCHAR(5) NOT NULL,
-
---	-- Determinar las claves 
---	PRIMARY KEY (CodDocente),
---	FOREIGN KEY (CodDocente) REFERENCES TDocente
---);
---GO
-
---/* *************************** TABLA DOCENTE NOMBRADO TIPO *************************** */
---IF EXISTS (SELECT * 
---				FROM SYSOBJECTS
---				WHERE NAME = 'TDocente_Nombrado_Tipo')
---	DROP TABLE TDocente_Nombrado_Tipo
---GO
---CREATE TABLE TDocente_Nombrado_Tipo
---(
---	-- Lista de atributos
---	CodTipo tyCodTipo,
---	Caracteristica VARCHAR(10) NOT NULL,
-
---	-- Determinar las claves 
---	PRIMARY KEY (CodTipo)
---);
---GO
-
---/* *************************** TABLA DOCENTE NOMBRADO *************************** */
---IF EXISTS (SELECT * 
---				FROM SYSOBJECTS
---				WHERE NAME = 'TDocente_Nombrado')
---	DROP TABLE TDocente_Nombrado
---GO
---CREATE TABLE TDocente_Nombrado
---(
---	-- Lista de atributos
---	CodDocente tyCodDocente,
---	CodTipo tyCodTipo,
-
---	-- Determinar las claves 
---	PRIMARY KEY (CodDocente),
---	FOREIGN KEY (CodDocente) REFERENCES TDocente,
---	FOREIGN KEY (CodTipo) REFERENCES TDocente_Nombrado_Tipo
---);
---GO
-
 /* *************************** TABLA USUARIO *************************** */
 IF EXISTS (SELECT * 
 				FROM SYSOBJECTS
@@ -263,7 +207,7 @@ CREATE TABLE Historial
 	Operacion VARCHAR(15),
 	IdRegistroAfectado VARCHAR(20),
 	ValorAnterior VARCHAR(200),
-	ValorPosterior VARCHAR(200)
+	ValorPosterior VARCHAR(200),
 
 	-- Definir la clave primaria
 	PRIMARY KEY(IdHistorial)	
@@ -367,6 +311,26 @@ BEGIN
 END;
 GO
 
+-- Crear un procedimiento para mostrar estudiantes
+CREATE PROCEDURE spuMostrarTutorados @CodDocente VARCHAR(7)
+AS
+BEGIN
+	-- Mostrar la tabla de TEstudiante
+	SELECT Perfil1 = ET.Perfil, Perfil2 = ET.Perfil, ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre,
+		   Estudiante = (ET.APaterno + ' ' + 
+						 ET.AMaterno + ', ' + 
+						 ET.Nombre),
+		   ET.Email, ET.Direccion, ET.Telefono, ET.CodEscuelaP,
+		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia, 
+		   ET.TelefonoReferencia, ET.EstadoFisico, ET.EstadoMental
+		FROM ((TTutoria T INNER JOIN TEstudiante ET ON 
+			 T.CodEstudiante = ET.CodEstudiante) INNER JOIN 
+			 TEscuela_Profesional EP ON ET.CodEscuelaP = EP.CodEscuelaP)
+			 INNER JOIN TDocente D ON T.CodDocente = D.CodDocente
+		WHERE T.CodDocente = @CodDocente
+END;
+GO
+
 -- Crear un procedimiento para buscar estudiantes por cualquier atributo
 CREATE PROCEDURE spuBuscarEstudiantes @Texto VARCHAR(20)
 AS
@@ -382,6 +346,39 @@ BEGIN
 		FROM TEstudiante ET INNER JOIN TEscuela_Profesional EP ON
 			 ET.CodEscuelaP = EP.CodEscuelaP
 		WHERE ET.CodEstudiante LIKE (@Texto + '%') OR
+			  ET.APaterno LIKE (@Texto + '%') OR
+			  ET.AMaterno LIKE (@Texto + '%') OR
+			  ET.Nombre LIKE (@Texto + '%') OR
+			  ET.Email LIKE (@Texto + '%') OR
+			  ET.Direccion LIKE (@Texto + '%') OR
+			  ET.Telefono LIKE (@Texto + '%') OR
+			  EP.Nombre LIKE (@Texto + '%') OR
+			  ET.PersonaReferencia LIKE (@Texto + '%') OR
+			  ET.TelefonoReferencia LIKE (@Texto + '%') OR
+			  ET.EstadoFisico LIKE (@Texto + '%') OR
+			  ET.EstadoMental LIKE (@Texto + '%')
+END;
+GO
+
+-- Crear un procedimiento para buscar estudiantes por cualquier atributo
+CREATE PROCEDURE spuBuscarTutorados @CodDocente VARCHAR(7),
+									@Texto VARCHAR(20)
+AS
+BEGIN
+	-- Mostrar la tabla de TEstudiante por el texto que se desea buscar
+	SELECT Perfil1 = ET.Perfil, Perfil2 = ET.Perfil, ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre,
+		   Estudiante = (ET.APaterno + ' ' + 
+						 ET.AMaterno + ', ' + 
+						 ET.Nombre),
+		   ET.Email, ET.Direccion, ET.Telefono, ET.CodEscuelaP,
+		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia, 
+		   ET.TelefonoReferencia, ET.EstadoFisico, ET.EstadoMental
+		FROM ((TTutoria T INNER JOIN TEstudiante ET ON 
+			 T.CodEstudiante = ET.CodEstudiante) INNER JOIN 
+			 TEscuela_Profesional EP ON ET.CodEscuelaP = EP.CodEscuelaP)
+			 INNER JOIN TDocente D ON T.CodDocente = D.CodDocente
+		WHERE T.CodDocente = @CodDocente AND 
+			  ET.CodEstudiante LIKE (@Texto + '%') OR
 			  ET.APaterno LIKE (@Texto + '%') OR
 			  ET.AMaterno LIKE (@Texto + '%') OR
 			  ET.Nombre LIKE (@Texto + '%') OR
@@ -731,20 +728,6 @@ GO
 --END;
 --GO
 
----- Crear un procedimiento para determinar el IdHistorial
---CREATE PROCEDURE spuObtenerIdHistorial
---				 @IdHistorial INT OUTPUT
---AS
---BEGIN
---	-- Inicializar la identificación en 0
---	SET @IdHistorial = 0;
-
---	-- Determinar el IdHistorial
---	SELECT @IdHistorial = COUNT(*) + 1
---		FROM Historial
---END;
---GO
-
 /* **************************************************************************************************
    ********************************** TRIGGERS DE LA BASE DE DATOS **********************************
    ************************************************************************************************** */
@@ -1044,7 +1027,7 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #INSERTED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','INSERT',@CodEstudiante,NULL, 
-					  CAST(@Perfil AS VARCHAR) + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
+					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
 					  @Email + ' ; ' + @Direccion + ' ; ' + @Telefono + ' ; ' +
 					  @CodEscuelaP + ' ; ' + @PersonaReferencia + ' ; ' + 
 					  @TelefonoReferencia + @EstadoFisico + ' ; ' + @EstadoMental);
@@ -1132,7 +1115,7 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #DELETED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','DELETE',@CodEstudiante, 
-					  CAST(@Perfil AS VARCHAR) + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
+					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
 					  @Email + ' ; ' + @Direccion + ' ; ' + @Telefono + ' ; ' +
 					  @CodEscuelaP + ' ; ' + @PersonaReferencia + ' ; ' + 
 					  @TelefonoReferencia + @EstadoFisico + ' ; ' + @EstadoMental,NULL);
@@ -1286,8 +1269,8 @@ BEGIN
 		-- Verificar si el cambio fue en Perfil
 		IF @PerfilAntes != @PerfilDespues
 		BEGIN
-			SET @ValorAnterior = @PerfilAntes;
-			SET @ValorPosterior = @PerfilDespues;
+			SET @ValorAnterior = CONVERT(VARCHAR(10), @PerfilAntes, 2);
+			SET @ValorPosterior = CONVERT(VARCHAR(10), @PerfilDespues, 2);
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -1564,7 +1547,7 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #INSERTED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','INSERT',@CodDocente,NULL, 
-					  CAST(@Perfil AS VARCHAR) + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
+					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
 					  @Email + ' ; ' + @Direccion + ' ; ' + @Telefono + ' ; ' + 
 					  @Categoria + ' ; ' + @Subcategoria + ' ; ' + @Regimen + ' ; ' + 
 					  @CodEscuelaP + ' ; ' + @Estado);
@@ -1652,7 +1635,7 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #DELETED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','DELETE',@CodDocente, 
-					  CAST(@Perfil AS VARCHAR) + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
+					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
 					  @Email + ' ; ' + @Direccion + ' ; ' + @Telefono + ' ; ' + 
 					  @Categoria + ' ; ' + @Subcategoria + ' ; ' + @Regimen + ' ; ' + 
 					  @CodEscuelaP + ' ; ' + @Estado,NULL);
@@ -1806,8 +1789,8 @@ BEGIN
 		-- Verificar si el cambio fue en Perfil
 		IF @PerfilAntes != @PerfilDespues
 		BEGIN
-			SET @ValorAnterior = @PerfilAntes;
-			SET @ValorPosterior = @PerfilDespues;
+			SET @ValorAnterior = CONVERT(VARCHAR(10), @PerfilAntes, 2);
+			SET @ValorPosterior = CONVERT(VARCHAR(10), @PerfilDespues, 2);
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -2495,8 +2478,8 @@ BEGIN
 		-- Verificar si el cambio fue en Fecha
 		IF @FechaAntes != @FechaDespues
 		BEGIN
-			SET @ValorAnterior = @FechaAntes;
-			SET @ValorPosterior = @FechaDespues;
+			SET @ValorAnterior = CAST(@FechaAntes AS VARCHAR);
+			SET @ValorPosterior = CAST(@FechaDespues AS VARCHAR);
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -2629,7 +2612,7 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #INSERTED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TUsuario','INSERT',@Usuario,NULL, 
-					  CAST(@Perfil AS VARCHAR) + ' ; ' + @Contraseña + ' ; ' + @Acceso + ' ; ' + @Datos);
+					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @Contraseña + ' ; ' + @Acceso + ' ; ' + @Datos);
 		
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
@@ -2690,7 +2673,7 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #DELETED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TUsuario','DELETE',@Usuario,
-					  CAST(@Perfil AS VARCHAR) + ' ; ' + @Contraseña + ' ; ' + @Acceso + ' ; ' + @Datos,NULL);
+					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @Contraseña + ' ; ' + @Acceso + ' ; ' + @Datos,NULL);
 		
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
@@ -2793,8 +2776,8 @@ BEGIN
 		-- Verificar si el cambio fue en Perfil
 		IF @PerfilAntes != @PerfilDespues
 		BEGIN
-			SET @ValorAnterior = @PerfilAntes;
-			SET @ValorPosterior = @PerfilDespues;
+			SET @ValorAnterior = CONVERT(VARCHAR(10), @PerfilAntes, 2);
+			SET @ValorPosterior = CONVERT(VARCHAR(10), @PerfilDespues, 2);
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial

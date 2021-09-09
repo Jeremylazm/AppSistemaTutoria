@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Data;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
@@ -16,7 +15,8 @@ namespace CapaPresentaciones
 
         public P_TablaEstudiantes()
         {
-            InitializeComponent();        }
+            InitializeComponent();        
+        }
 
         private void MensajeConfirmacion(string Mensaje)
         {
@@ -93,21 +93,27 @@ namespace CapaPresentaciones
             ArchivoExcel.Visible = true;
         }
 
-        public static Image HacerImagenCircular(Image img, Color pColor)
+        public Image HacerImagenCircular(Image img)
         {
-            Bitmap bmp = new Bitmap(img.Width, img.Height);
-            using (GraphicsPath gpImg = new GraphicsPath())
-            {
+            int x = img.Width / 2;
+            int y = img.Height / 2;
+            int r = Math.Min(x, y);
 
-                gpImg.AddEllipse(0, 0, img.Width, img.Height);
-                using (Graphics grp = Graphics.FromImage(bmp))
-                {
-                    grp.Clear(pColor);
-                    grp.SetClip(gpImg);
-                    grp.DrawImage(img, Point.Empty);
-                }
+            Bitmap tmp = null;
+            tmp = new Bitmap(2 * r, 2 * r);
+            using (Graphics g = Graphics.FromImage(tmp))
+            {
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.TranslateTransform(tmp.Width / 2, tmp.Height / 2);
+                GraphicsPath gp = new GraphicsPath();
+                gp.AddEllipse(0 - r, 0 - r, 2 * r, 2 * r);
+                Region rg = new Region(gp);
+                g.SetClip(rg, CombineMode.Replace);
+                Bitmap bmp = new Bitmap(img);
+                g.DrawImage(bmp, new Rectangle(-r, -r, 2 * r, 2 * r), new Rectangle(x - r, y - r, 2 * r, 2 * r), GraphicsUnit.Pixel);
             }
-            return bmp;
+
+            return tmp;
         }
 
         private void P_TablaEstudiantes_Load(object sender, EventArgs e)
@@ -137,7 +143,7 @@ namespace CapaPresentaciones
                 Perfil = (byte[])dgvTabla.CurrentRow.Cells[0].Value;
                 MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
 
-                EditarRegistro.imgPerfil.Image = Bitmap.FromStream(MemoriaPerfil);
+                EditarRegistro.imgPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
                 EditarRegistro.txtCodigo.Text = dgvTabla.CurrentRow.Cells[2].Value.ToString();
                 EditarRegistro.txtAPaterno.Text = dgvTabla.CurrentRow.Cells[3].Value.ToString();
                 EditarRegistro.txtAMaterno.Text = dgvTabla.CurrentRow.Cells[4].Value.ToString();
@@ -195,44 +201,15 @@ namespace CapaPresentaciones
             BuscarRegistros();
         }
 
-        private void dgvTabla_SelectionChanged(object sender, EventArgs e)
+        private void dgvTabla_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            foreach (DataGridViewRow Fila in dgvTabla.Rows)
+            if (dgvTabla.Columns[e.ColumnIndex].HeaderText == "")
             {
-                if (Fila.Selected == true)
-                {
-                    byte[] Perfil = new byte[0];
-                    Perfil = (byte[])Fila.Cells[0].Value;
-                    MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
-
-                    Image PerfilImagen = Bitmap.FromStream(MemoriaPerfil);
-                    Image PerfilCircular = HacerImagenCircular(PerfilImagen, Color.FromArgb(104, 13, 15));
-                    byte[] PerfilFinal = new byte[0];
-                    using (MemoryStream MemoriaPerfilFinal = new MemoryStream())
-                    {
-                        PerfilCircular.Save(MemoriaPerfilFinal, PerfilImagen.RawFormat);
-                        PerfilFinal = MemoriaPerfilFinal.ToArray();
-                    }
-
-                    Fila.Cells[0].Value = PerfilFinal;
-                }
-                else
-                {
-                    byte[] Perfil = new byte[0];
-                    Perfil = (byte[])Fila.Cells[0].Value;
-                    MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
-
-                    Image PerfilImagen = Bitmap.FromStream(MemoriaPerfil);
-                    Image PerfilCircular = HacerImagenCircular(PerfilImagen, Color.White);
-                    byte[] PerfilFinal = new byte[0];
-                    using (MemoryStream MemoriaPerfilFinal = new MemoryStream())
-                    {
-                        PerfilCircular.Save(MemoriaPerfilFinal, PerfilImagen.RawFormat);
-                        PerfilFinal = MemoriaPerfilFinal.ToArray();
-                    }
-
-                    Fila.Cells[0].Value = PerfilFinal;
-                }
+                byte[] bits = new byte[0];
+                bits = (byte[])e.Value;
+                MemoryStream ms = new MemoryStream(bits);
+                Image imgSave = Image.FromStream(ms);
+                e.Value = HacerImagenCircular(imgSave);
             }
         }
     }

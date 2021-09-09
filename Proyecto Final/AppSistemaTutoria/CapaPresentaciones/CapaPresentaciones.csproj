@@ -130,6 +130,12 @@
     <Compile Include="P_TablaEstudiantes.Designer.cs">
       <DependentUpon>P_TablaEstudiantes.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_TablaTutorados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_TablaTutorados.Designer.cs">
+      <DependentUpon>P_TablaTutorados.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_TablaTutorias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="P_TablaEstudiantes.resx">
       <DependentUpon>P_TablaEstudiantes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_TablaTutorados.resx">
+      <DependentUpon>P_TablaTutorados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_TablaTutorias.resx">
       <DependentUpon>P_TablaTutorias.cs</DependentUpon>

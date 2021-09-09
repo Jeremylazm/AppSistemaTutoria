@@ -1,14 +1,19 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.IO;
 using CapaEntidades;
+using ImageMagick;
 
 namespace CapaDatos
 {
     public class D_Docente
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
-
+        
         public DataTable MostrarRegistros()
         {
             DataTable Resultado = new DataTable();
@@ -19,6 +24,15 @@ namespace CapaDatos
 
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
+
+            foreach (DataRow Fila in Resultado.Rows)
+            {
+                using (MagickImage PerfilNuevo = new MagickImage((byte[])Fila["Perfil2"]))
+                {
+                    PerfilNuevo.Resize(20, 0);
+                    Fila["Perfil2"] = PerfilNuevo.ToByteArray();
+                }
+            }
 
             return Resultado;
         }
@@ -34,6 +48,15 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@Texto", Texto);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
+
+            foreach (DataRow Fila in Resultado.Rows)
+            {
+                using (MagickImage PerfilNuevo = new MagickImage((byte[])Fila["Perfil2"]))
+                {
+                    PerfilNuevo.Resize(20, 0);
+                    Fila["Perfil2"] = PerfilNuevo.ToByteArray();
+                }
+            }
 
             return Resultado;
         }

@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
@@ -38,7 +35,7 @@ namespace CapaPresentaciones
             Perfil = E_InicioSesion.Perfil;
             MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
 
-            imgPerfil.Image = Bitmap.FromStream(MemoriaPerfil);
+            imgPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
             txtCodigo.Text = Fila[2].ToString();
             APaterno = Fila[3].ToString();
             AMaterno = Fila[4].ToString();
@@ -64,17 +61,40 @@ namespace CapaPresentaciones
             MessageBox.Show(Mensaje, "Sistema de Tutoría", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public Image HacerImagenCircular(Image img)
+        {
+            int x = img.Width / 2;
+            int y = img.Height / 2;
+            int r = Math.Min(x, y);
+
+            Bitmap tmp = null;
+            tmp = new Bitmap(2 * r, 2 * r);
+            using (Graphics g = Graphics.FromImage(tmp))
+            {
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.TranslateTransform(tmp.Width / 2, tmp.Height / 2);
+                GraphicsPath gp = new GraphicsPath();
+                gp.AddEllipse(0 - r, 0 - r, 2 * r, 2 * r);
+                Region rg = new Region(gp);
+                g.SetClip(rg, CombineMode.Replace);
+                Bitmap bmp = new Bitmap(img);
+                g.DrawImage(bmp, new Rectangle(-r, -r, 2 * r, 2 * r), new Rectangle(x - r, y - r, 2 * r, 2 * r), GraphicsUnit.Pixel);
+            }
+
+            return tmp;
+        }
+
         private void btnSubirPerfil_Click(object sender, EventArgs e)
         {
             try
             {
                 OpenFileDialog Archivo = new OpenFileDialog();
-                Archivo.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+                Archivo.Filter = "Archivos de Imagen | *.jpg; *.jpeg; *.png; *.gif; *.tif";
                 Archivo.Title = "Subir Perfil";
 
                 if (Archivo.ShowDialog() == DialogResult.OK)
                 {
-                    imgPerfil.Image = Image.FromFile(Archivo.FileName);
+                    imgPerfil.Image = HacerImagenCircular(Image.FromFile(Archivo.FileName));
                 }
             }
             catch (Exception)
@@ -102,9 +122,10 @@ namespace CapaPresentaciones
                 byte[] Perfil = new byte[0];
                 using (MemoryStream MemoriaPerfil = new MemoryStream())
                 {
-                    imgPerfil.Image.Save(MemoriaPerfil, imgPerfil.Image.RawFormat);
+                    imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
                     Perfil = MemoriaPerfil.ToArray();
                 }
+                E_InicioSesion.Perfil = Perfil;
                 ObjEntidad.Perfil = Perfil;
                 ObjEntidad.CodEstudiante = txtCodigo.Text;
                 ObjEntidad.APaterno = APaterno;

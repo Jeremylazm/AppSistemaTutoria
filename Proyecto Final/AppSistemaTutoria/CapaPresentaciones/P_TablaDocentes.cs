@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.IO;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
+using ImageMagick;
 
 namespace CapaPresentaciones
 {
@@ -28,21 +32,23 @@ namespace CapaPresentaciones
 
         public void AccionesTabla()
         {
-            dgvTabla.Columns[1].Visible = false;
-            dgvTabla.Columns[2].Visible = false;
+            dgvTabla.Columns[0].Visible = false;
             dgvTabla.Columns[3].Visible = false;
-            dgvTabla.Columns[11].Visible = false;
+            dgvTabla.Columns[4].Visible = false;
+            dgvTabla.Columns[5].Visible = false;
+            dgvTabla.Columns[13].Visible = false;
 
-            dgvTabla.Columns[0].HeaderText = "Cod. Docente";
-            dgvTabla.Columns[4].HeaderText = "Docente";
-            dgvTabla.Columns[5].HeaderText = "Email";
-            dgvTabla.Columns[6].HeaderText = "Dirección";
-            dgvTabla.Columns[7].HeaderText = "Teléfono";
-            dgvTabla.Columns[8].HeaderText = "Categoría";
-            dgvTabla.Columns[9].HeaderText = "Subcategoría";
-            dgvTabla.Columns[10].HeaderText = "Régimen";
-            dgvTabla.Columns[12].HeaderText = "Escuela Profesional";
-            dgvTabla.Columns[13].HeaderText = "Estado";
+            dgvTabla.Columns[1].HeaderText = "";
+            dgvTabla.Columns[2].HeaderText = "Cod. Docente";
+            dgvTabla.Columns[6].HeaderText = "Docente";
+            dgvTabla.Columns[7].HeaderText = "Email";
+            dgvTabla.Columns[8].HeaderText = "Dirección";
+            dgvTabla.Columns[9].HeaderText = "Teléfono";
+            dgvTabla.Columns[10].HeaderText = "Categoría";
+            dgvTabla.Columns[11].HeaderText = "Subcategoría";
+            dgvTabla.Columns[12].HeaderText = "Régimen";
+            dgvTabla.Columns[14].HeaderText = "Escuela Profesional";
+            dgvTabla.Columns[15].HeaderText = "Estado";
         }
 
         public void MostrarRegistros()
@@ -89,6 +95,31 @@ namespace CapaPresentaciones
             ArchivoExcel.Visible = true;
         }
 
+        public Image HacerImagenCircular(Image img)
+        {
+            int x = img.Width / 2;
+            int y = img.Height / 2;
+            int r = Math.Min(x, y);
+            //int r = x;
+
+            Bitmap tmp = null;
+            tmp = new Bitmap(2 * r, 2 * r);
+            using (Graphics g = Graphics.FromImage(tmp))
+            {
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.TranslateTransform(tmp.Width / 2, tmp.Height / 2);
+                GraphicsPath gp = new GraphicsPath();
+                gp.AddEllipse(0 - r, 0 - r, 2 * r, 2 * r);
+                Region rg = new Region(gp);
+                g.SetClip(rg, CombineMode.Replace);
+                Bitmap bmp = new Bitmap(img);
+                g.DrawImage(bmp, new Rectangle(-r, -r, 2 * r, 2 * r), new Rectangle(x - r, y - r, 2 * r, 2 * r), GraphicsUnit.Pixel);
+
+            }
+
+            return tmp;
+        }
+
         private void P_TablaDocentes_Load(object sender, EventArgs e)
         {
             MostrarRegistros();
@@ -110,18 +141,54 @@ namespace CapaPresentaciones
             if (dgvTabla.SelectedRows.Count > 0)
             {
                 Program.Evento = 1;
-                EditarRegistro.txtCodigo.Text = dgvTabla.CurrentRow.Cells[0].Value.ToString();
-                EditarRegistro.txtAPaterno.Text = dgvTabla.CurrentRow.Cells[1].Value.ToString();
-                EditarRegistro.txtAMaterno.Text = dgvTabla.CurrentRow.Cells[2].Value.ToString();
-                EditarRegistro.txtNombre.Text = dgvTabla.CurrentRow.Cells[3].Value.ToString();
-                EditarRegistro.txtEmail.Text = dgvTabla.CurrentRow.Cells[5].Value.ToString().Substring(0, dgvTabla.CurrentRow.Cells[5].Value.ToString().Length - 14);
-                EditarRegistro.txtDireccion.Text = dgvTabla.CurrentRow.Cells[6].Value.ToString();
-                EditarRegistro.txtTelefono.Text = dgvTabla.CurrentRow.Cells[7].Value.ToString();
-                EditarRegistro.cxtCategoria.SelectedValue = dgvTabla.CurrentRow.Cells[8].Value.ToString();
-                EditarRegistro.cxtSubcategoria.SelectedValue = dgvTabla.CurrentRow.Cells[9].Value.ToString();
-                EditarRegistro.cxtRegimen.SelectedValue = dgvTabla.CurrentRow.Cells[10].Value.ToString();
-                EditarRegistro.cxtEscuela.SelectedValue = dgvTabla.CurrentRow.Cells[11].Value.ToString();
-                EditarRegistro.cxtEstado.SelectedValue = dgvTabla.CurrentRow.Cells[13].Value.ToString();
+
+                byte[] Perfil = new byte[0];
+                Perfil = (byte[])dgvTabla.CurrentRow.Cells[0].Value;
+                MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
+
+                EditarRegistro.imgPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
+                EditarRegistro.txtCodigo.Text = dgvTabla.CurrentRow.Cells[2].Value.ToString();
+                EditarRegistro.txtAPaterno.Text = dgvTabla.CurrentRow.Cells[3].Value.ToString();
+                EditarRegistro.txtAMaterno.Text = dgvTabla.CurrentRow.Cells[4].Value.ToString();
+                EditarRegistro.txtNombre.Text = dgvTabla.CurrentRow.Cells[5].Value.ToString();
+                EditarRegistro.txtEmail.Text = dgvTabla.CurrentRow.Cells[7].Value.ToString().Substring(0, dgvTabla.CurrentRow.Cells[7].Value.ToString().Length - 14);
+                EditarRegistro.txtDireccion.Text = dgvTabla.CurrentRow.Cells[8].Value.ToString();
+                EditarRegistro.txtTelefono.Text = dgvTabla.CurrentRow.Cells[9].Value.ToString();
+
+                EditarRegistro.cxtSubcategoria.Items.Clear();
+                EditarRegistro.cxtRegimen.Items.Clear();
+                EditarRegistro.cxtRegimen.Items.Add("TIEMPO COMPLETO");
+                EditarRegistro.cxtRegimen.Items.Add("TIEMPO PARCIAL");
+
+                if (dgvTabla.CurrentRow.Cells[10].Value.ToString() == "NOMBRADO")
+                {
+
+                    EditarRegistro.cxtSubcategoria.Items.Add("PRINCIPAL");
+                    EditarRegistro.cxtSubcategoria.Items.Add("ASOCIADO");
+                    EditarRegistro.cxtSubcategoria.Items.Add("AUXILIAR");
+
+                    EditarRegistro.cxtRegimen.Enabled = true;
+                    EditarRegistro.cxtRegimen.Items.Insert(1, "DEDICACIÓN EXCLUSIVA");
+                }
+                else
+                {
+                    EditarRegistro.cxtSubcategoria.Items.Add("A1");
+                    EditarRegistro.cxtSubcategoria.Items.Add("A2");
+                    EditarRegistro.cxtSubcategoria.Items.Add("A3");
+                    EditarRegistro.cxtSubcategoria.Items.Add("B1");
+                    EditarRegistro.cxtSubcategoria.Items.Add("B2");
+                    EditarRegistro.cxtSubcategoria.Items.Add("B3");
+
+                    EditarRegistro.cxtRegimen.Enabled = false;
+                }
+
+                EditarRegistro.cxtCategoria.SelectedItem = dgvTabla.CurrentRow.Cells[10].Value.ToString();
+                EditarRegistro.cxtSubcategoria.SelectedItem = dgvTabla.CurrentRow.Cells[11].Value.ToString();
+                EditarRegistro.cxtRegimen.SelectedItem = dgvTabla.CurrentRow.Cells[12].Value.ToString();
+
+                EditarRegistro.cxtEscuela.SelectedValue = dgvTabla.CurrentRow.Cells[13].Value.ToString();
+                EditarRegistro.cxtEstado.SelectedItem = dgvTabla.CurrentRow.Cells[15].Value.ToString();
+                MemoriaPerfil = null;
 
                 EditarRegistro.ShowDialog();
             }
@@ -165,6 +232,18 @@ namespace CapaPresentaciones
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             BuscarRegistros();
+        }
+
+        private void dgvTabla_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvTabla.Columns[e.ColumnIndex].HeaderText == "")
+            {
+                byte[] bits = new byte[0];
+                bits = (byte[])e.Value;
+                MemoryStream ms = new MemoryStream(bits);
+                Image imgSave = Image.FromStream(ms);
+                e.Value = HacerImagenCircular(imgSave);
+            }
         }
     }
 }

@@ -15,78 +15,6 @@ namespace CapaDatos
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
 
-        // makes nice round ellipse/circle images from rectangle images
-
-        public Image CropImage(Image img)
-        {
-            int x = img.Width / 2;
-            int y = img.Height / 2;
-            int r = Math.Min(x, y);
-
-            Bitmap tmp = null;
-            tmp = new Bitmap(2 * r, 2 * r);
-            using (Graphics g = Graphics.FromImage(tmp))
-            {
-                g.SmoothingMode = SmoothingMode.AntiAlias;
-                g.TranslateTransform(tmp.Width / 2, tmp.Height / 2);
-                GraphicsPath gp = new GraphicsPath();
-                gp.AddEllipse(0 - r, 0 - r, 2 * r, 2 * r);
-                Region rg = new Region(gp);
-                g.SetClip(rg, CombineMode.Replace);
-                Bitmap bmp = new Bitmap(img);
-                g.DrawImage(bmp, new Rectangle(-r, -r, 2 * r, 2 * r), new Rectangle(x - r, y - r, 2 * r, 2 * r), GraphicsUnit.Pixel);
-
-            }
-
-
-            return tmp;
-        }
-
-        public static Image MakeCircleImage(Image img)
-        {
-            Bitmap bmp = new Bitmap(img.Width, img.Height);
-            using (GraphicsPath gpImg = new GraphicsPath())
-            {
-
-                gpImg.AddEllipse(0, 0, img.Width, img.Height);
-                using (Graphics grp = Graphics.FromImage(bmp))
-                {
-                    grp.Clear(Color.White);
-                    grp.SetClip(gpImg);
-                    grp.DrawImage(img, Point.Empty);
-                }
-            }
-            return bmp;
-        }
-
-        public Image ClipToCircle(Image srcImage, PointF center, float radius, Color backGround)
-        {
-            Image dstImage = new Bitmap(srcImage.Width, srcImage.Height, srcImage.PixelFormat);
-
-            using (Graphics g = Graphics.FromImage(dstImage))
-            {
-                RectangleF r = new RectangleF(center.X - radius, center.Y - radius,
-                                                         radius * 2, radius * 2);
-
-                // enables smoothing of the edge of the circle (less pixelated)
-                g.SmoothingMode = SmoothingMode.AntiAlias;
-
-                // fills background color
-                //using (Brush br = new SolidBrush(backGround))
-                //{
-                //    g.FillRectangle(br, 0, 0, dstImage.Width, dstImage.Height);
-                //}
-
-                // adds the new ellipse & draws the image again 
-                GraphicsPath path = new GraphicsPath();
-                path.AddEllipse(r);
-                g.SetClip(path);
-                g.DrawImage(srcImage, 0, 0);
-
-                return dstImage;
-            }
-        }
-
         public DataTable MostrarRegistros()
         {
             DataTable Resultado = new DataTable();
@@ -97,7 +25,7 @@ namespace CapaDatos
 
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
-            
+
             foreach (DataRow Fila in Resultado.Rows)
             {
                 using (MagickImage PerfilNuevo = new MagickImage((byte[])Fila["Perfil2"]))
@@ -105,23 +33,30 @@ namespace CapaDatos
                     PerfilNuevo.Resize(20, 0);
                     Fila["Perfil2"] = PerfilNuevo.ToByteArray();
                 }
+            }
 
-                byte[] Perfil = new byte[0];
-                Perfil = (byte[])Fila["Perfil2"];
-                MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
+            return Resultado;
+        }
 
-                Image PerfilImagen = Bitmap.FromStream(MemoriaPerfil);
-                Image PerfilCircular = ClipToCircle(PerfilImagen, new PointF(PerfilImagen.Width / 2, PerfilImagen.Height / 2), PerfilImagen.Width / 2, Color.White);
-                //Image PerfilCircular = CropImage(PerfilImagen);
-                //Image PerfilCircular = MakeCircleImage(PerfilImagen);
-                byte[] PerfilFinal = new byte[0];
-                using (MemoryStream MemoriaPerfilFinal = new MemoryStream())
+        public DataTable MostrarTutorados(string CodDocente)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuMostrarTutorados", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+
+            foreach (DataRow Fila in Resultado.Rows)
+            {
+                using (MagickImage PerfilNuevo = new MagickImage((byte[])Fila["Perfil2"]))
                 {
-                    PerfilCircular.Save(MemoriaPerfilFinal, PerfilImagen.RawFormat);
-                    PerfilFinal = MemoriaPerfilFinal.ToArray();
+                    PerfilNuevo.Resize(20, 0);
+                    Fila["Perfil2"] = PerfilNuevo.ToByteArray();
                 }
-
-                Fila["Perfil2"] = PerfilFinal;
             }
 
             return Resultado;
@@ -138,6 +73,40 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@Texto", Texto);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
+
+            foreach (DataRow Fila in Resultado.Rows)
+            {
+                using (MagickImage PerfilNuevo = new MagickImage((byte[])Fila["Perfil2"]))
+                {
+                    PerfilNuevo.Resize(20, 0);
+                    Fila["Perfil2"] = PerfilNuevo.ToByteArray();
+                }
+            }
+
+            return Resultado;
+        }
+
+        public DataTable BuscarTutorados(string CodDocente, string Texto)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuBuscarEstudiantes", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
+            Comando.Parameters.AddWithValue("@Texto", Texto);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+
+            foreach (DataRow Fila in Resultado.Rows)
+            {
+                using (MagickImage PerfilNuevo = new MagickImage((byte[])Fila["Perfil2"]))
+                {
+                    PerfilNuevo.Resize(20, 0);
+                    Fila["Perfil2"] = PerfilNuevo.ToByteArray();
+                }
+            }
 
             return Resultado;
         }

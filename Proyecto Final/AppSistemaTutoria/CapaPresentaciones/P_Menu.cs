@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -16,19 +17,47 @@ namespace CapaPresentaciones
             InitializeComponent();
         }
 
+        public Image HacerImagenCircular(Image img)
+        {
+            int x = img.Width / 2;
+            int y = img.Height / 2;
+            int r = Math.Min(x, y);
+
+            Bitmap tmp = null;
+            tmp = new Bitmap(2 * r, 2 * r);
+            using (Graphics g = Graphics.FromImage(tmp))
+            {
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.TranslateTransform(tmp.Width / 2, tmp.Height / 2);
+                GraphicsPath gp = new GraphicsPath();
+                gp.AddEllipse(0 - r, 0 - r, 2 * r, 2 * r);
+                Region rg = new Region(gp);
+                g.SetClip(rg, CombineMode.Replace);
+                Bitmap bmp = new Bitmap(img);
+                g.DrawImage(bmp, new Rectangle(-r, -r, 2 * r, 2 * r), new Rectangle(x - r, y - r, 2 * r, 2 * r), GraphicsUnit.Pixel);
+            }
+
+            return tmp;
+        }
+
         private void CargarDatosUsuario()
         {
             byte[] Perfil = new byte[0];
             Perfil = E_InicioSesion.Perfil;
             MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
 
-            imgPerfil.Image = Bitmap.FromStream(MemoriaPerfil);
+            imgPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
             lblDatos.Text = E_InicioSesion.Datos;
             lblAcceso.Text = E_InicioSesion.Acceso;
             lblUsuario.Text = E_InicioSesion.Usuario;
         }
 
         private void ActualizarDatos(object sender, FormClosedEventArgs e)
+        {
+            CargarDatosUsuario();
+        }
+
+        private void ActualizarPerfil(object sender, EventArgs e)
         {
             CargarDatosUsuario();
         }
@@ -171,6 +200,8 @@ namespace CapaPresentaciones
                     TopLevel = false,
                     Dock = DockStyle.Fill
                 };
+                //Editar.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+                Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
 
                 pnContenedor.Controls.Add(Editar);
                 pnContenedor.Tag = Editar;
@@ -181,6 +212,11 @@ namespace CapaPresentaciones
             {
                 AbrirFormularios<P_EditarPerfilDocente>();
             }
+        }
+
+        private void btnTutorados_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios<P_TablaTutorados>();
         }
 
         private void P_Menu_Load(object sender, EventArgs e)
