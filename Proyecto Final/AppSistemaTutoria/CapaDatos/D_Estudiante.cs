@@ -130,8 +130,9 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodEscuelaP", Estudiante.CodEscuelaP);
             Comando.Parameters.AddWithValue("@PersonaReferencia", Estudiante.PersonaReferencia);
             Comando.Parameters.AddWithValue("@TelefonoReferencia", Estudiante.TelefonoReferencia);
-            Comando.Parameters.AddWithValue("@EstadoFisico", Estudiante.EstadoFisico);
-            Comando.Parameters.AddWithValue("@EstadoMental", Estudiante.EstadoMental);
+            Comando.Parameters.AddWithValue("@InformacionPersonal", Estudiante.InformacionPersonal);
+            //Comando.Parameters.AddWithValue("@EstadoFisico", Estudiante.EstadoFisico);
+            //Comando.Parameters.AddWithValue("@EstadoMental", Estudiante.EstadoMental);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }
@@ -155,8 +156,9 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodEscuelaP", Estudiante.CodEscuelaP);
             Comando.Parameters.AddWithValue("@PersonaReferencia", Estudiante.PersonaReferencia);
             Comando.Parameters.AddWithValue("@TelefonoReferencia", Estudiante.TelefonoReferencia);
-            Comando.Parameters.AddWithValue("@EstadoFisico", Estudiante.EstadoFisico);
-            Comando.Parameters.AddWithValue("@EstadoMental", Estudiante.EstadoMental);
+            Comando.Parameters.AddWithValue("@InformacionPersonal", Estudiante.InformacionPersonal);
+            //Comando.Parameters.AddWithValue("@EstadoFisico", Estudiante.EstadoFisico);
+            //Comando.Parameters.AddWithValue("@EstadoMental", Estudiante.EstadoMental);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }
