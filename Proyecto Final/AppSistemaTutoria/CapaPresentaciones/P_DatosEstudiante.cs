@@ -16,6 +16,7 @@ namespace CapaPresentaciones
     {
         readonly E_Estudiante ObjEntidad = new E_Estudiante();
         readonly N_Estudiante ObjNegocio = new N_Estudiante();
+        private readonly string Key = "key_estudiante"; //Llave de cifrado
 
         public P_DatosEstudiante()
         {
@@ -44,8 +45,9 @@ namespace CapaPresentaciones
             txtTelefono.Clear();
             txtPReferencia.Clear();
             txtTReferencia.Clear();
-            txtEFisico.Clear();
-            txtEMental.Clear();
+            txtIPersonal.Clear();
+            //txtEMental.Clear();
+            txtIPersonal.Clear();
             txtCodigo.Focus();
         }
 
@@ -64,11 +66,69 @@ namespace CapaPresentaciones
             cxtEscuela.DisplayMember = "Nombre";
         }
 
+        public Image HacerImagenCircular(Image img)
+        {
+            int x = img.Width / 2;
+            int y = img.Height / 2;
+            int r = Math.Min(x, y);
+            //int r = x;
+
+            Bitmap tmp = null;
+            tmp = new Bitmap(2 * r, 2 * r);
+            using (Graphics g = Graphics.FromImage(tmp))
+            {
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.TranslateTransform(tmp.Width / 2, tmp.Height / 2);
+                GraphicsPath gp = new GraphicsPath();
+                gp.AddEllipse(0 - r, 0 - r, 2 * r, 2 * r);
+                Region rg = new Region(gp);
+                g.SetClip(rg, CombineMode.Replace);
+                Bitmap bmp = new Bitmap(img);
+                g.DrawImage(bmp, new Rectangle(-r, -r, 2 * r, 2 * r), new Rectangle(x - r, y - r, 2 * r, 2 * r), GraphicsUnit.Pixel);
+
+            }
+
+            return tmp;
+        }
+        
         private void ActualizarDatos(object sender, FormClosedEventArgs e)
         {
             LlenarComboBox();
         }
 
+        string VisibilidadIPersonal(string IPersonalCifrada, bool EsEstudiante = false)
+        {
+            //Mostrar o no la información personal de acuerdo al permiso otorgado
+
+            //Verificar permiso de visibilidad
+            string Permiso = IPersonalCifrada.Substring(IPersonalCifrada.Length - 4);
+            IPersonalCifrada = IPersonalCifrada.Substring(0, IPersonalCifrada.Length - 5); //Eliminar string permiso
+
+            //Si el usuario es estudiante, puede ver su inf personal
+            if (EsEstudiante)
+            {
+                return E_Criptografia.DesencriptarRSA(IPersonalCifrada, Key); //Desencriptar
+            }
+
+            //Si Tutor tiene permiso de visualizar Inf Personal
+            if (Permiso == "VT=T")
+            {
+                return E_Criptografia.DesencriptarRSA(IPersonalCifrada, Key); //Desencriptar
+            }
+            else return IPersonalCifrada; //No desencriptar
+        }
+
+        string EncriptarIPersonal(string IPersonal, bool PermisoVisibilidad)
+        {
+            //Encriptar
+            string IPersonalCifrada = E_Criptografia.EncriptarRSA(IPersonal, Key);
+            //Añadir permiso
+            if (PermisoVisibilidad) IPersonalCifrada += " VT=T";
+            else IPersonalCifrada += " VT=F";
+            return IPersonalCifrada;
+        }
+
+        #region Eventos
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if ((txtCodigo.Text.Trim() != "") &&
@@ -99,8 +159,9 @@ namespace CapaPresentaciones
                         ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
                         ObjEntidad.PersonaReferencia = txtPReferencia.Text.ToUpper();
                         ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
-                        ObjEntidad.EstadoFisico = txtEFisico.Text.ToUpper();
-                        ObjEntidad.EstadoMental = txtEMental.Text.ToUpper();
+                        ObjEntidad.InformacionPersonal = EncriptarIPersonal(txtIPersonal.Text,false);
+                        //ObjEntidad.EstadoFisico = txtEFisico.Text.ToUpper();
+                        //ObjEntidad.EstadoMental = txtEMental.Text.ToUpper();
 
                         ObjNegocio.InsertarRegistros(ObjEntidad);
                         MensajeConfirmacion("Registro insertado exitosamente");
@@ -138,8 +199,9 @@ namespace CapaPresentaciones
                             ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
                             ObjEntidad.PersonaReferencia = txtPReferencia.Text.ToUpper();
                             ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
-                            ObjEntidad.EstadoFisico = txtEFisico.Text.ToUpper();
-                            ObjEntidad.EstadoMental = txtEMental.Text.ToUpper();
+                            ObjEntidad.InformacionPersonal = EncriptarIPersonal(txtIPersonal.Text, false);
+                            //ObjEntidad.EstadoFisico = txtIPersonal.Text.ToUpper();
+                            //ObjEntidad.EstadoMental = txtEMental.Text.ToUpper();
 
                             ObjNegocio.EditarRegistros(ObjEntidad);
                             MensajeConfirmacion("Registro editado exitosamente");
@@ -179,31 +241,6 @@ namespace CapaPresentaciones
             //NuevoRegistro.Dispose();
         }
 
-        public Image HacerImagenCircular(Image img)
-        {
-            int x = img.Width / 2;
-            int y = img.Height / 2;
-            int r = Math.Min(x, y);
-            //int r = x;
-
-            Bitmap tmp = null;
-            tmp = new Bitmap(2 * r, 2 * r);
-            using (Graphics g = Graphics.FromImage(tmp))
-            {
-                g.SmoothingMode = SmoothingMode.AntiAlias;
-                g.TranslateTransform(tmp.Width / 2, tmp.Height / 2);
-                GraphicsPath gp = new GraphicsPath();
-                gp.AddEllipse(0 - r, 0 - r, 2 * r, 2 * r);
-                Region rg = new Region(gp);
-                g.SetClip(rg, CombineMode.Replace);
-                Bitmap bmp = new Bitmap(img);
-                g.DrawImage(bmp, new Rectangle(-r, -r, 2 * r, 2 * r), new Rectangle(x - r, y - r, 2 * r, 2 * r), GraphicsUnit.Pixel);
-
-            }
-
-            return tmp;
-        }
-
         private void btnSubirPerfil_Click(object sender, EventArgs e)
         {
             try
@@ -227,5 +264,7 @@ namespace CapaPresentaciones
         {
             imgPerfil.Image = Image.FromFile("C:/Users/Jeremylazm/Desktop/Documentos/AppSistemaTutoria/CapaPresentaciones/Iconos/Perfil Estudiante.png");
         }
+
+        #endregion
     }
 }

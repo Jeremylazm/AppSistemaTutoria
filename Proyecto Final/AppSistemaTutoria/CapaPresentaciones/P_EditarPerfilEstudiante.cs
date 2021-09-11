@@ -20,7 +20,7 @@ namespace CapaPresentaciones
         private string AMaterno = "";
         private string Nombre = "";
         private string CodEscuelaP = "";
-        private readonly string Key = "123asd"; //Llave de cifrado
+        private readonly string Key = "key_estudiante"; //Llave de cifrado
 
         public P_EditarPerfilEstudiante()
         {
@@ -48,12 +48,12 @@ namespace CapaPresentaciones
             txtEscuelaP.Text = Fila[11].ToString();
             txtPReferencia.Text = Fila[12].ToString();
             txtTReferencia.Text = Fila[13].ToString();
-            string InfPersonalCifrada = Fila[14].ToString();
+            txtIPersonal.Text = VisibilidadIPersonal(Fila[14].ToString(), true);  //Desencriptar  informacion personal
+
             //txtEFisico.Text = Fila[14].ToString();
             //txtEMental.Text = Fila[15].ToString();
 
-            //Descifrar Informacion personal encriptada
-            txtIPersonal.Text = E_Criptografia.DesencriptarRSA(InfPersonalCifrada, Key);
+
         }
 
         private void MensajeConfirmacion(string Mensaje)
@@ -88,6 +88,39 @@ namespace CapaPresentaciones
             return tmp;
         }
 
+        string VisibilidadIPersonal(string IPersonalCifrada, bool EsEstudiante = false)
+        {
+            //Mostrar o no la información personal de acuerdo al permiso otorgado
+
+            //Verificar permiso de visibilidad
+            string Permiso = IPersonalCifrada.Substring(IPersonalCifrada.Length - 4);
+            IPersonalCifrada = IPersonalCifrada.Substring(0, IPersonalCifrada.Length - 5); //Eliminar string permiso
+
+            //Si el usuario es estudiante, puede ver su inf personal
+            if (EsEstudiante)
+            {
+                return E_Criptografia.DesencriptarRSA(IPersonalCifrada, Key); //Desencriptar
+            }
+
+            //Si Tutor tiene permiso de visualizar Inf Personal
+            if (Permiso == "VT=T")
+            {
+                return E_Criptografia.DesencriptarRSA(IPersonalCifrada, Key); //Desencriptar
+            }
+            else return IPersonalCifrada; //No desencriptar
+        }
+
+        string EncriptarIPersonal(string IPersonal, bool PermisoVisibilidad)
+        {
+            //Encriptar
+            string IPersonalCifrada = E_Criptografia.EncriptarRSA(IPersonal, Key);
+            //Añadir permiso
+            if (PermisoVisibilidad) IPersonalCifrada += " VT=T";
+            else IPersonalCifrada += " VT=F";
+            return IPersonalCifrada;
+        }
+
+        #region Eventos
         private void btnSubirPerfil_Click(object sender, EventArgs e)
         {
             try
@@ -141,8 +174,8 @@ namespace CapaPresentaciones
                 ObjEntidad.CodEscuelaP = CodEscuelaP;
                 ObjEntidad.PersonaReferencia = txtPReferencia.Text.ToUpper();
                 ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
-                //Guardar Informacion personal cifrada
-                ObjEntidad.InformacionPersonal = E_Criptografia.EncriptarRSA(txtIPersonal.Text, Key);
+                //Guardar Informacion personal cifrada con su respectivo permiso
+                ObjEntidad.InformacionPersonal = EncriptarIPersonal(txtIPersonal.Text, ckbIPersonal.Checked);
                 //ObjEntidad.EstadoFisico = txtEFisico.Text.ToUpper();
                 //ObjEntidad.EstadoMental = txtEMental.Text.ToUpper();
 
@@ -160,5 +193,6 @@ namespace CapaPresentaciones
         {
 
         }
+        #endregion
     }
 }
