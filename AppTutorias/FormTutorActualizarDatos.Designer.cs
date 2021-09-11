@@ -99,7 +99,7 @@ namespace WinFormsFix
             this.labelMensaje.Name = "labelMensaje";
             this.labelMensaje.Size = new System.Drawing.Size(116, 15);
             this.labelMensaje.TabIndex = 0;
-            this.labelMensaje.Text = "Se agrego con éxito";
+            this.labelMensaje.Text = "Se agregó con éxito";
             // 
             // panel1
             // 
