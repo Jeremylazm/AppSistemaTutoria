@@ -509,6 +509,7 @@
             // 
             // btnRestablecerPerfil
             // 
+            this.btnRestablecerPerfil.Active = true;
             this.btnRestablecerPerfil.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnRestablecerPerfil.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnRestablecerPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -620,6 +621,7 @@
             // 
             // btnCambiarContraseña
             // 
+            this.btnCambiarContraseña.Active = true;
             this.btnCambiarContraseña.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnCambiarContraseña.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnCambiarContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -748,7 +750,7 @@
             this.txtIPersonal.Location = new System.Drawing.Point(34, 349);
             this.txtIPersonal.Multiline = true;
             this.txtIPersonal.Name = "txtIPersonal";
-            this.txtIPersonal.Size = new System.Drawing.Size(371, 70);
+            this.txtIPersonal.Size = new System.Drawing.Size(371, 69);
             this.txtIPersonal.TabIndex = 176;
             // 
             // BordeadoMenu

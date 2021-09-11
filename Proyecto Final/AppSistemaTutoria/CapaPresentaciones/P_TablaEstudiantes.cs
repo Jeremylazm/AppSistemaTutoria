@@ -153,8 +153,8 @@ namespace CapaPresentaciones
                 EditarRegistro.cxtEscuela.SelectedValue = dgvTabla.CurrentRow.Cells[10].Value.ToString();
                 EditarRegistro.txtPReferencia.Text = dgvTabla.CurrentRow.Cells[12].Value.ToString();
                 EditarRegistro.txtTReferencia.Text = dgvTabla.CurrentRow.Cells[13].Value.ToString();
-                EditarRegistro.txtEFisico.Text = dgvTabla.CurrentRow.Cells[14].Value.ToString();
-                EditarRegistro.txtEMental.Text = dgvTabla.CurrentRow.Cells[15].Value.ToString();
+                EditarRegistro.txtIPersonal.Text = dgvTabla.CurrentRow.Cells[14].Value.ToString();
+                //EditarRegistro.txtEMental.Text = dgvTabla.CurrentRow.Cells[15].Value.ToString();
                 MemoriaPerfil = null;
 
                 EditarRegistro.ShowDialog();
