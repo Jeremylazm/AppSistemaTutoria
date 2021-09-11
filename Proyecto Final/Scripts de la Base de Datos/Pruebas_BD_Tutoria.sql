@@ -26,5 +26,3 @@ SELECT * FROM TDocente
 SELECT * FROM TUsuario
 SELECT * FROM TTutoria
 SELECT * FROM Historial
-
-INSERT INTO TEstudiante VALUES('','182940','Prueba','Prueba','Prueba','182940@unsaac.edu.pe','Prueba','923252133','INIS','PAPA','983213211','KAjRXU6RpqupX9zX4uMaQCHwg3GTyGbnW9MX3lWf70AE+u/4qy+7Ke6U0GtXIw/Vr50DSnKPbZwUc9EzFHXKxFqsZk4SFD+xWF6beHbXd21OhqHJKqoRpb4BDKiS+Gr19eGdniLOnaDVZmIqW4IbEaLx/QvKf5QxTwqbOW9OFLY=');
