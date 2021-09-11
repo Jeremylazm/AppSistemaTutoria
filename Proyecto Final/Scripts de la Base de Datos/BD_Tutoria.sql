@@ -66,7 +66,7 @@ CREATE TABLE TEstudiante
 	CodEscuelaP tyCodEscuelaP,
 	PersonaReferencia VARCHAR(20),
 	TelefonoReferencia VARCHAR(15),
-	InformacionPersonal VARCHAR(100),
+	InformacionPersonal VARCHAR(200), --Cifrado
 	--EstadoFisico VARCHAR(40),
 	--EstadoMental VARCHAR(40),
 
@@ -414,7 +414,7 @@ CREATE PROCEDURE spuInsertarEstudiante @Perfil VARBINARY(MAX),
 									   @CodEscuelaP VARCHAR(4),
 									   @PersonaReferencia VARCHAR(20),
 									   @TelefonoReferencia VARCHAR(15),
-									   @InformacionPersonal VARCHAR(100)
+									   @InformacionPersonal VARCHAR(200)
 									   --@EstadoFisico VARCHAR(40),
 									   --@EstadoMental VARCHAR(40)
 AS
@@ -444,7 +444,7 @@ CREATE PROCEDURE spuActualizarEstudiante @Perfil VARBINARY(MAX),
 										 @CodEscuelaP VARCHAR(4),
 										 @PersonaReferencia VARCHAR(20),
 										 @TelefonoReferencia VARCHAR(15),
-										 @InformacionPersonal VARCHAR(100)
+										 @InformacionPersonal VARCHAR(200)
 										 --@EstadoFisico VARCHAR(40),
 										 --@EstadoMental VARCHAR(40)					
 AS
@@ -985,7 +985,7 @@ BEGIN
 		CodEscuelaP VARCHAR(4),
 		PersonaReferencia VARCHAR(20),
 		TelefonoReferencia VARCHAR(15),
-		InformacionPersonal VARCHAR(100)
+		InformacionPersonal VARCHAR(200)
 		--EstadoFisico VARCHAR(40),
 		--EstadoMental VARCHAR(40)
 	);
@@ -1014,7 +1014,7 @@ BEGIN
 		DECLARE @CodEscuelaP VARCHAR(4);
 		DECLARE @PersonaReferencia VARCHAR(20);
 		DECLARE @TelefonoReferencia VARCHAR(15);
-		DECLARE @InformacionPersonal VARCHAR(100);
+		DECLARE @InformacionPersonal VARCHAR(200);
 		--DECLARE @EstadoFisico VARCHAR(40);
 		--DECLARE @EstadoMental VARCHAR(40);
 
@@ -1076,7 +1076,7 @@ BEGIN
 		CodEscuelaP VARCHAR(4),
 		PersonaReferencia VARCHAR(20),
 		TelefonoReferencia VARCHAR(15),
-		InformacionPersonal VARCHAR(100)
+		InformacionPersonal VARCHAR(200)
 		--EstadoFisico VARCHAR(40),
 		--EstadoMental VARCHAR(40)
 	);
@@ -1105,7 +1105,7 @@ BEGIN
 		DECLARE @CodEscuelaP VARCHAR(4);
 		DECLARE @PersonaReferencia VARCHAR(20);
 		DECLARE @TelefonoReferencia VARCHAR(15);
-		DECLARE @InformacionPersonal VARCHAR(100);
+		DECLARE @InformacionPersonal VARCHAR(200);
 		--DECLARE @EstadoFisico VARCHAR(40);
 		--DECLARE @EstadoMental VARCHAR(40);
 
@@ -1167,7 +1167,7 @@ BEGIN
 		CodEscuelaP VARCHAR(4),
 		PersonaReferencia VARCHAR(20),
 		TelefonoReferencia VARCHAR(15),
-		InformacionPersonal VARCHAR(100)
+		InformacionPersonal VARCHAR(200)
 		--EstadoFisico VARCHAR(40),
 		--EstadoMental VARCHAR(40)
 	);
@@ -1191,7 +1191,7 @@ BEGIN
 		CodEscuelaP VARCHAR(4),
 		PersonaReferencia VARCHAR(20),
 		TelefonoReferencia VARCHAR(15),
-		InformacionPersonal VARCHAR(100)
+		InformacionPersonal VARCHAR(200)
 		--EstadoFisico VARCHAR(40),
 		--EstadoMental VARCHAR(40)
 	);
@@ -1220,7 +1220,7 @@ BEGIN
 		DECLARE @CodEscuelaPAntes VARCHAR(4);
 		DECLARE @PersonaReferenciaAntes VARCHAR(4);
 		DECLARE @TelefonoReferenciaAntes VARCHAR(4);
-		DECLARE @InformacionPersonalAntes VARCHAR(100);
+		DECLARE @InformacionPersonalAntes VARCHAR(200);
 		--DECLARE @EstadoFisicoAntes VARCHAR(40);
 		--DECLARE @EstadoMentalAntes VARCHAR(40);
 
@@ -1253,7 +1253,7 @@ BEGIN
 		DECLARE @CodEscuelaPDespues VARCHAR(4);
 		DECLARE @PersonaReferenciaDespues VARCHAR(4);
 		DECLARE @TelefonoReferenciaDespues VARCHAR(4);
-		DECLARE @InformacionPersonalDespues VARCHAR(100);
+		DECLARE @InformacionPersonalDespues VARCHAR(200);
 
 		--DECLARE @EstadoFisicoDespues VARCHAR(40);
 		--DECLARE @EstadoMentalDespues VARCHAR(40);
