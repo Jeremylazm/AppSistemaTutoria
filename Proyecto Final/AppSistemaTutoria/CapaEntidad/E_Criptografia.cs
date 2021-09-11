@@ -3,28 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Security.Cryptography; //Libreria necesaria
 
-namespace CapaEntidad
+namespace CapaEntidades
 {
-    class E_Criptografia
+    public class E_Criptografia
     {
         //Metodos estaticos
         #region Encriptacion RSA
         public static string EncriptarRSA(string Mensaje, string Clave)
         {
             //NOTA: El mensaje debe tener como máximo 117 caracteres
-            //Política de Seguridad del Contenido (CSP)
-            CspParameters CSApars = new CspParameters();
-            CSApars.KeyContainerName = Clave; //Definir clave
-            //Definir instacia RSA
-            RSACryptoServiceProvider RSA = new RSACryptoServiceProvider(CSApars);
-            //Convertir mensaje en bytes
-            byte[] Msg = Encoding.UTF8.GetBytes(Mensaje);
-            //Encriptar mensaje
-            byte[] MsgEncriptado = RSA.Encrypt(Msg, false);
-            //Convertir bytes en cadena y retornar
-            return Convert.ToBase64String(MsgEncriptado);
+            try
+            {
+                //Política de Seguridad del Contenido (CSP)
+                CspParameters CSApars = new CspParameters();
+                CSApars.KeyContainerName = Clave; //Definir clave
+                                                  //Definir instacia RSA
+                RSACryptoServiceProvider RSA = new RSACryptoServiceProvider(CSApars);
+                //Convertir mensaje en bytes
+                byte[] Msg = Encoding.UTF8.GetBytes(Mensaje);
+                //Encriptar mensaje
+                byte[] MsgEncriptado = RSA.Encrypt(Msg, false);
+                //Convertir bytes en cadena y retornar
+                return Convert.ToBase64String(MsgEncriptado);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("El mensaje debe tener 117 caracteres como máximo: " + e);
+                return null;
+            }
         }
         public static string DesencriptarRSA(string MensajeEncriptado, string Clave)
         {
