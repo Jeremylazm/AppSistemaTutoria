@@ -20,6 +20,7 @@ namespace CapaPresentaciones
         private string AMaterno = "";
         private string Nombre = "";
         private string CodEscuelaP = "";
+        private readonly string Key = "123asd"; //Llave de cifrado
 
         public P_EditarPerfilEstudiante()
         {
@@ -47,8 +48,12 @@ namespace CapaPresentaciones
             txtEscuelaP.Text = Fila[11].ToString();
             txtPReferencia.Text = Fila[12].ToString();
             txtTReferencia.Text = Fila[13].ToString();
-            txtEFisico.Text = Fila[14].ToString();
-            txtEMental.Text = Fila[15].ToString();
+            string InfPersonalCifrada = Fila[14].ToString();
+            //txtEFisico.Text = Fila[14].ToString();
+            //txtEMental.Text = Fila[15].ToString();
+
+            //Descifrar Informacion personal encriptada
+            txtIPersonal.Text = E_Criptografia.DesencriptarRSA(InfPersonalCifrada, Key);
         }
 
         private void MensajeConfirmacion(string Mensaje)
@@ -80,7 +85,6 @@ namespace CapaPresentaciones
                 Bitmap bmp = new Bitmap(img);
                 g.DrawImage(bmp, new Rectangle(-r, -r, 2 * r, 2 * r), new Rectangle(x - r, y - r, 2 * r, 2 * r), GraphicsUnit.Pixel);
             }
-
             return tmp;
         }
 
@@ -137,8 +141,10 @@ namespace CapaPresentaciones
                 ObjEntidad.CodEscuelaP = CodEscuelaP;
                 ObjEntidad.PersonaReferencia = txtPReferencia.Text.ToUpper();
                 ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
-                ObjEntidad.EstadoFisico = txtEFisico.Text.ToUpper();
-                ObjEntidad.EstadoMental = txtEMental.Text.ToUpper();
+                //Guardar Informacion personal cifrada
+                ObjEntidad.InformacionPersonal = E_Criptografia.EncriptarRSA(txtIPersonal.Text, Key);
+                //ObjEntidad.EstadoFisico = txtEFisico.Text.ToUpper();
+                //ObjEntidad.EstadoMental = txtEMental.Text.ToUpper();
 
                 ObjNegocio.EditarRegistros(ObjEntidad);
                 MensajeConfirmacion("Registro editado exitosamente");

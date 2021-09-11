@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="E_Acceso.cs" />
+    <Compile Include="E_Criptografia.cs" />
     <Compile Include="E_Docente.cs" />
     <Compile Include="E_EscuelaProfesional.cs" />
     <Compile Include="E_Estudiante.cs" />

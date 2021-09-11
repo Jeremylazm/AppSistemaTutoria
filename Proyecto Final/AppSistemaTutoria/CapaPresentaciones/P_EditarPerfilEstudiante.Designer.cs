@@ -39,12 +39,6 @@
             this.Separador8 = new Bunifu.Framework.UI.BunifuSeparator();
             this.txtPReferencia = new System.Windows.Forms.TextBox();
             this.lblPReferencia = new System.Windows.Forms.Label();
-            this.Separador11 = new Bunifu.Framework.UI.BunifuSeparator();
-            this.txtEMental = new System.Windows.Forms.TextBox();
-            this.lblEMental = new System.Windows.Forms.Label();
-            this.Separador10 = new Bunifu.Framework.UI.BunifuSeparator();
-            this.txtEFisico = new System.Windows.Forms.TextBox();
-            this.lblEFisico = new System.Windows.Forms.Label();
             this.Separador7 = new Bunifu.Framework.UI.BunifuSeparator();
             this.lblEscuela = new System.Windows.Forms.Label();
             this.Separador6 = new Bunifu.Framework.UI.BunifuSeparator();
@@ -73,16 +67,10 @@
             this.btnCambiarContraseña = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnGuardar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.lblPermisoEFisico = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.ckbEMental = new CapaPresentaciones.Otros_Controles.JALMToggleButton();
             this.ckbEFisico = new CapaPresentaciones.Otros_Controles.JALMToggleButton();
             this.imgPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
+            this.txtIPersonal = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
             this.SuspendLayout();
             // 
@@ -196,90 +184,6 @@
             this.lblPReferencia.Size = new System.Drawing.Size(68, 19);
             this.lblPReferencia.TabIndex = 152;
             this.lblPReferencia.Text = "Persona:";
-            // 
-            // Separador11
-            // 
-            this.Separador11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Separador11.BackColor = System.Drawing.Color.Transparent;
-            this.Separador11.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.Separador11.LineThickness = 1;
-            this.Separador11.Location = new System.Drawing.Point(76, 22);
-            this.Separador11.Name = "Separador11";
-            this.Separador11.Size = new System.Drawing.Size(294, 10);
-            this.Separador11.TabIndex = 150;
-            this.Separador11.Transparency = 255;
-            this.Separador11.Vertical = false;
-            // 
-            // txtEMental
-            // 
-            this.txtEMental.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEMental.BackColor = System.Drawing.Color.White;
-            this.txtEMental.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtEMental.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEMental.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtEMental.Location = new System.Drawing.Point(76, 2);
-            this.txtEMental.Multiline = true;
-            this.txtEMental.Name = "txtEMental";
-            this.txtEMental.Size = new System.Drawing.Size(294, 20);
-            this.txtEMental.TabIndex = 149;
-            // 
-            // lblEMental
-            // 
-            this.lblEMental.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblEMental.AutoSize = true;
-            this.lblEMental.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEMental.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblEMental.Location = new System.Drawing.Point(2, 2);
-            this.lblEMental.Name = "lblEMental";
-            this.lblEMental.Size = new System.Drawing.Size(63, 19);
-            this.lblEMental.TabIndex = 148;
-            this.lblEMental.Text = "Mental:";
-            // 
-            // Separador10
-            // 
-            this.Separador10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Separador10.BackColor = System.Drawing.Color.Transparent;
-            this.Separador10.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.Separador10.LineThickness = 1;
-            this.Separador10.Location = new System.Drawing.Point(76, 31);
-            this.Separador10.Name = "Separador10";
-            this.Separador10.Size = new System.Drawing.Size(294, 10);
-            this.Separador10.TabIndex = 147;
-            this.Separador10.Transparency = 255;
-            this.Separador10.Vertical = false;
-            // 
-            // txtEFisico
-            // 
-            this.txtEFisico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEFisico.BackColor = System.Drawing.Color.White;
-            this.txtEFisico.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtEFisico.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEFisico.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtEFisico.Location = new System.Drawing.Point(76, 11);
-            this.txtEFisico.Multiline = true;
-            this.txtEFisico.Name = "txtEFisico";
-            this.txtEFisico.Size = new System.Drawing.Size(294, 20);
-            this.txtEFisico.TabIndex = 146;
-            // 
-            // lblEFisico
-            // 
-            this.lblEFisico.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblEFisico.AutoSize = true;
-            this.lblEFisico.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEFisico.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblEFisico.Location = new System.Drawing.Point(2, 11);
-            this.lblEFisico.Name = "lblEFisico";
-            this.lblEFisico.Size = new System.Drawing.Size(53, 19);
-            this.lblEFisico.TabIndex = 145;
-            this.lblEFisico.Text = "Físico:";
             // 
             // Separador7
             // 
@@ -569,9 +473,9 @@
             this.gbxEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.gbxEstado.Location = new System.Drawing.Point(29, 325);
             this.gbxEstado.Name = "gbxEstado";
-            this.gbxEstado.Size = new System.Drawing.Size(55, 19);
+            this.gbxEstado.Size = new System.Drawing.Size(150, 19);
             this.gbxEstado.TabIndex = 165;
-            this.gbxEstado.Text = "Estado";
+            this.gbxEstado.Text = "Información personal";
             // 
             // bunifuThinButton22
             // 
@@ -604,6 +508,7 @@
             // 
             // btnRestablecerPerfil
             // 
+            this.btnRestablecerPerfil.Active = true;
             this.btnRestablecerPerfil.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnRestablecerPerfil.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnRestablecerPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -624,7 +529,7 @@
             this.btnRestablecerPerfil.IconVisible = true;
             this.btnRestablecerPerfil.IconZoom = 70D;
             this.btnRestablecerPerfil.IsTab = false;
-            this.btnRestablecerPerfil.Location = new System.Drawing.Point(643, 164);
+            this.btnRestablecerPerfil.Location = new System.Drawing.Point(643, 167);
             this.btnRestablecerPerfil.Name = "btnRestablecerPerfil";
             this.btnRestablecerPerfil.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnRestablecerPerfil.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -640,6 +545,7 @@
             // 
             // btnSubirPerfil
             // 
+            this.btnSubirPerfil.Active = true;
             this.btnSubirPerfil.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnSubirPerfil.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnSubirPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -660,7 +566,7 @@
             this.btnSubirPerfil.IconVisible = true;
             this.btnSubirPerfil.IconZoom = 70D;
             this.btnSubirPerfil.IsTab = false;
-            this.btnSubirPerfil.Location = new System.Drawing.Point(643, 80);
+            this.btnSubirPerfil.Location = new System.Drawing.Point(643, 83);
             this.btnSubirPerfil.Name = "btnSubirPerfil";
             this.btnSubirPerfil.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnSubirPerfil.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -680,11 +586,11 @@
             this.gbxPermisos.AutoSize = true;
             this.gbxPermisos.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxPermisos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.gbxPermisos.Location = new System.Drawing.Point(462, 247);
+            this.gbxPermisos.Location = new System.Drawing.Point(461, 270);
             this.gbxPermisos.Name = "gbxPermisos";
-            this.gbxPermisos.Size = new System.Drawing.Size(70, 19);
+            this.gbxPermisos.Size = new System.Drawing.Size(63, 19);
             this.gbxPermisos.TabIndex = 170;
-            this.gbxPermisos.Text = "Permisos";
+            this.gbxPermisos.Text = "Permiso";
             // 
             // bunifuThinButton23
             // 
@@ -706,15 +612,16 @@
             this.bunifuThinButton23.IdleFillColor = System.Drawing.Color.White;
             this.bunifuThinButton23.IdleForecolor = System.Drawing.Color.White;
             this.bunifuThinButton23.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.bunifuThinButton23.Location = new System.Drawing.Point(454, 251);
+            this.bunifuThinButton23.Location = new System.Drawing.Point(453, 274);
             this.bunifuThinButton23.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuThinButton23.Name = "bunifuThinButton23";
-            this.bunifuThinButton23.Size = new System.Drawing.Size(324, 130);
+            this.bunifuThinButton23.Size = new System.Drawing.Size(324, 81);
             this.bunifuThinButton23.TabIndex = 169;
             this.bunifuThinButton23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnCambiarContraseña
             // 
+            this.btnCambiarContraseña.Active = true;
             this.btnCambiarContraseña.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnCambiarContraseña.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnCambiarContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -750,6 +657,7 @@
             // 
             // btnGuardar
             // 
+            this.btnGuardar.Active = true;
             this.btnGuardar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -789,64 +697,11 @@
             this.lblPermisoEFisico.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblPermisoEFisico.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPermisoEFisico.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblPermisoEFisico.Location = new System.Drawing.Point(515, 275);
+            this.lblPermisoEFisico.Location = new System.Drawing.Point(515, 293);
             this.lblPermisoEFisico.Name = "lblPermisoEFisico";
-            this.lblPermisoEFisico.Size = new System.Drawing.Size(262, 41);
+            this.lblPermisoEFisico.Size = new System.Drawing.Size(254, 41);
             this.lblPermisoEFisico.TabIndex = 175;
-            this.lblPermisoEFisico.Text = "Conceder al tutor que se visualice el \r\nestado físico personal.";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label1.Location = new System.Drawing.Point(515, 322);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(262, 41);
-            this.label1.TabIndex = 176;
-            this.label1.Text = "Conceder al tutor que se visualice el \r\nestado metal personal.";
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(27, 341);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.lblEFisico);
-            this.splitContainer1.Panel1.Controls.Add(this.txtEFisico);
-            this.splitContainer1.Panel1.Controls.Add(this.Separador10);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.lblEMental);
-            this.splitContainer1.Panel2.Controls.Add(this.Separador11);
-            this.splitContainer1.Panel2.Controls.Add(this.txtEMental);
-            this.splitContainer1.Size = new System.Drawing.Size(387, 75);
-            this.splitContainer1.SplitterDistance = 37;
-            this.splitContainer1.TabIndex = 177;
-            // 
-            // ckbEMental
-            // 
-            this.ckbEMental.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.ckbEMental.AutoSize = true;
-            this.ckbEMental.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.ckbEMental.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.ckbEMental.Location = new System.Drawing.Point(466, 322);
-            this.ckbEMental.MinimumSize = new System.Drawing.Size(45, 22);
-            this.ckbEMental.Name = "ckbEMental";
-            this.ckbEMental.OffBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
-            this.ckbEMental.OffToggleColor = System.Drawing.Color.White;
-            this.ckbEMental.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.ckbEMental.OnToggleColor = System.Drawing.Color.White;
-            this.ckbEMental.Size = new System.Drawing.Size(45, 22);
-            this.ckbEMental.TabIndex = 174;
-            this.ckbEMental.UseVisualStyleBackColor = false;
+            this.lblPermisoEFisico.Text = "Conceder al tutor que se visualice la información personal.\r\n";
             // 
             // ckbEFisico
             // 
@@ -854,7 +709,7 @@
             this.ckbEFisico.AutoSize = true;
             this.ckbEFisico.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ckbEFisico.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.ckbEFisico.Location = new System.Drawing.Point(466, 275);
+            this.ckbEFisico.Location = new System.Drawing.Point(465, 298);
             this.ckbEFisico.MinimumSize = new System.Drawing.Size(45, 22);
             this.ckbEFisico.Name = "ckbEFisico";
             this.ckbEFisico.OffBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -878,10 +733,23 @@
             this.imgPerfil.Image = ((System.Drawing.Image)(resources.GetObject("imgPerfil.Image")));
             this.imgPerfil.Location = new System.Drawing.Point(439, 58);
             this.imgPerfil.Name = "imgPerfil";
-            this.imgPerfil.Size = new System.Drawing.Size(180, 180);
+            this.imgPerfil.Size = new System.Drawing.Size(183, 183);
             this.imgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgPerfil.TabIndex = 166;
             this.imgPerfil.TabStop = false;
+            // 
+            // txtIPersonal
+            // 
+            this.txtIPersonal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtIPersonal.BackColor = System.Drawing.Color.White;
+            this.txtIPersonal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtIPersonal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.txtIPersonal.Location = new System.Drawing.Point(34, 349);
+            this.txtIPersonal.Multiline = true;
+            this.txtIPersonal.Name = "txtIPersonal";
+            this.txtIPersonal.Size = new System.Drawing.Size(371, 70);
+            this.txtIPersonal.TabIndex = 176;
             // 
             // P_EditarPerfilEstudiante
             // 
@@ -889,10 +757,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(815, 448);
-            this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtIPersonal);
             this.Controls.Add(this.lblPermisoEFisico);
-            this.Controls.Add(this.ckbEMental);
             this.Controls.Add(this.ckbEFisico);
             this.Controls.Add(this.btnCambiarContraseña);
             this.Controls.Add(this.btnGuardar);
@@ -936,12 +802,6 @@
             this.Text = "Tabla de Estudiantes";
             this.Load += new System.EventHandler(this.P_EditarPerfilEstudiante_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -960,12 +820,6 @@
         private Bunifu.Framework.UI.BunifuSeparator Separador8;
         public System.Windows.Forms.TextBox txtPReferencia;
         private System.Windows.Forms.Label lblPReferencia;
-        private Bunifu.Framework.UI.BunifuSeparator Separador11;
-        public System.Windows.Forms.TextBox txtEMental;
-        private System.Windows.Forms.Label lblEMental;
-        private Bunifu.Framework.UI.BunifuSeparator Separador10;
-        public System.Windows.Forms.TextBox txtEFisico;
-        private System.Windows.Forms.Label lblEFisico;
         private Bunifu.Framework.UI.BunifuSeparator Separador7;
         private System.Windows.Forms.Label lblEscuela;
         private Bunifu.Framework.UI.BunifuSeparator Separador6;
@@ -993,10 +847,8 @@
         public Otros_Controles.JALMCircularPictureBox imgPerfil;
         private Bunifu.Framework.UI.BunifuFlatButton btnCambiarContraseña;
         private Otros_Controles.JALMToggleButton ckbEFisico;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblPermisoEFisico;
-        private Otros_Controles.JALMToggleButton ckbEMental;
-        public System.Windows.Forms.SplitContainer splitContainer1;
         public Bunifu.Framework.UI.BunifuFlatButton btnGuardar;
+        public System.Windows.Forms.TextBox txtIPersonal;
     }
 }

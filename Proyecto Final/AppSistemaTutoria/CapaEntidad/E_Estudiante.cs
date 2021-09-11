@@ -13,7 +13,8 @@
         public string CodEscuelaP { get; set; }
         public string PersonaReferencia { get; set; }
         public string TelefonoReferencia { get; set; }
-        public string EstadoFisico { get; set; }
-        public string EstadoMental { get; set; }
+        public string InformacionPersonal { get; set; }
+        //public string EstadoFisico { get; set; }
+        //public string EstadoMental { get; set; }
     }
 }
