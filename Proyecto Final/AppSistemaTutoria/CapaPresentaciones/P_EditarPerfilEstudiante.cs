@@ -155,5 +155,10 @@ namespace CapaPresentaciones
         {
             Close();
         }
+
+        private void btnCambiarContraseña_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
