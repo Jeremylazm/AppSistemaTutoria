@@ -60,15 +60,15 @@
             this.btnGuardar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.imgPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
             this.txtHorario = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtRegimen = new System.Windows.Forms.TextBox();
             this.Separador9 = new Bunifu.Framework.UI.BunifuSeparator();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblRegimen = new System.Windows.Forms.Label();
             this.Separador8 = new Bunifu.Framework.UI.BunifuSeparator();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.txtSubcategoria = new System.Windows.Forms.TextBox();
+            this.lblSubcategoria = new System.Windows.Forms.Label();
             this.Separador7 = new Bunifu.Framework.UI.BunifuSeparator();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.txtCategoria = new System.Windows.Forms.TextBox();
+            this.lblCategoria = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.Separador4 = new Bunifu.Framework.UI.BunifuSeparator();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -600,20 +600,20 @@
             this.txtHorario.Size = new System.Drawing.Size(312, 70);
             this.txtHorario.TabIndex = 176;
             // 
-            // textBox1
+            // txtRegimen
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtRegimen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.textBox1.Location = new System.Drawing.Point(139, 376);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(263, 19);
-            this.textBox1.TabIndex = 186;
+            this.txtRegimen.BackColor = System.Drawing.Color.White;
+            this.txtRegimen.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtRegimen.Enabled = false;
+            this.txtRegimen.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegimen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.txtRegimen.Location = new System.Drawing.Point(139, 376);
+            this.txtRegimen.Name = "txtRegimen";
+            this.txtRegimen.Size = new System.Drawing.Size(263, 19);
+            this.txtRegimen.TabIndex = 186;
             // 
             // Separador9
             // 
@@ -630,19 +630,19 @@
             this.Separador9.Transparency = 255;
             this.Separador9.Vertical = false;
             // 
-            // label1
+            // lblRegimen
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblRegimen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label1.Location = new System.Drawing.Point(34, 376);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 19);
-            this.label1.TabIndex = 184;
-            this.label1.Text = "Régimen:";
+            this.lblRegimen.AutoSize = true;
+            this.lblRegimen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblRegimen.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegimen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblRegimen.Location = new System.Drawing.Point(34, 376);
+            this.lblRegimen.Name = "lblRegimen";
+            this.lblRegimen.Size = new System.Drawing.Size(74, 19);
+            this.lblRegimen.TabIndex = 184;
+            this.lblRegimen.Text = "Régimen:";
             // 
             // Separador8
             // 
@@ -659,33 +659,33 @@
             this.Separador8.Transparency = 255;
             this.Separador8.Vertical = false;
             // 
-            // textBox2
+            // txtSubcategoria
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtSubcategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.textBox2.Location = new System.Drawing.Point(139, 343);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(263, 19);
-            this.textBox2.TabIndex = 182;
+            this.txtSubcategoria.BackColor = System.Drawing.Color.White;
+            this.txtSubcategoria.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSubcategoria.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSubcategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.txtSubcategoria.Location = new System.Drawing.Point(139, 343);
+            this.txtSubcategoria.Name = "txtSubcategoria";
+            this.txtSubcategoria.Size = new System.Drawing.Size(263, 19);
+            this.txtSubcategoria.TabIndex = 182;
             // 
-            // label2
+            // lblSubcategoria
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblSubcategoria.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label2.Location = new System.Drawing.Point(34, 343);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 19);
-            this.label2.TabIndex = 181;
-            this.label2.Text = "Subcategoría:";
+            this.lblSubcategoria.AutoSize = true;
+            this.lblSubcategoria.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblSubcategoria.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubcategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblSubcategoria.Location = new System.Drawing.Point(34, 343);
+            this.lblSubcategoria.Name = "lblSubcategoria";
+            this.lblSubcategoria.Size = new System.Drawing.Size(101, 19);
+            this.lblSubcategoria.TabIndex = 181;
+            this.lblSubcategoria.Text = "Subcategoría:";
             // 
             // Separador7
             // 
@@ -702,34 +702,34 @@
             this.Separador7.Transparency = 255;
             this.Separador7.Vertical = false;
             // 
-            // textBox3
+            // txtCategoria
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.BackColor = System.Drawing.Color.White;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Enabled = false;
-            this.textBox3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.textBox3.Location = new System.Drawing.Point(139, 311);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(263, 19);
-            this.textBox3.TabIndex = 179;
+            this.txtCategoria.BackColor = System.Drawing.Color.White;
+            this.txtCategoria.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCategoria.Enabled = false;
+            this.txtCategoria.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.txtCategoria.Location = new System.Drawing.Point(139, 311);
+            this.txtCategoria.Name = "txtCategoria";
+            this.txtCategoria.Size = new System.Drawing.Size(263, 19);
+            this.txtCategoria.TabIndex = 179;
             // 
-            // label3
+            // lblCategoria
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.AutoSize = true;
-            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label3.Location = new System.Drawing.Point(34, 310);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 19);
-            this.label3.TabIndex = 178;
-            this.label3.Text = "Categoría:";
+            this.lblCategoria.AutoSize = true;
+            this.lblCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblCategoria.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblCategoria.Location = new System.Drawing.Point(34, 310);
+            this.lblCategoria.Name = "lblCategoria";
+            this.lblCategoria.Size = new System.Drawing.Size(80, 19);
+            this.lblCategoria.TabIndex = 178;
+            this.lblCategoria.Text = "Categoría:";
             // 
             // txtEmail
             // 
@@ -781,15 +781,15 @@
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.Separador4);
             this.Controls.Add(this.lblEmail);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtRegimen);
             this.Controls.Add(this.Separador9);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblRegimen);
             this.Controls.Add(this.Separador8);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtSubcategoria);
+            this.Controls.Add(this.lblSubcategoria);
             this.Controls.Add(this.Separador7);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtCategoria);
+            this.Controls.Add(this.lblCategoria);
             this.Controls.Add(this.txtHorario);
             this.Controls.Add(this.btnCambiarContraseña);
             this.Controls.Add(this.btnGuardar);
@@ -822,11 +822,12 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "P_EditarPerfilDocente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Tabla de Estudiantes";
+            this.Text = "Editar Perfil de Docente";
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
@@ -860,15 +861,15 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnCambiarContraseña;
         public Bunifu.Framework.UI.BunifuFlatButton btnGuardar;
         public System.Windows.Forms.TextBox txtHorario;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox txtRegimen;
         private Bunifu.Framework.UI.BunifuSeparator Separador9;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblRegimen;
         private Bunifu.Framework.UI.BunifuSeparator Separador8;
-        public System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.TextBox txtSubcategoria;
+        private System.Windows.Forms.Label lblSubcategoria;
         private Bunifu.Framework.UI.BunifuSeparator Separador7;
-        public System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.TextBox txtCategoria;
+        private System.Windows.Forms.Label lblCategoria;
         public System.Windows.Forms.TextBox txtEmail;
         private Bunifu.Framework.UI.BunifuSeparator Separador4;
         private System.Windows.Forms.Label lblEmail;
