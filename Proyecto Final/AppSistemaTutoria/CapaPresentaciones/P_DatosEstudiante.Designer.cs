@@ -47,6 +47,7 @@
             this.lblAMaterno = new System.Windows.Forms.Label();
             this.Separador10 = new Bunifu.Framework.UI.BunifuSeparator();
             this.txtIPersonal = new System.Windows.Forms.TextBox();
+            this.lblIPersonal = new System.Windows.Forms.Label();
             this.Separador7 = new Bunifu.Framework.UI.BunifuSeparator();
             this.lblEscuela = new System.Windows.Forms.Label();
             this.Separador6 = new Bunifu.Framework.UI.BunifuSeparator();
@@ -67,10 +68,9 @@
             this.txtPReferencia = new System.Windows.Forms.TextBox();
             this.lblPReferencia = new System.Windows.Forms.Label();
             this.BordeadoMenu = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.imgPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
             this.btnSubirPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnRestablecerPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.lblIPersonal = new System.Windows.Forms.Label();
+            this.imgPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEscuelas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
@@ -252,9 +252,9 @@
             this.Separador10.BackColor = System.Drawing.Color.Transparent;
             this.Separador10.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador10.LineThickness = 1;
-            this.Separador10.Location = new System.Drawing.Point(138, 616);
+            this.Separador10.Location = new System.Drawing.Point(136, 580);
             this.Separador10.Name = "Separador10";
-            this.Separador10.Size = new System.Drawing.Size(250, 10);
+            this.Separador10.Size = new System.Drawing.Size(221, 10);
             this.Separador10.TabIndex = 101;
             this.Separador10.Transparency = 255;
             this.Separador10.Vertical = false;
@@ -263,14 +263,23 @@
             // 
             this.txtIPersonal.BackColor = System.Drawing.Color.White;
             this.txtIPersonal.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtIPersonal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtIPersonal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtIPersonal.Location = new System.Drawing.Point(138, 550);
+            this.txtIPersonal.Location = new System.Drawing.Point(141, 539);
             this.txtIPersonal.Multiline = true;
             this.txtIPersonal.Name = "txtIPersonal";
-            this.txtIPersonal.Size = new System.Drawing.Size(250, 60);
+            this.txtIPersonal.Size = new System.Drawing.Size(170, 40);
             this.txtIPersonal.TabIndex = 100;
+            // 
+            // lblIPersonal
+            // 
+            this.lblIPersonal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblIPersonal.Location = new System.Drawing.Point(15, 539);
+            this.lblIPersonal.Name = "lblIPersonal";
+            this.lblIPersonal.Size = new System.Drawing.Size(121, 51);
+            this.lblIPersonal.TabIndex = 99;
+            this.lblIPersonal.Text = "Información Personal:";
             // 
             // Separador7
             // 
@@ -577,26 +586,9 @@
             this.BordeadoMenu.Location = new System.Drawing.Point(-1, 0);
             this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(5);
             this.BordeadoMenu.Name = "BordeadoMenu";
-            this.BordeadoMenu.Size = new System.Drawing.Size(415, 715);
+            this.BordeadoMenu.Size = new System.Drawing.Size(416, 712);
             this.BordeadoMenu.TabIndex = 118;
             this.BordeadoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // imgPerfil
-            // 
-            this.imgPerfil.BackColor = System.Drawing.Color.White;
-            this.imgPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.imgPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.imgPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.imgPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.imgPerfil.BorderSize = 2;
-            this.imgPerfil.GradientAngle = 50F;
-            this.imgPerfil.Image = ((System.Drawing.Image)(resources.GetObject("imgPerfil.Image")));
-            this.imgPerfil.Location = new System.Drawing.Point(21, 45);
-            this.imgPerfil.Name = "imgPerfil";
-            this.imgPerfil.Size = new System.Drawing.Size(200, 200);
-            this.imgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgPerfil.TabIndex = 119;
-            this.imgPerfil.TabStop = false;
             // 
             // btnSubirPerfil
             // 
@@ -672,16 +664,22 @@
             this.btnRestablecerPerfil.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRestablecerPerfil.Click += new System.EventHandler(this.btnRestablecerPerfil_Click);
             // 
-            // lblIPersonal
+            // imgPerfil
             // 
-            this.lblIPersonal.AutoSize = true;
-            this.lblIPersonal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblIPersonal.Location = new System.Drawing.Point(17, 575);
-            this.lblIPersonal.Name = "lblIPersonal";
-            this.lblIPersonal.Size = new System.Drawing.Size(103, 19);
-            this.lblIPersonal.TabIndex = 122;
-            this.lblIPersonal.Text = "Inf. Personal: ";
+            this.imgPerfil.BackColor = System.Drawing.Color.White;
+            this.imgPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.imgPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.imgPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.imgPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.imgPerfil.BorderSize = 2;
+            this.imgPerfil.GradientAngle = 50F;
+            this.imgPerfil.Image = ((System.Drawing.Image)(resources.GetObject("imgPerfil.Image")));
+            this.imgPerfil.Location = new System.Drawing.Point(21, 45);
+            this.imgPerfil.Name = "imgPerfil";
+            this.imgPerfil.Size = new System.Drawing.Size(200, 200);
+            this.imgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgPerfil.TabIndex = 119;
+            this.imgPerfil.TabStop = false;
             // 
             // P_DatosEstudiante
             // 
@@ -689,7 +687,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(415, 711);
-            this.Controls.Add(this.lblIPersonal);
             this.Controls.Add(this.btnRestablecerPerfil);
             this.Controls.Add(this.btnSubirPerfil);
             this.Controls.Add(this.imgPerfil);
@@ -706,6 +703,7 @@
             this.Controls.Add(this.cxtEscuela);
             this.Controls.Add(this.Separador10);
             this.Controls.Add(this.txtIPersonal);
+            this.Controls.Add(this.lblIPersonal);
             this.Controls.Add(this.Separador7);
             this.Controls.Add(this.lblEscuela);
             this.Controls.Add(this.Separador6);
@@ -761,6 +759,7 @@
         private System.Windows.Forms.Label lblAMaterno;
         private Bunifu.Framework.UI.BunifuSeparator Separador10;
         public System.Windows.Forms.TextBox txtIPersonal;
+        private System.Windows.Forms.Label lblIPersonal;
         private Bunifu.Framework.UI.BunifuSeparator Separador7;
         private System.Windows.Forms.Label lblEscuela;
         private Bunifu.Framework.UI.BunifuSeparator Separador6;
@@ -784,6 +783,5 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnSubirPerfil;
         public Otros_Controles.JALMCircularPictureBox imgPerfil;
         private Bunifu.Framework.UI.BunifuFlatButton btnRestablecerPerfil;
-        private System.Windows.Forms.Label lblIPersonal;
     }
 }
