@@ -46,6 +46,7 @@
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.btnMinimizar = new Bunifu.Framework.UI.BunifuImageButton();
             this.BordeadoMenu = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.lblRecuperarContraseña = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgContraseña)).BeginInit();
@@ -137,6 +138,7 @@
             // 
             // btnIngresar
             // 
+            this.btnIngresar.Active = true;
             this.btnIngresar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnIngresar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -281,9 +283,21 @@
             this.BordeadoMenu.Location = new System.Drawing.Point(-1, 0);
             this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(5);
             this.BordeadoMenu.Name = "BordeadoMenu";
-            this.BordeadoMenu.Size = new System.Drawing.Size(411, 236);
+            this.BordeadoMenu.Size = new System.Drawing.Size(412, 281);
             this.BordeadoMenu.TabIndex = 108;
             this.BordeadoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRecuperarContraseña
+            // 
+            this.lblRecuperarContraseña.AutoSize = true;
+            this.lblRecuperarContraseña.Location = new System.Drawing.Point(21, 213);
+            this.lblRecuperarContraseña.Name = "lblRecuperarContraseña";
+            this.lblRecuperarContraseña.Size = new System.Drawing.Size(131, 13);
+            this.lblRecuperarContraseña.TabIndex = 109;
+            this.lblRecuperarContraseña.TabStop = true;
+            this.lblRecuperarContraseña.Text = "¿Olvidaste tu contraseña?";
+            this.lblRecuperarContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblRecuperarContraseña.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblRecuperarContraseña_LinkClicked);
             // 
             // P_InicioSesion
             // 
@@ -291,6 +305,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(411, 232);
+            this.Controls.Add(this.lblRecuperarContraseña);
             this.Controls.Add(this.btnMinimizar);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.imgContraseña);
@@ -337,5 +352,6 @@
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
         private Bunifu.Framework.UI.BunifuImageButton btnMinimizar;
         private Bunifu.Framework.UI.BunifuThinButton2 BordeadoMenu;
+        private System.Windows.Forms.LinkLabel lblRecuperarContraseña;
     }
 }

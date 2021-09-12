@@ -26,3 +26,10 @@ SELECT * FROM TDocente
 SELECT * FROM TUsuario
 SELECT * FROM TTutoria
 SELECT * FROM Historial
+
+insert into TUsuario values (convert(varbinary(max), ''), '182906', '182906', 'Director de Escuela', '123')
+
+select * from TUsuario
+
+select * from TEstudiante
+

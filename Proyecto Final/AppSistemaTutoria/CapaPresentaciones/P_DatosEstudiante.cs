@@ -44,8 +44,8 @@ namespace CapaPresentaciones
             txtTelefono.Clear();
             txtPReferencia.Clear();
             txtTReferencia.Clear();
-            txtEFisico.Clear();
-            txtEMental.Clear();
+            txtIPersonal.Clear();
+            // txtEMental.Clear();
             txtCodigo.Focus();
         }
 
@@ -100,8 +100,7 @@ namespace CapaPresentaciones
                         ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
                         ObjEntidad.PersonaReferencia = txtPReferencia.Text.ToUpper();
                         ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
-                        ObjEntidad.EstadoFisico = txtEFisico.Text.ToUpper();
-                        ObjEntidad.EstadoMental = txtEMental.Text.ToUpper();
+                        ObjEntidad.InformacionPersonal = txtIPersonal.Text;
 
                         ObjNegocio.InsertarRegistros(ObjEntidad);
                         MensajeConfirmacion("Registro insertado exitosamente");
@@ -139,8 +138,7 @@ namespace CapaPresentaciones
                             ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
                             ObjEntidad.PersonaReferencia = txtPReferencia.Text.ToUpper();
                             ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
-                            ObjEntidad.EstadoFisico = txtEFisico.Text.ToUpper();
-                            ObjEntidad.EstadoMental = txtEMental.Text.ToUpper();
+                            ObjEntidad.InformacionPersonal = txtIPersonal.Text;
 
                             ObjNegocio.EditarRegistros(ObjEntidad);
                             MensajeConfirmacion("Registro editado exitosamente");
