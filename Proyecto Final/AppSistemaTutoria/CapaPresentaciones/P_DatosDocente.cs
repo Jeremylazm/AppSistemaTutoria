@@ -45,8 +45,7 @@ namespace CapaPresentaciones
 
         private void ValidarPerfil()
         {
-            string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
-            if (imgPerfil.Image == Image.FromFile(fullImagePath))
+            if (imgPerfil.Image == Image.FromFile("C:/Users/Jeremylazm/Desktop/Documentos/AppSistemaTutoria/CapaPresentaciones/Iconos/Perfil Docente.png"))
             {
                 btnRestablecerPerfil.Visible = false;
             }

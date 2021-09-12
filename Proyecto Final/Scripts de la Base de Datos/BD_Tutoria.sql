@@ -15,8 +15,6 @@ GO
 CREATE DATABASE BDSistema_Tutoria
 GO
 
-use BDSistema_Tutoria
-
 -- Crear tipos de datos para las claves primarias
 USE BDSistema_Tutoria
 	EXEC SP_ADDTYPE tyCodEscuelaP,		'VARCHAR(4)', 'NOT NULL'

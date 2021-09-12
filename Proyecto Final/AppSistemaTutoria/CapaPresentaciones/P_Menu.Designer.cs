@@ -222,7 +222,6 @@
             // 
             // btnTutorados
             // 
-            this.btnTutorados.Active = true;
             this.btnTutorados.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnTutorados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnTutorados.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -275,7 +274,6 @@
             // 
             // btnDocentes
             // 
-            this.btnDocentes.Active = true;
             this.btnDocentes.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnDocentes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnDocentes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -311,7 +309,6 @@
             // 
             // btnEstudiantes
             // 
-            this.btnEstudiantes.Active = true;
             this.btnEstudiantes.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnEstudiantes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnEstudiantes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -347,7 +344,6 @@
             // 
             // btnTutorias
             // 
-            this.btnTutorias.Active = true;
             this.btnTutorias.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnTutorias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnTutorias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -383,7 +379,6 @@
             // 
             // btnDashboard
             // 
-            this.btnDashboard.Active = true;
             this.btnDashboard.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnDashboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
