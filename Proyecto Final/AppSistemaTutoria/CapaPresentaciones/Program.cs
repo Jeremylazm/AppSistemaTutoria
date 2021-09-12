@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace CapaPresentaciones
 {
@@ -20,7 +21,10 @@ namespace CapaPresentaciones
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new P_InicioSesion());
+            //Application.Run(new P_InicioSesion());
+            //Application.Run(new P_Menu());
+            string Ruta = Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath));
+            MessageBox.Show(Ruta);
         }
     }
 }

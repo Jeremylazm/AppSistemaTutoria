@@ -78,11 +78,11 @@ namespace CapaPresentaciones
                 btnEstudiantes.Visible = false;
                 btnDocentes.Visible = false;
             }
-            else
-            {
-                if (MessageBox.Show("Acceso inválido", "Sistema de Tutoría", MessageBoxButtons.OK) == DialogResult.OK)
-                    Application.Exit();
-            }
+            //else
+            //{
+            //    if (MessageBox.Show("Acceso inválido", "Sistema de Tutoría", MessageBoxButtons.OK) == DialogResult.OK)
+            //        Application.Exit();
+            //}
         }
 
         private const int TamañoGrid = 10;
