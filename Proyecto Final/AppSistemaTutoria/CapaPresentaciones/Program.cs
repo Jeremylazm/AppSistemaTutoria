@@ -22,9 +22,9 @@ namespace CapaPresentaciones
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new P_InicioSesion());
-            //Application.Run(new P_Menu());
-            string Ruta = Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath));
-            MessageBox.Show(Ruta);
+            Application.Run(new P_Menu());
+            //string Ruta = Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath));
+            //MessageBox.Show(Ruta);
         }
     }
 }

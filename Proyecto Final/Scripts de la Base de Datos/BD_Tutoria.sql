@@ -188,7 +188,7 @@ CREATE TABLE TUsuario
 	Datos VARCHAR(53) NOT NULL,
 
 	-- Definir la clave primaria
-	PRIMARY KEY(Usuario)	
+	PRIMARY KEY(Usuario)
 )
 GO
 
