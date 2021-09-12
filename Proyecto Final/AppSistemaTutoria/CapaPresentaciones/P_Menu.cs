@@ -45,8 +45,8 @@ namespace CapaPresentaciones
             byte[] Perfil = new byte[0];
             Perfil = E_InicioSesion.Perfil;
             MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
+
             imgPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
-   
             lblDatos.Text = E_InicioSesion.Datos;
             lblAcceso.Text = E_InicioSesion.Acceso;
             lblUsuario.Text = E_InicioSesion.Usuario;

@@ -1,22 +1,12 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using CapaEntidades;
 using CapaNegocios;
-
 
 namespace CapaPresentaciones
 {
     public partial class P_InicioSesion : Form
     {
-        // Encryption key
-        private readonly string Key = "passek159753_?&%";
-
         public P_InicioSesion()
         {
             InitializeComponent();
@@ -44,7 +34,6 @@ namespace CapaPresentaciones
                 if (txtContraseña.Text != "")
                 {
                     N_InicioSesion InicioSesion = new N_InicioSesion();
-
                     var ValidarDatos = InicioSesion.IniciarSesion(txtUsuario.Text, txtContraseña.Text);
 
                     if (ValidarDatos == true)
@@ -95,11 +84,6 @@ namespace CapaPresentaciones
                 MensajeError("Ingrese su usuario, por favor");
                 txtUsuario.Focus();
             }
-        }
-        private void lblRecuperarContraseña_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            P_RecuperarContraseña RC = new P_RecuperarContraseña();
-            RC.ShowDialog();
         }
     }
 }

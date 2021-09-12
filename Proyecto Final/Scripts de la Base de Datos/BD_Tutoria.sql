@@ -15,13 +15,11 @@ GO
 CREATE DATABASE BDSistema_Tutoria
 GO
 
-use BDSistema_Tutoria
-
 -- Crear tipos de datos para las claves primarias
 USE BDSistema_Tutoria
 	EXEC SP_ADDTYPE tyCodEscuelaP,		'VARCHAR(4)', 'NOT NULL'
 	EXEC SP_ADDTYPE tyCodEstudiante,	'VARCHAR(6)', 'NOT NULL'
-	EXEC SP_ADDTYPE tyCodDocente,		'VARCHAR(7)', 'NOT NULL'
+	EXEC SP_ADDTYPE tyCodDocente,		'VARCHAR(5)', 'NOT NULL'
 	EXEC SP_ADDTYPE tyCodTutoria,		'VARCHAR(5)', 'NOT NULL'
 GO 
 
@@ -61,7 +59,7 @@ CREATE TABLE TEstudiante
 	CodEstudiante tyCodEstudiante,
 	APaterno VARCHAR(15) NOT NULL,
 	AMaterno VARCHAR(15) NOT NULL,
-	Nombre VARCHAR(10) NOT NULL,
+	Nombre VARCHAR(20) NOT NULL,
 	Email VARCHAR(50) NOT NULL,
 	Direccion VARCHAR(50) NOT NULL,
 	Telefono VARCHAR(15) NOT NULL,
@@ -93,7 +91,7 @@ CREATE TABLE TDocente
 	CodDocente tyCodDocente,
 	APaterno VARCHAR(15) NOT NULL,
 	AMaterno VARCHAR(15) NOT NULL,
-	Nombre VARCHAR(10) NOT NULL,
+	Nombre VARCHAR(20) NOT NULL,
 	Email VARCHAR(50) NOT NULL,
 	Direccion VARCHAR(50) NOT NULL,
 	Telefono VARCHAR(15) NOT NULL,
@@ -112,8 +110,7 @@ CREATE TABLE TDocente
 													'DEDICACIÓN EXCLUSIVA',
 													'TIEMPO PARCIAL')),
 	CodEscuelaP tyCodEscuelaP,
-	Estado VARCHAR(13) DEFAULT 'DISPONIBLE' CHECK (Estado IN ('DISPONIBLE', 
-															  'NO DISPONIBLE')),
+	Horario VARCHAR(150),
 
 	-- Determinar las claves 
 	PRIMARY KEY (CodDocente),
@@ -185,10 +182,10 @@ CREATE TABLE TUsuario
 (
 	-- Lista de atributos
 	Perfil VARBINARY(MAX) NOT NULL,
-	Usuario VARCHAR(7) NOT NULL,
+	Usuario VARCHAR(6) NOT NULL,
 	Contraseña VARCHAR(20) NOT NULL,
 	Acceso VARCHAR(20) NOT NULL,
-	Datos VARCHAR(40) NOT NULL,
+	Datos VARCHAR(53) NOT NULL,
 
 	-- Definir la clave primaria
 	PRIMARY KEY(Usuario)	
@@ -209,8 +206,8 @@ CREATE TABLE Historial
 	Tabla VARCHAR(30),
 	Operacion VARCHAR(15),
 	IdRegistroAfectado VARCHAR(20),
-	ValorAnterior VARCHAR(200),
-	ValorPosterior VARCHAR(200),
+	ValorAnterior VARCHAR(400),
+	ValorPosterior VARCHAR(400),
 
 	-- Definir la clave primaria
 	PRIMARY KEY(IdHistorial)	
@@ -316,7 +313,7 @@ END;
 GO
 
 -- Crear un procedimiento para mostrar estudiantes
-CREATE PROCEDURE spuMostrarTutorados @CodDocente VARCHAR(7)
+CREATE PROCEDURE spuMostrarTutorados @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Mostrar la tabla de TEstudiante
@@ -369,7 +366,7 @@ END;
 GO
 
 -- Crear un procedimiento para buscar estudiantes por cualquier atributo
-CREATE PROCEDURE spuBuscarTutorados @CodDocente VARCHAR(7),
+CREATE PROCEDURE spuBuscarTutorados @CodDocente VARCHAR(5),
 									@Texto VARCHAR(20)
 AS
 BEGIN
@@ -409,7 +406,7 @@ CREATE PROCEDURE spuInsertarEstudiante @Perfil VARBINARY(MAX),
 									   @CodEstudiante VARCHAR(6),
 									   @APaterno VARCHAR(15),
 									   @AMaterno VARCHAR(15),
-									   @Nombre VARCHAR(10),
+									   @Nombre VARCHAR(20),
 									   @Email VARCHAR(50),
 									   @Direccion VARCHAR(50),
 									   @Telefono VARCHAR(15),
@@ -439,7 +436,7 @@ CREATE PROCEDURE spuActualizarEstudiante @Perfil VARBINARY(MAX),
 										 @CodEstudiante VARCHAR(6),
 										 @APaterno VARCHAR(15),
 										 @AMaterno VARCHAR(15),
-										 @Nombre VARCHAR(10),
+										 @Nombre VARCHAR(20),
 										 @Email VARCHAR(50),
 										 @Direccion VARCHAR(50),
 										 @Telefono VARCHAR(15),
@@ -501,7 +498,7 @@ BEGIN
 					  D.Nombre),
 		   D.Email, D.Direccion, D.Telefono,
 		   D.Categoria, D.Subcategoria, D.Regimen, D.CodEscuelaP,
-		   EscuelaProfesional = E.Nombre, D.Estado
+		   EscuelaProfesional = E.Nombre, D.Horario
 		FROM TDocente D INNER JOIN TEscuela_Profesional E ON
 			 D.CodEscuelaP = E.CodEscuelaP
 END;
@@ -518,7 +515,7 @@ BEGIN
 					  D.Nombre),
 		   D.Email, D.Direccion, D.Telefono,
 		   D.Categoria, D.Subcategoria, D.Regimen, D.CodEscuelaP,
-		   EscuelaProfesional = E.Nombre, D.Estado
+		   EscuelaProfesional = E.Nombre, D.Horario
 		FROM TDocente D INNER JOIN TEscuela_Profesional E ON
 			 D.CodEscuelaP = E.CodEscuelaP
 		WHERE D.CodDocente LIKE (@Texto + '%') OR
@@ -532,16 +529,16 @@ BEGIN
 			  D.Subcategoria LIKE (@Texto + '%') OR
 			  D.Regimen LIKE (@Texto + '%') OR
 			  E.Nombre LIKE (@Texto + '%') OR
-			  D.Estado LIKE (@Texto + '%')
+			  D.Horario LIKE (@Texto + '%')
 END;
 GO
 
 -- Crear un procedimiento para insertar un docente
 CREATE PROCEDURE spuInsertarDocente @Perfil VARBINARY(MAX),
-									@CodDocente VARCHAR(7),
+									@CodDocente VARCHAR(5),
 									@APaterno VARCHAR(15),
 									@AMaterno VARCHAR(15),
-									@Nombre VARCHAR(10),
+									@Nombre VARCHAR(20),
 									@Email VARCHAR(50),
 									@Direccion VARCHAR(50),
 									@Telefono VARCHAR(15),
@@ -549,14 +546,14 @@ CREATE PROCEDURE spuInsertarDocente @Perfil VARBINARY(MAX),
 									@Subcategoria VARCHAR(9),
 									@Regimen VARCHAR(20),
 									@CodEscuelaP VARCHAR(4),
-									@Estado VARCHAR(13)
+									@Horario VARCHAR(150)
 AS
 BEGIN
 	-- Insertar un docente en la tabla de TDocente
 	INSERT INTO TDocente
 		VALUES (@Perfil, @CodDocente, @APaterno, @AMaterno, @Nombre, @Email, 
 				@Direccion, @Telefono, @Categoria, @Subcategoria, 
-				@Regimen, @CodEscuelaP, @Estado)
+				@Regimen, @CodEscuelaP, @Horario)
 
 	-- Insertar un usuario con el código del docente en la tabla de TUsuario
 	INSERT INTO TUsuario
@@ -567,10 +564,10 @@ GO
 
 -- Crear un procedimiento para actualizar un docente
 CREATE PROCEDURE spuActualizarDocente @Perfil VARBINARY(MAX),
-									  @CodDocente VARCHAR(7),
+									  @CodDocente VARCHAR(5),
 									  @APaterno VARCHAR(15),
 									  @AMaterno VARCHAR(15),
-									  @Nombre VARCHAR(10),
+									  @Nombre VARCHAR(20),
 									  @Email VARCHAR(50),
 									  @Direccion VARCHAR(50),
 									  @Telefono VARCHAR(15),
@@ -578,7 +575,7 @@ CREATE PROCEDURE spuActualizarDocente @Perfil VARBINARY(MAX),
 									  @Subcategoria VARCHAR(9),
 									  @Regimen VARCHAR(20),
 									  @CodEscuelaP VARCHAR(4),
-									  @Estado VARCHAR(13)					
+									  @Horario VARCHAR(150)					
 AS
 BEGIN
 	-- Actualizar un docente de la tabla de TDocente
@@ -587,7 +584,7 @@ BEGIN
 			AMaterno = @AMaterno, Nombre = @Nombre, Email = @Email, 
 			Direccion = @Direccion, Telefono = @Telefono,
 			Categoria = @Categoria, Subcategoria = @Subcategoria, 
-			Regimen = @Regimen, CodEscuelaP = @CodEscuelaP, Estado = @Estado
+			Regimen = @Regimen, CodEscuelaP = @CodEscuelaP, Horario = @Horario
 		WHERE CodDocente = @CodDocente
 
 	-- Actualizar un docente de la tabla de TTutoria
@@ -604,7 +601,7 @@ END;
 GO
 
 -- Crear un procedimiento para eliminar un docente
-CREATE PROCEDURE spuEliminarDocente @CodDocente VARCHAR(7)					
+CREATE PROCEDURE spuEliminarDocente @CodDocente VARCHAR(5)					
 AS
 BEGIN
 	-- Eliminar un docente de la tabla de TDocente
@@ -662,7 +659,7 @@ GO
 
 -- Crear un procedimiento para insertar una tutoría
 CREATE PROCEDURE spuInsertarTutoria @CodTutoria VARCHAR(5) = NULL OUTPUT,
-									@CodDocente VARCHAR(7),
+									@CodDocente VARCHAR(5),
 									@CodEstudiante VARCHAR(6)
 AS
 BEGIN
@@ -681,7 +678,7 @@ GO
 
 -- Crear un procedimiento para actualizar una tutoría
 CREATE PROCEDURE spuActualizarTutoria @CodTutoria VARCHAR(5),
-									  @CodDocente VARCHAR(7),
+									  @CodDocente VARCHAR(5),
 									  @CodEstudiante VARCHAR(6)				
 AS
 BEGIN
@@ -721,7 +718,7 @@ GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA USUARIO ****************** */
 
-CREATE PROCEDURE spuIniciarSesion @Usuario VARCHAR(7), @Contraseña VARCHAR(20)
+CREATE PROCEDURE spuIniciarSesion @Usuario VARCHAR(6), @Contraseña VARCHAR(20)
 AS
 BEGIN
 	-- Seleccionar los datos del usuario válido
@@ -918,11 +915,11 @@ BEGIN
 		SET @IdRegistroAfectado = NULL
 
 		-- Declarar e inicializar el ValorAnterior
-		DECLARE @ValorAnterior VARCHAR(100);
+		DECLARE @ValorAnterior VARCHAR(400);
 		SET @ValorAnterior = NULL;
 
 		-- Declarar e inicializar el ValorPosterior
-		DECLARE @ValorPosterior VARCHAR(100);
+		DECLARE @ValorPosterior VARCHAR(400);
 		SET @ValorPosterior = NULL;
 
 		-- Verificar si el cambio fue en CodEscuelaP
@@ -980,7 +977,7 @@ BEGIN
 		CodEstudiante VARCHAR(6),
 		APaterno VARCHAR(15),
 		AMaterno VARCHAR(15),
-		Nombre VARCHAR(10),
+		Nombre VARCHAR(20),
 		Email VARCHAR(50),
 		Direccion VARCHAR(50),
 		Telefono VARCHAR(15),
@@ -1009,7 +1006,7 @@ BEGIN
 		DECLARE @CodEstudiante VARCHAR(6);
 		DECLARE @APaterno VARCHAR(15);
 		DECLARE @AMaterno VARCHAR(15);
-		DECLARE @Nombre VARCHAR(10);
+		DECLARE @Nombre VARCHAR(20);
 		DECLARE @Email VARCHAR(50);
 		DECLARE @Direccion VARCHAR(50);
 		DECLARE @Telefono VARCHAR(15);
@@ -1071,7 +1068,7 @@ BEGIN
 		CodEstudiante VARCHAR(6),
 		APaterno VARCHAR(15),
 		AMaterno VARCHAR(15),
-		Nombre VARCHAR(10),
+		Nombre VARCHAR(20),
 		Email VARCHAR(50),
 		Direccion VARCHAR(50),
 		Telefono VARCHAR(15),
@@ -1100,7 +1097,7 @@ BEGIN
 		DECLARE @CodEstudiante VARCHAR(6);
 		DECLARE @APaterno VARCHAR(15);
 		DECLARE @AMaterno VARCHAR(15);
-		DECLARE @Nombre VARCHAR(10);
+		DECLARE @Nombre VARCHAR(20);
 		DECLARE @Email VARCHAR(50);
 		DECLARE @Direccion VARCHAR(50);
 		DECLARE @Telefono VARCHAR(15);
@@ -1162,7 +1159,7 @@ BEGIN
 		CodEstudiante VARCHAR(6),
 		APaterno VARCHAR(15),
 		AMaterno VARCHAR(15),
-		Nombre VARCHAR(10),
+		Nombre VARCHAR(20),
 		Email VARCHAR(50),
 		Direccion VARCHAR(50),
 		Telefono VARCHAR(15),
@@ -1186,7 +1183,7 @@ BEGIN
 		CodEstudiante VARCHAR(6),
 		APaterno VARCHAR(15),
 		AMaterno VARCHAR(15),
-		Nombre VARCHAR(10),
+		Nombre VARCHAR(20),
 		Email VARCHAR(50),
 		Direccion VARCHAR(50),
 		Telefono VARCHAR(15),
@@ -1215,7 +1212,7 @@ BEGIN
 		DECLARE @CodEstudianteAntes VARCHAR(6);
 		DECLARE @APaternoAntes VARCHAR(15);
 		DECLARE @AMaternoAntes VARCHAR(15);
-		DECLARE @NombreAntes VARCHAR(10);
+		DECLARE @NombreAntes VARCHAR(20);
 		DECLARE @EmailAntes VARCHAR(50);
 		DECLARE @DireccionAntes VARCHAR(50);
 		DECLARE @TelefonoAntes VARCHAR(15);
@@ -1248,7 +1245,7 @@ BEGIN
 		DECLARE @CodEstudianteDespues VARCHAR(6);
 		DECLARE @APaternoDespues VARCHAR(15);
 		DECLARE @AMaternoDespues VARCHAR(15);
-		DECLARE @NombreDespues VARCHAR(10);
+		DECLARE @NombreDespues VARCHAR(20);
 		DECLARE @EmailDespues VARCHAR(50);
 		DECLARE @DireccionDespues VARCHAR(50);
 		DECLARE @TelefonoDespues VARCHAR(15);
@@ -1286,11 +1283,11 @@ BEGIN
 		SET @IdRegistroAfectado = NULL
 
 		-- Declarar e inicializar el ValorAnterior
-		DECLARE @ValorAnterior VARCHAR(100);
+		DECLARE @ValorAnterior VARCHAR(400);
 		SET @ValorAnterior = NULL;
 
 		-- Declarar e inicializar el ValorPosterior
-		DECLARE @ValorPosterior VARCHAR(100);
+		DECLARE @ValorPosterior VARCHAR(400);
 		SET @ValorPosterior = NULL;
 
 		-- Verificar si el cambio fue en Perfil
@@ -1511,10 +1508,10 @@ BEGIN
 	CREATE TABLE #INSERTED
 	(
 		Perfil VARBINARY(MAX),
-		CodDocente VARCHAR(7),
+		CodDocente VARCHAR(5),
 		APaterno VARCHAR(15),
 		AMaterno VARCHAR(15),
-		Nombre VARCHAR(10),
+		Nombre VARCHAR(20),
 		Email VARCHAR(50),
 		Direccion VARCHAR(50),
 		Telefono VARCHAR(15),
@@ -1522,7 +1519,7 @@ BEGIN
 		Subcategoria VARCHAR(9),
 		Regimen VARCHAR(20),
 		CodEscuelaP VARCHAR(4),
-		Estado VARCHAR(13)
+		Horario VARCHAR(150)
 	);
 
 	-- Copiar la tabla INSERTED en la tabla temporal #INSERTED
@@ -1539,10 +1536,10 @@ BEGIN
 	BEGIN
 		-- Declarar variables donde estarán los atributos de la tabla #INSERTED
 		DECLARE @Perfil VARBINARY(MAX);
-		DECLARE @CodDocente VARCHAR(7);
+		DECLARE @CodDocente VARCHAR(5);
 		DECLARE @APaterno VARCHAR(15);
 		DECLARE @AMaterno VARCHAR(15);
-		DECLARE @Nombre VARCHAR(10);
+		DECLARE @Nombre VARCHAR(20);
 		DECLARE @Email VARCHAR(50);
 		DECLARE @Direccion VARCHAR(50);
 		DECLARE @Telefono VARCHAR(15);
@@ -1550,7 +1547,7 @@ BEGIN
 		DECLARE @Subcategoria VARCHAR(9);
 		DECLARE @Regimen VARCHAR(20);
 		DECLARE @CodEscuelaP VARCHAR(4);
-		DECLARE @Estado VARCHAR(13);
+		DECLARE @Horario VARCHAR(150);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @Perfil = Perfil,
@@ -1565,7 +1562,7 @@ BEGIN
 			   @Subcategoria = Subcategoria,
 			   @Regimen = Regimen,
 			   @CodEscuelaP = CodEscuelaP,
-			   @Estado = Estado
+			   @Horario = Horario
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
 
 		---- Determinar el IdHistorial
@@ -1578,7 +1575,7 @@ BEGIN
 					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
 					  @Email + ' ; ' + @Direccion + ' ; ' + @Telefono + ' ; ' + 
 					  @Categoria + ' ; ' + @Subcategoria + ' ; ' + @Regimen + ' ; ' + 
-					  @CodEscuelaP + ' ; ' + @Estado);
+					  @CodEscuelaP + ' ; ' + @Horario);
 		
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
@@ -1599,10 +1596,10 @@ BEGIN
 	CREATE TABLE #DELETED
 	(
 		Perfil VARBINARY(MAX),
-		CodDocente VARCHAR(7),
+		CodDocente VARCHAR(5),
 		APaterno VARCHAR(15),
 		AMaterno VARCHAR(15),
-		Nombre VARCHAR(10),
+		Nombre VARCHAR(20),
 		Email VARCHAR(50),
 		Direccion VARCHAR(50),
 		Telefono VARCHAR(15),
@@ -1610,7 +1607,7 @@ BEGIN
 		Subcategoria VARCHAR(9),
 		Regimen VARCHAR(20),
 		CodEscuelaP VARCHAR(4),
-		Estado VARCHAR(13)
+		Horario VARCHAR(150)
 	);
 
 	-- Copiar la tabla DELETED en la tabla temporal #DELETED
@@ -1627,10 +1624,10 @@ BEGIN
 	BEGIN
 		-- Declarar variables donde estarán los atributos de la tabla #DELETED
 		DECLARE @Perfil VARBINARY(MAX);
-		DECLARE @CodDocente VARCHAR(7);
+		DECLARE @CodDocente VARCHAR(5);
 		DECLARE @APaterno VARCHAR(15);
 		DECLARE @AMaterno VARCHAR(15);
-		DECLARE @Nombre VARCHAR(10);
+		DECLARE @Nombre VARCHAR(20);
 		DECLARE @Email VARCHAR(50);
 		DECLARE @Direccion VARCHAR(50);
 		DECLARE @Telefono VARCHAR(15);
@@ -1638,7 +1635,7 @@ BEGIN
 		DECLARE @Subcategoria VARCHAR(9);
 		DECLARE @Regimen VARCHAR(20);
 		DECLARE @CodEscuelaP VARCHAR(4);
-		DECLARE @Estado VARCHAR(13);
+		DECLARE @Horario VARCHAR(150);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @Perfil = Perfil,
@@ -1653,7 +1650,7 @@ BEGIN
 			   @Subcategoria = Subcategoria,
 			   @Regimen = Regimen,
 			   @CodEscuelaP = CodEscuelaP,
-			   @Estado = Estado
+			   @Horario = Horario
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
 		---- Determinar el IdHistorial
@@ -1666,7 +1663,7 @@ BEGIN
 					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
 					  @Email + ' ; ' + @Direccion + ' ; ' + @Telefono + ' ; ' + 
 					  @Categoria + ' ; ' + @Subcategoria + ' ; ' + @Regimen + ' ; ' + 
-					  @CodEscuelaP + ' ; ' + @Estado,NULL);
+					  @CodEscuelaP + ' ; ' + @Horario,NULL);
 		
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
@@ -1687,10 +1684,10 @@ BEGIN
 	CREATE TABLE #DELETED
 	(
 		Perfil VARBINARY(MAX),
-		CodDocente VARCHAR(7),
+		CodDocente VARCHAR(5),
 		APaterno VARCHAR(15),
 		AMaterno VARCHAR(15),
-		Nombre VARCHAR(10),
+		Nombre VARCHAR(20),
 		Email VARCHAR(50),
 		Direccion VARCHAR(50),
 		Telefono VARCHAR(15),
@@ -1698,7 +1695,7 @@ BEGIN
 		Subcategoria VARCHAR(9),
 		Regimen VARCHAR(20),
 		CodEscuelaP VARCHAR(4),
-		Estado VARCHAR(13)
+		Horario VARCHAR(150)
 	);
 
 	-- Copiar la tabla DELETED en la tabla temporal #DELETED
@@ -1710,10 +1707,10 @@ BEGIN
 	CREATE TABLE #INSERTED
 	(
 		Perfil VARBINARY(MAX),
-		CodDocente VARCHAR(7),
+		CodDocente VARCHAR(5),
 		APaterno VARCHAR(15),
 		AMaterno VARCHAR(15),
-		Nombre VARCHAR(10),
+		Nombre VARCHAR(20),
 		Email VARCHAR(50),
 		Direccion VARCHAR(50),
 		Telefono VARCHAR(15),
@@ -1721,7 +1718,7 @@ BEGIN
 		Subcategoria VARCHAR(9),
 		Regimen VARCHAR(20),
 		CodEscuelaP VARCHAR(4),
-		Estado VARCHAR(13)
+		Horario VARCHAR(150)
 	);
 
 	-- Copiar la tabla INSERTED en la tabla temporal #INSERTED
@@ -1738,10 +1735,10 @@ BEGIN
 	BEGIN
 		-- Declarar variables donde estarán los atributos de la tabla #DELETED (ANTES)
 		DECLARE @PerfilAntes VARBINARY(MAX);
-		DECLARE @CodDocenteAntes VARCHAR(7);
+		DECLARE @CodDocenteAntes VARCHAR(5);
 		DECLARE @APaternoAntes VARCHAR(15);
 		DECLARE @AMaternoAntes VARCHAR(15);
-		DECLARE @NombreAntes VARCHAR(10);
+		DECLARE @NombreAntes VARCHAR(20);
 		DECLARE @EmailAntes VARCHAR(50);
 		DECLARE @DireccionAntes VARCHAR(50);
 		DECLARE @TelefonoAntes VARCHAR(15);
@@ -1749,7 +1746,7 @@ BEGIN
 		DECLARE @SubcategoriaAntes VARCHAR(9);
 		DECLARE @RegimenAntes VARCHAR(20);
 		DECLARE @CodEscuelaPAntes VARCHAR(4);
-		DECLARE @EstadoAntes VARCHAR(13);
+		DECLARE @HorarioAntes VARCHAR(150);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @PerfilAntes = Perfil,
@@ -1764,15 +1761,15 @@ BEGIN
 			   @SubcategoriaAntes = Subcategoria,
 			   @RegimenAntes = Regimen,
 			   @CodEscuelaPAntes = CodEscuelaP,
-			   @EstadoAntes = Estado
+			   @HorarioAntes = Horario
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
 		-- Declarar variables donde estarán los atributos de la tabla #INSERTED (DESPUÉS)
 		DECLARE @PerfilDespues VARBINARY(MAX);
-		DECLARE @CodDocenteDespues VARCHAR(7);
+		DECLARE @CodDocenteDespues VARCHAR(5);
 		DECLARE @APaternoDespues VARCHAR(15);
 		DECLARE @AMaternoDespues VARCHAR(15);
-		DECLARE @NombreDespues VARCHAR(10);
+		DECLARE @NombreDespues VARCHAR(20);
 		DECLARE @EmailDespues VARCHAR(50);
 		DECLARE @DireccionDespues VARCHAR(50);
 		DECLARE @TelefonoDespues VARCHAR(15);
@@ -1780,7 +1777,7 @@ BEGIN
 		DECLARE @SubcategoriaDespues VARCHAR(9);
 		DECLARE @RegimenDespues VARCHAR(20);
 		DECLARE @CodEscuelaPDespues VARCHAR(4);
-		DECLARE @EstadoDespues VARCHAR(13);
+		DECLARE @HorarioDespues VARCHAR(150);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @PerfilDespues = Perfil,
@@ -1795,7 +1792,7 @@ BEGIN
 			   @SubcategoriaDespues = Subcategoria,
 			   @RegimenDespues = Regimen,
 			   @CodEscuelaPDespues = CodEscuelaP,
-			   @EstadoDespues = Estado
+			   @HorarioDespues = Horario
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
 
 		---- Determinar el IdHistorial
@@ -1807,11 +1804,11 @@ BEGIN
 		SET @IdRegistroAfectado = NULL
 
 		-- Declarar e inicializar el ValorAnterior
-		DECLARE @ValorAnterior VARCHAR(100);
+		DECLARE @ValorAnterior VARCHAR(400);
 		SET @ValorAnterior = NULL;
 
 		-- Declarar e inicializar el ValorPosterior
-		DECLARE @ValorPosterior VARCHAR(100);
+		DECLARE @ValorPosterior VARCHAR(400);
 		SET @ValorPosterior = NULL;
 
 		-- Verificar si el cambio fue en Perfil
@@ -1994,11 +1991,11 @@ BEGIN
 			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
-		-- Verificar si el cambio fue en Estado
-		IF @EstadoAntes != @EstadoDespues
+		-- Verificar si el cambio fue en Horario
+		IF @HorarioAntes != @HorarioDespues
 		BEGIN
-			SET @ValorAnterior = @EstadoAntes;
-			SET @ValorPosterior = @EstadoDespues;
+			SET @ValorAnterior = @HorarioAntes;
+			SET @ValorPosterior = @HorarioDespues;
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -2031,7 +2028,7 @@ BEGIN
 	CREATE TABLE #INSERTED
 	(
 		CodTutoria VARCHAR(5),
-		CodDocente VARCHAR(7),
+		CodDocente VARCHAR(5),
 		CodEstudiante VARCHAR(6)
 	);
 
@@ -2049,7 +2046,7 @@ BEGIN
 	BEGIN
 		-- Declarar variables donde estarán los atributos de la tabla #INSERTED
 		DECLARE @CodTutoria VARCHAR(5);
-		DECLARE @CodDocente VARCHAR(7);
+		DECLARE @CodDocente VARCHAR(5);
 		DECLARE @CodEstudiante VARCHAR(6);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
@@ -2086,7 +2083,7 @@ BEGIN
 	CREATE TABLE #DELETED
 	(
 		CodTutoria VARCHAR(5),
-		CodDocente VARCHAR(7),
+		CodDocente VARCHAR(5),
 		CodEstudiante VARCHAR(6)
 	);
 
@@ -2104,7 +2101,7 @@ BEGIN
 	BEGIN
 		-- Declarar variables donde estarán los atributos de la tabla #DELETED
 		DECLARE @CodTutoria VARCHAR(5);
-		DECLARE @CodDocente VARCHAR(7);
+		DECLARE @CodDocente VARCHAR(5);
 		DECLARE @CodEstudiante VARCHAR(6);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
@@ -2141,7 +2138,7 @@ BEGIN
 	CREATE TABLE #DELETED
 	(
 		CodTutoria VARCHAR(5),
-		CodDocente VARCHAR(7),
+		CodDocente VARCHAR(5),
 		CodEstudiante VARCHAR(6)
 	);
 
@@ -2154,7 +2151,7 @@ BEGIN
 	CREATE TABLE #INSERTED
 	(
 		CodTutoria VARCHAR(5),
-		CodDocente VARCHAR(7),
+		CodDocente VARCHAR(5),
 		CodEstudiante VARCHAR(6)
 	);
 
@@ -2172,7 +2169,7 @@ BEGIN
 	BEGIN
 		-- Declarar variables donde estarán los atributos de la tabla #DELETED (ANTES)
 		DECLARE @CodTutoriaAntes VARCHAR(5);
-		DECLARE @CodDocenteAntes VARCHAR(7);
+		DECLARE @CodDocenteAntes VARCHAR(5);
 		DECLARE @CodEstudianteAntes VARCHAR(6);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
@@ -2183,7 +2180,7 @@ BEGIN
 
 		-- Declarar variables donde estarán los atributos de la tabla #INSERTED (DESPUÉS)
 		DECLARE @CodTutoriaDespues VARCHAR(5);
-		DECLARE @CodDocenteDespues VARCHAR(7);
+		DECLARE @CodDocenteDespues VARCHAR(5);
 		DECLARE @CodEstudianteDespues VARCHAR(6);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
@@ -2201,11 +2198,11 @@ BEGIN
 		SET @IdRegistroAfectado = NULL
 
 		-- Declarar e inicializar el ValorAnterior
-		DECLARE @ValorAnterior VARCHAR(100);
+		DECLARE @ValorAnterior VARCHAR(400);
 		SET @ValorAnterior = NULL;
 
 		-- Declarar e inicializar el ValorPosterior
-		DECLARE @ValorPosterior VARCHAR(100);
+		DECLARE @ValorPosterior VARCHAR(400);
 		SET @ValorPosterior = NULL;
 
 		-- Verificar si el cambio fue en CodTutoria
@@ -2481,11 +2478,11 @@ BEGIN
 		SET @IdRegistroAfectado = NULL
 
 		-- Declarar e inicializar el ValorAnterior
-		DECLARE @ValorAnterior VARCHAR(100);
+		DECLARE @ValorAnterior VARCHAR(400);
 		SET @ValorAnterior = NULL;
 
 		-- Declarar e inicializar el ValorPosterior
-		DECLARE @ValorPosterior VARCHAR(100);
+		DECLARE @ValorPosterior VARCHAR(400);
 		SET @ValorPosterior = NULL;
 
 		-- Verificar si el cambio fue en CodTutoria
@@ -2600,10 +2597,10 @@ BEGIN
 	CREATE TABLE #INSERTED
 	(
 		Perfil VARBINARY(MAX),
-		Usuario VARCHAR(7),
+		Usuario VARCHAR(6),
 		Contraseña VARCHAR(20),
 		Acceso VARCHAR(20),
-		Datos VARCHAR(40)
+		Datos VARCHAR(53)
 	);
 
 	-- Copiar la tabla INSERTED en la tabla temporal #INSERTED
@@ -2620,10 +2617,10 @@ BEGIN
 	BEGIN
 		-- Declarar variables donde estarán los atributos de la tabla #INSERTED
 		DECLARE @Perfil VARBINARY(MAX);
-		DECLARE @Usuario VARCHAR(7);
+		DECLARE @Usuario VARCHAR(6);
 		DECLARE @Contraseña VARCHAR(20);
 		DECLARE @Acceso VARCHAR(20);
-		DECLARE @Datos VARCHAR(40);
+		DECLARE @Datos VARCHAR(53);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @Perfil = Perfil,
@@ -2661,10 +2658,10 @@ BEGIN
 	CREATE TABLE #DELETED
 	(
 		Perfil VARBINARY(MAX),
-		Usuario VARCHAR(7),
+		Usuario VARCHAR(6),
 		Contraseña VARCHAR(20),
 		Acceso VARCHAR(20),
-		Datos VARCHAR(40)
+		Datos VARCHAR(53)
 	);
 
 	-- Copiar la tabla DELETED en la tabla temporal #DELETED
@@ -2681,10 +2678,10 @@ BEGIN
 	BEGIN
 		-- Declarar variables donde estarán los atributos de la tabla #DELETED
 		DECLARE @Perfil VARBINARY(MAX);
-		DECLARE @Usuario VARCHAR(7);
+		DECLARE @Usuario VARCHAR(6);
 		DECLARE @Contraseña VARCHAR(20);
 		DECLARE @Acceso VARCHAR(20);
-		DECLARE @Datos VARCHAR(40);
+		DECLARE @Datos VARCHAR(53);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @Perfil = Perfil,
@@ -2722,10 +2719,10 @@ BEGIN
 	CREATE TABLE #DELETED
 	(
 		Perfil VARBINARY(MAX),
-		Usuario VARCHAR(7),
+		Usuario VARCHAR(6),
 		Contraseña VARCHAR(20),
 		Acceso VARCHAR(20),
-		Datos VARCHAR(40)
+		Datos VARCHAR(53)
 	);
 
 	-- Copiar la tabla DELETED en la tabla temporal #DELETED
@@ -2737,10 +2734,10 @@ BEGIN
 	CREATE TABLE #INSERTED
 	(
 		Perfil VARBINARY(MAX),
-		Usuario VARCHAR(7),
+		Usuario VARCHAR(6),
 		Contraseña VARCHAR(20),
 		Acceso VARCHAR(20),
-		Datos VARCHAR(40)
+		Datos VARCHAR(53)
 	);
 
 	-- Copiar la tabla INSERTED en la tabla temporal #INSERTED
@@ -2757,10 +2754,10 @@ BEGIN
 	BEGIN
 		-- Declarar variables donde estarán los atributos de la tabla #DELETED (ANTES)
 		DECLARE @PerfilAntes VARBINARY(MAX);
-		DECLARE @UsuarioAntes VARCHAR(7);
+		DECLARE @UsuarioAntes VARCHAR(6);
 		DECLARE @ContraseñaAntes VARCHAR(20);
 		DECLARE @AccesoAntes VARCHAR(20);
-		DECLARE @DatosAntes VARCHAR(40);
+		DECLARE @DatosAntes VARCHAR(53);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @PerfilAntes = Perfil,
@@ -2772,10 +2769,10 @@ BEGIN
 
 		-- Declarar variables donde estarán los atributos de la tabla #INSERTED (DESPUÉS)
 		DECLARE @PerfilDespues VARBINARY(MAX);
-		DECLARE @UsuarioDespues VARCHAR(7);
+		DECLARE @UsuarioDespues VARCHAR(6);
 		DECLARE @ContraseñaDespues VARCHAR(20);
 		DECLARE @AccesoDespues VARCHAR(20);
-		DECLARE @DatosDespues VARCHAR(40);
+		DECLARE @DatosDespues VARCHAR(53);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @PerfilDespues = Perfil,
@@ -2794,11 +2791,11 @@ BEGIN
 		SET @IdRegistroAfectado = NULL
 
 		-- Declarar e inicializar el ValorAnterior
-		DECLARE @ValorAnterior VARCHAR(100);
+		DECLARE @ValorAnterior VARCHAR(400);
 		SET @ValorAnterior = NULL;
 
 		-- Declarar e inicializar el ValorPosterior
-		DECLARE @ValorPosterior VARCHAR(100);
+		DECLARE @ValorPosterior VARCHAR(400);
 		SET @ValorPosterior = NULL;
 
 		-- Verificar si el cambio fue en Perfil
