@@ -47,7 +47,7 @@ namespace CapaPresentaciones
             // 
             this.bunifuDragControl1.Fixed = true;
             this.bunifuDragControl1.Horizontal = true;
-            this.bunifuDragControl1.TargetControl = null;
+            this.bunifuDragControl1.TargetControl = this.lblTitulo;
             this.bunifuDragControl1.Vertical = true;
             // 
             // bunifuElipse1
