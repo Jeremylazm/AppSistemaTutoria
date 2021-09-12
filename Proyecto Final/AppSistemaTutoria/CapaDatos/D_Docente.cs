@@ -81,7 +81,7 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@Subcategoria", Docente.Subcategoria);
             Comando.Parameters.AddWithValue("@Regimen", Docente.Regimen);
             Comando.Parameters.AddWithValue("@CodEscuelaP", Docente.CodEscuelaP);
-            Comando.Parameters.AddWithValue("@Estado", Docente.Estado);
+            Comando.Parameters.AddWithValue("@Horario", Docente.Horario);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }
@@ -106,7 +106,7 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@Subcategoria", Docente.Subcategoria);
             Comando.Parameters.AddWithValue("@Regimen", Docente.Regimen);
             Comando.Parameters.AddWithValue("@CodEscuelaP", Docente.CodEscuelaP);
-            Comando.Parameters.AddWithValue("@Estado", Docente.Estado);
+            Comando.Parameters.AddWithValue("@Horario", Docente.Horario);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }

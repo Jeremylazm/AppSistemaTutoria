@@ -48,7 +48,7 @@ namespace CapaPresentaciones
             dgvTabla.Columns[11].HeaderText = "Subcategoría";
             dgvTabla.Columns[12].HeaderText = "Régimen";
             dgvTabla.Columns[14].HeaderText = "Escuela Profesional";
-            dgvTabla.Columns[15].HeaderText = "Estado";
+            dgvTabla.Columns[15].HeaderText = "Horario";
         }
 
         public void MostrarRegistros()
@@ -100,7 +100,6 @@ namespace CapaPresentaciones
             int x = img.Width / 2;
             int y = img.Height / 2;
             int r = Math.Min(x, y);
-            //int r = x;
 
             Bitmap tmp = null;
             tmp = new Bitmap(2 * r, 2 * r);
@@ -187,7 +186,7 @@ namespace CapaPresentaciones
                 EditarRegistro.cxtRegimen.SelectedItem = dgvTabla.CurrentRow.Cells[12].Value.ToString();
 
                 EditarRegistro.cxtEscuela.SelectedValue = dgvTabla.CurrentRow.Cells[13].Value.ToString();
-                EditarRegistro.cxtEstado.SelectedItem = dgvTabla.CurrentRow.Cells[15].Value.ToString();
+                EditarRegistro.txtHorario.Text = dgvTabla.CurrentRow.Cells[15].Value.ToString();
                 MemoriaPerfil = null;
 
                 EditarRegistro.ShowDialog();

@@ -70,14 +70,14 @@
             this.lblEscuela = new System.Windows.Forms.Label();
             this.Separador10 = new Bunifu.Framework.UI.BunifuSeparator();
             this.lblRegimen = new System.Windows.Forms.Label();
-            this.cxtEstado = new System.Windows.Forms.ComboBox();
-            this.Separador12 = new Bunifu.Framework.UI.BunifuSeparator();
-            this.lblEstado = new System.Windows.Forms.Label();
+            this.lblHorario = new System.Windows.Forms.Label();
             this.lblDominioEmail = new System.Windows.Forms.Label();
             this.BordeadoMenu = new Bunifu.Framework.UI.BunifuThinButton2();
             this.btnRestablecerPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnSubirPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
             this.imgPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
+            this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.txtHorario = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEscuelas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
@@ -414,7 +414,7 @@
             this.btnLimpiar.IconVisible = true;
             this.btnLimpiar.IconZoom = 50D;
             this.btnLimpiar.IsTab = false;
-            this.btnLimpiar.Location = new System.Drawing.Point(198, 655);
+            this.btnLimpiar.Location = new System.Drawing.Point(198, 697);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnLimpiar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -450,7 +450,7 @@
             this.btnGuardar.IconVisible = true;
             this.btnGuardar.IconZoom = 50D;
             this.btnGuardar.IsTab = false;
-            this.btnGuardar.Location = new System.Drawing.Point(66, 655);
+            this.btnGuardar.Location = new System.Drawing.Point(66, 697);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnGuardar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -625,46 +625,16 @@
             this.lblRegimen.TabIndex = 117;
             this.lblRegimen.Text = "Régimen:";
             // 
-            // cxtEstado
+            // lblHorario
             // 
-            this.cxtEstado.BackColor = System.Drawing.Color.White;
-            this.cxtEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cxtEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cxtEstado.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cxtEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.cxtEstado.FormattingEnabled = true;
-            this.cxtEstado.ItemHeight = 19;
-            this.cxtEstado.Items.AddRange(new object[] {
-            "DISPONIBLE",
-            "NO DISPONIBLE"});
-            this.cxtEstado.Location = new System.Drawing.Point(137, 610);
-            this.cxtEstado.MaxDropDownItems = 50;
-            this.cxtEstado.Name = "cxtEstado";
-            this.cxtEstado.Size = new System.Drawing.Size(204, 27);
-            this.cxtEstado.TabIndex = 127;
-            // 
-            // Separador12
-            // 
-            this.Separador12.BackColor = System.Drawing.Color.Transparent;
-            this.Separador12.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.Separador12.LineThickness = 1;
-            this.Separador12.Location = new System.Drawing.Point(137, 635);
-            this.Separador12.Name = "Separador12";
-            this.Separador12.Size = new System.Drawing.Size(204, 10);
-            this.Separador12.TabIndex = 126;
-            this.Separador12.Transparency = 255;
-            this.Separador12.Vertical = false;
-            // 
-            // lblEstado
-            // 
-            this.lblEstado.AutoSize = true;
-            this.lblEstado.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblEstado.Location = new System.Drawing.Point(14, 613);
-            this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(60, 19);
-            this.lblEstado.TabIndex = 124;
-            this.lblEstado.Text = "Estado:";
+            this.lblHorario.AutoSize = true;
+            this.lblHorario.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHorario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblHorario.Location = new System.Drawing.Point(14, 613);
+            this.lblHorario.Name = "lblHorario";
+            this.lblHorario.Size = new System.Drawing.Size(66, 19);
+            this.lblHorario.TabIndex = 124;
+            this.lblHorario.Text = "Horario:";
             // 
             // lblDominioEmail
             // 
@@ -702,7 +672,7 @@
             this.BordeadoMenu.Location = new System.Drawing.Point(-1, 0);
             this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(5);
             this.BordeadoMenu.Name = "BordeadoMenu";
-            this.BordeadoMenu.Size = new System.Drawing.Size(396, 713);
+            this.BordeadoMenu.Size = new System.Drawing.Size(396, 759);
             this.BordeadoMenu.TabIndex = 130;
             this.BordeadoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -728,7 +698,7 @@
             this.btnRestablecerPerfil.IconVisible = true;
             this.btnRestablecerPerfil.IconZoom = 70D;
             this.btnRestablecerPerfil.IsTab = false;
-            this.btnRestablecerPerfil.Location = new System.Drawing.Point(227, 177);
+            this.btnRestablecerPerfil.Location = new System.Drawing.Point(227, 161);
             this.btnRestablecerPerfil.Name = "btnRestablecerPerfil";
             this.btnRestablecerPerfil.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnRestablecerPerfil.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -764,7 +734,7 @@
             this.btnSubirPerfil.IconVisible = true;
             this.btnSubirPerfil.IconZoom = 70D;
             this.btnSubirPerfil.IsTab = false;
-            this.btnSubirPerfil.Location = new System.Drawing.Point(227, 99);
+            this.btnSubirPerfil.Location = new System.Drawing.Point(227, 83);
             this.btnSubirPerfil.Name = "btnSubirPerfil";
             this.btnSubirPerfil.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnSubirPerfil.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -795,19 +765,44 @@
             this.imgPerfil.TabIndex = 131;
             this.imgPerfil.TabStop = false;
             // 
+            // bunifuSeparator1
+            // 
+            this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.bunifuSeparator1.LineThickness = 1;
+            this.bunifuSeparator1.Location = new System.Drawing.Point(137, 674);
+            this.bunifuSeparator1.Name = "bunifuSeparator1";
+            this.bunifuSeparator1.Size = new System.Drawing.Size(242, 10);
+            this.bunifuSeparator1.TabIndex = 135;
+            this.bunifuSeparator1.Transparency = 255;
+            this.bunifuSeparator1.Vertical = false;
+            // 
+            // txtHorario
+            // 
+            this.txtHorario.BackColor = System.Drawing.Color.White;
+            this.txtHorario.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtHorario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtHorario.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHorario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.txtHorario.Location = new System.Drawing.Point(137, 613);
+            this.txtHorario.Multiline = true;
+            this.txtHorario.Name = "txtHorario";
+            this.txtHorario.Size = new System.Drawing.Size(242, 60);
+            this.txtHorario.TabIndex = 134;
+            // 
             // P_DatosDocente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(396, 709);
+            this.ClientSize = new System.Drawing.Size(396, 755);
+            this.Controls.Add(this.bunifuSeparator1);
+            this.Controls.Add(this.txtHorario);
             this.Controls.Add(this.btnRestablecerPerfil);
             this.Controls.Add(this.btnSubirPerfil);
             this.Controls.Add(this.imgPerfil);
             this.Controls.Add(this.lblDominioEmail);
-            this.Controls.Add(this.cxtEstado);
-            this.Controls.Add(this.Separador12);
-            this.Controls.Add(this.lblEstado);
+            this.Controls.Add(this.lblHorario);
             this.Controls.Add(this.cxtEscuela);
             this.Controls.Add(this.Separador11);
             this.Controls.Add(this.cxtRegimen);
@@ -894,9 +889,7 @@
         private Bunifu.Framework.UI.BunifuImageButton imgLogoUNSAAC;
         public System.Windows.Forms.ComboBox cxtSubcategoria;
         private Bunifu.Framework.UI.BunifuSeparator Separador9;
-        public System.Windows.Forms.ComboBox cxtEstado;
-        private Bunifu.Framework.UI.BunifuSeparator Separador12;
-        private System.Windows.Forms.Label lblEstado;
+        private System.Windows.Forms.Label lblHorario;
         public System.Windows.Forms.ComboBox cxtEscuela;
         private Bunifu.Framework.UI.BunifuSeparator Separador11;
         public System.Windows.Forms.ComboBox cxtRegimen;
@@ -911,5 +904,7 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnRestablecerPerfil;
         private Bunifu.Framework.UI.BunifuFlatButton btnSubirPerfil;
         public Otros_Controles.JALMCircularPictureBox imgPerfil;
+        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
+        public System.Windows.Forms.TextBox txtHorario;
     }
 }
