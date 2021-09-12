@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
 
+using System.Net;
+using System.Net.Mail;
+
 namespace CapaPresentaciones
 {
     public partial class P_DatosEstudiante : Form
@@ -172,8 +175,31 @@ namespace CapaPresentaciones
                             ObjEntidad.PersonaReferencia = txtPReferencia.Text.ToUpper();
                             ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
                             ObjEntidad.InformacionPersonal = EncriptarIPersonal(txtIPersonal.Text, false);
-                            //ObjEntidad.EstadoFisico = txtIPersonal.Text.ToUpper();
-                            //ObjEntidad.EstadoMental = txtEMental.Text.ToUpper();
+
+                            // Enviar un correo con la contraseña para un nuevo usuario
+                            try
+                            {
+                                SmtpClient clientDetails = new SmtpClient();
+                                clientDetails.Port = 587;
+                                clientDetails.Host = "smtp.gmail.com";
+                                clientDetails.EnableSsl = true;
+                                clientDetails.DeliveryMethod = SmtpDeliveryMethod.Network;
+                                clientDetails.UseDefaultCredentials = false;
+                                clientDetails.Credentials = new NetworkCredential("denisomarcuyottito@gmail.com", "Tutoriasunsaac5");
+
+                                MailMessage mailDetails = new MailMessage();
+                                mailDetails.From = new MailAddress("denisomarcuyottito@gmail.com");
+                                mailDetails.To.Add(txtCodigo.Text + "@unsaac.edu.pe");
+                                mailDetails.Subject = "Contraseña del Sistema de Tutoría UNSAAC";
+                                mailDetails.IsBodyHtml = true;
+                                mailDetails.Body = "Tu contraseña es " + txtCodigo.Text;
+                                clientDetails.Send(mailDetails);
+                                MessageBox.Show("Email Sent");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
 
                             ObjNegocio.EditarRegistros(ObjEntidad);
                             MensajeConfirmacion("Registro editado exitosamente");
