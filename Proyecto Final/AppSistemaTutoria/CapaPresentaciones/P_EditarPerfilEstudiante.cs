@@ -155,5 +155,12 @@ namespace CapaPresentaciones
         {
             Close();
         }
+
+        private void btnCambiarContraseña_Click(object sender, EventArgs e)
+        {
+            P_CambiarContraseña NuevaContraseña = new P_CambiarContraseña();
+            NuevaContraseña.ShowDialog();
+            NuevaContraseña.Dispose();
+        }
     }
 }

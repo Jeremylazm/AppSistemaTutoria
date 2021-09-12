@@ -200,6 +200,12 @@
     <Compile Include="P_Bienvenida.Designer.cs">
       <DependentUpon>P_Bienvenida.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_CambiarContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_CambiarContraseña.Designer.cs">
+      <DependentUpon>P_CambiarContraseña.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_DatosDocente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -284,6 +290,9 @@
     </Compile>
     <EmbeddedResource Include="P_Bienvenida.resx">
       <DependentUpon>P_Bienvenida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_CambiarContraseña.resx">
+      <DependentUpon>P_CambiarContraseña.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_DatosDocente.resx">
       <DependentUpon>P_DatosDocente.cs</DependentUpon>
