@@ -45,9 +45,8 @@ namespace CapaPresentaciones
             txtTelefono.Clear();
             txtPReferencia.Clear();
             txtTReferencia.Clear();
-            txtIPersonal.Clear();
-            //txtEMental.Clear();
-            txtIPersonal.Clear();
+            txtEFisico.Clear();
+            txtEMental.Clear();
             txtCodigo.Focus();
         }
 
@@ -239,6 +238,31 @@ namespace CapaPresentaciones
             //NuevoRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
             //NuevoRegistro.ShowDialog();
             //NuevoRegistro.Dispose();
+        }
+
+        public Image HacerImagenCircular(Image img)
+        {
+            int x = img.Width / 2;
+            int y = img.Height / 2;
+            int r = Math.Min(x, y);
+            //int r = x;
+
+            Bitmap tmp = null;
+            tmp = new Bitmap(2 * r, 2 * r);
+            using (Graphics g = Graphics.FromImage(tmp))
+            {
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.TranslateTransform(tmp.Width / 2, tmp.Height / 2);
+                GraphicsPath gp = new GraphicsPath();
+                gp.AddEllipse(0 - r, 0 - r, 2 * r, 2 * r);
+                Region rg = new Region(gp);
+                g.SetClip(rg, CombineMode.Replace);
+                Bitmap bmp = new Bitmap(img);
+                g.DrawImage(bmp, new Rectangle(-r, -r, 2 * r, 2 * r), new Rectangle(x - r, y - r, 2 * r, 2 * r), GraphicsUnit.Pixel);
+
+            }
+
+            return tmp;
         }
 
         private void btnSubirPerfil_Click(object sender, EventArgs e)

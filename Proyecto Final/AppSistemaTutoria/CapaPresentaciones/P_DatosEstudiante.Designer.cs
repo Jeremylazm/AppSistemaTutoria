@@ -252,14 +252,14 @@
             this.Separador10.BackColor = System.Drawing.Color.Transparent;
             this.Separador10.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador10.LineThickness = 1;
-            this.Separador10.Location = new System.Drawing.Point(138, 616);
+            this.Separador10.Location = new System.Drawing.Point(136, 580);
             this.Separador10.Name = "Separador10";
             this.Separador10.Size = new System.Drawing.Size(250, 10);
             this.Separador10.TabIndex = 101;
             this.Separador10.Transparency = 255;
             this.Separador10.Vertical = false;
             // 
-            // txtIPersonal
+            // txtEFisico
             // 
             this.txtIPersonal.BackColor = System.Drawing.Color.White;
             this.txtIPersonal.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -271,6 +271,16 @@
             this.txtIPersonal.Name = "txtIPersonal";
             this.txtIPersonal.Size = new System.Drawing.Size(250, 60);
             this.txtIPersonal.TabIndex = 100;
+            // 
+            // lblIPersonal
+            // 
+            this.lblIPersonal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblIPersonal.Location = new System.Drawing.Point(15, 539);
+            this.lblIPersonal.Name = "lblIPersonal";
+            this.lblIPersonal.Size = new System.Drawing.Size(121, 51);
+            this.lblIPersonal.TabIndex = 99;
+            this.lblIPersonal.Text = "Información Personal:";
             // 
             // Separador7
             // 
@@ -397,7 +407,6 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Active = true;
             this.btnLimpiar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnLimpiar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -434,7 +443,6 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Active = true;
             this.btnGuardar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -600,7 +608,6 @@
             // 
             // btnSubirPerfil
             // 
-            this.btnSubirPerfil.Active = true;
             this.btnSubirPerfil.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnSubirPerfil.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSubirPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -637,7 +644,6 @@
             // 
             // btnRestablecerPerfil
             // 
-            this.btnRestablecerPerfil.Active = true;
             this.btnRestablecerPerfil.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnRestablecerPerfil.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnRestablecerPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
