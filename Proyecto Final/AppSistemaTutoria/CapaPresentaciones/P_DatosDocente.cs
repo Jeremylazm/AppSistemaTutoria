@@ -57,7 +57,6 @@ namespace CapaPresentaciones
             cxtCategoria.SelectedIndex = 0;
             cxtSubcategoria.SelectedIndex = 0;
             cxtRegimen.SelectedIndex = 0;
-            cxtEstado.SelectedIndex = 0;
 
             cxtEscuela.DataSource = N_EscuelaProfesional.MostrarRegistros();
             cxtEscuela.ValueMember = "CodEscuelaP";
@@ -101,7 +100,7 @@ namespace CapaPresentaciones
                         ObjEntidad.Subcategoria = cxtSubcategoria.SelectedItem.ToString();
                         ObjEntidad.Regimen = cxtRegimen.SelectedItem.ToString();
                         ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
-                        ObjEntidad.Estado = cxtEstado.SelectedItem.ToString();
+                        ObjEntidad.Horario = txtHorario.Text.ToUpper();
 
                         ObjNegocio.InsertarRegistros(ObjEntidad);
                         MensajeConfirmacion("Registro insertado exitosamente");
@@ -140,7 +139,7 @@ namespace CapaPresentaciones
                             ObjEntidad.Subcategoria = cxtSubcategoria.SelectedItem.ToString();
                             ObjEntidad.Regimen = cxtRegimen.SelectedItem.ToString();
                             ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
-                            ObjEntidad.Estado = cxtEstado.SelectedItem.ToString();
+                            ObjEntidad.Horario = txtHorario.Text.ToUpper();
 
                             ObjNegocio.EditarRegistros(ObjEntidad);
                             MensajeConfirmacion("Registro editado exitosamente");
@@ -233,7 +232,6 @@ namespace CapaPresentaciones
             int x = img.Width / 2;
             int y = img.Height / 2;
             int r = Math.Min(x, y);
-            //int r = x;
 
             Bitmap tmp = null;
             tmp = new Bitmap(2 * r, 2 * r);
@@ -274,7 +272,8 @@ namespace CapaPresentaciones
 
         private void btnRestablecerPerfil_Click(object sender, EventArgs e)
         {
-            imgPerfil.Image = Image.FromFile("C:/Users/Jeremylazm/Desktop/Documentos/AppSistemaTutoria/CapaPresentaciones/Iconos/Perfil Docente.png");
+            string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
+            imgPerfil.Image = Image.FromFile(fullImagePath);
         }
     }
 }

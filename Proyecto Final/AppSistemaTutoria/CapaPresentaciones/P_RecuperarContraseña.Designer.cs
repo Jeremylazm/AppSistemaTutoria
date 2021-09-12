@@ -33,13 +33,13 @@ namespace CapaPresentaciones
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_RecuperarContraseña));
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.lblMensaje = new System.Windows.Forms.Label();
-            this.txtTo = new System.Windows.Forms.TextBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnCerrar = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btnRecuperarContraseña = new System.Windows.Forms.Button();
-            this.lblInformacion = new System.Windows.Forms.Label();
             this.lblDominio = new System.Windows.Forms.Label();
+            this.lblInformacion = new System.Windows.Forms.Label();
+            this.btnRecuperarContraseña = new System.Windows.Forms.Button();
+            this.txtTo = new System.Windows.Forms.TextBox();
+            this.lblMensaje = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,23 +55,6 @@ namespace CapaPresentaciones
             this.bunifuElipse1.ElipseRadius = 5;
             this.bunifuElipse1.TargetControl = this;
             // 
-            // lblMensaje
-            // 
-            this.lblMensaje.AutoSize = true;
-            this.lblMensaje.Font = new System.Drawing.Font("Segoe UI Historic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMensaje.Location = new System.Drawing.Point(12, 96);
-            this.lblMensaje.Name = "lblMensaje";
-            this.lblMensaje.Size = new System.Drawing.Size(270, 13);
-            this.lblMensaje.TabIndex = 0;
-            this.lblMensaje.Text = "Ingrese el correo electrónico asociado a su cuenta: ";
-            // 
-            // txtTo
-            // 
-            this.txtTo.Location = new System.Drawing.Point(288, 93);
-            this.txtTo.Name = "txtTo";
-            this.txtTo.Size = new System.Drawing.Size(71, 20);
-            this.txtTo.TabIndex = 1;
-            // 
             // lblTitulo
             // 
             this.lblTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -80,8 +63,8 @@ namespace CapaPresentaciones
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(488, 40);
-            this.lblTitulo.TabIndex = 63;
+            this.lblTitulo.Size = new System.Drawing.Size(506, 40);
+            this.lblTitulo.TabIndex = 64;
             this.lblTitulo.Text = "Sistema de Tutoría - UNSAAC";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -92,57 +75,74 @@ namespace CapaPresentaciones
             this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
             this.btnCerrar.ImageActive = null;
-            this.btnCerrar.Location = new System.Drawing.Point(452, 12);
+            this.btnCerrar.Location = new System.Drawing.Point(470, 8);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(24, 24);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnCerrar.TabIndex = 72;
+            this.btnCerrar.TabIndex = 73;
             this.btnCerrar.TabStop = false;
             this.btnCerrar.Zoom = 10;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
-            // btnRecuperarContraseña
-            // 
-            this.btnRecuperarContraseña.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecuperarContraseña.Location = new System.Drawing.Point(167, 139);
-            this.btnRecuperarContraseña.Name = "btnRecuperarContraseña";
-            this.btnRecuperarContraseña.Size = new System.Drawing.Size(153, 23);
-            this.btnRecuperarContraseña.TabIndex = 73;
-            this.btnRecuperarContraseña.Text = "Recuperar mi contraseña";
-            this.btnRecuperarContraseña.UseVisualStyleBackColor = true;
-            this.btnRecuperarContraseña.Click += new System.EventHandler(this.btnRecuperarContraseña_Click);
-            // 
-            // lblInformacion
-            // 
-            this.lblInformacion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInformacion.Location = new System.Drawing.Point(63, 58);
-            this.lblInformacion.Name = "lblInformacion";
-            this.lblInformacion.Size = new System.Drawing.Size(394, 29);
-            this.lblInformacion.TabIndex = 74;
-            this.lblInformacion.Text = "Se te enviará un mensaje a tu correo con tu contraseña";
             // 
             // lblDominio
             // 
             this.lblDominio.AutoSize = true;
             this.lblDominio.Font = new System.Drawing.Font("Segoe UI Historic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDominio.Location = new System.Drawing.Point(360, 96);
+            this.lblDominio.Location = new System.Drawing.Point(380, 108);
             this.lblDominio.Name = "lblDominio";
             this.lblDominio.Size = new System.Drawing.Size(93, 13);
-            this.lblDominio.TabIndex = 75;
+            this.lblDominio.TabIndex = 80;
             this.lblDominio.Text = "@unsaac.edu.pe";
+            // 
+            // lblInformacion
+            // 
+            this.lblInformacion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInformacion.Location = new System.Drawing.Point(83, 70);
+            this.lblInformacion.Name = "lblInformacion";
+            this.lblInformacion.Size = new System.Drawing.Size(394, 29);
+            this.lblInformacion.TabIndex = 79;
+            this.lblInformacion.Text = "Se te enviará un mensaje a tu correo con tu contraseña";
+            // 
+            // btnRecuperarContraseña
+            // 
+            this.btnRecuperarContraseña.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecuperarContraseña.Location = new System.Drawing.Point(187, 151);
+            this.btnRecuperarContraseña.Name = "btnRecuperarContraseña";
+            this.btnRecuperarContraseña.Size = new System.Drawing.Size(153, 23);
+            this.btnRecuperarContraseña.TabIndex = 78;
+            this.btnRecuperarContraseña.Text = "Recuperar mi contraseña";
+            this.btnRecuperarContraseña.UseVisualStyleBackColor = true;
+            this.btnRecuperarContraseña.Click += new System.EventHandler(this.btnRecuperarContraseña_Click);
+            // 
+            // txtTo
+            // 
+            this.txtTo.Location = new System.Drawing.Point(308, 105);
+            this.txtTo.Name = "txtTo";
+            this.txtTo.Size = new System.Drawing.Size(71, 20);
+            this.txtTo.TabIndex = 77;
+            // 
+            // lblMensaje
+            // 
+            this.lblMensaje.AutoSize = true;
+            this.lblMensaje.Font = new System.Drawing.Font("Segoe UI Historic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMensaje.Location = new System.Drawing.Point(32, 108);
+            this.lblMensaje.Name = "lblMensaje";
+            this.lblMensaje.Size = new System.Drawing.Size(270, 13);
+            this.lblMensaje.TabIndex = 76;
+            this.lblMensaje.Text = "Ingrese el correo electrónico asociado a su cuenta: ";
             // 
             // P_RecuperarContraseña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 174);
+            this.ClientSize = new System.Drawing.Size(506, 198);
             this.Controls.Add(this.lblDominio);
             this.Controls.Add(this.lblInformacion);
             this.Controls.Add(this.btnRecuperarContraseña);
-            this.Controls.Add(this.btnCerrar);
-            this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.txtTo);
             this.Controls.Add(this.lblMensaje);
+            this.Controls.Add(this.btnCerrar);
+            this.Controls.Add(this.lblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "P_RecuperarContraseña";
             this.Text = "P_RecuperarContraseña";
@@ -156,12 +156,12 @@ namespace CapaPresentaciones
 
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
-        private System.Windows.Forms.Label lblMensaje;
-        private System.Windows.Forms.TextBox txtTo;
-        private System.Windows.Forms.Label lblTitulo;
-        private Bunifu.Framework.UI.BunifuImageButton btnCerrar;
+        private System.Windows.Forms.Label lblDominio;
         private System.Windows.Forms.Label lblInformacion;
         private System.Windows.Forms.Button btnRecuperarContraseña;
-        private System.Windows.Forms.Label lblDominio;
+        private System.Windows.Forms.TextBox txtTo;
+        private System.Windows.Forms.Label lblMensaje;
+        private Bunifu.Framework.UI.BunifuImageButton btnCerrar;
+        private System.Windows.Forms.Label lblTitulo;
     }
 }

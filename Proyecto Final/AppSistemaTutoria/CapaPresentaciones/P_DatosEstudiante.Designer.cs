@@ -47,7 +47,6 @@
             this.lblAMaterno = new System.Windows.Forms.Label();
             this.Separador10 = new Bunifu.Framework.UI.BunifuSeparator();
             this.txtIPersonal = new System.Windows.Forms.TextBox();
-            this.lblIPersonal = new System.Windows.Forms.Label();
             this.Separador7 = new Bunifu.Framework.UI.BunifuSeparator();
             this.lblEscuela = new System.Windows.Forms.Label();
             this.Separador6 = new Bunifu.Framework.UI.BunifuSeparator();
@@ -68,9 +67,10 @@
             this.txtPReferencia = new System.Windows.Forms.TextBox();
             this.lblPReferencia = new System.Windows.Forms.Label();
             this.BordeadoMenu = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.imgPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
             this.btnSubirPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnRestablecerPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.imgPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
+            this.lblIPersonal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEscuelas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
@@ -252,23 +252,24 @@
             this.Separador10.BackColor = System.Drawing.Color.Transparent;
             this.Separador10.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador10.LineThickness = 1;
-            this.Separador10.Location = new System.Drawing.Point(136, 580);
+            this.Separador10.Location = new System.Drawing.Point(138, 600);
             this.Separador10.Name = "Separador10";
-            this.Separador10.Size = new System.Drawing.Size(221, 10);
+            this.Separador10.Size = new System.Drawing.Size(250, 10);
             this.Separador10.TabIndex = 101;
             this.Separador10.Transparency = 255;
             this.Separador10.Vertical = false;
             // 
-            // txtIPersonal
+            // txtEFisico
             // 
             this.txtIPersonal.BackColor = System.Drawing.Color.White;
             this.txtIPersonal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtIPersonal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtIPersonal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtIPersonal.Location = new System.Drawing.Point(141, 539);
+            this.txtIPersonal.Location = new System.Drawing.Point(138, 539);
             this.txtIPersonal.Multiline = true;
             this.txtIPersonal.Name = "txtIPersonal";
-            this.txtIPersonal.Size = new System.Drawing.Size(170, 40);
+            this.txtIPersonal.Size = new System.Drawing.Size(250, 60);
             this.txtIPersonal.TabIndex = 100;
             // 
             // lblIPersonal
@@ -406,9 +407,8 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Active = true;
             this.btnLimpiar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnLimpiar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnLimpiar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnLimpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnLimpiar.BorderRadius = 7;
@@ -427,7 +427,7 @@
             this.btnLimpiar.IconVisible = true;
             this.btnLimpiar.IconZoom = 50D;
             this.btnLimpiar.IsTab = false;
-            this.btnLimpiar.Location = new System.Drawing.Point(207, 656);
+            this.btnLimpiar.Location = new System.Drawing.Point(207, 621);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnLimpiar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -443,9 +443,8 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Active = true;
             this.btnGuardar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnGuardar.BorderRadius = 7;
@@ -464,7 +463,7 @@
             this.btnGuardar.IconVisible = true;
             this.btnGuardar.IconZoom = 50D;
             this.btnGuardar.IsTab = false;
-            this.btnGuardar.Location = new System.Drawing.Point(75, 656);
+            this.btnGuardar.Location = new System.Drawing.Point(75, 621);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnGuardar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -586,83 +585,9 @@
             this.BordeadoMenu.Location = new System.Drawing.Point(-1, 0);
             this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(5);
             this.BordeadoMenu.Name = "BordeadoMenu";
-            this.BordeadoMenu.Size = new System.Drawing.Size(416, 712);
+            this.BordeadoMenu.Size = new System.Drawing.Size(415, 681);
             this.BordeadoMenu.TabIndex = 118;
             this.BordeadoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnSubirPerfil
-            // 
-            this.btnSubirPerfil.Active = true;
-            this.btnSubirPerfil.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnSubirPerfil.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSubirPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnSubirPerfil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSubirPerfil.BorderRadius = 7;
-            this.btnSubirPerfil.ButtonText = "Subir Perfil";
-            this.btnSubirPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSubirPerfil.DisabledColor = System.Drawing.Color.Gray;
-            this.btnSubirPerfil.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnSubirPerfil.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnSubirPerfil.Iconimage")));
-            this.btnSubirPerfil.Iconimage_right = null;
-            this.btnSubirPerfil.Iconimage_right_Selected = null;
-            this.btnSubirPerfil.Iconimage_Selected = null;
-            this.btnSubirPerfil.IconMarginLeft = 0;
-            this.btnSubirPerfil.IconMarginRight = 0;
-            this.btnSubirPerfil.IconRightVisible = true;
-            this.btnSubirPerfil.IconRightZoom = 0D;
-            this.btnSubirPerfil.IconVisible = true;
-            this.btnSubirPerfil.IconZoom = 70D;
-            this.btnSubirPerfil.IsTab = false;
-            this.btnSubirPerfil.Location = new System.Drawing.Point(236, 91);
-            this.btnSubirPerfil.Name = "btnSubirPerfil";
-            this.btnSubirPerfil.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnSubirPerfil.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
-            this.btnSubirPerfil.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnSubirPerfil.selected = true;
-            this.btnSubirPerfil.Size = new System.Drawing.Size(152, 56);
-            this.btnSubirPerfil.TabIndex = 120;
-            this.btnSubirPerfil.Text = "Subir Perfil";
-            this.btnSubirPerfil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnSubirPerfil.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnSubirPerfil.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubirPerfil.Click += new System.EventHandler(this.btnSubirPerfil_Click);
-            // 
-            // btnRestablecerPerfil
-            // 
-            this.btnRestablecerPerfil.Active = true;
-            this.btnRestablecerPerfil.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnRestablecerPerfil.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnRestablecerPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnRestablecerPerfil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnRestablecerPerfil.BorderRadius = 7;
-            this.btnRestablecerPerfil.ButtonText = "Restablecer Perfil";
-            this.btnRestablecerPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRestablecerPerfil.DisabledColor = System.Drawing.Color.Gray;
-            this.btnRestablecerPerfil.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnRestablecerPerfil.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnRestablecerPerfil.Iconimage")));
-            this.btnRestablecerPerfil.Iconimage_right = null;
-            this.btnRestablecerPerfil.Iconimage_right_Selected = null;
-            this.btnRestablecerPerfil.Iconimage_Selected = null;
-            this.btnRestablecerPerfil.IconMarginLeft = 0;
-            this.btnRestablecerPerfil.IconMarginRight = 0;
-            this.btnRestablecerPerfil.IconRightVisible = true;
-            this.btnRestablecerPerfil.IconRightZoom = 0D;
-            this.btnRestablecerPerfil.IconVisible = true;
-            this.btnRestablecerPerfil.IconZoom = 70D;
-            this.btnRestablecerPerfil.IsTab = false;
-            this.btnRestablecerPerfil.Location = new System.Drawing.Point(236, 169);
-            this.btnRestablecerPerfil.Name = "btnRestablecerPerfil";
-            this.btnRestablecerPerfil.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnRestablecerPerfil.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
-            this.btnRestablecerPerfil.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnRestablecerPerfil.selected = true;
-            this.btnRestablecerPerfil.Size = new System.Drawing.Size(152, 56);
-            this.btnRestablecerPerfil.TabIndex = 121;
-            this.btnRestablecerPerfil.Text = "Restablecer Perfil";
-            this.btnRestablecerPerfil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnRestablecerPerfil.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnRestablecerPerfil.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRestablecerPerfil.Click += new System.EventHandler(this.btnRestablecerPerfil_Click);
             // 
             // imgPerfil
             // 
@@ -681,12 +606,96 @@
             this.imgPerfil.TabIndex = 119;
             this.imgPerfil.TabStop = false;
             // 
+            // btnSubirPerfil
+            // 
+            this.btnSubirPerfil.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnSubirPerfil.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnSubirPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnSubirPerfil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSubirPerfil.BorderRadius = 7;
+            this.btnSubirPerfil.ButtonText = "Subir Perfil";
+            this.btnSubirPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSubirPerfil.DisabledColor = System.Drawing.Color.Gray;
+            this.btnSubirPerfil.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnSubirPerfil.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnSubirPerfil.Iconimage")));
+            this.btnSubirPerfil.Iconimage_right = null;
+            this.btnSubirPerfil.Iconimage_right_Selected = null;
+            this.btnSubirPerfil.Iconimage_Selected = null;
+            this.btnSubirPerfil.IconMarginLeft = 0;
+            this.btnSubirPerfil.IconMarginRight = 0;
+            this.btnSubirPerfil.IconRightVisible = true;
+            this.btnSubirPerfil.IconRightZoom = 0D;
+            this.btnSubirPerfil.IconVisible = true;
+            this.btnSubirPerfil.IconZoom = 70D;
+            this.btnSubirPerfil.IsTab = false;
+            this.btnSubirPerfil.Location = new System.Drawing.Point(236, 83);
+            this.btnSubirPerfil.Name = "btnSubirPerfil";
+            this.btnSubirPerfil.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnSubirPerfil.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
+            this.btnSubirPerfil.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnSubirPerfil.selected = true;
+            this.btnSubirPerfil.Size = new System.Drawing.Size(152, 56);
+            this.btnSubirPerfil.TabIndex = 120;
+            this.btnSubirPerfil.Text = "Subir Perfil";
+            this.btnSubirPerfil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnSubirPerfil.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnSubirPerfil.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubirPerfil.Click += new System.EventHandler(this.btnSubirPerfil_Click);
+            // 
+            // btnRestablecerPerfil
+            // 
+            this.btnRestablecerPerfil.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnRestablecerPerfil.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnRestablecerPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnRestablecerPerfil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRestablecerPerfil.BorderRadius = 7;
+            this.btnRestablecerPerfil.ButtonText = "Restablecer Perfil";
+            this.btnRestablecerPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRestablecerPerfil.DisabledColor = System.Drawing.Color.Gray;
+            this.btnRestablecerPerfil.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnRestablecerPerfil.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnRestablecerPerfil.Iconimage")));
+            this.btnRestablecerPerfil.Iconimage_right = null;
+            this.btnRestablecerPerfil.Iconimage_right_Selected = null;
+            this.btnRestablecerPerfil.Iconimage_Selected = null;
+            this.btnRestablecerPerfil.IconMarginLeft = 0;
+            this.btnRestablecerPerfil.IconMarginRight = 0;
+            this.btnRestablecerPerfil.IconRightVisible = true;
+            this.btnRestablecerPerfil.IconRightZoom = 0D;
+            this.btnRestablecerPerfil.IconVisible = true;
+            this.btnRestablecerPerfil.IconZoom = 70D;
+            this.btnRestablecerPerfil.IsTab = false;
+            this.btnRestablecerPerfil.Location = new System.Drawing.Point(236, 161);
+            this.btnRestablecerPerfil.Name = "btnRestablecerPerfil";
+            this.btnRestablecerPerfil.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnRestablecerPerfil.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
+            this.btnRestablecerPerfil.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnRestablecerPerfil.selected = true;
+            this.btnRestablecerPerfil.Size = new System.Drawing.Size(152, 56);
+            this.btnRestablecerPerfil.TabIndex = 121;
+            this.btnRestablecerPerfil.Text = "Restablecer Perfil";
+            this.btnRestablecerPerfil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnRestablecerPerfil.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnRestablecerPerfil.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRestablecerPerfil.Click += new System.EventHandler(this.btnRestablecerPerfil_Click);
+            // 
+            // lblIPersonal
+            // 
+            this.lblIPersonal.AutoSize = true;
+            this.lblIPersonal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblIPersonal.Location = new System.Drawing.Point(17, 539);
+            this.lblIPersonal.Name = "lblIPersonal";
+            this.lblIPersonal.Size = new System.Drawing.Size(103, 19);
+            this.lblIPersonal.TabIndex = 122;
+            this.lblIPersonal.Text = "Inf. Personal: ";
+            // 
             // P_DatosEstudiante
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(415, 711);
+            this.ClientSize = new System.Drawing.Size(415, 677);
+            this.Controls.Add(this.lblIPersonal);
             this.Controls.Add(this.btnRestablecerPerfil);
             this.Controls.Add(this.btnSubirPerfil);
             this.Controls.Add(this.imgPerfil);
@@ -703,7 +712,6 @@
             this.Controls.Add(this.cxtEscuela);
             this.Controls.Add(this.Separador10);
             this.Controls.Add(this.txtIPersonal);
-            this.Controls.Add(this.lblIPersonal);
             this.Controls.Add(this.Separador7);
             this.Controls.Add(this.lblEscuela);
             this.Controls.Add(this.Separador6);
@@ -759,7 +767,6 @@
         private System.Windows.Forms.Label lblAMaterno;
         private Bunifu.Framework.UI.BunifuSeparator Separador10;
         public System.Windows.Forms.TextBox txtIPersonal;
-        private System.Windows.Forms.Label lblIPersonal;
         private Bunifu.Framework.UI.BunifuSeparator Separador7;
         private System.Windows.Forms.Label lblEscuela;
         private Bunifu.Framework.UI.BunifuSeparator Separador6;
@@ -783,5 +790,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnSubirPerfil;
         public Otros_Controles.JALMCircularPictureBox imgPerfil;
         private Bunifu.Framework.UI.BunifuFlatButton btnRestablecerPerfil;
+        private System.Windows.Forms.Label lblIPersonal;
     }
 }

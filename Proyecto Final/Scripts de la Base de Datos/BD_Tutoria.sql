@@ -1,24 +1,24 @@
 /* **************************************************************************************************
-   ***************************** DDL (LENGUAJE DE DEFINICIÓN DE DATOS) ******************************
+   ***************************** DDL (LENGUAJE DE DEFINICIï¿½N DE DATOS) ******************************
    ************************************************************************************************** */
 USE MASTER
 GO
 
 /* ********************************************************************
-					    CREACIÓN DE LA BASE DE DATOS
+					    CREACIï¿½N DE LA BASE DE DATOS
    ******************************************************************** */
-IF EXISTS (SELECT * 
+/*IF EXISTS (SELECT * 
 				FROM SYSDATABASES
 				WHERE NAME = 'BDSistema_Tutoria')
 	DROP DATABASE BDSistema_Tutoria
 GO
 CREATE DATABASE BDSistema_Tutoria
-GO
+GO*/
 
-use BDSistema_Tutoria
+use db_a7878d_BDSistemaTutoria
 
 -- Crear tipos de datos para las claves primarias
-USE BDSistema_Tutoria
+USE db_a7878d_BDSistemaTutoria
 	EXEC SP_ADDTYPE tyCodEscuelaP,		'VARCHAR(4)', 'NOT NULL'
 	EXEC SP_ADDTYPE tyCodEstudiante,	'VARCHAR(6)', 'NOT NULL'
 	EXEC SP_ADDTYPE tyCodDocente,		'VARCHAR(5)', 'NOT NULL'
@@ -26,9 +26,9 @@ USE BDSistema_Tutoria
 GO 
 
 /* ********************************************************************
-					        CREACIÓN DE TABLAS
+					        CREACIï¿½N DE TABLAS
    ******************************************************************** */
-USE BDSistema_Tutoria
+USE db_a7878d_BDSistemaTutoria
 GO
 
 /* *************************** TABLA ESCUELA PROFESIONAL *************************** */
@@ -109,7 +109,7 @@ CREATE TABLE TDocente
 															 'B2',
 															 'B3')),
 	Regimen VARCHAR(20) NOT NULL CHECK (Regimen IN ('TIEMPO COMPLETO', 
-													'DEDICACIÓN EXCLUSIVA',
+													'DEDICACIï¿½N EXCLUSIVA',
 													'TIEMPO PARCIAL')),
 	CodEscuelaP tyCodEscuelaP,
 	Horario VARCHAR(150),
@@ -123,7 +123,7 @@ CREATE TABLE TDocente
 );
 GO
 
-/* *************************** TABLA TUTORÍA *************************** */
+/* *************************** TABLA TUTORï¿½A *************************** */
 IF EXISTS (SELECT * 
 				FROM SYSOBJECTS
 				WHERE NAME = 'TTutoria')
@@ -147,7 +147,7 @@ CREATE TABLE TTutoria
 );
 GO
 
-/* *************************** TABLA FICHA DE TUTORÍA *************************** */
+/* *************************** TABLA FICHA DE TUTORï¿½A *************************** */
 IF EXISTS (SELECT * 
 				FROM SYSOBJECTS
 				WHERE NAME = 'TFichaTutoria')
@@ -158,7 +158,7 @@ CREATE TABLE TFichaTutoria
 	-- Lista de atributos
 	CodTutoria tyCodTutoria,
 	Fecha DATETIME NOT NULL,
-	Dimension VARCHAR(15) DEFAULT 'ACADÉMICA' CHECK (Dimension IN ('ACADÉMICA',
+	Dimension VARCHAR(15) DEFAULT 'ACADï¿½MICA' CHECK (Dimension IN ('ACADï¿½MICA',
 																   'PERSONAL',
 																   'PROFESIONAL')),
 	Descripcion VARCHAR(100),
@@ -185,7 +185,7 @@ CREATE TABLE TUsuario
 	-- Lista de atributos
 	Perfil VARBINARY(MAX) NOT NULL,
 	Usuario VARCHAR(6) NOT NULL,
-	Contraseña VARCHAR(20) NOT NULL,
+	Contraseï¿½a VARCHAR(20) NOT NULL,
 	Acceso VARCHAR(20) NOT NULL,
 	Datos VARCHAR(53) NOT NULL,
 
@@ -219,18 +219,18 @@ GO
 /* **************************************************************************************************
    ******************* FUNCIONES Y PROCEDIMIENTOS ALMACENADOS DE LA BASE DE DATOS********************
    ************************************************************************************************** */
-USE BDSistema_Tutoria
+USE db_a7878d_BDSistemaTutoria
 GO
 
-/* ************************** FUNCIÓN PARA GENERAR UNA CONTRASEÑA ************************** */
+/* ************************** FUNCIï¿½N PARA GENERAR UNA CONTRASEï¿½A ************************** */
 
 CREATE VIEW viAleatorio
 AS
-	-- Generar un número aleatorio
+	-- Generar un nï¿½mero aleatorio
 	SELECT RAND() AS ValorAleatorio
 GO 
 
-CREATE FUNCTION fnGenerarContraseña ()
+CREATE FUNCTION fnGenerarContraseï¿½a ()
 RETURNS VARCHAR(8)
 AS
 BEGIN
@@ -238,27 +238,27 @@ BEGIN
 	DECLARE @Indice INT;
     DECLARE @Contador INT;
     DECLARE @Caracteres VARCHAR(37);      
-    DECLARE @Contraseña VARCHAR(8);
+    DECLARE @Contraseï¿½a VARCHAR(8);
 
 	-- Establecer los valores iniciales
 	SET @Contador = 0
-	SET @Caracteres = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789'
-	SET @Contraseña = ''
+	SET @Caracteres = 'ABCDEFGHIJKLMNï¿½OPQRSTUVWXYZ0123456789'
+	SET @Contraseï¿½a = ''
     
-	-- Tomar un índice aleatorio de los caracteres para generar una contraseña
+	-- Tomar un ï¿½ndice aleatorio de los caracteres para generar una contraseï¿½a
     WHILE (@Contador < 8)
     BEGIN
         SET @Indice = CEILING((SELECT ValorAleatorio FROM viAleatorio) * (LEN(@Caracteres)))
-        SET @Contraseña = @Contraseña + SUBSTRING(@Caracteres, @Indice, 1)
+        SET @Contraseï¿½a = @Contraseï¿½a + SUBSTRING(@Caracteres, @Indice, 1)
         SET @Contador = @Contador + 1
     END;
 
-	-- Retornar una contraseña de 8 caracteres
-    RETURN (@Contraseña);
+	-- Retornar una contraseï¿½a de 8 caracteres
+    RETURN (@Contraseï¿½a);
 END;
 GO
 
-/* ************************** FUNCIÓN PARA GENERAR UNA CÓDIGO DE TUTORÍA ************************** */
+/* ************************** FUNCIï¿½N PARA GENERAR UNA Cï¿½DIGO DE TUTORï¿½A ************************** */
 
 CREATE FUNCTION fnGenerarCodTutoria ()
 RETURNS VARCHAR(8)
@@ -267,11 +267,11 @@ BEGIN
 	-- Declarar un contador
 	DECLARE @Contador INT;
 
-	-- Determinar el valor del contador con el valor máximo en la tabla TTutoria
+	-- Determinar el valor del contador con el valor mï¿½ximo en la tabla TTutoria
 	SELECT @Contador = RIGHT(MAX(CodTutoria), 4) + 1
 		FROM TTutoria
 
-	-- Verificar si la tabla este vacía
+	-- Verificar si la tabla este vacï¿½a
 	IF (@Contador IS NULL)
 	BEGIN
 		SET @Contador = 1
@@ -426,9 +426,9 @@ BEGIN
 				@Direccion, @Telefono, @CodEscuelaP, @PersonaReferencia, 
 				@TelefonoReferencia, @InformacionPersonal)--@EstadoFisico, @EstadoMental)
 
-	-- Insertar un usuario con el código del estudiante en la tabla de TUsuario
+	-- Insertar un usuario con el cï¿½digo del estudiante en la tabla de TUsuario
 	INSERT INTO TUsuario
-		VALUES (@Perfil, @CodEstudiante, DBO.fnGenerarContraseña(), 'Estudiante', 
+		VALUES (@Perfil, @CodEstudiante, DBO.fnGenerarContraseï¿½a(), 'Estudiante', 
 				@APaterno + ' ' + @AMaterno + ', ' + @Nombre)
 END;
 GO
@@ -557,9 +557,9 @@ BEGIN
 				@Direccion, @Telefono, @Categoria, @Subcategoria, 
 				@Regimen, @CodEscuelaP, @Horario)
 
-	-- Insertar un usuario con el código del docente en la tabla de TUsuario
+	-- Insertar un usuario con el cï¿½digo del docente en la tabla de TUsuario
 	INSERT INTO TUsuario
-		VALUES (@Perfil, @CodDocente, DBO.fnGenerarContraseña(), 'Docente', 
+		VALUES (@Perfil, @CodDocente, DBO.fnGenerarContraseï¿½a(), 'Docente', 
 				@APaterno + ' ' + @AMaterno + ', ' + @Nombre)
 END;
 GO
@@ -616,9 +616,9 @@ BEGIN
 END;
 GO
 
-/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA TUTORÍA ****************** */
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA TUTORï¿½A ****************** */
 
--- Crear un procedimiento para mostrar tutorías
+-- Crear un procedimiento para mostrar tutorï¿½as
 CREATE PROCEDURE spuMostrarTutorias
 AS
 BEGIN
@@ -635,7 +635,7 @@ BEGIN
 END;
 GO
 
--- Crear un procedimiento para buscar tutorías por cualquier atributo
+-- Crear un procedimiento para buscar tutorï¿½as por cualquier atributo
 CREATE PROCEDURE spuBuscarTutorias @Texto VARCHAR(20)
 AS
 BEGIN
@@ -659,17 +659,17 @@ BEGIN
 END;
 GO
 
--- Crear un procedimiento para insertar una tutoría
+-- Crear un procedimiento para insertar una tutorï¿½a
 CREATE PROCEDURE spuInsertarTutoria @CodTutoria VARCHAR(5) = NULL OUTPUT,
 									@CodDocente VARCHAR(5),
 									@CodEstudiante VARCHAR(6)
 AS
 BEGIN
-	-- Declarar la clave primaría de tutoría
+	-- Declarar la clave primarï¿½a de tutorï¿½a
 	DECLARE @CodTutoriaGenerado VARCHAR(5);
 	SET @CodTutoriaGenerado = DBO.fnGenerarCodTutoria();
 
-	-- Insertar una tutoría en la tabla de TTutoria
+	-- Insertar una tutorï¿½a en la tabla de TTutoria
 	INSERT INTO TTutoria
 		VALUES (@CodTutoriaGenerado, @CodDocente, @CodEstudiante)
 
@@ -678,32 +678,32 @@ BEGIN
 END;
 GO
 
--- Crear un procedimiento para actualizar una tutoría
+-- Crear un procedimiento para actualizar una tutorï¿½a
 CREATE PROCEDURE spuActualizarTutoria @CodTutoria VARCHAR(5),
 									  @CodDocente VARCHAR(5),
 									  @CodEstudiante VARCHAR(6)				
 AS
 BEGIN
-	-- Actualizar una tutoría de la tabla de TTutoria
+	-- Actualizar una tutorï¿½a de la tabla de TTutoria
 	UPDATE TTutoria
 		SET CodDocente = @CodDocente, CodEstudiante = CodEstudiante
 		WHERE CodTutoria = @CodTutoria
 END;
 GO
 
--- Crear un procedimiento para eliminar una tutoría
+-- Crear un procedimiento para eliminar una tutorï¿½a
 CREATE PROCEDURE spuEliminarTutoria @CodTutoria VARCHAR(5)					
 AS
 BEGIN
-	-- Eliminar una tutoría de la tabla de TTutoria
+	-- Eliminar una tutorï¿½a de la tabla de TTutoria
 	DELETE FROM TTutoria
 		WHERE CodTutoria = @CodTutoria
 END;
 GO
 
-/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA FICHA DE TUTORÍA ****************** */
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA FICHA DE TUTORï¿½A ****************** */
 
--- Crear un procedimiento para insertar una tutoría
+-- Crear un procedimiento para insertar una tutorï¿½a
 CREATE PROCEDURE spuInsertarFichaTutoria @CodTutoria VARCHAR(5),
 										 @Fecha DATETIME,
 										 @Dimension VARCHAR(15),
@@ -712,7 +712,7 @@ CREATE PROCEDURE spuInsertarFichaTutoria @CodTutoria VARCHAR(5),
 										 @Observaciones VARCHAR(100)
 AS
 BEGIN
-	-- Insertar una tutoría en la tabla de TTutoria
+	-- Insertar una tutorï¿½a en la tabla de TTutoria
 	INSERT INTO TFichaTutoria
 		VALUES (@CodTutoria, @Fecha, @Dimension, @Descripcion, @Referencia, @Observaciones)
 END;
@@ -720,23 +720,23 @@ GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA USUARIO ****************** */
 
-CREATE PROCEDURE spuIniciarSesion @Usuario VARCHAR(6), @Contraseña VARCHAR(20)
+CREATE PROCEDURE spuIniciarSesion @Usuario VARCHAR(6), @Contraseï¿½a VARCHAR(20)
 AS
 BEGIN
-	-- Seleccionar los datos del usuario válido
+	-- Seleccionar los datos del usuario vï¿½lido
 	SELECT *
 		FROM TUsuario
-		WHERE Usuario = @Usuario AND Contraseña = @Contraseña
+		WHERE Usuario = @Usuario AND Contraseï¿½a = @Contraseï¿½a
 END;
 GO
 
--- Crear un procedimiento para actualizar la contraseña de un usuario
---CREATE PROCEDURE spuActualizarContraseña @Usuario VARCHAR(7), @Contraseña VARCHAR(20)				
+-- Crear un procedimiento para actualizar la contraseï¿½a de un usuario
+--CREATE PROCEDURE spuActualizarContraseï¿½a @Usuario VARCHAR(7), @Contraseï¿½a VARCHAR(20)				
 --AS
 --BEGIN
---	-- Actualizar la contraseña de un usuario de la tabla de TUsuario
+--	-- Actualizar la contraseï¿½a de un usuario de la tabla de TUsuario
 --	UPDATE TUsuario
---		SET Contraseña = @Contraseña
+--		SET Contraseï¿½a = @Contraseï¿½a
 --		WHERE Usuario = @Usuario
 --END;
 --GO
@@ -744,12 +744,12 @@ GO
 /* **************************************************************************************************
    ********************************** TRIGGERS DE LA BASE DE DATOS **********************************
    ************************************************************************************************** */
-USE BDSistema_Tutoria
+USE db_a7878d_BDSistemaTutoria
 GO
 
 /* *************************** TRIGGERS PARA LA TABLA ESCUELA PROFESIONAL *************************** */
 
--- Crear un disparador para guardar el registro de inserción de la tabla TEscuela_Profesional en la tabla Historial
+-- Crear un disparador para guardar el registro de inserciï¿½n de la tabla TEscuela_Profesional en la tabla Historial
 CREATE TRIGGER trEscuela_ProfesionalInsercion
 	ON TEscuela_Profesional
 	FOR INSERT
@@ -767,14 +767,14 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el número de tuplas de la tabla #INSERTED
+	-- Determinar el nï¿½mero de tuplas de la tabla #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 
 	-- Recorrer las tuplas de la tabla #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estarán los atributos de la tabla #INSERTED
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #INSERTED
 		DECLARE @CodEscuelaP VARCHAR(4);
 		DECLARE @Nombre VARCHAR(40);
 
@@ -795,13 +795,13 @@ BEGIN
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el número de tuplas
+		-- Actualizar el nï¿½mero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de eliminación de la tabla TEscuela_Profesional en la tabla Historial
+-- Crear un disparador para guardar el registro de eliminaciï¿½n de la tabla TEscuela_Profesional en la tabla Historial
 CREATE TRIGGER trEscuela_ProfesionalEliminacion
 	ON TEscuela_Profesional
 	FOR DELETE
@@ -819,14 +819,14 @@ BEGIN
 		SELECT * 
 			FROM DELETED
 
-	-- Determinar el número de tuplas de la tabla #DELETED
+	-- Determinar el nï¿½mero de tuplas de la tabla #DELETED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estarán los atributos de la tabla #DELETED
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #DELETED
 		DECLARE @CodEscuelaP VARCHAR(4);
 		DECLARE @Nombre VARCHAR(40);
 
@@ -847,13 +847,13 @@ BEGIN
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
 
-		-- Actualizar el número de las tuplas
+		-- Actualizar el nï¿½mero de las tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de actualización de la tabla TEscuela_Profesional en la tabla Historial
+-- Crear un disparador para guardar el registro de actualizaciï¿½n de la tabla TEscuela_Profesional en la tabla Historial
 CREATE TRIGGER trEscuela_ProfesionalActualizacion
 	ON TEscuela_Profesional
 	FOR UPDATE
@@ -883,14 +883,14 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el número de tuplas de la tabla #DELETED = #INSERTED
+	-- Determinar el nï¿½mero de tuplas de la tabla #DELETED = #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED = #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estarán los atributos de la tabla #DELETED (ANTES)
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #DELETED (ANTES)
 		DECLARE @CodEscuelaPAntes VARCHAR(4);
 		DECLARE @NombreAntes VARCHAR(40);
 
@@ -899,7 +899,7 @@ BEGIN
 			   @NombreAntes = Nombre
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
-		-- Declarar variables donde estarán los atributos de la tabla #INSERTED (DESPUÉS)
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #INSERTED (DESPUï¿½S)
 		DECLARE @CodEscuelaPDespues VARCHAR(4);
 		DECLARE @NombreDespues VARCHAR(40);
 
@@ -958,7 +958,7 @@ BEGIN
 		DELETE TOP (1) FROM #DELETED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el número de tuplas
+		-- Actualizar el nï¿½mero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
@@ -966,7 +966,7 @@ GO
 
 /* *************************** TRIGGERS PARA LA TABLA ESTUDIANTE *************************** */
 
--- Crear un disparador para guardar el registro de inserción de la tabla TEstudiante en la tabla Historial
+-- Crear un disparador para guardar el registro de inserciï¿½n de la tabla TEstudiante en la tabla Historial
 CREATE TRIGGER trEstudianteInsercion
 	ON TEstudiante
 	FOR INSERT
@@ -996,14 +996,14 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el número de tuplas de la tabla #INSERTED
+	-- Determinar el nï¿½mero de tuplas de la tabla #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 
 	-- Recorrer las tuplas de la tabla #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estarán los atributos de la tabla #INSERTED
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #INSERTED
 		DECLARE @Perfil VARBINARY(MAX);
 		DECLARE @CodEstudiante VARCHAR(6);
 		DECLARE @APaterno VARCHAR(15);
@@ -1051,13 +1051,13 @@ BEGIN
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el número de tuplas
+		-- Actualizar el nï¿½mero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de eliminación de la tabla TEstudiante en la tabla Historial
+-- Crear un disparador para guardar el registro de eliminaciï¿½n de la tabla TEstudiante en la tabla Historial
 CREATE TRIGGER trEstudianteEliminacion
 	ON TEstudiante
 	FOR DELETE
@@ -1087,14 +1087,14 @@ BEGIN
 		SELECT * 
 			FROM DELETED
 
-	-- Determinar el número de tuplas de la tabla #DELETED
+	-- Determinar el nï¿½mero de tuplas de la tabla #DELETED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estarán los atributos de la tabla #DELETED
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #DELETED
 		DECLARE @Perfil VARBINARY(MAX);
 		DECLARE @CodEstudiante VARCHAR(6);
 		DECLARE @APaterno VARCHAR(15);
@@ -1142,13 +1142,13 @@ BEGIN
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
 
-		-- Actualizar el número de las tuplas
+		-- Actualizar el nï¿½mero de las tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de actualización de la tabla TEstudiante en la tabla Historial
+-- Crear un disparador para guardar el registro de actualizaciï¿½n de la tabla TEstudiante en la tabla Historial
 CREATE TRIGGER trEstudianteActualizacion
 	ON TEstudiante
 	FOR UPDATE
@@ -1202,14 +1202,14 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el número de tuplas de la tabla #DELETED = #INSERTED
+	-- Determinar el nï¿½mero de tuplas de la tabla #DELETED = #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED = #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estarán los atributos de la tabla #DELETED (ANTES)
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #DELETED (ANTES)
 		DECLARE @PerfilAntes VARBINARY(MAX);
 		DECLARE @CodEstudianteAntes VARCHAR(6);
 		DECLARE @APaternoAntes VARCHAR(15);
@@ -1242,7 +1242,7 @@ BEGIN
 			   --@EstadoMentalAntes = EstadoMental
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
-		-- Declarar variables donde estarán los atributos de la tabla #INSERTED (DESPUÉS)
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #INSERTED (DESPUï¿½S)
 		DECLARE @PerfilDespues VARBINARY(MAX);
 		DECLARE @CodEstudianteDespues VARCHAR(6);
 		DECLARE @APaternoDespues VARCHAR(15);
@@ -1492,7 +1492,7 @@ BEGIN
 		DELETE TOP (1) FROM #DELETED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el número de tuplas
+		-- Actualizar el nï¿½mero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
@@ -1500,7 +1500,7 @@ GO
 
 /* *************************** TRIGGERS PARA LA TABLA DOCENTE *************************** */
 
--- Crear un disparador para guardar el registro de inserción de la tabla TDocente en la tabla Historial
+-- Crear un disparador para guardar el registro de inserciï¿½n de la tabla TDocente en la tabla Historial
 CREATE TRIGGER trDocenteInsercion
 	ON TDocente
 	FOR INSERT
@@ -1529,14 +1529,14 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el número de tuplas de la tabla #INSERTED
+	-- Determinar el nï¿½mero de tuplas de la tabla #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 
 	-- Recorrer las tuplas de la tabla #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estarán los atributos de la tabla #INSERTED
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #INSERTED
 		DECLARE @Perfil VARBINARY(MAX);
 		DECLARE @CodDocente VARCHAR(5);
 		DECLARE @APaterno VARCHAR(15);
@@ -1582,13 +1582,13 @@ BEGIN
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el número de tuplas
+		-- Actualizar el nï¿½mero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de eliminación de la tabla TDocente en la tabla Historial
+-- Crear un disparador para guardar el registro de eliminaciï¿½n de la tabla TDocente en la tabla Historial
 CREATE TRIGGER trDocenteEliminacion
 	ON TDocente
 	FOR DELETE
@@ -1617,14 +1617,14 @@ BEGIN
 		SELECT * 
 			FROM DELETED
 
-	-- Determinar el número de tuplas de la tabla #DELETED
+	-- Determinar el nï¿½mero de tuplas de la tabla #DELETED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estarán los atributos de la tabla #DELETED
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #DELETED
 		DECLARE @Perfil VARBINARY(MAX);
 		DECLARE @CodDocente VARCHAR(5);
 		DECLARE @APaterno VARCHAR(15);
@@ -1670,13 +1670,13 @@ BEGIN
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
 
-		-- Actualizar el número de las tuplas
+		-- Actualizar el nï¿½mero de las tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de actualización de la tabla TDocente en la tabla Historial
+-- Crear un disparador para guardar el registro de actualizaciï¿½n de la tabla TDocente en la tabla Historial
 CREATE TRIGGER trDocenteActualizacion
 	ON TDocente
 	FOR UPDATE
@@ -1728,14 +1728,14 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el número de tuplas de la tabla #DELETED = #INSERTED
+	-- Determinar el nï¿½mero de tuplas de la tabla #DELETED = #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED = #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estarán los atributos de la tabla #DELETED (ANTES)
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #DELETED (ANTES)
 		DECLARE @PerfilAntes VARBINARY(MAX);
 		DECLARE @CodDocenteAntes VARCHAR(5);
 		DECLARE @APaternoAntes VARCHAR(15);
@@ -1766,7 +1766,7 @@ BEGIN
 			   @HorarioAntes = Horario
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
-		-- Declarar variables donde estarán los atributos de la tabla #INSERTED (DESPUÉS)
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #INSERTED (DESPUï¿½S)
 		DECLARE @PerfilDespues VARBINARY(MAX);
 		DECLARE @CodDocenteDespues VARCHAR(5);
 		DECLARE @APaternoDespues VARCHAR(15);
@@ -2012,7 +2012,7 @@ BEGIN
 		DELETE TOP (1) FROM #DELETED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el número de tuplas
+		-- Actualizar el nï¿½mero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
@@ -2020,7 +2020,7 @@ GO
 
 /* *************************** TRIGGERS PARA LA TABLA TUTORIA *************************** */
 
--- Crear un disparador para guardar el registro de inserción de la tabla TTutoria en la tabla Historial
+-- Crear un disparador para guardar el registro de inserciï¿½n de la tabla TTutoria en la tabla Historial
 CREATE TRIGGER trTutoriaInsercion
 	ON TTutoria
 	FOR INSERT
@@ -2039,14 +2039,14 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el número de tuplas de la tabla #INSERTED
+	-- Determinar el nï¿½mero de tuplas de la tabla #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 
 	-- Recorrer las tuplas de la tabla #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estarán los atributos de la tabla #INSERTED
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #INSERTED
 		DECLARE @CodTutoria VARCHAR(5);
 		DECLARE @CodDocente VARCHAR(5);
 		DECLARE @CodEstudiante VARCHAR(6);
@@ -2069,13 +2069,13 @@ BEGIN
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el número de tuplas
+		-- Actualizar el nï¿½mero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de eliminación de la tabla TTutoriae en la tabla Historial
+-- Crear un disparador para guardar el registro de eliminaciï¿½n de la tabla TTutoriae en la tabla Historial
 CREATE TRIGGER trTutoriaEliminacion
 	ON TTutoria
 	FOR DELETE
@@ -2094,14 +2094,14 @@ BEGIN
 		SELECT * 
 			FROM DELETED
 
-	-- Determinar el número de tuplas de la tabla #DELETED
+	-- Determinar el nï¿½mero de tuplas de la tabla #DELETED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estarán los atributos de la tabla #DELETED
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #DELETED
 		DECLARE @CodTutoria VARCHAR(5);
 		DECLARE @CodDocente VARCHAR(5);
 		DECLARE @CodEstudiante VARCHAR(6);
@@ -2124,13 +2124,13 @@ BEGIN
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
 
-		-- Actualizar el número de las tuplas
+		-- Actualizar el nï¿½mero de las tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de actualización de la tabla TTutoria en la tabla Historial
+-- Crear un disparador para guardar el registro de actualizaciï¿½n de la tabla TTutoria en la tabla Historial
 CREATE TRIGGER trTutoriaActualizacion
 	ON TTutoria
 	FOR UPDATE
@@ -2162,14 +2162,14 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el número de tuplas de la tabla #DELETED = #INSERTED
+	-- Determinar el nï¿½mero de tuplas de la tabla #DELETED = #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED = #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estarán los atributos de la tabla #DELETED (ANTES)
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #DELETED (ANTES)
 		DECLARE @CodTutoriaAntes VARCHAR(5);
 		DECLARE @CodDocenteAntes VARCHAR(5);
 		DECLARE @CodEstudianteAntes VARCHAR(6);
@@ -2180,7 +2180,7 @@ BEGIN
 			   @CodEstudianteAntes = CodEstudiante
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
-		-- Declarar variables donde estarán los atributos de la tabla #INSERTED (DESPUÉS)
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #INSERTED (DESPUï¿½S)
 		DECLARE @CodTutoriaDespues VARCHAR(5);
 		DECLARE @CodDocenteDespues VARCHAR(5);
 		DECLARE @CodEstudianteDespues VARCHAR(6);
@@ -2256,15 +2256,15 @@ BEGIN
 		DELETE TOP (1) FROM #DELETED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el número de tuplas
+		-- Actualizar el nï¿½mero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
 GO
 
-/* *************************** TRIGGERS PARA LA TABLA FICHA DE TUTORÍA *************************** */
+/* *************************** TRIGGERS PARA LA TABLA FICHA DE TUTORï¿½A *************************** */
 
--- Crear un disparador para guardar el registro de inserción de la tabla TFichaTutoria en la tabla Historial
+-- Crear un disparador para guardar el registro de inserciï¿½n de la tabla TFichaTutoria en la tabla Historial
 CREATE TRIGGER trFichaTutoriaInsercion
 	ON TFichaTutoria
 	FOR INSERT
@@ -2286,14 +2286,14 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el número de tuplas de la tabla #INSERTED
+	-- Determinar el nï¿½mero de tuplas de la tabla #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 
 	-- Recorrer las tuplas de la tabla #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estarán los atributos de la tabla #INSERTED
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #INSERTED
 		DECLARE @CodTutoria VARCHAR(5);
 		DECLARE @Fecha DATETIME;
 		DECLARE @Dimension VARCHAR(15);
@@ -2322,13 +2322,13 @@ BEGIN
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el número de tuplas
+		-- Actualizar el nï¿½mero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de eliminación de la tabla TFichaTutoria en la tabla Historial
+-- Crear un disparador para guardar el registro de eliminaciï¿½n de la tabla TFichaTutoria en la tabla Historial
 CREATE TRIGGER trFichaTutoriaEliminacion
 	ON TFichaTutoria
 	FOR DELETE
@@ -2350,14 +2350,14 @@ BEGIN
 		SELECT * 
 			FROM DELETED
 
-	-- Determinar el número de tuplas de la tabla #DELETED
+	-- Determinar el nï¿½mero de tuplas de la tabla #DELETED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estarán los atributos de la tabla #DELETED
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #DELETED
 		DECLARE @CodTutoria VARCHAR(5);
 		DECLARE @Fecha DATETIME;
 		DECLARE @Dimension VARCHAR(15);
@@ -2386,13 +2386,13 @@ BEGIN
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
 
-		-- Actualizar el número de las tuplas
+		-- Actualizar el nï¿½mero de las tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de actualización de la tabla TFichaTutoria en la tabla Historial
+-- Crear un disparador para guardar el registro de actualizaciï¿½n de la tabla TFichaTutoria en la tabla Historial
 CREATE TRIGGER trFichaTutoriaActualizacion
 	ON TFichaTutoria
 	FOR UPDATE
@@ -2430,14 +2430,14 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el número de tuplas de la tabla #DELETED = #INSERTED
+	-- Determinar el nï¿½mero de tuplas de la tabla #DELETED = #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED = #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estarán los atributos de la tabla #DELETED (ANTES)
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #DELETED (ANTES)
 		DECLARE @CodTutoriaAntes VARCHAR(5);
 		DECLARE @FechaAntes DATETIME;
 		DECLARE @DimensionAntes VARCHAR(15);
@@ -2454,7 +2454,7 @@ BEGIN
 			   @ObservacionesAntes = Observaciones
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
-		-- Declarar variables donde estarán los atributos de la tabla #INSERTED (DESPUÉS)
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #INSERTED (DESPUï¿½S)
 		DECLARE @CodTutoriaDespues VARCHAR(5);
 		DECLARE @FechaDespues DATETIME;
 		DECLARE @DimensionDespues VARCHAR(15);
@@ -2581,7 +2581,7 @@ BEGIN
 		DELETE TOP (1) FROM #DELETED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el número de tuplas
+		-- Actualizar el nï¿½mero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
@@ -2589,7 +2589,7 @@ GO
 
 /* *************************** TRIGGERS PARA LA TABLA USUARIO *************************** */
 
--- Crear un disparador para guardar el registro de inserción de la tabla TUsuario en la tabla Historial
+-- Crear un disparador para guardar el registro de inserciï¿½n de la tabla TUsuario en la tabla Historial
 CREATE TRIGGER trUsuarioInsercion
 	ON TUsuario
 	FOR INSERT
@@ -2600,7 +2600,7 @@ BEGIN
 	(
 		Perfil VARBINARY(MAX),
 		Usuario VARCHAR(6),
-		Contraseña VARCHAR(20),
+		Contraseï¿½a VARCHAR(20),
 		Acceso VARCHAR(20),
 		Datos VARCHAR(53)
 	);
@@ -2610,24 +2610,24 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el número de tuplas de la tabla #INSERTED
+	-- Determinar el nï¿½mero de tuplas de la tabla #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 
 	-- Recorrer las tuplas de la tabla #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estarán los atributos de la tabla #INSERTED
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #INSERTED
 		DECLARE @Perfil VARBINARY(MAX);
 		DECLARE @Usuario VARCHAR(6);
-		DECLARE @Contraseña VARCHAR(20);
+		DECLARE @Contraseï¿½a VARCHAR(20);
 		DECLARE @Acceso VARCHAR(20);
 		DECLARE @Datos VARCHAR(53);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @Perfil = Perfil,
 			   @Usuario = Usuario,
-			   @Contraseña = Contraseña,
+			   @Contraseï¿½a = Contraseï¿½a,
 			   @Acceso = Acceso,
 			   @Datos = Datos
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
@@ -2639,18 +2639,18 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #INSERTED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TUsuario','INSERT',@Usuario,NULL, 
-					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @Contraseña + ' ; ' + @Acceso + ' ; ' + @Datos);
+					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @Contraseï¿½a + ' ; ' + @Acceso + ' ; ' + @Datos);
 		
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el número de tuplas
+		-- Actualizar el nï¿½mero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de eliminación de la tabla TUsuario en la tabla Historial
+-- Crear un disparador para guardar el registro de eliminaciï¿½n de la tabla TUsuario en la tabla Historial
 CREATE TRIGGER trUsuarioEliminacion
 	ON TUsuario
 	FOR DELETE
@@ -2661,7 +2661,7 @@ BEGIN
 	(
 		Perfil VARBINARY(MAX),
 		Usuario VARCHAR(6),
-		Contraseña VARCHAR(20),
+		Contraseï¿½a VARCHAR(20),
 		Acceso VARCHAR(20),
 		Datos VARCHAR(53)
 	);
@@ -2671,24 +2671,24 @@ BEGIN
 		SELECT * 
 			FROM DELETED
 
-	-- Determinar el número de tuplas de la tabla #DELETED
+	-- Determinar el nï¿½mero de tuplas de la tabla #DELETED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estarán los atributos de la tabla #DELETED
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #DELETED
 		DECLARE @Perfil VARBINARY(MAX);
 		DECLARE @Usuario VARCHAR(6);
-		DECLARE @Contraseña VARCHAR(20);
+		DECLARE @Contraseï¿½a VARCHAR(20);
 		DECLARE @Acceso VARCHAR(20);
 		DECLARE @Datos VARCHAR(53);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @Perfil = Perfil,
 			   @Usuario = Usuario,
-			   @Contraseña = Contraseña,
+			   @Contraseï¿½a = Contraseï¿½a,
 			   @Acceso = Acceso,
 			   @Datos = Datos
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
@@ -2700,18 +2700,18 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #DELETED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TUsuario','DELETE',@Usuario,
-					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @Contraseña + ' ; ' + @Acceso + ' ; ' + @Datos,NULL);
+					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @Contraseï¿½a + ' ; ' + @Acceso + ' ; ' + @Datos,NULL);
 		
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
 
-		-- Actualizar el número de las tuplas
+		-- Actualizar el nï¿½mero de las tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de actualización de la tabla TUsuario en la tabla Historial
+-- Crear un disparador para guardar el registro de actualizaciï¿½n de la tabla TUsuario en la tabla Historial
 CREATE TRIGGER trUsuarioActualizacion
 	ON TUsuario
 	FOR UPDATE
@@ -2722,7 +2722,7 @@ BEGIN
 	(
 		Perfil VARBINARY(MAX),
 		Usuario VARCHAR(6),
-		Contraseña VARCHAR(20),
+		Contraseï¿½a VARCHAR(20),
 		Acceso VARCHAR(20),
 		Datos VARCHAR(53)
 	);
@@ -2737,7 +2737,7 @@ BEGIN
 	(
 		Perfil VARBINARY(MAX),
 		Usuario VARCHAR(6),
-		Contraseña VARCHAR(20),
+		Contraseï¿½a VARCHAR(20),
 		Acceso VARCHAR(20),
 		Datos VARCHAR(53)
 	);
@@ -2747,39 +2747,39 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el número de tuplas de la tabla #DELETED = #INSERTED
+	-- Determinar el nï¿½mero de tuplas de la tabla #DELETED = #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED = #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estarán los atributos de la tabla #DELETED (ANTES)
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #DELETED (ANTES)
 		DECLARE @PerfilAntes VARBINARY(MAX);
 		DECLARE @UsuarioAntes VARCHAR(6);
-		DECLARE @ContraseñaAntes VARCHAR(20);
+		DECLARE @Contraseï¿½aAntes VARCHAR(20);
 		DECLARE @AccesoAntes VARCHAR(20);
 		DECLARE @DatosAntes VARCHAR(53);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @PerfilAntes = Perfil,
 			   @UsuarioAntes = Usuario,
-			   @ContraseñaAntes = Contraseña,
+			   @Contraseï¿½aAntes = Contraseï¿½a,
 			   @AccesoAntes = Acceso,
 			   @DatosAntes = Datos
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
-		-- Declarar variables donde estarán los atributos de la tabla #INSERTED (DESPUÉS)
+		-- Declarar variables donde estarï¿½n los atributos de la tabla #INSERTED (DESPUï¿½S)
 		DECLARE @PerfilDespues VARBINARY(MAX);
 		DECLARE @UsuarioDespues VARCHAR(6);
-		DECLARE @ContraseñaDespues VARCHAR(20);
+		DECLARE @Contraseï¿½aDespues VARCHAR(20);
 		DECLARE @AccesoDespues VARCHAR(20);
 		DECLARE @DatosDespues VARCHAR(53);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @PerfilDespues = Perfil,
 			   @UsuarioDespues = Usuario,
-			   @ContraseñaDespues = Contraseña,
+			   @Contraseï¿½aDespues = Contraseï¿½a,
 			   @AccesoDespues = Acceso,
 			   @DatosDespues = Datos
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
@@ -2830,11 +2830,11 @@ BEGIN
 			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
-		-- Verificar si el cambio fue en Contraseña
-		IF @ContraseñaAntes != @ContraseñaDespues
+		-- Verificar si el cambio fue en Contraseï¿½a
+		IF @Contraseï¿½aAntes != @Contraseï¿½aDespues
 		BEGIN
-			SET @ValorAnterior = @ContraseñaAntes;
-			SET @ValorPosterior = @ContraseñaDespues;
+			SET @ValorAnterior = @Contraseï¿½aAntes;
+			SET @ValorPosterior = @Contraseï¿½aDespues;
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -2879,16 +2879,16 @@ BEGIN
 		DELETE TOP (1) FROM #DELETED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el número de tuplas
+		-- Actualizar el nï¿½mero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
 GO
 
 /* **************************************************************************************************
-   **************************** DML (LENGUAJE DE MANIPULACIÓN DE DATOS) *****************************
+   **************************** DML (LENGUAJE DE MANIPULACIï¿½N DE DATOS) *****************************
    ************************************************************************************************** */
-USE BDSistema_Tutoria
+USE db_a7878d_BDSistemaTutoria
 GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA USUARIO ****************** */

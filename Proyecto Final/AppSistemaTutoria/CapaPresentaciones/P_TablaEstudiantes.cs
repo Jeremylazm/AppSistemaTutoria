@@ -45,7 +45,7 @@ namespace CapaPresentaciones
             dgvTabla.Columns[11].HeaderText = "Escuela Profesional";
             dgvTabla.Columns[12].HeaderText = "Persona de Ref.";
             dgvTabla.Columns[13].HeaderText = "Teléfono de Ref.";
-            dgvTabla.Columns[14].HeaderText = "Informacion Personal";
+            dgvTabla.Columns[14].HeaderText = "Información Personal";
         }
 
         public void MostrarRegistros()
@@ -153,7 +153,7 @@ namespace CapaPresentaciones
                 EditarRegistro.txtPReferencia.Text = dgvTabla.CurrentRow.Cells[12].Value.ToString();
                 EditarRegistro.txtTReferencia.Text = dgvTabla.CurrentRow.Cells[13].Value.ToString();
                 EditarRegistro.txtIPersonal.Text = dgvTabla.CurrentRow.Cells[14].Value.ToString();
-                // EditarRegistro.txtEMental.Text = dgvTabla.CurrentRow.Cells[15].Value.ToString();
+                //EditarRegistro.txtEMental.Text = dgvTabla.CurrentRow.Cells[15].Value.ToString();
                 MemoriaPerfil = null;
 
                 EditarRegistro.ShowDialog();

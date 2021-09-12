@@ -7,21 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 using System.Net;
 using System.Net.Mail;
-using CapaEntidades;
-using CapaNegocios;
+using System.Data.SqlClient;
 
 namespace CapaPresentaciones
 {
     public partial class P_RecuperarContraseña : Form
     {
-
-        readonly E_Estudiante ObjEntidad = new E_Estudiante();
-        readonly N_Estudiante ObjNegocio = new N_Estudiante();
-
         public P_RecuperarContraseña()
         {
             InitializeComponent();
@@ -86,17 +80,6 @@ namespace CapaPresentaciones
             {
                 con.Close();
             }
-
-            // Contraseña del usuario
-            // Buscar usuario por email -> Buscar usuario por código
-            // Si no hay -> Mensaje: Ningún usuario está asociado a este correo
-
-            // Si hay
-            // Desencriptar contraseña y enviarlo
-
-
-            /*string Email = txtTo.Text;
-            DataTable dt = CapaNegocios.N_Estudiante.BuscarRegistros("182906");*/
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -19,6 +19,7 @@ namespace CapaPresentaciones
     {
         readonly E_Estudiante ObjEntidad = new E_Estudiante();
         readonly N_Estudiante ObjNegocio = new N_Estudiante();
+        private readonly string Key = "key_estudiante"; //Llave de cifrado
 
         public P_DatosEstudiante()
         {
@@ -47,8 +48,6 @@ namespace CapaPresentaciones
             txtTelefono.Clear();
             txtPReferencia.Clear();
             txtTReferencia.Clear();
-            txtIPersonal.Clear();
-            // txtEMental.Clear();
             txtCodigo.Focus();
         }
 
@@ -67,12 +66,44 @@ namespace CapaPresentaciones
             cxtEscuela.ValueMember = "CodEscuelaP";
             cxtEscuela.DisplayMember = "Nombre";
         }
-
         private void ActualizarDatos(object sender, FormClosedEventArgs e)
         {
             LlenarComboBox();
         }
 
+        string VisibilidadIPersonal(string IPersonalCifrada, bool EsEstudiante = false)
+        {
+            //Mostrar o no la información personal de acuerdo al permiso otorgado
+
+            //Verificar permiso de visibilidad
+            string Permiso = IPersonalCifrada.Substring(IPersonalCifrada.Length - 4);
+            IPersonalCifrada = IPersonalCifrada.Substring(0, IPersonalCifrada.Length - 5); //Eliminar string permiso
+
+            //Si el usuario es estudiante, puede ver su inf personal
+            if (EsEstudiante)
+            {
+                return E_Criptografia.DesencriptarRSA(IPersonalCifrada, Key); //Desencriptar
+            }
+
+            //Si Tutor tiene permiso de visualizar Inf Personal
+            if (Permiso == "VT=T")
+            {
+                return E_Criptografia.DesencriptarRSA(IPersonalCifrada, Key); //Desencriptar
+            }
+            else return IPersonalCifrada; //No desencriptar
+        }
+
+        string EncriptarIPersonal(string IPersonal, bool PermisoVisibilidad)
+        {
+            //Encriptar
+            string IPersonalCifrada = E_Criptografia.EncriptarRSA(IPersonal, Key);
+            //Añadir permiso
+            if (PermisoVisibilidad) IPersonalCifrada += " VT=T";
+            else IPersonalCifrada += " VT=F";
+            return IPersonalCifrada;
+        }
+
+        #region Eventos
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if ((txtCodigo.Text.Trim() != "") &&
@@ -103,9 +134,8 @@ namespace CapaPresentaciones
                         ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
                         ObjEntidad.PersonaReferencia = txtPReferencia.Text.ToUpper();
                         ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
-                        ObjEntidad.InformacionPersonal = txtIPersonal.Text;
+                        ObjEntidad.InformacionPersonal = EncriptarIPersonal(txtIPersonal.Text,false);
 
-                        
                         // Enviar un correo con la contraseña para un nuevo usuario
                         try
                         {
@@ -130,7 +160,6 @@ namespace CapaPresentaciones
                         {
                             MessageBox.Show(ex.Message);
                         }
-                        
 
                         ObjNegocio.InsertarRegistros(ObjEntidad);
                         MensajeConfirmacion("Registro insertado exitosamente");
@@ -168,7 +197,7 @@ namespace CapaPresentaciones
                             ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
                             ObjEntidad.PersonaReferencia = txtPReferencia.Text.ToUpper();
                             ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
-                            ObjEntidad.InformacionPersonal = txtIPersonal.Text;
+                            ObjEntidad.InformacionPersonal = EncriptarIPersonal(txtIPersonal.Text, false);
 
                             ObjNegocio.EditarRegistros(ObjEntidad);
                             MensajeConfirmacion("Registro editado exitosamente");
@@ -254,7 +283,10 @@ namespace CapaPresentaciones
 
         private void btnRestablecerPerfil_Click(object sender, EventArgs e)
         {
-            imgPerfil.Image = Image.FromFile("C:/Users/Jeremylazm/Desktop/Documentos/AppSistemaTutoria/CapaPresentaciones/Iconos/Perfil Estudiante.png");
+            string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
+            imgPerfil.Image = Image.FromFile(fullImagePath);
         }
+
+        #endregion
     }
 }

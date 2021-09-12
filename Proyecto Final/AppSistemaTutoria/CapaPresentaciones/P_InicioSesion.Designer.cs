@@ -35,23 +35,23 @@
             this.lblContraseña = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.Separador1 = new Bunifu.Framework.UI.BunifuSeparator();
-            this.Separador2 = new Bunifu.Framework.UI.BunifuSeparator();
-            this.btnIngresar = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.imgLogoUNSAAC = new Bunifu.Framework.UI.BunifuImageButton();
-            this.imgUsuario = new Bunifu.Framework.UI.BunifuImageButton();
-            this.imgContraseña = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btnMinimizar = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnCerrar = new Bunifu.Framework.UI.BunifuImageButton();
+            this.imgContraseña = new Bunifu.Framework.UI.BunifuImageButton();
+            this.imgUsuario = new Bunifu.Framework.UI.BunifuImageButton();
+            this.imgLogoUNSAAC = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btnIngresar = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.Separador2 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.Separador1 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.BordeadoMenu = new Bunifu.Framework.UI.BunifuThinButton2();
             this.Movimiento = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.btnMinimizar = new Bunifu.Framework.UI.BunifuImageButton();
-            this.BordeadoMenu = new Bunifu.Framework.UI.BunifuThinButton2();
             this.lblRecuperarContraseña = new System.Windows.Forms.LinkLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgUsuario)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgContraseña)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgContraseña)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgUsuario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
             this.SuspendLayout();
             // 
             // txtContraseña
@@ -112,29 +112,79 @@
             this.lblTitulo.Text = "Sistema de Tutoría - UNSAAC";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Separador1
+            // btnMinimizar
             // 
-            this.Separador1.BackColor = System.Drawing.Color.Transparent;
-            this.Separador1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.Separador1.LineThickness = 1;
-            this.Separador1.Location = new System.Drawing.Point(171, 100);
-            this.Separador1.Name = "Separador1";
-            this.Separador1.Size = new System.Drawing.Size(228, 10);
-            this.Separador1.TabIndex = 65;
-            this.Separador1.Transparency = 255;
-            this.Separador1.Vertical = false;
+            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
+            this.btnMinimizar.ImageActive = null;
+            this.btnMinimizar.Location = new System.Drawing.Point(348, 7);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(24, 24);
+            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimizar.TabIndex = 72;
+            this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Zoom = 10;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
-            // Separador2
+            // btnCerrar
             // 
-            this.Separador2.BackColor = System.Drawing.Color.Transparent;
-            this.Separador2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.Separador2.LineThickness = 1;
-            this.Separador2.Location = new System.Drawing.Point(171, 161);
-            this.Separador2.Name = "Separador2";
-            this.Separador2.Size = new System.Drawing.Size(228, 10);
-            this.Separador2.TabIndex = 66;
-            this.Separador2.Transparency = 255;
-            this.Separador2.Vertical = false;
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
+            this.btnCerrar.ImageActive = null;
+            this.btnCerrar.Location = new System.Drawing.Point(378, 7);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(24, 24);
+            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnCerrar.TabIndex = 71;
+            this.btnCerrar.TabStop = false;
+            this.btnCerrar.Zoom = 10;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
+            // imgContraseña
+            // 
+            this.imgContraseña.BackColor = System.Drawing.Color.Transparent;
+            this.imgContraseña.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imgContraseña.Image = ((System.Drawing.Image)(resources.GetObject("imgContraseña.Image")));
+            this.imgContraseña.ImageActive = null;
+            this.imgContraseña.Location = new System.Drawing.Point(171, 133);
+            this.imgContraseña.Name = "imgContraseña";
+            this.imgContraseña.Size = new System.Drawing.Size(26, 26);
+            this.imgContraseña.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgContraseña.TabIndex = 70;
+            this.imgContraseña.TabStop = false;
+            this.imgContraseña.Zoom = 10;
+            // 
+            // imgUsuario
+            // 
+            this.imgUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.imgUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imgUsuario.Image = ((System.Drawing.Image)(resources.GetObject("imgUsuario.Image")));
+            this.imgUsuario.ImageActive = null;
+            this.imgUsuario.Location = new System.Drawing.Point(171, 71);
+            this.imgUsuario.Name = "imgUsuario";
+            this.imgUsuario.Size = new System.Drawing.Size(26, 26);
+            this.imgUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgUsuario.TabIndex = 69;
+            this.imgUsuario.TabStop = false;
+            this.imgUsuario.Zoom = 10;
+            // 
+            // imgLogoUNSAAC
+            // 
+            this.imgLogoUNSAAC.BackColor = System.Drawing.Color.Transparent;
+            this.imgLogoUNSAAC.Cursor = System.Windows.Forms.Cursors.Default;
+            this.imgLogoUNSAAC.Image = ((System.Drawing.Image)(resources.GetObject("imgLogoUNSAAC.Image")));
+            this.imgLogoUNSAAC.ImageActive = null;
+            this.imgLogoUNSAAC.Location = new System.Drawing.Point(11, 60);
+            this.imgLogoUNSAAC.Name = "imgLogoUNSAAC";
+            this.imgLogoUNSAAC.Size = new System.Drawing.Size(150, 150);
+            this.imgLogoUNSAAC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgLogoUNSAAC.TabIndex = 68;
+            this.imgLogoUNSAAC.TabStop = false;
+            this.imgLogoUNSAAC.Zoom = 10;
             // 
             // btnIngresar
             // 
@@ -172,91 +222,29 @@
             this.btnIngresar.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
             // 
-            // imgLogoUNSAAC
+            // Separador2
             // 
-            this.imgLogoUNSAAC.BackColor = System.Drawing.Color.Transparent;
-            this.imgLogoUNSAAC.Cursor = System.Windows.Forms.Cursors.Default;
-            this.imgLogoUNSAAC.Image = ((System.Drawing.Image)(resources.GetObject("imgLogoUNSAAC.Image")));
-            this.imgLogoUNSAAC.ImageActive = null;
-            this.imgLogoUNSAAC.Location = new System.Drawing.Point(11, 60);
-            this.imgLogoUNSAAC.Name = "imgLogoUNSAAC";
-            this.imgLogoUNSAAC.Size = new System.Drawing.Size(150, 150);
-            this.imgLogoUNSAAC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgLogoUNSAAC.TabIndex = 68;
-            this.imgLogoUNSAAC.TabStop = false;
-            this.imgLogoUNSAAC.Zoom = 10;
+            this.Separador2.BackColor = System.Drawing.Color.Transparent;
+            this.Separador2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.Separador2.LineThickness = 1;
+            this.Separador2.Location = new System.Drawing.Point(171, 161);
+            this.Separador2.Name = "Separador2";
+            this.Separador2.Size = new System.Drawing.Size(228, 10);
+            this.Separador2.TabIndex = 66;
+            this.Separador2.Transparency = 255;
+            this.Separador2.Vertical = false;
             // 
-            // imgUsuario
+            // Separador1
             // 
-            this.imgUsuario.BackColor = System.Drawing.Color.Transparent;
-            this.imgUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imgUsuario.Image = ((System.Drawing.Image)(resources.GetObject("imgUsuario.Image")));
-            this.imgUsuario.ImageActive = null;
-            this.imgUsuario.Location = new System.Drawing.Point(171, 71);
-            this.imgUsuario.Name = "imgUsuario";
-            this.imgUsuario.Size = new System.Drawing.Size(26, 26);
-            this.imgUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgUsuario.TabIndex = 69;
-            this.imgUsuario.TabStop = false;
-            this.imgUsuario.Zoom = 10;
-            // 
-            // imgContraseña
-            // 
-            this.imgContraseña.BackColor = System.Drawing.Color.Transparent;
-            this.imgContraseña.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imgContraseña.Image = ((System.Drawing.Image)(resources.GetObject("imgContraseña.Image")));
-            this.imgContraseña.ImageActive = null;
-            this.imgContraseña.Location = new System.Drawing.Point(171, 133);
-            this.imgContraseña.Name = "imgContraseña";
-            this.imgContraseña.Size = new System.Drawing.Size(26, 26);
-            this.imgContraseña.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgContraseña.TabIndex = 70;
-            this.imgContraseña.TabStop = false;
-            this.imgContraseña.Zoom = 10;
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
-            this.btnCerrar.ImageActive = null;
-            this.btnCerrar.Location = new System.Drawing.Point(378, 7);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(24, 24);
-            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnCerrar.TabIndex = 71;
-            this.btnCerrar.TabStop = false;
-            this.btnCerrar.Zoom = 10;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
-            // Movimiento
-            // 
-            this.Movimiento.Fixed = true;
-            this.Movimiento.Horizontal = true;
-            this.Movimiento.TargetControl = this.lblTitulo;
-            this.Movimiento.Vertical = true;
-            // 
-            // Bordeado
-            // 
-            this.Bordeado.ElipseRadius = 15;
-            this.Bordeado.TargetControl = this;
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.ImageActive = null;
-            this.btnMinimizar.Location = new System.Drawing.Point(348, 7);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(24, 24);
-            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMinimizar.TabIndex = 72;
-            this.btnMinimizar.TabStop = false;
-            this.btnMinimizar.Zoom = 10;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            this.Separador1.BackColor = System.Drawing.Color.Transparent;
+            this.Separador1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.Separador1.LineThickness = 1;
+            this.Separador1.Location = new System.Drawing.Point(171, 100);
+            this.Separador1.Name = "Separador1";
+            this.Separador1.Size = new System.Drawing.Size(228, 10);
+            this.Separador1.TabIndex = 65;
+            this.Separador1.Transparency = 255;
+            this.Separador1.Vertical = false;
             // 
             // BordeadoMenu
             // 
@@ -283,9 +271,21 @@
             this.BordeadoMenu.Location = new System.Drawing.Point(-1, 0);
             this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(5);
             this.BordeadoMenu.Name = "BordeadoMenu";
-            this.BordeadoMenu.Size = new System.Drawing.Size(412, 281);
+            this.BordeadoMenu.Size = new System.Drawing.Size(411, 236);
             this.BordeadoMenu.TabIndex = 108;
             this.BordeadoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Movimiento
+            // 
+            this.Movimiento.Fixed = true;
+            this.Movimiento.Horizontal = true;
+            this.Movimiento.TargetControl = this.lblTitulo;
+            this.Movimiento.Vertical = true;
+            // 
+            // Bordeado
+            // 
+            this.Bordeado.ElipseRadius = 15;
+            this.Bordeado.TargetControl = this;
             // 
             // lblRecuperarContraseña
             // 
@@ -293,7 +293,7 @@
             this.lblRecuperarContraseña.Location = new System.Drawing.Point(21, 213);
             this.lblRecuperarContraseña.Name = "lblRecuperarContraseña";
             this.lblRecuperarContraseña.Size = new System.Drawing.Size(131, 13);
-            this.lblRecuperarContraseña.TabIndex = 109;
+            this.lblRecuperarContraseña.TabIndex = 110;
             this.lblRecuperarContraseña.TabStop = true;
             this.lblRecuperarContraseña.Text = "¿Olvidaste tu contraseña?";
             this.lblRecuperarContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -324,11 +324,11 @@
             this.Name = "P_InicioSesion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Iniciar Sesión";
-            ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgUsuario)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgContraseña)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgContraseña)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgUsuario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
