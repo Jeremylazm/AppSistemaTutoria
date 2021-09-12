@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaNegocios;
+using CapaEntidades;
+using System.Net;
+using System.Net.Mail;
 
 namespace CapaPresentaciones
 {
@@ -14,11 +18,50 @@ namespace CapaPresentaciones
     {
         public string Usuario = "";
         public string Correo = "";
+        private readonly string Key = "123cus";
+        private string codigo_verificacion = "";
         public P_CambiarContraseña()
         {
             InitializeComponent();
         }
+        private void MensajeError(string Mensaje)
+        {
+            MessageBox.Show(Mensaje, "Sistema de Tutoría", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        private string EnviarCodigo(string Correo)
+        {
+            // Enviar un correo con la contraseña
+            try
+            {
+                Random r = new Random();
+                var x = r.Next(0, 1000000);
+                string s = x.ToString("000000");
 
+                SmtpClient clientDetails = new SmtpClient();
+                clientDetails.Port = 587;
+                clientDetails.Host = "smtp.gmail.com";
+                clientDetails.EnableSsl = true;
+                clientDetails.DeliveryMethod = SmtpDeliveryMethod.Network;
+                clientDetails.UseDefaultCredentials = false;
+                clientDetails.Credentials = new NetworkCredential("denisomarcuyottito@gmail.com", "Tutoriasunsaac5");
+
+                MailMessage mailDetails = new MailMessage();
+                mailDetails.From = new MailAddress("denisomarcuyottito@gmail.com");
+                mailDetails.To.Add(Correo);
+                mailDetails.Subject = "Código de verificación";
+                mailDetails.IsBodyHtml = true;
+                mailDetails.Body = "Ingresa el siguiente código: " + s;
+
+                clientDetails.Send(mailDetails);
+                MessageBox.Show("Email Sent");
+                return s;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return "-1";
+            }
+        }
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
@@ -36,20 +79,118 @@ namespace CapaPresentaciones
 
         private void btnEnviarCodigo_Click(object sender, EventArgs e)
         {
-            string correo = lblCorreoUnsaac.Text;
+            string correo = tbCorreo.Text;
             if(correo != "")
             {
-                panelVerificacion.Visible = true;
-                panelCorreo.Visible = false;
-                panelVerificacion.BringToFront();
+                if(correo == Usuario)
+                {
+                    codigo_verificacion = EnviarCodigo(correo + "@unsaac.edu.pe");
+                    panelVerificacion.Visible = true;
+                    panelCorreo.Visible = false;
+                    panelVerificacion.BringToFront();
+                }
+                else
+                {
+                    tbCorreo.Text = "";
+                    tbCorreo.Focus();
+                    MensajeError("Correo electrónico no coincide, intente de nuevo");
+                }
+            }
+            else
+            {
+                MensajeError("Correo no ingresados, intente de nuevo");
             }
         }
 
         private void btnValidar_Click(object sender, EventArgs e)
         {
-            panelVerificacion.Visible = false;
-            panelCambiarContraseña.Visible = true;
-            panelCambiarContraseña.BringToFront();
+            if(tbCodigoVerificacion.Text != "")
+            {
+                if(tbCodigoVerificacion.Text == codigo_verificacion)
+                {
+                    panelVerificacion.Visible = false;
+                    panelCambiarContraseña.Visible = true;
+                    panelCambiarContraseña.BringToFront();
+                }
+                else
+                {
+                    tbCodigoVerificacion.Text = "";
+                    tbCodigoVerificacion.Focus();
+                    MensajeError("Los codigos no coinciden, intente de nuevo");
+                }
+            }
+            else
+            {
+                MensajeError("Campo codigo de validacion vacio, intente de nuevo");
+            }
+        }
+
+        private void btnCambiarContraseña_Click(object sender, EventArgs e)
+        {
+            if(tbContraseñaAnterior.Text != "" &&
+                tbContraseña.Text != "" &&
+                tbContraseñaRep.Text != "")
+            {
+                if (tbContraseña.Text == tbContraseñaRep.Text)
+                {
+
+                    N_InicioSesion InicioSesion = new N_InicioSesion();
+
+                    var ValidarDatos = InicioSesion.IniciarSesion(Usuario, tbContraseñaAnterior.Text);
+                    if (ValidarDatos == true)
+                    {
+                        try
+                        {
+                            string nuevaContraseña = tbContraseña.Text;
+                            string contraseñaEncriptada = E_Criptografia.CifradoMD5(nuevaContraseña);
+                            //MessageBox.Show(contraseñaEncriptada + " ,  len: " + contraseñaEncriptada.Length);
+                            DialogResult Opcion = MessageBox.Show("¿Realmente desea cambiar la contraseña?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                            if (Opcion == DialogResult.OK)
+                            {
+                                InicioSesion.EditarRegistros(Usuario, nuevaContraseña);
+                                Close();
+                                MessageBox.Show("Contraseña cambiada correctamente");
+                            }
+
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show("Error al cambiar la contraseña " + ex);
+                        }
+                    }
+                    else
+                    {
+                        MensajeError("La contraseña anterior no es correcta, intente de nuevo");
+                        tbContraseñaAnterior.Clear();
+                        tbContraseña.Clear();
+                        tbContraseñaRep.Clear();
+                        tbContraseñaAnterior.Focus();
+                    }
+
+                }
+                else
+                {
+                    MensajeError("La contraseñas no coinciden, intente de nuevo");
+                    tbContraseña.Clear();
+                    tbContraseñaRep.Clear();
+                    tbContraseña.Focus();
+                }
+            }
+            else
+            {
+                MensajeError("Campos vacíos, intente de nuevo");
+                if (tbContraseñaAnterior.Text == "")
+                    tbContraseñaAnterior.Focus();
+                else if (tbContraseña.Text == "")
+                {
+                    tbContraseña.Focus();
+                    tbContraseñaRep.Clear();
+                }
+
+                else
+                    tbContraseñaRep.Focus();
+                
+            }
         }
     }
 }

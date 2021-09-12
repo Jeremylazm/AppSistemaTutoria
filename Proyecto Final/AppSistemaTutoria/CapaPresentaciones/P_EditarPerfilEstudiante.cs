@@ -158,7 +158,10 @@ namespace CapaPresentaciones
 
         private void btnCambiarContraseña_Click(object sender, EventArgs e)
         {
-            P_CambiarContraseña NuevaContraseña = new P_CambiarContraseña();
+            P_CambiarContraseña NuevaContraseña = new P_CambiarContraseña {
+                Usuario = E_InicioSesion.Usuario,
+                Correo = txtEstudiante.Text
+            };
             NuevaContraseña.ShowDialog();
             NuevaContraseña.Dispose();
         }

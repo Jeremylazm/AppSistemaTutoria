@@ -34,12 +34,14 @@ namespace CapaPresentaciones
             this.btnCerrar = new System.Windows.Forms.Button();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.panelCorreo = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
             this.lblCorreo1 = new System.Windows.Forms.Label();
             this.lblCorreoUnsaac = new System.Windows.Forms.Label();
             this.tbCorreo = new System.Windows.Forms.TextBox();
             this.lblCorreoDescripcion = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panelVerificacion = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tbVerificacionCorreo = new System.Windows.Forms.TextBox();
@@ -48,6 +50,9 @@ namespace CapaPresentaciones
             this.tbCodigoVerificacion = new System.Windows.Forms.TextBox();
             this.btnValidar = new System.Windows.Forms.Button();
             this.panelCambiarContraseña = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.btnCambiarContraseña = new System.Windows.Forms.Button();
             this.tbContraseñaAnterior = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -55,11 +60,6 @@ namespace CapaPresentaciones
             this.tbContraseña = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.panelCorreo.SuspendLayout();
             this.panelVerificacion.SuspendLayout();
@@ -124,6 +124,15 @@ namespace CapaPresentaciones
             this.panelCorreo.Name = "panelCorreo";
             this.panelCorreo.Size = new System.Drawing.Size(626, 168);
             this.panelCorreo.TabIndex = 5;
+            // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.label9.Location = new System.Drawing.Point(361, 85);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(100, 1);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "label9";
             // 
             // lblCorreo1
             // 
@@ -192,6 +201,15 @@ namespace CapaPresentaciones
             this.panelVerificacion.Size = new System.Drawing.Size(627, 168);
             this.panelVerificacion.TabIndex = 6;
             this.panelVerificacion.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.label8.Location = new System.Drawing.Point(253, 90);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(100, 1);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "label8";
             // 
             // label4
             // 
@@ -282,6 +300,33 @@ namespace CapaPresentaciones
             this.panelCambiarContraseña.TabIndex = 9;
             this.panelCambiarContraseña.Visible = false;
             // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.label12.Location = new System.Drawing.Point(362, 116);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(183, 1);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "label12";
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.label11.Location = new System.Drawing.Point(361, 86);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(183, 1);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "label11";
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.label10.Location = new System.Drawing.Point(362, 47);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(183, 1);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "label10";
+            // 
             // btnCambiarContraseña
             // 
             this.btnCambiarContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -297,6 +342,7 @@ namespace CapaPresentaciones
             this.btnCambiarContraseña.TabIndex = 8;
             this.btnCambiarContraseña.Text = "Cambiar Contraseña";
             this.btnCambiarContraseña.UseVisualStyleBackColor = false;
+            this.btnCambiarContraseña.Click += new System.EventHandler(this.btnCambiarContraseña_Click);
             // 
             // tbContraseñaAnterior
             // 
@@ -351,51 +397,6 @@ namespace CapaPresentaciones
             this.label5.Size = new System.Drawing.Size(164, 19);
             this.label5.TabIndex = 0;
             this.label5.Text = "Ingrese nueva contraseña:";
-            // 
-            // label8
-            // 
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label8.Location = new System.Drawing.Point(253, 90);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(100, 1);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "label8";
-            // 
-            // label9
-            // 
-            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label9.Location = new System.Drawing.Point(361, 85);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(100, 1);
-            this.label9.TabIndex = 10;
-            this.label9.Text = "label9";
-            // 
-            // label10
-            // 
-            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label10.Location = new System.Drawing.Point(362, 47);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(183, 1);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "label10";
-            // 
-            // label11
-            // 
-            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label11.Location = new System.Drawing.Point(361, 86);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(183, 1);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "label11";
-            // 
-            // label12
-            // 
-            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label12.Location = new System.Drawing.Point(362, 116);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(183, 1);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "label12";
             // 
             // P_CambiarContraseña
             // 

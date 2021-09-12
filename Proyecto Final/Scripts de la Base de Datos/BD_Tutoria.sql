@@ -2900,7 +2900,7 @@ AS
 BEGIN
 	-- Actualizar un estudiante de la tabla de TEstudiante
 	UPDATE TUsuario
-		SET Usuario = @Usuario, Contraseña = @NuevaContrasenia
+		SET Contraseña = @NuevaContrasenia
 		WHERE Usuario = @Usuario
 END;
 GO

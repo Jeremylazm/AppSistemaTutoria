@@ -34,34 +34,32 @@ namespace CapaDatos
                     E_InicioSesion.Acceso = LeerFilas.GetString(3);
                     E_InicioSesion.Datos = LeerFilas.GetString(4);
                 }
+                Conectar.Close();
                 return true;
             }
             else
+            {
+                Conectar.Close();
                 return false;
+            }
         }
-        public void ModificarRegistro(D_InicioSesion inicioSesion)
+        public void ModificarRegistro(string Usuario, string Contraseña)
         {
-            SqlCommand Comando = new SqlCommand("spuActualizarEstudiante", Conectar)
+            SqlCommand Comando = new SqlCommand("spuCambiarContraseña", Conectar)
             {
                 CommandType = CommandType.StoredProcedure
             };
-
             Conectar.Open();
-            Comando.Parameters.AddWithValue("@Perfil", Estudiante.Perfil);
-            Comando.Parameters.AddWithValue("@CodEstudiante", Estudiante.CodEstudiante);
-            Comando.Parameters.AddWithValue("@APaterno", Estudiante.APaterno);
-            Comando.Parameters.AddWithValue("@AMaterno", Estudiante.AMaterno);
-            Comando.Parameters.AddWithValue("@Nombre", Estudiante.Nombre);
-            Comando.Parameters.AddWithValue("@Email", Estudiante.Email);
-            Comando.Parameters.AddWithValue("@Direccion", Estudiante.Direccion);
-            Comando.Parameters.AddWithValue("@Telefono", Estudiante.Telefono);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", Estudiante.CodEscuelaP);
-            Comando.Parameters.AddWithValue("@PersonaReferencia", Estudiante.PersonaReferencia);
-            Comando.Parameters.AddWithValue("@TelefonoReferencia", Estudiante.TelefonoReferencia);
-            Comando.Parameters.AddWithValue("@InformacionPersonal", Estudiante.InformacionPersonal);
-            //Comando.Parameters.AddWithValue("@EstadoFisico", Estudiante.EstadoFisico);
-            //Comando.Parameters.AddWithValue("@EstadoMental", Estudiante.EstadoMental);
-            Comando.ExecuteNonQuery();
+            try
+            {
+                Comando.Parameters.AddWithValue("@Usuario", Usuario);
+                Comando.Parameters.AddWithValue("@NuevaContrasenia", Contraseña);
+                Comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al cambiar la contraseña" + ex);
+            }
             Conectar.Close();
         }
     }
