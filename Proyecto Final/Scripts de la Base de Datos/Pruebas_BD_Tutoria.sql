@@ -32,5 +32,11 @@ insert into TEstudiante values(convert(varbinary(max), ''), '12345', 'AP', 'AM',
 insert into TUsuario values (convert(varbinary(max), ''), '12345', '12345', 'Estudiante', '12345')
 select * from TUsuario
 
+
+INSERT INTO TUsuario (Usuario, Contraseña, Acceso, Datos, Perfil) 
+SELECT 'ADMIN', 'ADMIN1234', 'Director de Escuela', 'ADMINISTRADOR', BulkColumn
+	FROM Openrowset(Bulk 'C:\Users\Jeremylazm\Desktop\Documentos\Copia de Proyecto de DS I\Proyecto Final\AppSistemaTutoria\CapaPresentaciones\Iconos\Perfil.png', Single_Blob) as PerfilAdmin
+GO
+
 select * from TEstudiante
 

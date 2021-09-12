@@ -86,17 +86,6 @@ namespace CapaPresentaciones
             {
                 con.Close();
             }
-
-            // Contraseña del usuario
-            // Buscar usuario por email -> Buscar usuario por código
-            // Si no hay -> Mensaje: Ningún usuario está asociado a este correo
-
-            // Si hay
-            // Desencriptar contraseña y enviarlo
-
-
-            /*string Email = txtTo.Text;
-            DataTable dt = CapaNegocios.N_Estudiante.BuscarRegistros("182906");*/
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
