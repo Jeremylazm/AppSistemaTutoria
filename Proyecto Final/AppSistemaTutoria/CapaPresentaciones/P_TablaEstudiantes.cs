@@ -45,7 +45,7 @@ namespace CapaPresentaciones
             dgvTabla.Columns[11].HeaderText = "Escuela Profesional";
             dgvTabla.Columns[12].HeaderText = "Persona de Ref.";
             dgvTabla.Columns[13].HeaderText = "Teléfono de Ref.";
-            dgvTabla.Columns[14].HeaderText = "Informacion Personal";
+            dgvTabla.Columns[14].HeaderText = "Información Personal";
         }
 
         public void MostrarRegistros()
