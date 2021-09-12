@@ -39,5 +39,30 @@ namespace CapaDatos
             else
                 return false;
         }
+        public void ModificarRegistro(D_InicioSesion inicioSesion)
+        {
+            SqlCommand Comando = new SqlCommand("spuActualizarEstudiante", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Conectar.Open();
+            Comando.Parameters.AddWithValue("@Perfil", Estudiante.Perfil);
+            Comando.Parameters.AddWithValue("@CodEstudiante", Estudiante.CodEstudiante);
+            Comando.Parameters.AddWithValue("@APaterno", Estudiante.APaterno);
+            Comando.Parameters.AddWithValue("@AMaterno", Estudiante.AMaterno);
+            Comando.Parameters.AddWithValue("@Nombre", Estudiante.Nombre);
+            Comando.Parameters.AddWithValue("@Email", Estudiante.Email);
+            Comando.Parameters.AddWithValue("@Direccion", Estudiante.Direccion);
+            Comando.Parameters.AddWithValue("@Telefono", Estudiante.Telefono);
+            Comando.Parameters.AddWithValue("@CodEscuelaP", Estudiante.CodEscuelaP);
+            Comando.Parameters.AddWithValue("@PersonaReferencia", Estudiante.PersonaReferencia);
+            Comando.Parameters.AddWithValue("@TelefonoReferencia", Estudiante.TelefonoReferencia);
+            Comando.Parameters.AddWithValue("@InformacionPersonal", Estudiante.InformacionPersonal);
+            //Comando.Parameters.AddWithValue("@EstadoFisico", Estudiante.EstadoFisico);
+            //Comando.Parameters.AddWithValue("@EstadoMental", Estudiante.EstadoMental);
+            Comando.ExecuteNonQuery();
+            Conectar.Close();
+        }
     }
 }

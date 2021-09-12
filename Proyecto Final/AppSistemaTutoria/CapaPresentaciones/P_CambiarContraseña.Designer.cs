@@ -124,7 +124,6 @@ namespace CapaPresentaciones
             this.panelCorreo.Name = "panelCorreo";
             this.panelCorreo.Size = new System.Drawing.Size(626, 168);
             this.panelCorreo.TabIndex = 5;
-            this.panelCorreo.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCorreo_Paint);
             // 
             // lblCorreo1
             // 
@@ -176,7 +175,7 @@ namespace CapaPresentaciones
             this.button1.TabIndex = 5;
             this.button1.Text = "Enviar Código";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.btnEnviarCodigo_Click);
             // 
             // panelVerificacion
             // 

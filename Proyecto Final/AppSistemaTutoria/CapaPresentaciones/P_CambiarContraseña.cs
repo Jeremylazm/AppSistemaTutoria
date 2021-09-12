@@ -12,6 +12,8 @@ namespace CapaPresentaciones
 {
     public partial class P_CambiarContraseña : Form
     {
+        public string Usuario = "";
+        public string Correo = "";
         public P_CambiarContraseña()
         {
             InitializeComponent();
@@ -32,11 +34,15 @@ namespace CapaPresentaciones
             btnCerrar.Size = new Size(24, 24);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnEnviarCodigo_Click(object sender, EventArgs e)
         {
-            panelVerificacion.Visible = true;
-            panelCorreo.Visible = false;
-            panelVerificacion.BringToFront();
+            string correo = lblCorreoUnsaac.Text;
+            if(correo != "")
+            {
+                panelVerificacion.Visible = true;
+                panelCorreo.Visible = false;
+                panelVerificacion.BringToFront();
+            }
         }
 
         private void btnValidar_Click(object sender, EventArgs e)
@@ -44,11 +50,6 @@ namespace CapaPresentaciones
             panelVerificacion.Visible = false;
             panelCambiarContraseña.Visible = true;
             panelCambiarContraseña.BringToFront();
-        }
-
-        private void panelCorreo_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
