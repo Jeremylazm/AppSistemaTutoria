@@ -10,17 +10,12 @@ using System.Windows.Forms;
 
 using System.Net;
 using System.Net.Mail;
-using CapaEntidades;
-using CapaNegocios;
+using System.Data.SqlClient;
 
 namespace CapaPresentaciones
 {
     public partial class P_RecuperarContraseña : Form
     {
-
-        readonly E_Estudiante ObjEntidad = new E_Estudiante();
-        readonly N_Estudiante ObjNegocio = new N_Estudiante();
-
         public P_RecuperarContraseña()
         {
             InitializeComponent();

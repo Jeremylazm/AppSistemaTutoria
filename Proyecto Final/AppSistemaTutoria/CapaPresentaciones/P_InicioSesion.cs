@@ -85,5 +85,11 @@ namespace CapaPresentaciones
                 txtUsuario.Focus();
             }
         }
+
+        private void lblRecuperarContraseña_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            P_RecuperarContraseña RC = new P_RecuperarContraseña();
+            RC.ShowDialog();
+        }
     }
 }
