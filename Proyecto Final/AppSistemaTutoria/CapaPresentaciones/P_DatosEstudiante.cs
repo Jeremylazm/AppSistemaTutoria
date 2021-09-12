@@ -50,7 +50,8 @@ namespace CapaPresentaciones
 
         private void ValidarPerfil()
         {
-            if (imgPerfil.Image == Image.FromFile("C:/Users/Jeremylazm/Desktop/Documentos/AppSistemaTutoria/CapaPresentaciones/Iconos/Perfil Estudiante.png"))
+            string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
+            if (imgPerfil.Image == Image.FromFile(fullImagePath))
             {
                 btnRestablecerPerfil.Visible = false;
             }
@@ -258,7 +259,8 @@ namespace CapaPresentaciones
 
         private void btnRestablecerPerfil_Click(object sender, EventArgs e)
         {
-            imgPerfil.Image = Image.FromFile("C:/Users/Jeremylazm/Desktop/Documentos/AppSistemaTutoria/CapaPresentaciones/Iconos/Perfil Estudiante.png");
+            string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
+            imgPerfil.Image = Image.FromFile(fullImagePath);
         }
 
         #endregion
