@@ -259,7 +259,7 @@
             this.Separador10.Transparency = 255;
             this.Separador10.Vertical = false;
             // 
-            // txtIPersonal
+            // txtEFisico
             // 
             this.txtIPersonal.BackColor = System.Drawing.Color.White;
             this.txtIPersonal.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -271,6 +271,16 @@
             this.txtIPersonal.Name = "txtIPersonal";
             this.txtIPersonal.Size = new System.Drawing.Size(250, 60);
             this.txtIPersonal.TabIndex = 100;
+            // 
+            // lblIPersonal
+            // 
+            this.lblIPersonal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblIPersonal.Location = new System.Drawing.Point(15, 539);
+            this.lblIPersonal.Name = "lblIPersonal";
+            this.lblIPersonal.Size = new System.Drawing.Size(121, 51);
+            this.lblIPersonal.TabIndex = 99;
+            this.lblIPersonal.Text = "Información Personal:";
             // 
             // Separador7
             // 
