@@ -45,10 +45,6 @@ namespace CapaPresentaciones
                 {
                     N_InicioSesion InicioSesion = new N_InicioSesion();
 
-                    //
-                    //string DesPass = E_Criptografia.DesencriptarRSA(txtContraseña.Text, Key);
-                    //
-
                     var ValidarDatos = InicioSesion.IniciarSesion(txtUsuario.Text, txtContraseña.Text);
 
                     if (ValidarDatos == true)

@@ -7,18 +7,18 @@ GO
 /* ********************************************************************
 					    CREACIÓN DE LA BASE DE DATOS
    ******************************************************************** */
-/*IF EXISTS (SELECT * 
+IF EXISTS (SELECT * 
 				FROM SYSDATABASES
 				WHERE NAME = 'BDSistema_Tutoria')
 	DROP DATABASE BDSistema_Tutoria
 GO
 CREATE DATABASE BDSistema_Tutoria
-GO*/
+GO
 
-use db_a7878d_BDSistemaTutoria
+use BDSistema_Tutoria
 
 -- Crear tipos de datos para las claves primarias
-USE db_a7878d_BDSistemaTutoria
+USE BDSistema_Tutoria
 	EXEC SP_ADDTYPE tyCodEscuelaP,		'VARCHAR(4)', 'NOT NULL'
 	EXEC SP_ADDTYPE tyCodEstudiante,	'VARCHAR(6)', 'NOT NULL'
 	EXEC SP_ADDTYPE tyCodDocente,		'VARCHAR(7)', 'NOT NULL'
@@ -28,7 +28,7 @@ GO
 /* ********************************************************************
 					        CREACIÓN DE TABLAS
    ******************************************************************** */
-USE db_a7878d_BDSistemaTutoria
+USE BDSistema_Tutoria
 GO
 
 /* *************************** TABLA ESCUELA PROFESIONAL *************************** */
@@ -220,7 +220,7 @@ GO
 /* **************************************************************************************************
    ******************* FUNCIONES Y PROCEDIMIENTOS ALMACENADOS DE LA BASE DE DATOS********************
    ************************************************************************************************** */
-USE db_a7878d_BDSistemaTutoria
+USE BDSistema_Tutoria
 GO
 
 /* ************************** FUNCIÓN PARA GENERAR UNA CONTRASEÑA ************************** */
@@ -745,7 +745,7 @@ GO
 /* **************************************************************************************************
    ********************************** TRIGGERS DE LA BASE DE DATOS **********************************
    ************************************************************************************************** */
-USE db_a7878d_BDSistemaTutoria
+USE BDSistema_Tutoria
 GO
 
 /* *************************** TRIGGERS PARA LA TABLA ESCUELA PROFESIONAL *************************** */
@@ -2889,6 +2889,6 @@ GO
 /* **************************************************************************************************
    **************************** DML (LENGUAJE DE MANIPULACIÓN DE DATOS) *****************************
    ************************************************************************************************** */
-USE db_a7878d_BDSistemaTutoria
+USE BDSistema_Tutoria
 GO
 
