@@ -28,8 +28,7 @@ SELECT * FROM TTutoria
 SELECT * FROM Historial
 
 insert into TUsuario values (convert(varbinary(max), ''), '182906', '182906', 'Director de Escuela', '123')
-insert into TEstudiante values(convert(varbinary(max), ''), '12345', 'AP', 'AM', 'N', 'E', 'D', 'T', 'INIS', 'PR', 'TR', 'IP')
-insert into TUsuario values (convert(varbinary(max), ''), '12345', '12345', 'Estudiante', '12345')
+
 select * from TUsuario
 
 

@@ -45,12 +45,7 @@ namespace CapaPresentaciones
             dgvTabla.Columns[11].HeaderText = "Escuela Profesional";
             dgvTabla.Columns[12].HeaderText = "Persona de Ref.";
             dgvTabla.Columns[13].HeaderText = "Teléfono de Ref.";
-<<<<<<< HEAD
             dgvTabla.Columns[14].HeaderText = "Información Personal";
-=======
-            dgvTabla.Columns[14].HeaderText = "Estado Físico";
-            dgvTabla.Columns[15].HeaderText = "Estado Mental";
->>>>>>> parent of b13e99b (Merge branch 'denis' into main)
         }
 
         public void MostrarRegistros()
