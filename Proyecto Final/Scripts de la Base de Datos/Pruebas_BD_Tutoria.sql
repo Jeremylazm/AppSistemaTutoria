@@ -39,3 +39,22 @@ GO
 
 select * from TEstudiante
 
+
+
+
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA USUARIO ****************** */
+/*
+USE db_a7878d_BDSistemaTutoria
+GO
+*/
+/* Cambiar usuario */
+CREATE PROCEDURE spuCambiarContraseña    @Usuario VARCHAR(6),
+										 @NuevaContrasenia VARCHAR(200)				
+AS
+BEGIN
+	-- Actualizar un estudiante de la tabla de TEstudiante
+	UPDATE TUsuario
+		SET Contraseña = @NuevaContrasenia
+		WHERE Usuario = @Usuario
+END;
+GO
