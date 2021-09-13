@@ -113,5 +113,13 @@ namespace CapaPresentaciones
                 e.Value = HacerImagenCircular(imgSave);
             }
         }
+
+        private void btnNuevaSesion_Click(object sender, EventArgs e)
+        {
+            P_DatosTutoria NuevoRegistro = new P_DatosTutoria();
+            NuevoRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+            NuevoRegistro.ShowDialog();
+            NuevoRegistro.Dispose();
+        }
     }
 }
