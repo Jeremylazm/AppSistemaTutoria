@@ -1142,9 +1142,8 @@ BEGIN
 		DECLARE @PersonaReferencia VARCHAR(20);
 		DECLARE @TelefonoReferencia VARCHAR(15);
 		DECLARE @InformacionPersonal VARCHAR(200);
-		--DECLARE @EstadoFisico VARCHAR(40);
-		--DECLARE @EstadoMental VARCHAR(40);
 		DECLARE @CodDocente VARCHAR(5);
+		DECLARE @BinarioPerfil VARCHAR(11);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @Perfil = Perfil,
@@ -1171,10 +1170,10 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #INSERTED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','INSERT',@CodEstudiante,NULL, 
-					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
+					  ISNULL(CONVERT(VARCHAR(10), @Perfil, 2), 'POR DEFECTO') + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
 					  @Email + ' ; ' + @Direccion + ' ; ' + @Telefono + ' ; ' +
-					  @CodEscuelaP + ' ; ' + @PersonaReferencia + ' ; ' + 
-					  @TelefonoReferencia + ' ; ' + @InformacionPersonal + ' ; ' + @CodDocente); --@EstadoFisico + ' ; ' + @EstadoMental);
+					  @CodEscuelaP + ' ; ' + ISNULL(@PersonaReferencia, '') + ' ; ' + 
+					  ISNULL(@TelefonoReferencia, '') + ' ; ' + ISNULL(@InformacionPersonal, '') + ' ; ' + @CodDocente); --@EstadoFisico + ' ; ' + @EstadoMental);
 		
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
@@ -1265,10 +1264,10 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #DELETED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','DELETE',@CodEstudiante, 
-					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
+					  ISNULL(CONVERT(VARCHAR(10), @Perfil, 2), 'POR DEFECTO') + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
 					  @Email + ' ; ' + @Direccion + ' ; ' + @Telefono + ' ; ' +
-					  @CodEscuelaP + ' ; ' + @PersonaReferencia + ' ; ' + 
-					  @TelefonoReferencia + ' ; '+ @InformacionPersonal + ' ; ' + @CodDocente, NULL); --@EstadoFisico + ' ; ' + @EstadoMental,NULL);
+					  @CodEscuelaP + ' ; ' + ISNULL(@PersonaReferencia, '') + ' ; ' + 
+					  ISNULL(@TelefonoReferencia, '') + ' ; ' + ISNULL(@InformacionPersonal, '') + ' ; ' + @CodDocente, NULL); --@EstadoFisico + ' ; ' + @EstadoMental,NULL);
 		
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
@@ -1431,8 +1430,8 @@ BEGIN
 		-- Verificar si el cambio fue en Perfil
 		IF @PerfilAntes != @PerfilDespues
 		BEGIN
-			SET @ValorAnterior = CONVERT(VARCHAR(10), @PerfilAntes, 2);
-			SET @ValorPosterior = CONVERT(VARCHAR(10), @PerfilDespues, 2);
+			SET @ValorAnterior = ISNULL(CONVERT(VARCHAR(10), @PerfilAntes, 2), 'POR DEFCTO');
+			SET @ValorPosterior = ISNULL(CONVERT(VARCHAR(10), @PerfilDespues, 2), 'POR DEFECTO');
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -1566,8 +1565,8 @@ BEGIN
 		-- Verificar si el cambio fue en PersonaReferencia
 		IF @PersonaReferenciaAntes != @PersonaReferenciaDespues
 		BEGIN
-			SET @ValorAnterior = @PersonaReferenciaAntes;
-			SET @ValorPosterior = @PersonaReferenciaDespues;
+			SET @ValorAnterior = ISNULL(@PersonaReferenciaAntes, '');
+			SET @ValorPosterior = ISNULL(@PersonaReferenciaDespues, '');
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -1581,8 +1580,8 @@ BEGIN
 		-- Verificar si el cambio fue en TelefonoReferencia
 		IF @TelefonoReferenciaAntes != @TelefonoReferenciaDespues
 		BEGIN
-			SET @ValorAnterior = @TelefonoReferenciaAntes;
-			SET @ValorPosterior = @TelefonoReferenciaDespues;
+			SET @ValorAnterior = ISNULL(@TelefonoReferenciaAntes, '');
+			SET @ValorPosterior = ISNULL(@TelefonoReferenciaDespues, '');
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -1612,8 +1611,8 @@ BEGIN
 		--IF @EstadoMentalAntes != @EstadoMentalDespues
 		IF @InformacionPersonalAntes != @InformacionPersonalDespues
 		BEGIN
-			SET @ValorAnterior = @InformacionPersonalAntes; --@EstadoMentalAntes;
-			SET @ValorPosterior = @InformacionPersonalDespues; --@EstadoMentalDespues;
+			SET @ValorAnterior = ISNULL(@InformacionPersonalAntes, ''); --@EstadoMentalAntes;
+			SET @ValorPosterior = ISNULL(@InformacionPersonalDespues, ''); --@EstadoMentalDespues;
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -1725,10 +1724,10 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #INSERTED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','INSERT',@CodDocente,NULL, 
-					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
+					  ISNULL(CONVERT(VARCHAR(10), @Perfil, 2), 'POR DEFECTO') + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
 					  @Email + ' ; ' + @Direccion + ' ; ' + @Telefono + ' ; ' + 
 					  @Categoria + ' ; ' + @Subcategoria + ' ; ' + @Regimen + ' ; ' + 
-					  @CodEscuelaP + ' ; ' + @Horario);
+					  @CodEscuelaP + ' ; ' + ISNULL(@Horario, ''));
 		
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
@@ -1813,10 +1812,10 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #DELETED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','DELETE',@CodDocente, 
-					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
+					  ISNULL(CONVERT(VARCHAR(10), @Perfil, 2), 'POR DEFECTO') + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
 					  @Email + ' ; ' + @Direccion + ' ; ' + @Telefono + ' ; ' + 
 					  @Categoria + ' ; ' + @Subcategoria + ' ; ' + @Regimen + ' ; ' + 
-					  @CodEscuelaP + ' ; ' + @Horario,NULL);
+					  @CodEscuelaP + ' ; ' + ISNULL(@Horario, ''),NULL);
 		
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
@@ -1967,8 +1966,8 @@ BEGIN
 		-- Verificar si el cambio fue en Perfil
 		IF @PerfilAntes != @PerfilDespues
 		BEGIN
-			SET @ValorAnterior = CONVERT(VARCHAR(10), @PerfilAntes, 2);
-			SET @ValorPosterior = CONVERT(VARCHAR(10), @PerfilDespues, 2);
+			SET @ValorAnterior = ISNULL(CONVERT(VARCHAR(10), @PerfilAntes, 2), 'POR DEFECTO');
+			SET @ValorPosterior = ISNULL(CONVERT(VARCHAR(10), @PerfilDespues, 2), 'POR DEFECTO');
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -2147,8 +2146,8 @@ BEGIN
 		-- Verificar si el cambio fue en Horario
 		IF @HorarioAntes != @HorarioDespues
 		BEGIN
-			SET @ValorAnterior = @HorarioAntes;
-			SET @ValorPosterior = @HorarioDespues;
+			SET @ValorAnterior = ISNULL(@HorarioAntes, '');
+			SET @ValorPosterior = ISNULL(@HorarioDespues, '');
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -2468,7 +2467,8 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #INSERTED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TFichaTutoria','INSERT',@CodTutoria,NULL, 
-					  CAST(@Fecha AS VARCHAR) + ' ; ' + @Dimension + ' ; ' + @Descripcion + ' ; ' + @Referencia + ' ; ' + @Observaciones);
+					  CAST(@Fecha AS VARCHAR) + ' ; ' + @Dimension + ' ; ' + ISNULL(@Descripcion, '') + 
+					  ' ; ' + ISNULL(@Referencia, '') + ' ; ' + ISNULL(@Observaciones, ''));
 		
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
@@ -2532,7 +2532,8 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #DELETED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TFichaTutoria','DELETE',@CodTutoria,
-					  CAST(@Fecha AS VARCHAR) + ' ; ' + @Dimension + ' ; ' + @Descripcion + ' ; ' + @Referencia + ' ; ' + @Observaciones,NULL);
+					  CAST(@Fecha AS VARCHAR) + ' ; ' + @Dimension + ' ; ' + ISNULL(@Descripcion, '') + 
+					  ' ; ' + ISNULL(@Referencia, '') + ' ; ' + ISNULL(@Observaciones, ''),NULL);
 		
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
@@ -2686,8 +2687,8 @@ BEGIN
 		-- Verificar si el cambio fue en Descripcion
 		IF @DescripcionAntes != @DescripcionDespues
 		BEGIN
-			SET @ValorAnterior = @DescripcionAntes;
-			SET @ValorPosterior = @DescripcionDespues;
+			SET @ValorAnterior = ISNULL(@DescripcionAntes, '');
+			SET @ValorPosterior = ISNULL(@DescripcionDespues, '');
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -2701,8 +2702,8 @@ BEGIN
 		-- Verificar si el cambio fue en Referencia
 		IF @ReferenciaAntes != @ReferenciaDespues
 		BEGIN
-			SET @ValorAnterior = @ReferenciaAntes;
-			SET @ValorPosterior = @ReferenciaDespues;
+			SET @ValorAnterior = ISNULL(@ReferenciaAntes, '');
+			SET @ValorPosterior = ISNULL(@ReferenciaDespues, '');
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -2716,8 +2717,8 @@ BEGIN
 		-- Verificar si el cambio fue en Observaciones
 		IF @ObservacionesAntes != @ObservacionesDespues
 		BEGIN
-			SET @ValorAnterior = @ObservacionesAntes;
-			SET @ValorPosterior = @ObservacionesDespues;
+			SET @ValorAnterior = ISNULL(@ObservacionesAntes, '');
+			SET @ValorPosterior = ISNULL(@ObservacionesDespues, '');
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -2790,7 +2791,7 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #INSERTED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TUsuario','INSERT',@Usuario,NULL, 
-					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @Contraseña + ' ; ' + @Acceso + ' ; ' + @Datos);
+					  ISNULL(CONVERT(VARCHAR(10), @Perfil, 2), 'POR DEFECTO') + ' ; ' + @Contraseña + ' ; ' + @Acceso + ' ; ' + @Datos);
 		
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
@@ -2851,7 +2852,7 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #DELETED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TUsuario','DELETE',@Usuario,
-					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @Contraseña + ' ; ' + @Acceso + ' ; ' + @Datos,NULL);
+					  ISNULL(CONVERT(VARCHAR(10), @Perfil, 2), 'POR DEFECTO') + ' ; ' + @Contraseña + ' ; ' + @Acceso + ' ; ' + @Datos,NULL);
 		
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
@@ -2954,8 +2955,8 @@ BEGIN
 		-- Verificar si el cambio fue en Perfil
 		IF @PerfilAntes != @PerfilDespues
 		BEGIN
-			SET @ValorAnterior = CONVERT(VARCHAR(10), @PerfilAntes, 2);
-			SET @ValorPosterior = CONVERT(VARCHAR(10), @PerfilDespues, 2);
+			SET @ValorAnterior = ISNULL(CONVERT(VARCHAR(10), @PerfilAntes, 2), 'POR DEFECTO');
+			SET @ValorPosterior = ISNULL(CONVERT(VARCHAR(10), @PerfilDespues, 2), 'POR  DEFECTO');
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
