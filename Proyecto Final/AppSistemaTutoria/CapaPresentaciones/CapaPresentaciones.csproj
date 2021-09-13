@@ -151,7 +151,7 @@
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
-      <Private>True</Private>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -189,6 +189,12 @@
     </Compile>
     <Compile Include="P_Bienvenida.Designer.cs">
       <DependentUpon>P_Bienvenida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_CambiarContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_CambiarContraseña.Designer.cs">
+      <DependentUpon>P_CambiarContraseña.cs</DependentUpon>
     </Compile>
     <Compile Include="P_DatosDocente.cs">
       <SubType>Form</SubType>
@@ -274,6 +280,9 @@
     </Compile>
     <EmbeddedResource Include="P_Bienvenida.resx">
       <DependentUpon>P_Bienvenida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_CambiarContraseña.resx">
+      <DependentUpon>P_CambiarContraseña.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_DatosDocente.resx">
       <DependentUpon>P_DatosDocente.cs</DependentUpon>

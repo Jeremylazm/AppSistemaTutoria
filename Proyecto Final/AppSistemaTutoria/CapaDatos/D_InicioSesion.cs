@@ -34,10 +34,37 @@ namespace CapaDatos
                     E_InicioSesion.Acceso = LeerFilas.GetString(3);
                     E_InicioSesion.Datos = LeerFilas.GetString(4);
                 }
+                Conectar.Close();
                 return true;
             }
             else
+            {
+                Conectar.Close();
                 return false;
+            }
+        }
+        public bool ModificarRegistro(string Usuario, string Contraseña)
+        {
+            SqlCommand Comando = new SqlCommand("spuCambiarContraseña", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            Conectar.Open();
+            try
+            {
+                Comando.Parameters.AddWithValue("@Usuario", Usuario);
+                Comando.Parameters.AddWithValue("@NuevaContrasenia", Contraseña);
+                Comando.ExecuteNonQuery();
+                Conectar.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al cambiar la contraseña" + ex);
+
+                Conectar.Close();
+                return false;
+            }
         }
     }
 }

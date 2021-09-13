@@ -191,7 +191,12 @@ namespace CapaPresentaciones
 
         private void btnCambiarContraseña_Click(object sender, EventArgs e)
         {
-
+            P_CambiarContraseña NuevaContraseña = new P_CambiarContraseña {
+                Usuario = E_InicioSesion.Usuario,
+                Correo = E_InicioSesion.Usuario + "@unsaac.edu.pe"
+            };
+            NuevaContraseña.ShowDialog();
+            NuevaContraseña.Dispose();
         }
         #endregion
     }

@@ -10,9 +10,9 @@ GO
 /*IF EXISTS (SELECT * 
 				FROM SYSDATABASES
 				WHERE NAME = 'BDSistema_Tutoria')
-	DROP DATABASE BDSistema_Tutoria
+	DROP DATABASE db_a7878d_BDSistemaTutoria
 GO
-CREATE DATABASE BDSistema_Tutoria
+CREATE DATABASE db_a7878d_BDSistemaTutoria
 GO*/
 
 use db_a7878d_BDSistemaTutoria
@@ -185,7 +185,7 @@ CREATE TABLE TUsuario
 	-- Lista de atributos
 	Perfil VARBINARY(MAX) NOT NULL,
 	Usuario VARCHAR(6) NOT NULL,
-	Contrase�a VARCHAR(20) NOT NULL,
+	Contraseña VARCHAR(20) NOT NULL,
 	Acceso VARCHAR(20) NOT NULL,
 	Datos VARCHAR(53) NOT NULL,
 
@@ -230,7 +230,7 @@ AS
 	SELECT RAND() AS ValorAleatorio
 GO 
 
-CREATE FUNCTION fnGenerarContrase�a ()
+CREATE FUNCTION fnGenerarContraseña ()
 RETURNS VARCHAR(8)
 AS
 BEGIN
@@ -238,23 +238,23 @@ BEGIN
 	DECLARE @Indice INT;
     DECLARE @Contador INT;
     DECLARE @Caracteres VARCHAR(37);      
-    DECLARE @Contrase�a VARCHAR(8);
+    DECLARE @Contraseña VARCHAR(8);
 
 	-- Establecer los valores iniciales
 	SET @Contador = 0
-	SET @Caracteres = 'ABCDEFGHIJKLMN�OPQRSTUVWXYZ0123456789'
-	SET @Contrase�a = ''
+	SET @Caracteres = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789'
+	SET @Contraseña = ''
     
 	-- Tomar un �ndice aleatorio de los caracteres para generar una contrase�a
     WHILE (@Contador < 8)
     BEGIN
         SET @Indice = CEILING((SELECT ValorAleatorio FROM viAleatorio) * (LEN(@Caracteres)))
-        SET @Contrase�a = @Contrase�a + SUBSTRING(@Caracteres, @Indice, 1)
+        SET @Contraseña = @Contraseña + SUBSTRING(@Caracteres, @Indice, 1)
         SET @Contador = @Contador + 1
     END;
 
 	-- Retornar una contrase�a de 8 caracteres
-    RETURN (@Contrase�a);
+    RETURN (@Contraseña);
 END;
 GO
 
@@ -267,11 +267,11 @@ BEGIN
 	-- Declarar un contador
 	DECLARE @Contador INT;
 
-	-- Determinar el valor del contador con el valor m�ximo en la tabla TTutoria
+	-- Determinar el valor del contador con el valor maximo en la tabla TTutoria
 	SELECT @Contador = RIGHT(MAX(CodTutoria), 4) + 1
 		FROM TTutoria
 
-	-- Verificar si la tabla este vac�a
+	-- Verificar si la tabla este vacia
 	IF (@Contador IS NULL)
 	BEGIN
 		SET @Contador = 1
@@ -428,7 +428,7 @@ BEGIN
 
 	-- Insertar un usuario con el c�digo del estudiante en la tabla de TUsuario
 	INSERT INTO TUsuario
-		VALUES (@Perfil, @CodEstudiante, DBO.fnGenerarContrase�a(), 'Estudiante', 
+		VALUES (@Perfil, @CodEstudiante, DBO.fnGenerarContraseña(), 'Estudiante', 
 				@APaterno + ' ' + @AMaterno + ', ' + @Nombre)
 END;
 GO
@@ -559,7 +559,7 @@ BEGIN
 
 	-- Insertar un usuario con el c�digo del docente en la tabla de TUsuario
 	INSERT INTO TUsuario
-		VALUES (@Perfil, @CodDocente, DBO.fnGenerarContrase�a(), 'Docente', 
+		VALUES (@Perfil, @CodDocente, DBO.fnGenerarContraseña(), 'Docente', 
 				@APaterno + ' ' + @AMaterno + ', ' + @Nombre)
 END;
 GO
@@ -720,13 +720,13 @@ GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA USUARIO ****************** */
 
-CREATE PROCEDURE spuIniciarSesion @Usuario VARCHAR(6), @Contrase�a VARCHAR(20)
+CREATE PROCEDURE spuIniciarSesion @Usuario VARCHAR(6), @Contraseña VARCHAR(20)
 AS
 BEGIN
 	-- Seleccionar los datos del usuario v�lido
 	SELECT *
 		FROM TUsuario
-		WHERE Usuario = @Usuario AND Contrase�a = @Contrase�a
+		WHERE Usuario = @Usuario AND Contraseña = @Contraseña
 END;
 GO
 
@@ -767,14 +767,14 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el n�mero de tuplas de la tabla #INSERTED
+	-- Determinar el numero de tuplas de la tabla #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 
 	-- Recorrer las tuplas de la tabla #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estar�n los atributos de la tabla #INSERTED
+		-- Declarar variables donde estaran los atributos de la tabla #INSERTED
 		DECLARE @CodEscuelaP VARCHAR(4);
 		DECLARE @Nombre VARCHAR(40);
 
@@ -795,7 +795,7 @@ BEGIN
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el n�mero de tuplas
+		-- Actualizar el numero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 	END;
 END;
@@ -819,14 +819,14 @@ BEGIN
 		SELECT * 
 			FROM DELETED
 
-	-- Determinar el n�mero de tuplas de la tabla #DELETED
+	-- Determinar el numero de tuplas de la tabla #DELETED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estar�n los atributos de la tabla #DELETED
+		-- Declarar variables donde estaran los atributos de la tabla #DELETED
 		DECLARE @CodEscuelaP VARCHAR(4);
 		DECLARE @Nombre VARCHAR(40);
 
@@ -2600,7 +2600,7 @@ BEGIN
 	(
 		Perfil VARBINARY(MAX),
 		Usuario VARCHAR(6),
-		Contrase�a VARCHAR(20),
+		Contraseña VARCHAR(20),
 		Acceso VARCHAR(20),
 		Datos VARCHAR(53)
 	);
@@ -2620,14 +2620,14 @@ BEGIN
 		-- Declarar variables donde estar�n los atributos de la tabla #INSERTED
 		DECLARE @Perfil VARBINARY(MAX);
 		DECLARE @Usuario VARCHAR(6);
-		DECLARE @Contrase�a VARCHAR(20);
+		DECLARE @Contraseña VARCHAR(20);
 		DECLARE @Acceso VARCHAR(20);
 		DECLARE @Datos VARCHAR(53);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @Perfil = Perfil,
 			   @Usuario = Usuario,
-			   @Contrase�a = Contrase�a,
+			   @Contraseña = Contraseña,
 			   @Acceso = Acceso,
 			   @Datos = Datos
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
@@ -2639,7 +2639,7 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #INSERTED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TUsuario','INSERT',@Usuario,NULL, 
-					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @Contrase�a + ' ; ' + @Acceso + ' ; ' + @Datos);
+					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @Contraseña + ' ; ' + @Acceso + ' ; ' + @Datos);
 		
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
@@ -2661,7 +2661,7 @@ BEGIN
 	(
 		Perfil VARBINARY(MAX),
 		Usuario VARCHAR(6),
-		Contrase�a VARCHAR(20),
+		Contraseña VARCHAR(20),
 		Acceso VARCHAR(20),
 		Datos VARCHAR(53)
 	);
@@ -2681,14 +2681,14 @@ BEGIN
 		-- Declarar variables donde estar�n los atributos de la tabla #DELETED
 		DECLARE @Perfil VARBINARY(MAX);
 		DECLARE @Usuario VARCHAR(6);
-		DECLARE @Contrase�a VARCHAR(20);
+		DECLARE @Contraseña VARCHAR(20);
 		DECLARE @Acceso VARCHAR(20);
 		DECLARE @Datos VARCHAR(53);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @Perfil = Perfil,
 			   @Usuario = Usuario,
-			   @Contrase�a = Contrase�a,
+			   @Contraseña = Contraseña,
 			   @Acceso = Acceso,
 			   @Datos = Datos
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
@@ -2700,7 +2700,7 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #DELETED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TUsuario','DELETE',@Usuario,
-					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @Contrase�a + ' ; ' + @Acceso + ' ; ' + @Datos,NULL);
+					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @Contraseña + ' ; ' + @Acceso + ' ; ' + @Datos,NULL);
 		
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
@@ -2722,7 +2722,7 @@ BEGIN
 	(
 		Perfil VARBINARY(MAX),
 		Usuario VARCHAR(6),
-		Contrase�a VARCHAR(20),
+		Contraseña VARCHAR(20),
 		Acceso VARCHAR(20),
 		Datos VARCHAR(53)
 	);
@@ -2737,7 +2737,7 @@ BEGIN
 	(
 		Perfil VARBINARY(MAX),
 		Usuario VARCHAR(6),
-		Contrase�a VARCHAR(20),
+		Contraseña VARCHAR(20),
 		Acceso VARCHAR(20),
 		Datos VARCHAR(53)
 	);
@@ -2757,14 +2757,14 @@ BEGIN
 		-- Declarar variables donde estar�n los atributos de la tabla #DELETED (ANTES)
 		DECLARE @PerfilAntes VARBINARY(MAX);
 		DECLARE @UsuarioAntes VARCHAR(6);
-		DECLARE @Contrase�aAntes VARCHAR(20);
+		DECLARE @ContraseñaAntes VARCHAR(20);
 		DECLARE @AccesoAntes VARCHAR(20);
 		DECLARE @DatosAntes VARCHAR(53);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @PerfilAntes = Perfil,
 			   @UsuarioAntes = Usuario,
-			   @Contrase�aAntes = Contrase�a,
+			   @ContraseñaAntes = Contraseña,
 			   @AccesoAntes = Acceso,
 			   @DatosAntes = Datos
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
@@ -2772,14 +2772,14 @@ BEGIN
 		-- Declarar variables donde estar�n los atributos de la tabla #INSERTED (DESPU�S)
 		DECLARE @PerfilDespues VARBINARY(MAX);
 		DECLARE @UsuarioDespues VARCHAR(6);
-		DECLARE @Contrase�aDespues VARCHAR(20);
+		DECLARE @ContraseñaDespues VARCHAR(20);
 		DECLARE @AccesoDespues VARCHAR(20);
 		DECLARE @DatosDespues VARCHAR(53);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @PerfilDespues = Perfil,
 			   @UsuarioDespues = Usuario,
-			   @Contrase�aDespues = Contrase�a,
+			   @ContraseñaDespues = Contraseña,
 			   @AccesoDespues = Acceso,
 			   @DatosDespues = Datos
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
@@ -2831,10 +2831,10 @@ BEGIN
 		END;
 
 		-- Verificar si el cambio fue en Contrase�a
-		IF @Contrase�aAntes != @Contrase�aDespues
+		IF @ContraseñaAntes != @ContraseñaDespues
 		BEGIN
-			SET @ValorAnterior = @Contrase�aAntes;
-			SET @ValorPosterior = @Contrase�aDespues;
+			SET @ValorAnterior = @ContraseñaAntes;
+			SET @ValorPosterior = @ContraseñaDespues;
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
