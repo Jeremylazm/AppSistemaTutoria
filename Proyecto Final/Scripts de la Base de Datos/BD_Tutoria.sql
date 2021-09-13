@@ -11,9 +11,9 @@ GO
 				FROM SYSDATABASES
 				WHERE NAME = 'BDSistema_Tutoria')
 	DROP DATABASE db_a7878d_BDSistemaTutoria
-GO
-CREATE DATABASE db_a7878d_BDSistemaTutoria
 GO*/
+CREATE DATABASE db_a7878d_BDSistemaTutoria
+GO
 
 use db_a7878d_BDSistemaTutoria
 
@@ -45,38 +45,6 @@ CREATE TABLE TEscuela_Profesional
 
 	-- Determinar las claves 
 	PRIMARY KEY (CodEscuelaP)
-);
-GO
-
-/* *************************** TABLA ESTUDIANTE *************************** */
-IF EXISTS (SELECT * 
-				FROM SYSOBJECTS
-				WHERE NAME = 'TEstudiante')
-	DROP TABLE TEstudiante
-GO
-CREATE TABLE TEstudiante
-(
-	-- Lista de atributos
-	Perfil VARBINARY(MAX) NOT NULL,
-	CodEstudiante tyCodEstudiante,
-	APaterno VARCHAR(15) NOT NULL,
-	AMaterno VARCHAR(15) NOT NULL,
-	Nombre VARCHAR(20) NOT NULL,
-	Email VARCHAR(50) NOT NULL,
-	Direccion VARCHAR(50) NOT NULL,
-	Telefono VARCHAR(15) NOT NULL,
-	CodEscuelaP tyCodEscuelaP,
-	PersonaReferencia VARCHAR(20),
-	TelefonoReferencia VARCHAR(15),
-	InformacionPersonal VARCHAR(200), --Cifrado
-	--EstadoFisico VARCHAR(40),
-	--EstadoMental VARCHAR(40),
-
-	-- Determinar las claves 
-	PRIMARY KEY (CodEstudiante),
-	CONSTRAINT FK_CodEscuelaPE FOREIGN KEY (CodEscuelaP)
-		REFERENCES TEscuela_Profesional
-		ON UPDATE CASCADE
 );
 GO
 
@@ -120,6 +88,42 @@ CREATE TABLE TDocente
 		FOREIGN KEY (CodEscuelaP)
 		REFERENCES TEscuela_Profesional
 		ON UPDATE CASCADE
+);
+GO
+
+/* *************************** TABLA ESTUDIANTE *************************** */
+IF EXISTS (SELECT * 
+				FROM SYSOBJECTS
+				WHERE NAME = 'TEstudiante')
+	DROP TABLE TEstudiante
+GO
+CREATE TABLE TEstudiante
+(
+	-- Lista de atributos
+	Perfil VARBINARY(MAX) NOT NULL,
+	CodEstudiante tyCodEstudiante,
+	APaterno VARCHAR(15) NOT NULL,
+	AMaterno VARCHAR(15) NOT NULL,
+	Nombre VARCHAR(20) NOT NULL,
+	Email VARCHAR(50) NOT NULL,
+	Direccion VARCHAR(50) NOT NULL,
+	Telefono VARCHAR(15) NOT NULL,
+	CodEscuelaP tyCodEscuelaP,
+	PersonaReferencia VARCHAR(20),
+	TelefonoReferencia VARCHAR(15),
+	InformacionPersonal VARCHAR(200), --Cifrado
+	CodDocente VARCHAR(5), -- Tutor
+	--EstadoFisico VARCHAR(40),
+	--EstadoMental VARCHAR(40),
+
+	-- Determinar las claves 
+	PRIMARY KEY (CodEstudiante),
+	CONSTRAINT FK_CodEscuelaPE FOREIGN KEY (CodEscuelaP)
+		REFERENCES TEscuela_Profesional
+		ON UPDATE CASCADE,
+	CONSTRAINT FK_Tutor FOREIGN KEY (CodDocente)
+		REFERENCES TDocente
+		ON UPDATE NO ACTION
 );
 GO
 
@@ -297,7 +301,7 @@ GO
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ESTUDIANTE ****************** */
 
 -- Crear un procedimiento para mostrar estudiantes
-CREATE PROCEDURE spuMostrarEstudiantes
+CREATE PROCEDURE spuMostrarEstudiantes @CodEscuelaP VARCHAR(4)
 AS
 BEGIN
 	-- Mostrar la tabla de TEstudiante
@@ -308,35 +312,46 @@ BEGIN
 		   ET.Email, ET.Direccion, ET.Telefono, ET.CodEscuelaP,
 		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia, 
 		   --ET.TelefonoReferencia, ET.EstadoFisico, ET.EstadoMental
-		   ET.TelefonoReferencia, ET.InformacionPersonal
+		   ET.TelefonoReferencia, ET.InformacionPersonal, CodTutor = ET.CodDocente
 		FROM TEstudiante ET INNER JOIN TEscuela_Profesional EP ON
 			 ET.CodEscuelaP = EP.CodEscuelaP
+	    WHERE EP.CodEscuelaP = @CodEscuelaP
 END;
 GO
 
--- Crear un procedimiento para mostrar estudiantes
-CREATE PROCEDURE spuMostrarTutorados @CodDocente VARCHAR(5)
+-- Crear un procedimiento para mostrar estudiantes sin tutor
+CREATE PROCEDURE spuMostrarEstudiantesSinTutor @CodEscuelaP VARCHAR(4),
+											   @Filas INT
 AS
 BEGIN
 	-- Mostrar la tabla de TEstudiante
+	SELECT TOP(@Filas) ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre
+		FROM TEstudiante ET, TEscuela_Profesional EP
+		WHERE ET.CodEscuelaP = EP.CodEscuelaP AND ET.CodEscuelaP = @CodEscuelaP AND ET.CodDocente IS NULL
+END;
+GO
+
+-- Crear un procedimiento para buscar un estudiante.
+CREATE PROCEDURE spuBuscarEstudiante @CodEstudiante VARCHAR(6)
+AS
+BEGIN
+	-- Mostrar la tabla de TEstudiante por el texto que se desea buscar
 	SELECT Perfil1 = ET.Perfil, Perfil2 = ET.Perfil, ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre,
 		   Estudiante = (ET.APaterno + ' ' + 
 						 ET.AMaterno + ', ' + 
 						 ET.Nombre),
 		   ET.Email, ET.Direccion, ET.Telefono, ET.CodEscuelaP,
 		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia, 
-		   --ET.TelefonoReferencia, ET.EstadoFisico, ET.EstadoMental
-		   ET.TelefonoReferencia, ET.InformacionPersonal
-		FROM ((TTutoria T INNER JOIN TEstudiante ET ON 
-			 T.CodEstudiante = ET.CodEstudiante) INNER JOIN 
-			 TEscuela_Profesional EP ON ET.CodEscuelaP = EP.CodEscuelaP)
-			 INNER JOIN TDocente D ON T.CodDocente = D.CodDocente
-		WHERE T.CodDocente = @CodDocente
+		   ET.TelefonoReferencia, ET.InformacionPersonal, CodTutor = ET.CodDocente
+		FROM TEstudiante ET INNER JOIN TEscuela_Profesional EP ON
+			 ET.CodEscuelaP = EP.CodEscuelaP
+		WHERE ET.CodEstudiante = @CodEstudiante
 END;
 GO
 
 -- Crear un procedimiento para buscar estudiantes por cualquier atributo
-CREATE PROCEDURE spuBuscarEstudiantes @Texto VARCHAR(20)
+CREATE PROCEDURE spuBuscarEstudiantes @CodEscuelaP VARCHAR(4),
+									  @Texto VARCHAR(20)
 AS
 BEGIN
 	-- Mostrar la tabla de TEstudiante por el texto que se desea buscar
@@ -347,7 +362,7 @@ BEGIN
 		   ET.Email, ET.Direccion, ET.Telefono, ET.CodEscuelaP,
 		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia, 
 		   --ET.TelefonoReferencia, ET.EstadoFisico, ET.EstadoMental
-		   ET.TelefonoReferencia, ET.InformacionPersonal
+		   ET.TelefonoReferencia, ET.InformacionPersonal, CodTutor = ET.CodDocente
 		FROM TEstudiante ET INNER JOIN TEscuela_Profesional EP ON
 			 ET.CodEscuelaP = EP.CodEscuelaP
 		WHERE ET.CodEstudiante LIKE (@Texto + '%') OR
@@ -363,43 +378,23 @@ BEGIN
 			  --ET.EstadoFisico LIKE (@Texto + '%') OR
 			  --ET.EstadoMental LIKE (@Texto + '%')
 			  ET.InformacionPersonal LIKE (@Texto + '%')
-
 END;
 GO
 
--- Crear un procedimiento para buscar estudiantes por cualquier atributo
-CREATE PROCEDURE spuBuscarTutorados @CodDocente VARCHAR(5),
-									@Texto VARCHAR(20)
+-- Crear un procedimiento para buscar estudiantes sin tutor por cualquier atributo
+CREATE PROCEDURE spuBuscarEstudiantesSinTutor @CodEscuelaP VARCHAR(4),
+										      @Texto VARCHAR(20),
+											  @Filas INT
 AS
 BEGIN
 	-- Mostrar la tabla de TEstudiante por el texto que se desea buscar
-	SELECT Perfil1 = ET.Perfil, Perfil2 = ET.Perfil, ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre,
-		   Estudiante = (ET.APaterno + ' ' + 
-						 ET.AMaterno + ', ' + 
-						 ET.Nombre),
-		   ET.Email, ET.Direccion, ET.Telefono, ET.CodEscuelaP,
-		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia, 
-		   --ET.TelefonoReferencia, ET.EstadoFisico, ET.EstadoMental
-		   ET.TelefonoReferencia, ET.InformacionPersonal
-		FROM ((TTutoria T INNER JOIN TEstudiante ET ON 
-			 T.CodEstudiante = ET.CodEstudiante) INNER JOIN 
-			 TEscuela_Profesional EP ON ET.CodEscuelaP = EP.CodEscuelaP)
-			 INNER JOIN TDocente D ON T.CodDocente = D.CodDocente
-		WHERE T.CodDocente = @CodDocente AND 
-			  ET.CodEstudiante LIKE (@Texto + '%') OR
+	SELECT TOP(@Filas) ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre
+		FROM TEstudiante ET, TEscuela_Profesional EP
+		WHERE ET.CodEscuelaP = EP.CodEscuelaP AND ET.CodDocente IS NULL AND
+			 (ET.CodEstudiante LIKE (@Texto + '%') OR
 			  ET.APaterno LIKE (@Texto + '%') OR
 			  ET.AMaterno LIKE (@Texto + '%') OR
-			  ET.Nombre LIKE (@Texto + '%') OR
-			  ET.Email LIKE (@Texto + '%') OR
-			  ET.Direccion LIKE (@Texto + '%') OR
-			  ET.Telefono LIKE (@Texto + '%') OR
-			  EP.Nombre LIKE (@Texto + '%') OR
-			  ET.PersonaReferencia LIKE (@Texto + '%') OR
-			  ET.TelefonoReferencia LIKE (@Texto + '%') OR
-			  --ET.EstadoFisico LIKE (@Texto + '%') OR
-			  --ET.EstadoMental LIKE (@Texto + '%')
-			  ET.InformacionPersonal LIKE (@Texto + '%')
-
+			  ET.Nombre LIKE (@Texto + '%'))
 END;
 GO
 
@@ -424,7 +419,7 @@ BEGIN
 	INSERT INTO TEstudiante
 		VALUES (@Perfil, @CodEstudiante, @APaterno, @AMaterno, @Nombre, @Email, 
 				@Direccion, @Telefono, @CodEscuelaP, @PersonaReferencia, 
-				@TelefonoReferencia, @InformacionPersonal)--@EstadoFisico, @EstadoMental)
+				@TelefonoReferencia, @InformacionPersonal, NULL)--@EstadoFisico, @EstadoMental)
 
 	-- Insertar un usuario con el c�digo del estudiante en la tabla de TUsuario
 	INSERT INTO TUsuario
@@ -487,10 +482,33 @@ BEGIN
 END;
 GO
 
+-- Crear un procedimiento para asignar un tutor a un estudiante
+CREATE PROCEDURE spuAsignarTutor @CodEstudiante VARCHAR(6),
+								 @CodDocente VARCHAR(5)
+AS
+BEGIN
+	-- Actualizar un estudiante de la tabla de TEstudiante
+	UPDATE TEstudiante
+		SET CodDocente = @CodDocente
+		WHERE CodEstudiante = @CodEstudiante
+END;
+GO
+
+-- Crear un procedimiento para eliminar el tutor de un estudiante
+CREATE PROCEDURE spuEliminarTutor @CodEstudiante VARCHAR(6)
+AS
+BEGIN
+	-- Actualizar un estudiante de la tabla de TEstudiante
+	UPDATE TEstudiante
+		SET CodDocente = NULL
+		WHERE CodEstudiante = @CodEstudiante
+END;
+GO
+
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA DOCENTE ****************** */
 
 -- Crear un procedimiento para mostrar docentes
-CREATE PROCEDURE spuMostrarDocentes
+CREATE PROCEDURE spuMostrarDocentes @CodEscuelaP VARCHAR(4)
 AS
 BEGIN
 	-- Mostrar la tabla de TDocente
@@ -503,11 +521,47 @@ BEGIN
 		   EscuelaProfesional = E.Nombre, D.Horario
 		FROM TDocente D INNER JOIN TEscuela_Profesional E ON
 			 D.CodEscuelaP = E.CodEscuelaP
+	    WHERE D.CodEscuelaP = @CodEscuelaP
 END;
 GO
 
--- Crear un procedimiento para buscar docentes por cualquier atributo
-CREATE PROCEDURE spuBuscarDocentes @Texto VARCHAR(20)
+-- Crear un procedimiento para mostrar tutores
+CREATE PROCEDURE spuMostrarTutores @CodEscuelaP VARCHAR(4)
+AS
+BEGIN
+	-- Mostrar la tabla de Tutores
+	SELECT D.CodDocente, D.APaterno, D.AMaterno, D.Nombre, TotalTutorados = COUNT(TE.CodDocente)
+		FROM ((TDocente D INNER JOIN TEscuela_Profesional E ON
+			   D.CodEscuelaP = E.CodEscuelaP) LEFT JOIN TEstudiante TE ON
+			   D.CodDocente = TE.CodDocente)
+		WHERE D.CodEscuelaP = @CodEscuelaP AND D.Subcategoria IN ('PRINCIPAL','ASOCIADO','AUXILIAR','A1','A2','A3') AND D.Regimen IN ('TIEMPO COMPLETO','DEDICACIÓN EXCLUSIVA')
+		GROUP BY D.CodDocente, D.APaterno, D.AMaterno, D.Nombre
+END;
+GO
+
+-- Crear un procedimiento para mostrar tutorados
+CREATE PROCEDURE spuMostrarTutorados @CodDocente VARCHAR(5)
+AS
+BEGIN
+	-- Mostrar la tabla de TEstudiante
+	SELECT Perfil1 = ET.Perfil, Perfil2 = ET.Perfil, ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre,
+		   Estudiante = (ET.APaterno + ' ' + 
+						 ET.AMaterno + ', ' + 
+						 ET.Nombre),
+		   ET.Email, ET.Direccion, ET.Telefono, ET.CodEscuelaP,
+		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia, 
+		   --ET.TelefonoReferencia, ET.EstadoFisico, ET.EstadoMental
+		   ET.TelefonoReferencia, ET.InformacionPersonal, CodTutor = ET.CodDocente
+		FROM ((TTutoria T INNER JOIN TEstudiante ET ON 
+			 T.CodEstudiante = ET.CodEstudiante) INNER JOIN 
+			 TEscuela_Profesional EP ON ET.CodEscuelaP = EP.CodEscuelaP)
+			 INNER JOIN TDocente D ON T.CodDocente = D.CodDocente
+		WHERE T.CodDocente = @CodDocente AND ET.CodDocente = @CodDocente
+END;
+GO
+
+-- Crear un procedimiento para buscar un docente
+CREATE PROCEDURE spuBuscarDocente @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Mostrar la tabla de TDocente por el texto que se desea buscar
@@ -520,7 +574,27 @@ BEGIN
 		   EscuelaProfesional = E.Nombre, D.Horario
 		FROM TDocente D INNER JOIN TEscuela_Profesional E ON
 			 D.CodEscuelaP = E.CodEscuelaP
-		WHERE D.CodDocente LIKE (@Texto + '%') OR
+		WHERE D.CodDocente = @CodDocente
+END;
+GO
+
+-- Crear un procedimiento para buscar docentes por cualquier atributo
+CREATE PROCEDURE spuBuscarDocentes @CodEscuelaP VARCHAR(4),
+								   @Texto VARCHAR(20)
+AS
+BEGIN
+	-- Mostrar la tabla de TDocente por el texto que se desea buscar
+	SELECT Perfil1 = D.Perfil, Perfil2 = D.Perfil, D.CodDocente, D.APaterno, D.AMaterno, D.Nombre, 
+		   Docente = (D.APaterno + ' ' + 
+					  D.AMaterno + ', ' + 
+					  D.Nombre),
+		   D.Email, D.Direccion, D.Telefono,
+		   D.Categoria, D.Subcategoria, D.Regimen, D.CodEscuelaP,
+		   EscuelaProfesional = E.Nombre, D.Horario
+		FROM TDocente D INNER JOIN TEscuela_Profesional E ON
+			 D.CodEscuelaP = E.CodEscuelaP
+		WHERE D.CodEscuelaP = @CodEscuelaP AND
+			 (D.CodDocente LIKE (@Texto + '%') OR
 			  D.APaterno LIKE (@Texto + '%') OR
 			  D.AMaterno LIKE (@Texto + '%') OR
 			  D.Nombre LIKE (@Texto + '%') OR
@@ -531,7 +605,58 @@ BEGIN
 			  D.Subcategoria LIKE (@Texto + '%') OR
 			  D.Regimen LIKE (@Texto + '%') OR
 			  E.Nombre LIKE (@Texto + '%') OR
-			  D.Horario LIKE (@Texto + '%')
+			  D.Horario LIKE (@Texto + '%'))
+END;
+GO
+
+-- Crear un procedimiento para buscar un tutor
+CREATE PROCEDURE spuBuscarTutor @CodEscuelaP VARCHAR(4),
+							    @Texto VARCHAR(20)
+AS
+BEGIN
+	-- Mostrar la tabla de Tutores
+	SELECT D.CodDocente, D.APaterno, D.AMaterno, D.Nombre, TotalTutorados = COUNT(TE.CodDocente)
+		FROM ((TDocente D INNER JOIN TEscuela_Profesional E ON
+			   D.CodEscuelaP = E.CodEscuelaP) LEFT JOIN TEstudiante TE ON
+			   D.CodDocente = TE.CodDocente)
+		WHERE D.CodEscuelaP = @CodEscuelaP AND D.Subcategoria IN ('PRINCIPAL','ASOCIADO','AUXILIAR','A1','A2','A3') AND D.Regimen IN ('TIEMPO COMPLETO','DEDICACIÓN EXCLUSIVA') AND
+		     (D.CodDocente LIKE (@Texto + '%') OR
+			  D.APaterno LIKE (@Texto + '%') OR
+			  D.AMaterno LIKE (@Texto + '%') OR
+			  D.Nombre LIKE (@Texto + '%'))
+		GROUP BY D.CodDocente, D.APaterno, D.AMaterno, D.Nombre
+END;
+GO
+
+-- Crear un procedimiento para buscar estudiantes por cualquier atributo
+CREATE PROCEDURE spuBuscarTutorados @CodDocente VARCHAR(5),
+									@Texto VARCHAR(20),
+									@Filas INT
+AS
+BEGIN
+	-- Mostrar la tabla de TEstudiante por el texto que se desea buscar
+	SELECT TOP(@Filas) Perfil1 = ET.Perfil, Perfil2 = ET.Perfil, ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre,
+		   Estudiante = (ET.APaterno + ' ' + 
+						 ET.AMaterno + ', ' + 
+						 ET.Nombre),
+		   ET.Email, ET.Direccion, ET.Telefono, ET.CodEscuelaP,
+		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia, 
+		   --ET.TelefonoReferencia, ET.EstadoFisico, ET.EstadoMental
+		   ET.TelefonoReferencia, ET.InformacionPersonal, CodTutor = ET.CodDocente
+		FROM TEstudiante ET, TEscuela_Profesional EP
+		WHERE ET.CodEscuelaP = EP.CodEscuelaP AND ET.CodDocente = @CodDocente AND
+			 (ET.CodEstudiante LIKE (@Texto + '%') OR
+			  ET.APaterno LIKE (@Texto + '%') OR
+			  ET.AMaterno LIKE (@Texto + '%') OR
+			  ET.Nombre LIKE (@Texto + '%') OR
+			  ET.Email LIKE (@Texto + '%') OR
+			  ET.Direccion LIKE (@Texto + '%') OR
+			  ET.Telefono LIKE (@Texto + '%') OR
+			  ET.PersonaReferencia LIKE (@Texto + '%') OR
+			  ET.TelefonoReferencia LIKE (@Texto + '%') OR
+			  --ET.EstadoFisico LIKE (@Texto + '%') OR
+			  --ET.EstadoMental LIKE (@Texto + '%')
+			  ET.InformacionPersonal LIKE (@Texto + '%'))
 END;
 GO
 
@@ -986,9 +1111,10 @@ BEGIN
 		CodEscuelaP VARCHAR(4),
 		PersonaReferencia VARCHAR(20),
 		TelefonoReferencia VARCHAR(15),
-		InformacionPersonal VARCHAR(200)
+		InformacionPersonal VARCHAR(200),
 		--EstadoFisico VARCHAR(40),
-		--EstadoMental VARCHAR(40)
+		--EstadoMental VARCHAR(40),
+		CodDocente VARCHAR(5)
 	);
 
 	-- Copiar la tabla INSERTED en la tabla temporal #INSERTED
@@ -1018,6 +1144,7 @@ BEGIN
 		DECLARE @InformacionPersonal VARCHAR(200);
 		--DECLARE @EstadoFisico VARCHAR(40);
 		--DECLARE @EstadoMental VARCHAR(40);
+		DECLARE @CodDocente VARCHAR(5);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @Perfil = Perfil,
@@ -1031,9 +1158,10 @@ BEGIN
 			   @CodEscuelaP = CodEscuelaP,
 			   @PersonaReferencia = PersonaReferencia,
 			   @TelefonoReferencia = TelefonoReferencia,
-			   @InformacionPersonal = InformacionPersonal
+			   @InformacionPersonal = InformacionPersonal,
 			   --@EstadoFisico = EstadoFisico,
-			   --@EstadoMental = EstadoMental
+			   --@EstadoMental = EstadoMental,
+			   @CodDocente = CodDocente
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
 
 		---- Determinar el IdHistorial
@@ -1046,7 +1174,7 @@ BEGIN
 					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
 					  @Email + ' ; ' + @Direccion + ' ; ' + @Telefono + ' ; ' +
 					  @CodEscuelaP + ' ; ' + @PersonaReferencia + ' ; ' + 
-					  @TelefonoReferencia + @InformacionPersonal); --@EstadoFisico + ' ; ' + @EstadoMental);
+					  @TelefonoReferencia + ' ; ' + @InformacionPersonal + ' ; ' + @CodDocente); --@EstadoFisico + ' ; ' + @EstadoMental);
 		
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
@@ -1077,9 +1205,10 @@ BEGIN
 		CodEscuelaP VARCHAR(4),
 		PersonaReferencia VARCHAR(20),
 		TelefonoReferencia VARCHAR(15),
-		InformacionPersonal VARCHAR(200)
+		InformacionPersonal VARCHAR(200),
 		--EstadoFisico VARCHAR(40),
-		--EstadoMental VARCHAR(40)
+		--EstadoMental VARCHAR(40),
+		CodDocente VARCHAR(5)
 	);
 
 	-- Copiar la tabla DELETED en la tabla temporal #DELETED
@@ -1109,6 +1238,7 @@ BEGIN
 		DECLARE @InformacionPersonal VARCHAR(200);
 		--DECLARE @EstadoFisico VARCHAR(40);
 		--DECLARE @EstadoMental VARCHAR(40);
+		DECLARE @CodDocente VARCHAR(5);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @Perfil = Perfil,
@@ -1122,9 +1252,10 @@ BEGIN
 			   @CodEscuelaP = CodEscuelaP,
 			   @PersonaReferencia = PersonaReferencia,
 			   @TelefonoReferencia = TelefonoReferencia,
-			   @InformacionPersonal = InformacionPersonal
+			   @InformacionPersonal = InformacionPersonal,
 			   --@EstadoFisico = EstadoFisico,
-			   --@EstadoMental = EstadoMental
+			   --@EstadoMental = EstadoMental,
+			   @CodDocente = CodDocente
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
 		---- Determinar el IdHistorial
@@ -1137,7 +1268,7 @@ BEGIN
 					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
 					  @Email + ' ; ' + @Direccion + ' ; ' + @Telefono + ' ; ' +
 					  @CodEscuelaP + ' ; ' + @PersonaReferencia + ' ; ' + 
-					  @TelefonoReferencia + ' ; '+ @InformacionPersonal,NULL); --@EstadoFisico + ' ; ' + @EstadoMental,NULL);
+					  @TelefonoReferencia + ' ; '+ @InformacionPersonal + ' ; ' + @CodDocente, NULL); --@EstadoFisico + ' ; ' + @EstadoMental,NULL);
 		
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
@@ -1168,9 +1299,10 @@ BEGIN
 		CodEscuelaP VARCHAR(4),
 		PersonaReferencia VARCHAR(20),
 		TelefonoReferencia VARCHAR(15),
-		InformacionPersonal VARCHAR(200)
+		InformacionPersonal VARCHAR(200),
 		--EstadoFisico VARCHAR(40),
-		--EstadoMental VARCHAR(40)
+		--EstadoMental VARCHAR(40),
+		CodDocente VARCHAR(5)
 	);
 
 	-- Copiar la tabla DELETED en la tabla temporal #DELETED
@@ -1192,9 +1324,10 @@ BEGIN
 		CodEscuelaP VARCHAR(4),
 		PersonaReferencia VARCHAR(20),
 		TelefonoReferencia VARCHAR(15),
-		InformacionPersonal VARCHAR(200)
+		InformacionPersonal VARCHAR(200),
 		--EstadoFisico VARCHAR(40),
-		--EstadoMental VARCHAR(40)
+		--EstadoMental VARCHAR(40),
+		CodDocente VARCHAR(5)
 	);
 
 	-- Copiar la tabla INSERTED en la tabla temporal #INSERTED
@@ -1224,6 +1357,7 @@ BEGIN
 		DECLARE @InformacionPersonalAntes VARCHAR(200);
 		--DECLARE @EstadoFisicoAntes VARCHAR(40);
 		--DECLARE @EstadoMentalAntes VARCHAR(40);
+		DECLARE @CodDocenteAntes VARCHAR(5);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @PerfilAntes = Perfil,
@@ -1237,9 +1371,10 @@ BEGIN
 			   @CodEscuelaPAntes = CodEscuelaP,
 			   @PersonaReferenciaAntes = PersonaReferencia,
 			   @TelefonoReferenciaAntes = TelefonoReferencia,
-			   @InformacionPersonalAntes = InformacionPersonal
+			   @InformacionPersonalAntes = InformacionPersonal,
 			   --@EstadoFisicoAntes = EstadoFisico,
-			   --@EstadoMentalAntes = EstadoMental
+			   --@EstadoMentalAntes = EstadoMental,
+			   @CodDocenteAntes = CodDocente
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
 		-- Declarar variables donde estar�n los atributos de la tabla #INSERTED (DESPU�S)
@@ -1255,9 +1390,9 @@ BEGIN
 		DECLARE @PersonaReferenciaDespues VARCHAR(4);
 		DECLARE @TelefonoReferenciaDespues VARCHAR(4);
 		DECLARE @InformacionPersonalDespues VARCHAR(200);
-
 		--DECLARE @EstadoFisicoDespues VARCHAR(40);
 		--DECLARE @EstadoMentalDespues VARCHAR(40);
+		DECLARE @CodDocenteDespues VARCHAR(5);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @PerfilDespues = Perfil,
@@ -1271,9 +1406,10 @@ BEGIN
 			   @CodEscuelaPDespues = CodEscuelaP,
 			   @PersonaReferenciaDespues = PersonaReferencia,
 			   @TelefonoReferenciaDespues = TelefonoReferencia,
-			   @InformacionPersonalDespues = InformacionPersonal
+			   @InformacionPersonalDespues = InformacionPersonal,
 			   --@EstadoFisicoDespues = EstadoFisico,
-			   --@EstadoMentalDespues = EstadoMental
+			   --@EstadoMentalDespues = EstadoMental,
+			   @CodDocenteDespues = CodDocente
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
 
 		---- Determinar el IdHistorial
@@ -1478,6 +1614,21 @@ BEGIN
 		BEGIN
 			SET @ValorAnterior = @InformacionPersonalAntes; --@EstadoMentalAntes;
 			SET @ValorPosterior = @InformacionPersonalDespues; --@EstadoMentalDespues;
+
+			-- Insertar a la tabla Historial, la tupla con el cambio realizado
+			INSERT INTO Historial
+			   VALUES(GETDATE(),'TEstudiante','UPDATE',@CodEstudianteAntes,
+			          @ValorAnterior,@ValorPosterior);
+
+			---- Incrementar el IdHistorial en 1
+			--SET @IdHistorial = @IdHistorial + 1;
+		END;
+
+		-- Verificar si el cambio fue en CodTutor
+		IF @CodDocenteAntes != @CodDocenteDespues
+		BEGIN
+			SET @ValorAnterior = @CodDocenteAntes;
+			SET @ValorPosterior = @CodDocenteDespues;
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
