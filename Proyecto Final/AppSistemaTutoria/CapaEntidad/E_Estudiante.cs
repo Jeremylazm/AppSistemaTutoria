@@ -19,5 +19,3 @@ namespace CapaEntidades
         public string CodDocente { get; set; }
     }
 }
-    }
-}

@@ -229,7 +229,7 @@ namespace CapaPresentaciones
 
         private void btnInformeTutorias_Click(object sender, EventArgs e)
         {
-            AbrirFormularios<P_InformeTutorias>();
+            //AbrirFormularios<P_InformeTutorias>();
         }
 
         private void btnTutores_Click(object sender, EventArgs e)
