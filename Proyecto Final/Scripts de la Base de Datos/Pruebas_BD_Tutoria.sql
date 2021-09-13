@@ -1,4 +1,4 @@
-USE BDSistema_Tutoria
+USE db_a7878d_BDSistemaTutoria
 GO
 
 INSERT INTO TEscuela_Profesional VALUES('INIS','INGENIERÍA INFORMÁTICA Y DE SISTEMAS');
@@ -58,3 +58,15 @@ BEGIN
 		WHERE Usuario = @Usuario
 END;
 GO
+
+CREATE PROCEDURE spuRetornarContraseña    @Usuario VARCHAR(6)			
+AS
+BEGIN
+	-- Actualizar un estudiante de la tabla de TEstudiante
+	SELECT Contraseña
+		FROM TUsuario
+		WHERE Usuario = @Usuario
+END;
+GO
+
+EXEC spuRetornarContraseña '182916'

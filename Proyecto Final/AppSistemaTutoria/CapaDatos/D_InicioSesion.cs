@@ -28,7 +28,10 @@ namespace CapaDatos
             {
                 while (LeerFilas.Read())
                 {
-                    E_InicioSesion.Perfil = (byte[])LeerFilas.GetValue(0);
+                    if (LeerFilas.GetValue(0).GetType() == Type.GetType("System.DBNull"))
+                        E_InicioSesion.Perfil = null;
+                    else
+                        E_InicioSesion.Perfil = (byte[])LeerFilas.GetValue(0);
                     E_InicioSesion.Usuario = LeerFilas.GetString(1);
                     E_InicioSesion.Contraseña = LeerFilas.GetString(2);
                     E_InicioSesion.Acceso = LeerFilas.GetString(3);
@@ -64,6 +67,32 @@ namespace CapaDatos
 
                 Conectar.Close();
                 return false;
+            }
+        }
+
+        public string RetornarContrasena(string Usuario)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuRetornarContraseña", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            Conectar.Open();
+            try
+            {
+                Comando.Parameters.AddWithValue("@Usuario", Usuario);
+
+                SqlDataAdapter Data = new SqlDataAdapter(Comando);
+                Data.Fill(Resultado);
+                Conectar.Close();
+                return Resultado.Rows[0].ItemArray[0].ToString();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al cambiar la contraseña" + ex);
+
+                Conectar.Close();
+                return null;
             }
         }
     }

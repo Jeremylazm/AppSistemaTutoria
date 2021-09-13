@@ -30,7 +30,7 @@ namespace CapaDatos
 
             foreach (DataRow Fila in Resultado.Rows)
             {
-                if ((byte[])Fila["Perfil2"] == null)
+                if (Fila["Perfil2"].GetType() == Type.GetType("System.DBNull"))
                 {
                     string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
                     using (MemoryStream MemoriaPerfil = new MemoryStream())
@@ -78,7 +78,7 @@ namespace CapaDatos
 
             foreach (DataRow Fila in Resultado.Rows)
             {
-                if ((byte[])Fila["Perfil2"] == null)
+                if (Fila["Perfil2"].GetType() == Type.GetType("System.DBNull"))
                 {
                     string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
                     using (MemoryStream MemoriaPerfil = new MemoryStream())
@@ -112,7 +112,7 @@ namespace CapaDatos
 
             foreach (DataRow Fila in Resultado.Rows)
             {
-                if ((byte[])Fila["Perfil2"] == null)
+                if (Fila["Perfil2"].GetType() == Type.GetType("System.DBNull"))
                 {
                     string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
                     using (MemoryStream MemoriaPerfil = new MemoryStream())

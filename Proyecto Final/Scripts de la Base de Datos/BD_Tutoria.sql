@@ -7,11 +7,11 @@ GO
 /* ********************************************************************
 					    CREACI�N DE LA BASE DE DATOS
    ******************************************************************** */
-/*IF EXISTS (SELECT * 
+IF EXISTS (SELECT * 
 				FROM SYSDATABASES
 				WHERE NAME = 'BDSistema_Tutoria')
 	DROP DATABASE db_a7878d_BDSistemaTutoria
-GO*/
+GO
 CREATE DATABASE db_a7878d_BDSistemaTutoria
 GO
 
@@ -556,7 +556,7 @@ BEGIN
 			 T.CodEstudiante = ET.CodEstudiante) INNER JOIN 
 			 TEscuela_Profesional EP ON ET.CodEscuelaP = EP.CodEscuelaP)
 			 INNER JOIN TDocente D ON T.CodDocente = D.CodDocente
-		WHERE T.CodDocente = @CodDocente AND ET.CodDocente = @CodDocente
+		WHERE T.CodDocente = @CodDocente
 END;
 GO
 

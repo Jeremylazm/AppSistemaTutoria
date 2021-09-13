@@ -136,9 +136,19 @@ namespace CapaPresentaciones
                         ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
                         ObjEntidad.InformacionPersonal = EncriptarIPersonal(txtIPersonal.Text,false);
 
+                        ObjNegocio.InsertarRegistros(ObjEntidad);
+                        MensajeConfirmacion("Registro insertado exitosamente");
+                        Program.Evento = 0;
+                        LimpiarCajas();
+                        Close();
+
                         // Enviar un correo con la contraseña para un nuevo usuario
                         try
                         {
+
+                            N_InicioSesion InicioSesion = new N_InicioSesion();
+                            string Contrasena = InicioSesion.RetornarContrasena(txtCodigo.Text);
+
                             SmtpClient clientDetails = new SmtpClient();
                             clientDetails.Port = 587;
                             clientDetails.Host = "smtp.gmail.com";
@@ -152,20 +162,13 @@ namespace CapaPresentaciones
                             mailDetails.To.Add(txtCodigo.Text + "@unsaac.edu.pe");
                             mailDetails.Subject = "Contraseña del Sistema de Tutoría UNSAAC";
                             mailDetails.IsBodyHtml = true;
-                            mailDetails.Body = "Tu contraseña es " + txtCodigo.Text;
+                            mailDetails.Body = "Tu contraseña es " + Contrasena;
                             clientDetails.Send(mailDetails);
-                            MessageBox.Show("Email Sent");
                         }
                         catch (Exception ex)
                         {
                             MessageBox.Show(ex.Message);
                         }
-
-                        ObjNegocio.InsertarRegistros(ObjEntidad);
-                        MensajeConfirmacion("Registro insertado exitosamente");
-                        Program.Evento = 0;
-                        LimpiarCajas();
-                        Close();
                     }
                     catch (Exception ex)
                     {
