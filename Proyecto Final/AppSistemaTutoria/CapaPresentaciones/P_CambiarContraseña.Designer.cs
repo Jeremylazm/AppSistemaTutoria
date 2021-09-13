@@ -60,6 +60,9 @@ namespace CapaPresentaciones
             this.tbContraseña = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.panelCorreo.SuspendLayout();
             this.panelVerificacion.SuspendLayout();
@@ -398,12 +401,40 @@ namespace CapaPresentaciones
             this.label5.TabIndex = 0;
             this.label5.Text = "Ingrese nueva contraseña:";
             // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.label13.Location = new System.Drawing.Point(0, 40);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(2, 200);
+            this.label13.TabIndex = 10;
+            // 
+            // label14
+            // 
+            this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.label14.Location = new System.Drawing.Point(649, 40);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(2, 200);
+            this.label14.TabIndex = 11;
+            // 
+            // label15
+            // 
+            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.label15.Location = new System.Drawing.Point(0, 234);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(651, 2);
+            this.label15.TabIndex = 12;
+            this.label15.Text = "label15";
+            // 
             // P_CambiarContraseña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(651, 236);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.panelCambiarContraseña);
             this.Controls.Add(this.panelCorreo);
             this.Controls.Add(this.panelVerificacion);
@@ -459,5 +490,8 @@ namespace CapaPresentaciones
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
     }
 }

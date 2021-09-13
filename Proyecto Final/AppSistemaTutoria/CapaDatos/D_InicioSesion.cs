@@ -43,7 +43,7 @@ namespace CapaDatos
                 return false;
             }
         }
-        public void ModificarRegistro(string Usuario, string Contraseña)
+        public bool ModificarRegistro(string Usuario, string Contraseña)
         {
             SqlCommand Comando = new SqlCommand("spuCambiarContraseña", Conectar)
             {
@@ -55,12 +55,16 @@ namespace CapaDatos
                 Comando.Parameters.AddWithValue("@Usuario", Usuario);
                 Comando.Parameters.AddWithValue("@NuevaContrasenia", Contraseña);
                 Comando.ExecuteNonQuery();
+                Conectar.Close();
+                return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error al cambiar la contraseña" + ex);
+
+                Conectar.Close();
+                return false;
             }
-            Conectar.Close();
         }
     }
 }

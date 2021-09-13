@@ -142,14 +142,19 @@ namespace CapaPresentaciones
                         try
                         {
                             string nuevaContraseña = tbContraseña.Text;
-                            string contraseñaEncriptada = E_Criptografia.CifradoMD5(nuevaContraseña);
+                            //string contraseñaEncriptada = E_Criptografia.CifradoMD5(nuevaContraseña);
                             //MessageBox.Show(contraseñaEncriptada + " ,  len: " + contraseñaEncriptada.Length);
+
                             DialogResult Opcion = MessageBox.Show("¿Realmente desea cambiar la contraseña?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                             if (Opcion == DialogResult.OK)
                             {
-                                InicioSesion.EditarRegistros(Usuario, nuevaContraseña);
+                                //var CambioContraseñaValido = InicioSesion.EditarRegistros(Usuario, contraseñaEncriptada);
+                                var CambioContraseñaValido = InicioSesion.EditarRegistros(Usuario, nuevaContraseña);
                                 Close();
-                                MessageBox.Show("Contraseña cambiada correctamente");
+                                if(CambioContraseñaValido)
+                                    MessageBox.Show("Contraseña cambiada correctamente");
+                                else
+                                    MessageBox.Show("No se pudo cambiar la contraseña");
                             }
 
                         }
