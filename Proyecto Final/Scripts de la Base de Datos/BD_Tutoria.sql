@@ -57,7 +57,7 @@ GO
 CREATE TABLE TDocente
 (
 	-- Lista de atributos
-	Perfil VARBINARY(MAX) NOT NULL,
+	Perfil VARBINARY(MAX),
 	CodDocente tyCodDocente,
 	APaterno VARCHAR(15) NOT NULL,
 	AMaterno VARCHAR(15) NOT NULL,
@@ -100,7 +100,7 @@ GO
 CREATE TABLE TEstudiante
 (
 	-- Lista de atributos
-	Perfil VARBINARY(MAX) NOT NULL,
+	Perfil VARBINARY(MAX),
 	CodEstudiante tyCodEstudiante,
 	APaterno VARCHAR(15) NOT NULL,
 	AMaterno VARCHAR(15) NOT NULL,
@@ -187,7 +187,7 @@ GO
 CREATE TABLE TUsuario
 (
 	-- Lista de atributos
-	Perfil VARBINARY(MAX) NOT NULL,
+	Perfil VARBINARY(MAX),
 	Usuario VARCHAR(6) NOT NULL,
 	Contraseña VARCHAR(20) NOT NULL,
 	Acceso VARCHAR(20) NOT NULL,
