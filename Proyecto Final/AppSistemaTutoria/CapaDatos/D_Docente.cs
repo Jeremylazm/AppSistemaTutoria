@@ -12,6 +12,8 @@ using System.Drawing.Drawing2D;
 using System.IO;
 using CapaEntidades;
 using ImageMagick;
+using System.Drawing.Imaging;
+using System.Windows.Forms;
 
 namespace CapaDatos
 {
@@ -33,6 +35,15 @@ namespace CapaDatos
             
             foreach (DataRow Fila in Resultado.Rows)
             {
+                if ((byte[])Fila["Perfil2"] == null)
+                {
+                    string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
+                    using (MemoryStream MemoriaPerfil = new MemoryStream())
+                    {
+                        Image.FromFile(fullImagePath).Save(MemoriaPerfil, ImageFormat.Bmp);
+                        Fila["Perfil2"] = MemoriaPerfil.ToArray();
+                    }
+                }
                 using (MagickImage PerfilNuevo = new MagickImage((byte[])Fila["Perfil2"]))
                 {
                     PerfilNuevo.Resize(20, 0);
@@ -68,16 +79,25 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
-            
+
             foreach (DataRow Fila in Resultado.Rows)
             {
+                if ((byte[])Fila["Perfil2"] == null)
+                {
+                    string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
+                    using (MemoryStream MemoriaPerfil = new MemoryStream())
+                    {
+                        Image.FromFile(fullImagePath).Save(MemoriaPerfil, ImageFormat.Bmp);
+                        Fila["Perfil2"] = MemoriaPerfil.ToArray();
+                    }
+                }
                 using (MagickImage PerfilNuevo = new MagickImage((byte[])Fila["Perfil2"]))
                 {
                     PerfilNuevo.Resize(20, 0);
                     Fila["Perfil2"] = PerfilNuevo.ToByteArray();
                 }
             }
-            
+
             return Resultado;
         }
 
@@ -95,6 +115,15 @@ namespace CapaDatos
 
             foreach (DataRow Fila in Resultado.Rows)
             {
+                if ((byte[])Fila["Perfil2"] == null)
+                {
+                    string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
+                    using (MemoryStream MemoriaPerfil = new MemoryStream())
+                    {
+                        Image.FromFile(fullImagePath).Save(MemoriaPerfil, ImageFormat.Bmp);
+                        Fila["Perfil2"] = MemoriaPerfil.ToArray();
+                    }
+                }
                 using (MagickImage PerfilNuevo = new MagickImage((byte[])Fila["Perfil2"]))
                 {
                     PerfilNuevo.Resize(20, 0);
@@ -120,6 +149,15 @@ namespace CapaDatos
 
             foreach (DataRow Fila in Resultado.Rows)
             {
+                if ((byte[])Fila["Perfil2"] == null)
+                {
+                    string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
+                    using (MemoryStream MemoriaPerfil = new MemoryStream())
+                    {
+                        Image.FromFile(fullImagePath).Save(MemoriaPerfil, ImageFormat.Bmp);
+                        Fila["Perfil2"] = MemoriaPerfil.ToArray();
+                    }
+                }
                 using (MagickImage PerfilNuevo = new MagickImage((byte[])Fila["Perfil2"]))
                 {
                     PerfilNuevo.Resize(20, 0);
@@ -158,16 +196,25 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@Filas", Filas);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
-            
+
             foreach (DataRow Fila in Resultado.Rows)
             {
+                if ((byte[])Fila["Perfil2"] == null)
+                {
+                    string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
+                    using (MemoryStream MemoriaPerfil = new MemoryStream())
+                    {
+                        Image.FromFile(fullImagePath).Save(MemoriaPerfil, ImageFormat.Bmp);
+                        Fila["Perfil2"] = MemoriaPerfil.ToArray();
+                    }
+                }
                 using (MagickImage PerfilNuevo = new MagickImage((byte[])Fila["Perfil2"]))
                 {
                     PerfilNuevo.Resize(20, 0);
                     Fila["Perfil2"] = PerfilNuevo.ToByteArray();
                 }
             }
-            
+
             return Resultado;
         }
 
