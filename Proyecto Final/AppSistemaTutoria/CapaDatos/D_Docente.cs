@@ -3,6 +3,11 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using CapaEntidades;
@@ -25,7 +30,7 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
-            /*
+            
             foreach (DataRow Fila in Resultado.Rows)
             {
                 using (MagickImage PerfilNuevo = new MagickImage((byte[])Fila["Perfil2"]))
@@ -34,7 +39,7 @@ namespace CapaDatos
                     Fila["Perfil2"] = PerfilNuevo.ToByteArray();
                 }
             }
-            */
+            
             return Resultado;
         }
 
@@ -63,7 +68,7 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
-            /*
+            
             foreach (DataRow Fila in Resultado.Rows)
             {
                 using (MagickImage PerfilNuevo = new MagickImage((byte[])Fila["Perfil2"]))
@@ -72,7 +77,7 @@ namespace CapaDatos
                     Fila["Perfil2"] = PerfilNuevo.ToByteArray();
                 }
             }
-            */
+            
             return Resultado;
         }
 
@@ -153,7 +158,7 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@Filas", Filas);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
-            /*
+            
             foreach (DataRow Fila in Resultado.Rows)
             {
                 using (MagickImage PerfilNuevo = new MagickImage((byte[])Fila["Perfil2"]))
@@ -162,7 +167,7 @@ namespace CapaDatos
                     Fila["Perfil2"] = PerfilNuevo.ToByteArray();
                 }
             }
-            */
+            
             return Resultado;
         }
 
@@ -230,3 +235,4 @@ namespace CapaDatos
         }
     }
 }
+

@@ -1,4 +1,4 @@
-﻿namespace CapaPresentaciones
+namespace CapaPresentaciones
 {
     partial class P_DatosDocente
     {
@@ -800,7 +800,7 @@
             this.Controls.Add(this.txtHorario);
             this.Controls.Add(this.btnRestablecerPerfil);
             this.Controls.Add(this.btnSubirPerfil);
-            //this.Controls.Add(this.imgPerfil);
+            this.Controls.Add(this.imgPerfil);
             this.Controls.Add(this.lblDominioEmail);
             this.Controls.Add(this.lblHorario);
             this.Controls.Add(this.cxtEscuela);
