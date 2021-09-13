@@ -18,7 +18,6 @@ namespace CapaPresentaciones
     {
         public string Usuario = "";
         public string Correo = "";
-        private readonly string Key = "123cus";
         private string codigo_verificacion = "";
         public P_CambiarContraseña()
         {
@@ -79,12 +78,12 @@ namespace CapaPresentaciones
 
         private void btnEnviarCodigo_Click(object sender, EventArgs e)
         {
-            string correo = tbCorreo.Text;
-            if(correo != "")
+            string correo = tbCorreo.Text + "@unsaac.edu.pe";
+            if(correo != "@unsaac.edu.pe")
             {
-                if(correo == Usuario)
+                if(correo == Correo)
                 {
-                    codigo_verificacion = EnviarCodigo(correo + "@unsaac.edu.pe");
+                    codigo_verificacion = EnviarCodigo(correo);
                     panelVerificacion.Visible = true;
                     panelCorreo.Visible = false;
                     panelVerificacion.BringToFront();

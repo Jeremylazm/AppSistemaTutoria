@@ -193,7 +193,7 @@ namespace CapaPresentaciones
         {
             P_CambiarContraseña NuevaContraseña = new P_CambiarContraseña {
                 Usuario = E_InicioSesion.Usuario,
-                Correo = txtEstudiante.Text
+                Correo = E_InicioSesion.Usuario + "@unsaac.edu.pe"
             };
             NuevaContraseña.ShowDialog();
             NuevaContraseña.Dispose();
