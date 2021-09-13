@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -136,10 +136,6 @@
     <Reference Include="Bunifu.UI.WinForms.Deprecated, Version=5.2.2.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
       <HintPath>..\packages\Bunifu.UI.WinForms.5.2.2\lib\net40\Bunifu.UI.WinForms.Deprecated.dll</HintPath>
     </Reference>
-    <Reference Include="Bunifu_UI_v1.5.3, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Bunifu_UI_v1.5.3.dll</HintPath>
-    </Reference>
     <Reference Include="CircularProgressBar, Version=2.8.0.16, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
       <HintPath>..\packages\CircularProgressBar.2.8.0.16\lib\net40\CircularProgressBar.dll</HintPath>
     </Reference>
@@ -262,6 +258,12 @@
     <Compile Include="P_TablaTutorados.Designer.cs">
       <DependentUpon>P_TablaTutorados.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_TablaTutores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_TablaTutores.Designer.cs">
+      <DependentUpon>P_TablaTutores.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_TablaTutorias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -316,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="P_TablaTutorados.resx">
       <DependentUpon>P_TablaTutorados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_TablaTutores.resx">
+      <DependentUpon>P_TablaTutores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_TablaTutorias.resx">
       <DependentUpon>P_TablaTutorias.cs</DependentUpon>

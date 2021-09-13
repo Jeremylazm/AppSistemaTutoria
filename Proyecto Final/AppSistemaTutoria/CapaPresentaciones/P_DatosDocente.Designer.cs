@@ -1,4 +1,4 @@
-﻿namespace CapaPresentaciones
+namespace CapaPresentaciones
 {
     partial class P_DatosDocente
     {

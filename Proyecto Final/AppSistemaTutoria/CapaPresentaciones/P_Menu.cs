@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
@@ -66,17 +66,30 @@ namespace CapaPresentaciones
         {
             if (Acceso == "Director de Escuela")
             {
-                btnDashboard.Visible = true;
                 btnTutorias.Visible = true;
-                btnEstudiantes.Visible = true;
+                btnTutorados.Visible = true;
                 btnDocentes.Visible = true;
+                btnTutores.Visible = true;
+                btnEstudiantes.Visible = true;
+                btnInformeTutorias.Visible = true;
             }
-            else if ((Acceso == "Docente") || (Acceso == "Estudiante"))
+            else if (Acceso == "Docente")
             {
-                btnDashboard.Visible = true;
                 btnTutorias.Visible = true;
-                btnEstudiantes.Visible = false;
+                btnTutorados.Visible = true;
                 btnDocentes.Visible = false;
+                btnTutores.Visible = false;
+                btnEstudiantes.Visible = false;
+                btnInformeTutorias.Visible = false;
+            }
+            else if (Acceso == "Estudiante")
+            {
+                btnTutorias.Visible = false;
+                btnTutorados.Visible = false;
+                btnDocentes.Visible = false;
+                btnTutores.Visible = false;
+                btnEstudiantes.Visible = false;
+                btnInformeTutorias.Visible = false;
             }
             else
             {
@@ -170,26 +183,6 @@ namespace CapaPresentaciones
             }
         }
 
-        private void btnDashboard_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnTutorias_Click(object sender, EventArgs e)
-        {
-            AbrirFormularios<P_TablaTutorias>();
-        }
-
-        private void btnEstudiantes_Click(object sender, EventArgs e)
-        {
-            AbrirFormularios<P_TablaEstudiantes>();
-        }
-
-        private void btnDocentes_Click(object sender, EventArgs e)
-        {
-            AbrirFormularios<P_TablaDocentes>();
-        }
-
         private void btnEditarPerfil_Click(object sender, EventArgs e)
         {
             if (lblAcceso.Text == "Estudiante")
@@ -214,9 +207,34 @@ namespace CapaPresentaciones
             }
         }
 
+        private void btnTutorias_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios<P_TablaTutorias>();
+        }
+
         private void btnTutorados_Click(object sender, EventArgs e)
         {
             AbrirFormularios<P_TablaTutorados>();
+        }
+
+        private void btnDocentes_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios<P_TablaDocentes>();
+        }
+
+        private void btnEstudiantes_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios<P_TablaEstudiantes>();
+        }
+
+        private void btnInformeTutorias_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios<P_InformeTutorias>();
+        }
+
+        private void btnTutores_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios<P_TablaTutores>();
         }
 
         private void P_Menu_Load(object sender, EventArgs e)

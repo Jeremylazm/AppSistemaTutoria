@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -29,7 +29,7 @@ namespace CapaPresentaciones
 
         private void CargarDatosUsuario()
         {
-            DataTable Datos = N_Docente.BuscarRegistros(Usuario);
+            DataTable Datos = N_Docente.BuscarRegistro(Usuario);
             object[] Fila = Datos.Rows[0].ItemArray;
 
             byte[] Perfil = new byte[0];

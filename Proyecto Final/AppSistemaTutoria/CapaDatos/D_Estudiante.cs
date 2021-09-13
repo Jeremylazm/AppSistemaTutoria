@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -15,7 +15,7 @@ namespace CapaDatos
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
 
-        public DataTable MostrarRegistros()
+        public DataTable MostrarRegistros(string CodEscuelaP)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuMostrarEstudiantes", Conectar)
@@ -23,6 +23,7 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
+            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
 
@@ -38,15 +39,30 @@ namespace CapaDatos
             return Resultado;
         }
 
-        public DataTable MostrarTutorados(string CodDocente)
+        public DataTable MostrarEstudiantesSinTutor(string CodEscuelaP, int Filas)
         {
             DataTable Resultado = new DataTable();
-            SqlCommand Comando = new SqlCommand("spuMostrarTutorados", Conectar)
+            SqlCommand Comando = new SqlCommand("spuMostrarEstudiantesSinTutor", Conectar)
             {
                 CommandType = CommandType.StoredProcedure
             };
 
-            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
+            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@Filas", Filas);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
+        public DataTable BuscarRegistro(string CodeEstudiante)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuBuscarEstudiante", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodEstudiante", CodeEstudiante);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
 
@@ -62,7 +78,7 @@ namespace CapaDatos
             return Resultado;
         }
 
-        public DataTable BuscarRegistros(string Texto)
+        public DataTable BuscarRegistros(string CodEscuelaP, string Texto)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarEstudiantes", Conectar)
@@ -70,6 +86,7 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
+            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
             Comando.Parameters.AddWithValue("@Texto", Texto);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
@@ -86,28 +103,19 @@ namespace CapaDatos
             return Resultado;
         }
 
-        public DataTable BuscarTutorados(string CodDocente, string Texto)
+        public DataTable BuscarEstudiantesSinTutor(string CodEscuelaP, string Texto, int Filas)
         {
             DataTable Resultado = new DataTable();
-            SqlCommand Comando = new SqlCommand("spuBuscarEstudiantes", Conectar)
+            SqlCommand Comando = new SqlCommand("spuBuscarEstudiantesSinTutor", Conectar)
             {
                 CommandType = CommandType.StoredProcedure
             };
 
-            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
+            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
             Comando.Parameters.AddWithValue("@Texto", Texto);
+            Comando.Parameters.AddWithValue("@Filas", Filas);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
-
-            foreach (DataRow Fila in Resultado.Rows)
-            {
-                using (MagickImage PerfilNuevo = new MagickImage((byte[])Fila["Perfil2"]))
-                {
-                    PerfilNuevo.Resize(20, 0);
-                    Fila["Perfil2"] = PerfilNuevo.ToByteArray();
-                }
-            }
-
             return Resultado;
         }
 
@@ -172,6 +180,33 @@ namespace CapaDatos
 
             Conectar.Open();
             Comando.Parameters.AddWithValue("@CodEstudiante", Estudiante.CodEstudiante);
+            Comando.ExecuteNonQuery();
+            Conectar.Close();
+        }
+
+        public void AsignarTutor(string CodEstudiante, string CodDocente)
+        {
+            SqlCommand Comando = new SqlCommand("spuAsignarTutor", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Conectar.Open();
+            Comando.Parameters.AddWithValue("@CodEstudiante", CodEstudiante);
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
+            Comando.ExecuteNonQuery();
+            Conectar.Close();
+        }
+
+        public void EliminarTutor(string CodEstudiante)
+        {
+            SqlCommand Comando = new SqlCommand("spuEliminarTutor", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Conectar.Open();
+            Comando.Parameters.AddWithValue("@CodEstudiante", CodEstudiante);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }

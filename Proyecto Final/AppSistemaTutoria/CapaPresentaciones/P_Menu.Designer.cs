@@ -1,4 +1,4 @@
-﻿namespace CapaPresentaciones
+namespace CapaPresentaciones
 {
     partial class P_Menu
     {
@@ -42,12 +42,14 @@
             this.BordeadoContenedor = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnContenedor = new System.Windows.Forms.Panel();
             this.pnLateral = new System.Windows.Forms.Panel();
+            this.btnInformeTutorias = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnTutores = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.btnTutorados = new Bunifu.Framework.UI.BunifuFlatButton();
             this.imgPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
             this.btnDocentes = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnEstudiantes = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnTutorias = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btnDashboard = new Bunifu.Framework.UI.BunifuFlatButton();
             this.Separador1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.btnEditarPerfil = new Bunifu.Framework.UI.BunifuThinButton2();
             this.lblUsuario = new System.Windows.Forms.Label();
@@ -203,12 +205,14 @@
             // pnLateral
             // 
             this.pnLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.pnLateral.Controls.Add(this.btnInformeTutorias);
+            this.pnLateral.Controls.Add(this.btnTutores);
+            this.pnLateral.Controls.Add(this.bunifuSeparator1);
             this.pnLateral.Controls.Add(this.btnTutorados);
             this.pnLateral.Controls.Add(this.imgPerfil);
             this.pnLateral.Controls.Add(this.btnDocentes);
             this.pnLateral.Controls.Add(this.btnEstudiantes);
             this.pnLateral.Controls.Add(this.btnTutorias);
-            this.pnLateral.Controls.Add(this.btnDashboard);
             this.pnLateral.Controls.Add(this.Separador1);
             this.pnLateral.Controls.Add(this.btnEditarPerfil);
             this.pnLateral.Controls.Add(this.lblUsuario);
@@ -220,8 +224,92 @@
             this.pnLateral.Size = new System.Drawing.Size(173, 600);
             this.pnLateral.TabIndex = 4;
             // 
+            // btnInformeTutorias
+            // 
+            this.btnInformeTutorias.Active = true;
+            this.btnInformeTutorias.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnInformeTutorias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnInformeTutorias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnInformeTutorias.BorderRadius = 7;
+            this.btnInformeTutorias.ButtonText = "Informe Tutorias";
+            this.btnInformeTutorias.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInformeTutorias.DisabledColor = System.Drawing.Color.Gray;
+            this.btnInformeTutorias.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnInformeTutorias.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnInformeTutorias.Iconimage")));
+            this.btnInformeTutorias.Iconimage_right = null;
+            this.btnInformeTutorias.Iconimage_right_Selected = null;
+            this.btnInformeTutorias.Iconimage_Selected = null;
+            this.btnInformeTutorias.IconMarginLeft = 0;
+            this.btnInformeTutorias.IconMarginRight = 0;
+            this.btnInformeTutorias.IconRightVisible = true;
+            this.btnInformeTutorias.IconRightZoom = 0D;
+            this.btnInformeTutorias.IconVisible = true;
+            this.btnInformeTutorias.IconZoom = 50D;
+            this.btnInformeTutorias.IsTab = false;
+            this.btnInformeTutorias.Location = new System.Drawing.Point(4, 540);
+            this.btnInformeTutorias.Name = "btnInformeTutorias";
+            this.btnInformeTutorias.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnInformeTutorias.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
+            this.btnInformeTutorias.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnInformeTutorias.selected = true;
+            this.btnInformeTutorias.Size = new System.Drawing.Size(161, 40);
+            this.btnInformeTutorias.TabIndex = 49;
+            this.btnInformeTutorias.Text = "Informe Tutorias";
+            this.btnInformeTutorias.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInformeTutorias.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnInformeTutorias.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // btnTutores
+            // 
+            this.btnTutores.Active = true;
+            this.btnTutores.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnTutores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnTutores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTutores.BorderRadius = 7;
+            this.btnTutores.ButtonText = "Tutores";
+            this.btnTutores.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTutores.DisabledColor = System.Drawing.Color.Gray;
+            this.btnTutores.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnTutores.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnTutores.Iconimage")));
+            this.btnTutores.Iconimage_right = null;
+            this.btnTutores.Iconimage_right_Selected = null;
+            this.btnTutores.Iconimage_Selected = null;
+            this.btnTutores.IconMarginLeft = 0;
+            this.btnTutores.IconMarginRight = 0;
+            this.btnTutores.IconRightVisible = true;
+            this.btnTutores.IconRightZoom = 0D;
+            this.btnTutores.IconVisible = true;
+            this.btnTutores.IconZoom = 50D;
+            this.btnTutores.IsTab = false;
+            this.btnTutores.Location = new System.Drawing.Point(5, 448);
+            this.btnTutores.Name = "btnTutores";
+            this.btnTutores.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnTutores.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
+            this.btnTutores.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnTutores.selected = true;
+            this.btnTutores.Size = new System.Drawing.Size(161, 40);
+            this.btnTutores.TabIndex = 48;
+            this.btnTutores.Text = "Tutores";
+            this.btnTutores.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnTutores.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnTutores.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTutores.Click += new System.EventHandler(this.btnTutores_Click);
+            // 
+            // bunifuSeparator1
+            // 
+            this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.bunifuSeparator1.LineThickness = 1;
+            this.bunifuSeparator1.Location = new System.Drawing.Point(7, 376);
+            this.bunifuSeparator1.Name = "bunifuSeparator1";
+            this.bunifuSeparator1.Size = new System.Drawing.Size(161, 20);
+            this.bunifuSeparator1.TabIndex = 47;
+            this.bunifuSeparator1.Transparency = 255;
+            this.bunifuSeparator1.Vertical = false;
+            // 
             // btnTutorados
             // 
+            this.btnTutorados.Active = true;
             this.btnTutorados.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnTutorados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnTutorados.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -241,7 +329,7 @@
             this.btnTutorados.IconVisible = true;
             this.btnTutorados.IconZoom = 50D;
             this.btnTutorados.IsTab = false;
-            this.btnTutorados.Location = new System.Drawing.Point(5, 468);
+            this.btnTutorados.Location = new System.Drawing.Point(6, 330);
             this.btnTutorados.Name = "btnTutorados";
             this.btnTutorados.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnTutorados.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -274,6 +362,7 @@
             // 
             // btnDocentes
             // 
+            this.btnDocentes.Active = true;
             this.btnDocentes.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnDocentes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnDocentes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -293,7 +382,7 @@
             this.btnDocentes.IconVisible = true;
             this.btnDocentes.IconZoom = 50D;
             this.btnDocentes.IsTab = false;
-            this.btnDocentes.Location = new System.Drawing.Point(5, 422);
+            this.btnDocentes.Location = new System.Drawing.Point(5, 402);
             this.btnDocentes.Name = "btnDocentes";
             this.btnDocentes.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnDocentes.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -309,6 +398,7 @@
             // 
             // btnEstudiantes
             // 
+            this.btnEstudiantes.Active = true;
             this.btnEstudiantes.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnEstudiantes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnEstudiantes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -328,7 +418,7 @@
             this.btnEstudiantes.IconVisible = true;
             this.btnEstudiantes.IconZoom = 50D;
             this.btnEstudiantes.IsTab = false;
-            this.btnEstudiantes.Location = new System.Drawing.Point(5, 376);
+            this.btnEstudiantes.Location = new System.Drawing.Point(4, 494);
             this.btnEstudiantes.Name = "btnEstudiantes";
             this.btnEstudiantes.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnEstudiantes.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -344,6 +434,7 @@
             // 
             // btnTutorias
             // 
+            this.btnTutorias.Active = true;
             this.btnTutorias.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnTutorias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnTutorias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -363,7 +454,7 @@
             this.btnTutorias.IconVisible = true;
             this.btnTutorias.IconZoom = 50D;
             this.btnTutorias.IsTab = false;
-            this.btnTutorias.Location = new System.Drawing.Point(5, 330);
+            this.btnTutorias.Location = new System.Drawing.Point(5, 284);
             this.btnTutorias.Name = "btnTutorias";
             this.btnTutorias.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnTutorias.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -376,41 +467,6 @@
             this.btnTutorias.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnTutorias.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTutorias.Click += new System.EventHandler(this.btnTutorias_Click);
-            // 
-            // btnDashboard
-            // 
-            this.btnDashboard.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnDashboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDashboard.BorderRadius = 7;
-            this.btnDashboard.ButtonText = "Dashboard";
-            this.btnDashboard.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDashboard.DisabledColor = System.Drawing.Color.Gray;
-            this.btnDashboard.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnDashboard.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnDashboard.Iconimage")));
-            this.btnDashboard.Iconimage_right = null;
-            this.btnDashboard.Iconimage_right_Selected = null;
-            this.btnDashboard.Iconimage_Selected = null;
-            this.btnDashboard.IconMarginLeft = 0;
-            this.btnDashboard.IconMarginRight = 0;
-            this.btnDashboard.IconRightVisible = true;
-            this.btnDashboard.IconRightZoom = 0D;
-            this.btnDashboard.IconVisible = true;
-            this.btnDashboard.IconZoom = 50D;
-            this.btnDashboard.IsTab = false;
-            this.btnDashboard.Location = new System.Drawing.Point(5, 284);
-            this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnDashboard.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
-            this.btnDashboard.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnDashboard.selected = true;
-            this.btnDashboard.Size = new System.Drawing.Size(161, 40);
-            this.btnDashboard.TabIndex = 41;
-            this.btnDashboard.Text = "Dashboard";
-            this.btnDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDashboard.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnDashboard.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
             // Separador1
             // 
@@ -551,7 +607,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnDocentes;
         private Bunifu.Framework.UI.BunifuFlatButton btnEstudiantes;
         private Bunifu.Framework.UI.BunifuFlatButton btnTutorias;
-        private Bunifu.Framework.UI.BunifuFlatButton btnDashboard;
         private Bunifu.Framework.UI.BunifuSeparator Separador1;
         private Bunifu.Framework.UI.BunifuThinButton2 btnEditarPerfil;
         private System.Windows.Forms.Label lblUsuario;
@@ -559,5 +614,8 @@
         private System.Windows.Forms.Label lblDatos;
         private Otros_Controles.JALMCircularPictureBox imgPerfil;
         private Bunifu.Framework.UI.BunifuFlatButton btnTutorados;
+        private Bunifu.Framework.UI.BunifuFlatButton btnInformeTutorias;
+        private Bunifu.Framework.UI.BunifuFlatButton btnTutores;
+        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
     }
 }

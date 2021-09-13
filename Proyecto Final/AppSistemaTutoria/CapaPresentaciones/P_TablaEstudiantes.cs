@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 using CapaEntidades;
@@ -12,6 +12,7 @@ namespace CapaPresentaciones
     {
         readonly E_Estudiante ObjEntidad = new E_Estudiante();
         readonly N_Estudiante ObjNegocio = new N_Estudiante();
+        string CodEscuelaP = "IN";
 
         public P_TablaEstudiantes()
         {
@@ -50,13 +51,13 @@ namespace CapaPresentaciones
 
         public void MostrarRegistros()
         {
-            dgvTabla.DataSource = N_Estudiante.MostrarRegistros();
+            dgvTabla.DataSource = N_Estudiante.MostrarRegistros(CodEscuelaP);
             AccionesTabla();
         }
 
         public void BuscarRegistros()
         {
-            dgvTabla.DataSource = N_Estudiante.BuscarRegistros(txtBuscar.Text);
+            dgvTabla.DataSource = N_Estudiante.BuscarRegistros(CodEscuelaP, txtBuscar.Text);
         }
 
         private void ActualizarDatos(object sender, FormClosedEventArgs e)
@@ -213,3 +214,4 @@ namespace CapaPresentaciones
         }
     }
 }
+
