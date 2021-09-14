@@ -1,4 +1,4 @@
-# **<center> Aplicación de Escritorio con un Sistema de Tutorías para la UNSAAC. 💻 </center>**
+# **<center> Aplicación de Escritorio con un Sistema de Tutorías para la UNSAAC </center>**
 
 ## Creado por estudiantes de la Universidad Nacional de San Antonio Abad del Cusco
 
