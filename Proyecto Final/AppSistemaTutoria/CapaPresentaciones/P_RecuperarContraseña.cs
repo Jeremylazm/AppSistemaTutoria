@@ -64,7 +64,7 @@ namespace CapaPresentaciones
                         mailDetails.Body = "Tu contraseña es " + dt.Rows[0][1].ToString();
 
                         clientDetails.Send(mailDetails);
-                        MessageBox.Show("Email Sent");
+                        MessageBox.Show("Se te envió un mensaje con tu contraseña a tu correo", "Correo enviado", MessageBoxButtons.OK);
                     }
                     catch (Exception ex)
                     {
