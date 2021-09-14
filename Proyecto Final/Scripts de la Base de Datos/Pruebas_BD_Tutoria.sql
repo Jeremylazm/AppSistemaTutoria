@@ -38,35 +38,3 @@ SELECT 'ADMIN', 'ADMIN1234', 'Director de Escuela', 'ADMINISTRADOR', BulkColumn
 GO
 
 select * from TEstudiante
-
-
-
-
-/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA USUARIO ****************** */
-/*
-USE db_a7878d_BDSistemaTutoria
-GO
-*/
-/* Cambiar usuario */
-CREATE PROCEDURE spuCambiarContraseña    @Usuario VARCHAR(6),
-										 @NuevaContrasenia VARCHAR(200)				
-AS
-BEGIN
-	-- Actualizar un estudiante de la tabla de TEstudiante
-	UPDATE TUsuario
-		SET Contraseña = @NuevaContrasenia
-		WHERE Usuario = @Usuario
-END;
-GO
-
-CREATE PROCEDURE spuRetornarContraseña    @Usuario VARCHAR(6)			
-AS
-BEGIN
-	-- Actualizar un estudiante de la tabla de TEstudiante
-	SELECT Contraseña
-		FROM TUsuario
-		WHERE Usuario = @Usuario
-END;
-GO
-
-EXEC spuRetornarContraseña '182916'

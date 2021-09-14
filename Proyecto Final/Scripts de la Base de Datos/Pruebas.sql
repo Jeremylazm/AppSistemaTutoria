@@ -100,13 +100,14 @@ insert into TEstudiante values(NULL,'219025','ARCE','CRESPO','EVA','219025@unsaa
 
 
 -- Usuarios: IdUsuario: Código, Contraseña: Codigo
-insert into TUsuario values(NULL,'170115','170115','Estudiante','PAZ GUERRA ANA')
-insert into TUsuario values(NULL,'170225','170225','Estudiante','ARCE ANDIA ANGEL')
-insert into TUsuario values(NULL,'171347','171347','Estudiante','BUENO BUENDIA BENITO')
-insert into TUsuario values(NULL,'12342','12342','Docente','CUSIHUAMAN PHOCCO ROGER MARIO')
-insert into TUsuario values(NULL,'15313','15313','Docente','SEGUNDO CARPIO LISETH URPY')
-insert into TUsuario values(NULL,'16200','16200','Docente','SONCCO ALVAREZ JOSE LUIS')
-insert into TUsuario values(NULL,'17453','17453','Director de Escuela','ACURIO USCA NILA ZONIA')
+EXEC DBO.spuInsertarUsuario NULL,'170115','170115','Estudiante','PAZ GUERRA ANA'
+EXEC DBO.spuInsertarUsuario NULL,'170225','170225','Estudiante','ARCE ANDIA ANGEL'
+EXEC DBO.spuInsertarUsuario NULL,'171347','171347','Estudiante','BUENO BUENDIA BENITO'
+EXEC DBO.spuInsertarUsuario NULL,'12342','12342','Docente','CUSIHUAMAN PHOCCO ROGER MARIO'
+EXEC DBO.spuInsertarUsuario NULL,'15313','15313','Docente','SEGUNDO CARPIO LISETH URPY'
+EXEC DBO.spuInsertarUsuario NULL,'16200','16200','Docente','SONCCO ALVAREZ JOSE LUIS'
+EXEC DBO.spuInsertarUsuario NULL,'17453','17453','Director de Escuela','ACURIO USCA NILA ZONIA'
+
 
 -- Tutoria:
 INSERT INTO TTutoria VALUES('T0001', '00000', '182916')
@@ -134,7 +135,3 @@ SELECT * FROM TUsuario
 SELECT * FROM TTutoria
 SELECT * FROM TFichaTutoria
 SELECT * FROM Historial
-
-EXEC spuEliminarEstudiante '182916'
-
-select Usuario, Contraseña, Acceso from TUsuario where Usuario = '182916'
