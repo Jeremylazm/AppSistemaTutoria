@@ -21,10 +21,15 @@ namespace CapaPresentaciones
             InitializeComponent();
         }
 
-        private void btnRecuperarContraseña_Click(object sender, EventArgs e)
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnRecuperar_Click(object sender, EventArgs e)
         {
             // Ingresar en el formulario el correo electrónico asociado a la cuenta
-            SqlConnection con = new SqlConnection(@"Data Source = localhost\SQLEXPRESS; DataBase = BDSistema_Tutoria; Integrated Security = true");
+            SqlConnection con = new SqlConnection(@"Data Source = localhost\SQLEXPRESS; DataBase = db_a7878d_BDSistemaTutoria; Integrated Security = true");
 
             string Cod = txtTo.Text;
 
@@ -80,11 +85,6 @@ namespace CapaPresentaciones
             {
                 con.Close();
             }
-        }
-
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

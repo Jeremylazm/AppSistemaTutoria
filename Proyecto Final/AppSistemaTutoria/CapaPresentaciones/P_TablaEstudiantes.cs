@@ -5,6 +5,8 @@ using CapaEntidades;
 using CapaNegocios;
 using System.IO;
 using System.Drawing.Drawing2D;
+using System.Net.Mail;
+using System.Net;
 
 namespace CapaPresentaciones
 {

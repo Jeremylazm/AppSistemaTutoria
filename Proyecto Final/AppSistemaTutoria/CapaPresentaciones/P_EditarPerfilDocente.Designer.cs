@@ -72,6 +72,7 @@
             this.Separador4 = new Bunifu.Framework.UI.BunifuSeparator();
             this.lblEmail = new System.Windows.Forms.Label();
             this.imgPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
+            this.BordeadoMenu = new Bunifu.Framework.UI.BunifuThinButton2();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
             this.SuspendLayout();
@@ -762,6 +763,35 @@
             this.imgPerfil.TabIndex = 166;
             this.imgPerfil.TabStop = false;
             // 
+            // BordeadoMenu
+            // 
+            this.BordeadoMenu.ActiveBorderThickness = 1;
+            this.BordeadoMenu.ActiveCornerRadius = 20;
+            this.BordeadoMenu.ActiveFillColor = System.Drawing.Color.White;
+            this.BordeadoMenu.ActiveForecolor = System.Drawing.Color.White;
+            this.BordeadoMenu.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BordeadoMenu.BackColor = System.Drawing.Color.White;
+            this.BordeadoMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoMenu.BackgroundImage")));
+            this.BordeadoMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BordeadoMenu.ButtonText = "Editar Perfil";
+            this.BordeadoMenu.Cursor = System.Windows.Forms.Cursors.Default;
+            this.BordeadoMenu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BordeadoMenu.ForeColor = System.Drawing.Color.White;
+            this.BordeadoMenu.IdleBorderThickness = 1;
+            this.BordeadoMenu.IdleCornerRadius = 20;
+            this.BordeadoMenu.IdleFillColor = System.Drawing.Color.White;
+            this.BordeadoMenu.IdleForecolor = System.Drawing.Color.White;
+            this.BordeadoMenu.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoMenu.Location = new System.Drawing.Point(-1, 0);
+            this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(5);
+            this.BordeadoMenu.Name = "BordeadoMenu";
+            this.BordeadoMenu.Size = new System.Drawing.Size(815, 452);
+            this.BordeadoMenu.TabIndex = 190;
+            this.BordeadoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // P_EditarPerfilDocente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -809,6 +839,7 @@
             this.Controls.Add(this.BordeadoDatos);
             this.Controls.Add(this.BordeadoInformacion);
             this.Controls.Add(this.BordeadoHorario);
+            this.Controls.Add(this.BordeadoMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "P_EditarPerfilDocente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -864,5 +895,6 @@
         public System.Windows.Forms.TextBox txtEmail;
         private Bunifu.Framework.UI.BunifuSeparator Separador4;
         private System.Windows.Forms.Label lblEmail;
+        private Bunifu.Framework.UI.BunifuThinButton2 BordeadoMenu;
     }
 }

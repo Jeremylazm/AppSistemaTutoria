@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 using CapaEntidades;
 
 
@@ -63,7 +64,7 @@ namespace CapaDatos
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al cambiar la contraseña" + ex);
+                MessageBox.Show("Error al cambiar la contraseña" + ex);
 
                 Conectar.Close();
                 return false;
@@ -77,6 +78,7 @@ namespace CapaDatos
             {
                 CommandType = CommandType.StoredProcedure
             };
+
             Conectar.Open();
             try
             {
@@ -84,15 +86,25 @@ namespace CapaDatos
 
                 SqlDataAdapter Data = new SqlDataAdapter(Comando);
                 Data.Fill(Resultado);
-                Conectar.Close();
-                return Resultado.Rows[0].ItemArray[0].ToString();
+
+                if (Resultado.Rows.Count >= 1)
+                {
+                    return Resultado.Rows[0][0].ToString();
+                }
+                else
+                {
+                    MessageBox.Show("El usuario no existe");// No existe el usuario
+                    return null;
+                }                
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al cambiar la contraseña" + ex);
-
-                Conectar.Close();
+                MessageBox.Show("Error al retornar la contraseña" + ex);
                 return null;
+            }
+            finally
+            {
+                Conectar.Close();
             }
         }
     }

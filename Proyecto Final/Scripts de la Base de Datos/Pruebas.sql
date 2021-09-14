@@ -125,6 +125,8 @@ INSERT INTO TTutoria VALUES('T0013', '00000', '203413')
 
 -- Ficha de tutoria:
 
+DELETE TTutoria
+
 SELECT * FROM TEscuela_Profesional
 SELECT * FROM TEstudiante
 SELECT * FROM TDocente
@@ -132,3 +134,7 @@ SELECT * FROM TUsuario
 SELECT * FROM TTutoria
 SELECT * FROM TFichaTutoria
 SELECT * FROM Historial
+
+EXEC spuEliminarEstudiante '182916'
+
+select Usuario, Contraseña, Acceso from TUsuario where Usuario = '182916'
