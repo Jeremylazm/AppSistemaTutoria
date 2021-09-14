@@ -21,16 +21,6 @@
 
 #### Autores:✒️
 
-CASTILLO-LOPEZ-RICARDO JORGE
-CUYO-TTITO-DENIS OMAR
-ESTRELLA-VILCA-JAMES KEVIN
-HUAMAN-MENDOZA-ELVIS JORGE
-HUAMAN-MENDOZA-JOHAN WILFREDO
-LAZO-MENDOZA-JEREMY AXL
-PEÑA-LUQUE-RAISA MELINA
-USUCACHI-ANO-ISAC ANDERSON
-VILLASANTE-LEON-AMARU
-
 - **Castillo Lopez Ricardo Jorge** - _GitHub Account_ - [RicardoJorge](https://github.com/rjcastillolopez)
 - **Cuyo Ttito Denis Omar** - _GitHub Account_ - [DenisOmar](https://github.com/denisomarcuyottito)
 - **Estrella Vilca James Kevin** - _GitHub Account_ - [JamesKevin](https://github.com/JamesKevinStar)
