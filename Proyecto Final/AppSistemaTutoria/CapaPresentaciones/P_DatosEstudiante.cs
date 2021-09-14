@@ -139,16 +139,13 @@ namespace CapaPresentaciones
                         ObjNegocio.InsertarRegistros(ObjEntidad);
                         MensajeConfirmacion("Registro insertado exitosamente");
                         Program.Evento = 0;
-                        LimpiarCajas();
-                        Close();
+
+                        N_InicioSesion InicioSesion = new N_InicioSesion();
+                        string Contrasena = InicioSesion.RetornarContrasena(txtCodigo.Text);
 
                         // Enviar un correo con la contraseña para un nuevo usuario
                         try
                         {
-
-                            N_InicioSesion InicioSesion = new N_InicioSesion();
-                            string Contrasena = InicioSesion.RetornarContrasena(txtCodigo.Text);
-
                             SmtpClient clientDetails = new SmtpClient();
                             clientDetails.Port = 587;
                             clientDetails.Host = "smtp.gmail.com";
@@ -159,7 +156,7 @@ namespace CapaPresentaciones
 
                             MailMessage mailDetails = new MailMessage();
                             mailDetails.From = new MailAddress("denisomarcuyottito@gmail.com");
-                            mailDetails.To.Add(txtCodigo.Text + "@unsaac.edu.pe");
+                            mailDetails.To.Add(ObjEntidad.Email);
                             mailDetails.Subject = "Contraseña del Sistema de Tutoría UNSAAC";
                             mailDetails.IsBodyHtml = true;
                             mailDetails.Body = "Tu contraseña es " + Contrasena;
@@ -169,6 +166,9 @@ namespace CapaPresentaciones
                         {
                             MessageBox.Show(ex.Message);
                         }
+
+                        LimpiarCajas();
+                        Close();
                     }
                     catch (Exception ex)
                     {

@@ -473,7 +473,7 @@ namespace CapaPresentaciones
             this.BordeadoMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.BordeadoMenu.BackColor = System.Drawing.SystemColors.Control;
+            this.BordeadoMenu.BackColor = System.Drawing.Color.White;
             this.BordeadoMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoMenu.BackgroundImage")));
             this.BordeadoMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.BordeadoMenu.ButtonText = "Editar Perfil";
@@ -485,7 +485,7 @@ namespace CapaPresentaciones
             this.BordeadoMenu.IdleFillColor = System.Drawing.Color.White;
             this.BordeadoMenu.IdleForecolor = System.Drawing.Color.White;
             this.BordeadoMenu.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoMenu.Location = new System.Drawing.Point(0, 0);
+            this.BordeadoMenu.Location = new System.Drawing.Point(-1, 4);
             this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(5);
             this.BordeadoMenu.Name = "BordeadoMenu";
             this.BordeadoMenu.Size = new System.Drawing.Size(396, 759);
@@ -561,6 +561,7 @@ namespace CapaPresentaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(396, 759);
             this.Controls.Add(this.txtEscProfesional);
             this.Controls.Add(this.txtRegimen);
@@ -602,7 +603,7 @@ namespace CapaPresentaciones
             this.Controls.Add(this.BordeadoMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "P_InformacionTutor";
-            this.Text = "P_InformacionTutor";
+            this.Text = "Información  del Tutor";
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).EndInit();

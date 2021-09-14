@@ -32,11 +32,18 @@ namespace CapaPresentaciones
             DataTable Datos = N_Estudiante.BuscarRegistro(Usuario);
             object[] Fila = Datos.Rows[0].ItemArray;
 
-            byte[] Perfil = new byte[0];
-            Perfil = E_InicioSesion.Perfil;
-            MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
-
-            imgPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
+            if (E_InicioSesion.Perfil == null)
+            {
+                string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
+                imgPerfil.Image = Image.FromFile(fullImagePath);
+            }
+            else
+            {
+                byte[] Perfil = new byte[0];
+                Perfil = E_InicioSesion.Perfil;
+                MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
+                imgPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
+            }
             txtCodigo.Text = Fila[2].ToString();
             APaterno = Fila[3].ToString();
             AMaterno = Fila[4].ToString();

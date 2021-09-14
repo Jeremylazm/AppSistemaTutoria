@@ -57,6 +57,16 @@ insert into TDocente values(NULL,'12345','CARBAJAL','LUNA','JULIO CESAR','12345@
 insert into TDocente values(NULL,'16341','PEÑALOZA','FIGUEROA','MANUEL AURELIO','16341@unsaac.edu.pe','AV. 2 DE MAYO 123','995049596','NOMBRADO','ASOCIADO','TIEMPO PARCIAL','IN','DISPONIBLE')
 
 -- Estudiantes
+insert into TEstudiante values(NULL,'999991','PAZ','GUERRA','SOCRATES','999991@unsaac.edu.pe','AV. TUPAC AMARU 23','954345698','IN','PAPA','954345698',NULL,'12342')
+insert into TEstudiante values(NULL,'999992','PAZ','GUERRA','MILO','999992@unsaac.edu.pe','AV. TUPAC AMARU 23','954345698','IN','PAPA','954345698',NULL,'12342')
+insert into TEstudiante values(NULL,'999993','PAZ','GUERRA','MILAGROS','999993@unsaac.edu.pe','AV. TUPAC AMARU 23','954345698','IN','PAPA','954345698',NULL,'12342')
+insert into TEstudiante values(NULL,'999994','PAZ','GUERRA','RAUL','999994@unsaac.edu.pe','AV. TUPAC AMARU 23','954345698','IN','PAPA','954345698','','12342')
+insert into TEstudiante values(NULL,'999995','PAZ','GUERRA','ROBERTO','999995@unsaac.edu.pe','AV. TUPAC AMARU 23','954345698','IN','PAPA','954345698','','12342')
+insert into TEstudiante values(NULL,'999996','PAZ','GUERRA','LUZ','999996@unsaac.edu.pe','AV. TUPAC AMARU 23','954345698','IN','PAPA','954345698',NULL,'12342')
+insert into TEstudiante values(NULL,'999997','PAZ','GUERRA','MARTHA','999997@unsaac.edu.pe','AV. TUPAC AMARU 23','954345698','IN','PAPA','954345698',NULL,'12342')
+insert into TEstudiante values(NULL,'999998','PAZ','GUERRA','LUIS','999998@unsaac.edu.pe','AV. TUPAC AMARU 23','954345698','IN','PAPA','954345698',NULL,'12342')
+insert into TEstudiante values(NULL,'999999','PAZ','GUERRA','MIGUEL','999999@unsaac.edu.pe','AV. TUPAC AMARU 23','954345698','IN','PAPA','954345698',NULL,'12342')
+insert into TEstudiante values(NULL,'111111','PAZ','GUERRA','ANGEL','111111@unsaac.edu.pe','AV. TUPAC AMARU 23','954345698','IN','PAPA','954345698',NULL,'12342')
 insert into TEstudiante values(NULL,'170115','PAZ','GUERRA','ANA','170115@unsaac.edu.pe','AV. TUPAC AMARU 23','954345698','IN','PAPA','954345698',NULL,'12342')
 insert into TEstudiante values(NULL,'170225','ARCE','ANDIA','ANGEL','170225@unsaac.edu.pe','CALLE URCOS 32','934675322','IN','PAPA','934675322',NULL,'12342')
 insert into TEstudiante values(NULL,'171347','BUENO','BUENDIA','BENITO','171347@unsaac.edu.pe','JR. LINERTAD 4','956784320','IN','PAPA','956784320',NULL,'15313')
@@ -88,6 +98,7 @@ insert into TEstudiante values(NULL,'202453','CARPIO','PUELLES','ERNESTO','20245
 insert into TEstudiante values(NULL,'213404','TARRAGA','PEZO','GIOVANNA','213404@unsaac.edu.pe','CALLE LOS OLIVOS 42','953234700','IN','PAPA','953234700',NULL,NULL)
 insert into TEstudiante values(NULL,'219025','ARCE','CRESPO','EVA','219025@unsaac.edu.pe','JR.CANARIOS 123','935212435','IN','PAPA','935212435',NULL,NULL)
 
+
 -- Usuarios: IdUsuario: Código, Contraseña: Codigo
 insert into TUsuario values(NULL,'170115','170115','Estudiante','PAZ GUERRA ANA')
 insert into TUsuario values(NULL,'170225','170225','Estudiante','ARCE ANDIA ANGEL')
@@ -97,6 +108,7 @@ insert into TUsuario values(NULL,'15313','15313','Docente','SEGUNDO CARPIO LISET
 insert into TUsuario values(NULL,'16200','16200','Docente','SONCCO ALVAREZ JOSE LUIS')
 insert into TUsuario values(NULL,'17453','17453','Director de Escuela','ACURIO USCA NILA ZONIA')
 
+-- Tutoria:
 INSERT INTO TTutoria VALUES('T0001', '00000', '182916')
 INSERT INTO TTutoria VALUES('T0002', '00000', '180116')
 INSERT INTO TTutoria VALUES('T0003', '00000', '180277')
@@ -111,10 +123,9 @@ INSERT INTO TTutoria VALUES('T0011', '00000', '191876')
 INSERT INTO TTutoria VALUES('T0012', '00000', '193402')
 INSERT INTO TTutoria VALUES('T0013', '00000', '203413')
 
-
--- Tutoria:
-
 -- Ficha de tutoria:
+
+DELETE TTutoria
 
 SELECT * FROM TEscuela_Profesional
 SELECT * FROM TEstudiante
@@ -123,3 +134,7 @@ SELECT * FROM TUsuario
 SELECT * FROM TTutoria
 SELECT * FROM TFichaTutoria
 SELECT * FROM Historial
+
+EXEC spuEliminarEstudiante '182916'
+
+select Usuario, Contraseña, Acceso from TUsuario where Usuario = '182916'
