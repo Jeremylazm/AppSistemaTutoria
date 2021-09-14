@@ -31,7 +31,7 @@ namespace CapaPresentaciones
             // Ingresar en el formulario el correo electrónico asociado a la cuenta
             SqlConnection con = new SqlConnection(@"Data Source = localhost\SQLEXPRESS; DataBase = db_a7878d_BDSistemaTutoria; Integrated Security = true");
 
-            string Cod = txtTo.Text;
+            string Cod = txtEmail.Text;
 
             try
             {
@@ -58,7 +58,7 @@ namespace CapaPresentaciones
 
                         MailMessage mailDetails = new MailMessage();
                         mailDetails.From = new MailAddress("denisomarcuyottito@gmail.com");
-                        mailDetails.To.Add(txtTo.Text + lblDominio.Text);
+                        mailDetails.To.Add(txtEmail.Text + lblDominioEmail.Text);
                         mailDetails.Subject = "Recuperación de contraseña";
                         mailDetails.IsBodyHtml = true;
                         mailDetails.Body = "Tu contraseña es " + dt.Rows[0][1].ToString();
