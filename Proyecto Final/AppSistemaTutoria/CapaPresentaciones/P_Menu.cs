@@ -203,7 +203,6 @@ namespace CapaPresentaciones
                     TopLevel = false,
                     Dock = DockStyle.Fill
                 };
-                //Editar.FormClosed += new FormClosedEventHandler(ActualizarDatos);
                 Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
 
                 pnContenedor.Controls.Add(Editar);
@@ -213,7 +212,18 @@ namespace CapaPresentaciones
             }
             else
             {
-                AbrirFormularios<P_EditarPerfilDocente>();
+                P_EditarPerfilDocente Editar = new P_EditarPerfilDocente
+                {
+                    Usuario = E_InicioSesion.Usuario,
+                    TopLevel = false,
+                    Dock = DockStyle.Fill
+                };
+                Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
+
+                pnContenedor.Controls.Add(Editar);
+                pnContenedor.Tag = Editar;
+                Editar.Show();
+                Editar.BringToFront();
             }
         }
 
