@@ -222,6 +222,12 @@
     <Compile Include="P_EditarPerfilEstudiante.Designer.cs">
       <DependentUpon>P_EditarPerfilEstudiante.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_InformacionTutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_InformacionTutor.Designer.cs">
+      <DependentUpon>P_InformacionTutor.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_InicioSesion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,6 +306,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="P_EditarPerfilEstudiante.resx">
       <DependentUpon>P_EditarPerfilEstudiante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_InformacionTutor.resx">
+      <DependentUpon>P_InformacionTutor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_InicioSesion.resx">
       <DependentUpon>P_InicioSesion.cs</DependentUpon>

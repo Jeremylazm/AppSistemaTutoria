@@ -57,6 +57,7 @@ namespace CapaPresentaciones
             this.lblDatos = new System.Windows.Forms.Label();
             this.pnInferior = new System.Windows.Forms.Panel();
             this.pnPrincipal = new System.Windows.Forms.Panel();
+            this.btnMiTutor = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pnSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
@@ -205,6 +206,7 @@ namespace CapaPresentaciones
             // pnLateral
             // 
             this.pnLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.pnLateral.Controls.Add(this.btnMiTutor);
             this.pnLateral.Controls.Add(this.btnInformeTutorias);
             this.pnLateral.Controls.Add(this.btnTutores);
             this.pnLateral.Controls.Add(this.bunifuSeparator1);
@@ -562,6 +564,42 @@ namespace CapaPresentaciones
             this.pnPrincipal.Size = new System.Drawing.Size(1000, 600);
             this.pnPrincipal.TabIndex = 5;
             // 
+            // btnMiTutor
+            // 
+            this.btnMiTutor.Active = true;
+            this.btnMiTutor.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnMiTutor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnMiTutor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMiTutor.BorderRadius = 7;
+            this.btnMiTutor.ButtonText = "Mi Tutor";
+            this.btnMiTutor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMiTutor.DisabledColor = System.Drawing.Color.Gray;
+            this.btnMiTutor.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnMiTutor.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnMiTutor.Iconimage")));
+            this.btnMiTutor.Iconimage_right = null;
+            this.btnMiTutor.Iconimage_right_Selected = null;
+            this.btnMiTutor.Iconimage_Selected = null;
+            this.btnMiTutor.IconMarginLeft = 0;
+            this.btnMiTutor.IconMarginRight = 0;
+            this.btnMiTutor.IconRightVisible = true;
+            this.btnMiTutor.IconRightZoom = 0D;
+            this.btnMiTutor.IconVisible = true;
+            this.btnMiTutor.IconZoom = 50D;
+            this.btnMiTutor.IsTab = false;
+            this.btnMiTutor.Location = new System.Drawing.Point(5, 284);
+            this.btnMiTutor.Name = "btnMiTutor";
+            this.btnMiTutor.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnMiTutor.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
+            this.btnMiTutor.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnMiTutor.selected = true;
+            this.btnMiTutor.Size = new System.Drawing.Size(161, 40);
+            this.btnMiTutor.TabIndex = 43;
+            this.btnMiTutor.Text = "Mi Tutor";
+            this.btnMiTutor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnMiTutor.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnMiTutor.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMiTutor.Click += new System.EventHandler(this.btnMiTutor_Click);
+            // 
             // P_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -617,5 +655,6 @@ namespace CapaPresentaciones
         private Bunifu.Framework.UI.BunifuFlatButton btnInformeTutorias;
         private Bunifu.Framework.UI.BunifuFlatButton btnTutores;
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
+        private Bunifu.Framework.UI.BunifuFlatButton btnMiTutor;
     }
 }
