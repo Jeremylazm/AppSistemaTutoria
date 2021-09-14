@@ -79,6 +79,7 @@ namespace CapaPresentaciones
                 btnTutores.Visible = true;
                 btnEstudiantes.Visible = true;
                 btnInformeTutorias.Visible = true;
+                btnMiTutor.Visible = false;
             }
             else if (Acceso == "Docente")
             {
@@ -88,6 +89,7 @@ namespace CapaPresentaciones
                 btnTutores.Visible = false;
                 btnEstudiantes.Visible = false;
                 btnInformeTutorias.Visible = false;
+                btnMiTutor.Visible = false;
             }
             else if (Acceso == "Estudiante")
             {
@@ -97,6 +99,7 @@ namespace CapaPresentaciones
                 btnTutores.Visible = false;
                 btnEstudiantes.Visible = false;
                 btnInformeTutorias.Visible = false;
+                btnMiTutor.Visible = true;
             }
             else
             {
@@ -242,6 +245,12 @@ namespace CapaPresentaciones
         private void btnTutores_Click(object sender, EventArgs e)
         {
             AbrirFormularios<P_TablaTutores>();
+        }
+
+        private void btnMiTutor_Click(object sender, EventArgs e)
+        {
+            P_InformacionTutor Editar = new P_InformacionTutor(E_InicioSesion.Usuario);
+            Editar.Show();
         }
 
         private void P_Menu_Load(object sender, EventArgs e)
