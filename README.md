@@ -1,6 +1,6 @@
-# **<center> AppSistemaTutoria 💻 (Aplicación de Escritorio con un Sistema de Tutorías para la UNSAAC.) </center>**
+# **<center> Aplicación de Escritorio con un Sistema de Tutorías para la UNSAAC. 💻 </center>**
 
-## Created by students of the UNSAAC
+## Creado por estudiantes de la Universidad Nacional de San Antonio Abad del Cusco
 
 ### Datos Academicos 📖
 
@@ -21,15 +21,15 @@
 
 #### Autores:✒️
 
-- **Castillo Lopez Ricardo Jorge** - _GitHub Account_ - [RicardoJorge](https://github.com/rjcastillolopez)
-- **Cuyo Ttito Denis Omar** - _GitHub Account_ - [DenisOmar](https://github.com/denisomarcuyottito)
-- **Estrella Vilca James Kevin** - _GitHub Account_ - [JamesKevin](https://github.com/JamesKevinStar)
-- **Huaman Mendoza Elvis Jorge** - _GitHub Account_ - [ElvisJorge](https://github.com/ElvisJorge17)
-- **Huaman Mendoza Johan Wilfredo** - _GitHub Account_ - [JohanWilfredo](https://github.com/jhn-cde)
-- **Lazo Mendoza Jeremy Axl** - _GitHub Account_ - [JeremyAxl](https://github.com/Jeremylazm)
-- **Peña Luque Raisa Melina** - _GitHub Account_ - [RaisaMelina](https://github.com/Raisa18)
-- **Usucachi Ano Isac Anderson** - _GitHub Account_ - [IsacAnderson](https://github.com/isacanderson)
-- **Villasante León Amaru** - _GitHub Account_ - [Amaru](https://github.com/AmaruVL)
+- **Castillo Lopez Ricardo Jorge** - _Estudiante_ - [RicardoJorge](https://github.com/rjcastillolopez)
+- **Cuyo Ttito Denis Omar** - _Estudiante_ - [DenisOmar](https://github.com/denisomarcuyottito)
+- **Estrella Vilca James Kevin** - _Estudiante_ - [JamesKevin](https://github.com/JamesKevinStar)
+- **Huaman Mendoza Elvis Jorge** - _Estudiante_ - [ElvisJorge](https://github.com/ElvisJorge17)
+- **Huaman Mendoza Johan Wilfredo** - _Estudiante_ - [JohanWilfredo](https://github.com/jhn-cde)
+- **Lazo Mendoza Jeremy Axl** - _Estudiante_ - [JeremyAxl](https://github.com/Jeremylazm)
+- **Peña Luque Raisa Melina** - _Estudiante_ - [RaisaMelina](https://github.com/Raisa18)
+- **Usucachi Ano Isac Anderson** - _Estudiante_ - [IsacAnderson](https://github.com/isacanderson)
+- **Villasante León Amaru** - _Estudiante_ - [Amaru](https://github.com/AmaruVL)
 ---
 
 NOTA: Diculpe las faltas ortográficas tales como tildes, diéresis y demás faltas encontradas a lo largo del cuaderno, esto se debe a que se uso únicamente una distribución de teclado en inglés para escribir el presente el cual no tiene acceso a dichos caracteres.
