@@ -320,12 +320,11 @@ END;
 GO
 
 -- Crear un procedimiento para mostrar estudiantes sin tutor
-CREATE PROCEDURE spuMostrarEstudiantesSinTutor @CodEscuelaP VARCHAR(4),
-											   @Filas INT
+CREATE PROCEDURE spuMostrarEstudiantesSinTutor @CodEscuelaP VARCHAR(4)
 AS
 BEGIN
 	-- Mostrar la tabla de TEstudiante
-	SELECT TOP(@Filas) ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre
+	SELECT ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre
 		FROM TEstudiante ET, TEscuela_Profesional EP
 		WHERE ET.CodEscuelaP = EP.CodEscuelaP AND ET.CodEscuelaP = @CodEscuelaP AND ET.CodDocente IS NULL
 END;
@@ -552,11 +551,9 @@ BEGIN
 		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia, 
 		   --ET.TelefonoReferencia, ET.EstadoFisico, ET.EstadoMental
 		   ET.TelefonoReferencia, ET.InformacionPersonal, CodTutor = ET.CodDocente
-		FROM ((TTutoria T INNER JOIN TEstudiante ET ON 
-			 T.CodEstudiante = ET.CodEstudiante) INNER JOIN 
-			 TEscuela_Profesional EP ON ET.CodEscuelaP = EP.CodEscuelaP)
-			 INNER JOIN TDocente D ON T.CodDocente = D.CodDocente
-		WHERE T.CodDocente = @CodDocente AND ET.CodDocente = @CodDocente
+		FROM TESTUDIANTE ET INNER JOIN TEscuela_Profesional EP ON
+			 ET.CodEscuelaP = EP.CodEscuelaP
+		WHERE ET.CodDocente = @CodDocente
 END;
 GO
 
