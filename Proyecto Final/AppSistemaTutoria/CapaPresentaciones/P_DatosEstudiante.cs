@@ -65,13 +65,15 @@ namespace CapaPresentaciones
             if (E_InicioSesion.Acceso == "Administrador")
             {
                 cxtEscuela.DataSource = N_EscuelaProfesional.MostrarRegistros();
-                cxtEscuela.ValueMember = "CodEscuelaP";
-                cxtEscuela.DisplayMember = "Nombre";
             }
             else
             {
-
+                cxtEscuela.DataSource = N_EscuelaProfesional.MostrarRegistros(E_InicioSesion.Usuario);
+                cxtEscuela.Enabled = false;
             }
+
+            cxtEscuela.ValueMember = "CodEscuelaP";
+            cxtEscuela.DisplayMember = "Nombre";
         }
         private void ActualizarDatos(object sender, FormClosedEventArgs e)
         {
