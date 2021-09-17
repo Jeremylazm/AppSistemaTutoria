@@ -12,6 +12,7 @@ using CapaNegocios;
 
 using System.Net;
 using System.Net.Mail;
+using System.Text.RegularExpressions;
 
 namespace CapaPresentaciones
 {
@@ -112,76 +113,112 @@ namespace CapaPresentaciones
             return IPersonalCifrada;
         }
 
-        #region Eventos
-        private void btnGuardar_Click(object sender, EventArgs e)
+        string AgregarOModificar(Image Perfil, string Codigo, string APaterno, string AMaterno, string Nombre, 
+                                 string Email, string Direccion, string Telefono, string CodEscuelaP, 
+                                 string PesonaReferencia, string TelefonoReferencia, string InformacionPersonal)
         {
-            if ((txtCodigo.Text.Trim() != "") &&
-                (txtAPaterno.Text.Trim() != "") &&
-                (txtAMaterno.Text.Trim() != "") &&
-                (txtNombre.Text.Trim() != "") &&
-                (txtDireccion.Text.Trim() != "") &&
-                (txtTelefono.Text.Trim() != ""))
+            string Mensaje = "";
+            Regex PatronCodigo = new Regex(@"\A[0-9]{6}\Z");
+            Regex PatronTelefono = new Regex(@"\A[0-9]{9}\Z");
+            Regex PatronTelefonoReferencia = new Regex(@"\A([0-9]{9}\Z)|(^$)");
+
+            if ((Codigo.Trim() != "") &&
+                (APaterno.Trim() != "") &&
+                (AMaterno.Trim() != "") &&
+                (Nombre.Trim() != "") &&
+                (Direccion.Trim() != "") &&
+                (Telefono.Trim() != ""))
             {
                 if (Program.Evento == 0)
                 {
                     try
                     {
-                        byte[] Perfil = new byte[0];
+                        byte[] PerfilArray = new byte[0];
                         using (MemoryStream MemoriaPerfil = new MemoryStream())
                         {
-                            imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
-                            Perfil = MemoriaPerfil.ToArray();
+                            Perfil.Save(MemoriaPerfil, ImageFormat.Bmp);
+                            PerfilArray = MemoriaPerfil.ToArray();
                         }
-                        ObjEntidad.Perfil = Perfil;
-                        ObjEntidad.CodEstudiante = txtCodigo.Text;
-                        ObjEntidad.APaterno = txtAPaterno.Text.ToUpper();
-                        ObjEntidad.AMaterno = txtAMaterno.Text.ToUpper();
-                        ObjEntidad.Nombre = txtNombre.Text.ToUpper();
-                        ObjEntidad.Email = txtCodigo.Text + "@unsaac.edu.pe";
-                        ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
-                        ObjEntidad.Telefono = txtTelefono.Text;
-                        ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
-                        ObjEntidad.PersonaReferencia = txtPReferencia.Text.ToUpper();
-                        ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
-                        ObjEntidad.InformacionPersonal = EncriptarIPersonal(txtIPersonal.Text,false);
+                        ObjEntidad.Perfil = PerfilArray;
 
-                        ObjNegocio.InsertarRegistros(ObjEntidad);
-                        MensajeConfirmacion("Registro insertado exitosamente");
-                        Program.Evento = 0;
-
-                        N_InicioSesion InicioSesion = new N_InicioSesion();
-                        string Contrasena = InicioSesion.RetornarContrasena(txtCodigo.Text);
-
-                        // Enviar un correo con la contraseña para un nuevo usuario
-                        try
+                        if (!PatronCodigo.IsMatch(Codigo))
                         {
-                            SmtpClient clientDetails = new SmtpClient();
-                            clientDetails.Port = 587;
-                            clientDetails.Host = "smtp.gmail.com";
-                            clientDetails.EnableSsl = true;
-                            clientDetails.DeliveryMethod = SmtpDeliveryMethod.Network;
-                            clientDetails.UseDefaultCredentials = false;
-                            clientDetails.Credentials = new NetworkCredential("denisomarcuyottito@gmail.com", "Tutoriasunsaac5");
-
-                            MailMessage mailDetails = new MailMessage();
-                            mailDetails.From = new MailAddress("denisomarcuyottito@gmail.com");
-                            mailDetails.To.Add(ObjEntidad.Email);
-                            mailDetails.Subject = "Contraseña del Sistema de Tutoría UNSAAC";
-                            mailDetails.IsBodyHtml = true;
-                            mailDetails.Body = "Tu contraseña es " + Contrasena;
-                            clientDetails.Send(mailDetails);
+                            Mensaje = "El código deber ser de 6 cifras";
+                            MensajeError(Mensaje);
+                            return Mensaje;
                         }
-                        catch (Exception ex)
+                        else
                         {
-                            MessageBox.Show(ex.Message);
-                        }
+                            ObjEntidad.CodEstudiante = Codigo;
+                            ObjEntidad.APaterno = APaterno;
+                            ObjEntidad.AMaterno = AMaterno;
+                            ObjEntidad.Nombre = Nombre;
+                            ObjEntidad.Email = Email;
+                            ObjEntidad.Direccion = Direccion;
 
-                        LimpiarCajas();
-                        Close();
+                            if (!PatronTelefono.IsMatch(Telefono))
+                            {
+                                Mensaje = "El teléfono deber ser de 9 cifras";
+                                MensajeError(Mensaje);
+                                return Mensaje;
+                            }
+                            else
+                            {
+                                ObjEntidad.Telefono = Telefono;
+                                ObjEntidad.CodEscuelaP = CodEscuelaP;
+                                ObjEntidad.PersonaReferencia = PesonaReferencia;
+
+                                if (!PatronTelefonoReferencia.IsMatch(TelefonoReferencia))
+                                {
+                                    Mensaje = "El teléfono deber ser de 9 cifras";
+                                    MensajeError(Mensaje);
+                                    return Mensaje;
+                                }
+                                else
+                                {
+                                    ObjEntidad.TelefonoReferencia = TelefonoReferencia;
+                                    ObjEntidad.InformacionPersonal = EncriptarIPersonal(InformacionPersonal, false);
+
+                                    ObjNegocio.InsertarRegistros(ObjEntidad);
+                                    MensajeConfirmacion("Registro insertado exitosamente");
+                                    Program.Evento = 0;
+
+                                    N_InicioSesion InicioSesion = new N_InicioSesion();
+                                    string Contrasena = InicioSesion.RetornarContrasena(Codigo);
+
+                                    // Enviar un correo con la contraseña para un nuevo usuario
+                                    try
+                                    {
+                                        SmtpClient clientDetails = new SmtpClient();
+                                        clientDetails.Port = 587;
+                                        clientDetails.Host = "smtp.gmail.com";
+                                        clientDetails.EnableSsl = true;
+                                        clientDetails.DeliveryMethod = SmtpDeliveryMethod.Network;
+                                        clientDetails.UseDefaultCredentials = false;
+                                        clientDetails.Credentials = new NetworkCredential("denisomarcuyottito@gmail.com", "Tutoriasunsaac5");
+
+                                        MailMessage mailDetails = new MailMessage();
+                                        mailDetails.From = new MailAddress("denisomarcuyottito@gmail.com");
+                                        mailDetails.To.Add(Email);
+                                        mailDetails.Subject = "Contraseña del Sistema de Tutoría UNSAAC";
+                                        mailDetails.IsBodyHtml = true;
+                                        mailDetails.Body = "Tu contraseña es " + Contrasena;
+                                        clientDetails.Send(mailDetails);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show(ex.Message);
+                                    }
+
+                                    LimpiarCajas();
+                                    Close();
+                                }
+                            }
+                        }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        MensajeError("Error al insertar el registro " + ex);
+                        MensajeError("Error al insertar el registro ");
                     }
                 }
                 else
@@ -192,30 +229,61 @@ namespace CapaPresentaciones
                         Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                         if (Opcion == DialogResult.OK)
                         {
-                            byte[] Perfil = new byte[0];
+                            byte[] PerfilArray = new byte[0];
                             using (MemoryStream MemoriaPerfil = new MemoryStream())
                             {
-                                imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
-                                Perfil = MemoriaPerfil.ToArray();
+                                Perfil.Save(MemoriaPerfil, ImageFormat.Bmp);
+                                PerfilArray = MemoriaPerfil.ToArray();
                             }
-                            ObjEntidad.Perfil = Perfil;
-                            ObjEntidad.CodEstudiante = txtCodigo.Text;
-                            ObjEntidad.APaterno = txtAPaterno.Text.ToUpper();
-                            ObjEntidad.AMaterno = txtAMaterno.Text.ToUpper();
-                            ObjEntidad.Nombre = txtNombre.Text.ToUpper();
-                            ObjEntidad.Email = txtCodigo.Text + "@unsaac.edu.pe";
-                            ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
-                            ObjEntidad.Telefono = txtTelefono.Text;
-                            ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
-                            ObjEntidad.PersonaReferencia = txtPReferencia.Text.ToUpper();
-                            ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
-                            ObjEntidad.InformacionPersonal = EncriptarIPersonal(txtIPersonal.Text, false);
+                            ObjEntidad.Perfil = PerfilArray;
 
-                            ObjNegocio.EditarRegistros(ObjEntidad);
-                            MensajeConfirmacion("Registro editado exitosamente");
-                            Program.Evento = 0;
-                            LimpiarCajas();
-                            Close();
+                            if (!PatronCodigo.IsMatch(Codigo))
+                            {
+                                Mensaje = "El código deber ser de 6 cifras";
+                                MensajeError(Mensaje);
+                                return Mensaje;
+                            }
+                            else
+                            {
+                                ObjEntidad.CodEstudiante = Codigo;
+                                ObjEntidad.APaterno = APaterno;
+                                ObjEntidad.AMaterno = AMaterno;
+                                ObjEntidad.Nombre = Nombre;
+                                ObjEntidad.Email = Email;
+                                ObjEntidad.Direccion = Direccion;
+
+                                if (!PatronTelefono.IsMatch(Telefono))
+                                {
+                                    Mensaje = "El teléfono deber ser de 9 cifras";
+                                    MensajeError(Mensaje);
+                                    return Mensaje;
+                                }
+                                else
+                                {
+                                    ObjEntidad.Telefono = Telefono;
+                                    ObjEntidad.CodEscuelaP = CodEscuelaP;
+                                    ObjEntidad.PersonaReferencia = PesonaReferencia;
+
+                                    if (!PatronTelefonoReferencia.IsMatch(TelefonoReferencia))
+                                    {
+                                        Mensaje = "El teléfono deber ser de 9 cifras";
+                                        MensajeError(Mensaje);
+                                        return Mensaje;
+                                    }
+                                    else
+                                    {
+
+                                        ObjEntidad.TelefonoReferencia = TelefonoReferencia;
+                                        ObjEntidad.InformacionPersonal = EncriptarIPersonal(InformacionPersonal, false);
+
+                                        ObjNegocio.EditarRegistros(ObjEntidad);
+                                        MensajeConfirmacion("Registro editado exitosamente");
+                                        Program.Evento = 0;
+                                        LimpiarCajas();
+                                        Close();
+                                    }
+                                }
+                            }
                         }
                     }
                     catch (Exception)
@@ -226,8 +294,164 @@ namespace CapaPresentaciones
             }
             else
             {
-                MensajeError("Debe llenar los campos");
+                if (Codigo.Trim() != "")
+                {
+                    Mensaje = "Debe llenar el código";
+                    MensajeError(Mensaje);
+                }
+
+                if (APaterno.Trim() != "")
+                {
+                    Mensaje = "Debe llenar el apellido paterno";
+                    MensajeError(Mensaje);
+                }
+
+                if (AMaterno.Trim() != "")
+                {
+                    Mensaje = "Debe llenar el apellido materno";
+                    MensajeError(Mensaje);
+                }
+                if (Nombre.Trim() != "")
+                {
+                    Mensaje = "Debe llenar el nombre";
+                    MensajeError(Mensaje);
+                }
+                if (Direccion.Trim() != "")
+                {
+                    Mensaje = "Debe llenar la dirección";
+                    MensajeError(Mensaje);
+                }
+
+                if (Telefono.Trim() != "")
+                {
+                    Mensaje = "Debe llenar el teléfono";
+                    MensajeError(Mensaje);
+                }                
             }
+
+            return Mensaje;
+        }
+
+        #region Eventos
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            AgregarOModificar(imgPerfil.Image, txtCodigo.Text, txtAPaterno.Text.ToUpper(), txtAMaterno.Text.ToUpper(),
+                              txtNombre.Text.ToUpper(), txtCodigo.Text + "@unsaac.edu.pe", txtDireccion.Text.ToUpper(),
+                              txtTelefono.Text, cxtEscuela.SelectedValue.ToString(), txtPReferencia.Text.ToUpper(),
+                              txtTReferencia.Text, txtIPersonal.Text);
+            //if ((txtCodigo.Text.Trim() != "") &&
+            //    (txtAPaterno.Text.Trim() != "") &&
+            //    (txtAMaterno.Text.Trim() != "") &&
+            //    (txtNombre.Text.Trim() != "") &&
+            //    (txtDireccion.Text.Trim() != "") &&
+            //    (txtTelefono.Text.Trim() != ""))
+            //{
+            //    if (Program.Evento == 0)
+            //    {
+            //        try
+            //        {
+            //            byte[] Perfil = new byte[0];
+            //            using (MemoryStream MemoriaPerfil = new MemoryStream())
+            //            {
+            //                imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
+            //                Perfil = MemoriaPerfil.ToArray();
+            //            }
+            //            ObjEntidad.Perfil = Perfil;
+            //            ObjEntidad.CodEstudiante = txtCodigo.Text;
+            //            ObjEntidad.APaterno = txtAPaterno.Text.ToUpper();
+            //            ObjEntidad.AMaterno = txtAMaterno.Text.ToUpper();
+            //            ObjEntidad.Nombre = txtNombre.Text.ToUpper();
+            //            ObjEntidad.Email = txtCodigo.Text + "@unsaac.edu.pe";
+            //            ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
+            //            ObjEntidad.Telefono = txtTelefono.Text;
+            //            ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
+            //            ObjEntidad.PersonaReferencia = txtPReferencia.Text.ToUpper();
+            //            ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
+            //            ObjEntidad.InformacionPersonal = EncriptarIPersonal(txtIPersonal.Text,false);
+
+            //            ObjNegocio.InsertarRegistros(ObjEntidad);
+            //            MensajeConfirmacion("Registro insertado exitosamente");
+            //            Program.Evento = 0;
+
+            //            N_InicioSesion InicioSesion = new N_InicioSesion();
+            //            string Contrasena = InicioSesion.RetornarContrasena(txtCodigo.Text);
+
+            //            // Enviar un correo con la contraseña para un nuevo usuario
+            //            try
+            //            {
+            //                SmtpClient clientDetails = new SmtpClient();
+            //                clientDetails.Port = 587;
+            //                clientDetails.Host = "smtp.gmail.com";
+            //                clientDetails.EnableSsl = true;
+            //                clientDetails.DeliveryMethod = SmtpDeliveryMethod.Network;
+            //                clientDetails.UseDefaultCredentials = false;
+            //                clientDetails.Credentials = new NetworkCredential("denisomarcuyottito@gmail.com", "Tutoriasunsaac5");
+
+            //                MailMessage mailDetails = new MailMessage();
+            //                mailDetails.From = new MailAddress("denisomarcuyottito@gmail.com");
+            //                mailDetails.To.Add(ObjEntidad.Email);
+            //                mailDetails.Subject = "Contraseña del Sistema de Tutoría UNSAAC";
+            //                mailDetails.IsBodyHtml = true;
+            //                mailDetails.Body = "Tu contraseña es " + Contrasena;
+            //                clientDetails.Send(mailDetails);
+            //            }
+            //            catch (Exception ex)
+            //            {
+            //                MessageBox.Show(ex.Message);
+            //            }
+
+            //            LimpiarCajas();
+            //            Close();
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            MensajeError("Error al insertar el registro " + ex);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        try
+            //        {
+            //            DialogResult Opcion;
+            //            Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            //            if (Opcion == DialogResult.OK)
+            //            {
+            //                byte[] Perfil = new byte[0];
+            //                using (MemoryStream MemoriaPerfil = new MemoryStream())
+            //                {
+            //                    imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
+            //                    Perfil = MemoriaPerfil.ToArray();
+            //                }
+            //                ObjEntidad.Perfil = Perfil;
+            //                ObjEntidad.CodEstudiante = txtCodigo.Text;
+            //                ObjEntidad.APaterno = txtAPaterno.Text.ToUpper();
+            //                ObjEntidad.AMaterno = txtAMaterno.Text.ToUpper();
+            //                ObjEntidad.Nombre = txtNombre.Text.ToUpper();
+            //                ObjEntidad.Email = txtCodigo.Text + "@unsaac.edu.pe";
+            //                ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
+            //                ObjEntidad.Telefono = txtTelefono.Text;
+            //                ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
+            //                ObjEntidad.PersonaReferencia = txtPReferencia.Text.ToUpper();
+            //                ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
+            //                ObjEntidad.InformacionPersonal = EncriptarIPersonal(txtIPersonal.Text, false);
+
+            //                ObjNegocio.EditarRegistros(ObjEntidad);
+            //                MensajeConfirmacion("Registro editado exitosamente");
+            //                Program.Evento = 0;
+            //                LimpiarCajas();
+            //                Close();
+            //            }
+            //        }
+            //        catch (Exception)
+            //        {
+            //            MensajeError("Error al editar el registro");
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    MensajeError("Debe llenar los campos");
+            //}
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)

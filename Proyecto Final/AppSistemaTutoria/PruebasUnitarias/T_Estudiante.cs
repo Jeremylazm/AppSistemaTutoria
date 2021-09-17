@@ -7,7 +7,7 @@ namespace PruebasUnitarias
     public class T_Estudiante
     {
         [TestMethod]
-        public void DatosCorrectosEstudiante()
+        public void CodigoVacio()
         {
 
         }
