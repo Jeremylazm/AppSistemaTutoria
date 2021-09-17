@@ -59,12 +59,13 @@ namespace CapaDatos
                 Comando.Parameters.AddWithValue("@Usuario", Usuario);
                 Comando.Parameters.AddWithValue("@NuevaContrasenia", Contraseña);
                 Comando.ExecuteNonQuery();
+
                 Conectar.Close();
                 return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cambiar la contraseña" + ex);
+                MessageBox.Show("D_inicio_sesion | Error al cambiar la contraseña | Error de conexión" + ex);
 
                 Conectar.Close();
                 return false;

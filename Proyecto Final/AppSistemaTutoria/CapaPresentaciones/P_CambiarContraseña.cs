@@ -87,6 +87,7 @@ namespace CapaPresentaciones
                     panelVerificacion.Visible = true;
                     panelCorreo.Visible = false;
                     panelVerificacion.BringToFront();
+                    tbVerificacionCorreo.Text = tbCorreo.Text;
                 }
                 else
                 {
@@ -141,14 +142,11 @@ namespace CapaPresentaciones
                         try
                         {
                             string nuevaContraseña = tbContraseña.Text;
-                            //string contraseñaEncriptada = E_Criptografia.CifradoMD5(nuevaContraseña);
-                            //MessageBox.Show(contraseñaEncriptada + " ,  len: " + contraseñaEncriptada.Length);
 
                             DialogResult Opcion = MessageBox.Show("¿Realmente desea cambiar la contraseña?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                             if (Opcion == DialogResult.OK)
                             {
-                                //var CambioContraseñaValido = InicioSesion.EditarRegistros(Usuario, contraseñaEncriptada);
-                                var CambioContraseñaValido = InicioSesion.EditarRegistros(Usuario, nuevaContraseña);
+                                bool CambioContraseñaValido = InicioSesion.EditarRegistros(Usuario, nuevaContraseña);
                                 Close();
                                 if(CambioContraseñaValido)
                                     MessageBox.Show("Contraseña cambiada correctamente");

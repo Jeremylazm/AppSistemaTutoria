@@ -21,6 +21,7 @@ insert into TEscuela_Profesional VALUES('IC','INGENIERÍA CIVIL');
 insert into TEscuela_Profesional VALUES('CO','CONTABILIDAD');
 insert into TEscuela_Profesional VALUES('PS','PSICOLOGÍA');
 insert into TEscuela_Profesional VALUES('IQ','INGENIERÍA QUÍMICA');
+GO
 
 -- Docentes:
 insert into TDocente values(NULL,'12342','CUSIHUAMAN','PHOCCO','ROGER MARIO','12342@unsaac.edu.pe','AV. SOL 231','943214535','CONTRATADO','A1','TIEMPO COMPLETO','IN','DISPONIBLE')
@@ -55,6 +56,7 @@ insert into TDocente values(NULL,'54323','IBARRA','ZAMBRANO','WALDO ELLIO','5432
 insert into TDocente values(NULL,'62322','PILLCO','QUISPE','JOSE MAURO','62322@unsaac.edu.pe','AV. SAN LUIS 11','993203245','NOMBRADO','AUXILIAR','TIEMPO COMPLETO','IN','DISPONIBLE')
 insert into TDocente values(NULL,'12345','CARBAJAL','LUNA','JULIO CESAR','12345@unsaac.edu.pe','JR. GRAU 43','951234566','NOMBRADO','PRINCIPAL','DEDICACIÓN EXCLUSIVA','IN','DISPONIBLE')
 insert into TDocente values(NULL,'16341','PEÑALOZA','FIGUEROA','MANUEL AURELIO','16341@unsaac.edu.pe','AV. 2 DE MAYO 123','995049596','NOMBRADO','ASOCIADO','TIEMPO PARCIAL','IN','DISPONIBLE')
+GO
 
 -- Estudiantes
 insert into TEstudiante values(NULL,'999991','PAZ','GUERRA','SOCRATES','999991@unsaac.edu.pe','AV. TUPAC AMARU 23','954345698','IN','PAPA','954345698',NULL,'12342')
@@ -97,35 +99,37 @@ insert into TEstudiante values(NULL,'203022','PAREDES','OLIVERA','ESTHER','20302
 insert into TEstudiante values(NULL,'202453','CARPIO','PUELLES','ERNESTO','202453@unsaac.edu.pe','AV. FEREDAL 254','987664664','IN','PAPA','987664664',NULL,NULL)
 insert into TEstudiante values(NULL,'213404','TARRAGA','PEZO','GIOVANNA','213404@unsaac.edu.pe','CALLE LOS OLIVOS 42','953234700','IN','PAPA','953234700',NULL,NULL)
 insert into TEstudiante values(NULL,'219025','ARCE','CRESPO','EVA','219025@unsaac.edu.pe','JR.CANARIOS 123','935212435','IN','PAPA','935212435',NULL,NULL)
-
+GO
 
 -- Usuarios: IdUsuario: Código, Contraseña: Codigo
-insert into TUsuario values(NULL,'170115','170115','Estudiante','PAZ GUERRA ANA')
-insert into TUsuario values(NULL,'170225','170225','Estudiante','ARCE ANDIA ANGEL')
-insert into TUsuario values(NULL,'171347','171347','Estudiante','BUENO BUENDIA BENITO')
-insert into TUsuario values(NULL,'12342','12342','Docente','CUSIHUAMAN PHOCCO ROGER MARIO')
-insert into TUsuario values(NULL,'15313','15313','Docente','SEGUNDO CARPIO LISETH URPY')
-insert into TUsuario values(NULL,'16200','16200','Docente','SONCCO ALVAREZ JOSE LUIS')
-insert into TUsuario values(NULL,'17453','17453','Director de Escuela','ACURIO USCA NILA ZONIA')
+EXEC DBO.spuInsertarUsuario NULL,'170115','170115','Estudiante','PAZ GUERRA ANA'
+EXEC DBO.spuInsertarUsuario NULL,'170225','170225','Estudiante','ARCE ANDIA ANGEL'
+EXEC DBO.spuInsertarUsuario NULL,'171347','171347','Estudiante','BUENO BUENDIA BENITO'
+EXEC DBO.spuInsertarUsuario NULL,'12342','12342','Docente','CUSIHUAMAN PHOCCO ROGER MARIO'
+EXEC DBO.spuInsertarUsuario NULL,'15313','15313','Docente','SEGUNDO CARPIO LISETH URPY'
+EXEC DBO.spuInsertarUsuario NULL,'16200','16200','Docente','SONCCO ALVAREZ JOSE LUIS'
+EXEC DBO.spuInsertarUsuario NULL,'17453','17453','Director de Escuela','ACURIO USCA NILA ZONIA'
+GO
 
 -- Tutoria:
-INSERT INTO TTutoria VALUES('T0001', '00000', '182916')
-INSERT INTO TTutoria VALUES('T0002', '00000', '180116')
-INSERT INTO TTutoria VALUES('T0003', '00000', '180277')
-INSERT INTO TTutoria VALUES('T0004', '00000', '181197')
-INSERT INTO TTutoria VALUES('T0005', '00000', '180919')
-INSERT INTO TTutoria VALUES('T0006', '00000', '191447')
-INSERT INTO TTutoria VALUES('T0007', '00000', '190366')
-INSERT INTO TTutoria VALUES('T0008', '00000', '190788')
-INSERT INTO TTutoria VALUES('T0009', '00000', '191779')
-INSERT INTO TTutoria VALUES('T0010', '00000', '190998')
-INSERT INTO TTutoria VALUES('T0011', '00000', '191876')
-INSERT INTO TTutoria VALUES('T0012', '00000', '193402')
-INSERT INTO TTutoria VALUES('T0013', '00000', '203413')
+--INSERT INTO TTutoria VALUES('T0001', '00000', '182916')
+--INSERT INTO TTutoria VALUES('T0002', '00000', '180116')
+--INSERT INTO TTutoria VALUES('T0003', '00000', '180277')
+--INSERT INTO TTutoria VALUES('T0004', '00000', '181197')
+--INSERT INTO TTutoria VALUES('T0005', '00000', '180919')
+--INSERT INTO TTutoria VALUES('T0006', '00000', '191447')
+--INSERT INTO TTutoria VALUES('T0007', '00000', '190366')
+--INSERT INTO TTutoria VALUES('T0008', '00000', '190788')
+--INSERT INTO TTutoria VALUES('T0009', '00000', '191779')
+--INSERT INTO TTutoria VALUES('T0010', '00000', '190998')
+--INSERT INTO TTutoria VALUES('T0011', '00000', '191876')
+--INSERT INTO TTutoria VALUES('T0012', '00000', '193402')
+--INSERT INTO TTutoria VALUES('T0013', '00000', '203413')
+GO
 
 -- Ficha de tutoria:
 
-DELETE TTutoria
+--DELETE TTutoria
 
 SELECT * FROM TEscuela_Profesional
 SELECT * FROM TEstudiante
@@ -134,7 +138,3 @@ SELECT * FROM TUsuario
 SELECT * FROM TTutoria
 SELECT * FROM TFichaTutoria
 SELECT * FROM Historial
-
-EXEC spuEliminarEstudiante '182916'
-
-select Usuario, Contraseña, Acceso from TUsuario where Usuario = '182916'

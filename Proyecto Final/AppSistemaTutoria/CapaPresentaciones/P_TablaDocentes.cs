@@ -14,7 +14,6 @@ namespace CapaPresentaciones
     {
         readonly E_Docente ObjEntidad = new E_Docente();
         readonly N_Docente ObjNegocio = new N_Docente();
-        string CodEscuelaP = "IN";
 
         public P_TablaDocentes()
         {
@@ -54,13 +53,13 @@ namespace CapaPresentaciones
 
         public void MostrarRegistros()
         {
-            dgvTabla.DataSource = N_Docente.MostrarRegistros(CodEscuelaP);
+            dgvTabla.DataSource = N_Docente.MostrarRegistros(E_InicioSesion.Usuario);
             AccionesTabla();
         }
 
         public void BuscarRegistros()
         {
-            dgvTabla.DataSource = N_Docente.BuscarRegistros(CodEscuelaP, txtBuscar.Text);
+            dgvTabla.DataSource = N_Docente.BuscarRegistros(E_InicioSesion.Usuario, txtBuscar.Text);
         }
 
         private void ActualizarDatos(object sender, FormClosedEventArgs e)

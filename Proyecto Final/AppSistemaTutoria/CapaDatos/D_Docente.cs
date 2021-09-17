@@ -21,7 +21,7 @@ namespace CapaDatos
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
         
-        public DataTable MostrarRegistros(string CodEscuelaP)
+        public DataTable MostrarRegistros(string CodDocente)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuMostrarDocentes", Conectar)
@@ -29,7 +29,7 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             
@@ -54,7 +54,7 @@ namespace CapaDatos
             return Resultado;
         }
 
-        public DataTable MostrarTutores(string CodEscuelaP)
+        public DataTable MostrarTutores(string CodDocente)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuMostrarTutores", Conectar)
@@ -62,7 +62,7 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;
@@ -134,7 +134,7 @@ namespace CapaDatos
             return Resultado;
         }
 
-        public DataTable BuscarRegistros(string CodEscuelaP, string Texto)
+        public DataTable BuscarRegistros(string CodDocente, string Texto)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarDocentes", Conectar)
@@ -142,7 +142,7 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
             Comando.Parameters.AddWithValue("@Texto", Texto);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
@@ -168,7 +168,7 @@ namespace CapaDatos
             return Resultado;
         }
 
-        public DataTable BuscarTutor(string CodEscuelaP, string Texto)
+        public DataTable BuscarTutor(string CodDocente, string Texto)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarTutor", Conectar)
@@ -176,7 +176,7 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
             Comando.Parameters.AddWithValue("@Texto", Texto);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
