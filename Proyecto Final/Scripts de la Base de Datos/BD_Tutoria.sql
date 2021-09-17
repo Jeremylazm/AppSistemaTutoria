@@ -537,7 +537,7 @@ BEGIN
 	DECLARE @Datos VARCHAR(53);
 	DECLARE @Contraseña VARCHAR(8);
 	SET @Datos = CONCAT(@APaterno, ' ', @AMaterno, ', ', @Nombre);
-	SET @Contraseña = DBO.fnGenerarContraseña();
+	SET @Contraseña = @CodEstudiante;
 
 	-- Insertar un usuario con el c�digo del estudiante en la tabla de TUsuario
 	EXEC DBO.spuInsertarUsuario @Perfil, @CodEstudiante, @Contraseña, 'Estudiante', @Datos
