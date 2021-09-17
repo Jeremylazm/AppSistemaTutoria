@@ -364,20 +364,56 @@ GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ESCUELA PROFESIONAL ****************** */
 
+CREATE FUNCTION fnObtenerEscuelaDocente (@CodDocente VARCHAR(5))
+RETURNS VARCHAR(4)
+AS
+BEGIN
+	-- Declarar una variable para el codigo de la escuela profesional
+	DECLARE @CodEscuelaP VARCHAR(4);
+
+	-- Obtener la escuela profesional del docente
+	SELECT @CodEscuelaP = CodEscuelaP
+		FROM TDocente
+		WHERE CodDocente = @CodDocente
+
+	-- Retornar la escuela profesional del docente
+    RETURN @CodEscuelaP;
+END;
+GO
+
+CREATE FUNCTION fnObtenerEscuelaEstudiante (@CodEstudiante VARCHAR(6))
+RETURNS VARCHAR(4)
+AS
+BEGIN
+	-- Declarar una variable para el codigo de la escuela profesional
+	DECLARE @CodEscuelaP VARCHAR(4);
+
+	-- Obtener la escuela profesional del estudiante
+	SELECT @CodEscuelaP = CodEscuelaP
+		FROM TEstudiante
+		WHERE CodEstudiante = @CodEstudiante
+
+	-- Retornar la escuela profesional del estudiante
+    RETURN @CodEscuelaP;
+END;
+GO
+
 -- Crear un procedimiento para mostrar escuelas profesionales
-CREATE PROCEDURE spuMostrarEscuelas
+CREATE PROCEDURE spuMostrarEscuelas @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Mostrar la tabla de TEscuela_Profesional
 	SELECT *
 		FROM TEscuela_Profesional
+		WHERE CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente) OR
+			  @CodDocente = '*'
 END;
 GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ESTUDIANTE ****************** */
 
 -- Crear un procedimiento para mostrar estudiantes
-CREATE PROCEDURE spuMostrarEstudiantes @CodEscuelaP VARCHAR(4)
+CREATE PROCEDURE spuMostrarEstudiantes @CodEstudiante VARCHAR(6)
 AS
 BEGIN
 	-- Mostrar la tabla de TEstudiante
@@ -391,18 +427,20 @@ BEGIN
 		   ET.TelefonoReferencia, ET.InformacionPersonal, CodTutor = ET.CodDocente
 		FROM TEstudiante ET INNER JOIN TEscuela_Profesional EP ON
 			 ET.CodEscuelaP = EP.CodEscuelaP
-	    WHERE EP.CodEscuelaP = @CodEscuelaP
+	    WHERE EP.CodEscuelaP = DBO.fnObtenerEscuelaEstudiante(@CodEstudiante)
 END;
 GO
 
 -- Crear un procedimiento para mostrar estudiantes sin tutor
-CREATE PROCEDURE spuMostrarEstudiantesSinTutor @CodEscuelaP VARCHAR(4)
+CREATE PROCEDURE spuMostrarEstudiantesSinTutor @CodEstudiante VARCHAR(6)
 AS
 BEGIN
 	-- Mostrar la tabla de TEstudiante
 	SELECT ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre
 		FROM TEstudiante ET, TEscuela_Profesional EP
-		WHERE ET.CodEscuelaP = EP.CodEscuelaP AND ET.CodEscuelaP = @CodEscuelaP AND ET.CodDocente IS NULL
+		WHERE ET.CodEscuelaP = EP.CodEscuelaP AND 
+			  ET.CodEscuelaP = DBO.fnObtenerEscuelaEstudiante(@CodEstudiante) AND 
+			  ET.CodDocente IS NULL
 END;
 GO
 
@@ -425,7 +463,7 @@ END;
 GO
 
 -- Crear un procedimiento para buscar estudiantes por cualquier atributo
-CREATE PROCEDURE spuBuscarEstudiantes @CodEscuelaP VARCHAR(4),
+CREATE PROCEDURE spuBuscarEstudiantes @CodEstudiante VARCHAR(6),
 									  @Texto VARCHAR(20)
 AS
 BEGIN
@@ -440,7 +478,7 @@ BEGIN
 		   ET.TelefonoReferencia, ET.InformacionPersonal, CodTutor = ET.CodDocente
 		FROM TEstudiante ET INNER JOIN TEscuela_Profesional EP ON
 			 ET.CodEscuelaP = EP.CodEscuelaP
-		WHERE ET.CodEstudiante LIKE (@Texto + '%') OR
+		WHERE (ET.CodEstudiante LIKE (@Texto + '%') OR
 			  ET.APaterno LIKE (@Texto + '%') OR
 			  ET.AMaterno LIKE (@Texto + '%') OR
 			  ET.Nombre LIKE (@Texto + '%') OR
@@ -452,12 +490,13 @@ BEGIN
 			  ET.TelefonoReferencia LIKE (@Texto + '%') OR
 			  --ET.EstadoFisico LIKE (@Texto + '%') OR
 			  --ET.EstadoMental LIKE (@Texto + '%')
-			  ET.InformacionPersonal LIKE (@Texto + '%')
+			  ET.InformacionPersonal LIKE (@Texto + '%')) AND
+			  ET.CodEscuelaP = DBO.fnObtenerEscuelaEstudiante(@CodEstudiante)
 END;
 GO
 
 -- Crear un procedimiento para buscar estudiantes sin tutor por cualquier atributo
-CREATE PROCEDURE spuBuscarEstudiantesSinTutor @CodEscuelaP VARCHAR(4),
+CREATE PROCEDURE spuBuscarEstudiantesSinTutor @CodEstudiante VARCHAR(6),
 										      @Texto VARCHAR(20),
 											  @Filas INT
 AS
@@ -465,7 +504,7 @@ BEGIN
 	-- Mostrar la tabla de TEstudiante por el texto que se desea buscar
 	SELECT TOP(@Filas) ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre
 		FROM TEstudiante ET, TEscuela_Profesional EP
-		WHERE ET.CodEscuelaP = EP.CodEscuelaP AND ET.CodDocente IS NULL AND
+		WHERE ET.CodEscuelaP = DBO.fnObtenerEscuelaEstudiante(@CodEstudiante) AND ET.CodDocente IS NULL AND
 			 (ET.CodEstudiante LIKE (@Texto + '%') OR
 			  ET.APaterno LIKE (@Texto + '%') OR
 			  ET.AMaterno LIKE (@Texto + '%') OR
@@ -496,10 +535,13 @@ BEGIN
 				@Direccion, @Telefono, @CodEscuelaP, @PersonaReferencia, 
 				@TelefonoReferencia, @InformacionPersonal, NULL)--@EstadoFisico, @EstadoMental)
 
-	DECLARE @Datos varchar(53)
-	SET @Datos = CONCAT(@APaterno, ' ', @AMaterno, ', ', @Nombre)
+	DECLARE @Datos VARCHAR(53);
+	DECLARE @Contraseña VARCHAR(8);
+	SET @Datos = CONCAT(@APaterno, ' ', @AMaterno, ', ', @Nombre);
+	SET @Contraseña = DBO.fnGenerarContraseña();
+
 	-- Insertar un usuario con el c�digo del estudiante en la tabla de TUsuario
-	EXEC DBO.spuInsertarUsuario @Perfil, @CodEstudiante, @CodEstudiante, 'Estudiante', @Datos
+	EXEC DBO.spuInsertarUsuario @Perfil, @CodEstudiante, @Contraseña, 'Estudiante', @Datos
 				
 END;
 GO
@@ -584,7 +626,7 @@ GO
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA DOCENTE ****************** */
 
 -- Crear un procedimiento para mostrar docentes
-CREATE PROCEDURE spuMostrarDocentes @CodEscuelaP VARCHAR(4)
+CREATE PROCEDURE spuMostrarDocentes @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Mostrar la tabla de TDocente
@@ -597,12 +639,12 @@ BEGIN
 		   EscuelaProfesional = E.Nombre, D.Horario
 		FROM TDocente D INNER JOIN TEscuela_Profesional E ON
 			 D.CodEscuelaP = E.CodEscuelaP
-	    WHERE D.CodEscuelaP = @CodEscuelaP
+	    WHERE D.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente)
 END;
 GO
 
 -- Crear un procedimiento para mostrar tutores
-CREATE PROCEDURE spuMostrarTutores @CodEscuelaP VARCHAR(4)
+CREATE PROCEDURE spuMostrarTutores @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Mostrar la tabla de Tutores
@@ -610,7 +652,9 @@ BEGIN
 		FROM ((TDocente D INNER JOIN TEscuela_Profesional E ON
 			   D.CodEscuelaP = E.CodEscuelaP) LEFT JOIN TEstudiante TE ON
 			   D.CodDocente = TE.CodDocente)
-		WHERE D.CodEscuelaP = @CodEscuelaP AND D.Subcategoria IN ('PRINCIPAL','ASOCIADO','AUXILIAR','A1','A2','A3') AND D.Regimen IN ('TIEMPO COMPLETO','DEDICACIÓN EXCLUSIVA')
+		WHERE D.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente) AND 
+			  --D.Subcategoria IN ('PRINCIPAL','ASOCIADO','AUXILIAR','A1','A2','A3') AND 
+			  D.Regimen IN ('TIEMPO COMPLETO','DEDICACIÓN EXCLUSIVA')
 		GROUP BY D.CodDocente, D.APaterno, D.AMaterno, D.Nombre
 END;
 GO
@@ -653,7 +697,7 @@ END;
 GO
 
 -- Crear un procedimiento para buscar docentes por cualquier atributo
-CREATE PROCEDURE spuBuscarDocentes @CodEscuelaP VARCHAR(4),
+CREATE PROCEDURE spuBuscarDocentes @CodDocente VARCHAR(5),
 								   @Texto VARCHAR(20)
 AS
 BEGIN
@@ -667,7 +711,7 @@ BEGIN
 		   EscuelaProfesional = E.Nombre, D.Horario
 		FROM TDocente D INNER JOIN TEscuela_Profesional E ON
 			 D.CodEscuelaP = E.CodEscuelaP
-		WHERE D.CodEscuelaP = @CodEscuelaP AND
+		WHERE D.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente) AND
 			 (D.CodDocente LIKE (@Texto + '%') OR
 			  D.APaterno LIKE (@Texto + '%') OR
 			  D.AMaterno LIKE (@Texto + '%') OR
@@ -684,7 +728,7 @@ END;
 GO
 
 -- Crear un procedimiento para buscar un tutor
-CREATE PROCEDURE spuBuscarTutor @CodEscuelaP VARCHAR(4),
+CREATE PROCEDURE spuBuscarTutor @CodDocente VARCHAR(5),
 							    @Texto VARCHAR(20)
 AS
 BEGIN
@@ -693,8 +737,10 @@ BEGIN
 		FROM ((TDocente D INNER JOIN TEscuela_Profesional E ON
 			   D.CodEscuelaP = E.CodEscuelaP) LEFT JOIN TEstudiante TE ON
 			   D.CodDocente = TE.CodDocente)
-		WHERE D.CodEscuelaP = @CodEscuelaP AND D.Subcategoria IN ('PRINCIPAL','ASOCIADO','AUXILIAR','A1','A2','A3') AND D.Regimen IN ('TIEMPO COMPLETO','DEDICACIÓN EXCLUSIVA') AND
-		     (D.CodDocente LIKE (@Texto + '%') OR
+		WHERE D.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente) AND 
+			  --D.Subcategoria IN ('PRINCIPAL','ASOCIADO','AUXILIAR','A1','A2','A3') AND 
+			  D.Regimen IN ('TIEMPO COMPLETO','DEDICACIÓN EXCLUSIVA') AND
+		      (D.CodDocente LIKE (@Texto + '%') OR
 			  D.APaterno LIKE (@Texto + '%') OR
 			  D.AMaterno LIKE (@Texto + '%') OR
 			  D.Nombre LIKE (@Texto + '%'))
@@ -757,10 +803,13 @@ BEGIN
 				@Regimen, @CodEscuelaP, @Horario)
 
 	-- Insertar un usuario con el c�digo del docente en la tabla de TUsuario
-	DECLARE @Datos varchar(53)
-	SET @Datos = CONCAT(@APaterno, ' ', @AMaterno, ', ', @Nombre)
+	DECLARE @Datos VARCHAR(53);
+	DECLARE @Contraseña VARCHAR(8);
+	SET @Datos = CONCAT(@APaterno, ' ', @AMaterno, ', ', @Nombre);
+	SET @Contraseña = DBO.fnGenerarContraseña();
+
 	-- Insertar un usuario con el c�digo del estudiante en la tabla de TUsuario
-	EXEC DBO.spuInsertarUsuario @Perfil, @CodDocente, @CodDocente, 'Docente', @Datos
+	EXEC DBO.spuInsertarUsuario @Perfil, @CodDocente, @Contraseña, 'Docente', @Datos
 END;
 GO
 
