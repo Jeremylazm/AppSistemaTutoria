@@ -78,21 +78,21 @@ namespace CapaPresentaciones
 
         private void btnEnviarCodigo_Click(object sender, EventArgs e)
         {
-            string correo = tbCorreo.Text + "@unsaac.edu.pe";
-            if(correo != "@unsaac.edu.pe")
+            string correo = txtEmail.Text + lblDominioEmail.Text;
+            if (correo != lblDominioEmail.Text)
             {
-                if(correo == Correo)
+                if (correo == Correo)
                 {
                     codigo_verificacion = EnviarCodigo(correo);
                     panelVerificacion.Visible = true;
                     panelCorreo.Visible = false;
                     panelVerificacion.BringToFront();
-                    tbVerificacionCorreo.Text = tbCorreo.Text;
+                    lblEmail.Text = correo;
                 }
                 else
                 {
-                    tbCorreo.Text = "";
-                    tbCorreo.Focus();
+                    txtEmail.Text = "";
+                    txtEmail.Focus();
                     MensajeError("Correo electrónico no coincide, intente de nuevo");
                 }
             }
@@ -102,11 +102,81 @@ namespace CapaPresentaciones
             }
         }
 
-        private void btnValidar_Click(object sender, EventArgs e)
+        private void btnCambiarContraseña_Click(object sender, EventArgs e)
         {
-            if(tbCodigoVerificacion.Text != "")
+            if (txtContraseñaAnterior.Text != "" &&
+                txtContraseñaNueva.Text != "" &&
+                txtConfirmarContraseña.Text != "")
             {
-                if(tbCodigoVerificacion.Text == codigo_verificacion)
+                if (txtContraseñaNueva.Text == txtConfirmarContraseña.Text)
+                {
+
+                    N_InicioSesion InicioSesion = new N_InicioSesion();
+
+                    var ValidarDatos = InicioSesion.IniciarSesion(Usuario, txtContraseñaAnterior.Text);
+                    if (ValidarDatos == true)
+                    {
+                        try
+                        {
+                            string nuevaContraseña = txtContraseñaNueva.Text;
+
+                            DialogResult Opcion = MessageBox.Show("¿Realmente desea cambiar la contraseña?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                            if (Opcion == DialogResult.OK)
+                            {
+                                bool CambioContraseñaValido = InicioSesion.EditarRegistros(Usuario, nuevaContraseña);
+                                Close();
+                                if (CambioContraseñaValido)
+                                    MessageBox.Show("Contraseña cambiada correctamente");
+                                else
+                                    MessageBox.Show("No se pudo cambiar la contraseña");
+                            }
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error al cambiar la contraseña " + ex);
+                        }
+                    }
+                    else
+                    {
+                        MensajeError("La contraseña anterior no es correcta, intente de nuevo");
+                        txtContraseñaAnterior.Clear();
+                        txtContraseñaNueva.Clear();
+                        txtConfirmarContraseña.Clear();
+                        txtContraseñaAnterior.Focus();
+                    }
+
+                }
+                else
+                {
+                    MensajeError("La contraseñas no coinciden, intente de nuevo");
+                    txtContraseñaNueva.Clear();
+                    txtConfirmarContraseña.Clear();
+                    txtContraseñaNueva.Focus();
+                }
+            }
+            else
+            {
+                MensajeError("Campos vacíos, intente de nuevo");
+                if (txtContraseñaAnterior.Text == "")
+                    txtContraseñaAnterior.Focus();
+                else if (txtContraseñaNueva.Text == "")
+                {
+                    txtContraseñaNueva.Focus();
+                    txtConfirmarContraseña.Clear();
+                }
+
+                else
+                    txtConfirmarContraseña.Focus();
+
+            }
+        }
+
+        private void btnValidarCodigo_Click(object sender, EventArgs e)
+        {
+            if (txtCodigoVerificacion.Text != "")
+            {
+                if (txtCodigoVerificacion.Text == codigo_verificacion)
                 {
                     panelVerificacion.Visible = false;
                     panelCambiarContraseña.Visible = true;
@@ -114,8 +184,8 @@ namespace CapaPresentaciones
                 }
                 else
                 {
-                    tbCodigoVerificacion.Text = "";
-                    tbCodigoVerificacion.Focus();
+                    txtCodigoVerificacion.Text = "";
+                    txtCodigoVerificacion.Focus();
                     MensajeError("Los codigos no coinciden, intente de nuevo");
                 }
             }
@@ -125,74 +195,10 @@ namespace CapaPresentaciones
             }
         }
 
-        private void btnCambiarContraseña_Click(object sender, EventArgs e)
+        private void lblVolverEnviar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if(tbContraseñaAnterior.Text != "" &&
-                tbContraseña.Text != "" &&
-                tbContraseñaRep.Text != "")
-            {
-                if (tbContraseña.Text == tbContraseñaRep.Text)
-                {
-
-                    N_InicioSesion InicioSesion = new N_InicioSesion();
-
-                    var ValidarDatos = InicioSesion.IniciarSesion(Usuario, tbContraseñaAnterior.Text);
-                    if (ValidarDatos == true)
-                    {
-                        try
-                        {
-                            string nuevaContraseña = tbContraseña.Text;
-
-                            DialogResult Opcion = MessageBox.Show("¿Realmente desea cambiar la contraseña?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                            if (Opcion == DialogResult.OK)
-                            {
-                                bool CambioContraseñaValido = InicioSesion.EditarRegistros(Usuario, nuevaContraseña);
-                                Close();
-                                if(CambioContraseñaValido)
-                                    MessageBox.Show("Contraseña cambiada correctamente");
-                                else
-                                    MessageBox.Show("No se pudo cambiar la contraseña");
-                            }
-
-                        }
-                        catch(Exception ex)
-                        {
-                            MessageBox.Show("Error al cambiar la contraseña " + ex);
-                        }
-                    }
-                    else
-                    {
-                        MensajeError("La contraseña anterior no es correcta, intente de nuevo");
-                        tbContraseñaAnterior.Clear();
-                        tbContraseña.Clear();
-                        tbContraseñaRep.Clear();
-                        tbContraseñaAnterior.Focus();
-                    }
-
-                }
-                else
-                {
-                    MensajeError("La contraseñas no coinciden, intente de nuevo");
-                    tbContraseña.Clear();
-                    tbContraseñaRep.Clear();
-                    tbContraseña.Focus();
-                }
-            }
-            else
-            {
-                MensajeError("Campos vacíos, intente de nuevo");
-                if (tbContraseñaAnterior.Text == "")
-                    tbContraseñaAnterior.Focus();
-                else if (tbContraseña.Text == "")
-                {
-                    tbContraseña.Focus();
-                    tbContraseñaRep.Clear();
-                }
-
-                else
-                    tbContraseñaRep.Focus();
-                
-            }
+            string correo = lblEmail.Text;
+            codigo_verificacion = EnviarCodigo(correo);
         }
     }
 }

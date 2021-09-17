@@ -29,43 +29,46 @@ namespace CapaPresentaciones
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_CambiarContraseña));
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.panelCorreo = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lblCorreo1 = new System.Windows.Forms.Label();
-            this.lblCorreoUnsaac = new System.Windows.Forms.Label();
-            this.tbCorreo = new System.Windows.Forms.TextBox();
-            this.lblCorreoDescripcion = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.imgContraseña = new Bunifu.Framework.UI.BunifuImageButton();
+            this.lblDominioEmail = new System.Windows.Forms.Label();
+            this.Separador1 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.btnEnviarCodigo = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.lblCorreo = new System.Windows.Forms.Label();
             this.panelVerificacion = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbVerificacionCorreo = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tbCodigoVerificacion = new System.Windows.Forms.TextBox();
-            this.btnValidar = new System.Windows.Forms.Button();
+            this.lblVolverEnviar = new System.Windows.Forms.LinkLabel();
+            this.btnValidarCodigo = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.Separador2 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.txtCodigoVerificacion = new System.Windows.Forms.TextBox();
+            this.lblCodigo = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblMensaje1 = new System.Windows.Forms.Label();
             this.panelCambiarContraseña = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btnCambiarContraseña = new System.Windows.Forms.Button();
-            this.tbContraseñaAnterior = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tbContraseñaRep = new System.Windows.Forms.TextBox();
-            this.tbContraseña = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.btnCambiarContraseña = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.Separador5 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.txtConfirmarContraseña = new System.Windows.Forms.TextBox();
+            this.lblConfirmarContraseña = new System.Windows.Forms.Label();
+            this.Separador4 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.txtContraseñaNueva = new System.Windows.Forms.TextBox();
+            this.lblContraseñaNueva = new System.Windows.Forms.Label();
+            this.Separador3 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.txtContraseñaAnterior = new System.Windows.Forms.TextBox();
+            this.lblContraseñaAnterior = new System.Windows.Forms.Label();
+            this.Movimiento = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.BordeadoMenu = new Bunifu.Framework.UI.BunifuThinButton2();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.panelCorreo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgContraseña)).BeginInit();
             this.panelVerificacion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.panelCambiarContraseña.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,9 +80,9 @@ namespace CapaPresentaciones
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(651, 40);
+            this.lblTitulo.Size = new System.Drawing.Size(416, 40);
             this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Cambiar Contraseña";
+            this.lblTitulo.Text = "Sistema de Tutoría - UNSAAC";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnCerrar
@@ -94,7 +97,7 @@ namespace CapaPresentaciones
             this.btnCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrar.Location = new System.Drawing.Point(619, 7);
+            this.btnCerrar.Location = new System.Drawing.Point(384, 7);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(24, 24);
             this.btnCerrar.TabIndex = 1;
@@ -117,330 +120,470 @@ namespace CapaPresentaciones
             // 
             // panelCorreo
             // 
-            this.panelCorreo.Controls.Add(this.label9);
-            this.panelCorreo.Controls.Add(this.lblCorreo1);
-            this.panelCorreo.Controls.Add(this.lblCorreoUnsaac);
-            this.panelCorreo.Controls.Add(this.tbCorreo);
-            this.panelCorreo.Controls.Add(this.lblCorreoDescripcion);
-            this.panelCorreo.Controls.Add(this.button1);
-            this.panelCorreo.Location = new System.Drawing.Point(17, 58);
+            this.panelCorreo.Controls.Add(this.panelCambiarContraseña);
+            this.panelCorreo.Controls.Add(this.imgContraseña);
+            this.panelCorreo.Controls.Add(this.lblDominioEmail);
+            this.panelCorreo.Controls.Add(this.Separador1);
+            this.panelCorreo.Controls.Add(this.txtEmail);
+            this.panelCorreo.Controls.Add(this.btnEnviarCodigo);
+            this.panelCorreo.Controls.Add(this.lblCorreo);
+            this.panelCorreo.Location = new System.Drawing.Point(12, 49);
             this.panelCorreo.Name = "panelCorreo";
-            this.panelCorreo.Size = new System.Drawing.Size(626, 168);
+            this.panelCorreo.Size = new System.Drawing.Size(392, 197);
             this.panelCorreo.TabIndex = 5;
             // 
-            // label9
+            // imgContraseña
             // 
-            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label9.Location = new System.Drawing.Point(361, 85);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(100, 1);
-            this.label9.TabIndex = 10;
-            this.label9.Text = "label9";
+            this.imgContraseña.BackColor = System.Drawing.Color.Transparent;
+            this.imgContraseña.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imgContraseña.Image = ((System.Drawing.Image)(resources.GetObject("imgContraseña.Image")));
+            this.imgContraseña.ImageActive = null;
+            this.imgContraseña.Location = new System.Drawing.Point(82, 66);
+            this.imgContraseña.Name = "imgContraseña";
+            this.imgContraseña.Size = new System.Drawing.Size(26, 26);
+            this.imgContraseña.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgContraseña.TabIndex = 138;
+            this.imgContraseña.TabStop = false;
+            this.imgContraseña.Zoom = 10;
             // 
-            // lblCorreo1
+            // lblDominioEmail
             // 
-            this.lblCorreo1.AutoSize = true;
-            this.lblCorreo1.Location = new System.Drawing.Point(195, 14);
-            this.lblCorreo1.Name = "lblCorreo1";
-            this.lblCorreo1.Size = new System.Drawing.Size(240, 19);
-            this.lblCorreo1.TabIndex = 9;
-            this.lblCorreo1.Text = "Se le enviará un código de verificación";
+            this.lblDominioEmail.AutoSize = true;
+            this.lblDominioEmail.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDominioEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblDominioEmail.Location = new System.Drawing.Point(206, 71);
+            this.lblDominioEmail.Name = "lblDominioEmail";
+            this.lblDominioEmail.Size = new System.Drawing.Size(110, 19);
+            this.lblDominioEmail.TabIndex = 137;
+            this.lblDominioEmail.Text = "@unsaac.edu.pe";
             // 
-            // lblCorreoUnsaac
+            // Separador1
             // 
-            this.lblCorreoUnsaac.AutoSize = true;
-            this.lblCorreoUnsaac.Location = new System.Drawing.Point(464, 66);
-            this.lblCorreoUnsaac.Name = "lblCorreoUnsaac";
-            this.lblCorreoUnsaac.Size = new System.Drawing.Size(110, 19);
-            this.lblCorreoUnsaac.TabIndex = 8;
-            this.lblCorreoUnsaac.Text = "@unsaac.edu.pe";
+            this.Separador1.BackColor = System.Drawing.Color.Transparent;
+            this.Separador1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.Separador1.LineThickness = 1;
+            this.Separador1.Location = new System.Drawing.Point(82, 94);
+            this.Separador1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Separador1.Name = "Separador1";
+            this.Separador1.Size = new System.Drawing.Size(226, 10);
+            this.Separador1.TabIndex = 136;
+            this.Separador1.Transparency = 255;
+            this.Separador1.Vertical = false;
             // 
-            // tbCorreo
+            // txtEmail
             // 
-            this.tbCorreo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbCorreo.Location = new System.Drawing.Point(361, 63);
-            this.tbCorreo.Name = "tbCorreo";
-            this.tbCorreo.Size = new System.Drawing.Size(100, 19);
-            this.tbCorreo.TabIndex = 7;
+            this.txtEmail.BackColor = System.Drawing.Color.White;
+            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtEmail.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.txtEmail.Location = new System.Drawing.Point(114, 71);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(96, 19);
+            this.txtEmail.TabIndex = 135;
             // 
-            // lblCorreoDescripcion
+            // btnEnviarCodigo
             // 
-            this.lblCorreoDescripcion.AutoSize = true;
-            this.lblCorreoDescripcion.Location = new System.Drawing.Point(23, 66);
-            this.lblCorreoDescripcion.Name = "lblCorreoDescripcion";
-            this.lblCorreoDescripcion.Size = new System.Drawing.Size(310, 19);
-            this.lblCorreoDescripcion.TabIndex = 6;
-            this.lblCorreoDescripcion.Text = "Ingrese el correo electrónico asociado a su cuenta";
+            this.btnEnviarCodigo.Active = true;
+            this.btnEnviarCodigo.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnEnviarCodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnEnviarCodigo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEnviarCodigo.BorderRadius = 7;
+            this.btnEnviarCodigo.ButtonText = "Enviar Código";
+            this.btnEnviarCodigo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEnviarCodigo.DisabledColor = System.Drawing.Color.Gray;
+            this.btnEnviarCodigo.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnEnviarCodigo.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnEnviarCodigo.Iconimage")));
+            this.btnEnviarCodigo.Iconimage_right = null;
+            this.btnEnviarCodigo.Iconimage_right_Selected = null;
+            this.btnEnviarCodigo.Iconimage_Selected = null;
+            this.btnEnviarCodigo.IconMarginLeft = 0;
+            this.btnEnviarCodigo.IconMarginRight = 0;
+            this.btnEnviarCodigo.IconRightVisible = true;
+            this.btnEnviarCodigo.IconRightZoom = 0D;
+            this.btnEnviarCodigo.IconVisible = true;
+            this.btnEnviarCodigo.IconZoom = 50D;
+            this.btnEnviarCodigo.IsTab = false;
+            this.btnEnviarCodigo.Location = new System.Drawing.Point(82, 111);
+            this.btnEnviarCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEnviarCodigo.Name = "btnEnviarCodigo";
+            this.btnEnviarCodigo.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnEnviarCodigo.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
+            this.btnEnviarCodigo.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnEnviarCodigo.selected = true;
+            this.btnEnviarCodigo.Size = new System.Drawing.Size(226, 39);
+            this.btnEnviarCodigo.TabIndex = 134;
+            this.btnEnviarCodigo.Text = "Enviar Código";
+            this.btnEnviarCodigo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnEnviarCodigo.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnEnviarCodigo.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnviarCodigo.Click += new System.EventHandler(this.btnEnviarCodigo_Click);
             // 
-            // button1
+            // lblCorreo
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.button1.Location = new System.Drawing.Point(237, 123);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(152, 28);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Enviar Código";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.btnEnviarCodigo_Click);
+            this.lblCorreo.AutoSize = true;
+            this.lblCorreo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblCorreo.Location = new System.Drawing.Point(110, 44);
+            this.lblCorreo.Name = "lblCorreo";
+            this.lblCorreo.Size = new System.Drawing.Size(153, 19);
+            this.lblCorreo.TabIndex = 133;
+            this.lblCorreo.Text = "Correro Institucional:";
             // 
             // panelVerificacion
             // 
-            this.panelVerificacion.Controls.Add(this.label8);
-            this.panelVerificacion.Controls.Add(this.label4);
-            this.panelVerificacion.Controls.Add(this.label3);
-            this.panelVerificacion.Controls.Add(this.tbVerificacionCorreo);
-            this.panelVerificacion.Controls.Add(this.label1);
-            this.panelVerificacion.Controls.Add(this.label2);
-            this.panelVerificacion.Controls.Add(this.tbCodigoVerificacion);
-            this.panelVerificacion.Controls.Add(this.btnValidar);
-            this.panelVerificacion.Location = new System.Drawing.Point(17, 57);
+            this.panelVerificacion.Controls.Add(this.lblVolverEnviar);
+            this.panelVerificacion.Controls.Add(this.btnValidarCodigo);
+            this.panelVerificacion.Controls.Add(this.bunifuImageButton1);
+            this.panelVerificacion.Controls.Add(this.Separador2);
+            this.panelVerificacion.Controls.Add(this.txtCodigoVerificacion);
+            this.panelVerificacion.Controls.Add(this.lblCodigo);
+            this.panelVerificacion.Controls.Add(this.lblEmail);
+            this.panelVerificacion.Controls.Add(this.lblMensaje1);
+            this.panelVerificacion.Location = new System.Drawing.Point(12, 49);
             this.panelVerificacion.Name = "panelVerificacion";
-            this.panelVerificacion.Size = new System.Drawing.Size(627, 168);
+            this.panelVerificacion.Size = new System.Drawing.Size(392, 197);
             this.panelVerificacion.TabIndex = 6;
             this.panelVerificacion.Visible = false;
             // 
-            // label8
+            // lblVolverEnviar
             // 
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label8.Location = new System.Drawing.Point(253, 90);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(100, 1);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "label8";
+            this.lblVolverEnviar.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
+            this.lblVolverEnviar.AutoSize = true;
+            this.lblVolverEnviar.DisabledLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
+            this.lblVolverEnviar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVolverEnviar.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lblVolverEnviar.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblVolverEnviar.Location = new System.Drawing.Point(63, 168);
+            this.lblVolverEnviar.Name = "lblVolverEnviar";
+            this.lblVolverEnviar.Size = new System.Drawing.Size(259, 19);
+            this.lblVolverEnviar.TabIndex = 147;
+            this.lblVolverEnviar.TabStop = true;
+            this.lblVolverEnviar.Text = "Volver a enviar código de verificación";
+            this.lblVolverEnviar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVolverEnviar.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblVolverEnviar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblVolverEnviar_LinkClicked);
             // 
-            // label4
+            // btnValidarCodigo
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label4.Location = new System.Drawing.Point(250, 136);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(125, 15);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Volver a enviar código";
+            this.btnValidarCodigo.Active = true;
+            this.btnValidarCodigo.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnValidarCodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnValidarCodigo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnValidarCodigo.BorderRadius = 7;
+            this.btnValidarCodigo.ButtonText = "Validar Código";
+            this.btnValidarCodigo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnValidarCodigo.DisabledColor = System.Drawing.Color.Gray;
+            this.btnValidarCodigo.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnValidarCodigo.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnValidarCodigo.Iconimage")));
+            this.btnValidarCodigo.Iconimage_right = null;
+            this.btnValidarCodigo.Iconimage_right_Selected = null;
+            this.btnValidarCodigo.Iconimage_Selected = null;
+            this.btnValidarCodigo.IconMarginLeft = 0;
+            this.btnValidarCodigo.IconMarginRight = 0;
+            this.btnValidarCodigo.IconRightVisible = true;
+            this.btnValidarCodigo.IconRightZoom = 0D;
+            this.btnValidarCodigo.IconVisible = true;
+            this.btnValidarCodigo.IconZoom = 50D;
+            this.btnValidarCodigo.IsTab = false;
+            this.btnValidarCodigo.Location = new System.Drawing.Point(80, 126);
+            this.btnValidarCodigo.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnValidarCodigo.Name = "btnValidarCodigo";
+            this.btnValidarCodigo.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnValidarCodigo.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
+            this.btnValidarCodigo.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnValidarCodigo.selected = true;
+            this.btnValidarCodigo.Size = new System.Drawing.Size(226, 39);
+            this.btnValidarCodigo.TabIndex = 146;
+            this.btnValidarCodigo.Text = "Validar Código";
+            this.btnValidarCodigo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnValidarCodigo.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnValidarCodigo.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnValidarCodigo.Click += new System.EventHandler(this.btnValidarCodigo_Click);
             // 
-            // label3
+            // bunifuImageButton1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(502, 17);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 19);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "unsaac.edu.pe";
+            this.bunifuImageButton1.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuImageButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.Image")));
+            this.bunifuImageButton1.ImageActive = null;
+            this.bunifuImageButton1.Location = new System.Drawing.Point(80, 82);
+            this.bunifuImageButton1.Name = "bunifuImageButton1";
+            this.bunifuImageButton1.Size = new System.Drawing.Size(26, 26);
+            this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bunifuImageButton1.TabIndex = 145;
+            this.bunifuImageButton1.TabStop = false;
+            this.bunifuImageButton1.Zoom = 10;
             // 
-            // tbVerificacionCorreo
+            // Separador2
             // 
-            this.tbVerificacionCorreo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbVerificacionCorreo.Location = new System.Drawing.Point(426, 17);
-            this.tbVerificacionCorreo.Name = "tbVerificacionCorreo";
-            this.tbVerificacionCorreo.Size = new System.Drawing.Size(70, 19);
-            this.tbVerificacionCorreo.TabIndex = 11;
+            this.Separador2.BackColor = System.Drawing.Color.Transparent;
+            this.Separador2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.Separador2.LineThickness = 1;
+            this.Separador2.Location = new System.Drawing.Point(80, 110);
+            this.Separador2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Separador2.Name = "Separador2";
+            this.Separador2.Size = new System.Drawing.Size(226, 10);
+            this.Separador2.TabIndex = 143;
+            this.Separador2.Transparency = 255;
+            this.Separador2.Vertical = false;
             // 
-            // label1
+            // txtCodigoVerificacion
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(378, 19);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "El código de verificación fue correctamente enviado al correo";
+            this.txtCodigoVerificacion.BackColor = System.Drawing.Color.White;
+            this.txtCodigoVerificacion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCodigoVerificacion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoVerificacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.txtCodigoVerificacion.Location = new System.Drawing.Point(112, 87);
+            this.txtCodigoVerificacion.Name = "txtCodigoVerificacion";
+            this.txtCodigoVerificacion.Size = new System.Drawing.Size(194, 19);
+            this.txtCodigoVerificacion.TabIndex = 142;
             // 
-            // label2
+            // lblCodigo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(58, 71);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(189, 19);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Ingrese códígo de verificación";
+            this.lblCodigo.AutoSize = true;
+            this.lblCodigo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblCodigo.Location = new System.Drawing.Point(108, 60);
+            this.lblCodigo.Name = "lblCodigo";
+            this.lblCodigo.Size = new System.Drawing.Size(164, 19);
+            this.lblCodigo.TabIndex = 141;
+            this.lblCodigo.Text = "Códígo de Verificación:";
             // 
-            // tbCodigoVerificacion
+            // lblEmail
             // 
-            this.tbCodigoVerificacion.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbCodigoVerificacion.Location = new System.Drawing.Point(253, 68);
-            this.tbCodigoVerificacion.Name = "tbCodigoVerificacion";
-            this.tbCodigoVerificacion.Size = new System.Drawing.Size(100, 19);
-            this.tbCodigoVerificacion.TabIndex = 8;
+            this.lblEmail.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblEmail.Location = new System.Drawing.Point(38, 36);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(320, 19);
+            this.lblEmail.TabIndex = 139;
+            this.lblEmail.Text = "Email";
+            this.lblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnValidar
+            // lblMensaje1
             // 
-            this.btnValidar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnValidar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnValidar.FlatAppearance.BorderSize = 0;
-            this.btnValidar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnValidar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
-            this.btnValidar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnValidar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnValidar.Location = new System.Drawing.Point(411, 66);
-            this.btnValidar.Name = "btnValidar";
-            this.btnValidar.Size = new System.Drawing.Size(152, 28);
-            this.btnValidar.TabIndex = 7;
-            this.btnValidar.Text = "Validar";
-            this.btnValidar.UseVisualStyleBackColor = false;
-            this.btnValidar.Click += new System.EventHandler(this.btnValidar_Click);
+            this.lblMensaje1.AutoSize = true;
+            this.lblMensaje1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMensaje1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblMensaje1.Location = new System.Drawing.Point(38, 12);
+            this.lblMensaje1.Name = "lblMensaje1";
+            this.lblMensaje1.Size = new System.Drawing.Size(320, 19);
+            this.lblMensaje1.TabIndex = 138;
+            this.lblMensaje1.Text = "El código de verificación fue enviado al correo:";
             // 
             // panelCambiarContraseña
             // 
-            this.panelCambiarContraseña.Controls.Add(this.label12);
-            this.panelCambiarContraseña.Controls.Add(this.label11);
-            this.panelCambiarContraseña.Controls.Add(this.label10);
             this.panelCambiarContraseña.Controls.Add(this.btnCambiarContraseña);
-            this.panelCambiarContraseña.Controls.Add(this.tbContraseñaAnterior);
-            this.panelCambiarContraseña.Controls.Add(this.label7);
-            this.panelCambiarContraseña.Controls.Add(this.tbContraseñaRep);
-            this.panelCambiarContraseña.Controls.Add(this.tbContraseña);
-            this.panelCambiarContraseña.Controls.Add(this.label6);
-            this.panelCambiarContraseña.Controls.Add(this.label5);
-            this.panelCambiarContraseña.Location = new System.Drawing.Point(17, 56);
+            this.panelCambiarContraseña.Controls.Add(this.Separador5);
+            this.panelCambiarContraseña.Controls.Add(this.txtConfirmarContraseña);
+            this.panelCambiarContraseña.Controls.Add(this.lblConfirmarContraseña);
+            this.panelCambiarContraseña.Controls.Add(this.Separador4);
+            this.panelCambiarContraseña.Controls.Add(this.txtContraseñaNueva);
+            this.panelCambiarContraseña.Controls.Add(this.lblContraseñaNueva);
+            this.panelCambiarContraseña.Controls.Add(this.Separador3);
+            this.panelCambiarContraseña.Controls.Add(this.txtContraseñaAnterior);
+            this.panelCambiarContraseña.Controls.Add(this.lblContraseñaAnterior);
+            this.panelCambiarContraseña.Location = new System.Drawing.Point(0, 0);
             this.panelCambiarContraseña.Name = "panelCambiarContraseña";
-            this.panelCambiarContraseña.Size = new System.Drawing.Size(627, 168);
+            this.panelCambiarContraseña.Size = new System.Drawing.Size(392, 197);
             this.panelCambiarContraseña.TabIndex = 9;
             this.panelCambiarContraseña.Visible = false;
             // 
-            // label12
-            // 
-            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label12.Location = new System.Drawing.Point(362, 116);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(183, 1);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "label12";
-            // 
-            // label11
-            // 
-            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label11.Location = new System.Drawing.Point(361, 86);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(183, 1);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "label11";
-            // 
-            // label10
-            // 
-            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label10.Location = new System.Drawing.Point(362, 47);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(183, 1);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "label10";
-            // 
             // btnCambiarContraseña
             // 
+            this.btnCambiarContraseña.Active = true;
+            this.btnCambiarContraseña.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnCambiarContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnCambiarContraseña.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCambiarContraseña.BorderRadius = 7;
+            this.btnCambiarContraseña.ButtonText = "Cambiar Contraseña";
             this.btnCambiarContraseña.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCambiarContraseña.FlatAppearance.BorderSize = 0;
-            this.btnCambiarContraseña.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnCambiarContraseña.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
-            this.btnCambiarContraseña.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCambiarContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnCambiarContraseña.Location = new System.Drawing.Point(237, 136);
+            this.btnCambiarContraseña.DisabledColor = System.Drawing.Color.Gray;
+            this.btnCambiarContraseña.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnCambiarContraseña.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnCambiarContraseña.Iconimage")));
+            this.btnCambiarContraseña.Iconimage_right = null;
+            this.btnCambiarContraseña.Iconimage_right_Selected = null;
+            this.btnCambiarContraseña.Iconimage_Selected = null;
+            this.btnCambiarContraseña.IconMarginLeft = 0;
+            this.btnCambiarContraseña.IconMarginRight = 0;
+            this.btnCambiarContraseña.IconRightVisible = true;
+            this.btnCambiarContraseña.IconRightZoom = 0D;
+            this.btnCambiarContraseña.IconVisible = true;
+            this.btnCambiarContraseña.IconZoom = 50D;
+            this.btnCambiarContraseña.IsTab = false;
+            this.btnCambiarContraseña.Location = new System.Drawing.Point(86, 132);
+            this.btnCambiarContraseña.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnCambiarContraseña.Name = "btnCambiarContraseña";
-            this.btnCambiarContraseña.Size = new System.Drawing.Size(152, 28);
-            this.btnCambiarContraseña.TabIndex = 8;
+            this.btnCambiarContraseña.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnCambiarContraseña.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
+            this.btnCambiarContraseña.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnCambiarContraseña.selected = true;
+            this.btnCambiarContraseña.Size = new System.Drawing.Size(224, 39);
+            this.btnCambiarContraseña.TabIndex = 135;
             this.btnCambiarContraseña.Text = "Cambiar Contraseña";
-            this.btnCambiarContraseña.UseVisualStyleBackColor = false;
+            this.btnCambiarContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnCambiarContraseña.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnCambiarContraseña.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCambiarContraseña.Click += new System.EventHandler(this.btnCambiarContraseña_Click);
             // 
-            // tbContraseñaAnterior
+            // Separador5
             // 
-            this.tbContraseñaAnterior.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbContraseñaAnterior.Location = new System.Drawing.Point(362, 27);
-            this.tbContraseñaAnterior.Name = "tbContraseñaAnterior";
-            this.tbContraseñaAnterior.PasswordChar = '*';
-            this.tbContraseñaAnterior.Size = new System.Drawing.Size(183, 19);
-            this.tbContraseñaAnterior.TabIndex = 5;
+            this.Separador5.BackColor = System.Drawing.Color.Transparent;
+            this.Separador5.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.Separador5.LineThickness = 1;
+            this.Separador5.Location = new System.Drawing.Point(178, 107);
+            this.Separador5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Separador5.Name = "Separador5";
+            this.Separador5.Size = new System.Drawing.Size(194, 10);
+            this.Separador5.TabIndex = 95;
+            this.Separador5.Transparency = 255;
+            this.Separador5.Vertical = false;
             // 
-            // label7
+            // txtConfirmarContraseña
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(58, 27);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(175, 19);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Ingrese anterior contraseña:";
+            this.txtConfirmarContraseña.BackColor = System.Drawing.Color.White;
+            this.txtConfirmarContraseña.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtConfirmarContraseña.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConfirmarContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.txtConfirmarContraseña.Location = new System.Drawing.Point(178, 86);
+            this.txtConfirmarContraseña.Name = "txtConfirmarContraseña";
+            this.txtConfirmarContraseña.Size = new System.Drawing.Size(193, 19);
+            this.txtConfirmarContraseña.TabIndex = 94;
             // 
-            // tbContraseñaRep
+            // lblConfirmarContraseña
             // 
-            this.tbContraseñaRep.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbContraseñaRep.Location = new System.Drawing.Point(362, 95);
-            this.tbContraseñaRep.Name = "tbContraseñaRep";
-            this.tbContraseñaRep.PasswordChar = '*';
-            this.tbContraseñaRep.Size = new System.Drawing.Size(183, 19);
-            this.tbContraseñaRep.TabIndex = 3;
+            this.lblConfirmarContraseña.AutoSize = true;
+            this.lblConfirmarContraseña.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfirmarContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblConfirmarContraseña.Location = new System.Drawing.Point(11, 87);
+            this.lblConfirmarContraseña.Name = "lblConfirmarContraseña";
+            this.lblConfirmarContraseña.Size = new System.Drawing.Size(163, 19);
+            this.lblConfirmarContraseña.TabIndex = 93;
+            this.lblConfirmarContraseña.Text = "Confirmar Contraseña:";
             // 
-            // tbContraseña
+            // Separador4
             // 
-            this.tbContraseña.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbContraseña.Location = new System.Drawing.Point(362, 65);
-            this.tbContraseña.Name = "tbContraseña";
-            this.tbContraseña.PasswordChar = '*';
-            this.tbContraseña.Size = new System.Drawing.Size(183, 19);
-            this.tbContraseña.TabIndex = 2;
+            this.Separador4.BackColor = System.Drawing.Color.Transparent;
+            this.Separador4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.Separador4.LineThickness = 1;
+            this.Separador4.Location = new System.Drawing.Point(178, 75);
+            this.Separador4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Separador4.Name = "Separador4";
+            this.Separador4.Size = new System.Drawing.Size(194, 10);
+            this.Separador4.TabIndex = 92;
+            this.Separador4.Transparency = 255;
+            this.Separador4.Vertical = false;
             // 
-            // label6
+            // txtContraseñaNueva
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(58, 98);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(159, 19);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Repita nueva contraseña:";
+            this.txtContraseñaNueva.BackColor = System.Drawing.Color.White;
+            this.txtContraseñaNueva.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtContraseñaNueva.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContraseñaNueva.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.txtContraseñaNueva.Location = new System.Drawing.Point(178, 55);
+            this.txtContraseñaNueva.Name = "txtContraseñaNueva";
+            this.txtContraseñaNueva.Size = new System.Drawing.Size(193, 19);
+            this.txtContraseñaNueva.TabIndex = 91;
             // 
-            // label5
+            // lblContraseñaNueva
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(58, 68);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(164, 19);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Ingrese nueva contraseña:";
+            this.lblContraseñaNueva.AutoSize = true;
+            this.lblContraseñaNueva.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContraseñaNueva.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblContraseñaNueva.Location = new System.Drawing.Point(11, 55);
+            this.lblContraseñaNueva.Name = "lblContraseñaNueva";
+            this.lblContraseñaNueva.Size = new System.Drawing.Size(139, 19);
+            this.lblContraseñaNueva.TabIndex = 90;
+            this.lblContraseñaNueva.Text = "Contraseña Nueva:";
             // 
-            // label13
+            // Separador3
             // 
-            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label13.Location = new System.Drawing.Point(0, 40);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(2, 200);
-            this.label13.TabIndex = 10;
+            this.Separador3.BackColor = System.Drawing.Color.Transparent;
+            this.Separador3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.Separador3.LineThickness = 1;
+            this.Separador3.Location = new System.Drawing.Point(178, 42);
+            this.Separador3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Separador3.Name = "Separador3";
+            this.Separador3.Size = new System.Drawing.Size(194, 10);
+            this.Separador3.TabIndex = 89;
+            this.Separador3.Transparency = 255;
+            this.Separador3.Vertical = false;
             // 
-            // label14
+            // txtContraseñaAnterior
             // 
-            this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label14.Location = new System.Drawing.Point(649, 40);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(2, 200);
-            this.label14.TabIndex = 11;
+            this.txtContraseñaAnterior.BackColor = System.Drawing.Color.White;
+            this.txtContraseñaAnterior.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtContraseñaAnterior.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContraseñaAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.txtContraseñaAnterior.Location = new System.Drawing.Point(178, 24);
+            this.txtContraseñaAnterior.Name = "txtContraseñaAnterior";
+            this.txtContraseñaAnterior.Size = new System.Drawing.Size(193, 19);
+            this.txtContraseñaAnterior.TabIndex = 88;
             // 
-            // label15
+            // lblContraseñaAnterior
             // 
-            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label15.Location = new System.Drawing.Point(0, 234);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(651, 2);
-            this.label15.TabIndex = 12;
-            this.label15.Text = "label15";
+            this.lblContraseñaAnterior.AutoSize = true;
+            this.lblContraseñaAnterior.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContraseñaAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblContraseñaAnterior.Location = new System.Drawing.Point(11, 24);
+            this.lblContraseñaAnterior.Name = "lblContraseñaAnterior";
+            this.lblContraseñaAnterior.Size = new System.Drawing.Size(150, 19);
+            this.lblContraseñaAnterior.TabIndex = 87;
+            this.lblContraseñaAnterior.Text = "Contraseña Anterior:";
+            // 
+            // Movimiento
+            // 
+            this.Movimiento.Fixed = true;
+            this.Movimiento.Horizontal = true;
+            this.Movimiento.TargetControl = this.lblTitulo;
+            this.Movimiento.Vertical = true;
+            // 
+            // Bordeado
+            // 
+            this.Bordeado.ElipseRadius = 15;
+            this.Bordeado.TargetControl = this;
+            // 
+            // BordeadoMenu
+            // 
+            this.BordeadoMenu.ActiveBorderThickness = 1;
+            this.BordeadoMenu.ActiveCornerRadius = 20;
+            this.BordeadoMenu.ActiveFillColor = System.Drawing.Color.White;
+            this.BordeadoMenu.ActiveForecolor = System.Drawing.Color.White;
+            this.BordeadoMenu.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BordeadoMenu.BackColor = System.Drawing.Color.White;
+            this.BordeadoMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoMenu.BackgroundImage")));
+            this.BordeadoMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BordeadoMenu.ButtonText = "Editar Perfil";
+            this.BordeadoMenu.Cursor = System.Windows.Forms.Cursors.Default;
+            this.BordeadoMenu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BordeadoMenu.ForeColor = System.Drawing.Color.White;
+            this.BordeadoMenu.IdleBorderThickness = 1;
+            this.BordeadoMenu.IdleCornerRadius = 20;
+            this.BordeadoMenu.IdleFillColor = System.Drawing.Color.White;
+            this.BordeadoMenu.IdleForecolor = System.Drawing.Color.White;
+            this.BordeadoMenu.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoMenu.Location = new System.Drawing.Point(-1, 0);
+            this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(5);
+            this.BordeadoMenu.Name = "BordeadoMenu";
+            this.BordeadoMenu.Size = new System.Drawing.Size(416, 261);
+            this.BordeadoMenu.TabIndex = 109;
+            this.BordeadoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // P_CambiarContraseña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(651, 236);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.panelCambiarContraseña);
+            this.ClientSize = new System.Drawing.Size(416, 257);
             this.Controls.Add(this.panelCorreo);
             this.Controls.Add(this.panelVerificacion);
             this.Controls.Add(this.pbLogo);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.BordeadoMenu);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -450,8 +593,10 @@ namespace CapaPresentaciones
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.panelCorreo.ResumeLayout(false);
             this.panelCorreo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgContraseña)).EndInit();
             this.panelVerificacion.ResumeLayout(false);
             this.panelVerificacion.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.panelCambiarContraseña.ResumeLayout(false);
             this.panelCambiarContraseña.PerformLayout();
             this.ResumeLayout(false);
@@ -464,34 +609,34 @@ namespace CapaPresentaciones
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.Panel panelCorreo;
-        private System.Windows.Forms.Label lblCorreo1;
-        private System.Windows.Forms.Label lblCorreoUnsaac;
-        private System.Windows.Forms.TextBox tbCorreo;
-        private System.Windows.Forms.Label lblCorreoDescripcion;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panelVerificacion;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbVerificacionCorreo;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tbCodigoVerificacion;
-        private System.Windows.Forms.Button btnValidar;
         private System.Windows.Forms.Panel panelCambiarContraseña;
-        private System.Windows.Forms.Button btnCambiarContraseña;
-        private System.Windows.Forms.TextBox tbContraseñaAnterior;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox tbContraseñaRep;
-        private System.Windows.Forms.TextBox tbContraseña;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
+        private Bunifu.Framework.UI.BunifuDragControl Movimiento;
+        private Bunifu.Framework.UI.BunifuElipse Bordeado;
+        private Bunifu.Framework.UI.BunifuImageButton imgContraseña;
+        private System.Windows.Forms.Label lblDominioEmail;
+        private Bunifu.Framework.UI.BunifuSeparator Separador1;
+        public System.Windows.Forms.TextBox txtEmail;
+        private Bunifu.Framework.UI.BunifuFlatButton btnEnviarCodigo;
+        private System.Windows.Forms.Label lblCorreo;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Label lblMensaje1;
+        private Bunifu.Framework.UI.BunifuFlatButton btnValidarCodigo;
+        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton1;
+        private Bunifu.Framework.UI.BunifuSeparator Separador2;
+        public System.Windows.Forms.TextBox txtCodigoVerificacion;
+        private System.Windows.Forms.Label lblCodigo;
+        private System.Windows.Forms.LinkLabel lblVolverEnviar;
+        private Bunifu.Framework.UI.BunifuFlatButton btnCambiarContraseña;
+        private Bunifu.Framework.UI.BunifuSeparator Separador5;
+        public System.Windows.Forms.TextBox txtConfirmarContraseña;
+        private System.Windows.Forms.Label lblConfirmarContraseña;
+        private Bunifu.Framework.UI.BunifuSeparator Separador4;
+        public System.Windows.Forms.TextBox txtContraseñaNueva;
+        private System.Windows.Forms.Label lblContraseñaNueva;
+        private Bunifu.Framework.UI.BunifuSeparator Separador3;
+        public System.Windows.Forms.TextBox txtContraseñaAnterior;
+        private System.Windows.Forms.Label lblContraseñaAnterior;
+        private Bunifu.Framework.UI.BunifuThinButton2 BordeadoMenu;
     }
 }
