@@ -62,9 +62,16 @@ namespace CapaPresentaciones
 
         private void LlenarComboBox()
         {
-            cxtEscuela.DataSource = N_EscuelaProfesional.MostrarRegistros();
-            cxtEscuela.ValueMember = "CodEscuelaP";
-            cxtEscuela.DisplayMember = "Nombre";
+            if (E_InicioSesion.Acceso == "Administrador")
+            {
+                cxtEscuela.DataSource = N_EscuelaProfesional.MostrarRegistros();
+                cxtEscuela.ValueMember = "CodEscuelaP";
+                cxtEscuela.DisplayMember = "Nombre";
+            }
+            else
+            {
+
+            }
         }
         private void ActualizarDatos(object sender, FormClosedEventArgs e)
         {

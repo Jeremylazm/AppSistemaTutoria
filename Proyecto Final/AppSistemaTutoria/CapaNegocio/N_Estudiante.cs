@@ -8,14 +8,14 @@ namespace CapaNegocios
     {
         readonly D_Estudiante ObjEstudiante = new D_Estudiante();
 
-        public static DataTable MostrarRegistros(string CodEscuelaP)
+        public static DataTable MostrarRegistros(string CodEstudiante)
         {
-            return new D_Estudiante().MostrarRegistros(CodEscuelaP);
+            return new D_Estudiante().MostrarRegistros(CodEstudiante);
         }
 
-        public static DataTable MostrarEstudiantesSinTutor(string CodEscuelaP)
+        public static DataTable MostrarEstudiantesSinTutor(string CodEstudiante)
         {
-            return new D_Estudiante().MostrarEstudiantesSinTutor(CodEscuelaP);
+            return new D_Estudiante().MostrarEstudiantesSinTutor(CodEstudiante);
         }
 
         public static DataTable BuscarRegistro(string CodEstudiante)
@@ -23,14 +23,14 @@ namespace CapaNegocios
             return new D_Estudiante().BuscarRegistro(CodEstudiante);
         }
 
-        public static DataTable BuscarRegistros(string CodEscuelaP, string Texto)
+        public static DataTable BuscarRegistros(string CodEstudiante, string Texto)
         {
-            return new D_Estudiante().BuscarRegistros(CodEscuelaP, Texto);
+            return new D_Estudiante().BuscarRegistros(CodEstudiante, Texto);
         }
 
-        public static DataTable BuscarEstudiantesSinTutor(string CodEscuelaP, string Texto, int Filas)
+        public static DataTable BuscarEstudiantesSinTutor(string CodEstudiante, string Texto, int Filas)
         {
-            return new D_Estudiante().BuscarEstudiantesSinTutor(CodEscuelaP, Texto, Filas);
+            return new D_Estudiante().BuscarEstudiantesSinTutor(CodEstudiante, Texto, Filas);
         }
 
         public void InsertarRegistros(E_Estudiante Estudiante)

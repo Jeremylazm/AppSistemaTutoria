@@ -81,7 +81,7 @@ namespace CapaPresentaciones
         {
             try
             {
-                dgvTablaTutores.DataSource = N_Docente.MostrarTutores(CodEscuelaP);
+                dgvTablaTutores.DataSource = N_Docente.MostrarTutores(E_InicioSesion.Usuario);
                 AccionesTablaTutores();
             }
             catch (Exception ex)
@@ -98,7 +98,7 @@ namespace CapaPresentaciones
                 labelEstudiantes.Visible = true;
                 btnEstudiantes.Visible = false;
                 textBoxBuscar.Text = "";
-                dgvTablaEstudiantes.DataSource = N_Estudiante.MostrarEstudiantesSinTutor(CodEscuelaP);
+                dgvTablaEstudiantes.DataSource = N_Estudiante.MostrarEstudiantesSinTutor(E_InicioSesion.Usuario);
                 textBoxTotalRegistros.Text = dgvTablaEstudiantes.Rows.Count.ToString();
                 AccionesTablaEstudiantesSinTutor();
             }
@@ -130,7 +130,7 @@ namespace CapaPresentaciones
         {
             try
             {
-                dgvTablaTutores.DataSource = N_Docente.BuscarTutor(CodEscuelaP, textBoxSeleccionarTutor.Text);
+                dgvTablaTutores.DataSource = N_Docente.BuscarTutor(E_InicioSesion.Usuario, textBoxSeleccionarTutor.Text);
                 AccionesTablaTutores();
             }
             catch (Exception ex)
@@ -146,7 +146,7 @@ namespace CapaPresentaciones
                 labelTutorados.Visible = false;
                 labelEstudiantes.Visible = true;
                 btnEstudiantes.Visible = false;
-                dgvTablaEstudiantes.DataSource = N_Estudiante.BuscarEstudiantesSinTutor(CodEscuelaP, textBoxBuscar.Text, Regs);
+                dgvTablaEstudiantes.DataSource = N_Estudiante.BuscarEstudiantesSinTutor(E_InicioSesion.Usuario, textBoxBuscar.Text, Regs);
                 AccionesTablaEstudiantesSinTutor();
             }
             catch (Exception ex)
