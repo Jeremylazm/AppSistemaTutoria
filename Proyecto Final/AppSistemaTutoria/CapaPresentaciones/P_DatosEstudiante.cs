@@ -29,6 +29,8 @@ namespace CapaPresentaciones
             ValidarPerfil();
         }
 
+        public P_DatosEstudiante(bool Test) { }
+
         private void MensajeConfirmacion(string Mensaje)
         {
             MessageBox.Show(Mensaje, "Sistema de Tutoría", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -113,14 +115,11 @@ namespace CapaPresentaciones
             return IPersonalCifrada;
         }
 
-        string AgregarOModificar(Image Perfil, string Codigo, string APaterno, string AMaterno, string Nombre, 
+        public string AgregarOModificar(Image Perfil, string Codigo, string APaterno, string AMaterno, string Nombre, 
                                  string Email, string Direccion, string Telefono, string CodEscuelaP, 
                                  string PesonaReferencia, string TelefonoReferencia, string InformacionPersonal)
         {
             string Mensaje = "";
-            Regex PatronCodigo = new Regex(@"\A[0-9]{6}\Z");
-            Regex PatronTelefono = new Regex(@"\A[0-9]{9}\Z");
-            Regex PatronTelefonoReferencia = new Regex(@"\A([0-9]{9}\Z)|(^$)");
 
             if ((Codigo.Trim() != "") &&
                 (APaterno.Trim() != "") &&
@@ -129,6 +128,10 @@ namespace CapaPresentaciones
                 (Direccion.Trim() != "") &&
                 (Telefono.Trim() != ""))
             {
+                Regex PatronCodigo = new Regex(@"\A[0-9]{6}\Z");
+                Regex PatronTelefono = new Regex(@"\A[0-9]{9}\Z");
+                Regex PatronTelefonoReferencia = new Regex(@"\A([0-9]{9}\Z)|(^$)");
+
                 if (Program.Evento == 0)
                 {
                     try
@@ -294,35 +297,35 @@ namespace CapaPresentaciones
             }
             else
             {
-                if (Codigo.Trim() != "")
+                if (Codigo.Trim() == "")
                 {
                     Mensaje = "Debe llenar el código";
                     MensajeError(Mensaje);
                 }
 
-                if (APaterno.Trim() != "")
+                if (APaterno.Trim() == "")
                 {
                     Mensaje = "Debe llenar el apellido paterno";
                     MensajeError(Mensaje);
                 }
 
-                if (AMaterno.Trim() != "")
+                if (AMaterno.Trim() == "")
                 {
                     Mensaje = "Debe llenar el apellido materno";
                     MensajeError(Mensaje);
                 }
-                if (Nombre.Trim() != "")
+                if (Nombre.Trim() == "")
                 {
                     Mensaje = "Debe llenar el nombre";
                     MensajeError(Mensaje);
                 }
-                if (Direccion.Trim() != "")
+                if (Direccion.Trim() == "")
                 {
                     Mensaje = "Debe llenar la dirección";
                     MensajeError(Mensaje);
                 }
 
-                if (Telefono.Trim() != "")
+                if (Telefono.Trim() == "")
                 {
                     Mensaje = "Debe llenar el teléfono";
                     MensajeError(Mensaje);
