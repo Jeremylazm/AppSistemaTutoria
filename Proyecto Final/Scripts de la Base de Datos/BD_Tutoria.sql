@@ -77,7 +77,7 @@ CREATE TABLE TDocente
 															 'B2',
 															 'B3')),
 	Regimen VARCHAR(20) NOT NULL CHECK (Regimen IN ('TIEMPO COMPLETO', 
-													'DEDICACI�N EXCLUSIVA',
+													'DEDICACIÓN EXCLUSIVA',
 													'TIEMPO PARCIAL')),
 	CodEscuelaP tyCodEscuelaP,
 	Horario VARCHAR(150),
@@ -162,7 +162,7 @@ CREATE TABLE TFichaTutoria
 	-- Lista de atributos
 	CodTutoria tyCodTutoria,
 	Fecha DATETIME NOT NULL,
-	Dimension VARCHAR(15) DEFAULT 'ACAD�MICA' CHECK (Dimension IN ('ACAD�MICA',
+	Dimension VARCHAR(15) DEFAULT 'ACADÉMICA' CHECK (Dimension IN ('ACADÉMICA',
 																   'PERSONAL',
 																   'PROFESIONAL')),
 	Descripcion VARCHAR(100),
@@ -413,7 +413,7 @@ GO
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ESTUDIANTE ****************** */
 
 -- Crear un procedimiento para mostrar estudiantes
-CREATE PROCEDURE spuMostrarEstudiantes @CodEstudiante VARCHAR(6)
+CREATE PROCEDURE spuMostrarEstudiantes @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Mostrar la tabla de TEstudiante
@@ -427,19 +427,19 @@ BEGIN
 		   ET.TelefonoReferencia, ET.InformacionPersonal, CodTutor = ET.CodDocente
 		FROM TEstudiante ET INNER JOIN TEscuela_Profesional EP ON
 			 ET.CodEscuelaP = EP.CodEscuelaP
-	    WHERE EP.CodEscuelaP = DBO.fnObtenerEscuelaEstudiante(@CodEstudiante)
+	    WHERE EP.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente)
 END;
 GO
 
 -- Crear un procedimiento para mostrar estudiantes sin tutor
-CREATE PROCEDURE spuMostrarEstudiantesSinTutor @CodEstudiante VARCHAR(6)
+CREATE PROCEDURE spuMostrarEstudiantesSinTutor @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Mostrar la tabla de TEstudiante
 	SELECT ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre
 		FROM TEstudiante ET, TEscuela_Profesional EP
 		WHERE ET.CodEscuelaP = EP.CodEscuelaP AND 
-			  ET.CodEscuelaP = DBO.fnObtenerEscuelaEstudiante(@CodEstudiante) AND 
+			  ET.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente) AND 
 			  ET.CodDocente IS NULL
 END;
 GO
@@ -463,7 +463,7 @@ END;
 GO
 
 -- Crear un procedimiento para buscar estudiantes por cualquier atributo
-CREATE PROCEDURE spuBuscarEstudiantes @CodEstudiante VARCHAR(6),
+CREATE PROCEDURE spuBuscarEstudiantes @CodDocente VARCHAR(5),
 									  @Texto VARCHAR(20)
 AS
 BEGIN
@@ -491,12 +491,12 @@ BEGIN
 			  --ET.EstadoFisico LIKE (@Texto + '%') OR
 			  --ET.EstadoMental LIKE (@Texto + '%')
 			  ET.InformacionPersonal LIKE (@Texto + '%')) AND
-			  ET.CodEscuelaP = DBO.fnObtenerEscuelaEstudiante(@CodEstudiante)
+			  ET.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente)
 END;
 GO
 
 -- Crear un procedimiento para buscar estudiantes sin tutor por cualquier atributo
-CREATE PROCEDURE spuBuscarEstudiantesSinTutor @CodEstudiante VARCHAR(6),
+CREATE PROCEDURE spuBuscarEstudiantesSinTutor @CodDocente VARCHAR(5),
 										      @Texto VARCHAR(20),
 											  @Filas INT
 AS
@@ -504,7 +504,7 @@ BEGIN
 	-- Mostrar la tabla de TEstudiante por el texto que se desea buscar
 	SELECT TOP(@Filas) ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre
 		FROM TEstudiante ET, TEscuela_Profesional EP
-		WHERE ET.CodEscuelaP = DBO.fnObtenerEscuelaEstudiante(@CodEstudiante) AND ET.CodDocente IS NULL AND
+		WHERE ET.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente) AND ET.CodDocente IS NULL AND
 			 (ET.CodEstudiante LIKE (@Texto + '%') OR
 			  ET.APaterno LIKE (@Texto + '%') OR
 			  ET.AMaterno LIKE (@Texto + '%') OR

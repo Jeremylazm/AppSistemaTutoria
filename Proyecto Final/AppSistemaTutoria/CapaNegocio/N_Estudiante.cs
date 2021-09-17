@@ -8,14 +8,14 @@ namespace CapaNegocios
     {
         readonly D_Estudiante ObjEstudiante = new D_Estudiante();
 
-        public static DataTable MostrarRegistros(string CodEstudiante)
+        public static DataTable MostrarRegistros(string CodDocente)
         {
-            return new D_Estudiante().MostrarRegistros(CodEstudiante);
+            return new D_Estudiante().MostrarRegistros(CodDocente);
         }
 
-        public static DataTable MostrarEstudiantesSinTutor(string CodEstudiante)
+        public static DataTable MostrarEstudiantesSinTutor(string CodDocente)
         {
-            return new D_Estudiante().MostrarEstudiantesSinTutor(CodEstudiante);
+            return new D_Estudiante().MostrarEstudiantesSinTutor(CodDocente);
         }
 
         public static DataTable BuscarRegistro(string CodEstudiante)
@@ -23,14 +23,14 @@ namespace CapaNegocios
             return new D_Estudiante().BuscarRegistro(CodEstudiante);
         }
 
-        public static DataTable BuscarRegistros(string CodEstudiante, string Texto)
+        public static DataTable BuscarRegistros(string CodDocente, string Texto)
         {
-            return new D_Estudiante().BuscarRegistros(CodEstudiante, Texto);
+            return new D_Estudiante().BuscarRegistros(CodDocente, Texto);
         }
 
-        public static DataTable BuscarEstudiantesSinTutor(string CodEstudiante, string Texto, int Filas)
+        public static DataTable BuscarEstudiantesSinTutor(string CodDocente, string Texto, int Filas)
         {
-            return new D_Estudiante().BuscarEstudiantesSinTutor(CodEstudiante, Texto, Filas);
+            return new D_Estudiante().BuscarEstudiantesSinTutor(CodDocente, Texto, Filas);
         }
 
         public void InsertarRegistros(E_Estudiante Estudiante)
