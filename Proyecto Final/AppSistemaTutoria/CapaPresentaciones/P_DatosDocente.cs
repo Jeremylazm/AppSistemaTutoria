@@ -210,14 +210,6 @@ namespace CapaPresentaciones
             Close();
         }
 
-        private void btnEscuelas_Click(object sender, EventArgs e)
-        {
-            //P_Ciudades NuevoRegistro = new P_Ciudades();
-            //NuevoRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-            //NuevoRegistro.ShowDialog();
-            //NuevoRegistro.Dispose();
-        }
-
         private void cxtCategoria_SelectionChangeCommitted(object sender, EventArgs e)
         {
             cxtSubcategoria.Items.Clear();
