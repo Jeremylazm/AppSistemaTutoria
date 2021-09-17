@@ -71,7 +71,7 @@ namespace CapaPresentaciones
 
         private void GestionarAcceso()
         {
-            if (Acceso == "Director de Escuela")
+            if ((Acceso == "Director de Escuela") || (Acceso == "Administrador"))
             {
                 btnTutorias.Visible = true;
                 btnTutorados.Visible = true;

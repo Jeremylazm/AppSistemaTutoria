@@ -436,11 +436,10 @@ CREATE PROCEDURE spuMostrarEstudiantesSinTutor @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Mostrar la tabla de TEstudiante
-	SELECT ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre
-		FROM TEstudiante ET, TEscuela_Profesional EP
-		WHERE ET.CodEscuelaP = EP.CodEscuelaP AND 
-			  ET.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente) AND 
-			  ET.CodDocente IS NULL
+	SELECT CodEstudiante, APaterno, AMaterno, Nombre
+		FROM TEstudiante
+		WHERE CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente) AND 
+			  CodDocente IS NULL
 END;
 GO
 
@@ -503,7 +502,7 @@ AS
 BEGIN
 	-- Mostrar la tabla de TEstudiante por el texto que se desea buscar
 	SELECT TOP(@Filas) ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre
-		FROM TEstudiante ET, TEscuela_Profesional EP
+		FROM TEstudiante ET
 		WHERE ET.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente) AND ET.CodDocente IS NULL AND
 			 (ET.CodEstudiante LIKE (@Texto + '%') OR
 			  ET.APaterno LIKE (@Texto + '%') OR

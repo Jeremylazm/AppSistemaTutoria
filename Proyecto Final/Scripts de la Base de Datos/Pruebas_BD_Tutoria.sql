@@ -33,7 +33,7 @@ select * from TUsuario
 
 
 INSERT INTO TUsuario (Usuario, Contraseña, Acceso, Datos, Perfil) 
-SELECT 'ADMIN', 'ADMIN1234', 'Director de Escuela', 'ADMINISTRADOR', BulkColumn
+SELECT 'ADMIN', 'ADMIN1234', 'Administrador', 'ADMINISTRADOR', BulkColumn
 	FROM Openrowset(Bulk 'C:\Users\Jeremylazm\Documents\GitHub\AppSistemaTutoria\Proyecto Final\AppSistemaTutoria\CapaPresentaciones\Iconos\Perfil.png', Single_Blob) as PerfilAdmin
 GO
 
