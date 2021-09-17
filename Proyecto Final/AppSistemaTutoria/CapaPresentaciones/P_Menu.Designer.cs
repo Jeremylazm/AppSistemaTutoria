@@ -45,7 +45,7 @@ namespace CapaPresentaciones
             this.btnMiTutor = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnInformeTutorias = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnTutores = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.separador = new Bunifu.Framework.UI.BunifuSeparator();
             this.btnTutorados = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnDocentes = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnEstudiantes = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -209,7 +209,7 @@ namespace CapaPresentaciones
             this.pnLateral.Controls.Add(this.btnMiTutor);
             this.pnLateral.Controls.Add(this.btnInformeTutorias);
             this.pnLateral.Controls.Add(this.btnTutores);
-            this.pnLateral.Controls.Add(this.bunifuSeparator1);
+            this.pnLateral.Controls.Add(this.separador);
             this.pnLateral.Controls.Add(this.btnTutorados);
             this.pnLateral.Controls.Add(this.imgPerfil);
             this.pnLateral.Controls.Add(this.btnDocentes);
@@ -333,17 +333,17 @@ namespace CapaPresentaciones
             this.btnTutores.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTutores.Click += new System.EventHandler(this.btnTutores_Click);
             // 
-            // bunifuSeparator1
+            // separador
             // 
-            this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.bunifuSeparator1.LineThickness = 1;
-            this.bunifuSeparator1.Location = new System.Drawing.Point(7, 376);
-            this.bunifuSeparator1.Name = "bunifuSeparator1";
-            this.bunifuSeparator1.Size = new System.Drawing.Size(161, 20);
-            this.bunifuSeparator1.TabIndex = 47;
-            this.bunifuSeparator1.Transparency = 255;
-            this.bunifuSeparator1.Vertical = false;
+            this.separador.BackColor = System.Drawing.Color.Transparent;
+            this.separador.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.separador.LineThickness = 1;
+            this.separador.Location = new System.Drawing.Point(7, 376);
+            this.separador.Name = "separador";
+            this.separador.Size = new System.Drawing.Size(161, 20);
+            this.separador.TabIndex = 47;
+            this.separador.Transparency = 255;
+            this.separador.Vertical = false;
             // 
             // btnTutorados
             // 
@@ -654,7 +654,7 @@ namespace CapaPresentaciones
         private Bunifu.Framework.UI.BunifuFlatButton btnTutorados;
         private Bunifu.Framework.UI.BunifuFlatButton btnInformeTutorias;
         private Bunifu.Framework.UI.BunifuFlatButton btnTutores;
-        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
+        private Bunifu.Framework.UI.BunifuSeparator separador;
         private Bunifu.Framework.UI.BunifuFlatButton btnMiTutor;
     }
 }

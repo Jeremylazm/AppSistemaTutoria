@@ -100,6 +100,7 @@ namespace CapaPresentaciones
                 btnEstudiantes.Visible = false;
                 btnInformeTutorias.Visible = false;
                 btnMiTutor.Visible = true;
+                separador.Visible = false;
             }
             else
             {
@@ -247,10 +248,12 @@ namespace CapaPresentaciones
             AbrirFormularios<P_TablaEstudiantes>();
         }
 
+        /*
         private void btnInformeTutorias_Click(object sender, EventArgs e)
         {
             //AbrirFormularios<P_InformeTutorias>();
         }
+        */
 
         private void btnTutores_Click(object sender, EventArgs e)
         {

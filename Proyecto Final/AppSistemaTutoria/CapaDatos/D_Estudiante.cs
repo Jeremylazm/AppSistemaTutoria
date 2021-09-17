@@ -49,7 +49,7 @@ namespace CapaDatos
             return Resultado;
         }
 
-        public DataTable MostrarEstudiantesSinTutor(string CodEscuelaP, int Filas)
+        public DataTable MostrarEstudiantesSinTutor(string CodEscuelaP)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuMostrarEstudiantesSinTutor", Conectar)
@@ -58,7 +58,6 @@ namespace CapaDatos
             };
 
             Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
-            Comando.Parameters.AddWithValue("@Filas", Filas);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;

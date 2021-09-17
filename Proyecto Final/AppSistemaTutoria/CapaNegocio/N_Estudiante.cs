@@ -13,9 +13,9 @@ namespace CapaNegocios
             return new D_Estudiante().MostrarRegistros(CodEscuelaP);
         }
 
-        public static DataTable MostrarEstudiantesSinTutor(string CodEscuelaP, int Filas)
+        public static DataTable MostrarEstudiantesSinTutor(string CodEscuelaP)
         {
-            return new D_Estudiante().MostrarEstudiantesSinTutor(CodEscuelaP, Filas);
+            return new D_Estudiante().MostrarEstudiantesSinTutor(CodEscuelaP);
         }
 
         public static DataTable BuscarRegistro(string CodEstudiante)

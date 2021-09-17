@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_TablaTutores));
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.btnCerrar = new Bunifu.Framework.UI.BunifuImageButton();
@@ -47,7 +47,7 @@
             this.dgvTablaEstudiantes = new System.Windows.Forms.DataGridView();
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.label1 = new System.Windows.Forms.Label();
-            this.labelEstudiantes = new System.Windows.Forms.Label();
+            this.labelTutorados = new System.Windows.Forms.Label();
             this.bunifuSeparator2 = new Bunifu.Framework.UI.BunifuSeparator();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -58,7 +58,10 @@
             this.btnEliminar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnVerTutorados = new Bunifu.Framework.UI.BunifuFlatButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btnVer = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnEstudiantes = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.labelEstudiantes = new System.Windows.Forms.Label();
+            this.bunifuSeparator4 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.bunifuSeparator5 = new Bunifu.Framework.UI.BunifuSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTablaTutores)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTablaEstudiantes)).BeginInit();
@@ -132,7 +135,7 @@
             this.lblBuscar.AutoSize = true;
             this.lblBuscar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblBuscar.Location = new System.Drawing.Point(20, 89);
+            this.lblBuscar.Location = new System.Drawing.Point(20, 94);
             this.lblBuscar.Name = "lblBuscar";
             this.lblBuscar.Size = new System.Drawing.Size(131, 19);
             this.lblBuscar.TabIndex = 75;
@@ -145,7 +148,7 @@
             this.Separador1.BackColor = System.Drawing.Color.Transparent;
             this.Separador1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador1.LineThickness = 1;
-            this.Separador1.Location = new System.Drawing.Point(157, 102);
+            this.Separador1.Location = new System.Drawing.Point(157, 110);
             this.Separador1.Name = "Separador1";
             this.Separador1.Size = new System.Drawing.Size(227, 14);
             this.Separador1.TabIndex = 77;
@@ -188,7 +191,7 @@
             this.btnAsignar.IconVisible = true;
             this.btnAsignar.IconZoom = 50D;
             this.btnAsignar.IsTab = false;
-            this.btnAsignar.Location = new System.Drawing.Point(445, 399);
+            this.btnAsignar.Location = new System.Drawing.Point(446, 393);
             this.btnAsignar.Name = "btnAsignar";
             this.btnAsignar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnAsignar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -225,7 +228,7 @@
             this.btnImportar.IconVisible = true;
             this.btnImportar.IconZoom = 50D;
             this.btnImportar.IsTab = false;
-            this.btnImportar.Location = new System.Drawing.Point(685, 399);
+            this.btnImportar.Location = new System.Drawing.Point(686, 393);
             this.btnImportar.Name = "btnImportar";
             this.btnImportar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnImportar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -253,30 +256,30 @@
             this.dgvTablaTutores.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvTablaTutores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvTablaTutores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTablaTutores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTablaTutores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTablaTutores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvTablaTutores.EnableHeadersVisualStyles = false;
             this.dgvTablaTutores.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.dgvTablaTutores.Location = new System.Drawing.Point(12, 122);
+            this.dgvTablaTutores.Location = new System.Drawing.Point(12, 127);
             this.dgvTablaTutores.Name = "dgvTablaTutores";
             this.dgvTablaTutores.ReadOnly = true;
             this.dgvTablaTutores.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvTablaTutores.RowHeadersVisible = false;
             this.dgvTablaTutores.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.dgvTablaTutores.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.dgvTablaTutores.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvTablaTutores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTablaTutores.Size = new System.Drawing.Size(382, 268);
+            this.dgvTablaTutores.Size = new System.Drawing.Size(382, 250);
             this.dgvTablaTutores.TabIndex = 82;
             this.dgvTablaTutores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTablaTutores_CellClick);
             // 
@@ -294,30 +297,30 @@
             this.dgvTablaEstudiantes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvTablaEstudiantes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvTablaEstudiantes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTablaEstudiantes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTablaEstudiantes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTablaEstudiantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvTablaEstudiantes.EnableHeadersVisualStyles = false;
             this.dgvTablaEstudiantes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.dgvTablaEstudiantes.Location = new System.Drawing.Point(424, 122);
+            this.dgvTablaEstudiantes.Location = new System.Drawing.Point(424, 127);
             this.dgvTablaEstudiantes.Name = "dgvTablaEstudiantes";
             this.dgvTablaEstudiantes.ReadOnly = true;
             this.dgvTablaEstudiantes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvTablaEstudiantes.RowHeadersVisible = false;
             this.dgvTablaEstudiantes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.dgvTablaEstudiantes.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.dgvTablaEstudiantes.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTablaEstudiantes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTablaEstudiantes.Size = new System.Drawing.Size(379, 268);
+            this.dgvTablaEstudiantes.Size = new System.Drawing.Size(379, 250);
             this.dgvTablaEstudiantes.TabIndex = 83;
             this.dgvTablaEstudiantes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTablaEstudiantes_CellClick);
             // 
@@ -341,22 +344,22 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label1.Location = new System.Drawing.Point(162, 55);
+            this.label1.Location = new System.Drawing.Point(162, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 19);
             this.label1.TabIndex = 85;
             this.label1.Text = "TUTORES";
             // 
-            // labelEstudiantes
+            // labelTutorados
             // 
-            this.labelEstudiantes.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEstudiantes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.labelEstudiantes.Location = new System.Drawing.Point(480, 55);
-            this.labelEstudiantes.Name = "labelEstudiantes";
-            this.labelEstudiantes.Size = new System.Drawing.Size(209, 19);
-            this.labelEstudiantes.TabIndex = 86;
-            this.labelEstudiantes.Text = "ESTUDIANTES SIN TUTOR";
-            this.labelEstudiantes.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelTutorados.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTutorados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.labelTutorados.Location = new System.Drawing.Point(498, 60);
+            this.labelTutorados.Name = "labelTutorados";
+            this.labelTutorados.Size = new System.Drawing.Size(144, 19);
+            this.labelTutorados.TabIndex = 86;
+            this.labelTutorados.Text = "TUTORADOS";
+            this.labelTutorados.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // bunifuSeparator2
             // 
@@ -377,7 +380,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label3.Location = new System.Drawing.Point(420, 89);
+            this.label3.Location = new System.Drawing.Point(420, 94);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 19);
             this.label3.TabIndex = 88;
@@ -388,7 +391,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label4.Location = new System.Drawing.Point(623, 89);
+            this.label4.Location = new System.Drawing.Point(623, 94);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(111, 19);
             this.label4.TabIndex = 89;
@@ -416,7 +419,7 @@
             this.textBoxSeleccionarTutor.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxSeleccionarTutor.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxSeleccionarTutor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.textBoxSeleccionarTutor.Location = new System.Drawing.Point(157, 89);
+            this.textBoxSeleccionarTutor.Location = new System.Drawing.Point(157, 95);
             this.textBoxSeleccionarTutor.Name = "textBoxSeleccionarTutor";
             this.textBoxSeleccionarTutor.Size = new System.Drawing.Size(227, 19);
             this.textBoxSeleccionarTutor.TabIndex = 91;
@@ -431,7 +434,7 @@
             this.textBoxBuscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxBuscar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.textBoxBuscar.Location = new System.Drawing.Point(487, 89);
+            this.textBoxBuscar.Location = new System.Drawing.Point(487, 95);
             this.textBoxBuscar.Name = "textBoxBuscar";
             this.textBoxBuscar.Size = new System.Drawing.Size(130, 19);
             this.textBoxBuscar.TabIndex = 92;
@@ -446,7 +449,7 @@
             this.textBoxTotalRegistros.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxTotalRegistros.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxTotalRegistros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.textBoxTotalRegistros.Location = new System.Drawing.Point(735, 89);
+            this.textBoxTotalRegistros.Location = new System.Drawing.Point(735, 94);
             this.textBoxTotalRegistros.Name = "textBoxTotalRegistros";
             this.textBoxTotalRegistros.Size = new System.Drawing.Size(63, 19);
             this.textBoxTotalRegistros.TabIndex = 93;
@@ -477,7 +480,7 @@
             this.btnEliminar.IconVisible = true;
             this.btnEliminar.IconZoom = 50D;
             this.btnEliminar.IsTab = false;
-            this.btnEliminar.Location = new System.Drawing.Point(567, 399);
+            this.btnEliminar.Location = new System.Drawing.Point(568, 393);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnEliminar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -513,7 +516,7 @@
             this.btnVerTutorados.IconVisible = true;
             this.btnVerTutorados.IconZoom = 50D;
             this.btnVerTutorados.IsTab = false;
-            this.btnVerTutorados.Location = new System.Drawing.Point(133, 399);
+            this.btnVerTutorados.Location = new System.Drawing.Point(133, 393);
             this.btnVerTutorados.Name = "btnVerTutorados";
             this.btnVerTutorados.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnVerTutorados.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -525,49 +528,86 @@
             this.btnVerTutorados.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnVerTutorados.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnVerTutorados.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerTutorados.Click += new System.EventHandler(this.btnVerTutorados_Click);
+            this.btnVerTutorados.Click += new System.EventHandler(this.btnVerTutorados_Click_1);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // btnVer
+            // btnEstudiantes
             // 
-            this.btnVer.Active = true;
-            this.btnVer.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnVer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnVer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnVer.BorderRadius = 7;
-            this.btnVer.ButtonText = "Ver";
-            this.btnVer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVer.DisabledColor = System.Drawing.Color.Gray;
-            this.btnVer.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVer.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnVer.Iconimage = null;
-            this.btnVer.Iconimage_right = null;
-            this.btnVer.Iconimage_right_Selected = null;
-            this.btnVer.Iconimage_Selected = null;
-            this.btnVer.IconMarginLeft = 0;
-            this.btnVer.IconMarginRight = 0;
-            this.btnVer.IconRightVisible = true;
-            this.btnVer.IconRightZoom = 0D;
-            this.btnVer.IconVisible = true;
-            this.btnVer.IconZoom = 50D;
-            this.btnVer.IsTab = false;
-            this.btnVer.Location = new System.Drawing.Point(729, 54);
-            this.btnVer.Name = "btnVer";
-            this.btnVer.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnVer.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
-            this.btnVer.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnVer.selected = true;
-            this.btnVer.Size = new System.Drawing.Size(54, 23);
-            this.btnVer.TabIndex = 96;
-            this.btnVer.Text = "Ver";
-            this.btnVer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnVer.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnVer.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVer.Click += new System.EventHandler(this.btnVer_Click);
+            this.btnEstudiantes.Active = true;
+            this.btnEstudiantes.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnEstudiantes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnEstudiantes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEstudiantes.BorderRadius = 7;
+            this.btnEstudiantes.ButtonText = "Ver Estudiantes sin tutor";
+            this.btnEstudiantes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEstudiantes.DisabledColor = System.Drawing.Color.Gray;
+            this.btnEstudiantes.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnEstudiantes.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnEstudiantes.Iconimage")));
+            this.btnEstudiantes.Iconimage_right = null;
+            this.btnEstudiantes.Iconimage_right_Selected = null;
+            this.btnEstudiantes.Iconimage_Selected = null;
+            this.btnEstudiantes.IconMarginLeft = 0;
+            this.btnEstudiantes.IconMarginRight = 0;
+            this.btnEstudiantes.IconRightVisible = true;
+            this.btnEstudiantes.IconRightZoom = 0D;
+            this.btnEstudiantes.IconVisible = true;
+            this.btnEstudiantes.IconZoom = 50D;
+            this.btnEstudiantes.IsTab = false;
+            this.btnEstudiantes.Location = new System.Drawing.Point(664, 51);
+            this.btnEstudiantes.Name = "btnEstudiantes";
+            this.btnEstudiantes.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnEstudiantes.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
+            this.btnEstudiantes.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnEstudiantes.selected = true;
+            this.btnEstudiantes.Size = new System.Drawing.Size(123, 37);
+            this.btnEstudiantes.TabIndex = 97;
+            this.btnEstudiantes.Text = "Ver Estudiantes sin tutor";
+            this.btnEstudiantes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnEstudiantes.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnEstudiantes.TextFont = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEstudiantes.Click += new System.EventHandler(this.btnEstudiantes_Click);
+            // 
+            // labelEstudiantes
+            // 
+            this.labelEstudiantes.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEstudiantes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.labelEstudiantes.Location = new System.Drawing.Point(509, 60);
+            this.labelEstudiantes.Name = "labelEstudiantes";
+            this.labelEstudiantes.Size = new System.Drawing.Size(225, 19);
+            this.labelEstudiantes.TabIndex = 98;
+            this.labelEstudiantes.Text = "ESTUDIANTES SIN TUTOR";
+            this.labelEstudiantes.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // bunifuSeparator4
+            // 
+            this.bunifuSeparator4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bunifuSeparator4.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuSeparator4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.bunifuSeparator4.LineThickness = 1;
+            this.bunifuSeparator4.Location = new System.Drawing.Point(487, 110);
+            this.bunifuSeparator4.Name = "bunifuSeparator4";
+            this.bunifuSeparator4.Size = new System.Drawing.Size(130, 14);
+            this.bunifuSeparator4.TabIndex = 99;
+            this.bunifuSeparator4.Transparency = 255;
+            this.bunifuSeparator4.Vertical = false;
+            // 
+            // bunifuSeparator5
+            // 
+            this.bunifuSeparator5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bunifuSeparator5.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuSeparator5.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.bunifuSeparator5.LineThickness = 1;
+            this.bunifuSeparator5.Location = new System.Drawing.Point(740, 111);
+            this.bunifuSeparator5.Name = "bunifuSeparator5";
+            this.bunifuSeparator5.Size = new System.Drawing.Size(53, 10);
+            this.bunifuSeparator5.TabIndex = 100;
+            this.bunifuSeparator5.Transparency = 255;
+            this.bunifuSeparator5.Vertical = false;
             // 
             // P_TablaTutores
             // 
@@ -575,7 +615,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(815, 448);
-            this.Controls.Add(this.btnVer);
+            this.Controls.Add(this.bunifuSeparator5);
+            this.Controls.Add(this.bunifuSeparator4);
+            this.Controls.Add(this.labelTutorados);
+            this.Controls.Add(this.btnEstudiantes);
+            this.Controls.Add(this.labelEstudiantes);
             this.Controls.Add(this.btnVerTutorados);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.textBoxTotalRegistros);
@@ -585,7 +629,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.bunifuSeparator2);
-            this.Controls.Add(this.labelEstudiantes);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bunifuSeparator1);
             this.Controls.Add(this.dgvTablaEstudiantes);
@@ -629,7 +672,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator2;
-        private System.Windows.Forms.Label labelEstudiantes;
+        private System.Windows.Forms.Label labelTutorados;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox textBoxSeleccionarTutor;
         public System.Windows.Forms.TextBox textBoxTotalRegistros;
@@ -637,6 +680,9 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnEliminar;
         private Bunifu.Framework.UI.BunifuFlatButton btnVerTutorados;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private Bunifu.Framework.UI.BunifuFlatButton btnVer;
+        private Bunifu.Framework.UI.BunifuFlatButton btnEstudiantes;
+        private System.Windows.Forms.Label labelEstudiantes;
+        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator5;
+        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator4;
     }
 }

@@ -2,6 +2,7 @@
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
 using CapaEntidades;
@@ -13,10 +14,10 @@ namespace CapaPresentaciones
 {
     public partial class P_TablaTutores : Form
     {
-        readonly E_Docente ObjEntidadDocente = new E_Docente();
         readonly N_Docente ObjNegocioDocente = new N_Docente();
         readonly E_Estudiante ObjEntidadEstudiante = new E_Estudiante();
         readonly N_Estudiante ObjNegocioEstudiante = new N_Estudiante();
+        int Regs = 0;
         string CodEscuelaP = "IN";
 
         public P_TablaTutores()
@@ -69,7 +70,6 @@ namespace CapaPresentaciones
             dgvTablaEstudiantes.Columns[13].Visible = false;
             dgvTablaEstudiantes.Columns[14].Visible = false;
             dgvTablaEstudiantes.Columns[15].Visible = false;
-            dgvTablaEstudiantes.Columns[16].Visible = false;
 
             dgvTablaEstudiantes.Columns[2].HeaderText = "Cod. Estudiante";
             dgvTablaEstudiantes.Columns[3].HeaderText = "Ap. Paterno";
@@ -86,7 +86,6 @@ namespace CapaPresentaciones
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
         }
@@ -95,8 +94,12 @@ namespace CapaPresentaciones
         {
             try
             {
-                labelEstudiantes.Text = "ESTUDIANTES SIN TUTOR";
-                dgvTablaEstudiantes.DataSource = N_Estudiante.MostrarEstudiantesSinTutor(CodEscuelaP, Int32.Parse(textBoxTotalRegistros.Text));
+                labelTutorados.Visible = false;
+                labelEstudiantes.Visible = true;
+                btnEstudiantes.Visible = false;
+                textBoxBuscar.Text = "";
+                dgvTablaEstudiantes.DataSource = N_Estudiante.MostrarEstudiantesSinTutor(CodEscuelaP);
+                textBoxTotalRegistros.Text = dgvTablaEstudiantes.Rows.Count.ToString();
                 AccionesTablaEstudiantesSinTutor();
             }
             catch (Exception ex)
@@ -109,9 +112,12 @@ namespace CapaPresentaciones
         {
             try
             {
-                labelEstudiantes.Text = "TUTORADOS";
+                labelEstudiantes.Visible = false;
+                labelTutorados.Visible = true;
+                btnEstudiantes.Visible = true;
                 dgvTablaEstudiantes.DataSource = N_Docente.MostrarTutorados(textBoxSeleccionarTutor.Text);
                 textBoxTotalRegistros.Text = dgvTablaEstudiantes.Rows.Count.ToString();
+                textBoxBuscar.Text = "";
                 AccionesTablaTutorados();
             }
             catch (Exception ex)
@@ -137,8 +143,10 @@ namespace CapaPresentaciones
         {
             try
             {
-                labelEstudiantes.Text = "ESTUDIANTES SIN TUTOR";
-                dgvTablaEstudiantes.DataSource = N_Estudiante.BuscarEstudiantesSinTutor(CodEscuelaP, textBoxBuscar.Text, Int32.Parse(textBoxTotalRegistros.Text));
+                labelTutorados.Visible = false;
+                labelEstudiantes.Visible = true;
+                btnEstudiantes.Visible = false;
+                dgvTablaEstudiantes.DataSource = N_Estudiante.BuscarEstudiantesSinTutor(CodEscuelaP, textBoxBuscar.Text, Regs);
                 AccionesTablaEstudiantesSinTutor();
             }
             catch (Exception ex)
@@ -151,9 +159,10 @@ namespace CapaPresentaciones
         {
             try
             {
-                labelEstudiantes.Text = "TUTORADOS";
-                dgvTablaEstudiantes.DataSource = N_Docente.BuscarTutorados(textBoxSeleccionarTutor.Text, textBoxBuscar.Text, Int32.Parse(textBoxTotalRegistros.Text));
-                textBoxTotalRegistros.Text = dgvTablaEstudiantes.Rows.Count.ToString();
+                labelEstudiantes.Visible = false;
+                labelTutorados.Visible = true;
+                btnEstudiantes.Visible = true;
+                dgvTablaEstudiantes.DataSource = N_Docente.BuscarTutorados(textBoxSeleccionarTutor.Text, textBoxBuscar.Text, Regs);
                 AccionesTablaTutorados();
             }
             catch (Exception ex)
@@ -162,15 +171,16 @@ namespace CapaPresentaciones
             }
         }
 
-        private void ImportarDatos(DataGridView Datos)
+        private void ImportarDatos()
         {
-            string file = "";   //variable for the Excel File Location
-            DataTable dt = new DataTable();   //container for our excel data
+            string file = "";
+            DataTable dtaux = new DataTable(); // DataTable auxiliar
+            DataTable dt = new DataTable(); 
             DataRow row;
-            DialogResult result = openFileDialog1.ShowDialog();  // Show the dialog.
+            DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)   // Check if Result == "OK".
             {
-                file = openFileDialog1.FileName; //get the filename with the location of the file
+                file = openFileDialog1.FileName; 
                 try
                 {
                     Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
@@ -178,12 +188,8 @@ namespace CapaPresentaciones
                     Microsoft.Office.Interop.Excel._Worksheet excelWorksheet = excelWorkbook.Sheets[1];
                     Microsoft.Office.Interop.Excel.Range excelRange = excelWorksheet.UsedRange;
 
-                    int rowCount = excelRange.Rows.Count;  //get row count of excel data
-
-                    int colCount = excelRange.Columns.Count; // get column count of excel data
-
-                    //Get the first Column of excel file which is the Column Name                  
-
+                    int rowCount = excelRange.Rows.Count; 
+                    int colCount = excelRange.Columns.Count; 
                     for (int i = 1; i <= rowCount; i++)
                     {
                         for (int j = 1; j <= colCount; j++)
@@ -192,15 +198,14 @@ namespace CapaPresentaciones
                         }
                         break;
                     }
-                    //Get Row Data of Excel              
-                    int rowCounter;  //This variable is used for row index number
-                    for (int i = 2; i <= rowCount; i++) //Loop for available row of excel data
+            
+                    int rowCounter;  
+                    for (int i = 2; i <= rowCount; i++) 
                     {
-                        row = dt.NewRow();  //assign new row to DataTable
+                        row = dt.NewRow(); 
                         rowCounter = 0;
-                        for (int j = 1; j <= colCount; j++) //Loop for available column of excel data
+                        for (int j = 1; j <= colCount; j++) 
                         {
-                            //check if cell is empty
                             if (excelRange.Cells[i, j] != null && excelRange.Cells[i, j].Value2 != null)
                             {
                                 row[rowCounter] = excelRange.Cells[i, j].Value2.ToString();
@@ -215,11 +220,56 @@ namespace CapaPresentaciones
                         dt.Rows.Add(row); //add row to DataTable
                     }
 
-                    labelEstudiantes.Text = "ESTUDIANTES SIN TUTOR";
-                    textBoxTotalRegistros.Text = "10";
-                    textBoxBuscar.Text = "";
-                    dgvTablaEstudiantes.DataSource = dt; //assign DataTable as Datasource for DataGridview
-                    AccionesTablaEstudiantesSinTutor();
+                    int totalRegs = 0;
+                    foreach (DataRow RowAux in dt.Rows)
+                    {
+                        string CodEstudiante_ = RowAux[0].ToString();
+                        dtaux = N_Estudiante.BuscarRegistro(CodEstudiante_);
+                        if (dtaux.Rows.Count == 0)
+                        {
+                            totalRegs += 1;
+                        }
+                    }
+
+                    DialogResult Opcion;
+                    string mensaje = "Se han encontrado " + totalRegs.ToString() + " registros nuevos\n ¿Desea agregar esta información a la base de datos?";
+                    Opcion = MessageBox.Show(mensaje, "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    if (Opcion == DialogResult.OK)
+                    {
+                        foreach (DataRow Row in dt.Rows)
+                        {
+                            string CodEstudiante_ = Row[0].ToString();
+                            dtaux = N_Estudiante.BuscarRegistro(CodEstudiante_);
+                            if (dtaux.Rows.Count == 0)
+                            {                               
+                                string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
+                                Image Img = Image.FromFile(fullImagePath);
+                                byte[] Perfil = new byte[0];
+                                using (MemoryStream MemoriaPerfil = new MemoryStream())
+                                {
+                                    Image.FromFile(fullImagePath).Save(MemoriaPerfil, ImageFormat.Bmp);
+                                    Perfil = MemoriaPerfil.ToArray();
+                                }
+                                
+                                ObjEntidadEstudiante.Perfil = Perfil;
+                                ObjEntidadEstudiante.CodEstudiante = Row[0].ToString();
+                                ObjEntidadEstudiante.APaterno = Row[1].ToString();
+                                ObjEntidadEstudiante.AMaterno = Row[2].ToString();
+                                ObjEntidadEstudiante.Nombre = Row[3].ToString();
+                                ObjEntidadEstudiante.Email = Row[4].ToString();
+                                ObjEntidadEstudiante.Direccion = Row[5].ToString();
+                                ObjEntidadEstudiante.Telefono = Row[6].ToString();
+                                ObjEntidadEstudiante.CodEscuelaP = Row[7].ToString();
+                                ObjEntidadEstudiante.PersonaReferencia = Row[8].ToString();
+                                ObjEntidadEstudiante.TelefonoReferencia = Row[9].ToString();
+                                ObjEntidadEstudiante.InformacionPersonal = "";
+                                ObjNegocioEstudiante.InsertarRegistros(ObjEntidadEstudiante);
+                            }
+                        }
+                        MensajeConfirmacion("La operación se realizo con éxito.");
+                    }
+
+                    MostrarRegistrosEstudiantesSinTutor();
 
                     //Close and Clean excel process
                     GC.Collect();
@@ -243,11 +293,11 @@ namespace CapaPresentaciones
         private void P_TablaDocentes_Load(object sender, EventArgs e)
         {
             MostrarRegistrosTutores();
-            if (labelEstudiantes.Text == "ESTUDIANTES SIN TUTOR")
+            if (labelEstudiantes.Visible == true)
             {
                 MostrarRegistrosEstudiantesSinTutor();
             }
-            if (labelEstudiantes.Text == "TUTORADOS")
+            if (labelTutorados.Visible == true)
             {
                 MostrarRegistrosTutorados();
             }
@@ -255,22 +305,24 @@ namespace CapaPresentaciones
 
         private void textBoxSeleccionarTutor_TextChanged(object sender, EventArgs e)
         {
-            if (labelEstudiantes.Text == "TUTORADOS")
+            if (textBoxBuscar.Text == "" && textBoxTotalRegistros.Text == "")
             {
-                labelEstudiantes.Text = "ESTUDIANTES SIN TUTOR";
-                textBoxTotalRegistros.Text = "10";
                 MostrarRegistrosEstudiantesSinTutor();
+            }
+            else
+            {
+                BuscarRegistrosEstudiantesSinTutor();
             }
             BuscarRegistroTutor();
         }
 
         private void textBoxBuscar_TextChanged(object sender, EventArgs e)
         {
-            if (labelEstudiantes.Text == "ESTUDIANTES SIN TUTOR")
+            if (labelEstudiantes.Visible == true)
             {
                 BuscarRegistrosEstudiantesSinTutor();
             }
-            if (labelEstudiantes.Text == "TUTORADOS")
+            if (labelTutorados.Visible == true)
             {
                 BuscarRegistrosTutorados();
             }
@@ -278,62 +330,76 @@ namespace CapaPresentaciones
 
         private void textBoxTotalRegistros_TextChanged(object sender, EventArgs e)
         {
-            if (labelEstudiantes.Text == "ESTUDIANTES SIN TUTOR")
+            if (textBoxTotalRegistros.Text == "") Regs = 0;
+            else
+            {
+                Regs = Int32.Parse(textBoxTotalRegistros.Text);
+            }
+            if (labelEstudiantes.Visible == true)
             {
                 BuscarRegistrosEstudiantesSinTutor();
             }
-            if (labelEstudiantes.Text == "TUTORADOS")
+            if (labelTutorados.Visible == true)
             {
                 BuscarRegistrosTutorados();
             }
         }
 
-        private void btnVerTutorados_Click(object sender, EventArgs e)
+        private void btnVerTutorados_Click_1(object sender, EventArgs e)
         {
-            labelEstudiantes.Text = "TUTORADOS";
-            textBoxBuscar.Text = "";
-            BuscarRegistrosTutorados();
+            if (textBoxSeleccionarTutor.Text == "")
+            {
+                MensajeError("No se ha seleccionado un tutor");
+            }
+            else
+            {
+                MostrarRegistrosTutorados();
+            }
         }
 
-        private void btnVer_Click(object sender, EventArgs e)
+        private void btnEstudiantes_Click(object sender, EventArgs e)
         {
-            labelEstudiantes.Text = "ESTUDIANTES SIN TUTOR";
-            textBoxTotalRegistros.Text = "10";
-            textBoxBuscar.Text = "";
             MostrarRegistrosEstudiantesSinTutor();
         }
 
         private void btnImportar_Click(object sender, EventArgs e)
         {
-            ImportarDatos(dgvTablaTutores);
+            ImportarDatos();
         }
 
         private void btnAsignar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (labelEstudiantes.Text == "ESTUDIANTES SIN TUTOR" && dgvTablaEstudiantes.Rows.Count > 0)
+                if (labelEstudiantes.Visible == true && dgvTablaEstudiantes.Rows.Count > 0)
                 {
                     DialogResult Opcion;
                     string mensaje;
-                    int tutorados= dgvTablaEstudiantes.Rows.Count;
-                    if (tutorados == 1)
+                    if (textBoxSeleccionarTutor.Text == "")
                     {
-                        mensaje = "Se va asignar 1 nuevo tutorado.";
+                        MensajeError("No se ha seleccionado un tutor");
                     }
                     else
                     {
-                        mensaje = "Se van asignar " + tutorados.ToString() + " nuevos tutorados.";
-                    }
-                    Opcion = MessageBox.Show(mensaje, "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                    if (Opcion == DialogResult.OK)
-                    {
-                        for (int i = 0; i < dgvTablaEstudiantes.Rows.Count; i++)
+                        int tutorados = dgvTablaEstudiantes.Rows.Count;
+                        if (tutorados == 1)
                         {
-                            string CodEstudiante = dgvTablaEstudiantes.Rows[i].Cells[0].Value.ToString();
-                            ObjNegocioEstudiante.AsignarTutor(CodEstudiante, textBoxSeleccionarTutor.Text);
+                            mensaje = "Se va asignar 1 nuevo tutorado.";
                         }
-                        MensajeConfirmacion("La operación se realizo con éxito.");
+                        else
+                        {
+                            mensaje = "Se van asignar " + tutorados.ToString() + " nuevos tutorados.";
+                        }
+                        Opcion = MessageBox.Show(mensaje, "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                        if (Opcion == DialogResult.OK)
+                        {
+                            for (int i = 0; i < dgvTablaEstudiantes.Rows.Count; i++)
+                            {
+                                string CodEstudiante = dgvTablaEstudiantes.Rows[i].Cells[0].Value.ToString();
+                                ObjNegocioEstudiante.AsignarTutor(CodEstudiante, textBoxSeleccionarTutor.Text);
+                            }
+                            MensajeConfirmacion("La operación se realizo con éxito.");
+                        }
                     }
                 }
                 BuscarRegistroTutor();
@@ -348,7 +414,7 @@ namespace CapaPresentaciones
         {
             try
             {
-                if (labelEstudiantes.Text == "TUTORADOS" && dgvTablaEstudiantes.Rows.Count > 0)
+                if (labelTutorados.Visible == true && dgvTablaEstudiantes.Rows.Count > 0)
                 {
                     DialogResult Opcion;
                     string mensaje;
@@ -389,7 +455,7 @@ namespace CapaPresentaciones
         private void dgvTablaEstudiantes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvTablaEstudiantes.CurrentRow;
-            textBoxBuscar.Text = row.Cells[2].Value.ToString();
+            textBoxBuscar.Text = row.Cells[0].Value.ToString();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
