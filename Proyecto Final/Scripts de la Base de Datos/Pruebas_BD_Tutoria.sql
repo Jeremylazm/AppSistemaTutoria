@@ -1,4 +1,4 @@
-USE BDSistema_Tutoria
+USE db_a7878d_BDSistemaTutoria
 GO
 
 INSERT INTO TEscuela_Profesional VALUES('INIS','INGENIERÍA INFORMÁTICA Y DE SISTEMAS');
@@ -34,27 +34,7 @@ select * from TUsuario
 
 INSERT INTO TUsuario (Usuario, Contraseña, Acceso, Datos, Perfil) 
 SELECT 'ADMIN', 'ADMIN1234', 'Director de Escuela', 'ADMINISTRADOR', BulkColumn
-	FROM Openrowset(Bulk 'C:\Users\14015\Desktop\2021\desasoft\grupo\AppSistemaTutoria\Proyecto Final\AppSistemaTutoria\CapaPresentaciones\Iconos\Perfil.png', Single_Blob) as PerfilAdmin
+	FROM Openrowset(Bulk 'C:\Users\Jeremylazm\Documents\GitHub\AppSistemaTutoria\Proyecto Final\AppSistemaTutoria\CapaPresentaciones\Iconos\Perfil.png', Single_Blob) as PerfilAdmin
 GO
 
 select * from TEstudiante
-
-
-
-
-/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA USUARIO ****************** */
-/*
-USE db_a7878d_BDSistemaTutoria
-GO
-*/
-/* Cambiar usuario */
-CREATE PROCEDURE spuCambiarContraseña    @Usuario VARCHAR(6),
-										 @NuevaContrasenia VARCHAR(200)				
-AS
-BEGIN
-	-- Actualizar un estudiante de la tabla de TEstudiante
-	UPDATE TUsuario
-		SET Contraseña = @NuevaContrasenia
-		WHERE Usuario = @Usuario
-END;
-GO

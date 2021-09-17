@@ -42,11 +42,18 @@ namespace CapaPresentaciones
 
         private void CargarDatosUsuario()
         {
-            byte[] Perfil = new byte[0];
-            Perfil = E_InicioSesion.Perfil;
-            MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
-
-            imgPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
+            if (E_InicioSesion.Perfil == null)
+            {
+                string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
+                imgPerfil.Image = Image.FromFile(fullImagePath);
+            }
+            else
+            {
+                byte[] Perfil = new byte[0];
+                Perfil = E_InicioSesion.Perfil;
+                MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
+                imgPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
+            }
             lblDatos.Text = E_InicioSesion.Datos;
             lblAcceso.Text = E_InicioSesion.Acceso;
             lblUsuario.Text = E_InicioSesion.Usuario;
@@ -72,6 +79,7 @@ namespace CapaPresentaciones
                 btnTutores.Visible = true;
                 btnEstudiantes.Visible = true;
                 btnInformeTutorias.Visible = true;
+                btnMiTutor.Visible = false;
             }
             else if (Acceso == "Docente")
             {
@@ -81,6 +89,7 @@ namespace CapaPresentaciones
                 btnTutores.Visible = false;
                 btnEstudiantes.Visible = false;
                 btnInformeTutorias.Visible = false;
+                btnMiTutor.Visible = false;
             }
             else if (Acceso == "Estudiante")
             {
@@ -195,7 +204,6 @@ namespace CapaPresentaciones
                     TopLevel = false,
                     Dock = DockStyle.Fill
                 };
-                //Editar.FormClosed += new FormClosedEventHandler(ActualizarDatos);
                 Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
 
                 pnContenedor.Controls.Add(Editar);
@@ -205,7 +213,18 @@ namespace CapaPresentaciones
             }
             else
             {
-                AbrirFormularios<P_EditarPerfilDocente>();
+                P_EditarPerfilDocente Editar = new P_EditarPerfilDocente
+                {
+                    Usuario = E_InicioSesion.Usuario,
+                    TopLevel = false,
+                    Dock = DockStyle.Fill
+                };
+                Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
+
+                pnContenedor.Controls.Add(Editar);
+                pnContenedor.Tag = Editar;
+                Editar.Show();
+                Editar.BringToFront();
             }
         }
 
@@ -232,13 +251,19 @@ namespace CapaPresentaciones
         /*
         private void btnInformeTutorias_Click(object sender, EventArgs e)
         {
-            AbrirFormularios<P_InformeTutorias>();
+            //AbrirFormularios<P_InformeTutorias>();
         }
         */
 
         private void btnTutores_Click(object sender, EventArgs e)
         {
             AbrirFormularios<P_TablaTutores>();
+        }
+
+        private void btnMiTutor_Click(object sender, EventArgs e)
+        {
+            P_InformacionTutor Editar = new P_InformacionTutor(E_InicioSesion.Usuario);
+            Editar.Show();
         }
 
         private void P_Menu_Load(object sender, EventArgs e)

@@ -220,7 +220,6 @@ namespace CapaPresentaciones
                         dt.Rows.Add(row); //add row to DataTable
                     }
 
-
                     int totalRegs = 0;
                     foreach (DataRow RowAux in dt.Rows)
                     {
