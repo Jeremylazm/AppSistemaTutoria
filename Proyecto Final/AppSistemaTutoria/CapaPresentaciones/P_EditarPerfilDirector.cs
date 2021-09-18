@@ -93,8 +93,6 @@ namespace CapaPresentaciones
 
         #region Eventos
 
-        #endregion
-
         private void btnSubirPerfil_Click(object sender, EventArgs e)
         {
             try
@@ -149,7 +147,7 @@ namespace CapaPresentaciones
                 ObjEntidad.Subcategoria = txtSubcategoria.Text;
                 ObjEntidad.Regimen = txtRegimen.Text;
                 ObjEntidad.CodEscuelaP = CodEscuelaP;
-                //ObjEntidad.Horario = txtHorario.Text;
+                ObjEntidad.Horario = "";
 
                 ObjNegocio.EditarRegistros(ObjEntidad);
                 MensajeConfirmacion("Registro editado exitosamente");
@@ -171,5 +169,7 @@ namespace CapaPresentaciones
             NuevaContraseña.ShowDialog();
             NuevaContraseña.Dispose();
         }
+
+        #endregion
     }
 }
