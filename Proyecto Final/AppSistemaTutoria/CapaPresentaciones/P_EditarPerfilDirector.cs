@@ -149,8 +149,15 @@ namespace CapaPresentaciones
                 ObjEntidad.CodEscuelaP = CodEscuelaP;
                 ObjEntidad.Horario = "";
 
-                ObjNegocio.EditarRegistros(ObjEntidad);
-                MensajeConfirmacion("Registro editado exitosamente");
+                try
+                {
+                    ObjNegocio.EditarRegistros(ObjEntidad);
+                    MensajeConfirmacion("Registro editado exitosamente");
+                }
+                catch (Exception ex)
+                {
+                    MensajeError("No se pudo editar regsitro");
+                }
             }
         }
 
