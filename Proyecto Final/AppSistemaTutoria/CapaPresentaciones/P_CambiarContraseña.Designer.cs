@@ -125,7 +125,7 @@ namespace CapaPresentaciones
             this.panelCorreo.Controls.Add(this.txtEmail);
             this.panelCorreo.Controls.Add(this.btnEnviarCodigo);
             this.panelCorreo.Controls.Add(this.lblCorreo);
-            this.panelCorreo.Location = new System.Drawing.Point(0, 0);
+            this.panelCorreo.Location = new System.Drawing.Point(12, 49);
             this.panelCorreo.Name = "panelCorreo";
             this.panelCorreo.Size = new System.Drawing.Size(392, 197);
             this.panelCorreo.TabIndex = 5;
@@ -231,7 +231,6 @@ namespace CapaPresentaciones
             // panelVerificacion
             // 
             this.panelVerificacion.Controls.Add(this.lblVolverEnviar);
-            this.panelVerificacion.Controls.Add(this.panelCorreo);
             this.panelVerificacion.Controls.Add(this.btnValidarCodigo);
             this.panelVerificacion.Controls.Add(this.bunifuImageButton1);
             this.panelVerificacion.Controls.Add(this.Separador2);
@@ -554,6 +553,7 @@ namespace CapaPresentaciones
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(416, 257);
+            this.Controls.Add(this.panelCorreo);
             this.Controls.Add(this.panelCambiarContraseña);
             this.Controls.Add(this.panelVerificacion);
             this.Controls.Add(this.pbLogo);
