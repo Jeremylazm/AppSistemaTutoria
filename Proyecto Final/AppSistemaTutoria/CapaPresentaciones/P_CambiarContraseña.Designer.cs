@@ -52,7 +52,6 @@ namespace CapaPresentaciones
             this.lblMensaje1 = new System.Windows.Forms.Label();
             this.Movimiento = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.BordeadoMenu = new Bunifu.Framework.UI.BunifuThinButton2();
             this.panelCambiarContraseña = new System.Windows.Forms.Panel();
             this.btnCambiarContraseña = new Bunifu.Framework.UI.BunifuFlatButton();
             this.Separador5 = new Bunifu.Framework.UI.BunifuSeparator();
@@ -112,7 +111,7 @@ namespace CapaPresentaciones
             this.pbLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.pbLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbLogo.BackgroundImage")));
             this.pbLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbLogo.Location = new System.Drawing.Point(3, 1);
+            this.pbLogo.Location = new System.Drawing.Point(2, 2);
             this.pbLogo.Name = "pbLogo";
             this.pbLogo.Size = new System.Drawing.Size(35, 35);
             this.pbLogo.TabIndex = 2;
@@ -126,7 +125,7 @@ namespace CapaPresentaciones
             this.panelCorreo.Controls.Add(this.txtEmail);
             this.panelCorreo.Controls.Add(this.btnEnviarCodigo);
             this.panelCorreo.Controls.Add(this.lblCorreo);
-            this.panelCorreo.Location = new System.Drawing.Point(12, 49);
+            this.panelCorreo.Location = new System.Drawing.Point(0, 0);
             this.panelCorreo.Name = "panelCorreo";
             this.panelCorreo.Size = new System.Drawing.Size(392, 197);
             this.panelCorreo.TabIndex = 5;
@@ -190,6 +189,7 @@ namespace CapaPresentaciones
             this.btnEnviarCodigo.ButtonText = "Enviar Código";
             this.btnEnviarCodigo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEnviarCodigo.DisabledColor = System.Drawing.Color.Gray;
+            this.btnEnviarCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.btnEnviarCodigo.Iconcolor = System.Drawing.Color.Transparent;
             this.btnEnviarCodigo.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnEnviarCodigo.Iconimage")));
             this.btnEnviarCodigo.Iconimage_right = null;
@@ -209,7 +209,7 @@ namespace CapaPresentaciones
             this.btnEnviarCodigo.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
             this.btnEnviarCodigo.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnEnviarCodigo.selected = true;
-            this.btnEnviarCodigo.Size = new System.Drawing.Size(226, 39);
+            this.btnEnviarCodigo.Size = new System.Drawing.Size(228, 40);
             this.btnEnviarCodigo.TabIndex = 134;
             this.btnEnviarCodigo.Text = "Enviar Código";
             this.btnEnviarCodigo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -231,6 +231,7 @@ namespace CapaPresentaciones
             // panelVerificacion
             // 
             this.panelVerificacion.Controls.Add(this.lblVolverEnviar);
+            this.panelVerificacion.Controls.Add(this.panelCorreo);
             this.panelVerificacion.Controls.Add(this.btnValidarCodigo);
             this.panelVerificacion.Controls.Add(this.bunifuImageButton1);
             this.panelVerificacion.Controls.Add(this.Separador2);
@@ -272,6 +273,7 @@ namespace CapaPresentaciones
             this.btnValidarCodigo.ButtonText = "Validar Código";
             this.btnValidarCodigo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnValidarCodigo.DisabledColor = System.Drawing.Color.Gray;
+            this.btnValidarCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.btnValidarCodigo.Iconcolor = System.Drawing.Color.Transparent;
             this.btnValidarCodigo.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnValidarCodigo.Iconimage")));
             this.btnValidarCodigo.Iconimage_right = null;
@@ -291,7 +293,7 @@ namespace CapaPresentaciones
             this.btnValidarCodigo.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
             this.btnValidarCodigo.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnValidarCodigo.selected = true;
-            this.btnValidarCodigo.Size = new System.Drawing.Size(226, 39);
+            this.btnValidarCodigo.Size = new System.Drawing.Size(228, 40);
             this.btnValidarCodigo.TabIndex = 146;
             this.btnValidarCodigo.Text = "Validar Código";
             this.btnValidarCodigo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -382,35 +384,6 @@ namespace CapaPresentaciones
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this;
             // 
-            // BordeadoMenu
-            // 
-            this.BordeadoMenu.ActiveBorderThickness = 1;
-            this.BordeadoMenu.ActiveCornerRadius = 20;
-            this.BordeadoMenu.ActiveFillColor = System.Drawing.Color.White;
-            this.BordeadoMenu.ActiveForecolor = System.Drawing.Color.White;
-            this.BordeadoMenu.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BordeadoMenu.BackColor = System.Drawing.Color.White;
-            this.BordeadoMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoMenu.BackgroundImage")));
-            this.BordeadoMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BordeadoMenu.ButtonText = "Editar Perfil";
-            this.BordeadoMenu.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BordeadoMenu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BordeadoMenu.ForeColor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleBorderThickness = 1;
-            this.BordeadoMenu.IdleCornerRadius = 20;
-            this.BordeadoMenu.IdleFillColor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleForecolor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoMenu.Location = new System.Drawing.Point(-1, 0);
-            this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(5);
-            this.BordeadoMenu.Name = "BordeadoMenu";
-            this.BordeadoMenu.Size = new System.Drawing.Size(416, 261);
-            this.BordeadoMenu.TabIndex = 109;
-            this.BordeadoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // panelCambiarContraseña
             // 
             this.panelCambiarContraseña.Controls.Add(this.btnCambiarContraseña);
@@ -439,6 +412,7 @@ namespace CapaPresentaciones
             this.btnCambiarContraseña.ButtonText = "Cambiar Contraseña";
             this.btnCambiarContraseña.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCambiarContraseña.DisabledColor = System.Drawing.Color.Gray;
+            this.btnCambiarContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.btnCambiarContraseña.Iconcolor = System.Drawing.Color.Transparent;
             this.btnCambiarContraseña.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnCambiarContraseña.Iconimage")));
             this.btnCambiarContraseña.Iconimage_right = null;
@@ -458,7 +432,7 @@ namespace CapaPresentaciones
             this.btnCambiarContraseña.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
             this.btnCambiarContraseña.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnCambiarContraseña.selected = true;
-            this.btnCambiarContraseña.Size = new System.Drawing.Size(222, 39);
+            this.btnCambiarContraseña.Size = new System.Drawing.Size(228, 40);
             this.btnCambiarContraseña.TabIndex = 135;
             this.btnCambiarContraseña.Text = "Cambiar Contraseña";
             this.btnCambiarContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -581,12 +555,10 @@ namespace CapaPresentaciones
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(416, 257);
             this.Controls.Add(this.panelCambiarContraseña);
-            this.Controls.Add(this.panelCorreo);
             this.Controls.Add(this.panelVerificacion);
             this.Controls.Add(this.pbLogo);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.BordeadoMenu);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -629,7 +601,6 @@ namespace CapaPresentaciones
         public System.Windows.Forms.TextBox txtCodigoVerificacion;
         private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.LinkLabel lblVolverEnviar;
-        private Bunifu.Framework.UI.BunifuThinButton2 BordeadoMenu;
         private System.Windows.Forms.Panel panelCambiarContraseña;
         private Bunifu.Framework.UI.BunifuFlatButton btnCambiarContraseña;
         private Bunifu.Framework.UI.BunifuSeparator Separador5;
