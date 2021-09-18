@@ -25,6 +25,7 @@ namespace CapaPresentaciones
         {
             InitializeComponent();
         }
+        public P_CambiarContraseña(bool test) { }
         #region Metodos generales
         private void MensajeError(string Mensaje)
         {
@@ -104,7 +105,7 @@ namespace CapaPresentaciones
             N_InicioSesion InicioSesion = new N_InicioSesion();
             return InicioSesion.IniciarSesion(usuario, contraseña);
         }
-        public string validarpanelCambiarContraseña(string usuario, string contraseña, string contraseñaNueva, string confirmarContraseña)
+        public string validarpanelCambiarContraseña(string usuario, string contraseña, string contraseñaNueva, string confirmarContraseña, bool test)
         {
             if (contraseña == "")
                 return "000"; // contraseña vacia
@@ -121,7 +122,11 @@ namespace CapaPresentaciones
                 if (!usuarioValido(usuario, contraseña))
                     return "-1"; // contraseña incorrecta
 
-                DialogResult Opcion = MensajeConfirmacion("¿Realmente desea cambiar la contraseña ? ");
+                DialogResult Opcion = DialogResult.OK; // Ok para test unitario
+
+                if (!test)
+                    Opcion = MensajeConfirmacion("¿Realmente desea cambiar la contraseña ? ");
+
                 if (Opcion == DialogResult.OK)
                 {
                     N_InicioSesion InicioSesion = new N_InicioSesion();
@@ -191,7 +196,7 @@ namespace CapaPresentaciones
 
         private void btnCambiarContraseña_Click(object sender, EventArgs e)
         {
-            string ans = validarpanelCambiarContraseña(Usuario, txtContraseñaAnterior.Text, txtContraseñaNueva.Text, txtConfirmarContraseña.Text);
+            string ans = validarpanelCambiarContraseña(Usuario, txtContraseñaAnterior.Text, txtContraseñaNueva.Text, txtConfirmarContraseña.Text, false);
 
             if (ans == "000" || ans == "001" || ans == "010") // campos vacios
             {
