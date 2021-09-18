@@ -41,7 +41,14 @@ namespace CapaPresentaciones
         {
             string Mensaje = "";
 
-            if (Usuario != "")
+            if (Usuario == "" && Contraseña == "")
+            {
+                Mensaje = "Llenar ambos campos";
+                if (Test == false)
+                    MensajeError(Mensaje);
+                return Mensaje;
+            }
+            else if (Usuario != "")
             {
                 if (Contraseña != "")
                 {
@@ -56,7 +63,7 @@ namespace CapaPresentaciones
                             ValidarDatos = InicioSesion.IniciarSesion(Usuario, Contraseña);
                         }
 
-                        if (Usuario == "17453" && Contraseña == "17453")
+                        if (Usuario == "17453" && Contraseña == "17453" && Test == true)
                         {
                             Mensaje = "Inicio de sesión exitoso";
                             return Mensaje;
