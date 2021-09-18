@@ -2,6 +2,7 @@
 {
     public class E_Docente
     {
+        // Definir los atributos o campos que tiene un docente
         public byte[] Perfil { get; set; }
         public string CodDocente { get; set; }
         public string APaterno { get; set; }

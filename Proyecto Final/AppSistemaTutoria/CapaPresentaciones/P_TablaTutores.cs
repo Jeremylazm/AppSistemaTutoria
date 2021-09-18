@@ -131,7 +131,7 @@ namespace CapaPresentaciones
         {
             try
             {
-                dgvTablaTutores.DataSource = N_Docente.BuscarTutor(E_InicioSesion.Usuario, textBoxSeleccionarTutor.Text);
+                dgvTablaTutores.DataSource = N_Docente.BuscarTutores(E_InicioSesion.Usuario, textBoxSeleccionarTutor.Text);
                 AccionesTablaTutores();
             }
             catch (Exception ex)
