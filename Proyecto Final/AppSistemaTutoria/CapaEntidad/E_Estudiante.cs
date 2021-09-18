@@ -17,5 +17,6 @@ namespace CapaEntidades
         //public string EstadoFisico { get; set; }
         //public string EstadoMental { get; set; }
         public string CodDocente { get; set; }
+        public string ConcederPermiso { get; set; }
     }
 }
