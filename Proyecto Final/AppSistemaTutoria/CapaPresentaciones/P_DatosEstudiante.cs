@@ -19,17 +19,23 @@ namespace CapaPresentaciones
     public partial class P_DatosEstudiante : Form
     {
         readonly E_Estudiante ObjEntidad = new E_Estudiante();
-        readonly N_Estudiante ObjNegocio = new N_Estudiante();
+
+        public bool Test { get; set; }
+
         private readonly string Key = "key_estudiante"; //Llave de cifrado
 
         public P_DatosEstudiante()
         {
+            Test = false;
             InitializeComponent();
             LlenarComboBox();
             ValidarPerfil();
         }
 
-        public P_DatosEstudiante(bool Test) { }
+        public P_DatosEstudiante(bool pTest) 
+        {
+            Test = pTest;
+        }
 
         private void MensajeConfirmacion(string Mensaje)
         {
@@ -146,8 +152,9 @@ namespace CapaPresentaciones
 
                         if (!PatronCodigo.IsMatch(Codigo))
                         {
-                            Mensaje = "El código deber ser de 6 cifras";
-                            MensajeError(Mensaje);
+                            Mensaje = "El código deber ser de 6 caracteres numéricos";
+                            if (Test == false)
+                                MensajeError(Mensaje);
                             return Mensaje;
                         }
                         else
@@ -161,8 +168,9 @@ namespace CapaPresentaciones
 
                             if (!PatronTelefono.IsMatch(Telefono))
                             {
-                                Mensaje = "El teléfono deber ser de 9 cifras";
-                                MensajeError(Mensaje);
+                                Mensaje = "El teléfono deber ser de 9 caracteres numéricos";
+                                if (Test == false)
+                                    MensajeError(Mensaje);
                                 return Mensaje;
                             }
                             else
@@ -173,8 +181,9 @@ namespace CapaPresentaciones
 
                                 if (!PatronTelefonoReferencia.IsMatch(TelefonoReferencia))
                                 {
-                                    Mensaje = "El teléfono deber ser de 9 cifras";
-                                    MensajeError(Mensaje);
+                                    Mensaje = "El teléfono de referencia deber ser de 9 caracteres numéricos";
+                                    if (Test == false)
+                                        MensajeError(Mensaje);
                                     return Mensaje;
                                 }
                                 else
@@ -182,46 +191,57 @@ namespace CapaPresentaciones
                                     ObjEntidad.TelefonoReferencia = TelefonoReferencia;
                                     ObjEntidad.InformacionPersonal = EncriptarIPersonal(InformacionPersonal, false);
 
-                                    ObjNegocio.InsertarRegistros(ObjEntidad);
-                                    MensajeConfirmacion("Registro insertado exitosamente");
+                                    if (Test == false)
+                                    {
+                                        N_Estudiante ObjNegocio = new N_Estudiante();
+                                        ObjNegocio.InsertarRegistros(ObjEntidad);
+                                    }
+                                    
+                                    Mensaje = "Registro insertado exitosamente";
+                                    if (Test == false)
+                                        MensajeConfirmacion(Mensaje);
                                     Program.Evento = 0;
 
-                                    N_InicioSesion InicioSesion = new N_InicioSesion();
-                                    string Contrasena = InicioSesion.RetornarContrasena(Codigo);
-
-                                    // Enviar un correo con la contraseña para un nuevo usuario
-                                    try
+                                    if (Test == false)
                                     {
-                                        SmtpClient clientDetails = new SmtpClient();
-                                        clientDetails.Port = 587;
-                                        clientDetails.Host = "smtp.gmail.com";
-                                        clientDetails.EnableSsl = true;
-                                        clientDetails.DeliveryMethod = SmtpDeliveryMethod.Network;
-                                        clientDetails.UseDefaultCredentials = false;
-                                        clientDetails.Credentials = new NetworkCredential("denisomarcuyottito@gmail.com", "Tutoriasunsaac5");
+                                        N_InicioSesion InicioSesion = new N_InicioSesion();
+                                        string Contrasena = InicioSesion.RetornarContrasena(Codigo);
 
-                                        MailMessage mailDetails = new MailMessage();
-                                        mailDetails.From = new MailAddress("denisomarcuyottito@gmail.com");
-                                        mailDetails.To.Add(Email);
-                                        mailDetails.Subject = "Contraseña del Sistema de Tutoría UNSAAC";
-                                        mailDetails.IsBodyHtml = true;
-                                        mailDetails.Body = "Tu contraseña es " + Contrasena;
-                                        clientDetails.Send(mailDetails);
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        MessageBox.Show(ex.Message);
-                                    }
+                                        // Enviar un correo con la contraseña para un nuevo usuario
+                                        try
+                                        {
+                                            SmtpClient clientDetails = new SmtpClient();
+                                            clientDetails.Port = 587;
+                                            clientDetails.Host = "smtp.gmail.com";
+                                            clientDetails.EnableSsl = true;
+                                            clientDetails.DeliveryMethod = SmtpDeliveryMethod.Network;
+                                            clientDetails.UseDefaultCredentials = false;
+                                            clientDetails.Credentials = new NetworkCredential("denisomarcuyottito@gmail.com", "Tutoriasunsaac5");
 
-                                    LimpiarCajas();
-                                    Close();
+                                            MailMessage mailDetails = new MailMessage();
+                                            mailDetails.From = new MailAddress("denisomarcuyottito@gmail.com");
+                                            mailDetails.To.Add(Email);
+                                            mailDetails.Subject = "Contraseña del Sistema de Tutoría UNSAAC";
+                                            mailDetails.IsBodyHtml = true;
+                                            mailDetails.Body = "Tu contraseña es " + Contrasena;
+                                            clientDetails.Send(mailDetails);
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            MessageBox.Show(ex.Message);
+                                        }
+
+                                        LimpiarCajas();
+                                        Close();
+                                    }
                                 }
                             }
                         }
                     }
                     catch (Exception)
                     {
-                        MensajeError("Error al insertar el registro ");
+                        if (Test == false)
+                            MensajeError("Error al insertar el registro ");
                     }
                 }
                 else
@@ -242,8 +262,9 @@ namespace CapaPresentaciones
 
                             if (!PatronCodigo.IsMatch(Codigo))
                             {
-                                Mensaje = "El código deber ser de 6 cifras";
-                                MensajeError(Mensaje);
+                                Mensaje = "El código deber ser de 6 caracteres numéricos";
+                                if (Test == false)
+                                    MensajeError(Mensaje);
                                 return Mensaje;
                             }
                             else
@@ -257,8 +278,9 @@ namespace CapaPresentaciones
 
                                 if (!PatronTelefono.IsMatch(Telefono))
                                 {
-                                    Mensaje = "El teléfono deber ser de 9 cifras";
-                                    MensajeError(Mensaje);
+                                    Mensaje = "El teléfono deber ser de 9 caracteres numéricos";
+                                    if (Test == false)
+                                        MensajeError(Mensaje);
                                     return Mensaje;
                                 }
                                 else
@@ -269,8 +291,9 @@ namespace CapaPresentaciones
 
                                     if (!PatronTelefonoReferencia.IsMatch(TelefonoReferencia))
                                     {
-                                        Mensaje = "El teléfono deber ser de 9 cifras";
-                                        MensajeError(Mensaje);
+                                        Mensaje = "El teléfono deber ser de 9 caracteres numéricos";
+                                        if (Test == false)
+                                            MensajeError(Mensaje);
                                         return Mensaje;
                                     }
                                     else
@@ -279,19 +302,30 @@ namespace CapaPresentaciones
                                         ObjEntidad.TelefonoReferencia = TelefonoReferencia;
                                         ObjEntidad.InformacionPersonal = EncriptarIPersonal(InformacionPersonal, false);
 
-                                        ObjNegocio.EditarRegistros(ObjEntidad);
-                                        MensajeConfirmacion("Registro editado exitosamente");
+                                        if (Test == false)
+                                        {
+                                            N_Estudiante ObjNegocio = new N_Estudiante();
+                                            ObjNegocio.EditarRegistros(ObjEntidad);
+                                        }
+                                        
+                                        Mensaje = "Registro editado exitosamente";
+                                        if (Test == false)
+                                            MensajeConfirmacion(Mensaje);
                                         Program.Evento = 0;
-                                        LimpiarCajas();
-                                        Close();
+
+                                        if (Test == false)
+                                        {
+                                            LimpiarCajas();
+                                            Close();
+                                        }
                                     }
                                 }
                             }
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        MensajeError("Error al editar el registro");
+                        MensajeError("Error al editar el registro" + ex);
                     }
                 }
             }
@@ -300,35 +334,41 @@ namespace CapaPresentaciones
                 if (Codigo.Trim() == "")
                 {
                     Mensaje = "Debe llenar el código";
-                    MensajeError(Mensaje);
+                    if (Test == false)
+                        MensajeError(Mensaje);
                 }
 
                 if (APaterno.Trim() == "")
                 {
                     Mensaje = "Debe llenar el apellido paterno";
-                    MensajeError(Mensaje);
+                    if (Test == false)
+                        MensajeError(Mensaje);
                 }
 
                 if (AMaterno.Trim() == "")
                 {
                     Mensaje = "Debe llenar el apellido materno";
-                    MensajeError(Mensaje);
+                    if (Test == false)
+                        MensajeError(Mensaje);
                 }
                 if (Nombre.Trim() == "")
                 {
                     Mensaje = "Debe llenar el nombre";
-                    MensajeError(Mensaje);
+                    if (Test == false)
+                        MensajeError(Mensaje);
                 }
                 if (Direccion.Trim() == "")
                 {
                     Mensaje = "Debe llenar la dirección";
-                    MensajeError(Mensaje);
+                    if (Test == false)
+                        MensajeError(Mensaje);
                 }
 
                 if (Telefono.Trim() == "")
                 {
                     Mensaje = "Debe llenar el teléfono";
-                    MensajeError(Mensaje);
+                    if (Test == false)
+                        MensajeError(Mensaje);
                 }                
             }
 
