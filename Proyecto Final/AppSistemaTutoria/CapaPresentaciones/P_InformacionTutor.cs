@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,11 +31,10 @@ namespace CapaPresentaciones
         public void CargarDatosTutor()
         {
             SqlConnection Conexion = new SqlConnection(@"Data Source = localhost\SQLEXPRESS; DataBase = db_a7878d_BDSistemaTutoria; Integrated Security = true");
-
             try
             {
                 SqlCommand cmd = new SqlCommand("SELECT D.APaterno, D.AMaterno, D.Nombre, D.Email, D.Direccion, D.Telefono, " +
-                "D.Categoria, D.Subcategoria, D.Regimen, D.CodEscuelaP, D.Horario FROM((TEstudiante E INNER JOIN TTutoria T " +
+                "D.CodEscuelaP, D.Horario FROM((TEstudiante E INNER JOIN TTutoria T " +
                 "ON E.CodEstudiante = T.CodEstudiante) INNER JOIN TDocente D ON T.CodDocente = D.CodDocente) WHERE E.CodEstudiante = @CodEstudiante", Conexion);
 
                 cmd.Parameters.AddWithValue("@CodEstudiante", Usuario);
@@ -42,15 +42,11 @@ namespace CapaPresentaciones
                 SqlDataReader Registro = cmd.ExecuteReader();
                 if (Registro.Read())
                 {
-                    txtAPaterno.Text = Registro["APaterno"].ToString();
-                    txtAMaterno.Text = Registro["AMaterno"].ToString();
-                    txtNombre.Text = Registro["Nombre"].ToString();
+                    txtDocente.Text = Registro["APaterno"].ToString() + " " + Registro["AMaterno"].ToString() + 
+                        " " + Registro["Nombre"].ToString();
                     txtEmail.Text = Registro["Email"].ToString();
                     txtDireccion.Text = Registro["Direccion"].ToString();
                     txtTelefono.Text = Registro["Telefono"].ToString();
-                    txtCategoria.Text = Registro["Categoria"].ToString();
-                    txtSubcategoria.Text = Registro["Subcategoria"].ToString();
-                    txtRegimen.Text = Registro["Regimen"].ToString();
                     txtEscProfesional.Text = Registro["CodEscuelaP"].ToString();
                     txtHorario.Text = Registro["Horario"].ToString();
                 }
@@ -61,6 +57,16 @@ namespace CapaPresentaciones
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void txtTelefono_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEscProfesional_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
