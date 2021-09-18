@@ -108,7 +108,7 @@
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(815, 40);
             this.lblTitulo.TabIndex = 73;
-            this.lblTitulo.Text = "Editar Perfil de Docente";
+            this.lblTitulo.Text = "Editar Perfil de Tutor";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Separador6

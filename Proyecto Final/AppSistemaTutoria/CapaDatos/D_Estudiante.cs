@@ -190,6 +190,7 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@PersonaReferencia", Estudiante.PersonaReferencia);
             Comando.Parameters.AddWithValue("@TelefonoReferencia", Estudiante.TelefonoReferencia);
             Comando.Parameters.AddWithValue("@InformacionPersonal", Estudiante.InformacionPersonal);
+            Comando.Parameters.AddWithValue("@ConcederPermiso", Estudiante.ConcederPermiso);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }

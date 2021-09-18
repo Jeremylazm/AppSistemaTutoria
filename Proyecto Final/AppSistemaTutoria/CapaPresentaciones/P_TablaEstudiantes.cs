@@ -38,6 +38,7 @@ namespace CapaPresentaciones
             dgvTabla.Columns[5].Visible = false;
             dgvTabla.Columns[10].Visible = false;
             dgvTabla.Columns[15].Visible = false;
+            dgvTabla.Columns[16].Visible = false;
 
             dgvTabla.Columns[1].HeaderText = "";
             dgvTabla.Columns[2].HeaderText = "Cod. Estudiante";

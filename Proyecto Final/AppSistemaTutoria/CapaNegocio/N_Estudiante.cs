@@ -27,7 +27,7 @@ namespace CapaNegocios
         {
             return new D_Estudiante().BuscarRegistros(CodDocente, Texto);
         }
-
+        
         public static DataTable BuscarEstudiantesSinTutor(string CodDocente, string Texto, int Filas)
         {
             return new D_Estudiante().BuscarEstudiantesSinTutor(CodDocente, Texto, Filas);

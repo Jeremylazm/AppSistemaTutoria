@@ -20,7 +20,9 @@ namespace CapaDatos
     public class D_Docente
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
-        
+
+        private readonly string Key = "key_estudiante"; //Llave de cifrado
+
         public DataTable MostrarRegistros(string CodDocente)
         {
             DataTable Resultado = new DataTable();
@@ -68,6 +70,28 @@ namespace CapaDatos
             return Resultado;
         }
 
+        string VisibilidadIPersonal(string IPersonalCifrada, bool EsEstudiante = false)
+        {
+            //Mostrar o no la información personal de acuerdo al permiso otorgado
+
+            //Verificar permiso de visibilidad
+            string Permiso = IPersonalCifrada.Substring(IPersonalCifrada.Length - 4);
+            IPersonalCifrada = IPersonalCifrada.Substring(0, IPersonalCifrada.Length - 5); //Eliminar string permiso
+
+            //Si el usuario es estudiante, puede ver su inf personal
+            if (EsEstudiante)
+            {
+                return E_Criptografia.DesencriptarRSA(IPersonalCifrada, Key); //Desencriptar
+            }
+
+            //Si Tutor tiene permiso de visualizar Inf Personal
+            if (Permiso == "VT=T")
+            {
+                return E_Criptografia.DesencriptarRSA(IPersonalCifrada, Key); //Desencriptar
+            }
+            else return IPersonalCifrada; //No desencriptar
+        }
+
         public DataTable MostrarTutorados(string CodDocente)
         {
             DataTable Resultado = new DataTable();
@@ -96,6 +120,11 @@ namespace CapaDatos
                     PerfilNuevo.Resize(20, 0);
                     Fila["Perfil2"] = PerfilNuevo.ToByteArray();
                 }
+
+                if (Fila["ConcederPermiso"].Equals("SÍ"))
+                    Fila["InformacionPersonal"] = VisibilidadIPersonal(Fila["InformacionPersonal"].ToString(), true);
+                else
+                    Fila["InformacionPersonal"] = "";
             }
 
             return Resultado;

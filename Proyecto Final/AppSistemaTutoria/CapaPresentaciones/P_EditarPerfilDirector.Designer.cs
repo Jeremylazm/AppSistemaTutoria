@@ -105,7 +105,7 @@
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(815, 40);
             this.lblTitulo.TabIndex = 73;
-            this.lblTitulo.Text = "Editar Perfil de Docente";
+            this.lblTitulo.Text = "Editar Perfil de Director";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Separador6
@@ -407,7 +407,7 @@
             this.btnRestablecerPerfil.IconVisible = true;
             this.btnRestablecerPerfil.IconZoom = 70D;
             this.btnRestablecerPerfil.IsTab = false;
-            this.btnRestablecerPerfil.Location = new System.Drawing.Point(633, 235);
+            this.btnRestablecerPerfil.Location = new System.Drawing.Point(633, 224);
             this.btnRestablecerPerfil.Name = "btnRestablecerPerfil";
             this.btnRestablecerPerfil.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnRestablecerPerfil.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -444,7 +444,7 @@
             this.btnSubirPerfil.IconVisible = true;
             this.btnSubirPerfil.IconZoom = 70D;
             this.btnSubirPerfil.IsTab = false;
-            this.btnSubirPerfil.Location = new System.Drawing.Point(633, 150);
+            this.btnSubirPerfil.Location = new System.Drawing.Point(633, 139);
             this.btnSubirPerfil.Name = "btnSubirPerfil";
             this.btnSubirPerfil.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnSubirPerfil.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -481,7 +481,7 @@
             this.btnCambiarContraseña.IconVisible = true;
             this.btnCambiarContraseña.IconZoom = 50D;
             this.btnCambiarContraseña.IsTab = false;
-            this.btnCambiarContraseña.Location = new System.Drawing.Point(444, 382);
+            this.btnCambiarContraseña.Location = new System.Drawing.Point(444, 307);
             this.btnCambiarContraseña.Name = "btnCambiarContraseña";
             this.btnCambiarContraseña.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnCambiarContraseña.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -518,7 +518,7 @@
             this.btnGuardar.IconVisible = true;
             this.btnGuardar.IconZoom = 50D;
             this.btnGuardar.IsTab = false;
-            this.btnGuardar.Location = new System.Drawing.Point(659, 382);
+            this.btnGuardar.Location = new System.Drawing.Point(659, 307);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnGuardar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -701,7 +701,7 @@
             this.imgPerfil.BorderSize = 2;
             this.imgPerfil.GradientAngle = 50F;
             this.imgPerfil.Image = ((System.Drawing.Image)(resources.GetObject("imgPerfil.Image")));
-            this.imgPerfil.Location = new System.Drawing.Point(444, 126);
+            this.imgPerfil.Location = new System.Drawing.Point(444, 115);
             this.imgPerfil.Name = "imgPerfil";
             this.imgPerfil.Size = new System.Drawing.Size(183, 183);
             this.imgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

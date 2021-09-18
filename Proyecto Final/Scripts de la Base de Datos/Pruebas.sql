@@ -71,7 +71,7 @@ insert into TEstudiante values(NULL,'999999','PAZ','GUERRA','MIGUEL','999999@uns
 insert into TEstudiante values(NULL,'111111','PAZ','GUERRA','ANGEL','111111@unsaac.edu.pe','AV. TUPAC AMARU 23','954345698','IN','PAPA','954345698',NULL,'12342', 'NO')
 insert into TEstudiante values(NULL,'170115','PAZ','GUERRA','ANA','170115@unsaac.edu.pe','AV. TUPAC AMARU 23','954345698','IN','PAPA','954345698',NULL,'12342', 'NO')
 insert into TEstudiante values(NULL,'170225','ARCE','ANDIA','ANGEL','170225@unsaac.edu.pe','CALLE URCOS 32','934675322','IN','PAPA','934675322',NULL,'12342', 'NO')
-insert into TEstudiante values(NULL,'171347','BUENO','BUENDIA','BENITO','171347@unsaac.edu.pe','JR. LINERTAD 4','956784320','IN','PAPA','956784320',NULL,'15313', 'NO')
+insert into TEstudiante values(NULL,'171347','BUENO','BUENDIA','BENITO','171347@unsaac.edu.pe','JR. LINERTAD 4','956784320','IN','PAPA','956784320',NULL,'15313', 'SÍ')
 insert into TEstudiante values(NULL,'170231','CUSI','COSIO','CARLOTA','170231@unsaac.edu.pe','AV COSTANERA 34','945389056','IN','PAPA','945389056',NULL,'15313', 'SÍ')
 insert into TEstudiante values(NULL,'171121','DUEÑAS','DAVILA','DAVID','171121@unsaac.edu.pe','JR. CALCA 57','945389056','IN','PAPA','945389056',NULL,NULL, 'NO')
 insert into TEstudiante values(NULL,'170335','ESCOBAR','ESTRADA','ERNESTO','170335@unsaac.edu.pe','AV. SOL 73','945389056','IN','PAPA','945389056',NULL,NULL, 'NO')
