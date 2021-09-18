@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 using CapaEntidades;
@@ -50,13 +50,13 @@ namespace CapaPresentaciones
 
         public void MostrarRegistros()
         {
-            dgvTabla.DataSource = N_Estudiante.MostrarTutorados(E_InicioSesion.Usuario);
+            dgvTabla.DataSource = N_Docente.MostrarTutorados(E_InicioSesion.Usuario);
             AccionesTabla();
         }
 
         public void BuscarRegistros()
         {
-            dgvTabla.DataSource = N_Estudiante.BuscarTutorados(E_InicioSesion.Usuario, txtBuscar.Text);
+            dgvTabla.DataSource = N_Docente.BuscarTutorados(E_InicioSesion.Usuario, txtBuscar.Text, 1000000);
         }
 
         private void ActualizarDatos(object sender, FormClosedEventArgs e)

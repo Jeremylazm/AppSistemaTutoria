@@ -1,4 +1,4 @@
-﻿namespace CapaEntidades
+namespace CapaEntidades
 {
     public class E_Estudiante
     {
@@ -16,5 +16,6 @@
         public string InformacionPersonal { get; set; }
         //public string EstadoFisico { get; set; }
         //public string EstadoMental { get; set; }
+        public string CodDocente { get; set; }
     }
 }

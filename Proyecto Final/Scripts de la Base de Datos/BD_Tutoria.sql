@@ -7,13 +7,13 @@ GO
 /* ********************************************************************
 					    CREACI�N DE LA BASE DE DATOS
    ******************************************************************** */
-/*IF EXISTS (SELECT * 
+IF EXISTS (SELECT * 
 				FROM SYSDATABASES
-				WHERE NAME = 'BDSistema_Tutoria')
-	DROP DATABASE BDSistema_Tutoria
+				WHERE NAME = 'db_a7878d_BDSistemaTutoria')
+	DROP DATABASE db_a7878d_BDSistemaTutoria
 GO
-CREATE DATABASE BDSistema_Tutoria
-GO*/
+CREATE DATABASE db_a7878d_BDSistemaTutoria
+GO
 
 use db_a7878d_BDSistemaTutoria
 
@@ -48,38 +48,6 @@ CREATE TABLE TEscuela_Profesional
 );
 GO
 
-/* *************************** TABLA ESTUDIANTE *************************** */
-IF EXISTS (SELECT * 
-				FROM SYSOBJECTS
-				WHERE NAME = 'TEstudiante')
-	DROP TABLE TEstudiante
-GO
-CREATE TABLE TEstudiante
-(
-	-- Lista de atributos
-	Perfil VARBINARY(MAX) NOT NULL,
-	CodEstudiante tyCodEstudiante,
-	APaterno VARCHAR(15) NOT NULL,
-	AMaterno VARCHAR(15) NOT NULL,
-	Nombre VARCHAR(20) NOT NULL,
-	Email VARCHAR(50) NOT NULL,
-	Direccion VARCHAR(50) NOT NULL,
-	Telefono VARCHAR(15) NOT NULL,
-	CodEscuelaP tyCodEscuelaP,
-	PersonaReferencia VARCHAR(20),
-	TelefonoReferencia VARCHAR(15),
-	InformacionPersonal VARCHAR(200), --Cifrado
-	--EstadoFisico VARCHAR(40),
-	--EstadoMental VARCHAR(40),
-
-	-- Determinar las claves 
-	PRIMARY KEY (CodEstudiante),
-	CONSTRAINT FK_CodEscuelaPE FOREIGN KEY (CodEscuelaP)
-		REFERENCES TEscuela_Profesional
-		ON UPDATE CASCADE
-);
-GO
-
 /* *************************** TABLA DOCENTE *************************** */
 IF EXISTS (SELECT * 
 				FROM SYSOBJECTS
@@ -89,7 +57,7 @@ GO
 CREATE TABLE TDocente
 (
 	-- Lista de atributos
-	Perfil VARBINARY(MAX) NOT NULL,
+	Perfil VARBINARY(MAX),
 	CodDocente tyCodDocente,
 	APaterno VARCHAR(15) NOT NULL,
 	AMaterno VARCHAR(15) NOT NULL,
@@ -109,7 +77,7 @@ CREATE TABLE TDocente
 															 'B2',
 															 'B3')),
 	Regimen VARCHAR(20) NOT NULL CHECK (Regimen IN ('TIEMPO COMPLETO', 
-													'DEDICACI�N EXCLUSIVA',
+													'DEDICACIÓN EXCLUSIVA',
 													'TIEMPO PARCIAL')),
 	CodEscuelaP tyCodEscuelaP,
 	Horario VARCHAR(150),
@@ -120,6 +88,42 @@ CREATE TABLE TDocente
 		FOREIGN KEY (CodEscuelaP)
 		REFERENCES TEscuela_Profesional
 		ON UPDATE CASCADE
+);
+GO
+
+/* *************************** TABLA ESTUDIANTE *************************** */
+IF EXISTS (SELECT * 
+				FROM SYSOBJECTS
+				WHERE NAME = 'TEstudiante')
+	DROP TABLE TEstudiante
+GO
+CREATE TABLE TEstudiante
+(
+	-- Lista de atributos
+	Perfil VARBINARY(MAX),
+	CodEstudiante tyCodEstudiante,
+	APaterno VARCHAR(15) NOT NULL,
+	AMaterno VARCHAR(15) NOT NULL,
+	Nombre VARCHAR(20) NOT NULL,
+	Email VARCHAR(50) NOT NULL,
+	Direccion VARCHAR(50) NOT NULL,
+	Telefono VARCHAR(15) NOT NULL,
+	CodEscuelaP tyCodEscuelaP,
+	PersonaReferencia VARCHAR(20),
+	TelefonoReferencia VARCHAR(15),
+	InformacionPersonal VARCHAR(200), --Cifrado
+	CodDocente VARCHAR(5), -- Tutor
+	--EstadoFisico VARCHAR(40),
+	--EstadoMental VARCHAR(40),
+
+	-- Determinar las claves 
+	PRIMARY KEY (CodEstudiante),
+	CONSTRAINT FK_CodEscuelaPE FOREIGN KEY (CodEscuelaP)
+		REFERENCES TEscuela_Profesional
+		ON UPDATE CASCADE,
+	CONSTRAINT FK_Tutor FOREIGN KEY (CodDocente)
+		REFERENCES TDocente
+		ON UPDATE NO ACTION
 );
 GO
 
@@ -158,7 +162,7 @@ CREATE TABLE TFichaTutoria
 	-- Lista de atributos
 	CodTutoria tyCodTutoria,
 	Fecha DATETIME NOT NULL,
-	Dimension VARCHAR(15) DEFAULT 'ACAD�MICA' CHECK (Dimension IN ('ACAD�MICA',
+	Dimension VARCHAR(15) DEFAULT 'ACADÉMICA' CHECK (Dimension IN ('ACADÉMICA',
 																   'PERSONAL',
 																   'PROFESIONAL')),
 	Descripcion VARCHAR(100),
@@ -183,9 +187,9 @@ GO
 CREATE TABLE TUsuario
 (
 	-- Lista de atributos
-	Perfil VARBINARY(MAX) NOT NULL,
+	Perfil VARBINARY(MAX),
 	Usuario VARCHAR(6) NOT NULL,
-	Contrase�a VARCHAR(20) NOT NULL,
+	Contraseña VARBINARY(MAX) NOT NULL,
 	Acceso VARCHAR(20) NOT NULL,
 	Datos VARCHAR(53) NOT NULL,
 
@@ -221,6 +225,44 @@ GO
    ************************************************************************************************** */
 USE db_a7878d_BDSistemaTutoria
 GO
+/* ****************** FUNCIONES PARA LA ENCRIPTACION DE LA CONTRASEÑA ****************** */
+USE db_a7878d_BDSistemaTutoria
+GO
+-- Crear llave asymmetric
+CREATE ASYMMETRIC KEY AppTutoriasAsymKey01
+    WITH ALGORITHM = RSA_2048
+    ENCRYPTION BY PASSWORD = 'DesarrolloDeSoftware2021I';   
+GO
+-- Funcion encriptar --
+CREATE FUNCTION fnEncriptarContraseña(@Contraseña Varchar(8))
+RETURNS VARBINARY(max)
+AS
+BEGIN
+	-- Declarar las variables
+    DECLARE @EncryptedText VARBINARY(max)
+
+	-- Generar contraseña encriptada
+	SET @EncryptedText=ENCRYPTBYASYMKEY(ASYMKEY_ID(N'AppTutoriasAsymKey01'), @Contraseña)
+
+	-- Retornar una contrasenia varbinary
+    RETURN (@EncryptedText);
+END;
+GO
+-- Funcion desencriptar --
+CREATE FUNCTION fnDesencriptarContraseña(@EncryptedText VARBINARY(max))
+RETURNS VARCHAR(8)
+AS
+BEGIN
+	-- Declarar las variables
+    DECLARE @DecryptedText VARCHAR(MAX)
+
+	-- Generar contraseña desencriptada
+	SET @DecryptedText=DECRYPTBYASYMKEY (ASYMKEY_ID(N'AppTutoriasAsymKey01'),@EncryptedText, N'DesarrolloDeSoftware2021I')
+
+	-- Retornar una contrasenia desencriptada
+    RETURN (@DecryptedText);
+END;
+GO
 
 /* ************************** FUNCI�N PARA GENERAR UNA CONTRASE�A ************************** */
 
@@ -230,7 +272,7 @@ AS
 	SELECT RAND() AS ValorAleatorio
 GO 
 
-CREATE FUNCTION fnGenerarContrase�a ()
+CREATE FUNCTION fnGenerarContraseña ()
 RETURNS VARCHAR(8)
 AS
 BEGIN
@@ -238,23 +280,23 @@ BEGIN
 	DECLARE @Indice INT;
     DECLARE @Contador INT;
     DECLARE @Caracteres VARCHAR(37);      
-    DECLARE @Contrase�a VARCHAR(8);
+    DECLARE @Contraseña VARCHAR(8);
 
 	-- Establecer los valores iniciales
 	SET @Contador = 0
-	SET @Caracteres = 'ABCDEFGHIJKLMN�OPQRSTUVWXYZ0123456789'
-	SET @Contrase�a = ''
+	SET @Caracteres = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789'
+	SET @Contraseña = ''
     
 	-- Tomar un �ndice aleatorio de los caracteres para generar una contrase�a
     WHILE (@Contador < 8)
     BEGIN
         SET @Indice = CEILING((SELECT ValorAleatorio FROM viAleatorio) * (LEN(@Caracteres)))
-        SET @Contrase�a = @Contrase�a + SUBSTRING(@Caracteres, @Indice, 1)
+        SET @Contraseña = @Contraseña + SUBSTRING(@Caracteres, @Indice, 1)
         SET @Contador = @Contador + 1
     END;
 
 	-- Retornar una contrase�a de 8 caracteres
-    RETURN (@Contrase�a);
+    RETURN (@Contraseña);
 END;
 GO
 
@@ -267,11 +309,11 @@ BEGIN
 	-- Declarar un contador
 	DECLARE @Contador INT;
 
-	-- Determinar el valor del contador con el valor m�ximo en la tabla TTutoria
+	-- Determinar el valor del contador con el valor maximo en la tabla TTutoria
 	SELECT @Contador = RIGHT(MAX(CodTutoria), 4) + 1
 		FROM TTutoria
 
-	-- Verificar si la tabla este vac�a
+	-- Verificar si la tabla este vacia
 	IF (@Contador IS NULL)
 	BEGIN
 		SET @Contador = 1
@@ -282,22 +324,96 @@ BEGIN
 END;
 GO
 
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA USUARIO ****************** */
+USE db_a7878d_BDSistemaTutoria
+GO
+-- Procedimiento insertar nuevo usuario, encripta la contraseña
+CREATE PROCEDURE spuInsertarUsuario      	@Perfil VARBINARY(MAX),
+											@Usuario VARCHAR(6),
+											@Contraseña VARCHAR(8),
+											@Acceso VARCHAR(20),
+											@Datos VARCHAR(53)
+AS
+BEGIN
+	-- Actualizar un estudiante de la tabla de TEstudiante
+	Insert INTO TUsuario values(@Perfil,@Usuario, DBO.fnEncriptarContraseña(@Contraseña),@Acceso,@Datos)
+END;
+GO
+
+-- Cambiar contraseña de usuario --
+CREATE PROCEDURE spuCambiarContraseña    @Usuario VARCHAR(6),
+										 @NuevaContrasenia VARCHAR(8)
+AS
+BEGIN
+	-- Actualizar contraseña de Usuario
+	UPDATE TUsuario
+		SET Contraseña = DBO.fnEncriptarContraseña(@NuevaContrasenia)
+		WHERE Usuario = @Usuario
+END;
+GO
+-- Retornar contraseña desencriptada
+CREATE PROCEDURE spuRetornarContraseña    @Usuario VARCHAR(6)			
+AS
+BEGIN
+	-- Actualizar un estudiante de la tabla de TEstudiante
+	SELECT DBO.fnDesencriptarContraseña(Contraseña) as 'Contraseña'
+		FROM TUsuario
+		WHERE Usuario = @Usuario
+END;
+GO
+
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ESCUELA PROFESIONAL ****************** */
 
+CREATE FUNCTION fnObtenerEscuelaDocente (@CodDocente VARCHAR(5))
+RETURNS VARCHAR(4)
+AS
+BEGIN
+	-- Declarar una variable para el codigo de la escuela profesional
+	DECLARE @CodEscuelaP VARCHAR(4);
+
+	-- Obtener la escuela profesional del docente
+	SELECT @CodEscuelaP = CodEscuelaP
+		FROM TDocente
+		WHERE CodDocente = @CodDocente
+
+	-- Retornar la escuela profesional del docente
+    RETURN @CodEscuelaP;
+END;
+GO
+
+CREATE FUNCTION fnObtenerEscuelaEstudiante (@CodEstudiante VARCHAR(6))
+RETURNS VARCHAR(4)
+AS
+BEGIN
+	-- Declarar una variable para el codigo de la escuela profesional
+	DECLARE @CodEscuelaP VARCHAR(4);
+
+	-- Obtener la escuela profesional del estudiante
+	SELECT @CodEscuelaP = CodEscuelaP
+		FROM TEstudiante
+		WHERE CodEstudiante = @CodEstudiante
+
+	-- Retornar la escuela profesional del estudiante
+    RETURN @CodEscuelaP;
+END;
+GO
+
 -- Crear un procedimiento para mostrar escuelas profesionales
-CREATE PROCEDURE spuMostrarEscuelas
+CREATE PROCEDURE spuMostrarEscuelas @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Mostrar la tabla de TEscuela_Profesional
 	SELECT *
 		FROM TEscuela_Profesional
+		WHERE CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente) OR
+			  @CodDocente = '*'
 END;
 GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ESTUDIANTE ****************** */
 
 -- Crear un procedimiento para mostrar estudiantes
-CREATE PROCEDURE spuMostrarEstudiantes
+CREATE PROCEDURE spuMostrarEstudiantes @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Mostrar la tabla de TEstudiante
@@ -308,35 +424,46 @@ BEGIN
 		   ET.Email, ET.Direccion, ET.Telefono, ET.CodEscuelaP,
 		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia, 
 		   --ET.TelefonoReferencia, ET.EstadoFisico, ET.EstadoMental
-		   ET.TelefonoReferencia, ET.InformacionPersonal
+		   ET.TelefonoReferencia, ET.InformacionPersonal, CodTutor = ET.CodDocente
 		FROM TEstudiante ET INNER JOIN TEscuela_Profesional EP ON
 			 ET.CodEscuelaP = EP.CodEscuelaP
+	    WHERE EP.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente)
 END;
 GO
 
--- Crear un procedimiento para mostrar estudiantes
-CREATE PROCEDURE spuMostrarTutorados @CodDocente VARCHAR(5)
+-- Crear un procedimiento para mostrar estudiantes sin tutor
+CREATE PROCEDURE spuMostrarEstudiantesSinTutor @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Mostrar la tabla de TEstudiante
+	SELECT CodEstudiante, APaterno, AMaterno, Nombre
+		FROM TEstudiante
+		WHERE CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente) AND 
+			  CodDocente IS NULL
+END;
+GO
+
+-- Crear un procedimiento para buscar un estudiante.
+CREATE PROCEDURE spuBuscarEstudiante @CodEstudiante VARCHAR(6)
+AS
+BEGIN
+	-- Mostrar la tabla de TEstudiante por el texto que se desea buscar
 	SELECT Perfil1 = ET.Perfil, Perfil2 = ET.Perfil, ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre,
 		   Estudiante = (ET.APaterno + ' ' + 
 						 ET.AMaterno + ', ' + 
 						 ET.Nombre),
 		   ET.Email, ET.Direccion, ET.Telefono, ET.CodEscuelaP,
 		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia, 
-		   --ET.TelefonoReferencia, ET.EstadoFisico, ET.EstadoMental
-		   ET.TelefonoReferencia, ET.InformacionPersonal
-		FROM ((TTutoria T INNER JOIN TEstudiante ET ON 
-			 T.CodEstudiante = ET.CodEstudiante) INNER JOIN 
-			 TEscuela_Profesional EP ON ET.CodEscuelaP = EP.CodEscuelaP)
-			 INNER JOIN TDocente D ON T.CodDocente = D.CodDocente
-		WHERE T.CodDocente = @CodDocente
+		   ET.TelefonoReferencia, ET.InformacionPersonal, CodTutor = ET.CodDocente
+		FROM TEstudiante ET INNER JOIN TEscuela_Profesional EP ON
+			 ET.CodEscuelaP = EP.CodEscuelaP
+		WHERE ET.CodEstudiante = @CodEstudiante
 END;
 GO
 
 -- Crear un procedimiento para buscar estudiantes por cualquier atributo
-CREATE PROCEDURE spuBuscarEstudiantes @Texto VARCHAR(20)
+CREATE PROCEDURE spuBuscarEstudiantes @CodDocente VARCHAR(5),
+									  @Texto VARCHAR(20)
 AS
 BEGIN
 	-- Mostrar la tabla de TEstudiante por el texto que se desea buscar
@@ -347,10 +474,10 @@ BEGIN
 		   ET.Email, ET.Direccion, ET.Telefono, ET.CodEscuelaP,
 		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia, 
 		   --ET.TelefonoReferencia, ET.EstadoFisico, ET.EstadoMental
-		   ET.TelefonoReferencia, ET.InformacionPersonal
+		   ET.TelefonoReferencia, ET.InformacionPersonal, CodTutor = ET.CodDocente
 		FROM TEstudiante ET INNER JOIN TEscuela_Profesional EP ON
 			 ET.CodEscuelaP = EP.CodEscuelaP
-		WHERE ET.CodEstudiante LIKE (@Texto + '%') OR
+		WHERE (ET.CodEstudiante LIKE (@Texto + '%') OR
 			  ET.APaterno LIKE (@Texto + '%') OR
 			  ET.AMaterno LIKE (@Texto + '%') OR
 			  ET.Nombre LIKE (@Texto + '%') OR
@@ -362,44 +489,25 @@ BEGIN
 			  ET.TelefonoReferencia LIKE (@Texto + '%') OR
 			  --ET.EstadoFisico LIKE (@Texto + '%') OR
 			  --ET.EstadoMental LIKE (@Texto + '%')
-			  ET.InformacionPersonal LIKE (@Texto + '%')
-
+			  ET.InformacionPersonal LIKE (@Texto + '%')) AND
+			  ET.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente)
 END;
 GO
 
--- Crear un procedimiento para buscar estudiantes por cualquier atributo
-CREATE PROCEDURE spuBuscarTutorados @CodDocente VARCHAR(5),
-									@Texto VARCHAR(20)
+-- Crear un procedimiento para buscar estudiantes sin tutor por cualquier atributo
+CREATE PROCEDURE spuBuscarEstudiantesSinTutor @CodDocente VARCHAR(5),
+										      @Texto VARCHAR(20),
+											  @Filas INT
 AS
 BEGIN
 	-- Mostrar la tabla de TEstudiante por el texto que se desea buscar
-	SELECT Perfil1 = ET.Perfil, Perfil2 = ET.Perfil, ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre,
-		   Estudiante = (ET.APaterno + ' ' + 
-						 ET.AMaterno + ', ' + 
-						 ET.Nombre),
-		   ET.Email, ET.Direccion, ET.Telefono, ET.CodEscuelaP,
-		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia, 
-		   --ET.TelefonoReferencia, ET.EstadoFisico, ET.EstadoMental
-		   ET.TelefonoReferencia, ET.InformacionPersonal
-		FROM ((TTutoria T INNER JOIN TEstudiante ET ON 
-			 T.CodEstudiante = ET.CodEstudiante) INNER JOIN 
-			 TEscuela_Profesional EP ON ET.CodEscuelaP = EP.CodEscuelaP)
-			 INNER JOIN TDocente D ON T.CodDocente = D.CodDocente
-		WHERE T.CodDocente = @CodDocente AND 
-			  ET.CodEstudiante LIKE (@Texto + '%') OR
+	SELECT TOP(@Filas) ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre
+		FROM TEstudiante ET
+		WHERE ET.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente) AND ET.CodDocente IS NULL AND
+			 (ET.CodEstudiante LIKE (@Texto + '%') OR
 			  ET.APaterno LIKE (@Texto + '%') OR
 			  ET.AMaterno LIKE (@Texto + '%') OR
-			  ET.Nombre LIKE (@Texto + '%') OR
-			  ET.Email LIKE (@Texto + '%') OR
-			  ET.Direccion LIKE (@Texto + '%') OR
-			  ET.Telefono LIKE (@Texto + '%') OR
-			  EP.Nombre LIKE (@Texto + '%') OR
-			  ET.PersonaReferencia LIKE (@Texto + '%') OR
-			  ET.TelefonoReferencia LIKE (@Texto + '%') OR
-			  --ET.EstadoFisico LIKE (@Texto + '%') OR
-			  --ET.EstadoMental LIKE (@Texto + '%')
-			  ET.InformacionPersonal LIKE (@Texto + '%')
-
+			  ET.Nombre LIKE (@Texto + '%'))
 END;
 GO
 
@@ -424,12 +532,16 @@ BEGIN
 	INSERT INTO TEstudiante
 		VALUES (@Perfil, @CodEstudiante, @APaterno, @AMaterno, @Nombre, @Email, 
 				@Direccion, @Telefono, @CodEscuelaP, @PersonaReferencia, 
-				@TelefonoReferencia, @InformacionPersonal)--@EstadoFisico, @EstadoMental)
+				@TelefonoReferencia, @InformacionPersonal, NULL)--@EstadoFisico, @EstadoMental)
+
+	DECLARE @Datos VARCHAR(53);
+	DECLARE @Contraseña VARCHAR(8);
+	SET @Datos = CONCAT(@APaterno, ' ', @AMaterno, ', ', @Nombre);
+	SET @Contraseña = @CodEstudiante;
 
 	-- Insertar un usuario con el c�digo del estudiante en la tabla de TUsuario
-	INSERT INTO TUsuario
-		VALUES (@Perfil, @CodEstudiante, DBO.fnGenerarContrase�a(), 'Estudiante', 
-				@APaterno + ' ' + @AMaterno + ', ' + @Nombre)
+	EXEC DBO.spuInsertarUsuario @Perfil, @CodEstudiante, @Contraseña, 'Estudiante', @Datos
+				
 END;
 GO
 
@@ -487,10 +599,33 @@ BEGIN
 END;
 GO
 
+-- Crear un procedimiento para asignar un tutor a un estudiante
+CREATE PROCEDURE spuAsignarTutor @CodEstudiante VARCHAR(6),
+								 @CodDocente VARCHAR(5)
+AS
+BEGIN
+	-- Actualizar un estudiante de la tabla de TEstudiante
+	UPDATE TEstudiante
+		SET CodDocente = @CodDocente
+		WHERE CodEstudiante = @CodEstudiante
+END;
+GO
+
+-- Crear un procedimiento para eliminar el tutor de un estudiante
+CREATE PROCEDURE spuEliminarTutor @CodEstudiante VARCHAR(6)
+AS
+BEGIN
+	-- Actualizar un estudiante de la tabla de TEstudiante
+	UPDATE TEstudiante
+		SET CodDocente = NULL
+		WHERE CodEstudiante = @CodEstudiante
+END;
+GO
+
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA DOCENTE ****************** */
 
 -- Crear un procedimiento para mostrar docentes
-CREATE PROCEDURE spuMostrarDocentes
+CREATE PROCEDURE spuMostrarDocentes @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Mostrar la tabla de TDocente
@@ -503,11 +638,47 @@ BEGIN
 		   EscuelaProfesional = E.Nombre, D.Horario
 		FROM TDocente D INNER JOIN TEscuela_Profesional E ON
 			 D.CodEscuelaP = E.CodEscuelaP
+	    WHERE D.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente)
 END;
 GO
 
--- Crear un procedimiento para buscar docentes por cualquier atributo
-CREATE PROCEDURE spuBuscarDocentes @Texto VARCHAR(20)
+-- Crear un procedimiento para mostrar tutores
+CREATE PROCEDURE spuMostrarTutores @CodDocente VARCHAR(5)
+AS
+BEGIN
+	-- Mostrar la tabla de Tutores
+	SELECT D.CodDocente, D.APaterno, D.AMaterno, D.Nombre, TotalTutorados = COUNT(TE.CodDocente)
+		FROM ((TDocente D INNER JOIN TEscuela_Profesional E ON
+			   D.CodEscuelaP = E.CodEscuelaP) LEFT JOIN TEstudiante TE ON
+			   D.CodDocente = TE.CodDocente)
+		WHERE D.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente) AND 
+			  --D.Subcategoria IN ('PRINCIPAL','ASOCIADO','AUXILIAR','A1','A2','A3') AND 
+			  D.Regimen IN ('TIEMPO COMPLETO','DEDICACIÓN EXCLUSIVA')
+		GROUP BY D.CodDocente, D.APaterno, D.AMaterno, D.Nombre
+END;
+GO
+
+-- Crear un procedimiento para mostrar tutorados
+CREATE PROCEDURE spuMostrarTutorados @CodDocente VARCHAR(5)
+AS
+BEGIN
+	-- Mostrar la tabla de TEstudiante
+	SELECT Perfil1 = ET.Perfil, Perfil2 = ET.Perfil, ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre,
+		   Estudiante = (ET.APaterno + ' ' + 
+						 ET.AMaterno + ', ' + 
+						 ET.Nombre),
+		   ET.Email, ET.Direccion, ET.Telefono, ET.CodEscuelaP,
+		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia, 
+		   --ET.TelefonoReferencia, ET.EstadoFisico, ET.EstadoMental
+		   ET.TelefonoReferencia, ET.InformacionPersonal, CodTutor = ET.CodDocente
+		FROM TESTUDIANTE ET INNER JOIN TEscuela_Profesional EP ON
+			 ET.CodEscuelaP = EP.CodEscuelaP
+		WHERE ET.CodDocente = @CodDocente
+END;
+GO
+
+-- Crear un procedimiento para buscar un docente
+CREATE PROCEDURE spuBuscarDocente @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Mostrar la tabla de TDocente por el texto que se desea buscar
@@ -520,7 +691,27 @@ BEGIN
 		   EscuelaProfesional = E.Nombre, D.Horario
 		FROM TDocente D INNER JOIN TEscuela_Profesional E ON
 			 D.CodEscuelaP = E.CodEscuelaP
-		WHERE D.CodDocente LIKE (@Texto + '%') OR
+		WHERE D.CodDocente = @CodDocente
+END;
+GO
+
+-- Crear un procedimiento para buscar docentes por cualquier atributo
+CREATE PROCEDURE spuBuscarDocentes @CodDocente VARCHAR(5),
+								   @Texto VARCHAR(20)
+AS
+BEGIN
+	-- Mostrar la tabla de TDocente por el texto que se desea buscar
+	SELECT Perfil1 = D.Perfil, Perfil2 = D.Perfil, D.CodDocente, D.APaterno, D.AMaterno, D.Nombre, 
+		   Docente = (D.APaterno + ' ' + 
+					  D.AMaterno + ', ' + 
+					  D.Nombre),
+		   D.Email, D.Direccion, D.Telefono,
+		   D.Categoria, D.Subcategoria, D.Regimen, D.CodEscuelaP,
+		   EscuelaProfesional = E.Nombre, D.Horario
+		FROM TDocente D INNER JOIN TEscuela_Profesional E ON
+			 D.CodEscuelaP = E.CodEscuelaP
+		WHERE D.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente) AND
+			 (D.CodDocente LIKE (@Texto + '%') OR
 			  D.APaterno LIKE (@Texto + '%') OR
 			  D.AMaterno LIKE (@Texto + '%') OR
 			  D.Nombre LIKE (@Texto + '%') OR
@@ -531,7 +722,60 @@ BEGIN
 			  D.Subcategoria LIKE (@Texto + '%') OR
 			  D.Regimen LIKE (@Texto + '%') OR
 			  E.Nombre LIKE (@Texto + '%') OR
-			  D.Horario LIKE (@Texto + '%')
+			  D.Horario LIKE (@Texto + '%'))
+END;
+GO
+
+-- Crear un procedimiento para buscar un tutor
+CREATE PROCEDURE spuBuscarTutor @CodDocente VARCHAR(5),
+							    @Texto VARCHAR(20)
+AS
+BEGIN
+	-- Mostrar la tabla de Tutores
+	SELECT D.CodDocente, D.APaterno, D.AMaterno, D.Nombre, TotalTutorados = COUNT(TE.CodDocente)
+		FROM ((TDocente D INNER JOIN TEscuela_Profesional E ON
+			   D.CodEscuelaP = E.CodEscuelaP) LEFT JOIN TEstudiante TE ON
+			   D.CodDocente = TE.CodDocente)
+		WHERE D.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente) AND 
+			  --D.Subcategoria IN ('PRINCIPAL','ASOCIADO','AUXILIAR','A1','A2','A3') AND 
+			  D.Regimen IN ('TIEMPO COMPLETO','DEDICACIÓN EXCLUSIVA') AND
+		      (D.CodDocente LIKE (@Texto + '%') OR
+			  D.APaterno LIKE (@Texto + '%') OR
+			  D.AMaterno LIKE (@Texto + '%') OR
+			  D.Nombre LIKE (@Texto + '%'))
+		GROUP BY D.CodDocente, D.APaterno, D.AMaterno, D.Nombre
+END;
+GO
+
+-- Crear un procedimiento para buscar estudiantes por cualquier atributo
+CREATE PROCEDURE spuBuscarTutorados @CodDocente VARCHAR(5),
+									@Texto VARCHAR(20),
+									@Filas INT
+AS
+BEGIN
+	-- Mostrar la tabla de TEstudiante por el texto que se desea buscar
+	SELECT TOP(@Filas) Perfil1 = ET.Perfil, Perfil2 = ET.Perfil, ET.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre,
+		   Estudiante = (ET.APaterno + ' ' + 
+						 ET.AMaterno + ', ' + 
+						 ET.Nombre),
+		   ET.Email, ET.Direccion, ET.Telefono, ET.CodEscuelaP,
+		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia, 
+		   --ET.TelefonoReferencia, ET.EstadoFisico, ET.EstadoMental
+		   ET.TelefonoReferencia, ET.InformacionPersonal, CodTutor = ET.CodDocente
+		FROM TEstudiante ET, TEscuela_Profesional EP
+		WHERE ET.CodEscuelaP = EP.CodEscuelaP AND ET.CodDocente = @CodDocente AND
+			 (ET.CodEstudiante LIKE (@Texto + '%') OR
+			  ET.APaterno LIKE (@Texto + '%') OR
+			  ET.AMaterno LIKE (@Texto + '%') OR
+			  ET.Nombre LIKE (@Texto + '%') OR
+			  ET.Email LIKE (@Texto + '%') OR
+			  ET.Direccion LIKE (@Texto + '%') OR
+			  ET.Telefono LIKE (@Texto + '%') OR
+			  ET.PersonaReferencia LIKE (@Texto + '%') OR
+			  ET.TelefonoReferencia LIKE (@Texto + '%') OR
+			  --ET.EstadoFisico LIKE (@Texto + '%') OR
+			  --ET.EstadoMental LIKE (@Texto + '%')
+			  ET.InformacionPersonal LIKE (@Texto + '%'))
 END;
 GO
 
@@ -558,9 +802,13 @@ BEGIN
 				@Regimen, @CodEscuelaP, @Horario)
 
 	-- Insertar un usuario con el c�digo del docente en la tabla de TUsuario
-	INSERT INTO TUsuario
-		VALUES (@Perfil, @CodDocente, DBO.fnGenerarContrase�a(), 'Docente', 
-				@APaterno + ' ' + @AMaterno + ', ' + @Nombre)
+	DECLARE @Datos VARCHAR(53);
+	DECLARE @Contraseña VARCHAR(8);
+	SET @Datos = CONCAT(@APaterno, ' ', @AMaterno, ', ', @Nombre);
+	SET @Contraseña = DBO.fnGenerarContraseña();
+
+	-- Insertar un usuario con el c�digo del estudiante en la tabla de TUsuario
+	EXEC DBO.spuInsertarUsuario @Perfil, @CodDocente, @Contraseña, 'Docente', @Datos
 END;
 GO
 
@@ -720,13 +968,14 @@ GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA USUARIO ****************** */
 
-CREATE PROCEDURE spuIniciarSesion @Usuario VARCHAR(6), @Contrase�a VARCHAR(20)
+CREATE PROCEDURE spuIniciarSesion @Usuario VARCHAR(6), @Contraseña VARCHAR(20)
 AS
 BEGIN
 	-- Seleccionar los datos del usuario v�lido
-	SELECT *
+	SELECT Perfil, Usuario, DBO.fnDesencriptarContraseña(Contraseña), Acceso, Datos
 		FROM TUsuario
-		WHERE Usuario = @Usuario AND Contrase�a = @Contrase�a
+		WHERE Usuario = @Usuario AND
+		DBO.fnDesencriptarContraseña(Contraseña) = @Contraseña
 END;
 GO
 
@@ -767,14 +1016,14 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el n�mero de tuplas de la tabla #INSERTED
+	-- Determinar el numero de tuplas de la tabla #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 
 	-- Recorrer las tuplas de la tabla #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estar�n los atributos de la tabla #INSERTED
+		-- Declarar variables donde estaran los atributos de la tabla #INSERTED
 		DECLARE @CodEscuelaP VARCHAR(4);
 		DECLARE @Nombre VARCHAR(40);
 
@@ -795,7 +1044,7 @@ BEGIN
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el n�mero de tuplas
+		-- Actualizar el numero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 	END;
 END;
@@ -819,14 +1068,14 @@ BEGIN
 		SELECT * 
 			FROM DELETED
 
-	-- Determinar el n�mero de tuplas de la tabla #DELETED
+	-- Determinar el numero de tuplas de la tabla #DELETED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estar�n los atributos de la tabla #DELETED
+		-- Declarar variables donde estaran los atributos de la tabla #DELETED
 		DECLARE @CodEscuelaP VARCHAR(4);
 		DECLARE @Nombre VARCHAR(40);
 
@@ -986,9 +1235,10 @@ BEGIN
 		CodEscuelaP VARCHAR(4),
 		PersonaReferencia VARCHAR(20),
 		TelefonoReferencia VARCHAR(15),
-		InformacionPersonal VARCHAR(200)
+		InformacionPersonal VARCHAR(200),
 		--EstadoFisico VARCHAR(40),
-		--EstadoMental VARCHAR(40)
+		--EstadoMental VARCHAR(40),
+		CodDocente VARCHAR(5)
 	);
 
 	-- Copiar la tabla INSERTED en la tabla temporal #INSERTED
@@ -1016,8 +1266,8 @@ BEGIN
 		DECLARE @PersonaReferencia VARCHAR(20);
 		DECLARE @TelefonoReferencia VARCHAR(15);
 		DECLARE @InformacionPersonal VARCHAR(200);
-		--DECLARE @EstadoFisico VARCHAR(40);
-		--DECLARE @EstadoMental VARCHAR(40);
+		DECLARE @CodDocente VARCHAR(5);
+		DECLARE @BinarioPerfil VARCHAR(11);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @Perfil = Perfil,
@@ -1031,9 +1281,10 @@ BEGIN
 			   @CodEscuelaP = CodEscuelaP,
 			   @PersonaReferencia = PersonaReferencia,
 			   @TelefonoReferencia = TelefonoReferencia,
-			   @InformacionPersonal = InformacionPersonal
+			   @InformacionPersonal = InformacionPersonal,
 			   --@EstadoFisico = EstadoFisico,
-			   --@EstadoMental = EstadoMental
+			   --@EstadoMental = EstadoMental,
+			   @CodDocente = CodDocente
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
 
 		---- Determinar el IdHistorial
@@ -1043,10 +1294,10 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #INSERTED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','INSERT',@CodEstudiante,NULL, 
-					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
+					  ISNULL(CONVERT(VARCHAR(10), @Perfil, 2), 'POR DEFECTO') + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
 					  @Email + ' ; ' + @Direccion + ' ; ' + @Telefono + ' ; ' +
-					  @CodEscuelaP + ' ; ' + @PersonaReferencia + ' ; ' + 
-					  @TelefonoReferencia + @InformacionPersonal); --@EstadoFisico + ' ; ' + @EstadoMental);
+					  @CodEscuelaP + ' ; ' + ISNULL(@PersonaReferencia, '') + ' ; ' + 
+					  ISNULL(@TelefonoReferencia, '') + ' ; ' + ISNULL(@InformacionPersonal, '') + ' ; ' + @CodDocente); --@EstadoFisico + ' ; ' + @EstadoMental);
 		
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
@@ -1077,9 +1328,10 @@ BEGIN
 		CodEscuelaP VARCHAR(4),
 		PersonaReferencia VARCHAR(20),
 		TelefonoReferencia VARCHAR(15),
-		InformacionPersonal VARCHAR(200)
+		InformacionPersonal VARCHAR(200),
 		--EstadoFisico VARCHAR(40),
-		--EstadoMental VARCHAR(40)
+		--EstadoMental VARCHAR(40),
+		CodDocente VARCHAR(5)
 	);
 
 	-- Copiar la tabla DELETED en la tabla temporal #DELETED
@@ -1109,6 +1361,7 @@ BEGIN
 		DECLARE @InformacionPersonal VARCHAR(200);
 		--DECLARE @EstadoFisico VARCHAR(40);
 		--DECLARE @EstadoMental VARCHAR(40);
+		DECLARE @CodDocente VARCHAR(5);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @Perfil = Perfil,
@@ -1122,9 +1375,10 @@ BEGIN
 			   @CodEscuelaP = CodEscuelaP,
 			   @PersonaReferencia = PersonaReferencia,
 			   @TelefonoReferencia = TelefonoReferencia,
-			   @InformacionPersonal = InformacionPersonal
+			   @InformacionPersonal = InformacionPersonal,
 			   --@EstadoFisico = EstadoFisico,
-			   --@EstadoMental = EstadoMental
+			   --@EstadoMental = EstadoMental,
+			   @CodDocente = CodDocente
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
 		---- Determinar el IdHistorial
@@ -1134,10 +1388,10 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #DELETED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','DELETE',@CodEstudiante, 
-					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
+					  ISNULL(CONVERT(VARCHAR(10), @Perfil, 2), 'POR DEFECTO') + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
 					  @Email + ' ; ' + @Direccion + ' ; ' + @Telefono + ' ; ' +
-					  @CodEscuelaP + ' ; ' + @PersonaReferencia + ' ; ' + 
-					  @TelefonoReferencia + ' ; '+ @InformacionPersonal,NULL); --@EstadoFisico + ' ; ' + @EstadoMental,NULL);
+					  @CodEscuelaP + ' ; ' + ISNULL(@PersonaReferencia, '') + ' ; ' + 
+					  ISNULL(@TelefonoReferencia, '') + ' ; ' + ISNULL(@InformacionPersonal, '') + ' ; ' + @CodDocente, NULL); --@EstadoFisico + ' ; ' + @EstadoMental,NULL);
 		
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
@@ -1168,9 +1422,10 @@ BEGIN
 		CodEscuelaP VARCHAR(4),
 		PersonaReferencia VARCHAR(20),
 		TelefonoReferencia VARCHAR(15),
-		InformacionPersonal VARCHAR(200)
+		InformacionPersonal VARCHAR(200),
 		--EstadoFisico VARCHAR(40),
-		--EstadoMental VARCHAR(40)
+		--EstadoMental VARCHAR(40),
+		CodDocente VARCHAR(5)
 	);
 
 	-- Copiar la tabla DELETED en la tabla temporal #DELETED
@@ -1192,9 +1447,10 @@ BEGIN
 		CodEscuelaP VARCHAR(4),
 		PersonaReferencia VARCHAR(20),
 		TelefonoReferencia VARCHAR(15),
-		InformacionPersonal VARCHAR(200)
+		InformacionPersonal VARCHAR(200),
 		--EstadoFisico VARCHAR(40),
-		--EstadoMental VARCHAR(40)
+		--EstadoMental VARCHAR(40),
+		CodDocente VARCHAR(5)
 	);
 
 	-- Copiar la tabla INSERTED en la tabla temporal #INSERTED
@@ -1224,6 +1480,7 @@ BEGIN
 		DECLARE @InformacionPersonalAntes VARCHAR(200);
 		--DECLARE @EstadoFisicoAntes VARCHAR(40);
 		--DECLARE @EstadoMentalAntes VARCHAR(40);
+		DECLARE @CodDocenteAntes VARCHAR(5);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @PerfilAntes = Perfil,
@@ -1237,9 +1494,10 @@ BEGIN
 			   @CodEscuelaPAntes = CodEscuelaP,
 			   @PersonaReferenciaAntes = PersonaReferencia,
 			   @TelefonoReferenciaAntes = TelefonoReferencia,
-			   @InformacionPersonalAntes = InformacionPersonal
+			   @InformacionPersonalAntes = InformacionPersonal,
 			   --@EstadoFisicoAntes = EstadoFisico,
-			   --@EstadoMentalAntes = EstadoMental
+			   --@EstadoMentalAntes = EstadoMental,
+			   @CodDocenteAntes = CodDocente
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
 		-- Declarar variables donde estar�n los atributos de la tabla #INSERTED (DESPU�S)
@@ -1255,9 +1513,9 @@ BEGIN
 		DECLARE @PersonaReferenciaDespues VARCHAR(4);
 		DECLARE @TelefonoReferenciaDespues VARCHAR(4);
 		DECLARE @InformacionPersonalDespues VARCHAR(200);
-
 		--DECLARE @EstadoFisicoDespues VARCHAR(40);
 		--DECLARE @EstadoMentalDespues VARCHAR(40);
+		DECLARE @CodDocenteDespues VARCHAR(5);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @PerfilDespues = Perfil,
@@ -1271,9 +1529,10 @@ BEGIN
 			   @CodEscuelaPDespues = CodEscuelaP,
 			   @PersonaReferenciaDespues = PersonaReferencia,
 			   @TelefonoReferenciaDespues = TelefonoReferencia,
-			   @InformacionPersonalDespues = InformacionPersonal
+			   @InformacionPersonalDespues = InformacionPersonal,
 			   --@EstadoFisicoDespues = EstadoFisico,
-			   --@EstadoMentalDespues = EstadoMental
+			   --@EstadoMentalDespues = EstadoMental,
+			   @CodDocenteDespues = CodDocente
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
 
 		---- Determinar el IdHistorial
@@ -1295,8 +1554,8 @@ BEGIN
 		-- Verificar si el cambio fue en Perfil
 		IF @PerfilAntes != @PerfilDespues
 		BEGIN
-			SET @ValorAnterior = CONVERT(VARCHAR(10), @PerfilAntes, 2);
-			SET @ValorPosterior = CONVERT(VARCHAR(10), @PerfilDespues, 2);
+			SET @ValorAnterior = ISNULL(CONVERT(VARCHAR(10), @PerfilAntes, 2), 'POR DEFCTO');
+			SET @ValorPosterior = ISNULL(CONVERT(VARCHAR(10), @PerfilDespues, 2), 'POR DEFECTO');
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -1430,8 +1689,8 @@ BEGIN
 		-- Verificar si el cambio fue en PersonaReferencia
 		IF @PersonaReferenciaAntes != @PersonaReferenciaDespues
 		BEGIN
-			SET @ValorAnterior = @PersonaReferenciaAntes;
-			SET @ValorPosterior = @PersonaReferenciaDespues;
+			SET @ValorAnterior = ISNULL(@PersonaReferenciaAntes, '');
+			SET @ValorPosterior = ISNULL(@PersonaReferenciaDespues, '');
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -1445,8 +1704,8 @@ BEGIN
 		-- Verificar si el cambio fue en TelefonoReferencia
 		IF @TelefonoReferenciaAntes != @TelefonoReferenciaDespues
 		BEGIN
-			SET @ValorAnterior = @TelefonoReferenciaAntes;
-			SET @ValorPosterior = @TelefonoReferenciaDespues;
+			SET @ValorAnterior = ISNULL(@TelefonoReferenciaAntes, '');
+			SET @ValorPosterior = ISNULL(@TelefonoReferenciaDespues, '');
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -1476,8 +1735,23 @@ BEGIN
 		--IF @EstadoMentalAntes != @EstadoMentalDespues
 		IF @InformacionPersonalAntes != @InformacionPersonalDespues
 		BEGIN
-			SET @ValorAnterior = @InformacionPersonalAntes; --@EstadoMentalAntes;
-			SET @ValorPosterior = @InformacionPersonalDespues; --@EstadoMentalDespues;
+			SET @ValorAnterior = ISNULL(@InformacionPersonalAntes, ''); --@EstadoMentalAntes;
+			SET @ValorPosterior = ISNULL(@InformacionPersonalDespues, ''); --@EstadoMentalDespues;
+
+			-- Insertar a la tabla Historial, la tupla con el cambio realizado
+			INSERT INTO Historial
+			   VALUES(GETDATE(),'TEstudiante','UPDATE',@CodEstudianteAntes,
+			          @ValorAnterior,@ValorPosterior);
+
+			---- Incrementar el IdHistorial en 1
+			--SET @IdHistorial = @IdHistorial + 1;
+		END;
+
+		-- Verificar si el cambio fue en CodTutor
+		IF @CodDocenteAntes != @CodDocenteDespues
+		BEGIN
+			SET @ValorAnterior = @CodDocenteAntes;
+			SET @ValorPosterior = @CodDocenteDespues;
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -1574,10 +1848,10 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #INSERTED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','INSERT',@CodDocente,NULL, 
-					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
+					  ISNULL(CONVERT(VARCHAR(10), @Perfil, 2), 'POR DEFECTO') + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
 					  @Email + ' ; ' + @Direccion + ' ; ' + @Telefono + ' ; ' + 
 					  @Categoria + ' ; ' + @Subcategoria + ' ; ' + @Regimen + ' ; ' + 
-					  @CodEscuelaP + ' ; ' + @Horario);
+					  @CodEscuelaP + ' ; ' + ISNULL(@Horario, ''));
 		
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
@@ -1662,10 +1936,10 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #DELETED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','DELETE',@CodDocente, 
-					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
+					  ISNULL(CONVERT(VARCHAR(10), @Perfil, 2), 'POR DEFECTO') + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
 					  @Email + ' ; ' + @Direccion + ' ; ' + @Telefono + ' ; ' + 
 					  @Categoria + ' ; ' + @Subcategoria + ' ; ' + @Regimen + ' ; ' + 
-					  @CodEscuelaP + ' ; ' + @Horario,NULL);
+					  @CodEscuelaP + ' ; ' + ISNULL(@Horario, ''),NULL);
 		
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
@@ -1816,8 +2090,8 @@ BEGIN
 		-- Verificar si el cambio fue en Perfil
 		IF @PerfilAntes != @PerfilDespues
 		BEGIN
-			SET @ValorAnterior = CONVERT(VARCHAR(10), @PerfilAntes, 2);
-			SET @ValorPosterior = CONVERT(VARCHAR(10), @PerfilDespues, 2);
+			SET @ValorAnterior = ISNULL(CONVERT(VARCHAR(10), @PerfilAntes, 2), 'POR DEFECTO');
+			SET @ValorPosterior = ISNULL(CONVERT(VARCHAR(10), @PerfilDespues, 2), 'POR DEFECTO');
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -1996,8 +2270,8 @@ BEGIN
 		-- Verificar si el cambio fue en Horario
 		IF @HorarioAntes != @HorarioDespues
 		BEGIN
-			SET @ValorAnterior = @HorarioAntes;
-			SET @ValorPosterior = @HorarioDespues;
+			SET @ValorAnterior = ISNULL(@HorarioAntes, '');
+			SET @ValorPosterior = ISNULL(@HorarioDespues, '');
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -2317,7 +2591,8 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #INSERTED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TFichaTutoria','INSERT',@CodTutoria,NULL, 
-					  CAST(@Fecha AS VARCHAR) + ' ; ' + @Dimension + ' ; ' + @Descripcion + ' ; ' + @Referencia + ' ; ' + @Observaciones);
+					  CAST(@Fecha AS VARCHAR) + ' ; ' + @Dimension + ' ; ' + ISNULL(@Descripcion, '') + 
+					  ' ; ' + ISNULL(@Referencia, '') + ' ; ' + ISNULL(@Observaciones, ''));
 		
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
@@ -2381,7 +2656,8 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #DELETED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TFichaTutoria','DELETE',@CodTutoria,
-					  CAST(@Fecha AS VARCHAR) + ' ; ' + @Dimension + ' ; ' + @Descripcion + ' ; ' + @Referencia + ' ; ' + @Observaciones,NULL);
+					  CAST(@Fecha AS VARCHAR) + ' ; ' + @Dimension + ' ; ' + ISNULL(@Descripcion, '') + 
+					  ' ; ' + ISNULL(@Referencia, '') + ' ; ' + ISNULL(@Observaciones, ''),NULL);
 		
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
@@ -2535,8 +2811,8 @@ BEGIN
 		-- Verificar si el cambio fue en Descripcion
 		IF @DescripcionAntes != @DescripcionDespues
 		BEGIN
-			SET @ValorAnterior = @DescripcionAntes;
-			SET @ValorPosterior = @DescripcionDespues;
+			SET @ValorAnterior = ISNULL(@DescripcionAntes, '');
+			SET @ValorPosterior = ISNULL(@DescripcionDespues, '');
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -2550,8 +2826,8 @@ BEGIN
 		-- Verificar si el cambio fue en Referencia
 		IF @ReferenciaAntes != @ReferenciaDespues
 		BEGIN
-			SET @ValorAnterior = @ReferenciaAntes;
-			SET @ValorPosterior = @ReferenciaDespues;
+			SET @ValorAnterior = ISNULL(@ReferenciaAntes, '');
+			SET @ValorPosterior = ISNULL(@ReferenciaDespues, '');
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -2565,8 +2841,8 @@ BEGIN
 		-- Verificar si el cambio fue en Observaciones
 		IF @ObservacionesAntes != @ObservacionesDespues
 		BEGIN
-			SET @ValorAnterior = @ObservacionesAntes;
-			SET @ValorPosterior = @ObservacionesDespues;
+			SET @ValorAnterior = ISNULL(@ObservacionesAntes, '');
+			SET @ValorPosterior = ISNULL(@ObservacionesDespues, '');
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -2600,7 +2876,7 @@ BEGIN
 	(
 		Perfil VARBINARY(MAX),
 		Usuario VARCHAR(6),
-		Contrase�a VARCHAR(20),
+		Contraseña VARBINARY(MAX),
 		Acceso VARCHAR(20),
 		Datos VARCHAR(53)
 	);
@@ -2620,14 +2896,14 @@ BEGIN
 		-- Declarar variables donde estar�n los atributos de la tabla #INSERTED
 		DECLARE @Perfil VARBINARY(MAX);
 		DECLARE @Usuario VARCHAR(6);
-		DECLARE @Contrase�a VARCHAR(20);
+		DECLARE @Contraseña VARBINARY(MAX);
 		DECLARE @Acceso VARCHAR(20);
 		DECLARE @Datos VARCHAR(53);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @Perfil = Perfil,
 			   @Usuario = Usuario,
-			   @Contrase�a = Contrase�a,
+			   @Contraseña = Contraseña,
 			   @Acceso = Acceso,
 			   @Datos = Datos
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
@@ -2639,7 +2915,7 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #INSERTED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TUsuario','INSERT',@Usuario,NULL, 
-					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @Contrase�a + ' ; ' + @Acceso + ' ; ' + @Datos);
+					  ISNULL(CONVERT(VARCHAR(10), @Perfil, 2), 'POR DEFECTO') + ' ; ' + CONVERT(VARCHAR(10), @Contraseña, 2) + ' ; ' + @Acceso + ' ; ' + @Datos);
 		
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
@@ -2661,7 +2937,7 @@ BEGIN
 	(
 		Perfil VARBINARY(MAX),
 		Usuario VARCHAR(6),
-		Contrase�a VARCHAR(20),
+		Contraseña VARBINARY(MAX),
 		Acceso VARCHAR(20),
 		Datos VARCHAR(53)
 	);
@@ -2681,14 +2957,14 @@ BEGIN
 		-- Declarar variables donde estar�n los atributos de la tabla #DELETED
 		DECLARE @Perfil VARBINARY(MAX);
 		DECLARE @Usuario VARCHAR(6);
-		DECLARE @Contrase�a VARCHAR(20);
+		DECLARE @Contraseña VARBINARY(MAX);
 		DECLARE @Acceso VARCHAR(20);
 		DECLARE @Datos VARCHAR(53);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @Perfil = Perfil,
 			   @Usuario = Usuario,
-			   @Contrase�a = Contrase�a,
+			   @Contraseña = Contraseña,
 			   @Acceso = Acceso,
 			   @Datos = Datos
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
@@ -2700,7 +2976,7 @@ BEGIN
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #DELETED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TUsuario','DELETE',@Usuario,
-					  CONVERT(VARCHAR(10), @Perfil, 2) + ' ; ' + @Contrase�a + ' ; ' + @Acceso + ' ; ' + @Datos,NULL);
+					  ISNULL(CONVERT(VARCHAR(10), @Perfil, 2), 'POR DEFECTO') + ' ; ' + CONVERT(VARCHAR(10), @Contraseña, 2) + ' ; ' + @Acceso + ' ; ' + @Datos,NULL);
 		
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
@@ -2722,7 +2998,7 @@ BEGIN
 	(
 		Perfil VARBINARY(MAX),
 		Usuario VARCHAR(6),
-		Contrase�a VARCHAR(20),
+		Contraseña VARBINARY(MAX),
 		Acceso VARCHAR(20),
 		Datos VARCHAR(53)
 	);
@@ -2737,7 +3013,7 @@ BEGIN
 	(
 		Perfil VARBINARY(MAX),
 		Usuario VARCHAR(6),
-		Contrase�a VARCHAR(20),
+		Contraseña VARBINARY(MAX),
 		Acceso VARCHAR(20),
 		Datos VARCHAR(53)
 	);
@@ -2757,14 +3033,14 @@ BEGIN
 		-- Declarar variables donde estar�n los atributos de la tabla #DELETED (ANTES)
 		DECLARE @PerfilAntes VARBINARY(MAX);
 		DECLARE @UsuarioAntes VARCHAR(6);
-		DECLARE @Contrase�aAntes VARCHAR(20);
+		DECLARE @ContraseñaAntes VARBINARY(MAX);
 		DECLARE @AccesoAntes VARCHAR(20);
 		DECLARE @DatosAntes VARCHAR(53);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @PerfilAntes = Perfil,
 			   @UsuarioAntes = Usuario,
-			   @Contrase�aAntes = Contrase�a,
+			   @ContraseñaAntes = Contraseña,
 			   @AccesoAntes = Acceso,
 			   @DatosAntes = Datos
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
@@ -2772,14 +3048,14 @@ BEGIN
 		-- Declarar variables donde estar�n los atributos de la tabla #INSERTED (DESPU�S)
 		DECLARE @PerfilDespues VARBINARY(MAX);
 		DECLARE @UsuarioDespues VARCHAR(6);
-		DECLARE @Contrase�aDespues VARCHAR(20);
+		DECLARE @ContraseñaDespues VARBINARY(MAX);
 		DECLARE @AccesoDespues VARCHAR(20);
 		DECLARE @DatosDespues VARCHAR(53);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
 		SELECT @PerfilDespues = Perfil,
 			   @UsuarioDespues = Usuario,
-			   @Contrase�aDespues = Contrase�a,
+			   @ContraseñaDespues = Contraseña,
 			   @AccesoDespues = Acceso,
 			   @DatosDespues = Datos
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
@@ -2803,8 +3079,8 @@ BEGIN
 		-- Verificar si el cambio fue en Perfil
 		IF @PerfilAntes != @PerfilDespues
 		BEGIN
-			SET @ValorAnterior = CONVERT(VARCHAR(10), @PerfilAntes, 2);
-			SET @ValorPosterior = CONVERT(VARCHAR(10), @PerfilDespues, 2);
+			SET @ValorAnterior = ISNULL(CONVERT(VARCHAR(10), @PerfilAntes, 2), 'POR DEFECTO');
+			SET @ValorPosterior = ISNULL(CONVERT(VARCHAR(10), @PerfilDespues, 2), 'POR  DEFECTO');
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
@@ -2831,10 +3107,10 @@ BEGIN
 		END;
 
 		-- Verificar si el cambio fue en Contrase�a
-		IF @Contrase�aAntes != @Contrase�aDespues
+		IF @ContraseñaAntes != @ContraseñaDespues
 		BEGIN
-			SET @ValorAnterior = @Contrase�aAntes;
-			SET @ValorPosterior = @Contrase�aDespues;
+			SET @ValorAnterior = @ContraseñaAntes;
+			SET @ValorPosterior = @ContraseñaDespues;
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial

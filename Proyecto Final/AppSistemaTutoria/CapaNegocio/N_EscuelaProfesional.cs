@@ -8,9 +8,9 @@ namespace CapaNegocios
     {
         readonly D_EscuelaProfesional ObjEscuelaProfesional = new D_EscuelaProfesional();
 
-        public static DataTable MostrarRegistros()
+        public static DataTable MostrarRegistros(string CodDocente = "*")
         {
-            return new D_EscuelaProfesional().MostrarRegistros();
+            return new D_EscuelaProfesional().MostrarRegistros(CodDocente);
         }
     }
 }

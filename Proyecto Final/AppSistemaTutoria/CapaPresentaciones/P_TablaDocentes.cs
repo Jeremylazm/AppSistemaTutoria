@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -53,13 +53,13 @@ namespace CapaPresentaciones
 
         public void MostrarRegistros()
         {
-            dgvTabla.DataSource = N_Docente.MostrarRegistros();
+            dgvTabla.DataSource = N_Docente.MostrarRegistros(E_InicioSesion.Usuario);
             AccionesTabla();
         }
 
         public void BuscarRegistros()
         {
-            dgvTabla.DataSource = N_Docente.BuscarRegistros(txtBuscar.Text);
+            dgvTabla.DataSource = N_Docente.BuscarRegistros(E_InicioSesion.Usuario, txtBuscar.Text);
         }
 
         private void ActualizarDatos(object sender, FormClosedEventArgs e)
@@ -141,11 +141,21 @@ namespace CapaPresentaciones
             {
                 Program.Evento = 1;
 
-                byte[] Perfil = new byte[0];
-                Perfil = (byte[])dgvTabla.CurrentRow.Cells[0].Value;
-                MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
+                if (dgvTabla.CurrentRow.Cells[0].Value.GetType() == Type.GetType("System.DBNull"))
+                {
+                    string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
+                    EditarRegistro.imgPerfil.Image = Image.FromFile(fullImagePath);
+                }
+                else
+                {
+                    byte[] Perfil = new byte[0];
+                    Perfil = (byte[])dgvTabla.CurrentRow.Cells[0].Value;
+                    MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
+                    EditarRegistro.imgPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
+                    MemoriaPerfil = null;
+                    MemoriaPerfil = null;
+                }
 
-                EditarRegistro.imgPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
                 EditarRegistro.txtCodigo.Text = dgvTabla.CurrentRow.Cells[2].Value.ToString();
                 EditarRegistro.txtAPaterno.Text = dgvTabla.CurrentRow.Cells[3].Value.ToString();
                 EditarRegistro.txtAMaterno.Text = dgvTabla.CurrentRow.Cells[4].Value.ToString();
@@ -187,7 +197,7 @@ namespace CapaPresentaciones
 
                 EditarRegistro.cxtEscuela.SelectedValue = dgvTabla.CurrentRow.Cells[13].Value.ToString();
                 EditarRegistro.txtHorario.Text = dgvTabla.CurrentRow.Cells[15].Value.ToString();
-                MemoriaPerfil = null;
+                
 
                 EditarRegistro.ShowDialog();
             }

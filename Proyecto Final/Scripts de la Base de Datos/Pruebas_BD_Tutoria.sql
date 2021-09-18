@@ -1,4 +1,4 @@
-USE BDSistema_Tutoria
+USE db_a7878d_BDSistemaTutoria
 GO
 
 INSERT INTO TEscuela_Profesional VALUES('INIS','INGENIERÍA INFORMÁTICA Y DE SISTEMAS');
@@ -33,9 +33,8 @@ select * from TUsuario
 
 
 INSERT INTO TUsuario (Usuario, Contraseña, Acceso, Datos, Perfil) 
-SELECT 'ADMIN', 'ADMIN1234', 'Director de Escuela', 'ADMINISTRADOR', BulkColumn
-	FROM Openrowset(Bulk 'C:\Users\Jeremylazm\Desktop\Documentos\Copia de Proyecto de DS I\Proyecto Final\AppSistemaTutoria\CapaPresentaciones\Iconos\Perfil.png', Single_Blob) as PerfilAdmin
+SELECT 'ADMIN', 'ADMIN1234', 'Administrador', 'ADMINISTRADOR', BulkColumn
+	FROM Openrowset(Bulk 'C:\Users\Jeremylazm\Documents\GitHub\AppSistemaTutoria\Proyecto Final\AppSistemaTutoria\CapaPresentaciones\Iconos\Perfil.png', Single_Blob) as PerfilAdmin
 GO
 
 select * from TEstudiante
-

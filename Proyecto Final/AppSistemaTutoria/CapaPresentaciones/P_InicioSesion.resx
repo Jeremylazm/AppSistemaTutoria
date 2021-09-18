@@ -4584,35 +4584,6 @@
         +f84cHLnLeS3agAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="BordeadoMenu.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAZsAAADsCAYAAACiyAs1AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAVmSURBVHhe7dytb5VnHIDh/QPLFMEQ1DJDUAQFapkCRVDg
-        QIHAIGYQ1LBlghoMAkMCChIECJI6SBBg2IKpWdJMUIEohiaYd3nelobPLmPnVruu5JeevqetvfN8nH4z
-        AUBMbADIiQ0AObEBICc2AOTEBoDcrrF5u7k5Pbtzd7px5uy0fOz4dOnAwenct98ZY4wxcxNGG66fOj09
-        uXV7erOxsV2PT30xNi9WVuY/NEIzgrP66PH0am1t+10A/u9GE0Ybnt9/MN08d35uxojO53wSm1Gm8UvX
-        TpycXq+vbz8FgN3t1o8PYjN+8MqRo18sEwD8k7Ez9tuPP32wG/ZBbEaRhAaA/2psr43znHd2YjNKNJY+
-        ALAI9y4vTQ+vLs+v59iMW2fjYMcZDQCLMtoyjmZerq5uxWZsnY0tNABYpLGyGSucOTbjjvS4ugYAi/TX
-        73/Mq5s5NkuHDs/LHABYpLGVdmHP3q3YXNy3f9dPfgLA1xr/bWCOzXgBAAWxASAnNgDkxAaAnNgAkBMb
-        AHJiA0BObADIiQ0AObEBICc2AOTEBoCc2ACQExsAcmIDQE5sAMiJDQA5sQEgJzYA5MQGgJzYAJATGwBy
-        YgNATmwAyIkNADmxASAnNgDkxAaAnNgAkBMbAHJiA0BObADIiQ0AObEBICc2AOTEBoCc2ACQExsAcmID
-        QE5sAMiJDQA5sQEgJzYA5MQGgJzYAJATGwByYgNATmwAyIkNADmxASAnNgDkxAaAnNgAkBMbAHJiA0BO
-        bADIiQ0AObEBICc2AOTEBoCc2ACQExsAcmIDQE5sAMiJDQA5sQEgJzYA5MQGgJzYAJATGwByYgNATmwA
-        yIkNADmxASAnNgDkxAaAnNgAkBMbAHJiA0BObADIiQ0AObEBICc2AOTEBoCc2ACQExsAcmIDQE5sAMiJ
-        DQA5sQEgJzYA5MQGgJzYAJATGwByYgNATmwAyIkNADmxASAnNgDkxAaAnNgAkBMbAHJiA0BObADIiQ0A
-        ObEBICc2AOTEBoCc2ACQExsAcmIDQE5sAMiJDQA5sQEgJzYA5MQGgJzYAJATGwByYgNATmwAyIkNADmx
-        ASAnNgDkxAaAnNgAkBMbAHJiA0BObADIiQ0AObEBICc2AOTEBoCc2ACQExsAcmIDQE5sAMiJDQA5sQEg
-        JzYA5MQGgJzYAJATGwByYgNATmwAyIkNADmxASAnNgDkxAaAnNgAkBMbAHJiA0BObADIiQ0AObEBICc2
-        AOTEBoCc2ACQExsAcmIDQE5sAMiJDQA5sQEgJzYA5MQGgJzYAJATGwByYgNATmwAyIkNADmxASAnNgDk
-        xAaAnNgAkBMbAHJiA0BObADIiQ0AObEBICc2AOTEBoCc2ACQExsAcmIDQE5sAMiJDQA5sQEgJzYA5MQG
-        gJzYAJATGwByYgNATmwAyIkNADmxASAnNgDkxAaAnNgAkBMbAHJiA0BObADIiQ0AObEBICc2AOR2YnNh
-        z97p7ebm/BAAFmknNpcOHJxera3NDwFgkXZic+3EyenFysr8EAAW5eXq6rR06PBWbB5eXZ7uXV6a3wCA
-        RXly6/Z089z5rdiMLbRRHuc2ACzS9VOnp+f3H2zFZrj/y6/zAMAiPLtzd7px5uz8eic2Y1WzfOz49OfT
-        p9tPAODrvF5fn3fM3mxszN/vxGYYBzlXjhydvwLA1xihGYuX1UePt598FJthrGxGcMalAQD4N8b5zFjR
-        vB+a4ZPYDGNLbdxOG2UaNwlGpQDgc8ZW2bvzmXEh4N3W2fs+G5t3RpnGlbWfv/9h/lCOMcYY8/Fc3Ld/
-        Ds0IzpfsGhsAWASxASAnNgDkxAaAnNgAEJumvwGOmPw0vAarlgAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="Movimiento.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

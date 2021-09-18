@@ -9,7 +9,7 @@ namespace CapaDatos
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
 
-        public DataTable MostrarRegistros()
+        public DataTable MostrarRegistros(string CodDocente)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuMostrarEscuelas", Conectar)
@@ -17,6 +17,7 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
 

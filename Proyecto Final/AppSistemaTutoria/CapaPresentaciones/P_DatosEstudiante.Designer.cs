@@ -56,7 +56,6 @@
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.lblDireccion = new System.Windows.Forms.Label();
             this.cxtEscuela = new System.Windows.Forms.ComboBox();
-            this.btnEscuelas = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnLimpiar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnGuardar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.imgLogoUNSAAC = new Bunifu.Framework.UI.BunifuImageButton();
@@ -72,7 +71,6 @@
             this.btnRestablecerPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
             this.lblIPersonal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEscuelas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
             this.SuspendLayout();
@@ -84,10 +82,9 @@
             this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
             this.btnCerrar.ImageActive = null;
-            this.btnCerrar.Location = new System.Drawing.Point(509, 11);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCerrar.Location = new System.Drawing.Point(372, 9);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(32, 30);
+            this.btnCerrar.Size = new System.Drawing.Size(24, 24);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnCerrar.TabIndex = 76;
             this.btnCerrar.TabStop = false;
@@ -101,9 +98,8 @@
             this.lblTitulo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
-            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(553, 49);
+            this.lblTitulo.Size = new System.Drawing.Size(405, 40);
             this.lblTitulo.TabIndex = 75;
             this.lblTitulo.Text = "Datos del Estudiante";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -118,10 +114,9 @@
             this.Separador1.BackColor = System.Drawing.Color.Transparent;
             this.Separador1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador1.LineThickness = 1;
-            this.Separador1.Location = new System.Drawing.Point(184, 334);
-            this.Separador1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Separador1.Location = new System.Drawing.Point(138, 271);
             this.Separador1.Name = "Separador1";
-            this.Separador1.Size = new System.Drawing.Size(272, 12);
+            this.Separador1.Size = new System.Drawing.Size(204, 10);
             this.Separador1.TabIndex = 80;
             this.Separador1.Transparency = 255;
             this.Separador1.Vertical = false;
@@ -132,10 +127,9 @@
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCodigo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtCodigo.Location = new System.Drawing.Point(184, 310);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigo.Location = new System.Drawing.Point(138, 252);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(272, 23);
+            this.txtCodigo.Size = new System.Drawing.Size(204, 19);
             this.txtCodigo.TabIndex = 79;
             // 
             // lblCodigo
@@ -143,10 +137,9 @@
             this.lblCodigo.AutoSize = true;
             this.lblCodigo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblCodigo.Location = new System.Drawing.Point(20, 310);
-            this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCodigo.Location = new System.Drawing.Point(15, 252);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(76, 23);
+            this.lblCodigo.Size = new System.Drawing.Size(61, 19);
             this.lblCodigo.TabIndex = 78;
             this.lblCodigo.Text = "Código:";
             // 
@@ -155,10 +148,9 @@
             this.Separador2.BackColor = System.Drawing.Color.Transparent;
             this.Separador2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador2.LineThickness = 1;
-            this.Separador2.Location = new System.Drawing.Point(184, 373);
-            this.Separador2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Separador2.Location = new System.Drawing.Point(138, 303);
             this.Separador2.Name = "Separador2";
-            this.Separador2.Size = new System.Drawing.Size(272, 12);
+            this.Separador2.Size = new System.Drawing.Size(204, 10);
             this.Separador2.TabIndex = 83;
             this.Separador2.Transparency = 255;
             this.Separador2.Vertical = false;
@@ -169,10 +161,9 @@
             this.txtAPaterno.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtAPaterno.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAPaterno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtAPaterno.Location = new System.Drawing.Point(184, 348);
-            this.txtAPaterno.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAPaterno.Location = new System.Drawing.Point(138, 283);
             this.txtAPaterno.Name = "txtAPaterno";
-            this.txtAPaterno.Size = new System.Drawing.Size(272, 23);
+            this.txtAPaterno.Size = new System.Drawing.Size(204, 19);
             this.txtAPaterno.TabIndex = 82;
             // 
             // lblAPaterno
@@ -180,10 +171,9 @@
             this.lblAPaterno.AutoSize = true;
             this.lblAPaterno.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAPaterno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblAPaterno.Location = new System.Drawing.Point(20, 348);
-            this.lblAPaterno.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAPaterno.Location = new System.Drawing.Point(15, 283);
             this.lblAPaterno.Name = "lblAPaterno";
-            this.lblAPaterno.Size = new System.Drawing.Size(108, 23);
+            this.lblAPaterno.Size = new System.Drawing.Size(85, 19);
             this.lblAPaterno.TabIndex = 81;
             this.lblAPaterno.Text = "A. Paterno:";
             // 
@@ -192,10 +182,9 @@
             this.Separador4.BackColor = System.Drawing.Color.Transparent;
             this.Separador4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador4.LineThickness = 1;
-            this.Separador4.Location = new System.Drawing.Point(184, 452);
-            this.Separador4.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Separador4.Location = new System.Drawing.Point(138, 367);
             this.Separador4.Name = "Separador4";
-            this.Separador4.Size = new System.Drawing.Size(272, 12);
+            this.Separador4.Size = new System.Drawing.Size(204, 10);
             this.Separador4.TabIndex = 89;
             this.Separador4.Transparency = 255;
             this.Separador4.Vertical = false;
@@ -206,10 +195,9 @@
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNombre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtNombre.Location = new System.Drawing.Point(184, 427);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Location = new System.Drawing.Point(138, 347);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(272, 23);
+            this.txtNombre.Size = new System.Drawing.Size(204, 19);
             this.txtNombre.TabIndex = 88;
             // 
             // lblNombre
@@ -217,10 +205,9 @@
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblNombre.Location = new System.Drawing.Point(20, 428);
-            this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNombre.Location = new System.Drawing.Point(15, 348);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(84, 23);
+            this.lblNombre.Size = new System.Drawing.Size(68, 19);
             this.lblNombre.TabIndex = 87;
             this.lblNombre.Text = "Nombre:";
             // 
@@ -229,10 +216,9 @@
             this.Separador3.BackColor = System.Drawing.Color.Transparent;
             this.Separador3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador3.LineThickness = 1;
-            this.Separador3.Location = new System.Drawing.Point(184, 412);
-            this.Separador3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Separador3.Location = new System.Drawing.Point(138, 335);
             this.Separador3.Name = "Separador3";
-            this.Separador3.Size = new System.Drawing.Size(272, 12);
+            this.Separador3.Size = new System.Drawing.Size(204, 10);
             this.Separador3.TabIndex = 86;
             this.Separador3.Transparency = 255;
             this.Separador3.Vertical = false;
@@ -243,10 +229,9 @@
             this.txtAMaterno.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtAMaterno.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAMaterno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtAMaterno.Location = new System.Drawing.Point(184, 388);
-            this.txtAMaterno.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAMaterno.Location = new System.Drawing.Point(138, 315);
             this.txtAMaterno.Name = "txtAMaterno";
-            this.txtAMaterno.Size = new System.Drawing.Size(272, 23);
+            this.txtAMaterno.Size = new System.Drawing.Size(204, 19);
             this.txtAMaterno.TabIndex = 85;
             // 
             // lblAMaterno
@@ -254,10 +239,9 @@
             this.lblAMaterno.AutoSize = true;
             this.lblAMaterno.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAMaterno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblAMaterno.Location = new System.Drawing.Point(20, 388);
-            this.lblAMaterno.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAMaterno.Location = new System.Drawing.Point(15, 315);
             this.lblAMaterno.Name = "lblAMaterno";
-            this.lblAMaterno.Size = new System.Drawing.Size(114, 23);
+            this.lblAMaterno.Size = new System.Drawing.Size(92, 19);
             this.lblAMaterno.TabIndex = 84;
             this.lblAMaterno.Text = "A. Materno:";
             // 
@@ -266,10 +250,9 @@
             this.Separador10.BackColor = System.Drawing.Color.Transparent;
             this.Separador10.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador10.LineThickness = 1;
-            this.Separador10.Location = new System.Drawing.Point(184, 738);
-            this.Separador10.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Separador10.Location = new System.Drawing.Point(138, 600);
             this.Separador10.Name = "Separador10";
-            this.Separador10.Size = new System.Drawing.Size(333, 12);
+            this.Separador10.Size = new System.Drawing.Size(250, 10);
             this.Separador10.TabIndex = 101;
             this.Separador10.Transparency = 255;
             this.Separador10.Vertical = false;
@@ -281,11 +264,10 @@
             this.txtIPersonal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtIPersonal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtIPersonal.Location = new System.Drawing.Point(184, 663);
-            this.txtIPersonal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIPersonal.Location = new System.Drawing.Point(138, 539);
             this.txtIPersonal.Multiline = true;
             this.txtIPersonal.Name = "txtIPersonal";
-            this.txtIPersonal.Size = new System.Drawing.Size(333, 74);
+            this.txtIPersonal.Size = new System.Drawing.Size(250, 60);
             this.txtIPersonal.TabIndex = 100;
             // 
             // Separador7
@@ -293,10 +275,9 @@
             this.Separador7.BackColor = System.Drawing.Color.Transparent;
             this.Separador7.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador7.LineThickness = 1;
-            this.Separador7.Location = new System.Drawing.Point(184, 571);
-            this.Separador7.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Separador7.Location = new System.Drawing.Point(138, 464);
             this.Separador7.Name = "Separador7";
-            this.Separador7.Size = new System.Drawing.Size(272, 12);
+            this.Separador7.Size = new System.Drawing.Size(204, 10);
             this.Separador7.TabIndex = 98;
             this.Separador7.Transparency = 255;
             this.Separador7.Vertical = false;
@@ -306,10 +287,9 @@
             this.lblEscuela.AutoSize = true;
             this.lblEscuela.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEscuela.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblEscuela.Location = new System.Drawing.Point(20, 546);
-            this.lblEscuela.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEscuela.Location = new System.Drawing.Point(15, 444);
             this.lblEscuela.Name = "lblEscuela";
-            this.lblEscuela.Size = new System.Drawing.Size(152, 23);
+            this.lblEscuela.Size = new System.Drawing.Size(121, 19);
             this.lblEscuela.TabIndex = 96;
             this.lblEscuela.Text = "Esc. Profesional:";
             // 
@@ -318,10 +298,9 @@
             this.Separador6.BackColor = System.Drawing.Color.Transparent;
             this.Separador6.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador6.LineThickness = 1;
-            this.Separador6.Location = new System.Drawing.Point(184, 529);
-            this.Separador6.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Separador6.Location = new System.Drawing.Point(138, 430);
             this.Separador6.Name = "Separador6";
-            this.Separador6.Size = new System.Drawing.Size(272, 12);
+            this.Separador6.Size = new System.Drawing.Size(204, 10);
             this.Separador6.TabIndex = 95;
             this.Separador6.Transparency = 255;
             this.Separador6.Vertical = false;
@@ -332,10 +311,9 @@
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTelefono.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtTelefono.Location = new System.Drawing.Point(184, 505);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTelefono.Location = new System.Drawing.Point(138, 410);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(272, 23);
+            this.txtTelefono.Size = new System.Drawing.Size(204, 19);
             this.txtTelefono.TabIndex = 94;
             // 
             // lblTelefono
@@ -343,10 +321,9 @@
             this.lblTelefono.AutoSize = true;
             this.lblTelefono.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblTelefono.Location = new System.Drawing.Point(20, 506);
-            this.lblTelefono.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTelefono.Location = new System.Drawing.Point(15, 411);
             this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(89, 23);
+            this.lblTelefono.Size = new System.Drawing.Size(72, 19);
             this.lblTelefono.TabIndex = 93;
             this.lblTelefono.Text = "Teléfono:";
             // 
@@ -355,10 +332,9 @@
             this.Separador5.BackColor = System.Drawing.Color.Transparent;
             this.Separador5.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador5.LineThickness = 1;
-            this.Separador5.Location = new System.Drawing.Point(184, 490);
-            this.Separador5.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Separador5.Location = new System.Drawing.Point(138, 398);
             this.Separador5.Name = "Separador5";
-            this.Separador5.Size = new System.Drawing.Size(272, 12);
+            this.Separador5.Size = new System.Drawing.Size(204, 10);
             this.Separador5.TabIndex = 92;
             this.Separador5.Transparency = 255;
             this.Separador5.Vertical = false;
@@ -369,10 +345,9 @@
             this.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDireccion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtDireccion.Location = new System.Drawing.Point(184, 466);
-            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDireccion.Location = new System.Drawing.Point(138, 379);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(272, 23);
+            this.txtDireccion.Size = new System.Drawing.Size(204, 19);
             this.txtDireccion.TabIndex = 91;
             // 
             // lblDireccion
@@ -380,10 +355,9 @@
             this.lblDireccion.AutoSize = true;
             this.lblDireccion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblDireccion.Location = new System.Drawing.Point(20, 465);
-            this.lblDireccion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDireccion.Location = new System.Drawing.Point(15, 378);
             this.lblDireccion.Name = "lblDireccion";
-            this.lblDireccion.Size = new System.Drawing.Size(97, 23);
+            this.lblDireccion.Size = new System.Drawing.Size(78, 19);
             this.lblDireccion.TabIndex = 90;
             this.lblDireccion.Text = "Dirección:";
             // 
@@ -395,31 +369,12 @@
             this.cxtEscuela.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cxtEscuela.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.cxtEscuela.FormattingEnabled = true;
-            this.cxtEscuela.ItemHeight = 22;
-            this.cxtEscuela.Location = new System.Drawing.Point(184, 540);
-            this.cxtEscuela.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cxtEscuela.ItemHeight = 19;
+            this.cxtEscuela.Location = new System.Drawing.Point(138, 439);
             this.cxtEscuela.MaxDropDownItems = 50;
             this.cxtEscuela.Name = "cxtEscuela";
-            this.cxtEscuela.Size = new System.Drawing.Size(271, 30);
+            this.cxtEscuela.Size = new System.Drawing.Size(204, 27);
             this.cxtEscuela.TabIndex = 106;
-            // 
-            // btnEscuelas
-            // 
-            this.btnEscuelas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEscuelas.BackColor = System.Drawing.Color.White;
-            this.btnEscuelas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEscuelas.Enabled = false;
-            this.btnEscuelas.Image = ((System.Drawing.Image)(resources.GetObject("btnEscuelas.Image")));
-            this.btnEscuelas.ImageActive = null;
-            this.btnEscuelas.Location = new System.Drawing.Point(464, 540);
-            this.btnEscuelas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnEscuelas.Name = "btnEscuelas";
-            this.btnEscuelas.Size = new System.Drawing.Size(40, 37);
-            this.btnEscuelas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnEscuelas.TabIndex = 108;
-            this.btnEscuelas.TabStop = false;
-            this.btnEscuelas.Zoom = 10;
-            this.btnEscuelas.Click += new System.EventHandler(this.btnEscuelas_Click);
             // 
             // btnLimpiar
             // 
@@ -444,14 +399,13 @@
             this.btnLimpiar.IconVisible = true;
             this.btnLimpiar.IconZoom = 50D;
             this.btnLimpiar.IsTab = false;
-            this.btnLimpiar.Location = new System.Drawing.Point(276, 764);
-            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnLimpiar.Location = new System.Drawing.Point(202, 621);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnLimpiar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
             this.btnLimpiar.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnLimpiar.selected = true;
-            this.btnLimpiar.Size = new System.Drawing.Size(168, 49);
+            this.btnLimpiar.Size = new System.Drawing.Size(126, 40);
             this.btnLimpiar.TabIndex = 110;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -482,14 +436,13 @@
             this.btnGuardar.IconVisible = true;
             this.btnGuardar.IconZoom = 50D;
             this.btnGuardar.IsTab = false;
-            this.btnGuardar.Location = new System.Drawing.Point(100, 764);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnGuardar.Location = new System.Drawing.Point(70, 621);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnGuardar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
             this.btnGuardar.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnGuardar.selected = true;
-            this.btnGuardar.Size = new System.Drawing.Size(168, 49);
+            this.btnGuardar.Size = new System.Drawing.Size(126, 40);
             this.btnGuardar.TabIndex = 109;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -504,10 +457,9 @@
             this.imgLogoUNSAAC.Cursor = System.Windows.Forms.Cursors.Hand;
             this.imgLogoUNSAAC.Image = ((System.Drawing.Image)(resources.GetObject("imgLogoUNSAAC.Image")));
             this.imgLogoUNSAAC.ImageActive = null;
-            this.imgLogoUNSAAC.Location = new System.Drawing.Point(25, 4);
-            this.imgLogoUNSAAC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.imgLogoUNSAAC.Location = new System.Drawing.Point(9, 3);
             this.imgLogoUNSAAC.Name = "imgLogoUNSAAC";
-            this.imgLogoUNSAAC.Size = new System.Drawing.Size(47, 43);
+            this.imgLogoUNSAAC.Size = new System.Drawing.Size(35, 35);
             this.imgLogoUNSAAC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgLogoUNSAAC.TabIndex = 111;
             this.imgLogoUNSAAC.TabStop = false;
@@ -518,10 +470,9 @@
             this.Separador9.BackColor = System.Drawing.Color.Transparent;
             this.Separador9.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador9.LineThickness = 1;
-            this.Separador9.Location = new System.Drawing.Point(184, 649);
-            this.Separador9.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Separador9.Location = new System.Drawing.Point(138, 527);
             this.Separador9.Name = "Separador9";
-            this.Separador9.Size = new System.Drawing.Size(272, 12);
+            this.Separador9.Size = new System.Drawing.Size(204, 10);
             this.Separador9.TabIndex = 117;
             this.Separador9.Transparency = 255;
             this.Separador9.Vertical = false;
@@ -532,10 +483,9 @@
             this.txtTReferencia.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTReferencia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTReferencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtTReferencia.Location = new System.Drawing.Point(184, 624);
-            this.txtTReferencia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTReferencia.Location = new System.Drawing.Point(138, 507);
             this.txtTReferencia.Name = "txtTReferencia";
-            this.txtTReferencia.Size = new System.Drawing.Size(272, 23);
+            this.txtTReferencia.Size = new System.Drawing.Size(204, 19);
             this.txtTReferencia.TabIndex = 116;
             // 
             // lblTReferencia
@@ -543,10 +493,9 @@
             this.lblTReferencia.AutoSize = true;
             this.lblTReferencia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTReferencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblTReferencia.Location = new System.Drawing.Point(20, 625);
-            this.lblTReferencia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTReferencia.Location = new System.Drawing.Point(15, 508);
             this.lblTReferencia.Name = "lblTReferencia";
-            this.lblTReferencia.Size = new System.Drawing.Size(155, 23);
+            this.lblTReferencia.Size = new System.Drawing.Size(125, 19);
             this.lblTReferencia.TabIndex = 115;
             this.lblTReferencia.Text = "Teléfono de Ref.:";
             // 
@@ -555,10 +504,9 @@
             this.Separador8.BackColor = System.Drawing.Color.Transparent;
             this.Separador8.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador8.LineThickness = 1;
-            this.Separador8.Location = new System.Drawing.Point(184, 609);
-            this.Separador8.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Separador8.Location = new System.Drawing.Point(138, 495);
             this.Separador8.Name = "Separador8";
-            this.Separador8.Size = new System.Drawing.Size(272, 12);
+            this.Separador8.Size = new System.Drawing.Size(204, 10);
             this.Separador8.TabIndex = 114;
             this.Separador8.Transparency = 255;
             this.Separador8.Vertical = false;
@@ -569,10 +517,9 @@
             this.txtPReferencia.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPReferencia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPReferencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtPReferencia.Location = new System.Drawing.Point(184, 586);
-            this.txtPReferencia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPReferencia.Location = new System.Drawing.Point(138, 476);
             this.txtPReferencia.Name = "txtPReferencia";
-            this.txtPReferencia.Size = new System.Drawing.Size(272, 23);
+            this.txtPReferencia.Size = new System.Drawing.Size(204, 19);
             this.txtPReferencia.TabIndex = 113;
             // 
             // lblPReferencia
@@ -580,10 +527,9 @@
             this.lblPReferencia.AutoSize = true;
             this.lblPReferencia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPReferencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblPReferencia.Location = new System.Drawing.Point(20, 585);
-            this.lblPReferencia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPReferencia.Location = new System.Drawing.Point(15, 475);
             this.lblPReferencia.Name = "lblPReferencia";
-            this.lblPReferencia.Size = new System.Drawing.Size(151, 23);
+            this.lblPReferencia.Size = new System.Drawing.Size(121, 19);
             this.lblPReferencia.TabIndex = 112;
             this.lblPReferencia.Text = "Persona de Ref.:";
             // 
@@ -610,9 +556,9 @@
             this.BordeadoMenu.IdleForecolor = System.Drawing.Color.White;
             this.BordeadoMenu.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.BordeadoMenu.Location = new System.Drawing.Point(-1, 0);
-            this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(5);
             this.BordeadoMenu.Name = "BordeadoMenu";
-            this.BordeadoMenu.Size = new System.Drawing.Size(553, 838);
+            this.BordeadoMenu.Size = new System.Drawing.Size(405, 681);
             this.BordeadoMenu.TabIndex = 118;
             this.BordeadoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -626,10 +572,9 @@
             this.imgPerfil.BorderSize = 2;
             this.imgPerfil.GradientAngle = 50F;
             this.imgPerfil.Image = ((System.Drawing.Image)(resources.GetObject("imgPerfil.Image")));
-            this.imgPerfil.Location = new System.Drawing.Point(28, 55);
-            this.imgPerfil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.imgPerfil.Location = new System.Drawing.Point(21, 45);
             this.imgPerfil.Name = "imgPerfil";
-            this.imgPerfil.Size = new System.Drawing.Size(267, 267);
+            this.imgPerfil.Size = new System.Drawing.Size(200, 200);
             this.imgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgPerfil.TabIndex = 119;
             this.imgPerfil.TabStop = false;
@@ -657,14 +602,13 @@
             this.btnSubirPerfil.IconVisible = true;
             this.btnSubirPerfil.IconZoom = 70D;
             this.btnSubirPerfil.IsTab = false;
-            this.btnSubirPerfil.Location = new System.Drawing.Point(315, 102);
-            this.btnSubirPerfil.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnSubirPerfil.Location = new System.Drawing.Point(231, 83);
             this.btnSubirPerfil.Name = "btnSubirPerfil";
             this.btnSubirPerfil.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnSubirPerfil.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
             this.btnSubirPerfil.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnSubirPerfil.selected = true;
-            this.btnSubirPerfil.Size = new System.Drawing.Size(203, 69);
+            this.btnSubirPerfil.Size = new System.Drawing.Size(152, 56);
             this.btnSubirPerfil.TabIndex = 120;
             this.btnSubirPerfil.Text = "Subir Perfil";
             this.btnSubirPerfil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -695,14 +639,13 @@
             this.btnRestablecerPerfil.IconVisible = true;
             this.btnRestablecerPerfil.IconZoom = 70D;
             this.btnRestablecerPerfil.IsTab = false;
-            this.btnRestablecerPerfil.Location = new System.Drawing.Point(315, 198);
-            this.btnRestablecerPerfil.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnRestablecerPerfil.Location = new System.Drawing.Point(231, 161);
             this.btnRestablecerPerfil.Name = "btnRestablecerPerfil";
             this.btnRestablecerPerfil.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnRestablecerPerfil.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
             this.btnRestablecerPerfil.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnRestablecerPerfil.selected = true;
-            this.btnRestablecerPerfil.Size = new System.Drawing.Size(203, 69);
+            this.btnRestablecerPerfil.Size = new System.Drawing.Size(152, 56);
             this.btnRestablecerPerfil.TabIndex = 121;
             this.btnRestablecerPerfil.Text = "Restablecer Perfil";
             this.btnRestablecerPerfil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -715,19 +658,18 @@
             this.lblIPersonal.AutoSize = true;
             this.lblIPersonal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblIPersonal.Location = new System.Drawing.Point(23, 663);
-            this.lblIPersonal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIPersonal.Location = new System.Drawing.Point(17, 539);
             this.lblIPersonal.Name = "lblIPersonal";
-            this.lblIPersonal.Size = new System.Drawing.Size(129, 23);
+            this.lblIPersonal.Size = new System.Drawing.Size(103, 19);
             this.lblIPersonal.TabIndex = 122;
             this.lblIPersonal.Text = "Inf. Personal: ";
             // 
             // P_DatosEstudiante
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(553, 833);
+            this.ClientSize = new System.Drawing.Size(405, 677);
             this.Controls.Add(this.lblIPersonal);
             this.Controls.Add(this.btnRestablecerPerfil);
             this.Controls.Add(this.btnSubirPerfil);
@@ -741,7 +683,6 @@
             this.Controls.Add(this.imgLogoUNSAAC);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.btnEscuelas);
             this.Controls.Add(this.cxtEscuela);
             this.Controls.Add(this.Separador10);
             this.Controls.Add(this.txtIPersonal);
@@ -769,12 +710,10 @@
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.BordeadoMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "P_DatosEstudiante";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Datos del Estudiante";
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEscuelas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).EndInit();
             this.ResumeLayout(false);
@@ -809,7 +748,6 @@
         private Bunifu.Framework.UI.BunifuSeparator Separador5;
         public System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Label lblDireccion;
-        private Bunifu.Framework.UI.BunifuImageButton btnEscuelas;
         private Bunifu.Framework.UI.BunifuFlatButton btnLimpiar;
         private Bunifu.Framework.UI.BunifuFlatButton btnGuardar;
         public System.Windows.Forms.ComboBox cxtEscuela;

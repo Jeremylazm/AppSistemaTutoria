@@ -3,6 +3,8 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Net;
+using System.Net.Mail;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
@@ -58,7 +60,16 @@ namespace CapaPresentaciones
             cxtSubcategoria.SelectedIndex = 0;
             cxtRegimen.SelectedIndex = 0;
 
-            cxtEscuela.DataSource = N_EscuelaProfesional.MostrarRegistros();
+            if (E_InicioSesion.Acceso == "Administrador")
+            {
+                cxtEscuela.DataSource = N_EscuelaProfesional.MostrarRegistros();
+            }
+            else
+            {
+                cxtEscuela.DataSource = N_EscuelaProfesional.MostrarRegistros(E_InicioSesion.Usuario);
+                cxtEscuela.Enabled = false;
+            }
+
             cxtEscuela.ValueMember = "CodEscuelaP";
             cxtEscuela.DisplayMember = "Nombre";
         }
@@ -105,6 +116,34 @@ namespace CapaPresentaciones
                         ObjNegocio.InsertarRegistros(ObjEntidad);
                         MensajeConfirmacion("Registro insertado exitosamente");
                         Program.Evento = 0;
+
+                        N_InicioSesion InicioSesion = new N_InicioSesion();
+                        string Contrasena = InicioSesion.RetornarContrasena(txtCodigo.Text);
+
+                        // Enviar un correo con la contraseña para un nuevo usuario
+                        try
+                        {
+                            SmtpClient clientDetails = new SmtpClient();
+                            clientDetails.Port = 587;
+                            clientDetails.Host = "smtp.gmail.com";
+                            clientDetails.EnableSsl = true;
+                            clientDetails.DeliveryMethod = SmtpDeliveryMethod.Network;
+                            clientDetails.UseDefaultCredentials = false;
+                            clientDetails.Credentials = new NetworkCredential("denisomarcuyottito@gmail.com", "Tutoriasunsaac5");
+
+                            MailMessage mailDetails = new MailMessage();
+                            mailDetails.From = new MailAddress("denisomarcuyottito@gmail.com");
+                            mailDetails.To.Add(ObjEntidad.Email);
+                            mailDetails.Subject = "Contraseña del Sistema de Tutoría UNSAAC";
+                            mailDetails.IsBodyHtml = true;
+                            mailDetails.Body = "Tu contraseña es " + Contrasena;
+                            clientDetails.Send(mailDetails);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+
                         LimpiarCajas();
                         Close();
                     }
@@ -169,14 +208,6 @@ namespace CapaPresentaciones
         {
             Program.Evento = 0;
             Close();
-        }
-
-        private void btnEscuelas_Click(object sender, EventArgs e)
-        {
-            //P_Ciudades NuevoRegistro = new P_Ciudades();
-            //NuevoRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-            //NuevoRegistro.ShowDialog();
-            //NuevoRegistro.Dispose();
         }
 
         private void cxtCategoria_SelectionChangeCommitted(object sender, EventArgs e)

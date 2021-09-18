@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -29,14 +29,21 @@ namespace CapaPresentaciones
 
         private void CargarDatosUsuario()
         {
-            DataTable Datos = N_Estudiante.BuscarRegistros(Usuario);
+            DataTable Datos = N_Estudiante.BuscarRegistro(Usuario);
             object[] Fila = Datos.Rows[0].ItemArray;
 
-            byte[] Perfil = new byte[0];
-            Perfil = E_InicioSesion.Perfil;
-            MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
-
-            imgPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
+            if (E_InicioSesion.Perfil == null)
+            {
+                string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
+                imgPerfil.Image = Image.FromFile(fullImagePath);
+            }
+            else
+            {
+                byte[] Perfil = new byte[0];
+                Perfil = E_InicioSesion.Perfil;
+                MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
+                imgPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
+            }
             txtCodigo.Text = Fila[2].ToString();
             APaterno = Fila[3].ToString();
             AMaterno = Fila[4].ToString();
@@ -191,7 +198,12 @@ namespace CapaPresentaciones
 
         private void btnCambiarContraseña_Click(object sender, EventArgs e)
         {
-
+            P_CambiarContraseña NuevaContraseña = new P_CambiarContraseña {
+                Usuario = E_InicioSesion.Usuario,
+                Correo = E_InicioSesion.Usuario + "@unsaac.edu.pe"
+            };
+            NuevaContraseña.ShowDialog();
+            NuevaContraseña.Dispose();
         }
         #endregion
     }
