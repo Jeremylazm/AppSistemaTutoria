@@ -350,6 +350,18 @@ namespace CapaDatos
                     PerfilNuevo.Resize(20, 0);
                     Fila["Perfil2"] = PerfilNuevo.ToByteArray();
                 }
+
+                // Verificar si se concedio permiso al tutor para ver la informacion personal del estudiante
+                if (Fila["ConcederPermiso"].Equals("SÍ"))
+                {
+                    // Desencriptar la informacion personal del estudiante
+                    Fila["InformacionPersonal"] = VisibilidadIPersonal(Fila["InformacionPersonal"].ToString(), true);
+                }
+                else
+                {
+                    // Mostrar vacio la informacion personal del estudiante
+                    Fila["InformacionPersonal"] = "";
+                }
             }
 
             // Retornar la tabla de datos con los tutorados de un tutor con algun filtro
