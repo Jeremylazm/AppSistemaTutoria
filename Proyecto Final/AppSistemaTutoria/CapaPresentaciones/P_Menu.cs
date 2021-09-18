@@ -220,9 +220,24 @@ namespace CapaPresentaciones
                 Editar.Show();
                 Editar.BringToFront();
             }
-            else
+            else if(lblAcceso.Text == "Docente")
             {
                 P_EditarPerfilDocente Editar = new P_EditarPerfilDocente
+                {
+                    Usuario = E_InicioSesion.Usuario,
+                    TopLevel = false,
+                    Dock = DockStyle.Fill
+                };
+                Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
+
+                pnContenedor.Controls.Add(Editar);
+                pnContenedor.Tag = Editar;
+                Editar.Show();
+                Editar.BringToFront();
+            }
+            else
+            {
+                P_EditarPerfilDirector Editar = new P_EditarPerfilDirector
                 {
                     Usuario = E_InicioSesion.Usuario,
                     TopLevel = false,
