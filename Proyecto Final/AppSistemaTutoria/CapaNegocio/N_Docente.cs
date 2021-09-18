@@ -1,4 +1,4 @@
-﻿using System.Data;
+using System.Data;
 using CapaDatos;
 using CapaEntidades;
 
@@ -8,14 +8,39 @@ namespace CapaNegocios
     {
         readonly D_Docente ObjDocente = new D_Docente();
 
-        public static DataTable MostrarRegistros()
+        public static DataTable MostrarRegistros(string CodDocente)
         {
-            return new D_Docente().MostrarRegistros();
+            return new D_Docente().MostrarRegistros(CodDocente);
         }
 
-        public static DataTable BuscarRegistros(string Texto)
+        public static DataTable MostrarTutores(string CodDocente)
         {
-            return new D_Docente().BuscarRegistros(Texto);
+            return new D_Docente().MostrarTutores(CodDocente);
+        }
+
+        public static DataTable MostrarTutorados(string CodDocente)
+        {
+            return new D_Docente().MostrarTutorados(CodDocente);
+        }
+
+        public static DataTable BuscarRegistro(string CodDocente)
+        {
+            return new D_Docente().BuscarRegistro(CodDocente);
+        }
+
+        public static DataTable BuscarRegistros(string CodDocente, string Texto)
+        {
+            return new D_Docente().BuscarRegistros(CodDocente, Texto);
+        }
+
+        public static DataTable BuscarTutor(string CodDocente, string Texto)
+        {
+            return new D_Docente().BuscarTutor(CodDocente, Texto);
+        }
+
+        public static DataTable BuscarTutorados(string CodDocente, string Texto, int Filas)
+        {
+            return new D_Docente().BuscarTutorados(CodDocente, Texto, Filas);
         }
 
         public void InsertarRegistros(E_Docente Docente)

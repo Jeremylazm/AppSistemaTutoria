@@ -14,6 +14,6 @@
         public string Subcategoria { get; set; }
         public string Regimen { get; set; }
         public string CodEscuelaP { get; set; }
-        public string Estado { get; set; }
+        public string Horario { get; set; }
     }
 }

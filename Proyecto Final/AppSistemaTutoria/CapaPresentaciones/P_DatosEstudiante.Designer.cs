@@ -56,7 +56,6 @@
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.lblDireccion = new System.Windows.Forms.Label();
             this.cxtEscuela = new System.Windows.Forms.ComboBox();
-            this.btnEscuelas = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnLimpiar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnGuardar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.imgLogoUNSAAC = new Bunifu.Framework.UI.BunifuImageButton();
@@ -72,7 +71,6 @@
             this.btnRestablecerPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
             this.lblIPersonal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEscuelas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
             this.SuspendLayout();
@@ -84,7 +82,7 @@
             this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
             this.btnCerrar.ImageActive = null;
-            this.btnCerrar.Location = new System.Drawing.Point(382, 9);
+            this.btnCerrar.Location = new System.Drawing.Point(372, 9);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(24, 24);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -101,7 +99,7 @@
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(415, 40);
+            this.lblTitulo.Size = new System.Drawing.Size(405, 40);
             this.lblTitulo.TabIndex = 75;
             this.lblTitulo.Text = "Datos del Estudiante";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -252,7 +250,7 @@
             this.Separador10.BackColor = System.Drawing.Color.Transparent;
             this.Separador10.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador10.LineThickness = 1;
-            this.Separador10.Location = new System.Drawing.Point(138, 616);
+            this.Separador10.Location = new System.Drawing.Point(138, 600);
             this.Separador10.Name = "Separador10";
             this.Separador10.Size = new System.Drawing.Size(250, 10);
             this.Separador10.TabIndex = 101;
@@ -266,7 +264,7 @@
             this.txtIPersonal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtIPersonal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtIPersonal.Location = new System.Drawing.Point(138, 550);
+            this.txtIPersonal.Location = new System.Drawing.Point(138, 539);
             this.txtIPersonal.Multiline = true;
             this.txtIPersonal.Name = "txtIPersonal";
             this.txtIPersonal.Size = new System.Drawing.Size(250, 60);
@@ -378,28 +376,11 @@
             this.cxtEscuela.Size = new System.Drawing.Size(204, 27);
             this.cxtEscuela.TabIndex = 106;
             // 
-            // btnEscuelas
-            // 
-            this.btnEscuelas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEscuelas.BackColor = System.Drawing.Color.White;
-            this.btnEscuelas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEscuelas.Enabled = false;
-            this.btnEscuelas.Image = ((System.Drawing.Image)(resources.GetObject("btnEscuelas.Image")));
-            this.btnEscuelas.ImageActive = null;
-            this.btnEscuelas.Location = new System.Drawing.Point(348, 439);
-            this.btnEscuelas.Name = "btnEscuelas";
-            this.btnEscuelas.Size = new System.Drawing.Size(30, 30);
-            this.btnEscuelas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnEscuelas.TabIndex = 108;
-            this.btnEscuelas.TabStop = false;
-            this.btnEscuelas.Zoom = 10;
-            this.btnEscuelas.Click += new System.EventHandler(this.btnEscuelas_Click);
-            // 
             // btnLimpiar
             // 
             this.btnLimpiar.Active = true;
             this.btnLimpiar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnLimpiar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnLimpiar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnLimpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnLimpiar.BorderRadius = 7;
@@ -418,7 +399,7 @@
             this.btnLimpiar.IconVisible = true;
             this.btnLimpiar.IconZoom = 50D;
             this.btnLimpiar.IsTab = false;
-            this.btnLimpiar.Location = new System.Drawing.Point(207, 656);
+            this.btnLimpiar.Location = new System.Drawing.Point(202, 621);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnLimpiar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -436,7 +417,7 @@
             // 
             this.btnGuardar.Active = true;
             this.btnGuardar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnGuardar.BorderRadius = 7;
@@ -455,7 +436,7 @@
             this.btnGuardar.IconVisible = true;
             this.btnGuardar.IconZoom = 50D;
             this.btnGuardar.IsTab = false;
-            this.btnGuardar.Location = new System.Drawing.Point(75, 656);
+            this.btnGuardar.Location = new System.Drawing.Point(70, 621);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnGuardar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -476,7 +457,7 @@
             this.imgLogoUNSAAC.Cursor = System.Windows.Forms.Cursors.Hand;
             this.imgLogoUNSAAC.Image = ((System.Drawing.Image)(resources.GetObject("imgLogoUNSAAC.Image")));
             this.imgLogoUNSAAC.ImageActive = null;
-            this.imgLogoUNSAAC.Location = new System.Drawing.Point(19, 3);
+            this.imgLogoUNSAAC.Location = new System.Drawing.Point(9, 3);
             this.imgLogoUNSAAC.Name = "imgLogoUNSAAC";
             this.imgLogoUNSAAC.Size = new System.Drawing.Size(35, 35);
             this.imgLogoUNSAAC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -577,7 +558,7 @@
             this.BordeadoMenu.Location = new System.Drawing.Point(-1, 0);
             this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(5);
             this.BordeadoMenu.Name = "BordeadoMenu";
-            this.BordeadoMenu.Size = new System.Drawing.Size(415, 715);
+            this.BordeadoMenu.Size = new System.Drawing.Size(405, 681);
             this.BordeadoMenu.TabIndex = 118;
             this.BordeadoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -602,7 +583,7 @@
             // 
             this.btnSubirPerfil.Active = true;
             this.btnSubirPerfil.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnSubirPerfil.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnSubirPerfil.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSubirPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnSubirPerfil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSubirPerfil.BorderRadius = 7;
@@ -621,7 +602,7 @@
             this.btnSubirPerfil.IconVisible = true;
             this.btnSubirPerfil.IconZoom = 70D;
             this.btnSubirPerfil.IsTab = false;
-            this.btnSubirPerfil.Location = new System.Drawing.Point(236, 91);
+            this.btnSubirPerfil.Location = new System.Drawing.Point(231, 83);
             this.btnSubirPerfil.Name = "btnSubirPerfil";
             this.btnSubirPerfil.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnSubirPerfil.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -639,7 +620,7 @@
             // 
             this.btnRestablecerPerfil.Active = true;
             this.btnRestablecerPerfil.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnRestablecerPerfil.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnRestablecerPerfil.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnRestablecerPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnRestablecerPerfil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRestablecerPerfil.BorderRadius = 7;
@@ -658,7 +639,7 @@
             this.btnRestablecerPerfil.IconVisible = true;
             this.btnRestablecerPerfil.IconZoom = 70D;
             this.btnRestablecerPerfil.IsTab = false;
-            this.btnRestablecerPerfil.Location = new System.Drawing.Point(236, 169);
+            this.btnRestablecerPerfil.Location = new System.Drawing.Point(231, 161);
             this.btnRestablecerPerfil.Name = "btnRestablecerPerfil";
             this.btnRestablecerPerfil.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnRestablecerPerfil.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -677,7 +658,7 @@
             this.lblIPersonal.AutoSize = true;
             this.lblIPersonal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblIPersonal.Location = new System.Drawing.Point(17, 575);
+            this.lblIPersonal.Location = new System.Drawing.Point(17, 539);
             this.lblIPersonal.Name = "lblIPersonal";
             this.lblIPersonal.Size = new System.Drawing.Size(103, 19);
             this.lblIPersonal.TabIndex = 122;
@@ -688,7 +669,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(415, 711);
+            this.ClientSize = new System.Drawing.Size(405, 677);
             this.Controls.Add(this.lblIPersonal);
             this.Controls.Add(this.btnRestablecerPerfil);
             this.Controls.Add(this.btnSubirPerfil);
@@ -702,7 +683,6 @@
             this.Controls.Add(this.imgLogoUNSAAC);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.btnEscuelas);
             this.Controls.Add(this.cxtEscuela);
             this.Controls.Add(this.Separador10);
             this.Controls.Add(this.txtIPersonal);
@@ -734,7 +714,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Datos del Estudiante";
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEscuelas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).EndInit();
             this.ResumeLayout(false);
@@ -769,7 +748,6 @@
         private Bunifu.Framework.UI.BunifuSeparator Separador5;
         public System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Label lblDireccion;
-        private Bunifu.Framework.UI.BunifuImageButton btnEscuelas;
         private Bunifu.Framework.UI.BunifuFlatButton btnLimpiar;
         private Bunifu.Framework.UI.BunifuFlatButton btnGuardar;
         public System.Windows.Forms.ComboBox cxtEscuela;

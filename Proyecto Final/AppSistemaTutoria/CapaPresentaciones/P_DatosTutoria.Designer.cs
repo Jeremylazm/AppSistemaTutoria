@@ -55,7 +55,6 @@
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.lblDireccion = new System.Windows.Forms.Label();
             this.cxtCategoria = new System.Windows.Forms.ComboBox();
-            this.btnEscuelas = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnLimpiar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnGuardar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.imgLogoUNSAAC = new Bunifu.Framework.UI.BunifuImageButton();
@@ -76,7 +75,6 @@
             this.lblDominioEmail = new System.Windows.Forms.Label();
             this.BordeadoMenu = new Bunifu.Framework.UI.BunifuThinButton2();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEscuelas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
             this.SuspendLayout();
             // 
@@ -369,24 +367,9 @@
             this.cxtCategoria.Size = new System.Drawing.Size(204, 27);
             this.cxtCategoria.TabIndex = 106;
             // 
-            // btnEscuelas
-            // 
-            this.btnEscuelas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEscuelas.BackColor = System.Drawing.Color.White;
-            this.btnEscuelas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEscuelas.Enabled = false;
-            this.btnEscuelas.Image = ((System.Drawing.Image)(resources.GetObject("btnEscuelas.Image")));
-            this.btnEscuelas.ImageActive = null;
-            this.btnEscuelas.Location = new System.Drawing.Point(348, 373);
-            this.btnEscuelas.Name = "btnEscuelas";
-            this.btnEscuelas.Size = new System.Drawing.Size(30, 30);
-            this.btnEscuelas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnEscuelas.TabIndex = 108;
-            this.btnEscuelas.TabStop = false;
-            this.btnEscuelas.Zoom = 10;
-            // 
             // btnLimpiar
             // 
+            this.btnLimpiar.Active = true;
             this.btnLimpiar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnLimpiar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -422,6 +405,7 @@
             // 
             // btnGuardar
             // 
+            this.btnGuardar.Active = true;
             this.btnGuardar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -720,7 +704,6 @@
             this.Controls.Add(this.imgLogoUNSAAC);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.btnEscuelas);
             this.Controls.Add(this.cxtCategoria);
             this.Controls.Add(this.lblSubcategoria);
             this.Controls.Add(this.Separador8);
@@ -751,7 +734,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Datos del Estudiante";
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEscuelas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -784,7 +766,6 @@
         private Bunifu.Framework.UI.BunifuSeparator Separador6;
         public System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Label lblDireccion;
-        private Bunifu.Framework.UI.BunifuImageButton btnEscuelas;
         private Bunifu.Framework.UI.BunifuFlatButton btnLimpiar;
         private Bunifu.Framework.UI.BunifuFlatButton btnGuardar;
         public System.Windows.Forms.ComboBox cxtCategoria;

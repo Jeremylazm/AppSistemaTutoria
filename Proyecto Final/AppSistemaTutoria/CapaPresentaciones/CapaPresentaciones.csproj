@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>CapaPresentaciones</RootNamespace>
     <AssemblyName>CapaPresentaciones</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -135,10 +136,6 @@
     <Reference Include="Bunifu.UI.WinForms.Deprecated, Version=5.2.2.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
       <HintPath>..\packages\Bunifu.UI.WinForms.5.2.2\lib\net40\Bunifu.UI.WinForms.Deprecated.dll</HintPath>
     </Reference>
-    <Reference Include="Bunifu_UI_v1.5.3, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Bunifu_UI_v1.5.3.dll</HintPath>
-    </Reference>
     <Reference Include="CircularProgressBar, Version=2.8.0.16, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
       <HintPath>..\packages\CircularProgressBar.2.8.0.16\lib\net40\CircularProgressBar.dll</HintPath>
     </Reference>
@@ -148,8 +145,16 @@
     <Reference Include="Magick.NET.Core, Version=8.1.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
       <HintPath>..\packages\Magick.NET.Core.8.1.0\lib\net20\Magick.NET.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\MicrosoftOfficeCore.15.0.0\lib\net35\Office.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -181,6 +186,12 @@
     <Compile Include="P_Bienvenida.Designer.cs">
       <DependentUpon>P_Bienvenida.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_CambiarContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_CambiarContraseña.Designer.cs">
+      <DependentUpon>P_CambiarContraseña.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_DatosDocente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +222,12 @@
     <Compile Include="P_EditarPerfilEstudiante.Designer.cs">
       <DependentUpon>P_EditarPerfilEstudiante.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_InformacionTutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_InformacionTutor.Designer.cs">
+      <DependentUpon>P_InformacionTutor.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_InicioSesion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +239,12 @@
     </Compile>
     <Compile Include="P_Menu.Designer.cs">
       <DependentUpon>P_Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_RecuperarContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_RecuperarContraseña.Designer.cs">
+      <DependentUpon>P_RecuperarContraseña.cs</DependentUpon>
     </Compile>
     <Compile Include="P_TablaDocentes.cs">
       <SubType>Form</SubType>
@@ -241,6 +264,12 @@
     <Compile Include="P_TablaTutorados.Designer.cs">
       <DependentUpon>P_TablaTutorados.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_TablaTutores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_TablaTutores.Designer.cs">
+      <DependentUpon>P_TablaTutores.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_TablaTutorias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,9 +284,13 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="P_Bienvenida.resx">
       <DependentUpon>P_Bienvenida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_CambiarContraseña.resx">
+      <DependentUpon>P_CambiarContraseña.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_DatosDocente.resx">
       <DependentUpon>P_DatosDocente.cs</DependentUpon>
@@ -274,11 +307,17 @@
     <EmbeddedResource Include="P_EditarPerfilEstudiante.resx">
       <DependentUpon>P_EditarPerfilEstudiante.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="P_InformacionTutor.resx">
+      <DependentUpon>P_InformacionTutor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="P_InicioSesion.resx">
       <DependentUpon>P_InicioSesion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_Menu.resx">
       <DependentUpon>P_Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_RecuperarContraseña.resx">
+      <DependentUpon>P_RecuperarContraseña.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_TablaDocentes.resx">
       <DependentUpon>P_TablaDocentes.cs</DependentUpon>
@@ -288,6 +327,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="P_TablaTutorados.resx">
       <DependentUpon>P_TablaTutorados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_TablaTutores.resx">
+      <DependentUpon>P_TablaTutores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_TablaTutorias.resx">
       <DependentUpon>P_TablaTutorias.cs</DependentUpon>

@@ -42,7 +42,7 @@
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.lblDireccion = new System.Windows.Forms.Label();
             this.Separador3 = new Bunifu.Framework.UI.BunifuSeparator();
-            this.txtEstudiante = new System.Windows.Forms.TextBox();
+            this.txtDocente = new System.Windows.Forms.TextBox();
             this.lblEstudiante = new System.Windows.Forms.Label();
             this.Separador1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.txtCodigo = new System.Windows.Forms.TextBox();
@@ -58,7 +58,6 @@
             this.btnSubirPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnCambiarContraseña = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnGuardar = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.imgPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
             this.txtHorario = new System.Windows.Forms.TextBox();
             this.txtRegimen = new System.Windows.Forms.TextBox();
             this.Separador9 = new Bunifu.Framework.UI.BunifuSeparator();
@@ -72,6 +71,8 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.Separador4 = new Bunifu.Framework.UI.BunifuSeparator();
             this.lblEmail = new System.Windows.Forms.Label();
+            this.imgPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
+            this.BordeadoMenu = new Bunifu.Framework.UI.BunifuThinButton2();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
             this.SuspendLayout();
@@ -95,6 +96,7 @@
             this.btnCerrar.TabIndex = 74;
             this.btnCerrar.TabStop = false;
             this.btnCerrar.Zoom = 10;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // lblTitulo
             // 
@@ -227,19 +229,19 @@
             this.Separador3.Transparency = 255;
             this.Separador3.Vertical = false;
             // 
-            // txtEstudiante
+            // txtDocente
             // 
-            this.txtEstudiante.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtDocente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEstudiante.BackColor = System.Drawing.Color.White;
-            this.txtEstudiante.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtEstudiante.Enabled = false;
-            this.txtEstudiante.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEstudiante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtEstudiante.Location = new System.Drawing.Point(122, 117);
-            this.txtEstudiante.Name = "txtEstudiante";
-            this.txtEstudiante.Size = new System.Drawing.Size(280, 19);
-            this.txtEstudiante.TabIndex = 129;
+            this.txtDocente.BackColor = System.Drawing.Color.White;
+            this.txtDocente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDocente.Enabled = false;
+            this.txtDocente.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDocente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.txtDocente.Location = new System.Drawing.Point(122, 117);
+            this.txtDocente.Name = "txtDocente";
+            this.txtDocente.Size = new System.Drawing.Size(280, 19);
+            this.txtDocente.TabIndex = 129;
             // 
             // lblEstudiante
             // 
@@ -250,9 +252,9 @@
             this.lblEstudiante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lblEstudiante.Location = new System.Drawing.Point(34, 116);
             this.lblEstudiante.Name = "lblEstudiante";
-            this.lblEstudiante.Size = new System.Drawing.Size(85, 19);
+            this.lblEstudiante.Size = new System.Drawing.Size(70, 19);
             this.lblEstudiante.TabIndex = 128;
-            this.lblEstudiante.Text = "Estudiante:";
+            this.lblEstudiante.Text = "Docente:";
             // 
             // Separador1
             // 
@@ -348,9 +350,7 @@
             // 
             // gbxIProfesional
             // 
-            this.gbxIProfesional.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbxIProfesional.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.gbxIProfesional.AutoSize = true;
             this.gbxIProfesional.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxIProfesional.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -367,9 +367,7 @@
             this.BordeadoInformacion.ActiveFillColor = System.Drawing.Color.White;
             this.BordeadoInformacion.ActiveForecolor = System.Drawing.Color.White;
             this.BordeadoInformacion.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoInformacion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BordeadoInformacion.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.BordeadoInformacion.BackColor = System.Drawing.Color.White;
             this.BordeadoInformacion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoInformacion.BackgroundImage")));
             this.BordeadoInformacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -430,6 +428,7 @@
             // 
             // btnRestablecerPerfil
             // 
+            this.btnRestablecerPerfil.Active = true;
             this.btnRestablecerPerfil.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnRestablecerPerfil.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnRestablecerPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -462,9 +461,11 @@
             this.btnRestablecerPerfil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnRestablecerPerfil.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnRestablecerPerfil.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRestablecerPerfil.Click += new System.EventHandler(this.btnRestablecerPerfil_Click);
             // 
             // btnSubirPerfil
             // 
+            this.btnSubirPerfil.Active = true;
             this.btnSubirPerfil.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnSubirPerfil.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnSubirPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -497,9 +498,11 @@
             this.btnSubirPerfil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnSubirPerfil.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnSubirPerfil.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubirPerfil.Click += new System.EventHandler(this.btnSubirPerfil_Click);
             // 
             // btnCambiarContraseña
             // 
+            this.btnCambiarContraseña.Active = true;
             this.btnCambiarContraseña.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnCambiarContraseña.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnCambiarContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -536,6 +539,7 @@
             // 
             // btnGuardar
             // 
+            this.btnGuardar.Active = true;
             this.btnGuardar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -568,24 +572,7 @@
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnGuardar.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnGuardar.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // imgPerfil
-            // 
-            this.imgPerfil.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.imgPerfil.BackColor = System.Drawing.Color.White;
-            this.imgPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.imgPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.imgPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.imgPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.imgPerfil.BorderSize = 2;
-            this.imgPerfil.GradientAngle = 50F;
-            this.imgPerfil.Image = ((System.Drawing.Image)(resources.GetObject("imgPerfil.Image")));
-            this.imgPerfil.Location = new System.Drawing.Point(444, 61);
-            this.imgPerfil.Name = "imgPerfil";
-            this.imgPerfil.Size = new System.Drawing.Size(183, 183);
-            this.imgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgPerfil.TabIndex = 166;
-            this.imgPerfil.TabStop = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // txtHorario
             // 
@@ -602,9 +589,7 @@
             // 
             // txtRegimen
             // 
-            this.txtRegimen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRegimen.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtRegimen.BackColor = System.Drawing.Color.White;
             this.txtRegimen.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtRegimen.Enabled = false;
@@ -617,9 +602,7 @@
             // 
             // Separador9
             // 
-            this.Separador9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Separador9.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Separador9.BackColor = System.Drawing.Color.Transparent;
             this.Separador9.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador9.LineThickness = 1;
@@ -632,8 +615,7 @@
             // 
             // lblRegimen
             // 
-            this.lblRegimen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblRegimen.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblRegimen.AutoSize = true;
             this.lblRegimen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblRegimen.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -646,9 +628,7 @@
             // 
             // Separador8
             // 
-            this.Separador8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Separador8.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Separador8.BackColor = System.Drawing.Color.Transparent;
             this.Separador8.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador8.LineThickness = 1;
@@ -661,11 +641,10 @@
             // 
             // txtSubcategoria
             // 
-            this.txtSubcategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSubcategoria.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtSubcategoria.BackColor = System.Drawing.Color.White;
             this.txtSubcategoria.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSubcategoria.Enabled = false;
             this.txtSubcategoria.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSubcategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtSubcategoria.Location = new System.Drawing.Point(139, 343);
@@ -675,8 +654,7 @@
             // 
             // lblSubcategoria
             // 
-            this.lblSubcategoria.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblSubcategoria.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblSubcategoria.AutoSize = true;
             this.lblSubcategoria.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblSubcategoria.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -689,9 +667,7 @@
             // 
             // Separador7
             // 
-            this.Separador7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Separador7.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Separador7.BackColor = System.Drawing.Color.Transparent;
             this.Separador7.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador7.LineThickness = 1;
@@ -704,9 +680,7 @@
             // 
             // txtCategoria
             // 
-            this.txtCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCategoria.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtCategoria.BackColor = System.Drawing.Color.White;
             this.txtCategoria.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCategoria.Enabled = false;
@@ -719,8 +693,7 @@
             // 
             // lblCategoria
             // 
-            this.lblCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblCategoria.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblCategoria.AutoSize = true;
             this.lblCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblCategoria.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -772,6 +745,53 @@
             this.lblEmail.TabIndex = 187;
             this.lblEmail.Text = "Email:";
             // 
+            // imgPerfil
+            // 
+            this.imgPerfil.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.imgPerfil.BackColor = System.Drawing.Color.White;
+            this.imgPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.imgPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.imgPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.imgPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.imgPerfil.BorderSize = 2;
+            this.imgPerfil.GradientAngle = 50F;
+            this.imgPerfil.Image = ((System.Drawing.Image)(resources.GetObject("imgPerfil.Image")));
+            this.imgPerfil.Location = new System.Drawing.Point(444, 61);
+            this.imgPerfil.Name = "imgPerfil";
+            this.imgPerfil.Size = new System.Drawing.Size(183, 183);
+            this.imgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgPerfil.TabIndex = 166;
+            this.imgPerfil.TabStop = false;
+            // 
+            // BordeadoMenu
+            // 
+            this.BordeadoMenu.ActiveBorderThickness = 1;
+            this.BordeadoMenu.ActiveCornerRadius = 20;
+            this.BordeadoMenu.ActiveFillColor = System.Drawing.Color.White;
+            this.BordeadoMenu.ActiveForecolor = System.Drawing.Color.White;
+            this.BordeadoMenu.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BordeadoMenu.BackColor = System.Drawing.Color.White;
+            this.BordeadoMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoMenu.BackgroundImage")));
+            this.BordeadoMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BordeadoMenu.ButtonText = "Editar Perfil";
+            this.BordeadoMenu.Cursor = System.Windows.Forms.Cursors.Default;
+            this.BordeadoMenu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BordeadoMenu.ForeColor = System.Drawing.Color.White;
+            this.BordeadoMenu.IdleBorderThickness = 1;
+            this.BordeadoMenu.IdleCornerRadius = 20;
+            this.BordeadoMenu.IdleFillColor = System.Drawing.Color.White;
+            this.BordeadoMenu.IdleForecolor = System.Drawing.Color.White;
+            this.BordeadoMenu.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoMenu.Location = new System.Drawing.Point(-1, 0);
+            this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(5);
+            this.BordeadoMenu.Name = "BordeadoMenu";
+            this.BordeadoMenu.Size = new System.Drawing.Size(815, 452);
+            this.BordeadoMenu.TabIndex = 190;
+            this.BordeadoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // P_EditarPerfilDocente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -809,7 +829,7 @@
             this.Controls.Add(this.txtDireccion);
             this.Controls.Add(this.lblDireccion);
             this.Controls.Add(this.Separador3);
-            this.Controls.Add(this.txtEstudiante);
+            this.Controls.Add(this.txtDocente);
             this.Controls.Add(this.lblEstudiante);
             this.Controls.Add(this.Separador1);
             this.Controls.Add(this.txtCodigo);
@@ -819,10 +839,12 @@
             this.Controls.Add(this.BordeadoDatos);
             this.Controls.Add(this.BordeadoInformacion);
             this.Controls.Add(this.BordeadoHorario);
+            this.Controls.Add(this.BordeadoMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "P_EditarPerfilDocente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar Perfil de Docente";
+            this.Load += new System.EventHandler(this.P_EditarPerfilDocente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).EndInit();
             this.ResumeLayout(false);
@@ -844,7 +866,7 @@
         public System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Label lblDireccion;
         private Bunifu.Framework.UI.BunifuSeparator Separador3;
-        public System.Windows.Forms.TextBox txtEstudiante;
+        public System.Windows.Forms.TextBox txtDocente;
         private System.Windows.Forms.Label lblEstudiante;
         private Bunifu.Framework.UI.BunifuSeparator Separador1;
         public System.Windows.Forms.TextBox txtCodigo;
@@ -873,5 +895,6 @@
         public System.Windows.Forms.TextBox txtEmail;
         private Bunifu.Framework.UI.BunifuSeparator Separador4;
         private System.Windows.Forms.Label lblEmail;
+        private Bunifu.Framework.UI.BunifuThinButton2 BordeadoMenu;
     }
 }

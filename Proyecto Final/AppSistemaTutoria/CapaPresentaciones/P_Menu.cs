@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
@@ -42,11 +42,18 @@ namespace CapaPresentaciones
 
         private void CargarDatosUsuario()
         {
-            byte[] Perfil = new byte[0];
-            Perfil = E_InicioSesion.Perfil;
-            MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
-
-            imgPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
+            if (E_InicioSesion.Perfil == null)
+            {
+                string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
+                imgPerfil.Image = Image.FromFile(fullImagePath);
+            }
+            else
+            {
+                byte[] Perfil = new byte[0];
+                Perfil = E_InicioSesion.Perfil;
+                MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
+                imgPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
+            }
             lblDatos.Text = E_InicioSesion.Datos;
             lblAcceso.Text = E_InicioSesion.Acceso;
             lblUsuario.Text = E_InicioSesion.Usuario;
@@ -64,19 +71,36 @@ namespace CapaPresentaciones
 
         private void GestionarAcceso()
         {
-            if (Acceso == "Director de Escuela")
+            if ((Acceso == "Director de Escuela") || (Acceso == "Administrador"))
             {
-                btnDashboard.Visible = true;
                 btnTutorias.Visible = true;
-                btnEstudiantes.Visible = true;
+                btnTutorados.Visible = true;
                 btnDocentes.Visible = true;
+                btnTutores.Visible = true;
+                btnEstudiantes.Visible = true;
+                btnInformeTutorias.Visible = true;
+                btnMiTutor.Visible = false;
             }
-            else if ((Acceso == "Docente") || (Acceso == "Estudiante"))
+            else if (Acceso == "Docente")
             {
-                btnDashboard.Visible = true;
                 btnTutorias.Visible = true;
-                btnEstudiantes.Visible = false;
+                btnTutorados.Visible = true;
                 btnDocentes.Visible = false;
+                btnTutores.Visible = false;
+                btnEstudiantes.Visible = false;
+                btnInformeTutorias.Visible = false;
+                btnMiTutor.Visible = false;
+            }
+            else if (Acceso == "Estudiante")
+            {
+                btnTutorias.Visible = false;
+                btnTutorados.Visible = false;
+                btnDocentes.Visible = false;
+                btnTutores.Visible = false;
+                btnEstudiantes.Visible = false;
+                btnInformeTutorias.Visible = false;
+                btnMiTutor.Visible = true;
+                separador.Visible = false;
             }
             else
             {
@@ -170,26 +194,6 @@ namespace CapaPresentaciones
             }
         }
 
-        private void btnDashboard_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnTutorias_Click(object sender, EventArgs e)
-        {
-            AbrirFormularios<P_TablaTutorias>();
-        }
-
-        private void btnEstudiantes_Click(object sender, EventArgs e)
-        {
-            AbrirFormularios<P_TablaEstudiantes>();
-        }
-
-        private void btnDocentes_Click(object sender, EventArgs e)
-        {
-            AbrirFormularios<P_TablaDocentes>();
-        }
-
         private void btnEditarPerfil_Click(object sender, EventArgs e)
         {
             if (lblAcceso.Text == "Estudiante")
@@ -200,7 +204,6 @@ namespace CapaPresentaciones
                     TopLevel = false,
                     Dock = DockStyle.Fill
                 };
-                //Editar.FormClosed += new FormClosedEventHandler(ActualizarDatos);
                 Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
 
                 pnContenedor.Controls.Add(Editar);
@@ -210,13 +213,57 @@ namespace CapaPresentaciones
             }
             else
             {
-                AbrirFormularios<P_EditarPerfilDocente>();
+                P_EditarPerfilDocente Editar = new P_EditarPerfilDocente
+                {
+                    Usuario = E_InicioSesion.Usuario,
+                    TopLevel = false,
+                    Dock = DockStyle.Fill
+                };
+                Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
+
+                pnContenedor.Controls.Add(Editar);
+                pnContenedor.Tag = Editar;
+                Editar.Show();
+                Editar.BringToFront();
             }
+        }
+
+        private void btnTutorias_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios<P_TablaTutorias>();
         }
 
         private void btnTutorados_Click(object sender, EventArgs e)
         {
             AbrirFormularios<P_TablaTutorados>();
+        }
+
+        private void btnDocentes_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios<P_TablaDocentes>();
+        }
+
+        private void btnEstudiantes_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios<P_TablaEstudiantes>();
+        }
+
+        /*
+        private void btnInformeTutorias_Click(object sender, EventArgs e)
+        {
+            //AbrirFormularios<P_InformeTutorias>();
+        }
+        */
+
+        private void btnTutores_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios<P_TablaTutores>();
+        }
+
+        private void btnMiTutor_Click(object sender, EventArgs e)
+        {
+            P_InformacionTutor Editar = new P_InformacionTutor(E_InicioSesion.Usuario);
+            Editar.Show();
         }
 
         private void P_Menu_Load(object sender, EventArgs e)
