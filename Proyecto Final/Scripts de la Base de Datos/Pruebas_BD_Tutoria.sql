@@ -81,9 +81,9 @@ EXEC DBO.spuInsertarEstudiante NULL,'219025','ARCE','CRESPO','EVA','219025@unsaa
 GO
 
 -- Usuarios: IdUsuario: Código, Contraseña: Codigo
-EXEC DBO.spuInsertarUsuario NULL,'ADMIN','ADMIN1234','Administrador','ADMINISTRADOR'
-EXEC DBO.spuInsertarDocente NULL,'DEPIN','ACURIO','USCA','NILA ZONIA','17453@unsaac.edu.pe','AV. COLINA 40','951235879','NOMBRADO','PRINCIPAL','DEDICACIÓN EXCLUSIVA','IN','DISPONIBLE'
-UPDATE TUsuario SET Acceso = 'Director de Escuela' WHERE Usuario = 'DEPIN'
+EXEC DBO.spuInsertarUsuario NULL,'ADMI','ADMI1234','Administrador','ADMINISTRADOR'
+EXEC DBO.spuInsertarDocente NULL,'DEIN','ACURIO','USCA','NILA ZONIA','17453@unsaac.edu.pe','AV. COLINA 40','951235879','NOMBRADO','PRINCIPAL','DEDICACIÓN EXCLUSIVA','IN','DISPONIBLE'
+UPDATE TUsuario SET Acceso = 'Director de Escuela' WHERE Usuario = 'DEIN'
 GO
 
 -- Tutoria:
@@ -117,6 +117,38 @@ EXEC DBO.spuInsertarTutoria '','18435','203022'
 EXEC DBO.spuInsertarTutoria '','18435','202453'
 EXEC DBO.spuInsertarTutoria '','18435','213404'
 EXEC DBO.spuInsertarTutoria '','18435','219025'
+GO
+
+EXEC DBO.spuAsignarTutor '170115','12342'
+EXEC DBO.spuAsignarTutor '170225','12342'
+EXEC DBO.spuAsignarTutor '171347','12342'
+EXEC DBO.spuAsignarTutor '170231','15313'
+EXEC DBO.spuAsignarTutor '171121','15313'
+EXEC DBO.spuAsignarTutor '170335','15313'
+EXEC DBO.spuAsignarTutor '170255','15313'
+EXEC DBO.spuAsignarTutor '181371','74224'
+EXEC DBO.spuAsignarTutor '180219','74224'
+EXEC DBO.spuAsignarTutor '181227','74224'
+EXEC DBO.spuAsignarTutor '180116','74224'
+EXEC DBO.spuAsignarTutor '180277','74224'
+EXEC DBO.spuAsignarTutor '181197','54323'
+EXEC DBO.spuAsignarTutor '180919','54323'
+EXEC DBO.spuAsignarTutor '191447','54323'
+EXEC DBO.spuAsignarTutor '190366','14235'
+EXEC DBO.spuAsignarTutor '190788','14235'
+EXEC DBO.spuAsignarTutor '191779','14235'
+EXEC DBO.spuAsignarTutor '190998','14235'
+EXEC DBO.spuAsignarTutor '191876','14235'
+EXEC DBO.spuAsignarTutor '193402','14235'
+EXEC DBO.spuAsignarTutor '203413','14235'
+EXEC DBO.spuAsignarTutor '202700','18435'
+EXEC DBO.spuAsignarTutor '208025','18435'
+EXEC DBO.spuAsignarTutor '203456','18435'
+EXEC DBO.spuAsignarTutor '206543','18435'
+EXEC DBO.spuAsignarTutor '203022','18435'
+EXEC DBO.spuAsignarTutor '202453','18435'
+EXEC DBO.spuAsignarTutor '213404','18435'
+EXEC DBO.spuAsignarTutor '219025','18435'
 GO
 
 -- Ficha de tutoria:

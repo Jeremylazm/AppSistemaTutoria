@@ -151,7 +151,7 @@ namespace CapaDatos
                 if (Fila["Perfil2"].GetType() == Type.GetType("System.DBNull"))
                 {
                     // Mostrar una imgen por defecto para el docente
-                    string RutaImagen = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
+                    string RutaImagen = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
                     using (MemoryStream MemoriaPerfil = new MemoryStream())
                     {
                         Image.FromFile(RutaImagen).Save(MemoriaPerfil, ImageFormat.Bmp);
@@ -336,7 +336,7 @@ namespace CapaDatos
                 if (Fila["Perfil2"].GetType() == Type.GetType("System.DBNull"))
                 {
                     // Mostrar una imgen por defecto para el docente
-                    string RutaImagen = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
+                    string RutaImagen = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
                     using (MemoryStream MemoriaPerfil = new MemoryStream())
                     {
                         Image.FromFile(RutaImagen).Save(MemoriaPerfil, ImageFormat.Bmp);
