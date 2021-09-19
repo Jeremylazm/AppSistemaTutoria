@@ -111,6 +111,7 @@ EXEC DBO.spuInsertarUsuario NULL,'16200','16200','Docente','SONCCO ALVAREZ JOSE 
 EXEC DBO.spuInsertarUsuario NULL,'17453','17453','Director de Escuela','ACURIO USCA NILA ZONIA'
 GO
 
+
 -- Tutoria:
 --INSERT INTO TTutoria VALUES('T0001', '00000', '182916')
 --INSERT INTO TTutoria VALUES('T0002', '00000', '180116')
