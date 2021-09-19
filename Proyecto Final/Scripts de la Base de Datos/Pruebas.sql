@@ -112,7 +112,7 @@ EXEC DBO.spuInsertarUsuario NULL,'17453','17453','Director de Escuela','ACURIO U
 GO
 
 -- Tutoria:
---INSERT INTO TTutoria VALUES('T0001', '00000', '182916')
+--INSERT INTO TTutoria VALUES('T0001', '16200', '213404')
 --INSERT INTO TTutoria VALUES('T0002', '00000', '180116')
 --INSERT INTO TTutoria VALUES('T0003', '00000', '180277')
 --INSERT INTO TTutoria VALUES('T0004', '00000', '181197')
@@ -128,7 +128,7 @@ GO
 GO
 
 -- Ficha de tutoria:
-
+INSERT INTO TFichaTutoria('T0001','2020/02/05','PERSONAL','Descripcion 1','Referencia 1','Observacion 1')
 --DELETE TTutoria
 
 SELECT * FROM TEscuela_Profesional
@@ -137,4 +137,5 @@ SELECT * FROM TDocente
 SELECT * FROM TUsuario
 SELECT * FROM TTutoria
 SELECT * FROM TFichaTutoria
+SELECT * FROM TEstudiante
 SELECT * FROM Historial

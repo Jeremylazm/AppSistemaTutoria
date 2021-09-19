@@ -154,6 +154,7 @@ CREATE TABLE TTutoria
 GO
 
 /* *************************** TABLA FICHA DE TUTOR�A *************************** */
+
 IF EXISTS (SELECT * 
 				FROM SYSOBJECTS
 				WHERE NAME = 'TFichaTutoria')
@@ -162,7 +163,9 @@ GO
 CREATE TABLE TFichaTutoria
 (
 	-- Lista de atributos
+	CodFichaTutoria int identity(1,1),
 	CodTutoria tyCodTutoria,
+	
 	Fecha DATETIME NOT NULL,
 	Dimension VARCHAR(15) DEFAULT 'ACADÉMICA' CHECK (Dimension IN ('ACADÉMICA',
 																   'PERSONAL',
@@ -172,6 +175,8 @@ CREATE TABLE TFichaTutoria
 	Observaciones VARCHAR(100),
 
 	-- Determinar las claves
+	-- Definir la clave primaria
+	PRIMARY KEY(CodFichaTutoria),
 	CONSTRAINT FK_CodTutoria 
 		FOREIGN KEY (CodTutoria)
 		REFERENCES TTutoria
@@ -874,14 +879,13 @@ CREATE PROCEDURE spuMostrarTutorias
 AS
 BEGIN
 	-- Mostrar la tabla de TTutoria
-	SELECT T.CodTutoria, T.CodDocente, Docente = (D.APaterno + ' ' + 
-												  D.AMaterno + ', ' + 
-												  D.Nombre),
+	SELECT T.CodTutoria, 
 		   T.CodEstudiante, Estudiante = (E.APaterno + ' ' + 
 										  E.AMaterno + ', ' + 
-										  E.Nombre)
-		FROM (TTutoria T INNER JOIN TDocente D ON
-			 T.CodDocente = D.CodDocente) INNER JOIN
+										  E.Nombre),
+										  F.Descripcion,E.CodEscuelaP,E.Telefono,F.Dimension,F.Referencia,F.Observaciones,F.Fecha
+		FROM (TTutoria T INNER JOIN TFichaTutoria F ON
+			 T.CodTutoria = F.CodTutoria) INNER JOIN
 			 TEstudiante E ON T.CodEstudiante = E.CodEstudiante
 END;
 GO
