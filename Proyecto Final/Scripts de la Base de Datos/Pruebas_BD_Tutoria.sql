@@ -1,17 +1,6 @@
 USE db_a7878d_BDSistemaTutoria
 GO
 
---UPDATE TEscuela_Profesional SET CodEscuelaP = 'IPOL' WHERE CodEscuelaP = 'INEO'
-
---DELETE FROM TEscuela_Profesional
---DELETE FROM TEstudiante
-
---INSERT INTO TTutoria VALUES('T0001', '18291', '123456');
---INSERT INTO TTutoria VALUES('T0002', '09099', '182916');
---INSERT INTO TTutoria VALUES('T0003', '09099', '123456');
-
---UPDATE TUsuario SET Acceso = 'Director de Escuela' WHERE Usuario = '182916'
-
 /* INSERTAR DATOS */
 
 -- Escuela Profesional
@@ -92,6 +81,7 @@ EXEC DBO.spuInsertarEstudiante NULL,'219025','ARCE','CRESPO','EVA','219025@unsaa
 GO
 
 -- Usuarios: IdUsuario: Código, Contraseña: Codigo
+EXEC DBO.spuInsertarUsuario NULL,'ADMIN','ADMIN1234','Administrador','ADMINISTRADOR'
 EXEC DBO.spuInsertarDocente NULL,'DEPIN','ACURIO','USCA','NILA ZONIA','17453@unsaac.edu.pe','AV. COLINA 40','951235879','NOMBRADO','PRINCIPAL','DEDICACIÓN EXCLUSIVA','IN','DISPONIBLE'
 UPDATE TUsuario SET Acceso = 'Director de Escuela' WHERE Usuario = 'DEPIN'
 GO
@@ -131,8 +121,7 @@ GO
 
 -- Ficha de tutoria:
 
---DELETE TTutoria
-
+-- Mostrar tablas
 SELECT * FROM TEscuela_Profesional
 SELECT * FROM TEstudiante
 SELECT * FROM TDocente
