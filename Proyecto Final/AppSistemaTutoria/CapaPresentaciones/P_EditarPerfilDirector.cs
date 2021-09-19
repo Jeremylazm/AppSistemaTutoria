@@ -163,7 +163,12 @@ namespace CapaPresentaciones
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            Close();
+            //Warning si desea cerrar el formulario sin guardar cambias
+            string msg = "¿Está seguro que desea cerrar?";
+            string titulo = "Cerrando formulario";
+            var result = MessageBox.Show(msg, titulo, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //Si le da al boton si, cerrar formulario
+            if (result == DialogResult.Yes) Close();
         }
 
         private void btnCambiarContraseña_Click(object sender, EventArgs e)
