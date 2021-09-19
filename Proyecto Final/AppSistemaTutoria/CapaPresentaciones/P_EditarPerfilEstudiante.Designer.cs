@@ -509,7 +509,7 @@
             // 
             // btnRestablecerPerfil
             // 
-            //this.btnRestablecerPerfil.Active = true;
+            this.btnRestablecerPerfil.Active = true;
             this.btnRestablecerPerfil.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnRestablecerPerfil.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnRestablecerPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -546,6 +546,7 @@
             // 
             // btnSubirPerfil
             // 
+            this.btnSubirPerfil.Active = true;
             this.btnSubirPerfil.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnSubirPerfil.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnSubirPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -621,7 +622,7 @@
             // 
             // btnCambiarContraseña
             // 
-            //this.btnCambiarContraseña.Active = true;
+            this.btnCambiarContraseña.Active = true;
             this.btnCambiarContraseña.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnCambiarContraseña.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnCambiarContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -658,6 +659,7 @@
             // 
             // btnGuardar
             // 
+            this.btnGuardar.Active = true;
             this.btnGuardar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -745,6 +747,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtIPersonal.BackColor = System.Drawing.Color.White;
             this.txtIPersonal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtIPersonal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtIPersonal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtIPersonal.Location = new System.Drawing.Point(34, 349);
