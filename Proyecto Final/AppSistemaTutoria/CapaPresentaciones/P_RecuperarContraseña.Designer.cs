@@ -181,7 +181,8 @@ namespace CapaPresentaciones
             this.txtEmail.Location = new System.Drawing.Point(202, 121);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(96, 19);
-            this.txtEmail.TabIndex = 129;
+            this.txtEmail.TabIndex = 0;
+            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
             // imgContraseña
             // 

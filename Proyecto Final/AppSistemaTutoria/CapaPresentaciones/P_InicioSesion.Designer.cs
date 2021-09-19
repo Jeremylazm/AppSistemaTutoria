@@ -64,6 +64,7 @@
             this.txtContraseña.Size = new System.Drawing.Size(191, 19);
             this.txtContraseña.TabIndex = 1;
             this.txtContraseña.UseSystemPasswordChar = true;
+            this.txtContraseña.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContraseña_KeyPress);
             // 
             // txtUsuario
             // 
@@ -268,7 +269,7 @@
             this.lblRecuperarContraseña.Location = new System.Drawing.Point(193, 226);
             this.lblRecuperarContraseña.Name = "lblRecuperarContraseña";
             this.lblRecuperarContraseña.Size = new System.Drawing.Size(183, 19);
-            this.lblRecuperarContraseña.TabIndex = 110;
+            this.lblRecuperarContraseña.TabIndex = 3;
             this.lblRecuperarContraseña.TabStop = true;
             this.lblRecuperarContraseña.Text = "¿Olvidaste tu contraseña?";
             this.lblRecuperarContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

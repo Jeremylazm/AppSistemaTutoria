@@ -27,10 +27,10 @@ namespace CapaPresentaciones
             Close();
         }
 
-        private void btnRecuperar_Click(object sender, EventArgs e)
+        void Recuperar(string Email, string Dominio)
         {
             N_InicioSesion InicioSesion = new N_InicioSesion();
-            string Contrasena = InicioSesion.RetornarContrasena(txtEmail.Text);
+            string Contrasena = InicioSesion.RetornarContrasena(Email);
 
             // Enviar un correo con la contraseña del usuario
             try
@@ -45,7 +45,7 @@ namespace CapaPresentaciones
 
                 MailMessage mailDetails = new MailMessage();
                 mailDetails.From = new MailAddress("denisomarcuyottito@gmail.com");
-                mailDetails.To.Add(txtEmail.Text + lblDominioEmail.Text);
+                mailDetails.To.Add(Email + Dominio);
                 mailDetails.Subject = "Recuperación de contraseña";
                 mailDetails.IsBodyHtml = true;
                 mailDetails.Body = "Tu contraseña es " + Contrasena;
@@ -55,6 +55,17 @@ namespace CapaPresentaciones
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnRecuperar_Click(object sender, EventArgs e)
+        {
+            Recuperar(txtEmail.Text, lblDominioEmail.Text);
+        }
+
+        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+                Recuperar(txtEmail.Text, lblDominioEmail.Text);
         }
     }
 }
