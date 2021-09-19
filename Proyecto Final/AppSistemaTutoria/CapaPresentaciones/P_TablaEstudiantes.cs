@@ -1,10 +1,12 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
 using System.IO;
 using System.Drawing.Drawing2D;
+using System.Net.Mail;
+using System.Net;
 
 namespace CapaPresentaciones
 {
@@ -35,6 +37,8 @@ namespace CapaPresentaciones
             dgvTabla.Columns[4].Visible = false;
             dgvTabla.Columns[5].Visible = false;
             dgvTabla.Columns[10].Visible = false;
+            dgvTabla.Columns[15].Visible = false;
+            dgvTabla.Columns[16].Visible = false;
 
             dgvTabla.Columns[1].HeaderText = "";
             dgvTabla.Columns[2].HeaderText = "Cod. Estudiante";
@@ -45,18 +49,18 @@ namespace CapaPresentaciones
             dgvTabla.Columns[11].HeaderText = "Escuela Profesional";
             dgvTabla.Columns[12].HeaderText = "Persona de Ref.";
             dgvTabla.Columns[13].HeaderText = "Teléfono de Ref.";
-            dgvTabla.Columns[14].HeaderText = "Informacion Personal";
+            dgvTabla.Columns[14].HeaderText = "Información Personal";
         }
 
         public void MostrarRegistros()
         {
-            dgvTabla.DataSource = N_Estudiante.MostrarRegistros();
+            dgvTabla.DataSource = N_Estudiante.MostrarRegistros(E_InicioSesion.Usuario);
             AccionesTabla();
         }
 
         public void BuscarRegistros()
         {
-            dgvTabla.DataSource = N_Estudiante.BuscarRegistros(txtBuscar.Text);
+            dgvTabla.DataSource = N_Estudiante.BuscarRegistros(E_InicioSesion.Usuario, txtBuscar.Text);
         }
 
         private void ActualizarDatos(object sender, FormClosedEventArgs e)
@@ -138,11 +142,20 @@ namespace CapaPresentaciones
             {
                 Program.Evento = 1;
 
-                byte[] Perfil = new byte[0];
-                Perfil = (byte[])dgvTabla.CurrentRow.Cells[0].Value;
-                MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
+                if (dgvTabla.CurrentRow.Cells[0].Value.GetType() == Type.GetType("System.DBNull"))
+                {
+                    string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
+                    EditarRegistro.imgPerfil.Image = Image.FromFile(fullImagePath);
+                }
+                else
+                {
+                    byte[] Perfil = new byte[0];
+                    Perfil = (byte[])dgvTabla.CurrentRow.Cells[0].Value;
+                    MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
+                    EditarRegistro.imgPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
+                    MemoriaPerfil = null;
+                }
 
-                EditarRegistro.imgPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
                 EditarRegistro.txtCodigo.Text = dgvTabla.CurrentRow.Cells[2].Value.ToString();
                 EditarRegistro.txtAPaterno.Text = dgvTabla.CurrentRow.Cells[3].Value.ToString();
                 EditarRegistro.txtAMaterno.Text = dgvTabla.CurrentRow.Cells[4].Value.ToString();
@@ -152,9 +165,7 @@ namespace CapaPresentaciones
                 EditarRegistro.cxtEscuela.SelectedValue = dgvTabla.CurrentRow.Cells[10].Value.ToString();
                 EditarRegistro.txtPReferencia.Text = dgvTabla.CurrentRow.Cells[12].Value.ToString();
                 EditarRegistro.txtTReferencia.Text = dgvTabla.CurrentRow.Cells[13].Value.ToString();
-                EditarRegistro.txtIPersonal.Text = dgvTabla.CurrentRow.Cells[14].Value.ToString();
-                // EditarRegistro.txtEMental.Text = dgvTabla.CurrentRow.Cells[15].Value.ToString();
-                MemoriaPerfil = null;
+                EditarRegistro.txtIPersonal.Text = dgvTabla.CurrentRow.Cells[14].Value.ToString();                
 
                 EditarRegistro.ShowDialog();
             }
@@ -213,3 +224,4 @@ namespace CapaPresentaciones
         }
     }
 }
+

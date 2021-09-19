@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 using CapaEntidades;
@@ -35,6 +35,8 @@ namespace CapaPresentaciones
             dgvTabla.Columns[4].Visible = false;
             dgvTabla.Columns[5].Visible = false;
             dgvTabla.Columns[10].Visible = false;
+            dgvTabla.Columns[15].Visible = false;
+            dgvTabla.Columns[16].Visible = false;
 
             dgvTabla.Columns[1].HeaderText = "";
             dgvTabla.Columns[2].HeaderText = "Cod. Estudiante";
@@ -45,19 +47,18 @@ namespace CapaPresentaciones
             dgvTabla.Columns[11].HeaderText = "Escuela Profesional";
             dgvTabla.Columns[12].HeaderText = "Persona de Ref.";
             dgvTabla.Columns[13].HeaderText = "Teléfono de Ref.";
-            dgvTabla.Columns[14].HeaderText = "Estado Físico";
-            dgvTabla.Columns[15].HeaderText = "Estado Mental";
+            dgvTabla.Columns[14].HeaderText = "Información Personal";
         }
 
         public void MostrarRegistros()
         {
-            dgvTabla.DataSource = N_Estudiante.MostrarTutorados(E_InicioSesion.Usuario);
+            dgvTabla.DataSource = N_Docente.MostrarTutorados(E_InicioSesion.Usuario);
             AccionesTabla();
         }
 
         public void BuscarRegistros()
         {
-            dgvTabla.DataSource = N_Estudiante.BuscarTutorados(E_InicioSesion.Usuario, txtBuscar.Text);
+            dgvTabla.DataSource = N_Docente.BuscarTutorados(E_InicioSesion.Usuario, txtBuscar.Text, 1000000);
         }
 
         private void ActualizarDatos(object sender, FormClosedEventArgs e)
@@ -91,11 +92,6 @@ namespace CapaPresentaciones
         private void P_TablaTutorados_Load(object sender, EventArgs e)
         {
             MostrarRegistros();
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

@@ -40,7 +40,7 @@ namespace CapaPresentaciones
             this.lblBuscar = new System.Windows.Forms.Label();
             this.Separador1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.btnAgregar = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnNuevaSesion = new Bunifu.Framework.UI.BunifuFlatButton();
             this.dgvTabla = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTabla)).BeginInit();
@@ -148,41 +148,40 @@ namespace CapaPresentaciones
             this.txtBuscar.TabIndex = 76;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
-            // btnAgregar
+            // btnNuevaSesion
             // 
-            this.btnAgregar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAgregar.BorderRadius = 7;
-            this.btnAgregar.ButtonText = "Nueva Sesión";
-            this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAgregar.DisabledColor = System.Drawing.Color.Gray;
-            this.btnAgregar.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnAgregar.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Iconimage")));
-            this.btnAgregar.Iconimage_right = null;
-            this.btnAgregar.Iconimage_right_Selected = null;
-            this.btnAgregar.Iconimage_Selected = null;
-            this.btnAgregar.IconMarginLeft = 0;
-            this.btnAgregar.IconMarginRight = 0;
-            this.btnAgregar.IconRightVisible = true;
-            this.btnAgregar.IconRightZoom = 0D;
-            this.btnAgregar.IconVisible = true;
-            this.btnAgregar.IconZoom = 50D;
-            this.btnAgregar.IsTab = false;
-            this.btnAgregar.Location = new System.Drawing.Point(642, 51);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnAgregar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
-            this.btnAgregar.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnAgregar.selected = true;
-            this.btnAgregar.Size = new System.Drawing.Size(161, 40);
-            this.btnAgregar.TabIndex = 78;
-            this.btnAgregar.Text = "Nueva Sesión";
-            this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnAgregar.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnAgregar.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnNuevaSesion.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnNuevaSesion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNuevaSesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnNuevaSesion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnNuevaSesion.BorderRadius = 7;
+            this.btnNuevaSesion.ButtonText = "Nueva Sesión";
+            this.btnNuevaSesion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNuevaSesion.DisabledColor = System.Drawing.Color.Gray;
+            this.btnNuevaSesion.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnNuevaSesion.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnNuevaSesion.Iconimage")));
+            this.btnNuevaSesion.Iconimage_right = null;
+            this.btnNuevaSesion.Iconimage_right_Selected = null;
+            this.btnNuevaSesion.Iconimage_Selected = null;
+            this.btnNuevaSesion.IconMarginLeft = 0;
+            this.btnNuevaSesion.IconMarginRight = 0;
+            this.btnNuevaSesion.IconRightVisible = true;
+            this.btnNuevaSesion.IconRightZoom = 0D;
+            this.btnNuevaSesion.IconVisible = true;
+            this.btnNuevaSesion.IconZoom = 50D;
+            this.btnNuevaSesion.IsTab = false;
+            this.btnNuevaSesion.Location = new System.Drawing.Point(642, 51);
+            this.btnNuevaSesion.Name = "btnNuevaSesion";
+            this.btnNuevaSesion.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnNuevaSesion.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
+            this.btnNuevaSesion.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnNuevaSesion.selected = true;
+            this.btnNuevaSesion.Size = new System.Drawing.Size(161, 40);
+            this.btnNuevaSesion.TabIndex = 78;
+            this.btnNuevaSesion.Text = "Nueva Sesión";
+            this.btnNuevaSesion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnNuevaSesion.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnNuevaSesion.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // dgvTabla
             // 
@@ -232,7 +231,7 @@ namespace CapaPresentaciones
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(815, 448);
             this.Controls.Add(this.dgvTabla);
-            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.btnNuevaSesion);
             this.Controls.Add(this.Separador1);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.lblBuscar);
@@ -260,7 +259,7 @@ namespace CapaPresentaciones
         private System.Windows.Forms.Label lblBuscar;
         private Bunifu.Framework.UI.BunifuSeparator Separador1;
         public System.Windows.Forms.TextBox txtBuscar;
-        private Bunifu.Framework.UI.BunifuFlatButton btnAgregar;
+        private Bunifu.Framework.UI.BunifuFlatButton btnNuevaSesion;
         private System.Windows.Forms.DataGridView dgvTabla;
     }
 }
