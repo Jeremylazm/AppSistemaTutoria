@@ -52,9 +52,17 @@ namespace CapaPresentaciones
             {
                 if (Contraseña != "")
                 {
+                    // Patrones de usuario de estudiante o docente
                     Regex PatronCodigo1 = new Regex(@"\A[0-9]{5}\Z");
                     Regex PatronCodigo2 = new Regex(@"\A[0-9]{6}\Z");
-                    if (PatronCodigo1.IsMatch(Usuario) || PatronCodigo2.IsMatch(Usuario))
+
+                    // Patron de usuario de administrador
+                    Regex PatronCodigo3 = new Regex(@"\A(AD)[A-Z]{2}\Z");
+
+                    // Patrón de usuario de director de escuela
+                    Regex PatronCodigo4 = new Regex(@"\A(DE)[A-Z]{2}\Z");
+
+                    if (PatronCodigo1.IsMatch(Usuario) || PatronCodigo2.IsMatch(Usuario) || PatronCodigo3.IsMatch(Usuario) || PatronCodigo4.IsMatch(Usuario))
                     {
                         var ValidarDatos = false;
                         if (Test == false)
