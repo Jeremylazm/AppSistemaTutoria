@@ -1,12 +1,21 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Windows.Forms;
 using CapaEntidades;
-
+using ImageMagick;
 namespace CapaDatos
 {
     public class D_FichaTutoria
     {
+        readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
+
+        
         public string InsertarFichaTutoria(E_FichaTutoria FichaTutoria, ref SqlConnection Conexion, ref SqlTransaction Transaccion)
         {
             string Respuesta;
