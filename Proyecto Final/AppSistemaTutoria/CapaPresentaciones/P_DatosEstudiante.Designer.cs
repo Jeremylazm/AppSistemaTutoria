@@ -129,7 +129,7 @@
             this.txtCodigo.Location = new System.Drawing.Point(138, 252);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(204, 19);
-            this.txtCodigo.TabIndex = 79;
+            this.txtCodigo.TabIndex = 0;
             // 
             // lblCodigo
             // 
@@ -163,7 +163,7 @@
             this.txtAPaterno.Location = new System.Drawing.Point(138, 283);
             this.txtAPaterno.Name = "txtAPaterno";
             this.txtAPaterno.Size = new System.Drawing.Size(204, 19);
-            this.txtAPaterno.TabIndex = 82;
+            this.txtAPaterno.TabIndex = 1;
             // 
             // lblAPaterno
             // 
@@ -197,7 +197,7 @@
             this.txtNombre.Location = new System.Drawing.Point(138, 347);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(204, 19);
-            this.txtNombre.TabIndex = 88;
+            this.txtNombre.TabIndex = 3;
             // 
             // lblNombre
             // 
@@ -231,7 +231,7 @@
             this.txtAMaterno.Location = new System.Drawing.Point(138, 315);
             this.txtAMaterno.Name = "txtAMaterno";
             this.txtAMaterno.Size = new System.Drawing.Size(204, 19);
-            this.txtAMaterno.TabIndex = 85;
+            this.txtAMaterno.TabIndex = 2;
             // 
             // lblAMaterno
             // 
@@ -267,7 +267,7 @@
             this.txtIPersonal.Multiline = true;
             this.txtIPersonal.Name = "txtIPersonal";
             this.txtIPersonal.Size = new System.Drawing.Size(250, 60);
-            this.txtIPersonal.TabIndex = 100;
+            this.txtIPersonal.TabIndex = 9;
             // 
             // Separador7
             // 
@@ -313,7 +313,7 @@
             this.txtTelefono.Location = new System.Drawing.Point(138, 410);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(204, 19);
-            this.txtTelefono.TabIndex = 94;
+            this.txtTelefono.TabIndex = 5;
             // 
             // lblTelefono
             // 
@@ -347,7 +347,7 @@
             this.txtDireccion.Location = new System.Drawing.Point(138, 379);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(204, 19);
-            this.txtDireccion.TabIndex = 91;
+            this.txtDireccion.TabIndex = 4;
             // 
             // lblDireccion
             // 
@@ -373,7 +373,7 @@
             this.cxtEscuela.MaxDropDownItems = 50;
             this.cxtEscuela.Name = "cxtEscuela";
             this.cxtEscuela.Size = new System.Drawing.Size(204, 27);
-            this.cxtEscuela.TabIndex = 106;
+            this.cxtEscuela.TabIndex = 6;
             // 
             // btnLimpiar
             // 
@@ -485,7 +485,7 @@
             this.txtTReferencia.Location = new System.Drawing.Point(138, 507);
             this.txtTReferencia.Name = "txtTReferencia";
             this.txtTReferencia.Size = new System.Drawing.Size(204, 19);
-            this.txtTReferencia.TabIndex = 116;
+            this.txtTReferencia.TabIndex = 8;
             // 
             // lblTReferencia
             // 
@@ -519,7 +519,7 @@
             this.txtPReferencia.Location = new System.Drawing.Point(138, 476);
             this.txtPReferencia.Name = "txtPReferencia";
             this.txtPReferencia.Size = new System.Drawing.Size(204, 19);
-            this.txtPReferencia.TabIndex = 113;
+            this.txtPReferencia.TabIndex = 7;
             // 
             // lblPReferencia
             // 
