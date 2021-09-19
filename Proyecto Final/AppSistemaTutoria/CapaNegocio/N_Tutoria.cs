@@ -28,8 +28,6 @@ namespace CapaNegocios
             {
                 E_FichaTutoria ObjFichaTutoria = new E_FichaTutoria
                 {
-                    //Ingresar Ficha Tutoria
-                    //CodTutoria= Fila["CodTutoria"].ToString(),
                     Fecha = Convert.ToDateTime(Fila["Cantidad"].ToString()),
                     Dimension = Fila["Descripcion"].ToString(),
                     Descripcion = Fila["Precio"].ToString(),
