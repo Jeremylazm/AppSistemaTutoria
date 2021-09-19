@@ -3,6 +3,8 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Net;
+using System.Net.Mail;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
@@ -57,9 +59,17 @@ namespace CapaPresentaciones
             cxtCategoria.SelectedIndex = 0;
             cxtSubcategoria.SelectedIndex = 0;
             cxtRegimen.SelectedIndex = 0;
-            cxtEstado.SelectedIndex = 0;
 
-            cxtEscuela.DataSource = N_EscuelaProfesional.MostrarRegistros();
+            if (E_InicioSesion.Acceso == "Administrador")
+            {
+                cxtEscuela.DataSource = N_EscuelaProfesional.MostrarRegistros();
+            }
+            else
+            {
+                cxtEscuela.DataSource = N_EscuelaProfesional.MostrarRegistros(E_InicioSesion.Usuario);
+                cxtEscuela.Enabled = false;
+            }
+
             cxtEscuela.ValueMember = "CodEscuelaP";
             cxtEscuela.DisplayMember = "Nombre";
         }
@@ -101,11 +111,39 @@ namespace CapaPresentaciones
                         ObjEntidad.Subcategoria = cxtSubcategoria.SelectedItem.ToString();
                         ObjEntidad.Regimen = cxtRegimen.SelectedItem.ToString();
                         ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
-                        ObjEntidad.Estado = cxtEstado.SelectedItem.ToString();
+                        ObjEntidad.Horario = txtHorario.Text.ToUpper();
 
                         ObjNegocio.InsertarRegistros(ObjEntidad);
                         MensajeConfirmacion("Registro insertado exitosamente");
                         Program.Evento = 0;
+
+                        N_InicioSesion InicioSesion = new N_InicioSesion();
+                        string Contrasena = InicioSesion.RetornarContrasena(txtCodigo.Text);
+
+                        // Enviar un correo con la contraseña para un nuevo usuario
+                        try
+                        {
+                            SmtpClient clientDetails = new SmtpClient();
+                            clientDetails.Port = 587;
+                            clientDetails.Host = "smtp.gmail.com";
+                            clientDetails.EnableSsl = true;
+                            clientDetails.DeliveryMethod = SmtpDeliveryMethod.Network;
+                            clientDetails.UseDefaultCredentials = false;
+                            clientDetails.Credentials = new NetworkCredential("denisomarcuyottito@gmail.com", "Tutoriasunsaac5");
+
+                            MailMessage mailDetails = new MailMessage();
+                            mailDetails.From = new MailAddress("denisomarcuyottito@gmail.com");
+                            mailDetails.To.Add(ObjEntidad.Email);
+                            mailDetails.Subject = "Contraseña del Sistema de Tutoría UNSAAC";
+                            mailDetails.IsBodyHtml = true;
+                            mailDetails.Body = "Tu contraseña es " + Contrasena;
+                            clientDetails.Send(mailDetails);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+
                         LimpiarCajas();
                         Close();
                     }
@@ -140,7 +178,7 @@ namespace CapaPresentaciones
                             ObjEntidad.Subcategoria = cxtSubcategoria.SelectedItem.ToString();
                             ObjEntidad.Regimen = cxtRegimen.SelectedItem.ToString();
                             ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
-                            ObjEntidad.Estado = cxtEstado.SelectedItem.ToString();
+                            ObjEntidad.Horario = txtHorario.Text.ToUpper();
 
                             ObjNegocio.EditarRegistros(ObjEntidad);
                             MensajeConfirmacion("Registro editado exitosamente");
@@ -170,14 +208,6 @@ namespace CapaPresentaciones
         {
             Program.Evento = 0;
             Close();
-        }
-
-        private void btnEscuelas_Click(object sender, EventArgs e)
-        {
-            //P_Ciudades NuevoRegistro = new P_Ciudades();
-            //NuevoRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-            //NuevoRegistro.ShowDialog();
-            //NuevoRegistro.Dispose();
         }
 
         private void cxtCategoria_SelectionChangeCommitted(object sender, EventArgs e)
@@ -233,7 +263,6 @@ namespace CapaPresentaciones
             int x = img.Width / 2;
             int y = img.Height / 2;
             int r = Math.Min(x, y);
-            //int r = x;
 
             Bitmap tmp = null;
             tmp = new Bitmap(2 * r, 2 * r);
@@ -274,7 +303,8 @@ namespace CapaPresentaciones
 
         private void btnRestablecerPerfil_Click(object sender, EventArgs e)
         {
-            imgPerfil.Image = Image.FromFile("C:/Users/Jeremylazm/Desktop/Documentos/AppSistemaTutoria/CapaPresentaciones/Iconos/Perfil Docente.png");
+            string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
+            imgPerfil.Image = Image.FromFile(fullImagePath);
         }
     }
 }
