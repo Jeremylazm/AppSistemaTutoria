@@ -55,8 +55,14 @@ namespace CapaPresentaciones
             txtEscuelaP.Text = Fila[11].ToString();
             txtPReferencia.Text = Fila[12].ToString();
             txtTReferencia.Text = Fila[13].ToString();
-            txtIPersonal.Text = VisibilidadIPersonal(Fila[14].ToString(), true);  //Desencriptar  informacion personal
-
+            if (Fila[14].ToString() != "")
+                txtIPersonal.Text = VisibilidadIPersonal(Fila[14].ToString(), true);  //Desencriptar  informacion personal
+            else
+                txtIPersonal.Text = "";
+            if (Fila[16].Equals("SÍ"))
+                ckbIPersonal.Checked = true;
+            else
+                 ckbIPersonal.Checked = false;
             //txtEFisico.Text = Fila[14].ToString();
             //txtEMental.Text = Fila[15].ToString();
 
@@ -185,6 +191,10 @@ namespace CapaPresentaciones
                 ObjEntidad.InformacionPersonal = EncriptarIPersonal(txtIPersonal.Text, ckbIPersonal.Checked);
                 //ObjEntidad.EstadoFisico = txtEFisico.Text.ToUpper();
                 //ObjEntidad.EstadoMental = txtEMental.Text.ToUpper();
+                if (ckbIPersonal.Checked)
+                    ObjEntidad.ConcederPermiso = "SÍ";
+                else
+                    ObjEntidad.ConcederPermiso = "NO";
 
                 ObjNegocio.EditarRegistros(ObjEntidad);
                 MensajeConfirmacion("Registro editado exitosamente");

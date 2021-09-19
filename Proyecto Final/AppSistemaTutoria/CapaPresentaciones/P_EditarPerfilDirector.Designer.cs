@@ -1,6 +1,6 @@
 ﻿namespace CapaPresentaciones
 {
-    partial class P_EditarPerfilDocente
+    partial class P_EditarPerfilDirector
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_EditarPerfilDocente));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_EditarPerfilDirector));
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.btnCerrar = new Bunifu.Framework.UI.BunifuImageButton();
             this.lblTitulo = new System.Windows.Forms.Label();
@@ -52,13 +52,10 @@
             this.gbxDatos = new System.Windows.Forms.Label();
             this.gbxIProfesional = new System.Windows.Forms.Label();
             this.BordeadoInformacion = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.gbxHorario = new System.Windows.Forms.Label();
-            this.BordeadoHorario = new Bunifu.Framework.UI.BunifuThinButton2();
             this.btnRestablecerPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnSubirPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnCambiarContraseña = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnGuardar = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.txtHorario = new System.Windows.Forms.TextBox();
             this.txtRegimen = new System.Windows.Forms.TextBox();
             this.Separador9 = new Bunifu.Framework.UI.BunifuSeparator();
             this.lblRegimen = new System.Windows.Forms.Label();
@@ -108,7 +105,7 @@
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(815, 40);
             this.lblTitulo.TabIndex = 73;
-            this.lblTitulo.Text = "Editar Perfil de Tutor";
+            this.lblTitulo.Text = "Editar Perfil de Director";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Separador6
@@ -387,45 +384,6 @@
             this.BordeadoInformacion.TabIndex = 162;
             this.BordeadoInformacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // gbxHorario
-            // 
-            this.gbxHorario.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.gbxHorario.AutoSize = true;
-            this.gbxHorario.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxHorario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.gbxHorario.Location = new System.Drawing.Point(457, 257);
-            this.gbxHorario.Name = "gbxHorario";
-            this.gbxHorario.Size = new System.Drawing.Size(61, 19);
-            this.gbxHorario.TabIndex = 165;
-            this.gbxHorario.Text = "Horario";
-            // 
-            // BordeadoHorario
-            // 
-            this.BordeadoHorario.ActiveBorderThickness = 1;
-            this.BordeadoHorario.ActiveCornerRadius = 20;
-            this.BordeadoHorario.ActiveFillColor = System.Drawing.Color.White;
-            this.BordeadoHorario.ActiveForecolor = System.Drawing.Color.White;
-            this.BordeadoHorario.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoHorario.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.BordeadoHorario.BackColor = System.Drawing.Color.White;
-            this.BordeadoHorario.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoHorario.BackgroundImage")));
-            this.BordeadoHorario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BordeadoHorario.ButtonText = "Editar Perfil";
-            this.BordeadoHorario.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BordeadoHorario.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BordeadoHorario.ForeColor = System.Drawing.Color.White;
-            this.BordeadoHorario.IdleBorderThickness = 1;
-            this.BordeadoHorario.IdleCornerRadius = 20;
-            this.BordeadoHorario.IdleFillColor = System.Drawing.Color.White;
-            this.BordeadoHorario.IdleForecolor = System.Drawing.Color.White;
-            this.BordeadoHorario.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoHorario.Location = new System.Drawing.Point(444, 261);
-            this.BordeadoHorario.Margin = new System.Windows.Forms.Padding(5);
-            this.BordeadoHorario.Name = "BordeadoHorario";
-            this.BordeadoHorario.Size = new System.Drawing.Size(341, 105);
-            this.BordeadoHorario.TabIndex = 164;
-            this.BordeadoHorario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // btnRestablecerPerfil
             // 
             this.btnRestablecerPerfil.Active = true;
@@ -449,7 +407,7 @@
             this.btnRestablecerPerfil.IconVisible = true;
             this.btnRestablecerPerfil.IconZoom = 70D;
             this.btnRestablecerPerfil.IsTab = false;
-            this.btnRestablecerPerfil.Location = new System.Drawing.Point(633, 170);
+            this.btnRestablecerPerfil.Location = new System.Drawing.Point(633, 224);
             this.btnRestablecerPerfil.Name = "btnRestablecerPerfil";
             this.btnRestablecerPerfil.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnRestablecerPerfil.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -486,7 +444,7 @@
             this.btnSubirPerfil.IconVisible = true;
             this.btnSubirPerfil.IconZoom = 70D;
             this.btnSubirPerfil.IsTab = false;
-            this.btnSubirPerfil.Location = new System.Drawing.Point(633, 85);
+            this.btnSubirPerfil.Location = new System.Drawing.Point(633, 139);
             this.btnSubirPerfil.Name = "btnSubirPerfil";
             this.btnSubirPerfil.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnSubirPerfil.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -523,7 +481,7 @@
             this.btnCambiarContraseña.IconVisible = true;
             this.btnCambiarContraseña.IconZoom = 50D;
             this.btnCambiarContraseña.IsTab = false;
-            this.btnCambiarContraseña.Location = new System.Drawing.Point(444, 382);
+            this.btnCambiarContraseña.Location = new System.Drawing.Point(444, 307);
             this.btnCambiarContraseña.Name = "btnCambiarContraseña";
             this.btnCambiarContraseña.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnCambiarContraseña.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -560,7 +518,7 @@
             this.btnGuardar.IconVisible = true;
             this.btnGuardar.IconZoom = 50D;
             this.btnGuardar.IsTab = false;
-            this.btnGuardar.Location = new System.Drawing.Point(659, 382);
+            this.btnGuardar.Location = new System.Drawing.Point(659, 307);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnGuardar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -573,19 +531,6 @@
             this.btnGuardar.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnGuardar.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // txtHorario
-            // 
-            this.txtHorario.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.txtHorario.BackColor = System.Drawing.Color.White;
-            this.txtHorario.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtHorario.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHorario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtHorario.Location = new System.Drawing.Point(461, 281);
-            this.txtHorario.Multiline = true;
-            this.txtHorario.Name = "txtHorario";
-            this.txtHorario.Size = new System.Drawing.Size(312, 70);
-            this.txtHorario.TabIndex = 176;
             // 
             // txtRegimen
             // 
@@ -756,7 +701,7 @@
             this.imgPerfil.BorderSize = 2;
             this.imgPerfil.GradientAngle = 50F;
             this.imgPerfil.Image = ((System.Drawing.Image)(resources.GetObject("imgPerfil.Image")));
-            this.imgPerfil.Location = new System.Drawing.Point(444, 61);
+            this.imgPerfil.Location = new System.Drawing.Point(444, 115);
             this.imgPerfil.Name = "imgPerfil";
             this.imgPerfil.Size = new System.Drawing.Size(183, 183);
             this.imgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -792,7 +737,7 @@
             this.BordeadoMenu.TabIndex = 190;
             this.BordeadoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // P_EditarPerfilDocente
+            // P_EditarPerfilDirector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -810,13 +755,11 @@
             this.Controls.Add(this.Separador7);
             this.Controls.Add(this.txtCategoria);
             this.Controls.Add(this.lblCategoria);
-            this.Controls.Add(this.txtHorario);
             this.Controls.Add(this.btnCambiarContraseña);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnRestablecerPerfil);
             this.Controls.Add(this.btnSubirPerfil);
             this.Controls.Add(this.imgPerfil);
-            this.Controls.Add(this.gbxHorario);
             this.Controls.Add(this.gbxIProfesional);
             this.Controls.Add(this.gbxDatos);
             this.Controls.Add(this.txtEscuelaP);
@@ -838,10 +781,9 @@
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.BordeadoDatos);
             this.Controls.Add(this.BordeadoInformacion);
-            this.Controls.Add(this.BordeadoHorario);
             this.Controls.Add(this.BordeadoMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "P_EditarPerfilDocente";
+            this.Name = "P_EditarPerfilDirector";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar Perfil de Docente";
             this.Load += new System.EventHandler(this.P_EditarPerfilDocente_Load);
@@ -871,18 +813,15 @@
         private Bunifu.Framework.UI.BunifuSeparator Separador1;
         public System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label lblCodigo;
-        private System.Windows.Forms.Label gbxHorario;
         private System.Windows.Forms.Label gbxIProfesional;
         private System.Windows.Forms.Label gbxDatos;
         private Bunifu.Framework.UI.BunifuThinButton2 BordeadoDatos;
         private Bunifu.Framework.UI.BunifuThinButton2 BordeadoInformacion;
-        private Bunifu.Framework.UI.BunifuThinButton2 BordeadoHorario;
         private Bunifu.Framework.UI.BunifuFlatButton btnRestablecerPerfil;
         private Bunifu.Framework.UI.BunifuFlatButton btnSubirPerfil;
         public Otros_Controles.JALMCircularPictureBox imgPerfil;
         private Bunifu.Framework.UI.BunifuFlatButton btnCambiarContraseña;
         public Bunifu.Framework.UI.BunifuFlatButton btnGuardar;
-        public System.Windows.Forms.TextBox txtHorario;
         public System.Windows.Forms.TextBox txtRegimen;
         private Bunifu.Framework.UI.BunifuSeparator Separador9;
         private System.Windows.Forms.Label lblRegimen;
