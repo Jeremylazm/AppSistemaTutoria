@@ -296,6 +296,12 @@ namespace CapaPresentaciones
             Solicitar.Show();
         }
 
+        private void btnSolicitarCita_Click(object sender, EventArgs e)
+        {
+            P_SolicitudCita Solicitar = new P_SolicitudCita(E_InicioSesion.Usuario);
+            Solicitar.Show();
+        }
+
         private void P_Menu_Load(object sender, EventArgs e)
         {
             CargarDatosUsuario();
