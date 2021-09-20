@@ -33,7 +33,7 @@ namespace CapaPresentaciones
         }
         public void CargarDatosTutor()
         {
-            SqlConnection Conexion = new SqlConnection(@"Data Source = localhost\SQLEXPRESS; DataBase = db_a7878d_BDSistemaTutoria; Integrated Security = true");
+            SqlConnection Conexion = new SqlConnection(@"Data Source = (local); DataBase = db_a7878d_BDSistemaTutoria; Integrated Security = true");
             try
             {
                 SqlCommand cmd = new SqlCommand("SELECT D.Perfil, D.APaterno, D.AMaterno, D.Nombre, D.Email, D.Direccion, D.Telefono, " +
