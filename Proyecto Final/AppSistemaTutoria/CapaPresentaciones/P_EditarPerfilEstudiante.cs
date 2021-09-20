@@ -136,7 +136,9 @@ namespace CapaPresentaciones
 
         private void btnRestablecerPerfil_Click(object sender, EventArgs e)
         {
-            imgPerfil.Image = Image.FromFile("C:/Users/Jeremylazm/Desktop/Documentos/AppSistemaTutoria/CapaPresentaciones/Iconos/Perfil Estudiante.png");
+            string Ruta = Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath));
+            Ruta = Ruta.Replace('\\', '/');
+            imgPerfil.Image = Image.FromFile($"{Ruta}/Iconos/Perfil Estudiante.png");
         }
 
         private void P_EditarPerfilEstudiante_Load(object sender, EventArgs e)
