@@ -105,6 +105,7 @@
             this.btnCerrar.TabIndex = 76;
             this.btnCerrar.TabStop = false;
             this.btnCerrar.Zoom = 10;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // lblTitulo
             // 
@@ -180,6 +181,7 @@
             // 
             this.txtAPaterno.BackColor = System.Drawing.Color.White;
             this.txtAPaterno.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAPaterno.Enabled = false;
             this.txtAPaterno.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAPaterno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtAPaterno.Location = new System.Drawing.Point(180, 101);
@@ -217,6 +219,7 @@
             // 
             this.txtNombre.BackColor = System.Drawing.Color.White;
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNombre.Enabled = false;
             this.txtNombre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtNombre.Location = new System.Drawing.Point(180, 180);
@@ -254,6 +257,7 @@
             // 
             this.txtAMaterno.BackColor = System.Drawing.Color.White;
             this.txtAMaterno.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAMaterno.Enabled = false;
             this.txtAMaterno.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAMaterno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtAMaterno.Location = new System.Drawing.Point(180, 140);
@@ -328,6 +332,7 @@
             // 
             this.txtTelefono.BackColor = System.Drawing.Color.White;
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTelefono.Enabled = false;
             this.txtTelefono.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtTelefono.Location = new System.Drawing.Point(180, 298);
@@ -365,6 +370,7 @@
             // 
             this.txtDireccion.BackColor = System.Drawing.Color.White;
             this.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDireccion.Enabled = false;
             this.txtDireccion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtDireccion.Location = new System.Drawing.Point(180, 260);
@@ -505,6 +511,7 @@
             // 
             this.txtEmail.BackColor = System.Drawing.Color.White;
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtEmail.Enabled = false;
             this.txtEmail.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtEmail.Location = new System.Drawing.Point(180, 220);
@@ -628,6 +635,7 @@
             // 
             this.txtPersonaReferencia.BackColor = System.Drawing.Color.White;
             this.txtPersonaReferencia.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPersonaReferencia.Enabled = false;
             this.txtPersonaReferencia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPersonaReferencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtPersonaReferencia.Location = new System.Drawing.Point(180, 343);
@@ -640,6 +648,7 @@
             // 
             this.txtTelefonoRef.BackColor = System.Drawing.Color.White;
             this.txtTelefonoRef.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTelefonoRef.Enabled = false;
             this.txtTelefonoRef.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefonoRef.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtTelefonoRef.Location = new System.Drawing.Point(180, 386);
@@ -652,6 +661,7 @@
             // 
             this.txtEscuelaP.BackColor = System.Drawing.Color.White;
             this.txtEscuelaP.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtEscuelaP.Enabled = false;
             this.txtEscuelaP.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEscuelaP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtEscuelaP.Location = new System.Drawing.Point(179, 470);
@@ -833,6 +843,7 @@
             // 
             this.txtCodigoDocente.BackColor = System.Drawing.Color.White;
             this.txtCodigoDocente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCodigoDocente.Enabled = false;
             this.txtCodigoDocente.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigoDocente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtCodigoDocente.Location = new System.Drawing.Point(180, 422);
