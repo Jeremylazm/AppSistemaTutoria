@@ -130,7 +130,6 @@ CREATE TABLE TEstudiante
 GO
 
 /* *************************** TABLA FICHA DE TUTOR�A *************************** */
-
 IF EXISTS (SELECT * 
 				FROM SYSOBJECTS
 				WHERE NAME = 'TFichaTutoria')
@@ -139,12 +138,10 @@ GO
 CREATE TABLE TFichaTutoria
 (
 	-- Lista de atributos
-
 	CodFichaTutoria tyCodFichaTutoria,
 	CodDocente tyCodDocente,
 	CodEstudiante tyCodEstudiante,
 	Semestre VARCHAR(7),
-
 	Fecha DATETIME NOT NULL,
 	Dimension VARCHAR(15) DEFAULT 'ACADÉMICA' CHECK (Dimension IN ('ACADÉMICA',
 																   'PERSONAL',
@@ -154,7 +151,6 @@ CREATE TABLE TFichaTutoria
 	Observaciones VARCHAR(100),
 
 	-- Determinar las claves
-
 	PRIMARY KEY (CodFichaTutoria),
 	CONSTRAINT FK_CodDocente 
 		FOREIGN KEY (CodDocente)
@@ -162,7 +158,6 @@ CREATE TABLE TFichaTutoria
 	CONSTRAINT FK_CodEstudiante 
 		FOREIGN KEY (CodEstudiante)
 		REFERENCES TEstudiante(CodEstudiante)
-
 );
 GO
 
@@ -854,7 +849,6 @@ GO
 CREATE PROCEDURE spuMostrarFichaTutorias
 AS
 BEGIN
-
 	-- Mostrar la tabla de TFichaTutoria
 	SELECT T.CodFichaTutoria,
 		   T.CodEstudiante, Estudiante = (E.APaterno + ' ' + 
