@@ -22,10 +22,11 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
 
             };
-            Comando.Parameters.AddWithValue("@CodDocente", FichaTutoria.CodDocente);
+            Conectar.Open();
+            //Comando.Parameters.AddWithValue("@CodTutoria", FichaTutoria.CodTutoria);
             Comando.Parameters.AddWithValue("@CodEstudiante", FichaTutoria.CodEstudiante);
             Comando.Parameters.AddWithValue("@Semestre", FichaTutoria.Semestre);
-            Comando.Parameters.AddWithValue("@Fecha", FichaTutoria.Fecha.ToString());
+            Comando.Parameters.AddWithValue("@Fecha", FichaTutoria.Fecha);
             Comando.Parameters.AddWithValue("@Dimension", FichaTutoria.Dimension);
             Comando.Parameters.AddWithValue("@Descripcion", FichaTutoria.Descripcion);
             Comando.Parameters.AddWithValue("@Referencia", FichaTutoria.Referencia);
@@ -45,11 +46,9 @@ namespace CapaDatos
 
                 };
 
-                Comando.Parameters.AddWithValue("@CodTutoria", FichaTutoria.CodFichaTutoria);
-                Comando.Parameters.AddWithValue("@CodTutoria", FichaTutoria.CodDocente);
-                Comando.Parameters.AddWithValue("@CodTutoria", FichaTutoria.CodEstudiante);
-                Comando.Parameters.AddWithValue("@CodTutoria", FichaTutoria.Semestre);
-                Comando.Parameters.AddWithValue("@Fecha", FichaTutoria.Fecha.ToString());
+                Comando.Parameters.AddWithValue("@CodEstudiante", FichaTutoria.CodEstudiante);
+                Comando.Parameters.AddWithValue("@Semestre", FichaTutoria.Semestre);
+                Comando.Parameters.AddWithValue("@Fecha", FichaTutoria.Fecha);
                 Comando.Parameters.AddWithValue("@Dimension", FichaTutoria.Dimension);
                 Comando.Parameters.AddWithValue("@Descripcion", FichaTutoria.Descripcion);
                 Comando.Parameters.AddWithValue("@Referencia", FichaTutoria.Referencia);
