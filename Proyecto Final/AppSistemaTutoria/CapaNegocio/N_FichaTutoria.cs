@@ -7,12 +7,12 @@ using CapaDatos;
 using CapaEntidades;
 using System.Data;
 
-namespace CapaNegocios
+namespace CapaNegocio
 {
-    public class N_FichaTutoria
+    class N_FichaTutoria
     {
         
-        readonly D_FichaTutoria ObjFichaTutoria = new D_FichaTutoria();
+        readonly D_FichaTutoria ObjEstudiante = new D_FichaTutoria();
 
         public static DataTable MostrarRegistros(string CodDocente)
         {
@@ -21,12 +21,12 @@ namespace CapaNegocios
 
         public void InsertarRegistros(E_FichaTutoria FichaTutoria)
         {
-            ObjFichaTutoria.InsertarFichaTutoria(FichaTutoria);
+            ObjEstudiante.InsertarFichaTutoria(FichaTutoria);
         }
 
         public void EditarRegistros(E_FichaTutoria FichaTutoria)
         {
-            ObjFichaTutoria.EditarFichaTutoria(FichaTutoria);
+            ObjEstudiante.EditarFichaTutoria(FichaTutoria);
         }
     }
 }
