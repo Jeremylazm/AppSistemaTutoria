@@ -65,7 +65,6 @@
             this.Separador8 = new Bunifu.Framework.UI.BunifuSeparator();
             this.txtPReferencia = new System.Windows.Forms.TextBox();
             this.lblPReferencia = new System.Windows.Forms.Label();
-            this.BordeadoMenu = new Bunifu.Framework.UI.BunifuThinButton2();
             this.imgPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
             this.btnSubirPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnRestablecerPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -130,7 +129,7 @@
             this.txtCodigo.Location = new System.Drawing.Point(138, 252);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(204, 19);
-            this.txtCodigo.TabIndex = 79;
+            this.txtCodigo.TabIndex = 0;
             // 
             // lblCodigo
             // 
@@ -164,7 +163,7 @@
             this.txtAPaterno.Location = new System.Drawing.Point(138, 283);
             this.txtAPaterno.Name = "txtAPaterno";
             this.txtAPaterno.Size = new System.Drawing.Size(204, 19);
-            this.txtAPaterno.TabIndex = 82;
+            this.txtAPaterno.TabIndex = 1;
             // 
             // lblAPaterno
             // 
@@ -198,7 +197,7 @@
             this.txtNombre.Location = new System.Drawing.Point(138, 347);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(204, 19);
-            this.txtNombre.TabIndex = 88;
+            this.txtNombre.TabIndex = 3;
             // 
             // lblNombre
             // 
@@ -232,7 +231,7 @@
             this.txtAMaterno.Location = new System.Drawing.Point(138, 315);
             this.txtAMaterno.Name = "txtAMaterno";
             this.txtAMaterno.Size = new System.Drawing.Size(204, 19);
-            this.txtAMaterno.TabIndex = 85;
+            this.txtAMaterno.TabIndex = 2;
             // 
             // lblAMaterno
             // 
@@ -268,7 +267,7 @@
             this.txtIPersonal.Multiline = true;
             this.txtIPersonal.Name = "txtIPersonal";
             this.txtIPersonal.Size = new System.Drawing.Size(250, 60);
-            this.txtIPersonal.TabIndex = 100;
+            this.txtIPersonal.TabIndex = 9;
             // 
             // Separador7
             // 
@@ -314,7 +313,7 @@
             this.txtTelefono.Location = new System.Drawing.Point(138, 410);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(204, 19);
-            this.txtTelefono.TabIndex = 94;
+            this.txtTelefono.TabIndex = 5;
             // 
             // lblTelefono
             // 
@@ -348,7 +347,7 @@
             this.txtDireccion.Location = new System.Drawing.Point(138, 379);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(204, 19);
-            this.txtDireccion.TabIndex = 91;
+            this.txtDireccion.TabIndex = 4;
             // 
             // lblDireccion
             // 
@@ -374,7 +373,7 @@
             this.cxtEscuela.MaxDropDownItems = 50;
             this.cxtEscuela.Name = "cxtEscuela";
             this.cxtEscuela.Size = new System.Drawing.Size(204, 27);
-            this.cxtEscuela.TabIndex = 106;
+            this.cxtEscuela.TabIndex = 6;
             // 
             // btnLimpiar
             // 
@@ -486,7 +485,7 @@
             this.txtTReferencia.Location = new System.Drawing.Point(138, 507);
             this.txtTReferencia.Name = "txtTReferencia";
             this.txtTReferencia.Size = new System.Drawing.Size(204, 19);
-            this.txtTReferencia.TabIndex = 116;
+            this.txtTReferencia.TabIndex = 8;
             // 
             // lblTReferencia
             // 
@@ -520,7 +519,7 @@
             this.txtPReferencia.Location = new System.Drawing.Point(138, 476);
             this.txtPReferencia.Name = "txtPReferencia";
             this.txtPReferencia.Size = new System.Drawing.Size(204, 19);
-            this.txtPReferencia.TabIndex = 113;
+            this.txtPReferencia.TabIndex = 7;
             // 
             // lblPReferencia
             // 
@@ -532,35 +531,6 @@
             this.lblPReferencia.Size = new System.Drawing.Size(121, 19);
             this.lblPReferencia.TabIndex = 112;
             this.lblPReferencia.Text = "Persona de Ref.:";
-            // 
-            // BordeadoMenu
-            // 
-            this.BordeadoMenu.ActiveBorderThickness = 1;
-            this.BordeadoMenu.ActiveCornerRadius = 20;
-            this.BordeadoMenu.ActiveFillColor = System.Drawing.Color.White;
-            this.BordeadoMenu.ActiveForecolor = System.Drawing.Color.White;
-            this.BordeadoMenu.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BordeadoMenu.BackColor = System.Drawing.Color.White;
-            this.BordeadoMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoMenu.BackgroundImage")));
-            this.BordeadoMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BordeadoMenu.ButtonText = "Editar Perfil";
-            this.BordeadoMenu.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BordeadoMenu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BordeadoMenu.ForeColor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleBorderThickness = 1;
-            this.BordeadoMenu.IdleCornerRadius = 20;
-            this.BordeadoMenu.IdleFillColor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleForecolor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoMenu.Location = new System.Drawing.Point(-1, 0);
-            this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(5);
-            this.BordeadoMenu.Name = "BordeadoMenu";
-            this.BordeadoMenu.Size = new System.Drawing.Size(405, 681);
-            this.BordeadoMenu.TabIndex = 118;
-            this.BordeadoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // imgPerfil
             // 
@@ -708,8 +678,8 @@
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.BordeadoMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_DatosEstudiante";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Datos del Estudiante";
@@ -758,7 +728,6 @@
         private Bunifu.Framework.UI.BunifuSeparator Separador8;
         public System.Windows.Forms.TextBox txtPReferencia;
         private System.Windows.Forms.Label lblPReferencia;
-        private Bunifu.Framework.UI.BunifuThinButton2 BordeadoMenu;
         private Bunifu.Framework.UI.BunifuFlatButton btnSubirPerfil;
         public Otros_Controles.JALMCircularPictureBox imgPerfil;
         private Bunifu.Framework.UI.BunifuFlatButton btnRestablecerPerfil;

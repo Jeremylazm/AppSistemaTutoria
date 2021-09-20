@@ -201,7 +201,7 @@ CREATE TABLE TUsuario
 	Datos VARCHAR(53) NOT NULL,
 
 	-- Definir la clave primaria
-	PRIMARY KEY(Usuario)	
+	PRIMARY KEY(Usuario)
 )
 GO
 
@@ -813,7 +813,7 @@ BEGIN
 	DECLARE @Datos VARCHAR(53);
 	DECLARE @Contraseña VARCHAR(8);
 	SET @Datos = CONCAT(@APaterno, ' ', @AMaterno, ', ', @Nombre);
-	SET @Contraseña = DBO.fnGenerarContraseña();
+	SET @Contraseña = @CodDocente;
 
 	-- Insertar un usuario con el c�digo del estudiante en la tabla de TUsuario
 	EXEC DBO.spuInsertarUsuario @Perfil, @CodDocente, @Contraseña, 'Docente', @Datos

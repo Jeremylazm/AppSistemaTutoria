@@ -71,7 +71,6 @@ namespace CapaPresentaciones
             this.lblRegimen = new System.Windows.Forms.Label();
             this.lblHorario = new System.Windows.Forms.Label();
             this.lblDominioEmail = new System.Windows.Forms.Label();
-            this.BordeadoMenu = new Bunifu.Framework.UI.BunifuThinButton2();
             this.btnRestablecerPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnSubirPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
             this.imgPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
@@ -137,7 +136,7 @@ namespace CapaPresentaciones
             this.txtCodigo.Location = new System.Drawing.Point(137, 254);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(204, 19);
-            this.txtCodigo.TabIndex = 79;
+            this.txtCodigo.TabIndex = 0;
             // 
             // lblCodigo
             // 
@@ -171,7 +170,7 @@ namespace CapaPresentaciones
             this.txtAPaterno.Location = new System.Drawing.Point(137, 285);
             this.txtAPaterno.Name = "txtAPaterno";
             this.txtAPaterno.Size = new System.Drawing.Size(204, 19);
-            this.txtAPaterno.TabIndex = 82;
+            this.txtAPaterno.TabIndex = 1;
             // 
             // lblAPaterno
             // 
@@ -205,7 +204,7 @@ namespace CapaPresentaciones
             this.txtNombre.Location = new System.Drawing.Point(137, 349);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(204, 19);
-            this.txtNombre.TabIndex = 88;
+            this.txtNombre.TabIndex = 3;
             // 
             // lblNombre
             // 
@@ -239,7 +238,7 @@ namespace CapaPresentaciones
             this.txtAMaterno.Location = new System.Drawing.Point(137, 317);
             this.txtAMaterno.Name = "txtAMaterno";
             this.txtAMaterno.Size = new System.Drawing.Size(204, 19);
-            this.txtAMaterno.TabIndex = 85;
+            this.txtAMaterno.TabIndex = 2;
             // 
             // lblAMaterno
             // 
@@ -307,7 +306,7 @@ namespace CapaPresentaciones
             this.txtTelefono.Location = new System.Drawing.Point(137, 445);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(204, 19);
-            this.txtTelefono.TabIndex = 94;
+            this.txtTelefono.TabIndex = 6;
             // 
             // lblTelefono
             // 
@@ -341,7 +340,7 @@ namespace CapaPresentaciones
             this.txtDireccion.Location = new System.Drawing.Point(137, 414);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(204, 19);
-            this.txtDireccion.TabIndex = 91;
+            this.txtDireccion.TabIndex = 5;
             // 
             // lblDireccion
             // 
@@ -370,7 +369,7 @@ namespace CapaPresentaciones
             this.cxtCategoria.MaxDropDownItems = 50;
             this.cxtCategoria.Name = "cxtCategoria";
             this.cxtCategoria.Size = new System.Drawing.Size(204, 27);
-            this.cxtCategoria.TabIndex = 106;
+            this.cxtCategoria.TabIndex = 7;
             this.cxtCategoria.SelectionChangeCommitted += new System.EventHandler(this.cxtCategoria_SelectionChangeCommitted);
             // 
             // btnLimpiar
@@ -479,7 +478,7 @@ namespace CapaPresentaciones
             this.cxtSubcategoria.MaxDropDownItems = 50;
             this.cxtSubcategoria.Name = "cxtSubcategoria";
             this.cxtSubcategoria.Size = new System.Drawing.Size(204, 27);
-            this.cxtSubcategoria.TabIndex = 113;
+            this.cxtSubcategoria.TabIndex = 8;
             this.cxtSubcategoria.SelectionChangeCommitted += new System.EventHandler(this.cxtSubcategoria_SelectionChangeCommitted);
             // 
             // Separador9
@@ -515,7 +514,7 @@ namespace CapaPresentaciones
             this.txtEmail.Location = new System.Drawing.Point(137, 382);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(105, 19);
-            this.txtEmail.TabIndex = 115;
+            this.txtEmail.TabIndex = 4;
             // 
             // lblEmail
             // 
@@ -541,7 +540,7 @@ namespace CapaPresentaciones
             this.cxtEscuela.MaxDropDownItems = 50;
             this.cxtEscuela.Name = "cxtEscuela";
             this.cxtEscuela.Size = new System.Drawing.Size(204, 27);
-            this.cxtEscuela.TabIndex = 123;
+            this.cxtEscuela.TabIndex = 10;
             // 
             // Separador11
             // 
@@ -572,7 +571,7 @@ namespace CapaPresentaciones
             this.cxtRegimen.MaxDropDownItems = 50;
             this.cxtRegimen.Name = "cxtRegimen";
             this.cxtRegimen.Size = new System.Drawing.Size(204, 27);
-            this.cxtRegimen.TabIndex = 121;
+            this.cxtRegimen.TabIndex = 9;
             // 
             // lblEscuela
             // 
@@ -629,35 +628,6 @@ namespace CapaPresentaciones
             this.lblDominioEmail.Size = new System.Drawing.Size(110, 19);
             this.lblDominioEmail.TabIndex = 128;
             this.lblDominioEmail.Text = "@unsaac.edu.pe";
-            // 
-            // BordeadoMenu
-            // 
-            this.BordeadoMenu.ActiveBorderThickness = 1;
-            this.BordeadoMenu.ActiveCornerRadius = 20;
-            this.BordeadoMenu.ActiveFillColor = System.Drawing.Color.White;
-            this.BordeadoMenu.ActiveForecolor = System.Drawing.Color.White;
-            this.BordeadoMenu.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BordeadoMenu.BackColor = System.Drawing.Color.White;
-            this.BordeadoMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoMenu.BackgroundImage")));
-            this.BordeadoMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BordeadoMenu.ButtonText = "Editar Perfil";
-            this.BordeadoMenu.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BordeadoMenu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BordeadoMenu.ForeColor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleBorderThickness = 1;
-            this.BordeadoMenu.IdleCornerRadius = 20;
-            this.BordeadoMenu.IdleFillColor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleForecolor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoMenu.Location = new System.Drawing.Point(-1, 0);
-            this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(5);
-            this.BordeadoMenu.Name = "BordeadoMenu";
-            this.BordeadoMenu.Size = new System.Drawing.Size(396, 759);
-            this.BordeadoMenu.TabIndex = 130;
-            this.BordeadoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnRestablecerPerfil
             // 
@@ -773,7 +743,7 @@ namespace CapaPresentaciones
             this.txtHorario.Multiline = true;
             this.txtHorario.Name = "txtHorario";
             this.txtHorario.Size = new System.Drawing.Size(242, 60);
-            this.txtHorario.TabIndex = 134;
+            this.txtHorario.TabIndex = 11;
             // 
             // P_DatosDocente
             // 
@@ -826,11 +796,11 @@ namespace CapaPresentaciones
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.BordeadoMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_DatosDocente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Datos del Estudiante";
+            this.Text = "Datos del Docente";
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).EndInit();
@@ -882,7 +852,6 @@ namespace CapaPresentaciones
         public System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblDominioEmail;
-        private Bunifu.Framework.UI.BunifuThinButton2 BordeadoMenu;
         private Bunifu.Framework.UI.BunifuFlatButton btnRestablecerPerfil;
         private Bunifu.Framework.UI.BunifuFlatButton btnSubirPerfil;
         public Otros_Controles.JALMCircularPictureBox imgPerfil;

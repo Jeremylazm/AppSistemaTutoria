@@ -93,34 +93,14 @@ namespace CapaDatos
         }
 
         // Metodo para ver la informacion personal de un estudiante
-        string VisibilidadIPersonal(string IPersonalCifrada, bool EsEstudiante = false)
+        string VisibilidadIPersonal(string IPersonalCifrada, bool Permiso, bool EsEstudiante = false)
         {
-            // Mostrar o no la informacion personal de acuerdo al permiso otorgado
+            //Mostrar o no la información personal de acuerdo al permiso otorgado
 
-            // Verificar permiso de visibilidad
-            string Permiso = IPersonalCifrada.Substring(IPersonalCifrada.Length - 4);
-
-            //Eliminar el permiso
-            IPersonalCifrada = IPersonalCifrada.Substring(0, IPersonalCifrada.Length - 5);
-
-            // Si el usuario es estudiante, puede ver su informacion personal
-            if (EsEstudiante)
-            {
-                // Retornar la la informacion personal desencriptada
-                return E_Criptografia.DesencriptarRSA(IPersonalCifrada, Key);
-            }
-
-            // Si el tutor tiene permiso de visualizar la informacion personal
-            if (Permiso == "VT=T")
-            {
-                // Retornar la la informacion personal desencriptada
-                return E_Criptografia.DesencriptarRSA(IPersonalCifrada, Key);
-            }
-            else 
-            {
-                // Retornar la la informacion personal encriptada
-                return IPersonalCifrada; //No desencriptar
-            }
+            //Verificar permiso de visibilidad
+            if (EsEstudiante) return E_Criptografia.DesencriptarRSA(IPersonalCifrada, Key);//Encriptar
+            if (Permiso) return E_Criptografia.DesencriptarRSA(IPersonalCifrada, Key);//Encriptar
+            else return IPersonalCifrada; //No desencriptar
         }
 
         // Metodo para mostrar los tutorados de un tutor
@@ -151,7 +131,7 @@ namespace CapaDatos
                 if (Fila["Perfil2"].GetType() == Type.GetType("System.DBNull"))
                 {
                     // Mostrar una imgen por defecto para el docente
-                    string RutaImagen = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
+                    string RutaImagen = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
                     using (MemoryStream MemoriaPerfil = new MemoryStream())
                     {
                         Image.FromFile(RutaImagen).Save(MemoriaPerfil, ImageFormat.Bmp);
@@ -170,7 +150,7 @@ namespace CapaDatos
                 if (Fila["ConcederPermiso"].Equals("SÍ"))
                 {
                     // Desencriptar la informacion personal del estudiante
-                    Fila["InformacionPersonal"] = VisibilidadIPersonal(Fila["InformacionPersonal"].ToString(), true);
+                    Fila["InformacionPersonal"] = E_Criptografia.DesencriptarRSA(Fila["InformacionPersonal"].ToString(),Key);
                 }
                 else
                 {
@@ -336,7 +316,7 @@ namespace CapaDatos
                 if (Fila["Perfil2"].GetType() == Type.GetType("System.DBNull"))
                 {
                     // Mostrar una imgen por defecto para el docente
-                    string RutaImagen = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
+                    string RutaImagen = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
                     using (MemoryStream MemoriaPerfil = new MemoryStream())
                     {
                         Image.FromFile(RutaImagen).Save(MemoriaPerfil, ImageFormat.Bmp);

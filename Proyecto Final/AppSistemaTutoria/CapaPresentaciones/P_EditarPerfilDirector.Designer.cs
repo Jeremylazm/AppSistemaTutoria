@@ -158,7 +158,7 @@
             this.txtTelefono.Location = new System.Drawing.Point(283, 85);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(119, 19);
-            this.txtTelefono.TabIndex = 141;
+            this.txtTelefono.TabIndex = 0;
             // 
             // lblTelefono
             // 
@@ -197,7 +197,7 @@
             this.txtDireccion.Location = new System.Drawing.Point(122, 182);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(280, 19);
-            this.txtDireccion.TabIndex = 138;
+            this.txtDireccion.TabIndex = 1;
             // 
             // lblDireccion
             // 
@@ -783,9 +783,10 @@
             this.Controls.Add(this.BordeadoInformacion);
             this.Controls.Add(this.BordeadoMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_EditarPerfilDirector";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Editar Perfil de Docente";
+            this.Text = "Editar Perfil de Director";
             this.Load += new System.EventHandler(this.P_EditarPerfilDocente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).EndInit();

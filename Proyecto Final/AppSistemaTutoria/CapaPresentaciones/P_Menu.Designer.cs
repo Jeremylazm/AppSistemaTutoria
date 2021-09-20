@@ -47,6 +47,7 @@ namespace CapaPresentaciones
             this.btnTutores = new Bunifu.Framework.UI.BunifuFlatButton();
             this.separador = new Bunifu.Framework.UI.BunifuSeparator();
             this.btnTutorados = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.imgPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
             this.btnDocentes = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnEstudiantes = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnTutorias = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -57,7 +58,6 @@ namespace CapaPresentaciones
             this.lblDatos = new System.Windows.Forms.Label();
             this.pnInferior = new System.Windows.Forms.Panel();
             this.pnPrincipal = new System.Windows.Forms.Panel();
-            this.imgPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
             this.pnSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
@@ -65,8 +65,8 @@ namespace CapaPresentaciones
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
             this.pnLateral.SuspendLayout();
-            this.pnPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
+            this.pnPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
             // MovimientoMenu
@@ -381,6 +381,23 @@ namespace CapaPresentaciones
             this.btnTutorados.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTutorados.Click += new System.EventHandler(this.btnTutorados_Click);
             // 
+            // imgPerfil
+            // 
+            this.imgPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.imgPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.imgPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.imgPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.imgPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.imgPerfil.BorderSize = 2;
+            this.imgPerfil.GradientAngle = 50F;
+            this.imgPerfil.Image = ((System.Drawing.Image)(resources.GetObject("imgPerfil.Image")));
+            this.imgPerfil.Location = new System.Drawing.Point(34, 12);
+            this.imgPerfil.Name = "imgPerfil";
+            this.imgPerfil.Size = new System.Drawing.Size(100, 100);
+            this.imgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgPerfil.TabIndex = 45;
+            this.imgPerfil.TabStop = false;
+            // 
             // btnDocentes
             // 
             this.btnDocentes.Active = true;
@@ -583,23 +600,6 @@ namespace CapaPresentaciones
             this.pnPrincipal.Size = new System.Drawing.Size(1000, 600);
             this.pnPrincipal.TabIndex = 5;
             // 
-            // imgPerfil
-            // 
-            this.imgPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.imgPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.imgPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.imgPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.imgPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.imgPerfil.BorderSize = 2;
-            this.imgPerfil.GradientAngle = 50F;
-            this.imgPerfil.Image = ((System.Drawing.Image)(resources.GetObject("imgPerfil.Image")));
-            this.imgPerfil.Location = new System.Drawing.Point(34, 12);
-            this.imgPerfil.Name = "imgPerfil";
-            this.imgPerfil.Size = new System.Drawing.Size(100, 100);
-            this.imgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgPerfil.TabIndex = 45;
-            this.imgPerfil.TabStop = false;
-            // 
             // P_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -608,6 +608,7 @@ namespace CapaPresentaciones
             this.ClientSize = new System.Drawing.Size(1000, 600);
             this.Controls.Add(this.pnPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1000, 600);
             this.Name = "P_Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -621,8 +622,8 @@ namespace CapaPresentaciones
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).EndInit();
             this.pnLateral.ResumeLayout(false);
-            this.pnPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).EndInit();
+            this.pnPrincipal.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

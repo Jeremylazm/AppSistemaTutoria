@@ -64,6 +64,7 @@
             this.txtContraseña.Size = new System.Drawing.Size(191, 19);
             this.txtContraseña.TabIndex = 1;
             this.txtContraseña.UseSystemPasswordChar = true;
+            this.txtContraseña.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContraseña_KeyPress);
             // 
             // txtUsuario
             // 
@@ -214,7 +215,7 @@
             this.btnIngresar.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnIngresar.selected = true;
             this.btnIngresar.Size = new System.Drawing.Size(228, 40);
-            this.btnIngresar.TabIndex = 1;
+            this.btnIngresar.TabIndex = 2;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnIngresar.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
@@ -268,7 +269,7 @@
             this.lblRecuperarContraseña.Location = new System.Drawing.Point(193, 226);
             this.lblRecuperarContraseña.Name = "lblRecuperarContraseña";
             this.lblRecuperarContraseña.Size = new System.Drawing.Size(183, 19);
-            this.lblRecuperarContraseña.TabIndex = 110;
+            this.lblRecuperarContraseña.TabIndex = 3;
             this.lblRecuperarContraseña.TabStop = true;
             this.lblRecuperarContraseña.Text = "¿Olvidaste tu contraseña?";
             this.lblRecuperarContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -296,9 +297,10 @@
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.lblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_InicioSesion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Iniciar Sesión";
+            this.Text = "Inicio de Sesión";
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgContraseña)).EndInit();

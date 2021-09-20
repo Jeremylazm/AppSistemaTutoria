@@ -160,5 +160,11 @@ namespace CapaPresentaciones
             P_RecuperarContraseña RC = new P_RecuperarContraseña();
             RC.ShowDialog();
         }
+
+        private void txtContraseña_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+                IniciarSesion(txtUsuario.Text, txtContraseña.Text);
+        }
     }
 }

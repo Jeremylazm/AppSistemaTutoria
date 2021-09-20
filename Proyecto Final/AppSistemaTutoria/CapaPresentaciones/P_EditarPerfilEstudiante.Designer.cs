@@ -132,7 +132,7 @@
             this.txtTReferencia.Location = new System.Drawing.Point(278, 266);
             this.txtTReferencia.Name = "txtTReferencia";
             this.txtTReferencia.Size = new System.Drawing.Size(119, 19);
-            this.txtTReferencia.TabIndex = 156;
+            this.txtTReferencia.TabIndex = 3;
             // 
             // lblTReferencia
             // 
@@ -171,7 +171,7 @@
             this.txtPReferencia.Location = new System.Drawing.Point(103, 266);
             this.txtPReferencia.Name = "txtPReferencia";
             this.txtPReferencia.Size = new System.Drawing.Size(91, 19);
-            this.txtPReferencia.TabIndex = 153;
+            this.txtPReferencia.TabIndex = 2;
             // 
             // lblPReferencia
             // 
@@ -236,7 +236,7 @@
             this.txtTelefono.Location = new System.Drawing.Point(278, 83);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(119, 19);
-            this.txtTelefono.TabIndex = 141;
+            this.txtTelefono.TabIndex = 0;
             // 
             // lblTelefono
             // 
@@ -275,7 +275,7 @@
             this.txtDireccion.Location = new System.Drawing.Point(117, 147);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(280, 19);
-            this.txtDireccion.TabIndex = 138;
+            this.txtDireccion.TabIndex = 1;
             // 
             // lblDireccion
             // 
@@ -509,7 +509,7 @@
             // 
             // btnRestablecerPerfil
             // 
-            //this.btnRestablecerPerfil.Active = true;
+            this.btnRestablecerPerfil.Active = true;
             this.btnRestablecerPerfil.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnRestablecerPerfil.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnRestablecerPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -546,6 +546,7 @@
             // 
             // btnSubirPerfil
             // 
+            this.btnSubirPerfil.Active = true;
             this.btnSubirPerfil.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnSubirPerfil.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnSubirPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -621,7 +622,7 @@
             // 
             // btnCambiarContraseña
             // 
-            //this.btnCambiarContraseña.Active = true;
+            this.btnCambiarContraseña.Active = true;
             this.btnCambiarContraseña.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnCambiarContraseña.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnCambiarContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -658,6 +659,7 @@
             // 
             // btnGuardar
             // 
+            this.btnGuardar.Active = true;
             this.btnGuardar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -717,7 +719,7 @@
             this.ckbIPersonal.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.ckbIPersonal.OnToggleColor = System.Drawing.Color.White;
             this.ckbIPersonal.Size = new System.Drawing.Size(45, 22);
-            this.ckbIPersonal.TabIndex = 173;
+            this.ckbIPersonal.TabIndex = 5;
             this.ckbIPersonal.UseVisualStyleBackColor = false;
             // 
             // imgPerfil
@@ -745,13 +747,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtIPersonal.BackColor = System.Drawing.Color.White;
             this.txtIPersonal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtIPersonal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtIPersonal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtIPersonal.Location = new System.Drawing.Point(34, 349);
             this.txtIPersonal.Multiline = true;
             this.txtIPersonal.Name = "txtIPersonal";
             this.txtIPersonal.Size = new System.Drawing.Size(371, 69);
-            this.txtIPersonal.TabIndex = 176;
+            this.txtIPersonal.TabIndex = 4;
             // 
             // BordeadoMenu
             // 
@@ -829,6 +832,7 @@
             this.Controls.Add(this.BordeadoInformacion);
             this.Controls.Add(this.BordeadoMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_EditarPerfilEstudiante";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar Perfil de Estudiante";

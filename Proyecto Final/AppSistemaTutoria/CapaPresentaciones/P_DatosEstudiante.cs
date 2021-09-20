@@ -123,7 +123,7 @@ namespace CapaPresentaciones
 
         public string AgregarOModificar(Image Perfil, string Codigo, string APaterno, string AMaterno, string Nombre, 
                                  string Email, string Direccion, string Telefono, string CodEscuelaP, 
-                                 string PesonaReferencia, string TelefonoReferencia, string InformacionPersonal)
+                                 string PersonaReferencia, string TelefonoReferencia, string InformacionPersonal)
         {
             string Mensaje = "";
 
@@ -177,7 +177,7 @@ namespace CapaPresentaciones
                             {
                                 ObjEntidad.Telefono = Telefono;
                                 ObjEntidad.CodEscuelaP = CodEscuelaP;
-                                ObjEntidad.PersonaReferencia = PesonaReferencia;
+                                ObjEntidad.PersonaReferencia = PersonaReferencia;
 
                                 if (!PatronTelefonoReferencia.IsMatch(TelefonoReferencia))
                                 {
@@ -287,7 +287,7 @@ namespace CapaPresentaciones
                                 {
                                     ObjEntidad.Telefono = Telefono;
                                     ObjEntidad.CodEscuelaP = CodEscuelaP;
-                                    ObjEntidad.PersonaReferencia = PesonaReferencia;
+                                    ObjEntidad.PersonaReferencia = PersonaReferencia;
 
                                     if (!PatronTelefonoReferencia.IsMatch(TelefonoReferencia))
                                     {
