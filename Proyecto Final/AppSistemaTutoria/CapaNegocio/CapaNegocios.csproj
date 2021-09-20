@@ -150,8 +150,8 @@
     <Compile Include="N_Docente.cs" />
     <Compile Include="N_EscuelaProfesional.cs" />
     <Compile Include="N_Estudiante.cs" />
+    <Compile Include="N_FichaTutoria.cs" />
     <Compile Include="N_InicioSesion.cs" />
-    <Compile Include="N_Tutoria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
