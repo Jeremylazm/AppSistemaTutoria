@@ -115,5 +115,35 @@ namespace CapaPresentaciones
                 e.Value = HacerImagenCircular(imgSave);
             }
         }
+
+        private void btnNuevaSesion_Click(object sender, EventArgs e)
+        {
+            P_DatosTutoria EditarRegistro = new P_DatosTutoria();
+            EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+
+            if (dgvTabla.SelectedRows.Count > 0)
+            {
+                Program.Evento = 1;
+
+                EditarRegistro.txtCodigoEstudiante.Text = dgvTabla.CurrentRow.Cells[2].Value.ToString();
+                EditarRegistro.txtAPaterno.Text = dgvTabla.CurrentRow.Cells[3].Value.ToString();
+                EditarRegistro.txtAMaterno.Text = dgvTabla.CurrentRow.Cells[4].Value.ToString();
+                EditarRegistro.txtNombre.Text = dgvTabla.CurrentRow.Cells[5].Value.ToString();
+                EditarRegistro.txtEmail.Text = dgvTabla.CurrentRow.Cells[7].Value.ToString();
+                EditarRegistro.txtDireccion.Text = dgvTabla.CurrentRow.Cells[8].Value.ToString();
+                EditarRegistro.txtTelefono.Text = dgvTabla.CurrentRow.Cells[9].Value.ToString();
+                EditarRegistro.txtEscuelaP.Text = dgvTabla.CurrentRow.Cells[11].Value.ToString();
+                EditarRegistro.txtPersonaReferencia.Text = dgvTabla.CurrentRow.Cells[12].Value.ToString();
+                EditarRegistro.txtTelefonoRef.Text = dgvTabla.CurrentRow.Cells[13].Value.ToString();
+                EditarRegistro.txtCodigoDocente.Text = dgvTabla.CurrentRow.Cells[15].Value.ToString();
+
+                EditarRegistro.ShowDialog();
+            }
+            else
+            {
+                MensajeError("Debe seleccionar una fila");
+            }
+            EditarRegistro.Dispose();
+        }
     }
 }

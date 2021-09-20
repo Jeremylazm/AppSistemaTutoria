@@ -648,10 +648,9 @@ BEGIN
 						 ET.Nombre),
 		   ET.Email, ET.Direccion, ET.Telefono, ET.CodEscuelaP,
 		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia, 
-		   --ET.TelefonoReferencia, ET.EstadoFisico, ET.EstadoMental
 		   ET.TelefonoReferencia, ET.InformacionPersonal, CodTutor = ET.CodDocente, ET.ConcederPermiso
-		FROM TESTUDIANTE ET INNER JOIN TEscuela_Profesional EP ON
-			 ET.CodEscuelaP = EP.CodEscuelaP
+		FROM (TESTUDIANTE ET INNER JOIN TEscuela_Profesional EP ON
+			 ET.CodEscuelaP = EP.CodEscuelaP)
 		WHERE ET.CodDocente = @CodDocente
 END;
 GO
