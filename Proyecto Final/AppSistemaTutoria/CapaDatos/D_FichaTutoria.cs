@@ -16,31 +16,22 @@ namespace CapaDatos
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
         public void InsertarFichaTutoria(E_FichaTutoria FichaTutoria)
         {
-            string Respuesta;
-            try
+
+            SqlCommand Comando = new SqlCommand("spuInsertarFichaTutoria", Conectar)
             {
-                SqlCommand Comando = new SqlCommand("spuInsertarFichaTutoria", Conectar)
-                {
-                    CommandType = CommandType.StoredProcedure
+                CommandType = CommandType.StoredProcedure
 
-                };
+            };
+            Comando.Parameters.AddWithValue("@CodDocente", FichaTutoria.CodDocente);
+            Comando.Parameters.AddWithValue("@CodEstudiante", FichaTutoria.CodEstudiante);
+            Comando.Parameters.AddWithValue("@Semestre", FichaTutoria.Semestre);
+            Comando.Parameters.AddWithValue("@Fecha", FichaTutoria.Fecha.ToString());
+            Comando.Parameters.AddWithValue("@Dimension", FichaTutoria.Dimension);
+            Comando.Parameters.AddWithValue("@Descripcion", FichaTutoria.Descripcion);
+            Comando.Parameters.AddWithValue("@Referencia", FichaTutoria.Referencia);
+            Comando.Parameters.AddWithValue("@Observaciones", FichaTutoria.Observaciones);
 
-                Comando.Parameters.AddWithValue("@CodTutoria", FichaTutoria.CodFichaTutoria);
-                Comando.Parameters.AddWithValue("@CodTutoria", FichaTutoria.CodDocente);
-                Comando.Parameters.AddWithValue("@CodTutoria", FichaTutoria.CodEstudiante);
-                Comando.Parameters.AddWithValue("@CodTutoria", FichaTutoria.Semestre);
-                Comando.Parameters.AddWithValue("@Fecha", FichaTutoria.Fecha.ToString());
-                Comando.Parameters.AddWithValue("@Dimension", FichaTutoria.Dimension);
-                Comando.Parameters.AddWithValue("@Descripcion", FichaTutoria.Descripcion);
-                Comando.Parameters.AddWithValue("@Referencia", FichaTutoria.Referencia);
-                Comando.Parameters.AddWithValue("@Observaciones", FichaTutoria.Observaciones);
-
-                Respuesta = Comando.ExecuteNonQuery() == 1 ? "OK" : "Error al insertar el registro";
-            }
-            catch (Exception e)
-            {
-                Respuesta = e.Message;
-            }
+            Comando.ExecuteNonQuery();
 
         }
         public void EditarFichaTutoria(E_FichaTutoria FichaTutoria)
