@@ -15,12 +15,18 @@ namespace CapaPresentaciones
     {
         readonly E_Docente ObjEntidad = new E_Docente();
         readonly N_Docente ObjNegocio = new N_Docente();
+        public bool Test { get; set; }
 
         public P_DatosDocente()
         {
             InitializeComponent();
             LlenarComboBox();
             ValidarPerfil();
+        }
+
+        public P_DatosDocente(bool pTest)
+        {
+            Test = pTest;
         }
 
         private void MensajeConfirmacion(string Mensaje)
@@ -77,6 +83,23 @@ namespace CapaPresentaciones
         private void ActualizarDatos(object sender, FormClosedEventArgs e)
         {
             LlenarComboBox();
+        }
+
+        //public string VerificarDatosDocente(Image Perfil, string Codigo, string APaterno, string AMaterno, string Nombre,
+        //                 string Email, string Direccion, string Telefono, string CodEscuelaP,
+        //                 string PersonaReferencia, string TelefonoReferencia, string InformacionPersonal)
+        //{
+
+        //}
+
+        public string VerificarDatosDocente(Image Perfil, string Codigo, string APaterno, string AMaterno,
+            string Nombre, string Email, string Direccion, string Telefono, string Categoria, string Subcategoria, 
+            string Regimen, string EProfesional, string Horario)
+        {
+            string msg = ""; //Mensaje a retornar
+
+
+            return msg;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
