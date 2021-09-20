@@ -86,6 +86,9 @@
             this.bunifuSeparator5 = new Bunifu.Framework.UI.BunifuSeparator();
             this.txtCodigoDocente = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.bunifuSeparator6 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.txtSemestre = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
             this.SuspendLayout();
@@ -160,9 +163,9 @@
             this.lblCodigo.Location = new System.Drawing.Point(16, 63);
             this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(76, 23);
+            this.lblCodigo.Size = new System.Drawing.Size(171, 23);
             this.lblCodigo.TabIndex = 78;
-            this.lblCodigo.Text = "Código:";
+            this.lblCodigo.Text = "Código Estudiante:";
             // 
             // Separador2
             // 
@@ -427,6 +430,7 @@
             this.btnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnLimpiar.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnLimpiar.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnGuardar
             // 
@@ -464,6 +468,7 @@
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnGuardar.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnGuardar.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // imgLogoUNSAAC
             // 
@@ -537,7 +542,7 @@
             this.Separador11.BackColor = System.Drawing.Color.Transparent;
             this.Separador11.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador11.LineThickness = 1;
-            this.Separador11.Location = new System.Drawing.Point(180, 490);
+            this.Separador11.Location = new System.Drawing.Point(180, 447);
             this.Separador11.Margin = new System.Windows.Forms.Padding(5);
             this.Separador11.Name = "Separador11";
             this.Separador11.Size = new System.Drawing.Size(272, 12);
@@ -550,7 +555,7 @@
             this.lblEscuela.AutoSize = true;
             this.lblEscuela.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEscuela.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblEscuela.Location = new System.Drawing.Point(16, 463);
+            this.lblEscuela.Location = new System.Drawing.Point(16, 420);
             this.lblEscuela.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEscuela.Name = "lblEscuela";
             this.lblEscuela.Size = new System.Drawing.Size(152, 23);
@@ -570,7 +575,7 @@
             "ACADÉMICA",
             "PERSONAL",
             "PROFESIONAL"});
-            this.cxtDimension.Location = new System.Drawing.Point(694, 117);
+            this.cxtDimension.Location = new System.Drawing.Point(695, 235);
             this.cxtDimension.Margin = new System.Windows.Forms.Padding(4);
             this.cxtDimension.MaxDropDownItems = 50;
             this.cxtDimension.Name = "cxtDimension";
@@ -582,7 +587,7 @@
             this.Separador12.BackColor = System.Drawing.Color.Transparent;
             this.Separador12.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador12.LineThickness = 1;
-            this.Separador12.Location = new System.Drawing.Point(694, 148);
+            this.Separador12.Location = new System.Drawing.Point(695, 266);
             this.Separador12.Margin = new System.Windows.Forms.Padding(5);
             this.Separador12.Name = "Separador12";
             this.Separador12.Size = new System.Drawing.Size(272, 12);
@@ -595,7 +600,7 @@
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblEstado.Location = new System.Drawing.Point(530, 121);
+            this.lblEstado.Location = new System.Drawing.Point(531, 239);
             this.lblEstado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(104, 23);
@@ -664,7 +669,7 @@
             this.txtEscuelaP.Enabled = false;
             this.txtEscuelaP.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEscuelaP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtEscuelaP.Location = new System.Drawing.Point(179, 470);
+            this.txtEscuelaP.Location = new System.Drawing.Point(179, 427);
             this.txtEscuelaP.Margin = new System.Windows.Forms.Padding(4);
             this.txtEscuelaP.Name = "txtEscuelaP";
             this.txtEscuelaP.Size = new System.Drawing.Size(272, 23);
@@ -675,7 +680,7 @@
             this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.bunifuSeparator1.LineThickness = 1;
-            this.bunifuSeparator1.Location = new System.Drawing.Point(695, 377);
+            this.bunifuSeparator1.Location = new System.Drawing.Point(694, 489);
             this.bunifuSeparator1.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
             this.bunifuSeparator1.Size = new System.Drawing.Size(272, 12);
@@ -689,7 +694,7 @@
             this.txtObservaciones.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtObservaciones.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtObservaciones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtObservaciones.Location = new System.Drawing.Point(695, 353);
+            this.txtObservaciones.Location = new System.Drawing.Point(696, 430);
             this.txtObservaciones.Margin = new System.Windows.Forms.Padding(4);
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.Size = new System.Drawing.Size(272, 23);
@@ -700,7 +705,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label1.Location = new System.Drawing.Point(531, 354);
+            this.label1.Location = new System.Drawing.Point(532, 431);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(141, 23);
@@ -712,7 +717,7 @@
             this.bunifuSeparator2.BackColor = System.Drawing.Color.Transparent;
             this.bunifuSeparator2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.bunifuSeparator2.LineThickness = 1;
-            this.bunifuSeparator2.Location = new System.Drawing.Point(695, 205);
+            this.bunifuSeparator2.Location = new System.Drawing.Point(696, 323);
             this.bunifuSeparator2.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuSeparator2.Name = "bunifuSeparator2";
             this.bunifuSeparator2.Size = new System.Drawing.Size(272, 12);
@@ -726,7 +731,7 @@
             this.txtReferencia.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtReferencia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReferencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtReferencia.Location = new System.Drawing.Point(695, 180);
+            this.txtReferencia.Location = new System.Drawing.Point(696, 298);
             this.txtReferencia.Margin = new System.Windows.Forms.Padding(4);
             this.txtReferencia.Name = "txtReferencia";
             this.txtReferencia.Size = new System.Drawing.Size(272, 23);
@@ -737,7 +742,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label2.Location = new System.Drawing.Point(531, 180);
+            this.label2.Location = new System.Drawing.Point(532, 298);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 23);
@@ -749,7 +754,7 @@
             this.bunifuSeparator3.BackColor = System.Drawing.Color.Transparent;
             this.bunifuSeparator3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.bunifuSeparator3.LineThickness = 1;
-            this.bunifuSeparator3.Location = new System.Drawing.Point(694, 285);
+            this.bunifuSeparator3.Location = new System.Drawing.Point(696, 378);
             this.bunifuSeparator3.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuSeparator3.Name = "bunifuSeparator3";
             this.bunifuSeparator3.Size = new System.Drawing.Size(272, 12);
@@ -763,7 +768,7 @@
             this.txtDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDescripcion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtDescripcion.Location = new System.Drawing.Point(694, 260);
+            this.txtDescripcion.Location = new System.Drawing.Point(696, 353);
             this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(272, 23);
@@ -774,7 +779,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label3.Location = new System.Drawing.Point(530, 260);
+            this.label3.Location = new System.Drawing.Point(532, 353);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 23);
@@ -786,7 +791,7 @@
             this.bunifuSeparator4.BackColor = System.Drawing.Color.Transparent;
             this.bunifuSeparator4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.bunifuSeparator4.LineThickness = 1;
-            this.bunifuSeparator4.Location = new System.Drawing.Point(695, 86);
+            this.bunifuSeparator4.Location = new System.Drawing.Point(696, 206);
             this.bunifuSeparator4.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuSeparator4.Name = "bunifuSeparator4";
             this.bunifuSeparator4.Size = new System.Drawing.Size(272, 12);
@@ -800,7 +805,7 @@
             this.txtCodTutoria.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCodTutoria.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodTutoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtCodTutoria.Location = new System.Drawing.Point(695, 63);
+            this.txtCodTutoria.Location = new System.Drawing.Point(696, 181);
             this.txtCodTutoria.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodTutoria.Name = "txtCodTutoria";
             this.txtCodTutoria.Size = new System.Drawing.Size(272, 23);
@@ -811,17 +816,17 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label4.Location = new System.Drawing.Point(531, 63);
+            this.label4.Location = new System.Drawing.Point(532, 181);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(142, 23);
+            this.label4.Size = new System.Drawing.Size(126, 23);
             this.label4.TabIndex = 133;
-            this.label4.Text = "Código Tutoria:";
+            this.label4.Text = "Código Ficha:";
             // 
             // dateTimeFechaFichaT
             // 
             this.dateTimeFechaFichaT.Enabled = false;
-            this.dateTimeFechaFichaT.Location = new System.Drawing.Point(695, 464);
+            this.dateTimeFechaFichaT.Location = new System.Drawing.Point(535, 76);
             this.dateTimeFechaFichaT.Name = "dateTimeFechaFichaT";
             this.dateTimeFechaFichaT.Size = new System.Drawing.Size(272, 22);
             this.dateTimeFechaFichaT.TabIndex = 145;
@@ -831,7 +836,7 @@
             this.bunifuSeparator5.BackColor = System.Drawing.Color.Transparent;
             this.bunifuSeparator5.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.bunifuSeparator5.LineThickness = 1;
-            this.bunifuSeparator5.Location = new System.Drawing.Point(180, 445);
+            this.bunifuSeparator5.Location = new System.Drawing.Point(179, 489);
             this.bunifuSeparator5.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuSeparator5.Name = "bunifuSeparator5";
             this.bunifuSeparator5.Size = new System.Drawing.Size(272, 12);
@@ -846,7 +851,7 @@
             this.txtCodigoDocente.Enabled = false;
             this.txtCodigoDocente.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigoDocente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtCodigoDocente.Location = new System.Drawing.Point(180, 422);
+            this.txtCodigoDocente.Location = new System.Drawing.Point(179, 466);
             this.txtCodigoDocente.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigoDocente.Name = "txtCodigoDocente";
             this.txtCodigoDocente.Size = new System.Drawing.Size(272, 23);
@@ -857,12 +862,49 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label5.Location = new System.Drawing.Point(16, 422);
+            this.label5.Location = new System.Drawing.Point(15, 466);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(151, 23);
+            this.label5.Size = new System.Drawing.Size(127, 23);
             this.label5.TabIndex = 146;
-            this.label5.Text = "Código Docente:";
+            this.label5.Text = "Código Tutor:";
+            // 
+            // bunifuSeparator6
+            // 
+            this.bunifuSeparator6.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuSeparator6.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.bunifuSeparator6.LineThickness = 1;
+            this.bunifuSeparator6.Location = new System.Drawing.Point(696, 151);
+            this.bunifuSeparator6.Margin = new System.Windows.Forms.Padding(5);
+            this.bunifuSeparator6.Name = "bunifuSeparator6";
+            this.bunifuSeparator6.Size = new System.Drawing.Size(272, 12);
+            this.bunifuSeparator6.TabIndex = 151;
+            this.bunifuSeparator6.Transparency = 255;
+            this.bunifuSeparator6.Vertical = false;
+            // 
+            // txtSemestre
+            // 
+            this.txtSemestre.BackColor = System.Drawing.Color.White;
+            this.txtSemestre.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSemestre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSemestre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.txtSemestre.Location = new System.Drawing.Point(696, 126);
+            this.txtSemestre.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSemestre.Name = "txtSemestre";
+            this.txtSemestre.Size = new System.Drawing.Size(272, 23);
+            this.txtSemestre.TabIndex = 150;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.label6.Location = new System.Drawing.Point(532, 126);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(96, 23);
+            this.label6.TabIndex = 149;
+            this.label6.Text = "Semestre:";
             // 
             // P_DatosTutoria
             // 
@@ -870,6 +912,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1047, 617);
+            this.Controls.Add(this.bunifuSeparator6);
+            this.Controls.Add(this.txtSemestre);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.bunifuSeparator5);
             this.Controls.Add(this.txtCodigoDocente);
             this.Controls.Add(this.label5);
@@ -995,5 +1040,8 @@
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator5;
         public System.Windows.Forms.TextBox txtCodigoDocente;
         private System.Windows.Forms.Label label5;
+        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator6;
+        public System.Windows.Forms.TextBox txtSemestre;
+        private System.Windows.Forms.Label label6;
     }
 }
