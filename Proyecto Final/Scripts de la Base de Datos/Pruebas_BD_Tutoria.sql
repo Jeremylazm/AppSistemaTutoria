@@ -125,6 +125,5 @@ SELECT * FROM TEscuela_Profesional
 SELECT * FROM TEstudiante
 SELECT * FROM TDocente
 SELECT * FROM TUsuario
-SELECT * FROM TTutoria
 SELECT * FROM TFichaTutoria
 SELECT * FROM Historial
