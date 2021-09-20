@@ -120,10 +120,12 @@ GO
 
 -- Ficha de tutoria:
 
+EXEC DBO.spuInsertarFichaTutoria '206543','2020-II','20/10/2020','PERSONAL','Des1cccc','Ref11111','obs1111'
+
 -- Mostrar tablas
 SELECT * FROM TEscuela_Profesional
-SELECT * FROM TEstudiante
 SELECT * FROM TDocente
 SELECT * FROM TUsuario
 SELECT * FROM TFichaTutoria
+SELECT * FROM TEstudiante
 SELECT * FROM Historial

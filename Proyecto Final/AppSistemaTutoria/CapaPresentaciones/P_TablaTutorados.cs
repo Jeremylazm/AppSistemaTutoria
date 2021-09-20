@@ -13,6 +13,8 @@ namespace CapaPresentaciones
         readonly E_Estudiante ObjEntidad = new E_Estudiante();
         readonly N_Estudiante ObjNegocio = new N_Estudiante();
 
+        readonly P_TablaTutorias ObjTutoria = new P_TablaTutorias();
+
         public P_TablaTutorados()
         {
             InitializeComponent();
@@ -55,6 +57,7 @@ namespace CapaPresentaciones
             dgvTabla.DataSource = N_Docente.MostrarTutorados(E_InicioSesion.Usuario);
             AccionesTabla();
         }
+        
 
         public void BuscarRegistros()
         {
@@ -120,10 +123,11 @@ namespace CapaPresentaciones
         {
             P_DatosTutoria EditarRegistro = new P_DatosTutoria();
             EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+            
 
             if (dgvTabla.SelectedRows.Count > 0)
             {
-                Program.Evento = 1;
+                
 
                 EditarRegistro.txtCodigoEstudiante.Text = dgvTabla.CurrentRow.Cells[2].Value.ToString();
                 EditarRegistro.txtAPaterno.Text = dgvTabla.CurrentRow.Cells[3].Value.ToString();
@@ -138,12 +142,14 @@ namespace CapaPresentaciones
                 EditarRegistro.txtCodigoDocente.Text = dgvTabla.CurrentRow.Cells[15].Value.ToString();
 
                 EditarRegistro.ShowDialog();
+                
             }
             else
             {
                 MensajeError("Debe seleccionar una fila");
             }
             EditarRegistro.Dispose();
+            ObjTutoria.MostrarRegistros();
         }
     }
 }

@@ -59,7 +59,7 @@ namespace CapaPresentaciones
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
             this.btnCerrar.ImageActive = null;
             this.btnCerrar.Location = new System.Drawing.Point(1043, 11);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(32, 30);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -131,7 +131,7 @@ namespace CapaPresentaciones
             this.Separador1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador1.LineThickness = 1;
             this.Separador1.Location = new System.Drawing.Point(89, 95);
-            this.Separador1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Separador1.Margin = new System.Windows.Forms.Padding(5);
             this.Separador1.Name = "Separador1";
             this.Separador1.Size = new System.Drawing.Size(744, 12);
             this.Separador1.TabIndex = 77;
@@ -147,7 +147,7 @@ namespace CapaPresentaciones
             this.txtBuscar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtBuscar.Location = new System.Drawing.Point(89, 71);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(744, 23);
             this.txtBuscar.TabIndex = 76;
@@ -177,7 +177,7 @@ namespace CapaPresentaciones
             this.btnNuevaSesion.IconZoom = 50D;
             this.btnNuevaSesion.IsTab = false;
             this.btnNuevaSesion.Location = new System.Drawing.Point(856, 63);
-            this.btnNuevaSesion.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnNuevaSesion.Margin = new System.Windows.Forms.Padding(5);
             this.btnNuevaSesion.Name = "btnNuevaSesion";
             this.btnNuevaSesion.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnNuevaSesion.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -213,12 +213,12 @@ namespace CapaPresentaciones
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvTabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvTabla.ColumnHeadersHeight = 29;
+            this.dgvTabla.ColumnHeadersHeight = 38;
             this.dgvTabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvTabla.EnableHeadersVisualStyles = false;
             this.dgvTabla.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.dgvTabla.Location = new System.Drawing.Point(16, 119);
-            this.dgvTabla.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvTabla.Margin = new System.Windows.Forms.Padding(4);
             this.dgvTabla.Name = "dgvTabla";
             this.dgvTabla.ReadOnly = true;
             this.dgvTabla.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -251,7 +251,7 @@ namespace CapaPresentaciones
             this.Controls.Add(this.BordeadoMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "P_TablaTutorados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabla de Tutorados";

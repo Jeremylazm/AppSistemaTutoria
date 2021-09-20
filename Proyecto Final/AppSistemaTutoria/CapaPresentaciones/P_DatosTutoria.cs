@@ -60,7 +60,7 @@ namespace CapaPresentaciones
         }
 
         public string AgregarOModificar(string semestre,string CodDocente, string CodEstudiante, string Dimension, string Referencia, string Descripcion,
-                                 string Observaciones, DateTime Fecha)
+                                 string Observaciones, string Fecha)
         {
             string Mensaje = "";
 
@@ -83,7 +83,7 @@ namespace CapaPresentaciones
                     {
                         ObjEntidad.CodEstudiante = CodDocente;
                         ObjEntidad.Semestre = semestre;
-                        ObjEntidad.CodDocente = CodDocente;
+                        
                         ObjEntidad.Dimension = Dimension;
                         ObjEntidad.Referencia = Referencia;
                         ObjEntidad.Descripcion = Descripcion;
@@ -260,17 +260,18 @@ namespace CapaPresentaciones
                     try
                     {
                         
-                        ObjEntidad.CodDocente = txtCodigoDocente.Text;
+                        //ObjEntidad.CodDocente = txtCodigoDocente.Text;
                         ObjEntidad.CodEstudiante = txtCodigoEstudiante.Text;
                         ObjEntidad.Semestre = txtAMaterno.Text.ToUpper();
                         ObjEntidad.Referencia = txtReferencia.Text;
                         ObjEntidad.Dimension = cxtDimension.Text;
                         ObjEntidad.Descripcion = txtDescripcion.Text;
                         ObjEntidad.Observaciones = txtObservaciones.Text;
-                        ObjEntidad.Fecha = dateTimeFechaFichaT.Value.Date;
+                        ObjEntidad.Fecha = dateTimeFechaFichaT.Value.ToString("dd/MM/yyyy");
                         
                         ObjNegocio.InsertarRegistros(ObjEntidad);
                         MensajeConfirmacion("Registro insertado exitosamente");
+                        
                         Program.Evento = 0;
 
                         N_InicioSesion InicioSesion = new N_InicioSesion();
@@ -318,16 +319,16 @@ namespace CapaPresentaciones
                         if (Opcion == DialogResult.OK)
                         {
 
-                            ObjEntidad.CodDocente = txtCodigoDocente.Text;
+                            //ObjEntidad.CodDocente = txtCodigoDocente.Text;
                             ObjEntidad.CodEstudiante = txtCodigoEstudiante.Text;
                             ObjEntidad.Semestre = txtAMaterno.Text.ToUpper();
                             ObjEntidad.Referencia = txtReferencia.Text;
                             ObjEntidad.Dimension = cxtDimension.Text;
                             ObjEntidad.Descripcion = txtDescripcion.Text;
                             ObjEntidad.Observaciones = txtObservaciones.Text;
-                            ObjEntidad.Fecha = dateTimeFechaFichaT.Value.Date;
+                            ObjEntidad.Fecha = dateTimeFechaFichaT.Value.ToString("dd/MM/yyyy");
 
-                            ObjNegocio.InsertarRegistros(ObjEntidad);
+                            ObjNegocio.EditarRegistros(ObjEntidad);
                             MensajeConfirmacion("Registro editado exitosamente");
                             Program.Evento = 0;
                             LimpiarCajas();

@@ -135,6 +135,8 @@ IF EXISTS (SELECT *
 				WHERE NAME = 'TFichaTutoria')
 	DROP TABLE TFichaTutoria
 GO
+set dateformat dmy
+GO
 CREATE TABLE TFichaTutoria
 (
 	-- Lista de atributos
@@ -843,11 +845,12 @@ GO
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA FICHA DE TUTORIA ****************** */
 
 -- Crear un procedimiento para mostrar tutor�as
+
 CREATE PROCEDURE spuMostrarFichaTutorias @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Mostrar la tabla de TFichaTutoria
-	SELECT T.CodFichaTutoria,
+	SELECT T.CodTutoria,T.CodFichaTutoria,T.Fecha,
 		   T.CodEstudiante, Estudiante = (E.APaterno + ' ' + 
 										  E.AMaterno + ', ' + 
 										  E.Nombre),
