@@ -136,8 +136,10 @@ namespace CapaPresentaciones
 
         private void btnRestablecerPerfil_Click(object sender, EventArgs e)
         {
+            //Obtener directorio del proyecto
             string Ruta = Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath));
-            Ruta = Ruta.Replace('\\', '/');
+            Ruta = Ruta.Replace('\\', '/'); //Intercambiar \ por /
+            //Redirigir al directorio donde está la imagen.
             imgPerfil.Image = Image.FromFile($"{Ruta}/Iconos/Perfil Estudiante.png");
         }
 
