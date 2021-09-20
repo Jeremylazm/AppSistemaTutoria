@@ -163,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="T_CambiarContraseña.cs" />
+    <Compile Include="T_Docente.cs" />
     <Compile Include="T_Estudiante.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="T_InicioSesion.cs" />

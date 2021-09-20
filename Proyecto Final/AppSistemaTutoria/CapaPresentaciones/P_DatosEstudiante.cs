@@ -89,28 +89,6 @@ namespace CapaPresentaciones
             LlenarComboBox();
         }
 
-        string VisibilidadIPersonal(string IPersonalCifrada, bool EsEstudiante = false)
-        {
-            //Mostrar o no la información personal de acuerdo al permiso otorgado
-
-            //Verificar permiso de visibilidad
-            string Permiso = IPersonalCifrada.Substring(IPersonalCifrada.Length - 4);
-            IPersonalCifrada = IPersonalCifrada.Substring(0, IPersonalCifrada.Length - 5); //Eliminar string permiso
-
-            //Si el usuario es estudiante, puede ver su inf personal
-            if (EsEstudiante)
-            {
-                return E_Criptografia.DesencriptarRSA(IPersonalCifrada, Key); //Desencriptar
-            }
-
-            //Si Tutor tiene permiso de visualizar Inf Personal
-            if (Permiso == "VT=T")
-            {
-                return E_Criptografia.DesencriptarRSA(IPersonalCifrada, Key); //Desencriptar
-            }
-            else return IPersonalCifrada; //No desencriptar
-        }
-
 
         public string AgregarOModificar(Image Perfil, string Codigo, string APaterno, string AMaterno, string Nombre, 
                                  string Email, string Direccion, string Telefono, string CodEscuelaP, 
