@@ -22,7 +22,7 @@ USE db_a7878d_BDSistemaTutoria
 	EXEC SP_ADDTYPE tyCodEscuelaP,		'VARCHAR(4)', 'NOT NULL'
 	EXEC SP_ADDTYPE tyCodEstudiante,	'VARCHAR(6)', 'NOT NULL'
 	EXEC SP_ADDTYPE tyCodDocente,		'VARCHAR(5)', 'NOT NULL'
-	EXEC SP_ADDTYPE tyCodTutoria,		'VARCHAR(5)', 'NOT NULL'
+	EXEC SP_ADDTYPE tyCodFichaTutoria,	'VARCHAR(5)', 'NOT NULL'
 GO 
 
 /* ********************************************************************
@@ -129,30 +129,6 @@ CREATE TABLE TEstudiante
 );
 GO
 
-/* *************************** TABLA TUTOR�A *************************** */
-IF EXISTS (SELECT * 
-				FROM SYSOBJECTS
-				WHERE NAME = 'TTutoria')
-	DROP TABLE TTutoria
-GO
-CREATE TABLE TTutoria
-(
-	-- Lista de atributos
-	CodTutoria tyCodTutoria,
-	CodDocente tyCodDocente,
-	CodEstudiante tyCodEstudiante,
-
-	-- Determinar las claves 
-	PRIMARY KEY (CodTutoria),
-	CONSTRAINT FK_CodDocente 
-		FOREIGN KEY (CodDocente)
-		REFERENCES TDocente(CodDocente),
-	CONSTRAINT FK_CodEstudiante 
-		FOREIGN KEY (CodEstudiante)
-		REFERENCES TEstudiante(CodEstudiante)
-);
-GO
-
 /* *************************** TABLA FICHA DE TUTOR�A *************************** */
 
 IF EXISTS (SELECT * 
@@ -163,9 +139,12 @@ GO
 CREATE TABLE TFichaTutoria
 (
 	-- Lista de atributos
-	CodFichaTutoria int identity(1,1),
-	CodTutoria tyCodTutoria,
-	
+
+	CodFichaTutoria tyCodFichaTutoria,
+	CodDocente tyCodDocente,
+	CodEstudiante tyCodEstudiante,
+	Semestre VARCHAR(7),
+
 	Fecha DATETIME NOT NULL,
 	Dimension VARCHAR(15) DEFAULT 'ACADÉMICA' CHECK (Dimension IN ('ACADÉMICA',
 																   'PERSONAL',
@@ -175,13 +154,15 @@ CREATE TABLE TFichaTutoria
 	Observaciones VARCHAR(100),
 
 	-- Determinar las claves
-	-- Definir la clave primaria
-	PRIMARY KEY(CodFichaTutoria),
-	CONSTRAINT FK_CodTutoria 
-		FOREIGN KEY (CodTutoria)
-		REFERENCES TTutoria
-		ON UPDATE CASCADE
-		ON DELETE CASCADE
+
+	PRIMARY KEY (CodFichaTutoria),
+	CONSTRAINT FK_CodDocente 
+		FOREIGN KEY (CodDocente)
+		REFERENCES TDocente(CodDocente),
+	CONSTRAINT FK_CodEstudiante 
+		FOREIGN KEY (CodEstudiante)
+		REFERENCES TEstudiante(CodEstudiante)
+
 );
 GO
 
@@ -309,16 +290,16 @@ GO
 
 /* ************************** FUNCI�N PARA GENERAR UNA C�DIGO DE TUTOR�A ************************** */
 
-CREATE FUNCTION fnGenerarCodTutoria ()
+CREATE FUNCTION fnGenerarCodFichaTutoria ()
 RETURNS VARCHAR(8)
 AS
 BEGIN
 	-- Declarar un contador
 	DECLARE @Contador INT;
 
-	-- Determinar el valor del contador con el valor maximo en la tabla TTutoria
-	SELECT @Contador = RIGHT(MAX(CodTutoria), 4) + 1
-		FROM TTutoria
+	-- Determinar el valor del contador con el valor maximo en la tabla TFichaTutoria
+	SELECT @Contador = RIGHT(MAX(CodFichaTutoria), 4) + 1
+		FROM TFichaTutoria
 
 	-- Verificar si la tabla este vacia
 	IF (@Contador IS NULL)
@@ -327,7 +308,7 @@ BEGIN
 	END;
 
 	-- Retornar el valor de la clave primaria a partir del contador
-    RETURN (CONCAT('T', RIGHT(CONCAT('000', @Contador), 4)));
+    RETURN (CONCAT('S', RIGHT(CONCAT('000', @Contador), 4)));
 END;
 GO
 
@@ -578,11 +559,6 @@ BEGIN
 			TelefonoReferencia = @TelefonoReferencia, --EstadoFisico = @EstadoFisico, 
 			InformacionPersonal = @InformacionPersonal, ConcederPermiso = @ConcederPermiso
 			--EstadoMental = @EstadoMental
-		WHERE CodEstudiante = @CodEstudiante
-
-	-- Actualizar un estudiante de la tabla de TTutoria
-	UPDATE TTutoria
-		SET CodEstudiante = @CodEstudiante
 		WHERE CodEstudiante = @CodEstudiante
 
 	-- Actualizar un estudiante de la tabla de TUsuario
@@ -872,94 +848,57 @@ BEGIN
 END;
 GO
 
-/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA TUTOR�A ****************** */
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA FICHA DE TUTOR�A ****************** */
 
 -- Crear un procedimiento para mostrar tutor�as
-CREATE PROCEDURE spuMostrarTutorias
+CREATE PROCEDURE spuMostrarFichaTutorias
 AS
 BEGIN
-	-- Mostrar la tabla de TTutoria
-	SELECT T.CodTutoria, 
+
+	-- Mostrar la tabla de TFichaTutoria
+	SELECT T.CodFichaTutoria,
 		   T.CodEstudiante, Estudiante = (E.APaterno + ' ' + 
 										  E.AMaterno + ', ' + 
 										  E.Nombre),
-										  F.Descripcion,E.CodEscuelaP,E.Telefono,F.Dimension,F.Referencia,F.Observaciones,F.Fecha
-		FROM (TTutoria T INNER JOIN TFichaTutoria F ON
-			 T.CodTutoria = F.CodTutoria) INNER JOIN
+		   T.Semestre, T.Fecha, T.Dimension, T.Descripcion,
+		   T.Referencia, T.Observaciones
+		FROM (TFichaTutoria T INNER JOIN TDocente D ON
+			 T.CodDocente = D.CodDocente) INNER JOIN
 			 TEstudiante E ON T.CodEstudiante = E.CodEstudiante
 END;
 GO
 
 -- Crear un procedimiento para buscar tutor�as por cualquier atributo
-CREATE PROCEDURE spuBuscarTutorias @Texto VARCHAR(20)
+CREATE PROCEDURE spuBuscarFichaTutorias @Texto VARCHAR(20)
 AS
 BEGIN
-	-- Mostrar la tabla de TTutoria por el texto que se desea buscar
-	SELECT T.CodTutoria, T.CodDocente, Docente = (D.APaterno + ' ' + 
-												  D.AMaterno + ', ' + 
-												  D.Nombre),
+	-- Mostrar la tabla de TFichaTutoria por el texto que se desea buscar
+	SELECT T.CodFichaTutoria,
 		   T.CodEstudiante, Estudiante = (E.APaterno + ' ' + 
 										  E.AMaterno + ', ' + 
-										  E.Nombre)
-		FROM (TTutoria T INNER JOIN TDocente D ON
+										  E.Nombre),
+		   T.Semestre, T.Fecha, T.Dimension, T.Descripcion,
+		   T.Referencia, T.Observaciones
+		FROM (TFichaTutoria T INNER JOIN TDocente D ON
 			 T.CodDocente = D.CodDocente) INNER JOIN
 			 TEstudiante E ON T.CodEstudiante = E.CodEstudiante
-		WHERE T.CodTutoria LIKE (@Texto + '%') OR
-			  D.APaterno LIKE (@Texto + '%') OR
-			  D.AMaterno LIKE (@Texto + '%') OR
-			  D.Nombre LIKE (@Texto + '%') OR
+		WHERE T.CodFichaTutoria LIKE (@Texto + '%') OR
 			  E.APaterno LIKE (@Texto + '%') OR
 			  E.AMaterno LIKE (@Texto + '%') OR
-			  E.Nombre LIKE (@Texto + '%')
+			  E.Nombre LIKE (@Texto + '%') OR
+			  T.Semestre LIKE (@Texto + '%') OR
+			  T.Fecha LIKE (@Texto + '%') OR
+			  T.Dimension LIKE (@Texto + '%') OR
+			  T.Descripcion LIKE (@Texto + '%') OR
+			  T.Referencia LIKE (@Texto + '%') OR
+			  T.Observaciones LIKE (@Texto + '%')
 END;
 GO
 
 -- Crear un procedimiento para insertar una tutor�a
-CREATE PROCEDURE spuInsertarTutoria @CodTutoria VARCHAR(5) = NULL OUTPUT,
-									@CodDocente VARCHAR(5),
-									@CodEstudiante VARCHAR(6)
-AS
-BEGIN
-	-- Declarar la clave primar�a de tutor�a
-	DECLARE @CodTutoriaGenerado VARCHAR(5);
-	SET @CodTutoriaGenerado = DBO.fnGenerarCodTutoria();
-
-	-- Insertar una tutor�a en la tabla de TTutoria
-	INSERT INTO TTutoria
-		VALUES (@CodTutoriaGenerado, @CodDocente, @CodEstudiante)
-
-	-- Actualizar el valor de CodTutoria
-	SET @CodTutoria = @CodTutoriaGenerado;
-END;
-GO
-
--- Crear un procedimiento para actualizar una tutor�a
-CREATE PROCEDURE spuActualizarTutoria @CodTutoria VARCHAR(5),
-									  @CodDocente VARCHAR(5),
-									  @CodEstudiante VARCHAR(6)				
-AS
-BEGIN
-	-- Actualizar una tutor�a de la tabla de TTutoria
-	UPDATE TTutoria
-		SET CodDocente = @CodDocente, CodEstudiante = CodEstudiante
-		WHERE CodTutoria = @CodTutoria
-END;
-GO
-
--- Crear un procedimiento para eliminar una tutor�a
-CREATE PROCEDURE spuEliminarTutoria @CodTutoria VARCHAR(5)					
-AS
-BEGIN
-	-- Eliminar una tutor�a de la tabla de TTutoria
-	DELETE FROM TTutoria
-		WHERE CodTutoria = @CodTutoria
-END;
-GO
-
-/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA FICHA DE TUTOR�A ****************** */
-
--- Crear un procedimiento para insertar una tutor�a
-CREATE PROCEDURE spuInsertarFichaTutoria @CodTutoria VARCHAR(5),
+CREATE PROCEDURE spuInsertarFichaTutoria @CodDocente VARCHAR(5),
+										 @CodEstudiante VARCHAR(6),
+										 @Semestre VARCHAR(7),
 										 @Fecha DATETIME,
 										 @Dimension VARCHAR(15),
 										 @Descripcion VARCHAR(100),
@@ -967,9 +906,40 @@ CREATE PROCEDURE spuInsertarFichaTutoria @CodTutoria VARCHAR(5),
 										 @Observaciones VARCHAR(100)
 AS
 BEGIN
-	-- Insertar una tutor�a en la tabla de TTutoria
+	-- Insertar una tutor�a en la tabla de TFichaTutoria
 	INSERT INTO TFichaTutoria
-		VALUES (@CodTutoria, @Fecha, @Dimension, @Descripcion, @Referencia, @Observaciones)
+		VALUES (DBO.fnGenerarCodFichaTutoria(), @CodDocente, @CodEstudiante, @Semestre, @Fecha, @Dimension, @Descripcion, @Referencia, @Observaciones)
+END;
+GO
+
+-- Crear un procedimiento para actualizar una tutor�a
+CREATE PROCEDURE spuActualizarFichaTutoria @CodFichaTutoria VARCHAR(5),
+										   @CodDocente VARCHAR(5),
+										   @CodEstudiante VARCHAR(6),
+										   @Semestre VARCHAR(7),
+										   @Fecha DATETIME,
+										   @Dimension VARCHAR(15),
+										   @Descripcion VARCHAR(100),
+										   @Referencia VARCHAR(100),
+										   @Observaciones VARCHAR(100)			
+AS
+BEGIN
+	-- Actualizar una tutor�a de la tabla de TFichaTutoria
+	UPDATE TFichaTutoria
+		SET CodDocente = @CodDocente, CodEstudiante = CodEstudiante, Semestre = @Semestre,
+			Fecha = @Fecha, Dimension = @Dimension, Descripcion = @Descripcion,
+			Referencia = @Referencia, Observaciones = @Observaciones
+		WHERE CodFichaTutoria = @CodFichaTutoria
+END;
+GO
+
+-- Crear un procedimiento para eliminar una tutor�a
+CREATE PROCEDURE spuEliminarFichaTutoria @CodFichaTutoria VARCHAR(5)					
+AS
+BEGIN
+	-- Eliminar una tutor�a de la tabla de TFichaTutoria
+	DELETE FROM TFichaTutoria
+		WHERE CodFichaTutoria = @CodFichaTutoria
 END;
 GO
 
@@ -2326,250 +2296,6 @@ BEGIN
 END;
 GO
 
-/* *************************** TRIGGERS PARA LA TABLA TUTORIA *************************** */
-
--- Crear un disparador para guardar el registro de inserci�n de la tabla TTutoria en la tabla Historial
-CREATE TRIGGER trTutoriaInsercion
-	ON TTutoria
-	FOR INSERT
-AS
-BEGIN
-	-- Crear una tabla temporal para copiar la tabla INSERTED
-	CREATE TABLE #INSERTED
-	(
-		CodTutoria VARCHAR(5),
-		CodDocente VARCHAR(5),
-		CodEstudiante VARCHAR(6)
-	);
-
-	-- Copiar la tabla INSERTED en la tabla temporal #INSERTED
-	INSERT INTO #INSERTED
-		SELECT * 
-			FROM INSERTED
-
-	-- Determinar el n�mero de tuplas de la tabla #INSERTED
-	DECLARE @NroTuplas INT;
-	SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
-
-	-- Recorrer las tuplas de la tabla #INSERTED
-	WHILE @NroTuplas > 0
-	BEGIN
-		-- Declarar variables donde estar�n los atributos de la tabla #INSERTED
-		DECLARE @CodTutoria VARCHAR(5);
-		DECLARE @CodDocente VARCHAR(5);
-		DECLARE @CodEstudiante VARCHAR(6);
-
-		-- Recuperar los datos de una tupla en las variables declaradas
-		SELECT @CodTutoria = CodTutoria,
-			   @CodDocente = CodDocente,
-			   @CodEstudiante = CodEstudiante
-			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
-
-		---- Determinar el IdHistorial
-		--DECLARE @IdHistorial INT;
-		--EXEC spuObtenerIdHistorial @IdHistorial OUTPUT;
-
-		-- Insertar a la tabla Historial, la tupla insertada de la tabla #INSERTED
-		INSERT INTO Historial
-			   VALUES(GETDATE(),'TTutoria','INSERT',@CodTutoria,NULL, 
-					  @CodDocente + ' ; ' + @CodEstudiante);
-		
-		-- Eliminar la tupla insertada de la tabla #INSERTED
-		DELETE TOP (1) FROM #INSERTED
-
-		-- Actualizar el n�mero de tuplas
-		SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
-	END;
-END;
-GO
-
--- Crear un disparador para guardar el registro de eliminaci�n de la tabla TTutoriae en la tabla Historial
-CREATE TRIGGER trTutoriaEliminacion
-	ON TTutoria
-	FOR DELETE
-AS
-BEGIN
-	-- Crear una tabla temporal para copiar la tabla DELETED
-	CREATE TABLE #DELETED
-	(
-		CodTutoria VARCHAR(5),
-		CodDocente VARCHAR(5),
-		CodEstudiante VARCHAR(6)
-	);
-
-	-- Copiar la tabla DELETED en la tabla temporal #DELETED
-	INSERT INTO #DELETED
-		SELECT * 
-			FROM DELETED
-
-	-- Determinar el n�mero de tuplas de la tabla #DELETED
-	DECLARE @NroTuplas INT;
-	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
-
-	-- Recorrer las tuplas de la tabla #DELETED
-	WHILE @NroTuplas > 0
-	BEGIN
-		-- Declarar variables donde estar�n los atributos de la tabla #DELETED
-		DECLARE @CodTutoria VARCHAR(5);
-		DECLARE @CodDocente VARCHAR(5);
-		DECLARE @CodEstudiante VARCHAR(6);
-
-		-- Recuperar los datos de una tupla en las variables declaradas
-		SELECT @CodTutoria = CodTutoria,
-			   @CodDocente = CodDocente,
-			   @CodEstudiante = CodEstudiante
-			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
-
-		---- Determinar el IdHistorial
-		--DECLARE @IdHistorial INT;
-		--EXEC spuObtenerIdHistorial @IdHistorial OUTPUT;
-
-		-- Insertar a la tabla Historial, la tupla insertada de la tabla #DELETED
-		INSERT INTO Historial
-			   VALUES(GETDATE(),'TTutoria','DELETE',@CodTutoria, 
-					  @CodDocente + ' ; ' + @CodEstudiante,NULL);
-		
-		-- Eliminar la tupla insertada de la tabla #DELETED
-		DELETE TOP (1) FROM #DELETED
-
-		-- Actualizar el n�mero de las tuplas
-		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
-	END;
-END;
-GO
-
--- Crear un disparador para guardar el registro de actualizaci�n de la tabla TTutoria en la tabla Historial
-CREATE TRIGGER trTutoriaActualizacion
-	ON TTutoria
-	FOR UPDATE
-AS
-BEGIN
-	-- Crear una tabla temporal para copiar la tabla DELETED
-	CREATE TABLE #DELETED
-	(
-		CodTutoria VARCHAR(5),
-		CodDocente VARCHAR(5),
-		CodEstudiante VARCHAR(6)
-	);
-
-	-- Copiar la tabla DELETED en la tabla temporal #DELETED
-	INSERT INTO #DELETED
-		SELECT * 
-			FROM DELETED
-
-	-- Crear una tabla temporal para copiar la tabla INSERTED
-	CREATE TABLE #INSERTED
-	(
-		CodTutoria VARCHAR(5),
-		CodDocente VARCHAR(5),
-		CodEstudiante VARCHAR(6)
-	);
-
-	-- Copiar la tabla INSERTED en la tabla temporal #INSERTED
-	INSERT INTO #INSERTED
-		SELECT * 
-			FROM INSERTED
-
-	-- Determinar el n�mero de tuplas de la tabla #DELETED = #INSERTED
-	DECLARE @NroTuplas INT;
-	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
-
-	-- Recorrer las tuplas de la tabla #DELETED = #INSERTED
-	WHILE @NroTuplas > 0
-	BEGIN
-		-- Declarar variables donde estar�n los atributos de la tabla #DELETED (ANTES)
-		DECLARE @CodTutoriaAntes VARCHAR(5);
-		DECLARE @CodDocenteAntes VARCHAR(5);
-		DECLARE @CodEstudianteAntes VARCHAR(6);
-
-		-- Recuperar los datos de una tupla en las variables declaradas
-		SELECT @CodTutoriaAntes = CodTutoria,
-			   @CodDocenteAntes = CodDocente,
-			   @CodEstudianteAntes = CodEstudiante
-			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
-
-		-- Declarar variables donde estar�n los atributos de la tabla #INSERTED (DESPU�S)
-		DECLARE @CodTutoriaDespues VARCHAR(5);
-		DECLARE @CodDocenteDespues VARCHAR(5);
-		DECLARE @CodEstudianteDespues VARCHAR(6);
-
-		-- Recuperar los datos de una tupla en las variables declaradas
-		SELECT @CodTutoriaDespues = CodTutoria,
-			   @CodDocenteDespues = CodDocente,
-			   @CodEstudianteDespues = CodEstudiante
-			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
-
-		---- Determinar el IdHistorial
-		--DECLARE @IdHistorial INT;
-		--EXEC spuObtenerIdHistorial @IdHistorial OUTPUT;
-
-		-- Declarar e inicializar el IdRegistroAfectado
-		DECLARE @IdRegistroAfectado VARCHAR(20);
-		SET @IdRegistroAfectado = NULL
-
-		-- Declarar e inicializar el ValorAnterior
-		DECLARE @ValorAnterior VARCHAR(400);
-		SET @ValorAnterior = NULL;
-
-		-- Declarar e inicializar el ValorPosterior
-		DECLARE @ValorPosterior VARCHAR(400);
-		SET @ValorPosterior = NULL;
-
-		-- Verificar si el cambio fue en CodTutoria
-		IF @CodTutoriaAntes != @CodTutoriaDespues
-		BEGIN
-			SET @ValorAnterior = @CodTutoriaAntes;
-			SET @ValorPosterior = @CodTutoriaDespues;
-
-			-- Insertar a la tabla Historial, la tupla con el cambio realizado
-			INSERT INTO Historial
-			   VALUES(GETDATE(),'TTutoria','UPDATE',@CodTutoriaAntes,
-			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
-		END;
-
-		-- Verificar si el cambio fue en CodDocente
-		IF @CodDocenteAntes != @CodDocenteDespues
-		BEGIN
-			SET @ValorAnterior = @CodDocenteAntes;
-			SET @ValorPosterior = @CodDocenteDespues;
-
-			-- Insertar a la tabla Historial, la tupla con el cambio realizado
-			INSERT INTO Historial
-			   VALUES(GETDATE(),'TTutoria','UPDATE',@CodTutoriaAntes,
-			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
-		END;
-
-		-- Verificar si el cambio fue en CodEstudiante
-		IF @CodEstudianteAntes != @CodEstudianteDespues
-		BEGIN
-			SET @ValorAnterior = @CodEstudianteAntes;
-			SET @ValorPosterior = @CodEstudianteDespues;
-
-			-- Insertar a la tabla Historial, la tupla con el cambio realizado
-			INSERT INTO Historial
-			   VALUES(GETDATE(),'TTutoria','UPDATE',@CodTutoriaAntes,
-			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
-		END;
-
-		-- Eliminar las tuplas ya evaluadas de las tablas #DELETED y #INSERTED 
-		DELETE TOP (1) FROM #DELETED
-		DELETE TOP (1) FROM #INSERTED
-
-		-- Actualizar el n�mero de tuplas
-		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
-	END;
-END;
-GO
-
 /* *************************** TRIGGERS PARA LA TABLA FICHA DE TUTOR�A *************************** */
 
 -- Crear un disparador para guardar el registro de inserci�n de la tabla TFichaTutoria en la tabla Historial
@@ -2581,7 +2307,10 @@ BEGIN
 	-- Crear una tabla temporal para copiar la tabla INSERTED
 	CREATE TABLE #INSERTED
 	(
-		CodTutoria VARCHAR(5),
+		CodFichaTutoria VARCHAR(5),
+		CodDocente VARCHAR(5),
+		CodEstudiante VARCHAR(6),
+		Semestre VARCHAR(7),
 		Fecha DATETIME,
 		Dimension VARCHAR(15),
 		Descripcion VARCHAR(100),
@@ -2602,7 +2331,10 @@ BEGIN
 	WHILE @NroTuplas > 0
 	BEGIN
 		-- Declarar variables donde estar�n los atributos de la tabla #INSERTED
-		DECLARE @CodTutoria VARCHAR(5);
+		DECLARE @CodFichaTutoria VARCHAR(5);
+		DECLARE @CodDocente VARCHAR(5);
+		DECLARE @CodEstudiante VARCHAR(6);
+		DECLARE @Semestre VARCHAR(7);
 		DECLARE @Fecha DATETIME;
 		DECLARE @Dimension VARCHAR(15);
 		DECLARE @Descripcion VARCHAR(100);
@@ -2610,7 +2342,10 @@ BEGIN
 		DECLARE @Observaciones VARCHAR(100);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
-		SELECT @CodTutoria = CodTutoria,
+		SELECT @CodFichaTutoria = CodFichaTutoria,
+			   @CodDocente = CodDocente,
+			   @CodEstudiante = CodEstudiante,
+			   @Semestre = Semestre,
 			   @Fecha = Fecha,
 			   @Dimension = Dimension,
 			   @Descripcion = Descripcion,
@@ -2624,7 +2359,8 @@ BEGIN
 
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #INSERTED
 		INSERT INTO Historial
-			   VALUES(GETDATE(),'TFichaTutoria','INSERT',@CodTutoria,NULL, 
+			   VALUES(GETDATE(),'TFichaTutoria','INSERT',@CodFichaTutoria,NULL,
+					  @CodDocente + ' ; ' +  @CodEstudiante + ' ; ' +  @Semestre + ' ; ' + 
 					  CAST(@Fecha AS VARCHAR) + ' ; ' + @Dimension + ' ; ' + ISNULL(@Descripcion, '') + 
 					  ' ; ' + ISNULL(@Referencia, '') + ' ; ' + ISNULL(@Observaciones, ''));
 		
@@ -2646,7 +2382,10 @@ BEGIN
 	-- Crear una tabla temporal para copiar la tabla DELETED
 	CREATE TABLE #DELETED
 	(
-		CodTutoria VARCHAR(5),
+		CodFichaTutoria VARCHAR(5),
+		CodDocente VARCHAR(5),
+		CodEstudiante VARCHAR(6),
+		Semestre VARCHAR(7),
 		Fecha DATETIME,
 		Dimension VARCHAR(15),
 		Descripcion VARCHAR(100),
@@ -2667,7 +2406,10 @@ BEGIN
 	WHILE @NroTuplas > 0
 	BEGIN
 		-- Declarar variables donde estar�n los atributos de la tabla #DELETED
-		DECLARE @CodTutoria VARCHAR(5);
+		DECLARE @CodFichaTutoria VARCHAR(5);
+		DECLARE @CodDocente VARCHAR(5);
+		DECLARE @CodEstudiante VARCHAR(6);
+		DECLARE @Semestre VARCHAR(7);
 		DECLARE @Fecha DATETIME;
 		DECLARE @Dimension VARCHAR(15);
 		DECLARE @Descripcion VARCHAR(100);
@@ -2675,7 +2417,10 @@ BEGIN
 		DECLARE @Observaciones VARCHAR(100);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
-		SELECT @CodTutoria = CodTutoria,
+		SELECT @CodFichaTutoria = CodFichaTutoria,
+			   @CodDocente = CodDocente,
+			   @CodEstudiante = CodEstudiante,
+			   @Semestre = Semestre,
 			   @Fecha = Fecha,
 			   @Dimension = Dimension,
 			   @Descripcion = Descripcion,
@@ -2689,7 +2434,8 @@ BEGIN
 
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #DELETED
 		INSERT INTO Historial
-			   VALUES(GETDATE(),'TFichaTutoria','DELETE',@CodTutoria,
+			   VALUES(GETDATE(),'TFichaTutoria','DELETE',@CodFichaTutoria,
+					  @CodDocente + ' ; ' +  @CodEstudiante + ' ; ' +  @Semestre + ' ; ' + 
 					  CAST(@Fecha AS VARCHAR) + ' ; ' + @Dimension + ' ; ' + ISNULL(@Descripcion, '') + 
 					  ' ; ' + ISNULL(@Referencia, '') + ' ; ' + ISNULL(@Observaciones, ''),NULL);
 		
@@ -2711,7 +2457,10 @@ BEGIN
 	-- Crear una tabla temporal para copiar la tabla DELETED
 	CREATE TABLE #DELETED
 	(
-		CodTutoria VARCHAR(5),
+		CodFichaTutoria VARCHAR(5),
+		CodDocente VARCHAR(5),
+		CodEstudiante VARCHAR(6),
+		Semestre VARCHAR(7),
 		Fecha DATETIME,
 		Dimension VARCHAR(15),
 		Descripcion VARCHAR(100),
@@ -2727,7 +2476,10 @@ BEGIN
 	-- Crear una tabla temporal para copiar la tabla INSERTED
 	CREATE TABLE #INSERTED
 	(
-		CodTutoria VARCHAR(5),
+		CodFichaTutoria VARCHAR(5),
+		CodDocente VARCHAR(5),
+		CodEstudiante VARCHAR(6),
+		Semestre VARCHAR(7),
 		Fecha DATETIME,
 		Dimension VARCHAR(15),
 		Descripcion VARCHAR(100),
@@ -2748,7 +2500,10 @@ BEGIN
 	WHILE @NroTuplas > 0
 	BEGIN
 		-- Declarar variables donde estar�n los atributos de la tabla #DELETED (ANTES)
-		DECLARE @CodTutoriaAntes VARCHAR(5);
+		DECLARE @CodFichaTutoriaAntes VARCHAR(5);
+		DECLARE @CodDocenteAntes VARCHAR(5);
+		DECLARE @CodEstudianteAntes VARCHAR(6);
+		DECLARE @SemestreAntes VARCHAR(7);
 		DECLARE @FechaAntes DATETIME;
 		DECLARE @DimensionAntes VARCHAR(15);
 		DECLARE @DescripcionAntes VARCHAR(100);
@@ -2756,7 +2511,10 @@ BEGIN
 		DECLARE @ObservacionesAntes VARCHAR(100);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
-		SELECT @CodTutoriaAntes = CodTutoria,
+		SELECT @CodFichaTutoriaAntes = CodFichaTutoria,
+			   @CodDocenteAntes = CodDocente,
+			   @CodEstudianteAntes = CodEstudiante,
+			   @SemestreAntes = Semestre,
 			   @FechaAntes = Fecha,
 			   @DimensionAntes = Dimension,
 			   @DescripcionAntes = Descripcion,
@@ -2765,7 +2523,10 @@ BEGIN
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
 		-- Declarar variables donde estar�n los atributos de la tabla #INSERTED (DESPU�S)
-		DECLARE @CodTutoriaDespues VARCHAR(5);
+		DECLARE @CodFichaTutoriaDespues VARCHAR(5);
+		DECLARE @CodDocenteDespues VARCHAR(5);
+		DECLARE @CodEstudianteDespues VARCHAR(6);
+		DECLARE @SemestreDespues VARCHAR(7);
 		DECLARE @FechaDespues DATETIME;
 		DECLARE @DimensionDespues VARCHAR(15);
 		DECLARE @DescripcionDespues VARCHAR(100);
@@ -2773,7 +2534,10 @@ BEGIN
 		DECLARE @ObservacionesDespues VARCHAR(100);
 
 		-- Recuperar los datos de una tupla en las variables declaradas
-		SELECT @CodTutoriaDespues = CodTutoria,
+		SELECT @CodFichaTutoriaDespues = CodFichaTutoria,
+			   @CodDocenteDespues = CodDocente,
+			   @CodEstudianteDespues = CodEstudiante,
+			   @SemestreDespues = Semestre,
 			   @FechaDespues = Fecha,
 			   @DimensionDespues = Dimension,
 			   @DescripcionDespues = Descripcion,
@@ -2797,15 +2561,60 @@ BEGIN
 		DECLARE @ValorPosterior VARCHAR(400);
 		SET @ValorPosterior = NULL;
 
-		-- Verificar si el cambio fue en CodTutoria
-		IF @CodTutoriaAntes != @CodTutoriaDespues
+		-- Verificar si el cambio fue en CodFichaTutoria
+		IF @CodFichaTutoriaAntes != @CodFichaTutoriaDespues
 		BEGIN
-			SET @ValorAnterior = @CodTutoriaAntes;
-			SET @ValorPosterior = @CodTutoriaDespues;
+			SET @ValorAnterior = @CodFichaTutoriaAntes;
+			SET @ValorPosterior = @CodFichaTutoriaDespues;
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
-			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodTutoriaAntes,
+			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodFichaTutoriaAntes,
+			          @ValorAnterior,@ValorPosterior);
+
+			---- Incrementar el IdHistorial en 1
+			--SET @IdHistorial = @IdHistorial + 1;
+		END;		
+
+		-- Verificar si el cambio fue en CodDocente
+		IF @CodDocenteAntes != @CodDocenteDespues
+		BEGIN
+			SET @ValorAnterior = @CodDocenteAntes;
+			SET @ValorPosterior = @CodDocenteDespues;
+
+			-- Insertar a la tabla Historial, la tupla con el cambio realizado
+			INSERT INTO Historial
+			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodFichaTutoriaAntes,
+			          @ValorAnterior,@ValorPosterior);
+
+			---- Incrementar el IdHistorial en 1
+			--SET @IdHistorial = @IdHistorial + 1;
+		END;
+
+		-- Verificar si el cambio fue en CodEstudiante
+		IF @CodEstudianteAntes != @CodEstudianteDespues
+		BEGIN
+			SET @ValorAnterior = @CodEstudianteAntes;
+			SET @ValorPosterior = @CodEstudianteDespues;
+
+			-- Insertar a la tabla Historial, la tupla con el cambio realizado
+			INSERT INTO Historial
+			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodFichaTutoriaAntes,
+			          @ValorAnterior,@ValorPosterior);
+
+			---- Incrementar el IdHistorial en 1
+			--SET @IdHistorial = @IdHistorial + 1;
+		END;
+
+		-- Verificar si el cambio fue en Semestre
+		IF @SemestreAntes != @SemestreDespues
+		BEGIN
+			SET @ValorAnterior = @SemestreAntes;
+			SET @ValorPosterior = @SemestreDespues;
+
+			-- Insertar a la tabla Historial, la tupla con el cambio realizado
+			INSERT INTO Historial
+			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodFichaTutoriaAntes,
 			          @ValorAnterior,@ValorPosterior);
 
 			---- Incrementar el IdHistorial en 1
@@ -2820,7 +2629,7 @@ BEGIN
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
-			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodTutoriaAntes,
+			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodFichaTutoriaAntes,
 			          @ValorAnterior,@ValorPosterior);
 
 			---- Incrementar el IdHistorial en 1
@@ -2835,7 +2644,7 @@ BEGIN
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
-			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodTutoriaAntes,
+			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodFichaTutoriaAntes,
 			          @ValorAnterior,@ValorPosterior);
 
 			---- Incrementar el IdHistorial en 1
@@ -2850,7 +2659,7 @@ BEGIN
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
-			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodTutoriaAntes,
+			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodFichaTutoriaAntes,
 			          @ValorAnterior,@ValorPosterior);
 
 			---- Incrementar el IdHistorial en 1
@@ -2865,7 +2674,7 @@ BEGIN
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
-			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodTutoriaAntes,
+			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodFichaTutoriaAntes,
 			          @ValorAnterior,@ValorPosterior);
 
 			---- Incrementar el IdHistorial en 1
@@ -2880,7 +2689,7 @@ BEGIN
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
-			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodTutoriaAntes,
+			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodFichaTutoriaAntes,
 			          @ValorAnterior,@ValorPosterior);
 
 			---- Incrementar el IdHistorial en 1
