@@ -172,10 +172,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Otros Controles\JALMCircularPictureBox.cs">
+    <Compile Include="Otros_Controles\JALMCircularPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Otros Controles\JALMToggleButton.cs">
+    <Compile Include="Otros_Controles\JALMToggleButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
