@@ -8,5 +8,6 @@ namespace CapaNegocio
 {
     class N_FichaTutoria
     {
+
     }
 }
