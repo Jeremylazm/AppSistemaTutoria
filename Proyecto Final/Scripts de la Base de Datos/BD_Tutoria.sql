@@ -846,7 +846,7 @@ GO
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA FICHA DE TUTOR�A ****************** */
 
 -- Crear un procedimiento para mostrar tutor�as
-CREATE PROCEDURE spuMostrarFichaTutorias
+CREATE PROCEDURE spuMostrarFichaTutorias @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Mostrar la tabla de TFichaTutoria
@@ -859,11 +859,12 @@ BEGIN
 		FROM (TFichaTutoria T INNER JOIN TDocente D ON
 			 T.CodDocente = D.CodDocente) INNER JOIN
 			 TEstudiante E ON T.CodEstudiante = E.CodEstudiante
+		WHERE T.CodDocente = @CodDocente
 END;
 GO
 
 -- Crear un procedimiento para buscar tutor�as por cualquier atributo
-CREATE PROCEDURE spuBuscarFichaTutorias @Texto VARCHAR(20)
+CREATE PROCEDURE spuBuscarFichaTutorias @CodDocente VARCHAR(5) ,@Texto VARCHAR(20)
 AS
 BEGIN
 	-- Mostrar la tabla de TFichaTutoria por el texto que se desea buscar
@@ -876,7 +877,7 @@ BEGIN
 		FROM (TFichaTutoria T INNER JOIN TDocente D ON
 			 T.CodDocente = D.CodDocente) INNER JOIN
 			 TEstudiante E ON T.CodEstudiante = E.CodEstudiante
-		WHERE T.CodFichaTutoria LIKE (@Texto + '%') OR
+		WHERE (T.CodFichaTutoria LIKE (@Texto + '%') OR
 			  E.APaterno LIKE (@Texto + '%') OR
 			  E.AMaterno LIKE (@Texto + '%') OR
 			  E.Nombre LIKE (@Texto + '%') OR
@@ -885,7 +886,7 @@ BEGIN
 			  T.Dimension LIKE (@Texto + '%') OR
 			  T.Descripcion LIKE (@Texto + '%') OR
 			  T.Referencia LIKE (@Texto + '%') OR
-			  T.Observaciones LIKE (@Texto + '%')
+			  T.Observaciones LIKE (@Texto + '%')) AND T.CodDocente=@CodDocente 
 END;
 GO
 
