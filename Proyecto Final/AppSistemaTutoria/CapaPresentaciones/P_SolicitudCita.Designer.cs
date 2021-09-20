@@ -31,8 +31,6 @@ namespace CapaPresentaciones
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_SolicitudCita));
-            this.txtIPersonal = new System.Windows.Forms.TextBox();
-            this.gbxEstado = new System.Windows.Forms.Label();
             this.gbxReferencia = new System.Windows.Forms.Label();
             this.gbxDatos = new System.Windows.Forms.Label();
             this.txtEscuelaP = new System.Windows.Forms.TextBox();
@@ -59,43 +57,26 @@ namespace CapaPresentaciones
             this.btnCerrar = new Bunifu.Framework.UI.BunifuImageButton();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.BordeadoDatos = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.BordeadoReferencia = new Bunifu.Framework.UI.BunifuThinButton2();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.BordeadoInformacion = new Bunifu.Framework.UI.BunifuThinButton2();
             this.BordeadoMenu = new Bunifu.Framework.UI.BunifuThinButton2();
             this.btnEnviar = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.labelDatosCita = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.bunifuSeparator4 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.labelFecha = new System.Windows.Forms.Label();
+            this.bunifuThinButton21 = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.dTPFechaCita = new System.Windows.Forms.DateTimePicker();
+            this.labelHora = new System.Windows.Forms.Label();
+            this.cBoxHora = new System.Windows.Forms.ComboBox();
+            this.cBoxAMPM = new System.Windows.Forms.ComboBox();
+            this.bunifuSeparator2 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.labelDescripcion = new System.Windows.Forms.Label();
+            this.BordeadoReferencia = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.gBoxDescripcionCita = new System.Windows.Forms.GroupBox();
+            this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtIPersonal
-            // 
-            this.txtIPersonal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtIPersonal.BackColor = System.Drawing.Color.White;
-            this.txtIPersonal.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtIPersonal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtIPersonal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtIPersonal.Location = new System.Drawing.Point(34, 349);
-            this.txtIPersonal.Multiline = true;
-            this.txtIPersonal.Name = "txtIPersonal";
-            this.txtIPersonal.Size = new System.Drawing.Size(371, 69);
-            this.txtIPersonal.TabIndex = 182;
-            // 
-            // gbxEstado
-            // 
-            this.gbxEstado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbxEstado.AutoSize = true;
-            this.gbxEstado.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.gbxEstado.Location = new System.Drawing.Point(29, 325);
-            this.gbxEstado.Name = "gbxEstado";
-            this.gbxEstado.Size = new System.Drawing.Size(150, 19);
-            this.gbxEstado.TabIndex = 208;
-            this.gbxEstado.Text = "Información personal";
             // 
             // gbxReferencia
             // 
@@ -119,9 +100,9 @@ namespace CapaPresentaciones
             this.gbxDatos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.gbxDatos.Location = new System.Drawing.Point(29, 54);
             this.gbxDatos.Name = "gbxDatos";
-            this.gbxDatos.Size = new System.Drawing.Size(49, 19);
+            this.gbxDatos.Size = new System.Drawing.Size(144, 19);
             this.gbxDatos.TabIndex = 204;
-            this.gbxDatos.Text = "Datos";
+            this.gbxDatos.Text = "Datos de Estudiante";
             // 
             // txtEscuelaP
             // 
@@ -134,7 +115,7 @@ namespace CapaPresentaciones
             this.txtEscuelaP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtEscuelaP.Location = new System.Drawing.Point(117, 180);
             this.txtEscuelaP.Name = "txtEscuelaP";
-            this.txtEscuelaP.Size = new System.Drawing.Size(280, 19);
+            this.txtEscuelaP.Size = new System.Drawing.Size(310, 19);
             this.txtEscuelaP.TabIndex = 202;
             // 
             // Separador7
@@ -143,9 +124,9 @@ namespace CapaPresentaciones
             this.Separador7.BackColor = System.Drawing.Color.Transparent;
             this.Separador7.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador7.LineThickness = 1;
-            this.Separador7.Location = new System.Drawing.Point(278, 285);
+            this.Separador7.Location = new System.Drawing.Point(316, 285);
             this.Separador7.Name = "Separador7";
-            this.Separador7.Size = new System.Drawing.Size(119, 10);
+            this.Separador7.Size = new System.Drawing.Size(111, 10);
             this.Separador7.TabIndex = 201;
             this.Separador7.Transparency = 255;
             this.Separador7.Vertical = false;
@@ -157,9 +138,9 @@ namespace CapaPresentaciones
             this.txtTReferencia.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTReferencia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTReferencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtTReferencia.Location = new System.Drawing.Point(278, 266);
+            this.txtTReferencia.Location = new System.Drawing.Point(316, 266);
             this.txtTReferencia.Name = "txtTReferencia";
-            this.txtTReferencia.Size = new System.Drawing.Size(119, 19);
+            this.txtTReferencia.Size = new System.Drawing.Size(111, 19);
             this.txtTReferencia.TabIndex = 181;
             // 
             // lblTReferencia
@@ -168,7 +149,7 @@ namespace CapaPresentaciones
             this.lblTReferencia.AutoSize = true;
             this.lblTReferencia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTReferencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblTReferencia.Location = new System.Drawing.Point(200, 266);
+            this.lblTReferencia.Location = new System.Drawing.Point(238, 266);
             this.lblTReferencia.Name = "lblTReferencia";
             this.lblTReferencia.Size = new System.Drawing.Size(72, 19);
             this.lblTReferencia.TabIndex = 200;
@@ -183,7 +164,7 @@ namespace CapaPresentaciones
             this.Separador6.LineThickness = 1;
             this.Separador6.Location = new System.Drawing.Point(103, 285);
             this.Separador6.Name = "Separador6";
-            this.Separador6.Size = new System.Drawing.Size(91, 10);
+            this.Separador6.Size = new System.Drawing.Size(129, 10);
             this.Separador6.TabIndex = 199;
             this.Separador6.Transparency = 255;
             this.Separador6.Vertical = false;
@@ -198,7 +179,7 @@ namespace CapaPresentaciones
             this.txtPReferencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtPReferencia.Location = new System.Drawing.Point(103, 266);
             this.txtPReferencia.Name = "txtPReferencia";
-            this.txtPReferencia.Size = new System.Drawing.Size(91, 19);
+            this.txtPReferencia.Size = new System.Drawing.Size(129, 19);
             this.txtPReferencia.TabIndex = 180;
             // 
             // lblPReferencia
@@ -223,7 +204,7 @@ namespace CapaPresentaciones
             this.Separador5.LineThickness = 1;
             this.Separador5.Location = new System.Drawing.Point(117, 200);
             this.Separador5.Name = "Separador5";
-            this.Separador5.Size = new System.Drawing.Size(280, 10);
+            this.Separador5.Size = new System.Drawing.Size(310, 10);
             this.Separador5.TabIndex = 197;
             this.Separador5.Transparency = 255;
             this.Separador5.Vertical = false;
@@ -247,7 +228,7 @@ namespace CapaPresentaciones
             this.Separador2.BackColor = System.Drawing.Color.Transparent;
             this.Separador2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador2.LineThickness = 1;
-            this.Separador2.Location = new System.Drawing.Point(278, 103);
+            this.Separador2.Location = new System.Drawing.Point(308, 103);
             this.Separador2.Name = "Separador2";
             this.Separador2.Size = new System.Drawing.Size(119, 10);
             this.Separador2.TabIndex = 195;
@@ -261,9 +242,9 @@ namespace CapaPresentaciones
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTelefono.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtTelefono.Location = new System.Drawing.Point(278, 83);
+            this.txtTelefono.Location = new System.Drawing.Point(316, 83);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(119, 19);
+            this.txtTelefono.Size = new System.Drawing.Size(111, 19);
             this.txtTelefono.TabIndex = 178;
             // 
             // lblTelefono
@@ -272,7 +253,7 @@ namespace CapaPresentaciones
             this.lblTelefono.AutoSize = true;
             this.lblTelefono.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblTelefono.Location = new System.Drawing.Point(200, 83);
+            this.lblTelefono.Location = new System.Drawing.Point(238, 83);
             this.lblTelefono.Name = "lblTelefono";
             this.lblTelefono.Size = new System.Drawing.Size(72, 19);
             this.lblTelefono.TabIndex = 194;
@@ -287,7 +268,7 @@ namespace CapaPresentaciones
             this.Separador4.LineThickness = 1;
             this.Separador4.Location = new System.Drawing.Point(117, 167);
             this.Separador4.Name = "Separador4";
-            this.Separador4.Size = new System.Drawing.Size(280, 10);
+            this.Separador4.Size = new System.Drawing.Size(310, 10);
             this.Separador4.TabIndex = 193;
             this.Separador4.Transparency = 255;
             this.Separador4.Vertical = false;
@@ -302,7 +283,7 @@ namespace CapaPresentaciones
             this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtDireccion.Location = new System.Drawing.Point(117, 147);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(280, 19);
+            this.txtDireccion.Size = new System.Drawing.Size(310, 19);
             this.txtDireccion.TabIndex = 179;
             // 
             // lblDireccion
@@ -327,7 +308,7 @@ namespace CapaPresentaciones
             this.Separador3.LineThickness = 1;
             this.Separador3.Location = new System.Drawing.Point(117, 135);
             this.Separador3.Name = "Separador3";
-            this.Separador3.Size = new System.Drawing.Size(280, 10);
+            this.Separador3.Size = new System.Drawing.Size(310, 10);
             this.Separador3.TabIndex = 191;
             this.Separador3.Transparency = 255;
             this.Separador3.Vertical = false;
@@ -343,7 +324,7 @@ namespace CapaPresentaciones
             this.txtEstudiante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtEstudiante.Location = new System.Drawing.Point(117, 115);
             this.txtEstudiante.Name = "txtEstudiante";
-            this.txtEstudiante.Size = new System.Drawing.Size(280, 19);
+            this.txtEstudiante.Size = new System.Drawing.Size(310, 19);
             this.txtEstudiante.TabIndex = 190;
             // 
             // lblEstudiante
@@ -366,7 +347,7 @@ namespace CapaPresentaciones
             this.Separador1.LineThickness = 1;
             this.Separador1.Location = new System.Drawing.Point(117, 102);
             this.Separador1.Name = "Separador1";
-            this.Separador1.Size = new System.Drawing.Size(77, 10);
+            this.Separador1.Size = new System.Drawing.Size(115, 10);
             this.Separador1.TabIndex = 188;
             this.Separador1.Transparency = 255;
             this.Separador1.Vertical = false;
@@ -380,7 +361,7 @@ namespace CapaPresentaciones
             this.txtCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtCodigo.Location = new System.Drawing.Point(117, 83);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(77, 19);
+            this.txtCodigo.Size = new System.Drawing.Size(115, 19);
             this.txtCodigo.TabIndex = 187;
             // 
             // lblCodigo
@@ -403,7 +384,7 @@ namespace CapaPresentaciones
             this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
             this.btnCerrar.ImageActive = null;
-            this.btnCerrar.Location = new System.Drawing.Point(782, 9);
+            this.btnCerrar.Location = new System.Drawing.Point(886, 9);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(24, 24);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -419,9 +400,9 @@ namespace CapaPresentaciones
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(815, 40);
+            this.lblTitulo.Size = new System.Drawing.Size(919, 40);
             this.lblTitulo.TabIndex = 184;
-            this.lblTitulo.Text = "Editar Perfil de Estudiante";
+            this.lblTitulo.Text = "Formulario Solicitud de cita";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BordeadoDatos
@@ -448,71 +429,14 @@ namespace CapaPresentaciones
             this.BordeadoDatos.Location = new System.Drawing.Point(21, 58);
             this.BordeadoDatos.Margin = new System.Windows.Forms.Padding(5);
             this.BordeadoDatos.Name = "BordeadoDatos";
-            this.BordeadoDatos.Size = new System.Drawing.Size(396, 174);
+            this.BordeadoDatos.Size = new System.Drawing.Size(426, 174);
             this.BordeadoDatos.TabIndex = 203;
             this.BordeadoDatos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // BordeadoReferencia
-            // 
-            this.BordeadoReferencia.ActiveBorderThickness = 1;
-            this.BordeadoReferencia.ActiveCornerRadius = 20;
-            this.BordeadoReferencia.ActiveFillColor = System.Drawing.Color.White;
-            this.BordeadoReferencia.ActiveForecolor = System.Drawing.Color.White;
-            this.BordeadoReferencia.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoReferencia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BordeadoReferencia.BackColor = System.Drawing.SystemColors.Control;
-            this.BordeadoReferencia.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoReferencia.BackgroundImage")));
-            this.BordeadoReferencia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BordeadoReferencia.ButtonText = "Editar Perfil";
-            this.BordeadoReferencia.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BordeadoReferencia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BordeadoReferencia.ForeColor = System.Drawing.Color.White;
-            this.BordeadoReferencia.IdleBorderThickness = 1;
-            this.BordeadoReferencia.IdleCornerRadius = 20;
-            this.BordeadoReferencia.IdleFillColor = System.Drawing.Color.White;
-            this.BordeadoReferencia.IdleForecolor = System.Drawing.Color.White;
-            this.BordeadoReferencia.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoReferencia.Location = new System.Drawing.Point(21, 242);
-            this.BordeadoReferencia.Margin = new System.Windows.Forms.Padding(5);
-            this.BordeadoReferencia.Name = "BordeadoReferencia";
-            this.BordeadoReferencia.Size = new System.Drawing.Size(396, 77);
-            this.BordeadoReferencia.TabIndex = 205;
-            this.BordeadoReferencia.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Bordeado
             // 
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this;
-            // 
-            // BordeadoInformacion
-            // 
-            this.BordeadoInformacion.ActiveBorderThickness = 1;
-            this.BordeadoInformacion.ActiveCornerRadius = 20;
-            this.BordeadoInformacion.ActiveFillColor = System.Drawing.Color.White;
-            this.BordeadoInformacion.ActiveForecolor = System.Drawing.Color.White;
-            this.BordeadoInformacion.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoInformacion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BordeadoInformacion.BackColor = System.Drawing.SystemColors.Control;
-            this.BordeadoInformacion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoInformacion.BackgroundImage")));
-            this.BordeadoInformacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BordeadoInformacion.ButtonText = "Editar Perfil";
-            this.BordeadoInformacion.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BordeadoInformacion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BordeadoInformacion.ForeColor = System.Drawing.Color.White;
-            this.BordeadoInformacion.IdleBorderThickness = 1;
-            this.BordeadoInformacion.IdleCornerRadius = 20;
-            this.BordeadoInformacion.IdleFillColor = System.Drawing.Color.White;
-            this.BordeadoInformacion.IdleForecolor = System.Drawing.Color.White;
-            this.BordeadoInformacion.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoInformacion.Location = new System.Drawing.Point(21, 329);
-            this.BordeadoInformacion.Margin = new System.Windows.Forms.Padding(5);
-            this.BordeadoInformacion.Name = "BordeadoInformacion";
-            this.BordeadoInformacion.Size = new System.Drawing.Size(396, 105);
-            this.BordeadoInformacion.TabIndex = 207;
-            this.BordeadoInformacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BordeadoMenu
             // 
@@ -539,7 +463,7 @@ namespace CapaPresentaciones
             this.BordeadoMenu.Location = new System.Drawing.Point(-1, 0);
             this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(5);
             this.BordeadoMenu.Name = "BordeadoMenu";
-            this.BordeadoMenu.Size = new System.Drawing.Size(815, 452);
+            this.BordeadoMenu.Size = new System.Drawing.Size(920, 456);
             this.BordeadoMenu.TabIndex = 217;
             this.BordeadoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -566,7 +490,7 @@ namespace CapaPresentaciones
             this.btnEnviar.IconVisible = true;
             this.btnEnviar.IconZoom = 50D;
             this.btnEnviar.IsTab = false;
-            this.btnEnviar.Location = new System.Drawing.Point(552, 378);
+            this.btnEnviar.Location = new System.Drawing.Point(388, 344);
             this.btnEnviar.Name = "btnEnviar";
             this.btnEnviar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnEnviar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -579,14 +503,259 @@ namespace CapaPresentaciones
             this.btnEnviar.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnEnviar.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
+            // labelDatosCita
+            // 
+            this.labelDatosCita.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelDatosCita.AutoSize = true;
+            this.labelDatosCita.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDatosCita.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.labelDatosCita.Location = new System.Drawing.Point(491, 54);
+            this.labelDatosCita.Name = "labelDatosCita";
+            this.labelDatosCita.Size = new System.Drawing.Size(117, 19);
+            this.labelDatosCita.TabIndex = 246;
+            this.labelDatosCita.Text = "Datos de la Cita";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Enabled = false;
+            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.textBox1.Location = new System.Drawing.Point(579, 180);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(293, 19);
+            this.textBox1.TabIndex = 244;
+            // 
+            // bunifuSeparator4
+            // 
+            this.bunifuSeparator4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bunifuSeparator4.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuSeparator4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.bunifuSeparator4.LineThickness = 1;
+            this.bunifuSeparator4.Location = new System.Drawing.Point(579, 108);
+            this.bunifuSeparator4.Name = "bunifuSeparator4";
+            this.bunifuSeparator4.Size = new System.Drawing.Size(98, 10);
+            this.bunifuSeparator4.TabIndex = 239;
+            this.bunifuSeparator4.Transparency = 255;
+            this.bunifuSeparator4.Vertical = false;
+            // 
+            // labelFecha
+            // 
+            this.labelFecha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFecha.AutoSize = true;
+            this.labelFecha.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFecha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.labelFecha.Location = new System.Drawing.Point(491, 83);
+            this.labelFecha.Name = "labelFecha";
+            this.labelFecha.Size = new System.Drawing.Size(54, 19);
+            this.labelFecha.TabIndex = 237;
+            this.labelFecha.Text = "Fecha:";
+            // 
+            // bunifuThinButton21
+            // 
+            this.bunifuThinButton21.ActiveBorderThickness = 1;
+            this.bunifuThinButton21.ActiveCornerRadius = 20;
+            this.bunifuThinButton21.ActiveFillColor = System.Drawing.Color.White;
+            this.bunifuThinButton21.ActiveForecolor = System.Drawing.Color.White;
+            this.bunifuThinButton21.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.bunifuThinButton21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bunifuThinButton21.BackColor = System.Drawing.SystemColors.Control;
+            this.bunifuThinButton21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuThinButton21.BackgroundImage")));
+            this.bunifuThinButton21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.bunifuThinButton21.ButtonText = "Editar Perfil";
+            this.bunifuThinButton21.Cursor = System.Windows.Forms.Cursors.Default;
+            this.bunifuThinButton21.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuThinButton21.ForeColor = System.Drawing.Color.White;
+            this.bunifuThinButton21.IdleBorderThickness = 1;
+            this.bunifuThinButton21.IdleCornerRadius = 20;
+            this.bunifuThinButton21.IdleFillColor = System.Drawing.Color.White;
+            this.bunifuThinButton21.IdleForecolor = System.Drawing.Color.White;
+            this.bunifuThinButton21.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.bunifuThinButton21.Location = new System.Drawing.Point(483, 58);
+            this.bunifuThinButton21.Margin = new System.Windows.Forms.Padding(5);
+            this.bunifuThinButton21.Name = "bunifuThinButton21";
+            this.bunifuThinButton21.Size = new System.Drawing.Size(405, 261);
+            this.bunifuThinButton21.TabIndex = 245;
+            this.bunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox6.BackColor = System.Drawing.Color.White;
+            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox6.Enabled = false;
+            this.textBox6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.textBox6.Location = new System.Drawing.Point(703, 83);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(37, 19);
+            this.textBox6.TabIndex = 250;
+            // 
+            // dTPFechaCita
+            // 
+            this.dTPFechaCita.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dTPFechaCita.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dTPFechaCita.Location = new System.Drawing.Point(579, 81);
+            this.dTPFechaCita.MinDate = new System.DateTime(2021, 9, 19, 23, 32, 9, 0);
+            this.dTPFechaCita.Name = "dTPFechaCita";
+            this.dTPFechaCita.Size = new System.Drawing.Size(98, 26);
+            this.dTPFechaCita.TabIndex = 252;
+            this.dTPFechaCita.Value = new System.DateTime(2021, 9, 19, 23, 32, 9, 0);
+            // 
+            // labelHora
+            // 
+            this.labelHora.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelHora.AutoSize = true;
+            this.labelHora.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.labelHora.Location = new System.Drawing.Point(699, 86);
+            this.labelHora.Name = "labelHora";
+            this.labelHora.Size = new System.Drawing.Size(48, 19);
+            this.labelHora.TabIndex = 253;
+            this.labelHora.Text = "Hora:";
+            // 
+            // cBoxHora
+            // 
+            this.cBoxHora.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBoxHora.FormattingEnabled = true;
+            this.cBoxHora.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.cBoxHora.Location = new System.Drawing.Point(753, 80);
+            this.cBoxHora.Name = "cBoxHora";
+            this.cBoxHora.Size = new System.Drawing.Size(48, 27);
+            this.cBoxHora.TabIndex = 254;
+            // 
+            // cBoxAMPM
+            // 
+            this.cBoxAMPM.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBoxAMPM.FormattingEnabled = true;
+            this.cBoxAMPM.Items.AddRange(new object[] {
+            "AM",
+            "PM"});
+            this.cBoxAMPM.Location = new System.Drawing.Point(807, 80);
+            this.cBoxAMPM.Name = "cBoxAMPM";
+            this.cBoxAMPM.Size = new System.Drawing.Size(48, 27);
+            this.cBoxAMPM.TabIndex = 255;
+            // 
+            // bunifuSeparator2
+            // 
+            this.bunifuSeparator2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bunifuSeparator2.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuSeparator2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.bunifuSeparator2.LineThickness = 1;
+            this.bunifuSeparator2.Location = new System.Drawing.Point(753, 108);
+            this.bunifuSeparator2.Name = "bunifuSeparator2";
+            this.bunifuSeparator2.Size = new System.Drawing.Size(102, 10);
+            this.bunifuSeparator2.TabIndex = 256;
+            this.bunifuSeparator2.Transparency = 255;
+            this.bunifuSeparator2.Vertical = false;
+            // 
+            // labelDescripcion
+            // 
+            this.labelDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelDescripcion.AutoSize = true;
+            this.labelDescripcion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.labelDescripcion.Location = new System.Drawing.Point(491, 147);
+            this.labelDescripcion.Name = "labelDescripcion";
+            this.labelDescripcion.Size = new System.Drawing.Size(93, 19);
+            this.labelDescripcion.TabIndex = 240;
+            this.labelDescripcion.Text = "Descripción:";
+            // 
+            // BordeadoReferencia
+            // 
+            this.BordeadoReferencia.ActiveBorderThickness = 1;
+            this.BordeadoReferencia.ActiveCornerRadius = 20;
+            this.BordeadoReferencia.ActiveFillColor = System.Drawing.Color.White;
+            this.BordeadoReferencia.ActiveForecolor = System.Drawing.Color.White;
+            this.BordeadoReferencia.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoReferencia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BordeadoReferencia.BackColor = System.Drawing.SystemColors.Control;
+            this.BordeadoReferencia.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoReferencia.BackgroundImage")));
+            this.BordeadoReferencia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BordeadoReferencia.ButtonText = "Editar Perfil";
+            this.BordeadoReferencia.Cursor = System.Windows.Forms.Cursors.Default;
+            this.BordeadoReferencia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BordeadoReferencia.ForeColor = System.Drawing.Color.White;
+            this.BordeadoReferencia.IdleBorderThickness = 1;
+            this.BordeadoReferencia.IdleCornerRadius = 20;
+            this.BordeadoReferencia.IdleFillColor = System.Drawing.Color.White;
+            this.BordeadoReferencia.IdleForecolor = System.Drawing.Color.White;
+            this.BordeadoReferencia.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoReferencia.Location = new System.Drawing.Point(21, 242);
+            this.BordeadoReferencia.Margin = new System.Windows.Forms.Padding(5);
+            this.BordeadoReferencia.Name = "BordeadoReferencia";
+            this.BordeadoReferencia.Size = new System.Drawing.Size(426, 77);
+            this.BordeadoReferencia.TabIndex = 205;
+            this.BordeadoReferencia.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // gBoxDescripcionCita
+            // 
+            this.gBoxDescripcionCita.BackColor = System.Drawing.Color.White;
+            this.gBoxDescripcionCita.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gBoxDescripcionCita.Location = new System.Drawing.Point(579, 180);
+            this.gBoxDescripcionCita.Name = "gBoxDescripcionCita";
+            this.gBoxDescripcionCita.Size = new System.Drawing.Size(276, 105);
+            this.gBoxDescripcionCita.TabIndex = 257;
+            this.gBoxDescripcionCita.TabStop = false;
+            // 
+            // bunifuSeparator1
+            // 
+            this.bunifuSeparator1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.bunifuSeparator1.LineThickness = 1;
+            this.bunifuSeparator1.Location = new System.Drawing.Point(579, 285);
+            this.bunifuSeparator1.Name = "bunifuSeparator1";
+            this.bunifuSeparator1.Size = new System.Drawing.Size(276, 10);
+            this.bunifuSeparator1.TabIndex = 258;
+            this.bunifuSeparator1.Transparency = 255;
+            this.bunifuSeparator1.Vertical = false;
+            // 
             // P_SolicitudCita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(815, 452);
-            this.Controls.Add(this.txtIPersonal);
+            this.ClientSize = new System.Drawing.Size(919, 452);
+            this.Controls.Add(this.bunifuSeparator1);
+            this.Controls.Add(this.gBoxDescripcionCita);
+            this.Controls.Add(this.bunifuSeparator2);
+            this.Controls.Add(this.cBoxAMPM);
+            this.Controls.Add(this.cBoxHora);
+            this.Controls.Add(this.labelHora);
+            this.Controls.Add(this.dTPFechaCita);
+            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.labelDatosCita);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.labelDescripcion);
+            this.Controls.Add(this.bunifuSeparator4);
+            this.Controls.Add(this.labelFecha);
+            this.Controls.Add(this.bunifuThinButton21);
             this.Controls.Add(this.btnEnviar);
-            this.Controls.Add(this.gbxEstado);
             this.Controls.Add(this.gbxReferencia);
             this.Controls.Add(this.gbxDatos);
             this.Controls.Add(this.txtEscuelaP);
@@ -614,7 +783,6 @@ namespace CapaPresentaciones
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.BordeadoDatos);
             this.Controls.Add(this.BordeadoReferencia);
-            this.Controls.Add(this.BordeadoInformacion);
             this.Controls.Add(this.BordeadoMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "P_SolicitudCita";
@@ -626,9 +794,6 @@ namespace CapaPresentaciones
         }
 
         #endregion
-
-        public System.Windows.Forms.TextBox txtIPersonal;
-        private System.Windows.Forms.Label gbxEstado;
         private System.Windows.Forms.Label gbxReferencia;
         private System.Windows.Forms.Label gbxDatos;
         public System.Windows.Forms.TextBox txtEscuelaP;
@@ -655,10 +820,23 @@ namespace CapaPresentaciones
         private Bunifu.Framework.UI.BunifuImageButton btnCerrar;
         private System.Windows.Forms.Label lblTitulo;
         private Bunifu.Framework.UI.BunifuThinButton2 BordeadoDatos;
-        private Bunifu.Framework.UI.BunifuThinButton2 BordeadoReferencia;
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
-        private Bunifu.Framework.UI.BunifuThinButton2 BordeadoInformacion;
         private Bunifu.Framework.UI.BunifuThinButton2 BordeadoMenu;
         public Bunifu.Framework.UI.BunifuFlatButton btnEnviar;
+        private System.Windows.Forms.Label labelDatosCita;
+        public System.Windows.Forms.TextBox textBox1;
+        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator4;
+        private System.Windows.Forms.Label labelFecha;
+        private Bunifu.Framework.UI.BunifuThinButton2 bunifuThinButton21;
+        private System.Windows.Forms.Label labelHora;
+        private System.Windows.Forms.DateTimePicker dTPFechaCita;
+        public System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.ComboBox cBoxHora;
+        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator2;
+        private System.Windows.Forms.ComboBox cBoxAMPM;
+        private System.Windows.Forms.Label labelDescripcion;
+        private System.Windows.Forms.GroupBox gBoxDescripcionCita;
+        private Bunifu.Framework.UI.BunifuThinButton2 BordeadoReferencia;
+        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
     }
 }

@@ -15,6 +15,12 @@ namespace CapaPresentaciones
         public P_DatosTutoria()
         {
             InitializeComponent();
+            cxtDimension.SelectedIndex = 0;
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
