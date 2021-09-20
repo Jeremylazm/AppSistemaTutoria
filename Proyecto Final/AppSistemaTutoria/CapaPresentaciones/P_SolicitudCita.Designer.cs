@@ -73,8 +73,8 @@ namespace CapaPresentaciones
             this.bunifuSeparator2 = new Bunifu.Framework.UI.BunifuSeparator();
             this.labelDescripcion = new System.Windows.Forms.Label();
             this.BordeadoReferencia = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.gBoxDescripcionCita = new System.Windows.Forms.GroupBox();
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -490,7 +490,7 @@ namespace CapaPresentaciones
             this.btnEnviar.IconVisible = true;
             this.btnEnviar.IconZoom = 50D;
             this.btnEnviar.IsTab = false;
-            this.btnEnviar.Location = new System.Drawing.Point(388, 344);
+            this.btnEnviar.Location = new System.Drawing.Point(408, 392);
             this.btnEnviar.Name = "btnEnviar";
             this.btnEnviar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnEnviar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -625,6 +625,7 @@ namespace CapaPresentaciones
             // 
             // cBoxHora
             // 
+            this.cBoxHora.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBoxHora.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cBoxHora.FormattingEnabled = true;
             this.cBoxHora.Items.AddRange(new object[] {
@@ -647,6 +648,7 @@ namespace CapaPresentaciones
             // 
             // cBoxAMPM
             // 
+            this.cBoxAMPM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBoxAMPM.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cBoxAMPM.FormattingEnabled = true;
             this.cBoxAMPM.Items.AddRange(new object[] {
@@ -712,16 +714,6 @@ namespace CapaPresentaciones
             this.BordeadoReferencia.TabIndex = 205;
             this.BordeadoReferencia.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // gBoxDescripcionCita
-            // 
-            this.gBoxDescripcionCita.BackColor = System.Drawing.Color.White;
-            this.gBoxDescripcionCita.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gBoxDescripcionCita.Location = new System.Drawing.Point(579, 180);
-            this.gBoxDescripcionCita.Name = "gBoxDescripcionCita";
-            this.gBoxDescripcionCita.Size = new System.Drawing.Size(276, 105);
-            this.gBoxDescripcionCita.TabIndex = 257;
-            this.gBoxDescripcionCita.TabStop = false;
-            // 
             // bunifuSeparator1
             // 
             this.bunifuSeparator1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -736,13 +728,22 @@ namespace CapaPresentaciones
             this.bunifuSeparator1.Transparency = 255;
             this.bunifuSeparator1.Vertical = false;
             // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Location = new System.Drawing.Point(579, 187);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(276, 98);
+            this.textBox2.TabIndex = 259;
+            // 
             // P_SolicitudCita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(919, 452);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.bunifuSeparator1);
-            this.Controls.Add(this.gBoxDescripcionCita);
             this.Controls.Add(this.bunifuSeparator2);
             this.Controls.Add(this.cBoxAMPM);
             this.Controls.Add(this.cBoxHora);
@@ -835,8 +836,8 @@ namespace CapaPresentaciones
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator2;
         private System.Windows.Forms.ComboBox cBoxAMPM;
         private System.Windows.Forms.Label labelDescripcion;
-        private System.Windows.Forms.GroupBox gBoxDescripcionCita;
         private Bunifu.Framework.UI.BunifuThinButton2 BordeadoReferencia;
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
