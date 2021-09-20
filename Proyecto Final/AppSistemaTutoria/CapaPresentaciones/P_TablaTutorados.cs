@@ -123,7 +123,7 @@ namespace CapaPresentaciones
             if (dgvTabla.SelectedRows.Count > 0)
             {
                 Program.Evento = 1;
-                EditarRegistro.txtCodigo.Text = dgvTabla.CurrentRow.Cells[2].Value.ToString();
+                EditarRegistro.txtCodigoEstudiante.Text = dgvTabla.CurrentRow.Cells[2].Value.ToString();
                 EditarRegistro.txtAPaterno.Text = dgvTabla.CurrentRow.Cells[3].Value.ToString();
                 EditarRegistro.txtAMaterno.Text = dgvTabla.CurrentRow.Cells[4].Value.ToString();
                 EditarRegistro.txtNombre.Text = dgvTabla.CurrentRow.Cells[5].Value.ToString();
@@ -133,7 +133,7 @@ namespace CapaPresentaciones
                 EditarRegistro.txtEscuelaP.Text = dgvTabla.CurrentRow.Cells[11].Value.ToString();
                 EditarRegistro.txtPersonaReferencia.Text = dgvTabla.CurrentRow.Cells[12].Value.ToString();
                 EditarRegistro.txtTelefonoRef.Text = dgvTabla.CurrentRow.Cells[13].Value.ToString();
-              
+                EditarRegistro.txtCodigoDocente.Text = dgvTabla.CurrentRow.Cells[15].Value.ToString();
 
 
                 EditarRegistro.ShowDialog();

@@ -34,7 +34,7 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.Separador1 = new Bunifu.Framework.UI.BunifuSeparator();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.txtCodigoEstudiante = new System.Windows.Forms.TextBox();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.Separador2 = new Bunifu.Framework.UI.BunifuSeparator();
             this.txtAPaterno = new System.Windows.Forms.TextBox();
@@ -82,7 +82,10 @@
             this.bunifuSeparator4 = new Bunifu.Framework.UI.BunifuSeparator();
             this.txtCodTutoria = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeFechaFichaT = new System.Windows.Forms.DateTimePicker();
+            this.bunifuSeparator5 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.txtCodigoDocente = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
             this.SuspendLayout();
@@ -136,17 +139,17 @@
             this.Separador1.Transparency = 255;
             this.Separador1.Vertical = false;
             // 
-            // txtCodigo
+            // txtCodigoEstudiante
             // 
-            this.txtCodigo.BackColor = System.Drawing.Color.White;
-            this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCodigo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtCodigo.Location = new System.Drawing.Point(180, 63);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(272, 23);
-            this.txtCodigo.TabIndex = 79;
+            this.txtCodigoEstudiante.BackColor = System.Drawing.Color.White;
+            this.txtCodigoEstudiante.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCodigoEstudiante.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoEstudiante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.txtCodigoEstudiante.Location = new System.Drawing.Point(180, 63);
+            this.txtCodigoEstudiante.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodigoEstudiante.Name = "txtCodigoEstudiante";
+            this.txtCodigoEstudiante.Size = new System.Drawing.Size(272, 23);
+            this.txtCodigoEstudiante.TabIndex = 79;
             // 
             // lblCodigo
             // 
@@ -455,6 +458,7 @@
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnGuardar.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnGuardar.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // imgLogoUNSAAC
             // 
@@ -805,12 +809,49 @@
             this.label4.TabIndex = 133;
             this.label4.Text = "Código Tutoria:";
             // 
-            // dateTimePicker1
+            // dateTimeFechaFichaT
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(695, 464);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(272, 22);
-            this.dateTimePicker1.TabIndex = 145;
+            this.dateTimeFechaFichaT.Location = new System.Drawing.Point(695, 464);
+            this.dateTimeFechaFichaT.Name = "dateTimeFechaFichaT";
+            this.dateTimeFechaFichaT.Size = new System.Drawing.Size(272, 22);
+            this.dateTimeFechaFichaT.TabIndex = 145;
+            // 
+            // bunifuSeparator5
+            // 
+            this.bunifuSeparator5.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuSeparator5.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.bunifuSeparator5.LineThickness = 1;
+            this.bunifuSeparator5.Location = new System.Drawing.Point(180, 445);
+            this.bunifuSeparator5.Margin = new System.Windows.Forms.Padding(5);
+            this.bunifuSeparator5.Name = "bunifuSeparator5";
+            this.bunifuSeparator5.Size = new System.Drawing.Size(272, 12);
+            this.bunifuSeparator5.TabIndex = 148;
+            this.bunifuSeparator5.Transparency = 255;
+            this.bunifuSeparator5.Vertical = false;
+            // 
+            // txtCodigoDocente
+            // 
+            this.txtCodigoDocente.BackColor = System.Drawing.Color.White;
+            this.txtCodigoDocente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCodigoDocente.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoDocente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.txtCodigoDocente.Location = new System.Drawing.Point(180, 422);
+            this.txtCodigoDocente.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodigoDocente.Name = "txtCodigoDocente";
+            this.txtCodigoDocente.Size = new System.Drawing.Size(272, 23);
+            this.txtCodigoDocente.TabIndex = 147;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.label5.Location = new System.Drawing.Point(16, 422);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(151, 23);
+            this.label5.TabIndex = 146;
+            this.label5.Text = "Código Docente:";
             // 
             // P_DatosTutoria
             // 
@@ -818,7 +859,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1047, 617);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.bunifuSeparator5);
+            this.Controls.Add(this.txtCodigoDocente);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.dateTimeFechaFichaT);
             this.Controls.Add(this.bunifuSeparator1);
             this.Controls.Add(this.txtObservaciones);
             this.Controls.Add(this.label1);
@@ -865,7 +909,7 @@
             this.Controls.Add(this.txtAPaterno);
             this.Controls.Add(this.lblAPaterno);
             this.Controls.Add(this.Separador1);
-            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.txtCodigoEstudiante);
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
@@ -888,7 +932,7 @@
         private System.Windows.Forms.Label lblTitulo;
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
         private Bunifu.Framework.UI.BunifuSeparator Separador1;
-        public System.Windows.Forms.TextBox txtCodigo;
+        public System.Windows.Forms.TextBox txtCodigoEstudiante;
         private System.Windows.Forms.Label lblCodigo;
         private Bunifu.Framework.UI.BunifuSeparator Separador2;
         public System.Windows.Forms.TextBox txtAPaterno;
@@ -924,7 +968,7 @@
         public System.Windows.Forms.TextBox txtTelefonoRef;
         public System.Windows.Forms.TextBox txtPersonaReferencia;
         public System.Windows.Forms.TextBox txtEscuelaP;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimeFechaFichaT;
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
         public System.Windows.Forms.TextBox txtObservaciones;
         private System.Windows.Forms.Label label1;
@@ -937,5 +981,8 @@
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator4;
         public System.Windows.Forms.TextBox txtCodTutoria;
         private System.Windows.Forms.Label label4;
+        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator5;
+        public System.Windows.Forms.TextBox txtCodigoDocente;
+        private System.Windows.Forms.Label label5;
     }
 }
