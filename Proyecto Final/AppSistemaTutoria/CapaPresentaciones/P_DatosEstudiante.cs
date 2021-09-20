@@ -111,15 +111,6 @@ namespace CapaPresentaciones
             else return IPersonalCifrada; //No desencriptar
         }
 
-        string EncriptarIPersonal(string IPersonal, bool PermisoVisibilidad)
-        {
-            //Encriptar
-            string IPersonalCifrada = E_Criptografia.EncriptarRSA(IPersonal, Key);
-            //Añadir permiso
-            if (PermisoVisibilidad) IPersonalCifrada += " VT=T";
-            else IPersonalCifrada += " VT=F";
-            return IPersonalCifrada;
-        }
 
         public string AgregarOModificar(Image Perfil, string Codigo, string APaterno, string AMaterno, string Nombre, 
                                  string Email, string Direccion, string Telefono, string CodEscuelaP, 
@@ -189,8 +180,7 @@ namespace CapaPresentaciones
                                 else
                                 {
                                     ObjEntidad.TelefonoReferencia = TelefonoReferencia;
-                                    ObjEntidad.InformacionPersonal = EncriptarIPersonal(InformacionPersonal, false);
-
+                                    ObjEntidad.InformacionPersonal = E_Criptografia.EncriptarRSA(InformacionPersonal, Key);
                                     if (Test == false)
                                     {
                                         N_Estudiante ObjNegocio = new N_Estudiante();
@@ -300,7 +290,7 @@ namespace CapaPresentaciones
                                     {
 
                                         ObjEntidad.TelefonoReferencia = TelefonoReferencia;
-                                        ObjEntidad.InformacionPersonal = EncriptarIPersonal(InformacionPersonal, false);
+                                        ObjEntidad.InformacionPersonal = E_Criptografia.EncriptarRSA(InformacionPersonal, Key);
 
                                         if (Test == false)
                                         {
