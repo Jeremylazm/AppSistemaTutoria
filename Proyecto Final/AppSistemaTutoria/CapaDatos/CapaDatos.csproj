@@ -175,7 +175,6 @@
     <Compile Include="D_Estudiante.cs" />
     <Compile Include="D_FichaTutoria.cs" />
     <Compile Include="D_InicioSesion.cs" />
-    <Compile Include="D_Tutoria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
