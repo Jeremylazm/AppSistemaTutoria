@@ -608,6 +608,7 @@ namespace CapaPresentaciones
             this.ClientSize = new System.Drawing.Size(1000, 600);
             this.Controls.Add(this.pnPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1000, 600);
             this.Name = "P_Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
