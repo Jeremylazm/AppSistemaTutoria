@@ -642,9 +642,10 @@
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.BordeadoMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_TablaTutores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Tabla de Estudiantes";
+            this.Text = "Tabla de Tutores";
             this.Load += new System.EventHandler(this.P_TablaDocentes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTablaTutores)).EndInit();

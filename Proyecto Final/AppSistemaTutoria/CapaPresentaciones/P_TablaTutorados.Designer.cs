@@ -150,6 +150,7 @@ namespace CapaPresentaciones
             // 
             // btnNuevaSesion
             // 
+            this.btnNuevaSesion.Active = true;
             this.btnNuevaSesion.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnNuevaSesion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNuevaSesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -239,9 +240,10 @@ namespace CapaPresentaciones
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.BordeadoMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_TablaTutorados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Tabla de Estudiantes";
+            this.Text = "Tabla de Tutorados";
             this.Load += new System.EventHandler(this.P_TablaTutorados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTabla)).EndInit();

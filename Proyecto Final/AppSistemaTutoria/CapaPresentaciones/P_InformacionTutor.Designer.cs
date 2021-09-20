@@ -370,6 +370,7 @@ namespace CapaPresentaciones
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_InformacionTutor";
             this.Text = "Información  del Tutor";
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).EndInit();
