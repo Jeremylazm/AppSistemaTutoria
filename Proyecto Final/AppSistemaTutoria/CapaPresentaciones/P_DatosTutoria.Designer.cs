@@ -105,7 +105,6 @@
             this.btnCerrar.TabIndex = 76;
             this.btnCerrar.TabStop = false;
             this.btnCerrar.Zoom = 10;
-            //this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // lblTitulo
             // 
@@ -143,6 +142,7 @@
             // 
             this.txtCodigoEstudiante.BackColor = System.Drawing.Color.White;
             this.txtCodigoEstudiante.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCodigoEstudiante.Enabled = false;
             this.txtCodigoEstudiante.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigoEstudiante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtCodigoEstudiante.Location = new System.Drawing.Point(180, 63);
@@ -458,7 +458,6 @@
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnGuardar.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnGuardar.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            
             // 
             // imgLogoUNSAAC
             // 
@@ -603,8 +602,8 @@
             this.BordeadoMenu.ActiveFillColor = System.Drawing.Color.White;
             this.BordeadoMenu.ActiveForecolor = System.Drawing.Color.White;
             this.BordeadoMenu.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.BordeadoMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BordeadoMenu.BackColor = System.Drawing.Color.White;
             this.BordeadoMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoMenu.BackgroundImage")));
@@ -811,6 +810,7 @@
             // 
             // dateTimeFechaFichaT
             // 
+            this.dateTimeFechaFichaT.Enabled = false;
             this.dateTimeFechaFichaT.Location = new System.Drawing.Point(695, 464);
             this.dateTimeFechaFichaT.Name = "dateTimeFechaFichaT";
             this.dateTimeFechaFichaT.Size = new System.Drawing.Size(272, 22);
