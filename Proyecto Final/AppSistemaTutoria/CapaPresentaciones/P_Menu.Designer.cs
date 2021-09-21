@@ -95,11 +95,11 @@ namespace CapaPresentaciones
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblTitulo.Location = new System.Drawing.Point(86, 26);
+            this.lblTitulo.Location = new System.Drawing.Point(86, 24);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(665, 24);
+            this.lblTitulo.Size = new System.Drawing.Size(628, 23);
             this.lblTitulo.TabIndex = 64;
             this.lblTitulo.Text = "Sistema de Tutoría - Universidad Nacional de San Antonio Abad del Cusco";
             // 
