@@ -1,3 +1,5 @@
+using CapaEntidades;
+using CapaNegocios;
 using System;
 using System.Data;
 using System.Drawing;
@@ -6,8 +8,6 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using CapaEntidades;
-using CapaNegocios;
 
 namespace CapaPresentaciones
 {
@@ -59,14 +59,14 @@ namespace CapaPresentaciones
 
             bool permiso = Fila[16].Equals("SÍ"); //Si se tiene el permiso de ver la inf. personal
             if (Fila[14].ToString() != "")
-                txtIPersonal.Text = VisibilidadIPersonal(Fila[14].ToString(), permiso , true);  //Desencriptar  informacion personal
+                txtIPersonal.Text = VisibilidadIPersonal(Fila[14].ToString(), permiso, true);  //Desencriptar  informacion personal
             else
                 txtIPersonal.Text = "";
 
             if (permiso)
                 ckbIPersonal.Checked = true;
             else
-                 ckbIPersonal.Checked = false;
+                ckbIPersonal.Checked = false;
             //txtEFisico.Text = Fila[14].ToString();
             //txtEMental.Text = Fila[15].ToString();
 
@@ -224,12 +224,13 @@ namespace CapaPresentaciones
             string titulo = "Cerrando formulario";
             var result = MessageBox.Show(msg, titulo, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             //Si le da al boton si, cerrar formulario
-            if ( result == DialogResult.Yes) Close();
+            if (result == DialogResult.Yes) Close();
         }
 
         private void btnCambiarContraseña_Click(object sender, EventArgs e)
         {
-            P_CambiarContraseña NuevaContraseña = new P_CambiarContraseña {
+            P_CambiarContraseña NuevaContraseña = new P_CambiarContraseña
+            {
                 Usuario = E_InicioSesion.Usuario,
                 Correo = E_InicioSesion.Usuario + "@unsaac.edu.pe"
             };

@@ -1,9 +1,9 @@
-﻿using System;
+﻿using CapaEntidades;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using CapaEntidades;
 
 
 
@@ -96,7 +96,7 @@ namespace CapaDatos
                 {
                     // MessageBox.Show("El usuario no existe");// No existe el usuario
                     return null;
-                }                
+                }
             }
             catch (Exception ex)
             {

@@ -1,8 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using CapaPresentaciones;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using CapaPresentaciones;
 
 namespace PruebasUnitarias
 {
@@ -13,7 +11,7 @@ namespace PruebasUnitarias
     public class T_Docente
     {
         // Definir variables globales para las pruebas unitarias
-        readonly P_DatosDocente Docente = new P_DatosDocente (true);
+        readonly P_DatosDocente Docente = new P_DatosDocente(true);
         readonly string RutaImagenDocente = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../../CapaPresentaciones/Iconos/Perfil Docente.png");
 
 
