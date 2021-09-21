@@ -18,7 +18,6 @@ namespace CapaPresentaciones
         readonly E_Estudiante ObjEntidadEstudiante = new E_Estudiante();
         readonly N_Estudiante ObjNegocioEstudiante = new N_Estudiante();
         int Regs = 0;
-        string CodEscuelaP = "IN";
 
         public P_TablaTutores()
         {
