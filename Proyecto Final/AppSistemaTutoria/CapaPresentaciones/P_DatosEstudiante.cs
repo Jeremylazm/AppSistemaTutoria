@@ -173,7 +173,7 @@ namespace CapaPresentaciones
                                     if (Test == false)
                                     {
                                         N_InicioSesion InicioSesion = new N_InicioSesion();
-                                        string Contrasena = InicioSesion.RetornarContrasena(Codigo);
+                                        string Contrasena = InicioSesion.RetornarContraseña(Codigo);
 
                                         // Enviar un correo con la contraseña para un nuevo usuario
                                         try
@@ -217,7 +217,11 @@ namespace CapaPresentaciones
                     try
                     {
                         DialogResult Opcion;
-                        Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                        if (Test == false)
+                            Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                        else
+                            Opcion = DialogResult.OK;
+
                         if (Opcion == DialogResult.OK)
                         {
                             byte[] PerfilArray = new byte[0];

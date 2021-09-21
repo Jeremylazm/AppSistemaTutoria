@@ -1,6 +1,6 @@
-using System.Data;
 using CapaDatos;
 using CapaEntidades;
+using System.Data;
 
 namespace CapaNegocios
 {
@@ -23,11 +23,16 @@ namespace CapaNegocios
             return new D_Estudiante().BuscarRegistro(CodEstudiante);
         }
 
+        public static DataTable BuscarTutor(string CodEstudiante)
+        {
+            return new D_Estudiante().BuscarTutor(CodEstudiante);
+        }
+
         public static DataTable BuscarRegistros(string CodDocente, string Texto)
         {
             return new D_Estudiante().BuscarRegistros(CodDocente, Texto);
         }
-        
+
         public static DataTable BuscarEstudiantesSinTutor(string CodDocente, string Texto, int Filas)
         {
             return new D_Estudiante().BuscarEstudiantesSinTutor(CodDocente, Texto, Filas);

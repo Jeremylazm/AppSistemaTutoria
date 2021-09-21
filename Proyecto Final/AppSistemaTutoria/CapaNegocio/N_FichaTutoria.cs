@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CapaDatos;
+﻿using CapaDatos;
 using CapaEntidades;
 using System.Data;
 
-namespace CapaNegocio
+namespace CapaNegocios
 {
-    class N_FichaTutoria
+    public class N_FichaTutoria
     {
-        
-        readonly D_FichaTutoria ObjEstudiante = new D_FichaTutoria();
+
+        readonly D_FichaTutoria ObjFichaTutoria = new D_FichaTutoria();
 
         public static DataTable MostrarRegistros(string CodDocente)
         {
@@ -21,12 +16,20 @@ namespace CapaNegocio
 
         public void InsertarRegistros(E_FichaTutoria FichaTutoria)
         {
-            ObjEstudiante.InsertarFichaTutoria(FichaTutoria);
+            ObjFichaTutoria.InsertarFichaTutoria(FichaTutoria);
         }
 
         public void EditarRegistros(E_FichaTutoria FichaTutoria)
         {
-            ObjEstudiante.EditarFichaTutoria(FichaTutoria);
+            ObjFichaTutoria.EditarFichaTutoria(FichaTutoria);
+        }
+        public void EliminarRegistros(E_FichaTutoria FichaTutoria)
+        {
+            ObjFichaTutoria.EliminarRegistro(FichaTutoria);
+        }
+        public static DataTable BuscarRegistros(string Tutoria, string Texto)
+        {
+            return new D_FichaTutoria().BuscarRegistros(Tutoria, Texto);
         }
     }
 }

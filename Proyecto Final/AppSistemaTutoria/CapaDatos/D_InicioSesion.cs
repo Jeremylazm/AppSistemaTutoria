@@ -72,7 +72,7 @@ namespace CapaDatos
             }
         }
 
-        public string RetornarContrasena(string Usuario)
+        public string RetornarContraseña(string Usuario)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuRetornarContraseña", Conectar)
@@ -94,7 +94,7 @@ namespace CapaDatos
                 }
                 else
                 {
-                    MessageBox.Show("El usuario no existe");// No existe el usuario
+                    // MessageBox.Show("El usuario no existe");// No existe el usuario
                     return null;
                 }                
             }
