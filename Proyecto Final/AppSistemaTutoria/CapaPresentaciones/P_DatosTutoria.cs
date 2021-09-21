@@ -41,7 +41,7 @@ namespace CapaPresentaciones
         }
         private void LimpiarCajas()
         {
-            txtCodTutoria.Clear();
+            
             cxtDimension.SelectedIndex=0;
             txtReferencia.Clear();
             txtDescripcion.Clear();
@@ -262,7 +262,7 @@ namespace CapaPresentaciones
                         
                         //ObjEntidad.CodDocente = txtCodigoDocente.Text;
                         ObjEntidad.CodEstudiante = txtCodigoEstudiante.Text;
-                        ObjEntidad.Semestre = txtAMaterno.Text.ToUpper();
+                        ObjEntidad.Semestre = txtSemestre.Text;
                         ObjEntidad.Referencia = txtReferencia.Text;
                         ObjEntidad.Dimension = cxtDimension.Text;
                         ObjEntidad.Descripcion = txtDescripcion.Text;

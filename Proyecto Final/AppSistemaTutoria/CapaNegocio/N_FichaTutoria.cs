@@ -28,5 +28,13 @@ namespace CapaNegocios
         {
             ObjFichaTutoria.EditarFichaTutoria(FichaTutoria);
         }
+        public void EliminarRegistros(E_FichaTutoria FichaTutoria)
+        {
+            ObjFichaTutoria.EliminarRegistro(FichaTutoria);
+        }
+        public static DataTable BuscarRegistros(string Tutoria, string Texto)
+        {
+            return new D_FichaTutoria().BuscarRegistros(Tutoria, Texto);
+        }
     }
 }
