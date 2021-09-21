@@ -189,8 +189,6 @@ namespace CapaPresentaciones
                 ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
                 //Guardar Informacion personal cifrada con su respectivo permiso
                 ObjEntidad.InformacionPersonal = EncriptarIPersonal(txtIPersonal.Text, ckbIPersonal.Checked);
-                //ObjEntidad.EstadoFisico = txtEFisico.Text.ToUpper();
-                //ObjEntidad.EstadoMental = txtEMental.Text.ToUpper();
                 if (ckbIPersonal.Checked)
                     ObjEntidad.ConcederPermiso = "SÍ";
                 else
@@ -203,7 +201,12 @@ namespace CapaPresentaciones
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            Close();
+            //Warning si desea cerrar el formulario sin guardar cambias
+            string msg = "¿Está seguro que desea cerrar?";
+            string titulo = "Cerrando formulario";
+            var result = MessageBox.Show(msg, titulo, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //Si le da al boton si, cerrar formulario
+            if ( result == DialogResult.Yes) Close();
         }
 
         private void btnCambiarContraseña_Click(object sender, EventArgs e)
