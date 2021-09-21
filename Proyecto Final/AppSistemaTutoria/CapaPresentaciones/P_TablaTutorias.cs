@@ -34,13 +34,13 @@ namespace CapaPresentaciones
 
             dgvTabla.Columns[1].HeaderText = "Cod. Ficha";
             dgvTabla.Columns[2].HeaderText = "Fecha";
-            dgvTabla.Columns[3].HeaderText = "Codigo Estudiante";
+            dgvTabla.Columns[3].HeaderText = "Cod. Estudiante";
             dgvTabla.Columns[4].HeaderText = "Estudiante";
             dgvTabla.Columns[5].HeaderText = "Semestre";
             dgvTabla.Columns[7].HeaderText = "Dimensión";
             dgvTabla.Columns[8].HeaderText = "Descripción";
             dgvTabla.Columns[9].HeaderText = "Referencia";
-            dgvTabla.Columns[10].HeaderText = "Observciones";
+            dgvTabla.Columns[10].HeaderText = "Observaciones";
             
         }
         public void MostrarRegistros()
