@@ -1,8 +1,12 @@
 ﻿using System;
-using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
+using System.IO;
+using System.Drawing.Drawing2D;
+using System.Net.Mail;
+using System.Net;
 
 namespace CapaPresentaciones
 {
@@ -84,6 +88,44 @@ namespace CapaPresentaciones
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             BuscarRegistros();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            P_DatosEstudiante EditarRegistro = new P_DatosEstudiante();
+            EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+
+            if (dgvTabla.SelectedRows.Count > 0)
+            {
+                Program.Evento = 1;
+
+                
+                EditarRegistro.txtAPaterno.Text = dgvTabla.CurrentRow.Cells[3].Value.ToString();
+                EditarRegistro.txtAMaterno.Text = dgvTabla.CurrentRow.Cells[4].Value.ToString();
+                EditarRegistro.txtNombre.Text = dgvTabla.CurrentRow.Cells[5].Value.ToString();
+                EditarRegistro.txtDireccion.Text = dgvTabla.CurrentRow.Cells[8].Value.ToString();
+                EditarRegistro.txtTelefono.Text = dgvTabla.CurrentRow.Cells[9].Value.ToString();
+                EditarRegistro.cxtEscuela.SelectedValue = dgvTabla.CurrentRow.Cells[10].Value.ToString();
+                EditarRegistro.txtPReferencia.Text = dgvTabla.CurrentRow.Cells[12].Value.ToString();
+                EditarRegistro.txtTReferencia.Text = dgvTabla.CurrentRow.Cells[13].Value.ToString();
+                EditarRegistro.txtIPersonal.Text = dgvTabla.CurrentRow.Cells[14].Value.ToString();
+                dgvTabla.Columns[1].HeaderText = "Cod. Ficha";
+                dgvTabla.Columns[2].HeaderText = "Fecha";
+                dgvTabla.Columns[3].HeaderText = "Codigo Estudiante";
+                dgvTabla.Columns[4].HeaderText = "Estudiante";
+                dgvTabla.Columns[5].HeaderText = "Semestre";
+                dgvTabla.Columns[7].HeaderText = "Dimensión";
+                dgvTabla.Columns[8].HeaderText = "Descripción";
+                dgvTabla.Columns[9].HeaderText = "Referencia";
+                dgvTabla.Columns[10].HeaderText = "Observciones";
+
+                EditarRegistro.ShowDialog();
+            }
+            else
+            {
+                MensajeError("Debe seleccionar una fila");
+            }
+            EditarRegistro.Dispose();
         }
     }
 }

@@ -254,7 +254,18 @@ namespace CapaPresentaciones
 
         private void btnTutorias_Click(object sender, EventArgs e)
         {
-            AbrirFormularios<P_TablaTutorias>();
+            P_TablaTutorias Editar = new P_TablaTutorias
+            {
+                TopLevel = false,
+                Dock = DockStyle.Fill
+            };
+            Editar.MostrarRegistros();
+
+            pnContenedor.Controls.Add(Editar);
+            pnContenedor.Tag = Editar;
+            Editar.Show();
+            Editar.BringToFront();
+
         }
 
         private void btnTutorados_Click(object sender, EventArgs e)
