@@ -1,3 +1,5 @@
+using CapaEntidades;
+using CapaNegocios;
 using System;
 using System.Data;
 using System.Drawing;
@@ -5,8 +7,6 @@ using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using CapaEntidades;
-using CapaNegocios;
 
 namespace CapaPresentaciones
 {
@@ -49,7 +49,7 @@ namespace CapaPresentaciones
                 string fullImagePath = "";
                 if ((E_InicioSesion.Acceso == "Director de Escuela") || (E_InicioSesion.Acceso == "Administrador"))
                     fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil.png");
-                
+
                 if (E_InicioSesion.Acceso == "Docente")
                     fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
 
@@ -225,7 +225,7 @@ namespace CapaPresentaciones
                 Editar.Show();
                 Editar.BringToFront();
             }
-            else if(lblAcceso.Text == "Docente")
+            else if (lblAcceso.Text == "Docente")
             {
                 P_EditarPerfilDocente Editar = new P_EditarPerfilDocente
                 {
@@ -312,7 +312,7 @@ namespace CapaPresentaciones
                 P_InformacionTutor ITutor = new P_InformacionTutor(Datos);
                 ITutor.Show();
             }
-            
+
         }
 
 

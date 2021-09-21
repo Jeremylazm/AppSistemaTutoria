@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using CapaNegocios;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CapaNegocios;
-using CapaEntidades;
 using System.Net;
 using System.Net.Mail;
+using System.Windows.Forms;
 
 namespace CapaPresentaciones
 {

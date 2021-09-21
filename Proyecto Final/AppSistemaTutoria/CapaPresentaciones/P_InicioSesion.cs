@@ -1,9 +1,8 @@
-﻿using System;
-using System.Windows.Forms;
-using CapaEntidades;
+﻿using CapaEntidades;
 using CapaNegocios;
-
+using System;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace CapaPresentaciones
 {
