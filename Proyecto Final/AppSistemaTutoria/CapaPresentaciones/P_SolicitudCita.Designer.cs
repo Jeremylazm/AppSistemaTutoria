@@ -733,6 +733,7 @@ namespace CapaPresentaciones
             // txtDescripcionCita
             // 
             this.txtDescripcionCita.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDescripcionCita.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescripcionCita.Location = new System.Drawing.Point(579, 187);
             this.txtDescripcionCita.Multiline = true;
             this.txtDescripcionCita.Name = "txtDescripcionCita";

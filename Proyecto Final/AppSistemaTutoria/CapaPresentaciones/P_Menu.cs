@@ -1,10 +1,12 @@
 using System;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using CapaEntidades;
+using CapaNegocios;
 
 namespace CapaPresentaciones
 {
@@ -300,20 +302,32 @@ namespace CapaPresentaciones
 
         private void btnMiTutor_Click(object sender, EventArgs e)
         {
-            P_InformacionTutor Editar = new P_InformacionTutor(E_InicioSesion.Usuario);
-            Editar.Show();
+            DataTable Datos = N_Estudiante.BuscarTutor(E_InicioSesion.Usuario);
+            if (Datos.Rows.Count == 0)
+            {
+                MessageBox.Show("Ud. Aun no tiene un tutor asignado");
+            }
+            else
+            {
+                P_InformacionTutor ITutor = new P_InformacionTutor(Datos);
+                ITutor.Show();
+            }
+            
         }
 
-        private void btnSolicitar_Click(object sender, EventArgs e)
-        {
-            P_SolicitudCita Solicitar = new P_SolicitudCita(E_InicioSesion.Usuario);
-            Solicitar.Show();
-        }
 
         private void btnSolicitarCita_Click(object sender, EventArgs e)
         {
-            P_SolicitudCita Solicitar = new P_SolicitudCita(E_InicioSesion.Usuario);
-            Solicitar.Show();
+            DataTable Datos = N_Estudiante.BuscarTutor(E_InicioSesion.Usuario);
+            if (Datos.Rows.Count == 0)
+            {
+                MessageBox.Show("Ud. Aun no tiene un tutor asignado");
+            }
+            else
+            {
+                P_SolicitudCita Solicitar = new P_SolicitudCita(E_InicioSesion.Usuario, Datos);
+                Solicitar.Show();
+            }
         }
 
         private void P_Menu_Load(object sender, EventArgs e)

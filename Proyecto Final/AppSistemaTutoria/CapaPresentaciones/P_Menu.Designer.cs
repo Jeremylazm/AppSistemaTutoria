@@ -42,6 +42,7 @@ namespace CapaPresentaciones
             this.BordeadoContenedor = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnContenedor = new System.Windows.Forms.Panel();
             this.pnLateral = new System.Windows.Forms.Panel();
+            this.btnSolicitarCita = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnMiTutor = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnInformeTutorias = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnTutores = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -57,7 +58,6 @@ namespace CapaPresentaciones
             this.lblAcceso = new System.Windows.Forms.Label();
             this.lblDatos = new System.Windows.Forms.Label();
             this.pnInferior = new System.Windows.Forms.Panel();
-            this.btnSolicitarCita = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pnPrincipal = new System.Windows.Forms.Panel();
             this.pnSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
@@ -227,6 +227,42 @@ namespace CapaPresentaciones
             this.pnLateral.Name = "pnLateral";
             this.pnLateral.Size = new System.Drawing.Size(173, 600);
             this.pnLateral.TabIndex = 4;
+            // 
+            // btnSolicitarCita
+            // 
+            this.btnSolicitarCita.Active = true;
+            this.btnSolicitarCita.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnSolicitarCita.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnSolicitarCita.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSolicitarCita.BorderRadius = 7;
+            this.btnSolicitarCita.ButtonText = "Solicitar Cita";
+            this.btnSolicitarCita.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSolicitarCita.DisabledColor = System.Drawing.Color.Gray;
+            this.btnSolicitarCita.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnSolicitarCita.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnSolicitarCita.Iconimage")));
+            this.btnSolicitarCita.Iconimage_right = null;
+            this.btnSolicitarCita.Iconimage_right_Selected = null;
+            this.btnSolicitarCita.Iconimage_Selected = null;
+            this.btnSolicitarCita.IconMarginLeft = 0;
+            this.btnSolicitarCita.IconMarginRight = 0;
+            this.btnSolicitarCita.IconRightVisible = true;
+            this.btnSolicitarCita.IconRightZoom = 0D;
+            this.btnSolicitarCita.IconVisible = true;
+            this.btnSolicitarCita.IconZoom = 50D;
+            this.btnSolicitarCita.IsTab = false;
+            this.btnSolicitarCita.Location = new System.Drawing.Point(5, 330);
+            this.btnSolicitarCita.Name = "btnSolicitarCita";
+            this.btnSolicitarCita.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnSolicitarCita.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
+            this.btnSolicitarCita.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnSolicitarCita.selected = true;
+            this.btnSolicitarCita.Size = new System.Drawing.Size(161, 40);
+            this.btnSolicitarCita.TabIndex = 50;
+            this.btnSolicitarCita.Text = "Solicitar Cita";
+            this.btnSolicitarCita.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSolicitarCita.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnSolicitarCita.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSolicitarCita.Click += new System.EventHandler(this.btnSolicitarCita_Click);
             // 
             // btnMiTutor
             // 
@@ -589,42 +625,6 @@ namespace CapaPresentaciones
             this.pnInferior.Name = "pnInferior";
             this.pnInferior.Size = new System.Drawing.Size(827, 70);
             this.pnInferior.TabIndex = 5;
-            // 
-            // btnSolicitarCita
-            // 
-            this.btnSolicitarCita.Active = true;
-            this.btnSolicitarCita.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnSolicitarCita.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnSolicitarCita.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSolicitarCita.BorderRadius = 7;
-            this.btnSolicitarCita.ButtonText = "Solicitar Cita";
-            this.btnSolicitarCita.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSolicitarCita.DisabledColor = System.Drawing.Color.Gray;
-            this.btnSolicitarCita.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnSolicitarCita.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnSolicitarCita.Iconimage")));
-            this.btnSolicitarCita.Iconimage_right = null;
-            this.btnSolicitarCita.Iconimage_right_Selected = null;
-            this.btnSolicitarCita.Iconimage_Selected = null;
-            this.btnSolicitarCita.IconMarginLeft = 0;
-            this.btnSolicitarCita.IconMarginRight = 0;
-            this.btnSolicitarCita.IconRightVisible = true;
-            this.btnSolicitarCita.IconRightZoom = 0D;
-            this.btnSolicitarCita.IconVisible = true;
-            this.btnSolicitarCita.IconZoom = 50D;
-            this.btnSolicitarCita.IsTab = false;
-            this.btnSolicitarCita.Location = new System.Drawing.Point(5, 330);
-            this.btnSolicitarCita.Name = "btnSolicitarCita";
-            this.btnSolicitarCita.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnSolicitarCita.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
-            this.btnSolicitarCita.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnSolicitarCita.selected = true;
-            this.btnSolicitarCita.Size = new System.Drawing.Size(161, 40);
-            this.btnSolicitarCita.TabIndex = 50;
-            this.btnSolicitarCita.Text = "Solicitar Cita";
-            this.btnSolicitarCita.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSolicitarCita.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnSolicitarCita.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSolicitarCita.Click += new System.EventHandler(this.btnSolicitarCita_Click);
             // 
             // pnPrincipal
             // 
