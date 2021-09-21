@@ -203,15 +203,18 @@ namespace CapaPresentaciones
             // 
             this.lblMensaje.AllowParentOverrides = false;
             this.lblMensaje.AutoEllipsis = false;
+            this.lblMensaje.AutoSize = false;
             this.lblMensaje.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblMensaje.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblMensaje.Location = new System.Drawing.Point(171, 221);
+            this.lblMensaje.Location = new System.Drawing.Point(183, 223);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblMensaje.Size = new System.Drawing.Size(0, 0);
+            this.lblMensaje.Size = new System.Drawing.Size(207, 18);
             this.lblMensaje.TabIndex = 133;
-            this.lblMensaje.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblMensaje.Text = "Se te envió un correo electrónico";
+            this.lblMensaje.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblMensaje.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblMensaje.Visible = false;
             // 
             // P_RecuperarContraseña
             // 

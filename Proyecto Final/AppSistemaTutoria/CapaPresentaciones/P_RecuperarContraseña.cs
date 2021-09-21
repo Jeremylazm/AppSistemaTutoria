@@ -71,13 +71,12 @@ namespace CapaPresentaciones
 
                     mailDetails.Body = TextoSolicitud;
                     clientDetails.Send(mailDetails);
-                    lblMensaje.Text = "Se te envió un correo electrónico con tu contraseña";
+                    lblMensaje.Visible = true;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-
             }
             else
             {
