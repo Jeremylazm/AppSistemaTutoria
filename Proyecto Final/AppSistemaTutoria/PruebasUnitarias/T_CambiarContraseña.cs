@@ -148,7 +148,7 @@ namespace PruebasUnitarias
         {
             // Iniciar variables
             string codigoValido = "123456";
-            string codigoIngresado = "123456";
+            string codigoIngresado = "123457";
             // Obtener respuesta de prueba
             string respuestaPrueba = cambiarContraseña.validarpanelVerificarCodigo(codigoValido, codigoIngresado);
             // Iniciar respuesta esperada
