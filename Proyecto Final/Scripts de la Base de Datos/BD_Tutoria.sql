@@ -853,7 +853,8 @@ BEGIN
 		FROM (TFichaTutoria T INNER JOIN TEstudiante E ON 
 			 T.CodEstudiante = E.CodEstudiante) INNER JOIN TDocente D ON
 			 E.CodDocente = D.CodDocente
-		WHERE E.CodDocente = @CodDocente
+		WHERE E.CodDocente = @CodDocente 
+		ORDER BY CodEstudiante,CodFichaTutoria
 END;
 GO
 
@@ -882,6 +883,7 @@ BEGIN
 			  T.Referencia LIKE (@Texto + '%') OR
 			  T.Observaciones LIKE (@Texto + '%')) AND 
 			  E.CodDocente = @CodDocente 
+		ORDER BY CodEstudiante,CodFichaTutoria
 END;
 GO
 
