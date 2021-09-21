@@ -172,8 +172,11 @@ namespace CapaPresentaciones
                 ObjEntidad.CodEscuelaP = CodEscuelaP;
                 ObjEntidad.PersonaReferencia = txtPReferencia.Text.ToUpper();
                 ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
+
                 //Encriptar 
-                ObjEntidad.InformacionPersonal = E_Criptografia.EncriptarRSA(txtIPersonal.Text, Key);
+                if (txtIPersonal.Text.Trim() != "") //Si es distinto de vacio
+                    ObjEntidad.InformacionPersonal = E_Criptografia.EncriptarRSA(txtIPersonal.Text, Key);
+                else ObjEntidad.InformacionPersonal = ""; //Guardar como vacio
 
                 //Guardar estado del permiso
                 if (ckbIPersonal.Checked)
