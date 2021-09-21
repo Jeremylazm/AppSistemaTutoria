@@ -99,9 +99,9 @@ namespace CapaPresentaciones
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lblTitulo.Location = new System.Drawing.Point(86, 26);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(639, 24);
+            this.lblTitulo.Size = new System.Drawing.Size(665, 24);
             this.lblTitulo.TabIndex = 64;
-            this.lblTitulo.Text = "Sistema de Tutoría - Universidad Nacional San Antonio Abad del Cusco";
+            this.lblTitulo.Text = "Sistema de Tutoría - Universidad Nacional de San Antonio Abad del Cusco";
             // 
             // btnMinimizar
             // 
@@ -307,7 +307,7 @@ namespace CapaPresentaciones
             this.btnInformeTutorias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnInformeTutorias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnInformeTutorias.BorderRadius = 7;
-            this.btnInformeTutorias.ButtonText = "Informe Tutorias";
+            this.btnInformeTutorias.ButtonText = "Informe Tutorías";
             this.btnInformeTutorias.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnInformeTutorias.DisabledColor = System.Drawing.Color.Gray;
             this.btnInformeTutorias.Iconcolor = System.Drawing.Color.Transparent;
@@ -330,7 +330,7 @@ namespace CapaPresentaciones
             this.btnInformeTutorias.selected = true;
             this.btnInformeTutorias.Size = new System.Drawing.Size(161, 40);
             this.btnInformeTutorias.TabIndex = 49;
-            this.btnInformeTutorias.Text = "Informe Tutorias";
+            this.btnInformeTutorias.Text = "Informe Tutorías";
             this.btnInformeTutorias.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnInformeTutorias.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnInformeTutorias.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
