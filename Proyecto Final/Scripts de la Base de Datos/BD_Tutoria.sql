@@ -725,6 +725,19 @@ BEGIN
 END;
 GO
 
+-- Crear un procedimiento para buscar un tutor por CodEstudiantes
+CREATE PROCEDURE spuBuscarTutorCodEstudiante @CodEstudiante VARCHAR(6)
+AS
+BEGIN
+	-- Mostrar Tutor de @CodEstudiante
+	SELECT  D.Perfil, D.APaterno, D.AMaterno, D.Nombre, D.Email, D.Direccion, D.Telefono, P.Nombre, D.Horario
+		FROM ((TEstudiante E INNER JOIN TDocente D
+		ON E.CodDocente = D.CodDocente) INNER JOIN TEscuela_Profesional P
+		ON D.CodEscuelaP = P.CodEscuelaP)
+		WHERE E.CodEstudiante = @CodEstudiante
+END;
+GO
+
 -- Crear un procedimiento para buscar estudiantes por cualquier atributo
 CREATE PROCEDURE spuBuscarTutorados @CodDocente VARCHAR(5),
 									@Texto VARCHAR(20),

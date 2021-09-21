@@ -130,6 +130,20 @@ namespace CapaDatos
             return Resultado;
         }
 
+        public DataTable BuscarTutor(string CodEstudiante)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuBuscarTutorCodEstudiante", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodEstudiante", CodEstudiante);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
         public DataTable BuscarEstudiantesSinTutor(string CodDocente, string Texto, int Filas)
         {
             DataTable Resultado = new DataTable();
