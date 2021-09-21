@@ -467,7 +467,7 @@ namespace CapaPresentaciones
                         Program.Evento = 0;
 
                         N_InicioSesion InicioSesion = new N_InicioSesion();
-                        string Contrasena = InicioSesion.RetornarContrasena(txtCodigo.Text);
+                        string Contrasena = InicioSesion.RetornarContraseña(txtCodigo.Text);
 
                         // Enviar un correo con la contraseña para un nuevo usuario
                         try

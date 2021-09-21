@@ -72,7 +72,7 @@ namespace CapaDatos
             }
         }
 
-        public string RetornarContrasena(string Usuario)
+        public string RetornarContraseña(string Usuario)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuRetornarContraseña", Conectar)

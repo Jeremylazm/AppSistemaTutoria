@@ -173,7 +173,7 @@ namespace CapaPresentaciones
                                     if (Test == false)
                                     {
                                         N_InicioSesion InicioSesion = new N_InicioSesion();
-                                        string Contrasena = InicioSesion.RetornarContrasena(Codigo);
+                                        string Contrasena = InicioSesion.RetornarContraseña(Codigo);
 
                                         // Enviar un correo con la contraseña para un nuevo usuario
                                         try

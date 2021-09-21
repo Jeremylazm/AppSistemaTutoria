@@ -27,10 +27,11 @@ namespace CapaPresentaciones
             Close();
         }
 
+        // Recupera la contraseña asociada a un usuario
         void Recuperar(string Email, string Dominio)
         {
             N_InicioSesion InicioSesion = new N_InicioSesion();
-            string Contrasena = InicioSesion.RetornarContrasena(Email);
+            string Contraseña = InicioSesion.RetornarContraseña(Email);
 
             // Enviar un correo con la contraseña del usuario
             try
@@ -48,7 +49,7 @@ namespace CapaPresentaciones
                 mailDetails.To.Add(Email + Dominio);
                 mailDetails.Subject = "Recuperación de contraseña";
                 mailDetails.IsBodyHtml = true;
-                mailDetails.Body = "Tu contraseña es " + Contrasena;
+                mailDetails.Body = "Tu contraseña es " + Contraseña;
                 clientDetails.Send(mailDetails);
             }
             catch (Exception ex)

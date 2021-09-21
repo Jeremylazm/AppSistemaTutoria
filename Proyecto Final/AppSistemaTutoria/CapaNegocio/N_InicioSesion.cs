@@ -15,9 +15,9 @@ namespace CapaNegocios
             return ObjInicioSesion.ModificarRegistro(Usuario, Contraseña);
         }
 
-        public string RetornarContrasena(string Usuario)
+        public string RetornarContraseña(string Usuario)
         {
-            return ObjInicioSesion.RetornarContrasena(Usuario);
+            return ObjInicioSesion.RetornarContraseña(Usuario);
         }
     }
 }
