@@ -928,7 +928,7 @@ END;
 GO
 
 -- Crear un procedimiento para eliminar una tutor�a
-CREATE PROCEDURE spuEliminarFichaTutoria @CodTutoria INT					
+CREATE PROCEDURE spuEliminarFichaTutoria @CodTutoria VARCHAR(4)					
 AS
 BEGIN
 	-- Eliminar una tutor�a de la tabla de TFichaTutoria
