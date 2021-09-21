@@ -133,10 +133,10 @@ namespace PruebasUnitarias
         public void TestCodigoIncorrectoPanelVerificarCodigo()
         {
             // Iniciar variables
-            string correoValido = "123456";
-            string correoIngresado = "654321";
+            string codigoValido = "123456";
+            string codigoIngresado = "654321";
             // Obtener respuesta de prueba
-            string respuestaPrueba = cambiarContraseña.validarpanelVerificarCodigo(correoValido, correoIngresado);
+            string respuestaPrueba = cambiarContraseña.validarpanelVerificarCodigo(codigoValido, codigoIngresado);
             // Iniciar respuesta esperada
             string respuestaEsperada = "00";
             // comparar respuestas
@@ -147,10 +147,10 @@ namespace PruebasUnitarias
         public void TestCodigoCorrectoPanelVerificarCodigo()
         {
             // Iniciar variables
-            string correoValido = "123456";
-            string correoIngresado = "123456";
+            string codigoValido = "123456";
+            string codigoIngresado = "123456";
             // Obtener respuesta de prueba
-            string respuestaPrueba = cambiarContraseña.validarpanelVerificarCodigo(correoValido, correoIngresado);
+            string respuestaPrueba = cambiarContraseña.validarpanelVerificarCodigo(codigoValido, codigoIngresado);
             // Iniciar respuesta esperada
             string respuestaEsperada = "1";
             // Comparar respuestas
