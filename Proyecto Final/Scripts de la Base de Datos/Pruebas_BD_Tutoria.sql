@@ -14,9 +14,17 @@ GO
 --DELETE FROM TEscuela_Profesional
 --DELETE FROM TEstudiante
 
+<<<<<<< Updated upstream
 --INSERT INTO TTutoria VALUES('T0001', '18291', '123456');
 --INSERT INTO TTutoria VALUES('T0002', '09099', '182916');
 --INSERT INTO TTutoria VALUES('T0003', '09099', '123456');
+=======
+-- Usuarios: IdUsuario: Código, Contraseña: Codigo
+EXEC DBO.spuInsertarUsuario NULL,'ADMI','ADMI1234','Administrador','ADMINISTRADOR'
+--EXEC DBO.spuInsertarDocente NULL,'DEIN','ACURIO','USCA','NILA ZONIA','17453@unsaac.edu.pe','AV. COLINA 40','951235879','NOMBRADO','PRINCIPAL','DEDICACIÓN EXCLUSIVA','IN','DISPONIBLE'
+UPDATE TUsuario SET Acceso = 'Director de Escuela' WHERE Usuario = '17453'
+GO
+>>>>>>> Stashed changes
 
 UPDATE TUsuario SET Acceso = 'Director de Escuela' WHERE Usuario = '182916'
 
