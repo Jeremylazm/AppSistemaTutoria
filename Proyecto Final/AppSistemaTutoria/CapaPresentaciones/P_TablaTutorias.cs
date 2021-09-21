@@ -26,32 +26,28 @@ namespace CapaPresentaciones
         public void AccionesTabla()
         {
             dgvTabla.Columns[0].Visible = false;
-            dgvTabla.Columns[3].Visible = false;
-            dgvTabla.Columns[4].Visible = false;
-            dgvTabla.Columns[5].Visible = false;
-            dgvTabla.Columns[13].Visible = false;
+            dgvTabla.Columns[6].Visible = false;
 
-            dgvTabla.Columns[1].HeaderText = "";
-            dgvTabla.Columns[2].HeaderText = "Cod. Docente";
-            dgvTabla.Columns[6].HeaderText = "Docente";
-            dgvTabla.Columns[7].HeaderText = "Email";
-            dgvTabla.Columns[8].HeaderText = "Dirección";
-            dgvTabla.Columns[9].HeaderText = "Teléfono";
-            dgvTabla.Columns[10].HeaderText = "Categoría";
-            dgvTabla.Columns[11].HeaderText = "Subcategoría";
-            dgvTabla.Columns[12].HeaderText = "Régimen";
-            dgvTabla.Columns[14].HeaderText = "Escuela Profesional";
-            dgvTabla.Columns[15].HeaderText = "Horario";
+            dgvTabla.Columns[1].HeaderText = "Cod. Ficha";
+            dgvTabla.Columns[2].HeaderText = "Fecha";
+            dgvTabla.Columns[3].HeaderText = "Codigo Estudiante";
+            dgvTabla.Columns[4].HeaderText = "Estudiante";
+            dgvTabla.Columns[5].HeaderText = "Semestre";
+            dgvTabla.Columns[7].HeaderText = "Dimensión";
+            dgvTabla.Columns[8].HeaderText = "Descripción";
+            dgvTabla.Columns[9].HeaderText = "Referencia";
+            dgvTabla.Columns[10].HeaderText = "Observciones";
+            
         }
         public void MostrarRegistros()
         {
             dgvTabla.DataSource = N_FichaTutoria.MostrarRegistros(E_InicioSesion.Usuario);
-            //AccionesTabla();
+            AccionesTabla();
         }
 
         public void BuscarRegistros()
         {
-            dgvTabla.DataSource = N_Docente.BuscarRegistros(E_InicioSesion.Usuario, txtBuscar.Text);
+            dgvTabla.DataSource = N_FichaTutoria.BuscarRegistros(E_InicioSesion.Usuario, txtBuscar.Text);
         }
 
         private void ActualizarDatos(object sender, FormClosedEventArgs e)
@@ -63,6 +59,31 @@ namespace CapaPresentaciones
         {
             MostrarRegistros();
             
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgvTabla.SelectedRows.Count > 0)
+            {
+                DialogResult Opcion;
+                Opcion = MessageBox.Show("¿Realmente desea eliminar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (Opcion == DialogResult.OK)
+                {
+                    ObjEntidad.CodTutoria = dgvTabla.CurrentRow.Cells[0].Value.ToString();
+                    ObjNegocio.EliminarRegistros(ObjEntidad);
+                    MensajeConfirmacion("Registro eliminado exitosamente");
+                    MostrarRegistros();
+                }
+            }
+            else
+            {
+                MensajeError("Debe seleccionar una fila");
+            }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            BuscarRegistros();
         }
     }
 }

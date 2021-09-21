@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
@@ -150,39 +151,65 @@ namespace CapaPresentaciones
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            DialogResult Opcion;
-            Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (Opcion == DialogResult.OK)
+            if (txtTelefono.Text.Trim() != "")
             {
-                byte[] Perfil = new byte[0];
-                using (MemoryStream MemoriaPerfil = new MemoryStream())
+                Regex PatronTelefono = new Regex(@"\A[0-9]{9}\Z");
+                Regex PatronTelefonoReferencia = new Regex(@"\A([0-9]{9}\Z)|(^$)");
+
+                DialogResult Opcion;
+                Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (Opcion == DialogResult.OK)
                 {
-                    imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
-                    Perfil = MemoriaPerfil.ToArray();
+                    byte[] Perfil = new byte[0];
+                    using (MemoryStream MemoriaPerfil = new MemoryStream())
+                    {
+                        imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
+                        Perfil = MemoriaPerfil.ToArray();
+                    }
+                    E_InicioSesion.Perfil = Perfil;
+                    ObjEntidad.Perfil = Perfil;
+                    ObjEntidad.CodEstudiante = txtCodigo.Text;
+                    ObjEntidad.APaterno = APaterno;
+                    ObjEntidad.AMaterno = AMaterno;
+                    ObjEntidad.Nombre = Nombre;
+                    ObjEntidad.Email = txtCodigo.Text + "@unsaac.edu.pe";
+                    ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
+
+                    if (!PatronTelefono.IsMatch(txtTelefono.Text))
+                    {
+                        MensajeError("El teléfono deber ser de 9 caracteres numéricos");
+                    }
+                    else
+                    {
+                        ObjEntidad.Telefono = txtTelefono.Text;
+                        ObjEntidad.CodEscuelaP = CodEscuelaP;
+                        ObjEntidad.PersonaReferencia = txtPReferencia.Text.ToUpper();
+
+                        if (!PatronTelefonoReferencia.IsMatch(txtTReferencia.Text))
+                        {
+                            MensajeError("El teléfono de referencia deber ser de 9 caracteres numéricos");
+                        }
+                        else
+                        {
+                            ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
+                            //Encriptar 
+                            ObjEntidad.InformacionPersonal = E_Criptografia.EncriptarRSA(txtIPersonal.Text, Key);
+
+                            //Guardar estado del permiso
+                            if (ckbIPersonal.Checked)
+                                ObjEntidad.ConcederPermiso = "SÍ";
+                            else
+                                ObjEntidad.ConcederPermiso = "NO";
+
+                            ObjNegocio.EditarRegistros(ObjEntidad);
+                            MensajeConfirmacion("Registro editado exitosamente");
+                        }
+                    }
                 }
-                E_InicioSesion.Perfil = Perfil;
-                ObjEntidad.Perfil = Perfil;
-                ObjEntidad.CodEstudiante = txtCodigo.Text;
-                ObjEntidad.APaterno = APaterno;
-                ObjEntidad.AMaterno = AMaterno;
-                ObjEntidad.Nombre = Nombre;
-                ObjEntidad.Email = txtCodigo.Text + "@unsaac.edu.pe";
-                ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
-                ObjEntidad.Telefono = txtTelefono.Text;
-                ObjEntidad.CodEscuelaP = CodEscuelaP;
-                ObjEntidad.PersonaReferencia = txtPReferencia.Text.ToUpper();
-                ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
-                //Encriptar 
-                ObjEntidad.InformacionPersonal = E_Criptografia.EncriptarRSA(txtIPersonal.Text, Key);
-
-                //Guardar estado del permiso
-                if (ckbIPersonal.Checked)
-                    ObjEntidad.ConcederPermiso = "SÍ";
-                else
-                    ObjEntidad.ConcederPermiso = "NO";
-
-                ObjNegocio.EditarRegistros(ObjEntidad);
-                MensajeConfirmacion("Registro editado exitosamente");
+            }
+            else
+            {
+                MensajeError("Debe llenar el teléfono");
             }
         }
 

@@ -89,6 +89,7 @@ namespace CapaPresentaciones
                 btnEstudiantes.Visible = true;
                 btnInformeTutorias.Visible = true;
                 btnMiTutor.Visible = false;
+                btnSolicitarCita.Visible = false;
             }
             else if (Acceso == "Docente")
             {
@@ -99,6 +100,7 @@ namespace CapaPresentaciones
                 btnEstudiantes.Visible = false;
                 btnInformeTutorias.Visible = false;
                 btnMiTutor.Visible = false;
+                btnSolicitarCita.Visible = false;
             }
             else if (Acceso == "Estudiante")
             {
@@ -110,6 +112,7 @@ namespace CapaPresentaciones
                 btnInformeTutorias.Visible = false;
                 btnMiTutor.Visible = true;
                 separador.Visible = false;
+                btnSolicitarCita.Visible = true;
             }
             //else
             //{

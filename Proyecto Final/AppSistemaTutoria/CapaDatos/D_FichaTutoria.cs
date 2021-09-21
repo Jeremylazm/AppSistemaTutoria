@@ -45,7 +45,7 @@ namespace CapaDatos
                     CommandType = CommandType.StoredProcedure
 
                 };
-
+                Conectar.Open();
                 Comando.Parameters.AddWithValue("@CodEstudiante", FichaTutoria.CodEstudiante);
                 Comando.Parameters.AddWithValue("@Semestre", FichaTutoria.Semestre);
                 Comando.Parameters.AddWithValue("@Fecha", FichaTutoria.Fecha);
@@ -71,6 +71,33 @@ namespace CapaDatos
             };
 
             Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+
+            return Resultado;
+        }
+        public void EliminarRegistro(E_FichaTutoria CodTutoria)
+        {
+            SqlCommand Comando = new SqlCommand("spuEliminarFichaTutoria", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Conectar.Open();
+            Comando.Parameters.AddWithValue("@CodTutoria", CodTutoria.CodTutoria);
+            Comando.ExecuteNonQuery();
+            Conectar.Close();
+        }
+        public DataTable BuscarRegistros(string Tutoria, string Texto)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuBuscarFichaTutorias", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodDocente", Tutoria);
+            Comando.Parameters.AddWithValue("@Texto", Texto);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
 
