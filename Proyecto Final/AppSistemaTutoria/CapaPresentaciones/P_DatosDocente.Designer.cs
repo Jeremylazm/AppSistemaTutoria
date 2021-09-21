@@ -76,6 +76,7 @@ namespace CapaPresentaciones
             this.imgPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.txtHorario = new System.Windows.Forms.TextBox();
+            this.DragControlDocente = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
@@ -745,6 +746,13 @@ namespace CapaPresentaciones
             this.txtHorario.Size = new System.Drawing.Size(242, 60);
             this.txtHorario.TabIndex = 11;
             // 
+            // DragControlDocente
+            // 
+            this.DragControlDocente.Fixed = true;
+            this.DragControlDocente.Horizontal = true;
+            this.DragControlDocente.TargetControl = this.lblTitulo;
+            this.DragControlDocente.Vertical = true;
+            // 
             // P_DatosDocente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -797,9 +805,10 @@ namespace CapaPresentaciones
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_DatosDocente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Datos del Estudiante";
+            this.Text = "Datos del Docente";
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).EndInit();
@@ -856,5 +865,6 @@ namespace CapaPresentaciones
         public Otros_Controles.JALMCircularPictureBox imgPerfil;
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
         public System.Windows.Forms.TextBox txtHorario;
+        private Bunifu.Framework.UI.BunifuDragControl DragControlDocente;
     }
 }

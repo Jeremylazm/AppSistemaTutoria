@@ -1,10 +1,12 @@
 using System;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using CapaEntidades;
+using CapaNegocios;
 
 namespace CapaPresentaciones
 {
@@ -89,6 +91,7 @@ namespace CapaPresentaciones
                 btnEstudiantes.Visible = true;
                 btnInformeTutorias.Visible = true;
                 btnMiTutor.Visible = false;
+                btnSolicitarCita.Visible = false;
             }
             else if (Acceso == "Docente")
             {
@@ -99,6 +102,7 @@ namespace CapaPresentaciones
                 btnEstudiantes.Visible = false;
                 btnInformeTutorias.Visible = false;
                 btnMiTutor.Visible = false;
+                btnSolicitarCita.Visible = false;
             }
             else if (Acceso == "Estudiante")
             {
@@ -110,6 +114,7 @@ namespace CapaPresentaciones
                 btnInformeTutorias.Visible = false;
                 btnMiTutor.Visible = true;
                 separador.Visible = false;
+                btnSolicitarCita.Visible = true;
             }
             //else
             //{
@@ -254,7 +259,18 @@ namespace CapaPresentaciones
 
         private void btnTutorias_Click(object sender, EventArgs e)
         {
-            AbrirFormularios<P_TablaTutorias>();
+            P_TablaTutorias Editar = new P_TablaTutorias
+            {
+                TopLevel = false,
+                Dock = DockStyle.Fill
+            };
+            Editar.MostrarRegistros();
+
+            pnContenedor.Controls.Add(Editar);
+            pnContenedor.Tag = Editar;
+            Editar.Show();
+            Editar.BringToFront();
+
         }
 
         private void btnTutorados_Click(object sender, EventArgs e)
@@ -286,8 +302,32 @@ namespace CapaPresentaciones
 
         private void btnMiTutor_Click(object sender, EventArgs e)
         {
-            P_InformacionTutor Editar = new P_InformacionTutor(E_InicioSesion.Usuario);
-            Editar.Show();
+            DataTable Datos = N_Estudiante.BuscarTutor(E_InicioSesion.Usuario);
+            if (Datos.Rows.Count == 0)
+            {
+                MessageBox.Show("Ud. Aun no tiene un tutor asignado");
+            }
+            else
+            {
+                P_InformacionTutor ITutor = new P_InformacionTutor(Datos);
+                ITutor.Show();
+            }
+            
+        }
+
+
+        private void btnSolicitarCita_Click(object sender, EventArgs e)
+        {
+            DataTable Datos = N_Estudiante.BuscarTutor(E_InicioSesion.Usuario);
+            if (Datos.Rows.Count == 0)
+            {
+                MessageBox.Show("Ud. Aun no tiene un tutor asignado");
+            }
+            else
+            {
+                P_SolicitudCita Solicitar = new P_SolicitudCita(E_InicioSesion.Usuario, Datos);
+                Solicitar.Show();
+            }
         }
 
         private void P_Menu_Load(object sender, EventArgs e)

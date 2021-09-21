@@ -1,7 +1,8 @@
+/* **************************************************************************************************
+   **************************** DML (LENGUAJE DE MANIPULACION DE DATOS) *****************************
+   ************************************************************************************************** */
 USE db_a7878d_BDSistemaTutoria
 GO
-
-/* INSERTAR DATOS */
 
 -- Escuela Profesional
 insert into TEscuela_Profesional VALUES('IN','INGENIERÍA INFORMÁTICA Y DE SISTEMAS');
@@ -86,39 +87,6 @@ EXEC DBO.spuInsertarDocente NULL,'DEIN','ACURIO','USCA','NILA ZONIA','17453@unsa
 UPDATE TUsuario SET Acceso = 'Director de Escuela' WHERE Usuario = 'DEIN'
 GO
 
--- Tutoria:
-EXEC DBO.spuInsertarTutoria '','12342','170115'
-EXEC DBO.spuInsertarTutoria '','12342','170225'
-EXEC DBO.spuInsertarTutoria '','12342','171347'
-EXEC DBO.spuInsertarTutoria '','15313','170231'
-EXEC DBO.spuInsertarTutoria '','15313','171121'
-EXEC DBO.spuInsertarTutoria '','15313','170335'
-EXEC DBO.spuInsertarTutoria '','15313','170255'
-EXEC DBO.spuInsertarTutoria '','74224','181371'
-EXEC DBO.spuInsertarTutoria '','74224','180219'
-EXEC DBO.spuInsertarTutoria '','74224','181227'
-EXEC DBO.spuInsertarTutoria '','74224','180116'
-EXEC DBO.spuInsertarTutoria '','74224','180277'
-EXEC DBO.spuInsertarTutoria '','54323','181197'
-EXEC DBO.spuInsertarTutoria '','54323','180919'
-EXEC DBO.spuInsertarTutoria '','54323','191447'
-EXEC DBO.spuInsertarTutoria '','14235','190366'
-EXEC DBO.spuInsertarTutoria '','14235','190788'
-EXEC DBO.spuInsertarTutoria '','14235','191779'
-EXEC DBO.spuInsertarTutoria '','14235','190998'
-EXEC DBO.spuInsertarTutoria '','14235','191876'
-EXEC DBO.spuInsertarTutoria '','14235','193402'
-EXEC DBO.spuInsertarTutoria '','14235','203413'
-EXEC DBO.spuInsertarTutoria '','18435','202700'
-EXEC DBO.spuInsertarTutoria '','18435','208025'
-EXEC DBO.spuInsertarTutoria '','18435','203456'
-EXEC DBO.spuInsertarTutoria '','18435','206543'
-EXEC DBO.spuInsertarTutoria '','18435','203022'
-EXEC DBO.spuInsertarTutoria '','18435','202453'
-EXEC DBO.spuInsertarTutoria '','18435','213404'
-EXEC DBO.spuInsertarTutoria '','18435','219025'
-GO
-
 EXEC DBO.spuAsignarTutor '170115','12342'
 EXEC DBO.spuAsignarTutor '170225','12342'
 EXEC DBO.spuAsignarTutor '171347','12342'
@@ -153,11 +121,12 @@ GO
 
 -- Ficha de tutoria:
 
+EXEC DBO.spuInsertarFichaTutoria '206543','2020-II','20/10/2020','PERSONAL','Des1cccc','Ref11111','obs1111'
+
 -- Mostrar tablas
 SELECT * FROM TEscuela_Profesional
-SELECT * FROM TEstudiante
 SELECT * FROM TDocente
 SELECT * FROM TUsuario
-SELECT * FROM TTutoria
 SELECT * FROM TFichaTutoria
+SELECT * FROM TEstudiante
 SELECT * FROM Historial

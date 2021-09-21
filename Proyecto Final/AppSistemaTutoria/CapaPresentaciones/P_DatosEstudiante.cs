@@ -89,37 +89,6 @@ namespace CapaPresentaciones
             LlenarComboBox();
         }
 
-        string VisibilidadIPersonal(string IPersonalCifrada, bool EsEstudiante = false)
-        {
-            //Mostrar o no la información personal de acuerdo al permiso otorgado
-
-            //Verificar permiso de visibilidad
-            string Permiso = IPersonalCifrada.Substring(IPersonalCifrada.Length - 4);
-            IPersonalCifrada = IPersonalCifrada.Substring(0, IPersonalCifrada.Length - 5); //Eliminar string permiso
-
-            //Si el usuario es estudiante, puede ver su inf personal
-            if (EsEstudiante)
-            {
-                return E_Criptografia.DesencriptarRSA(IPersonalCifrada, Key); //Desencriptar
-            }
-
-            //Si Tutor tiene permiso de visualizar Inf Personal
-            if (Permiso == "VT=T")
-            {
-                return E_Criptografia.DesencriptarRSA(IPersonalCifrada, Key); //Desencriptar
-            }
-            else return IPersonalCifrada; //No desencriptar
-        }
-
-        string EncriptarIPersonal(string IPersonal, bool PermisoVisibilidad)
-        {
-            //Encriptar
-            string IPersonalCifrada = E_Criptografia.EncriptarRSA(IPersonal, Key);
-            //Añadir permiso
-            if (PermisoVisibilidad) IPersonalCifrada += " VT=T";
-            else IPersonalCifrada += " VT=F";
-            return IPersonalCifrada;
-        }
 
         public string AgregarOModificar(Image Perfil, string Codigo, string APaterno, string AMaterno, string Nombre, 
                                  string Email, string Direccion, string Telefono, string CodEscuelaP, 
@@ -189,8 +158,7 @@ namespace CapaPresentaciones
                                 else
                                 {
                                     ObjEntidad.TelefonoReferencia = TelefonoReferencia;
-                                    ObjEntidad.InformacionPersonal = EncriptarIPersonal(InformacionPersonal, false);
-
+                                    ObjEntidad.InformacionPersonal = E_Criptografia.EncriptarRSA(InformacionPersonal, Key);
                                     if (Test == false)
                                     {
                                         N_Estudiante ObjNegocio = new N_Estudiante();
@@ -249,7 +217,11 @@ namespace CapaPresentaciones
                     try
                     {
                         DialogResult Opcion;
-                        Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                        if (Test == false)
+                            Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                        else
+                            Opcion = DialogResult.OK;
+
                         if (Opcion == DialogResult.OK)
                         {
                             byte[] PerfilArray = new byte[0];
@@ -300,7 +272,7 @@ namespace CapaPresentaciones
                                     {
 
                                         ObjEntidad.TelefonoReferencia = TelefonoReferencia;
-                                        ObjEntidad.InformacionPersonal = EncriptarIPersonal(InformacionPersonal, false);
+                                        ObjEntidad.InformacionPersonal = E_Criptografia.EncriptarRSA(InformacionPersonal, Key);
 
                                         if (Test == false)
                                         {

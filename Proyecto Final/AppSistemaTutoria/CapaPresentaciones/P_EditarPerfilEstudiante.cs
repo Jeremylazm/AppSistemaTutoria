@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
@@ -55,11 +56,14 @@ namespace CapaPresentaciones
             txtEscuelaP.Text = Fila[11].ToString();
             txtPReferencia.Text = Fila[12].ToString();
             txtTReferencia.Text = Fila[13].ToString();
+
+            bool permiso = Fila[16].Equals("SÍ"); //Si se tiene el permiso de ver la inf. personal
             if (Fila[14].ToString() != "")
-                txtIPersonal.Text = VisibilidadIPersonal(Fila[14].ToString(), true);  //Desencriptar  informacion personal
+                txtIPersonal.Text = VisibilidadIPersonal(Fila[14].ToString(), permiso , true);  //Desencriptar  informacion personal
             else
                 txtIPersonal.Text = "";
-            if (Fila[16].Equals("SÍ"))
+
+            if (permiso)
                 ckbIPersonal.Checked = true;
             else
                  ckbIPersonal.Checked = false;
@@ -101,36 +105,14 @@ namespace CapaPresentaciones
             return tmp;
         }
 
-        string VisibilidadIPersonal(string IPersonalCifrada, bool EsEstudiante = false)
+        string VisibilidadIPersonal(string IPersonalCifrada, bool Permiso, bool EsEstudiante = false)
         {
             //Mostrar o no la información personal de acuerdo al permiso otorgado
 
             //Verificar permiso de visibilidad
-            string Permiso = IPersonalCifrada.Substring(IPersonalCifrada.Length - 4);
-            IPersonalCifrada = IPersonalCifrada.Substring(0, IPersonalCifrada.Length - 5); //Eliminar string permiso
-
-            //Si el usuario es estudiante, puede ver su inf personal
-            if (EsEstudiante)
-            {
-                return E_Criptografia.DesencriptarRSA(IPersonalCifrada, Key); //Desencriptar
-            }
-
-            //Si Tutor tiene permiso de visualizar Inf Personal
-            if (Permiso == "VT=T")
-            {
-                return E_Criptografia.DesencriptarRSA(IPersonalCifrada, Key); //Desencriptar
-            }
+            if (EsEstudiante) return E_Criptografia.DesencriptarRSA(IPersonalCifrada, Key);//Encriptar
+            if (Permiso) return E_Criptografia.DesencriptarRSA(IPersonalCifrada, Key);//Encriptar
             else return IPersonalCifrada; //No desencriptar
-        }
-
-        string EncriptarIPersonal(string IPersonal, bool PermisoVisibilidad)
-        {
-            //Encriptar
-            string IPersonalCifrada = E_Criptografia.EncriptarRSA(IPersonal, Key);
-            //Añadir permiso
-            if (PermisoVisibilidad) IPersonalCifrada += " VT=T";
-            else IPersonalCifrada += " VT=F";
-            return IPersonalCifrada;
         }
 
         #region Eventos
@@ -155,7 +137,11 @@ namespace CapaPresentaciones
 
         private void btnRestablecerPerfil_Click(object sender, EventArgs e)
         {
-            imgPerfil.Image = Image.FromFile("C:/Users/Jeremylazm/Desktop/Documentos/AppSistemaTutoria/CapaPresentaciones/Iconos/Perfil Estudiante.png");
+            //Obtener directorio del proyecto
+            string Ruta = Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath));
+            Ruta = Ruta.Replace('\\', '/'); //Intercambiar \ por /
+            //Redirigir al directorio donde está la imagen.
+            imgPerfil.Image = Image.FromFile($"{Ruta}/Iconos/Perfil Estudiante.png");
         }
 
         private void P_EditarPerfilEstudiante_Load(object sender, EventArgs e)
@@ -165,37 +151,65 @@ namespace CapaPresentaciones
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            DialogResult Opcion;
-            Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (Opcion == DialogResult.OK)
+            if (txtTelefono.Text.Trim() != "")
             {
-                byte[] Perfil = new byte[0];
-                using (MemoryStream MemoriaPerfil = new MemoryStream())
-                {
-                    imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
-                    Perfil = MemoriaPerfil.ToArray();
-                }
-                E_InicioSesion.Perfil = Perfil;
-                ObjEntidad.Perfil = Perfil;
-                ObjEntidad.CodEstudiante = txtCodigo.Text;
-                ObjEntidad.APaterno = APaterno;
-                ObjEntidad.AMaterno = AMaterno;
-                ObjEntidad.Nombre = Nombre;
-                ObjEntidad.Email = txtCodigo.Text + "@unsaac.edu.pe";
-                ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
-                ObjEntidad.Telefono = txtTelefono.Text;
-                ObjEntidad.CodEscuelaP = CodEscuelaP;
-                ObjEntidad.PersonaReferencia = txtPReferencia.Text.ToUpper();
-                ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
-                //Guardar Informacion personal cifrada con su respectivo permiso
-                ObjEntidad.InformacionPersonal = EncriptarIPersonal(txtIPersonal.Text, ckbIPersonal.Checked);
-                if (ckbIPersonal.Checked)
-                    ObjEntidad.ConcederPermiso = "SÍ";
-                else
-                    ObjEntidad.ConcederPermiso = "NO";
+                Regex PatronTelefono = new Regex(@"\A[0-9]{9}\Z");
+                Regex PatronTelefonoReferencia = new Regex(@"\A([0-9]{9}\Z)|(^$)");
 
-                ObjNegocio.EditarRegistros(ObjEntidad);
-                MensajeConfirmacion("Registro editado exitosamente");
+                DialogResult Opcion;
+                Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (Opcion == DialogResult.OK)
+                {
+                    byte[] Perfil = new byte[0];
+                    using (MemoryStream MemoriaPerfil = new MemoryStream())
+                    {
+                        imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
+                        Perfil = MemoriaPerfil.ToArray();
+                    }
+                    E_InicioSesion.Perfil = Perfil;
+                    ObjEntidad.Perfil = Perfil;
+                    ObjEntidad.CodEstudiante = txtCodigo.Text;
+                    ObjEntidad.APaterno = APaterno;
+                    ObjEntidad.AMaterno = AMaterno;
+                    ObjEntidad.Nombre = Nombre;
+                    ObjEntidad.Email = txtCodigo.Text + "@unsaac.edu.pe";
+                    ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
+
+                    if (!PatronTelefono.IsMatch(txtTelefono.Text))
+                    {
+                        MensajeError("El teléfono deber ser de 9 caracteres numéricos");
+                    }
+                    else
+                    {
+                        ObjEntidad.Telefono = txtTelefono.Text;
+                        ObjEntidad.CodEscuelaP = CodEscuelaP;
+                        ObjEntidad.PersonaReferencia = txtPReferencia.Text.ToUpper();
+
+                        if (!PatronTelefonoReferencia.IsMatch(txtTReferencia.Text))
+                        {
+                            MensajeError("El teléfono de referencia deber ser de 9 caracteres numéricos");
+                        }
+                        else
+                        {
+                            ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
+                            //Encriptar 
+                            ObjEntidad.InformacionPersonal = E_Criptografia.EncriptarRSA(txtIPersonal.Text, Key);
+
+                            //Guardar estado del permiso
+                            if (ckbIPersonal.Checked)
+                                ObjEntidad.ConcederPermiso = "SÍ";
+                            else
+                                ObjEntidad.ConcederPermiso = "NO";
+
+                            ObjNegocio.EditarRegistros(ObjEntidad);
+                            MensajeConfirmacion("Registro editado exitosamente");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MensajeError("Debe llenar el teléfono");
             }
         }
 
