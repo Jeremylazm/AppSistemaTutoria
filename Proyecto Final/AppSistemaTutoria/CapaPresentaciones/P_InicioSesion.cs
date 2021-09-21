@@ -135,7 +135,7 @@ namespace CapaPresentaciones
                             {
                                 txtContraseña.Clear();
                                 txtUsuario.Focus();
-                                MensajeError("Usuario incorrecto, intente de nuevo");
+                                MensajeError("Usuario o Contraseña incorrectos");
                             }
                             Mensaje = "Datos incorrectos";
                             return Mensaje;
