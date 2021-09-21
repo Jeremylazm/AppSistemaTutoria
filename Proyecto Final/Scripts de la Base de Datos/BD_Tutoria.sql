@@ -921,13 +921,8 @@ BEGIN
 END;
 GO
 
-<<<<<<< Updated upstream
--- Crear un procedimiento para eliminar una tutor�a
-CREATE PROCEDURE spuEliminarFichaTutoria @CodTutoria VARCHAR(4)					
-=======
 -- Crear un procedimiento para eliminar una tutoria
-CREATE PROCEDURE spuEliminarFichaTutoria @CodTutoria INT					
->>>>>>> Stashed changes
+CREATE PROCEDURE spuEliminarFichaTutoria @CodTutoria VARCHAR(4)
 AS
 BEGIN
 	-- Eliminar una tutoria de la tabla de TFichaTutoria
