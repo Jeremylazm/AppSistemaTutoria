@@ -1,11 +1,11 @@
 /* **************************************************************************************************
-   ***************************** DDL (LENGUAJE DE DEFINICI�N DE DATOS) ******************************
+   ***************************** DDL (LENGUAJE DE DEFINICION DE DATOS) ******************************
    ************************************************************************************************** */
 USE MASTER
 GO
 
 /* ********************************************************************
-					    CREACI�N DE LA BASE DE DATOS
+					    CREACION DE LA BASE DE DATOS
    ******************************************************************** */
 IF EXISTS (SELECT * 
 				FROM SYSDATABASES
@@ -26,7 +26,7 @@ USE db_a7878d_BDSistemaTutoria
 GO 
 
 /* ********************************************************************
-					        CREACI�N DE TABLAS
+					        CREACION DE TABLAS
    ******************************************************************** */
 USE db_a7878d_BDSistemaTutoria
 GO
@@ -115,8 +115,6 @@ CREATE TABLE TEstudiante
 	CodDocente VARCHAR(5), -- Tutor
 	ConcederPermiso VARCHAR(2) DEFAULT 'NO' CHECK 
 							   (ConcederPermiso IN ('NO', 'SÍ')),
-	--EstadoFisico VARCHAR(40),
-	--EstadoMental VARCHAR(40),
 
 	-- Determinar las claves 
 	PRIMARY KEY (CodEstudiante),
@@ -129,7 +127,7 @@ CREATE TABLE TEstudiante
 );
 GO
 
-/* *************************** TABLA FICHA DE TUTOR�A *************************** */
+/* *************************** TABLA FICHA DE TUTORIA *************************** */
 IF EXISTS (SELECT * 
 				FROM SYSOBJECTS
 				WHERE NAME = 'TFichaTutoria')
@@ -210,7 +208,7 @@ GO
 /* ****************** FUNCIONES PARA LA ENCRIPTACION DE LA CONTRASEÑA ****************** */
 USE db_a7878d_BDSistemaTutoria
 GO
--- Crear llave asymmetric
+-- Crear una llave asimetrica
 CREATE ASYMMETRIC KEY AppTutoriasAsymKey01
     WITH ALGORITHM = RSA_2048
     ENCRYPTION BY PASSWORD = 'DesarrolloDeSoftware2021I';   
@@ -246,11 +244,11 @@ BEGIN
 END;
 GO
 
-/* ************************** FUNCION PARA GENERAR UNA CONTRASE�A ************************** */
+/* ************************** FUNCION PARA GENERAR UNA CONTRASEÑA ************************** */
 
 CREATE VIEW viAleatorio
 AS
-	-- Generar un n�mero aleatorio
+	-- Generar un numero aleatorio
 	SELECT RAND() AS ValorAleatorio
 GO 
 
@@ -269,7 +267,7 @@ BEGIN
 	SET @Caracteres = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789'
 	SET @Contraseña = ''
     
-	-- Tomar un �ndice aleatorio de los caracteres para generar una contrase�a
+	-- Tomar un indice aleatorio de los caracteres para generar una contraseña
     WHILE (@Contador < 8)
     BEGIN
         SET @Indice = CEILING((SELECT ValorAleatorio FROM viAleatorio) * (LEN(@Caracteres)))
@@ -277,7 +275,7 @@ BEGIN
         SET @Contador = @Contador + 1
     END;
 
-	-- Retornar una contrase�a de 8 caracteres
+	-- Retornar una contraseña de 8 caracteres
     RETURN (@Contraseña);
 END;
 GO
@@ -405,8 +403,7 @@ BEGIN
 						 ET.AMaterno + ', ' + 
 						 ET.Nombre),
 		   ET.Email, ET.Direccion, ET.Telefono, ET.CodEscuelaP,
-		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia, 
-		   --ET.TelefonoReferencia, ET.EstadoFisico, ET.EstadoMental
+		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia,
 		   ET.TelefonoReferencia, ET.InformacionPersonal, CodTutor = ET.CodDocente, ET.ConcederPermiso
 		FROM TEstudiante ET INNER JOIN TEscuela_Profesional EP ON
 			 ET.CodEscuelaP = EP.CodEscuelaP
@@ -455,8 +452,7 @@ BEGIN
 						 ET.AMaterno + ', ' + 
 						 ET.Nombre),
 		   ET.Email, ET.Direccion, ET.Telefono, ET.CodEscuelaP,
-		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia, 
-		   --ET.TelefonoReferencia, ET.EstadoFisico, ET.EstadoMental
+		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia,
 		   ET.TelefonoReferencia, ET.InformacionPersonal, CodTutor = ET.CodDocente, ET.ConcederPermiso
 		FROM TEstudiante ET INNER JOIN TEscuela_Profesional EP ON
 			 ET.CodEscuelaP = EP.CodEscuelaP
@@ -470,8 +466,6 @@ BEGIN
 			  EP.Nombre LIKE (@Texto + '%') OR
 			  ET.PersonaReferencia LIKE (@Texto + '%') OR
 			  ET.TelefonoReferencia LIKE (@Texto + '%') OR
-			  --ET.EstadoFisico LIKE (@Texto + '%') OR
-			  --ET.EstadoMental LIKE (@Texto + '%')
 			  ET.InformacionPersonal LIKE (@Texto + '%')) AND
 			  ET.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente)
 END;
@@ -522,7 +516,7 @@ BEGIN
 	SET @Datos = CONCAT(@APaterno, ' ', @AMaterno, ', ', @Nombre);
 	SET @Contraseña = @CodEstudiante;
 
-	-- Insertar un usuario con el c�digo del estudiante en la tabla de TUsuario
+	-- Insertar un usuario con el codigo del estudiante en la tabla de TUsuario
 	EXEC DBO.spuInsertarUsuario @Perfil, @CodEstudiante, @Contraseña, 'Estudiante', @Datos
 				
 END;
@@ -541,9 +535,7 @@ CREATE PROCEDURE spuActualizarEstudiante @Perfil VARBINARY(MAX),
 										 @PersonaReferencia VARCHAR(20),
 										 @TelefonoReferencia VARCHAR(15),
 										 @InformacionPersonal VARCHAR(200),
-										 @ConcederPermiso VARCHAR(2)
-										 --@EstadoFisico VARCHAR(40),
-										 --@EstadoMental VARCHAR(40)					
+										 @ConcederPermiso VARCHAR(2)					
 AS
 BEGIN
 	-- Actualizar un estudiante de la tabla de TEstudiante
@@ -551,9 +543,8 @@ BEGIN
 		SET Perfil = @Perfil, CodEstudiante = @CodEstudiante, APaterno = @APaterno, AMaterno = @AMaterno, 
 			Nombre = @Nombre, Email = @Email, Direccion = @Direccion, Telefono = @Telefono,
 			CodEscuelaP = @CodEscuelaP, PersonaReferencia = @PersonaReferencia, 
-			TelefonoReferencia = @TelefonoReferencia, --EstadoFisico = @EstadoFisico, 
+			TelefonoReferencia = @TelefonoReferencia,
 			InformacionPersonal = @InformacionPersonal, ConcederPermiso = @ConcederPermiso
-			--EstadoMental = @EstadoMental
 		WHERE CodEstudiante = @CodEstudiante
 
 	-- Actualizar un estudiante de la tabla de TUsuario
@@ -630,8 +621,7 @@ BEGIN
 		FROM ((TDocente D INNER JOIN TEscuela_Profesional E ON
 			   D.CodEscuelaP = E.CodEscuelaP) LEFT JOIN TEstudiante TE ON
 			   D.CodDocente = TE.CodDocente)
-		WHERE D.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente) AND 
-			  --D.Subcategoria IN ('PRINCIPAL','ASOCIADO','AUXILIAR','A1','A2','A3') AND 
+		WHERE D.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente) AND
 			  D.Regimen IN ('TIEMPO COMPLETO','DEDICACIÓN EXCLUSIVA')
 		GROUP BY D.CodDocente, D.APaterno, D.AMaterno, D.Nombre
 END;
@@ -714,8 +704,7 @@ BEGIN
 		FROM ((TDocente D INNER JOIN TEscuela_Profesional E ON
 			   D.CodEscuelaP = E.CodEscuelaP) LEFT JOIN TEstudiante TE ON
 			   D.CodDocente = TE.CodDocente)
-		WHERE D.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente) AND 
-			  --D.Subcategoria IN ('PRINCIPAL','ASOCIADO','AUXILIAR','A1','A2','A3') AND 
+		WHERE D.CodEscuelaP = DBO.fnObtenerEscuelaDocente(@CodDocente) AND
 			  D.Regimen IN ('TIEMPO COMPLETO','DEDICACIÓN EXCLUSIVA') AND
 		      (D.CodDocente LIKE (@Texto + '%') OR
 			  D.APaterno LIKE (@Texto + '%') OR
@@ -750,8 +739,7 @@ BEGIN
 						 ET.AMaterno + ', ' + 
 						 ET.Nombre),
 		   ET.Email, ET.Direccion, ET.Telefono, ET.CodEscuelaP,
-		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia, 
-		   --ET.TelefonoReferencia, ET.EstadoFisico, ET.EstadoMental
+		   EscuelaProfesional = EP.Nombre, ET.PersonaReferencia,
 		   ET.TelefonoReferencia, ET.InformacionPersonal, CodTutor = ET.CodDocente, ET.ConcederPermiso
 		FROM TEstudiante ET, TEscuela_Profesional EP
 		WHERE ET.CodEscuelaP = EP.CodEscuelaP AND ET.CodDocente = @CodDocente AND
@@ -764,8 +752,6 @@ BEGIN
 			  ET.Telefono LIKE (@Texto + '%') OR
 			  ET.PersonaReferencia LIKE (@Texto + '%') OR
 			  ET.TelefonoReferencia LIKE (@Texto + '%') OR
-			  --ET.EstadoFisico LIKE (@Texto + '%') OR
-			  --ET.EstadoMental LIKE (@Texto + '%')
 			  ET.InformacionPersonal LIKE (@Texto + '%'))
 END;
 GO
@@ -792,13 +778,13 @@ BEGIN
 				@Direccion, @Telefono, @Categoria, @Subcategoria, 
 				@Regimen, @CodEscuelaP, @Horario)
 
-	-- Insertar un usuario con el c�digo del docente en la tabla de TUsuario
+	-- Insertar un usuario con el codigo del docente en la tabla de TUsuario
 	DECLARE @Datos VARCHAR(53);
 	DECLARE @Contraseña VARCHAR(8);
 	SET @Datos = CONCAT(@APaterno, ' ', @AMaterno, ', ', @Nombre);
 	SET @Contraseña = @CodDocente;
 
-	-- Insertar un usuario con el c�digo del estudiante en la tabla de TUsuario
+	-- Insertar un usuario con el codigo del estudiante en la tabla de TUsuario
 	EXEC DBO.spuInsertarUsuario @Perfil, @CodDocente, @Contraseña, 'Docente', @Datos
 END;
 GO
@@ -828,11 +814,6 @@ BEGIN
 			Regimen = @Regimen, CodEscuelaP = @CodEscuelaP, Horario = @Horario
 		WHERE CodDocente = @CodDocente
 
-	-- Actualizar un docente de la tabla de TTutoria
-	UPDATE TTutoria
-		SET CodDocente = @CodDocente
-		WHERE CodDocente = @CodDocente
-
 	-- Actualizar un docente de la tabla de TUsuario
 	UPDATE TUsuario
 		SET Perfil = @Perfil, Usuario = @CodDocente, 
@@ -857,7 +838,7 @@ GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA FICHA DE TUTORIA ****************** */
 
--- Crear un procedimiento para mostrar tutor�as
+-- Crear un procedimiento para mostrar tutorias
 
 CREATE PROCEDURE spuMostrarFichaTutorias @CodDocente VARCHAR(5)
 AS
@@ -876,7 +857,7 @@ BEGIN
 END;
 GO
 
--- Crear un procedimiento para buscar tutor�as por cualquier atributo
+-- Crear un procedimiento para buscar tutorias por cualquier atributo
 CREATE PROCEDURE spuBuscarFichaTutorias @CodDocente VARCHAR(5) ,@Texto VARCHAR(20)
 AS
 BEGIN
@@ -904,7 +885,7 @@ BEGIN
 END;
 GO
 
--- Crear un procedimiento para insertar una tutor�a
+-- Crear un procedimiento para insertar una tutoria
 CREATE PROCEDURE spuInsertarFichaTutoria @CodEstudiante VARCHAR(6),
 										 @Semestre VARCHAR(7),
 										 @Fecha DATETIME,
@@ -914,13 +895,13 @@ CREATE PROCEDURE spuInsertarFichaTutoria @CodEstudiante VARCHAR(6),
 										 @Observaciones VARCHAR(100)
 AS
 BEGIN
-	-- Insertar una tutor�a en la tabla de TFichaTutoria
+	-- Insertar una tutoria en la tabla de TFichaTutoria
 	INSERT INTO TFichaTutoria
 		VALUES (DBO.fnGenerarCodFichaTutoria(@CodEstudiante), @CodEstudiante, @Semestre, @Fecha, @Dimension, @Descripcion, @Referencia, @Observaciones)
 END;
 GO
 
--- Crear un procedimiento para actualizar una tutor�a
+-- Crear un procedimiento para actualizar una tutoria
 CREATE PROCEDURE spuActualizarFichaTutoria @CodTutoria INT,
 										   @CodEstudiante VARCHAR(6),
 										   @Semestre VARCHAR(7),
@@ -931,7 +912,7 @@ CREATE PROCEDURE spuActualizarFichaTutoria @CodTutoria INT,
 										   @Observaciones VARCHAR(100)			
 AS
 BEGIN
-	-- Actualizar una tutor�a de la tabla de TFichaTutoria
+	-- Actualizar una tutoria de la tabla de TFichaTutoria
 	UPDATE TFichaTutoria
 		SET CodEstudiante = CodEstudiante, Semestre = @Semestre,
 			Fecha = @Fecha, Dimension = @Dimension, Descripcion = @Descripcion,
@@ -940,11 +921,16 @@ BEGIN
 END;
 GO
 
+<<<<<<< Updated upstream
 -- Crear un procedimiento para eliminar una tutor�a
 CREATE PROCEDURE spuEliminarFichaTutoria @CodTutoria VARCHAR(4)					
+=======
+-- Crear un procedimiento para eliminar una tutoria
+CREATE PROCEDURE spuEliminarFichaTutoria @CodTutoria INT					
+>>>>>>> Stashed changes
 AS
 BEGIN
-	-- Eliminar una tutor�a de la tabla de TFichaTutoria
+	-- Eliminar una tutoria de la tabla de TFichaTutoria
 	DELETE FROM TFichaTutoria
 		WHERE CodTutoria = @CodTutoria
 END;
@@ -955,24 +941,13 @@ GO
 CREATE PROCEDURE spuIniciarSesion @Usuario VARCHAR(6), @Contraseña VARCHAR(20)
 AS
 BEGIN
-	-- Seleccionar los datos del usuario v�lido
+	-- Seleccionar los datos del usuario valido
 	SELECT Perfil, Usuario, DBO.fnDesencriptarContraseña(Contraseña), Acceso, Datos
 		FROM TUsuario
 		WHERE Usuario = @Usuario AND
 		DBO.fnDesencriptarContraseña(Contraseña) = @Contraseña
 END;
 GO
-
--- Crear un procedimiento para actualizar la contrase�a de un usuario
---CREATE PROCEDURE spuActualizarContrase�a @Usuario VARCHAR(7), @Contrase�a VARCHAR(20)				
---AS
---BEGIN
---	-- Actualizar la contrase�a de un usuario de la tabla de TUsuario
---	UPDATE TUsuario
---		SET Contrase�a = @Contrase�a
---		WHERE Usuario = @Usuario
---END;
---GO
 
 /* **************************************************************************************************
    ********************************** TRIGGERS DE LA BASE DE DATOS **********************************
@@ -982,7 +957,7 @@ GO
 
 /* *************************** TRIGGERS PARA LA TABLA ESCUELA PROFESIONAL *************************** */
 
--- Crear un disparador para guardar el registro de inserci�n de la tabla TEscuela_Profesional en la tabla Historial
+-- Crear un disparador para guardar el registro de insercion de la tabla TEscuela_Profesional en la tabla Historial
 CREATE TRIGGER trEscuela_ProfesionalInsercion
 	ON TEscuela_Profesional
 	FOR INSERT
@@ -1016,10 +991,6 @@ BEGIN
 			   @Nombre = Nombre
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
 
-		---- Determinar el IdHistorial
-		--DECLARE @IdHistorial INT;
-		--EXEC spuObtenerIdHistorial @IdHistorial OUTPUT;
-
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #INSERTED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TEscuela_Profesional','INSERT',@CodEscuelaP,NULL, 
@@ -1034,7 +1005,7 @@ BEGIN
 END;
 GO
 
--- Crear un disparador para guardar el registro de eliminaci�n de la tabla TEscuela_Profesional en la tabla Historial
+-- Crear un disparador para guardar el registro de eliminacion de la tabla TEscuela_Profesional en la tabla Historial
 CREATE TRIGGER trEscuela_ProfesionalEliminacion
 	ON TEscuela_Profesional
 	FOR DELETE
@@ -1068,10 +1039,6 @@ BEGIN
 			   @Nombre = Nombre
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
-		---- Determinar el IdHistorial
-		--DECLARE @IdHistorial INT;
-		--EXEC spuObtenerIdHistorial @IdHistorial OUTPUT;
-
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #DELETED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TEscuela_Profesional','DELETE',@CodEscuelaP, 
@@ -1080,13 +1047,13 @@ BEGIN
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
 
-		-- Actualizar el n�mero de las tuplas
+		-- Actualizar el numero de las tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de actualizaci�n de la tabla TEscuela_Profesional en la tabla Historial
+-- Crear un disparador para guardar el registro de actualizacion de la tabla TEscuela_Profesional en la tabla Historial
 CREATE TRIGGER trEscuela_ProfesionalActualizacion
 	ON TEscuela_Profesional
 	FOR UPDATE
@@ -1116,14 +1083,14 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el n�mero de tuplas de la tabla #DELETED = #INSERTED
+	-- Determinar el numero de tuplas de la tabla #DELETED = #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED = #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estar�n los atributos de la tabla #DELETED (ANTES)
+		-- Declarar variables donde estaran los atributos de la tabla #DELETED (ANTES)
 		DECLARE @CodEscuelaPAntes VARCHAR(4);
 		DECLARE @NombreAntes VARCHAR(40);
 
@@ -1132,7 +1099,7 @@ BEGIN
 			   @NombreAntes = Nombre
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
-		-- Declarar variables donde estar�n los atributos de la tabla #INSERTED (DESPU�S)
+		-- Declarar variables donde estaran los atributos de la tabla #INSERTED (DESPUES)
 		DECLARE @CodEscuelaPDespues VARCHAR(4);
 		DECLARE @NombreDespues VARCHAR(40);
 
@@ -1140,10 +1107,6 @@ BEGIN
 		SELECT @CodEscuelaPDespues = CodEscuelaP,
 			   @NombreDespues = Nombre
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
-
-		---- Determinar el IdHistorial
-		--DECLARE @IdHistorial INT;
-		--EXEC spuObtenerIdHistorial @IdHistorial OUTPUT;
 
 		-- Declarar e inicializar el IdRegistroAfectado
 		DECLARE @IdRegistroAfectado VARCHAR(20);
@@ -1167,9 +1130,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TEscuela_Profesional','UPDATE',@CodEscuelaPAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Nombre
@@ -1182,16 +1142,13 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TEscuela_Profesional','UPDATE',@CodEscuelaPAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Eliminar las tuplas ya evaluadas de las tablas #DELETED y #INSERTED 
 		DELETE TOP (1) FROM #DELETED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el n�mero de tuplas
+		-- Actualizar el numero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
@@ -1199,7 +1156,7 @@ GO
 
 /* *************************** TRIGGERS PARA LA TABLA ESTUDIANTE *************************** */
 
--- Crear un disparador para guardar el registro de inserci�n de la tabla TEstudiante en la tabla Historial
+-- Crear un disparador para guardar el registro de insercion de la tabla TEstudiante en la tabla Historial
 CREATE TRIGGER trEstudianteInsercion
 	ON TEstudiante
 	FOR INSERT
@@ -1220,8 +1177,6 @@ BEGIN
 		PersonaReferencia VARCHAR(20),
 		TelefonoReferencia VARCHAR(15),
 		InformacionPersonal VARCHAR(200),
-		--EstadoFisico VARCHAR(40),
-		--EstadoMental VARCHAR(40),
 		CodDocente VARCHAR(5),
 		ConcederPermiso VARCHAR(2)
 	);
@@ -1231,14 +1186,14 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el n�mero de tuplas de la tabla #INSERTED
+	-- Determinar el numero de tuplas de la tabla #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 
 	-- Recorrer las tuplas de la tabla #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estar�n los atributos de la tabla #INSERTED
+		-- Declarar variables donde estaran los atributos de la tabla #INSERTED
 		DECLARE @Perfil VARBINARY(MAX);
 		DECLARE @CodEstudiante VARCHAR(6);
 		DECLARE @APaterno VARCHAR(15);
@@ -1268,15 +1223,9 @@ BEGIN
 			   @PersonaReferencia = PersonaReferencia,
 			   @TelefonoReferencia = TelefonoReferencia,
 			   @InformacionPersonal = InformacionPersonal,
-			   --@EstadoFisico = EstadoFisico,
-			   --@EstadoMental = EstadoMental,
 			   @CodDocente = CodDocente,
 			   @ConcederPermiso = ConcederPermiso
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
-
-		---- Determinar el IdHistorial
-		--DECLARE @IdHistorial INT;
-		--EXEC spuObtenerIdHistorial @IdHistorial OUTPUT;
 
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #INSERTED
 		INSERT INTO Historial
@@ -1284,18 +1233,18 @@ BEGIN
 					  ISNULL(CONVERT(VARCHAR(10), @Perfil, 2), 'POR DEFECTO') + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
 					  @Email + ' ; ' + @Direccion + ' ; ' + @Telefono + ' ; ' +
 					  @CodEscuelaP + ' ; ' + ISNULL(@PersonaReferencia, '') + ' ; ' + 
-					  ISNULL(@TelefonoReferencia, '') + ' ; ' + ISNULL(@InformacionPersonal, '') + ' ; ' + ISNULL(@CodDocente, '') + ' ; ' + @ConcederPermiso); --@EstadoFisico + ' ; ' + @EstadoMental);
+					  ISNULL(@TelefonoReferencia, '') + ' ; ' + ISNULL(@InformacionPersonal, '') + ' ; ' + ISNULL(@CodDocente, '') + ' ; ' + @ConcederPermiso);
 		
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el n�mero de tuplas
+		-- Actualizar el numero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de eliminaci�n de la tabla TEstudiante en la tabla Historial
+-- Crear un disparador para guardar el registro de eliminacion de la tabla TEstudiante en la tabla Historial
 CREATE TRIGGER trEstudianteEliminacion
 	ON TEstudiante
 	FOR DELETE
@@ -1316,8 +1265,6 @@ BEGIN
 		PersonaReferencia VARCHAR(20),
 		TelefonoReferencia VARCHAR(15),
 		InformacionPersonal VARCHAR(200),
-		--EstadoFisico VARCHAR(40),
-		--EstadoMental VARCHAR(40),
 		CodDocente VARCHAR(5),
 		ConcederPermiso VARCHAR(2)
 	);
@@ -1327,14 +1274,14 @@ BEGIN
 		SELECT * 
 			FROM DELETED
 
-	-- Determinar el n�mero de tuplas de la tabla #DELETED
+	-- Determinar el numero de tuplas de la tabla #DELETED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estar�n los atributos de la tabla #DELETED
+		-- Declarar variables donde estaran los atributos de la tabla #DELETED
 		DECLARE @Perfil VARBINARY(MAX);
 		DECLARE @CodEstudiante VARCHAR(6);
 		DECLARE @APaterno VARCHAR(15);
@@ -1347,8 +1294,6 @@ BEGIN
 		DECLARE @PersonaReferencia VARCHAR(20);
 		DECLARE @TelefonoReferencia VARCHAR(15);
 		DECLARE @InformacionPersonal VARCHAR(200);
-		--DECLARE @EstadoFisico VARCHAR(40);
-		--DECLARE @EstadoMental VARCHAR(40);
 		DECLARE @CodDocente VARCHAR(5);
 		DECLARE @ConcederPermiso VARCHAR(2);
 
@@ -1371,28 +1316,24 @@ BEGIN
 			   @ConcederPermiso = ConcederPermiso
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
-		---- Determinar el IdHistorial
-		--DECLARE @IdHistorial INT;
-		--EXEC spuObtenerIdHistorial @IdHistorial OUTPUT;
-
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #DELETED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','DELETE',@CodEstudiante, 
 					  ISNULL(CONVERT(VARCHAR(10), @Perfil, 2), 'POR DEFECTO') + ' ; ' + @APaterno + ' ; ' + @AMaterno + ' ; ' + @Nombre + ' ; ' + 
 					  @Email + ' ; ' + @Direccion + ' ; ' + @Telefono + ' ; ' +
 					  @CodEscuelaP + ' ; ' + ISNULL(@PersonaReferencia, '') + ' ; ' + 
-					  ISNULL(@TelefonoReferencia, '') + ' ; ' + ISNULL(@InformacionPersonal, '') + ' ; ' + ISNULL(@CodDocente, '') + ' ; ' + @ConcederPermiso, NULL); --@EstadoFisico + ' ; ' + @EstadoMental,NULL);
+					  ISNULL(@TelefonoReferencia, '') + ' ; ' + ISNULL(@InformacionPersonal, '') + ' ; ' + ISNULL(@CodDocente, '') + ' ; ' + @ConcederPermiso, NULL);
 		
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
 
-		-- Actualizar el n�mero de las tuplas
+		-- Actualizar el numero de las tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de actualizaci�n de la tabla TEstudiante en la tabla Historial
+-- Crear un disparador para guardar el registro de actualizacion de la tabla TEstudiante en la tabla Historial
 CREATE TRIGGER trEstudianteActualizacion
 	ON TEstudiante
 	FOR UPDATE
@@ -1413,8 +1354,6 @@ BEGIN
 		PersonaReferencia VARCHAR(20),
 		TelefonoReferencia VARCHAR(15),
 		InformacionPersonal VARCHAR(200),
-		--EstadoFisico VARCHAR(40),
-		--EstadoMental VARCHAR(40),
 		CodDocente VARCHAR(5),
 		ConcederPermiso VARCHAR(2)
 	);
@@ -1439,8 +1378,6 @@ BEGIN
 		PersonaReferencia VARCHAR(20),
 		TelefonoReferencia VARCHAR(15),
 		InformacionPersonal VARCHAR(200),
-		--EstadoFisico VARCHAR(40),
-		--EstadoMental VARCHAR(40),
 		CodDocente VARCHAR(5),
 		ConcederPermiso VARCHAR(2)
 	);
@@ -1450,14 +1387,14 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el n�mero de tuplas de la tabla #DELETED = #INSERTED
+	-- Determinar el numero de tuplas de la tabla #DELETED = #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED = #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estar�n los atributos de la tabla #DELETED (ANTES)
+		-- Declarar variables donde estaran los atributos de la tabla #DELETED (ANTES)
 		DECLARE @PerfilAntes VARBINARY(MAX);
 		DECLARE @CodEstudianteAntes VARCHAR(6);
 		DECLARE @APaternoAntes VARCHAR(15);
@@ -1470,8 +1407,6 @@ BEGIN
 		DECLARE @PersonaReferenciaAntes VARCHAR(4);
 		DECLARE @TelefonoReferenciaAntes VARCHAR(4);
 		DECLARE @InformacionPersonalAntes VARCHAR(200);
-		--DECLARE @EstadoFisicoAntes VARCHAR(40);
-		--DECLARE @EstadoMentalAntes VARCHAR(40);
 		DECLARE @CodDocenteAntes VARCHAR(5);
 		DECLARE @ConcederPermisoAntes VARCHAR(2);
 
@@ -1488,13 +1423,11 @@ BEGIN
 			   @PersonaReferenciaAntes = PersonaReferencia,
 			   @TelefonoReferenciaAntes = TelefonoReferencia,
 			   @InformacionPersonalAntes = InformacionPersonal,
-			   --@EstadoFisicoAntes = EstadoFisico,
-			   --@EstadoMentalAntes = EstadoMental,
 			   @CodDocenteAntes = CodDocente,
 			   @ConcederPermisoAntes = ConcederPermiso
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
-		-- Declarar variables donde estar�n los atributos de la tabla #INSERTED (DESPU�S)
+		-- Declarar variables donde estaran los atributos de la tabla #INSERTED (DESPUES)
 		DECLARE @PerfilDespues VARBINARY(MAX);
 		DECLARE @CodEstudianteDespues VARCHAR(6);
 		DECLARE @APaternoDespues VARCHAR(15);
@@ -1507,8 +1440,6 @@ BEGIN
 		DECLARE @PersonaReferenciaDespues VARCHAR(4);
 		DECLARE @TelefonoReferenciaDespues VARCHAR(4);
 		DECLARE @InformacionPersonalDespues VARCHAR(200);
-		--DECLARE @EstadoFisicoDespues VARCHAR(40);
-		--DECLARE @EstadoMentalDespues VARCHAR(40);
 		DECLARE @CodDocenteDespues VARCHAR(5);
 		DECLARE @ConcederPermisoDespues VARCHAR(2);
 
@@ -1525,15 +1456,9 @@ BEGIN
 			   @PersonaReferenciaDespues = PersonaReferencia,
 			   @TelefonoReferenciaDespues = TelefonoReferencia,
 			   @InformacionPersonalDespues = InformacionPersonal,
-			   --@EstadoFisicoDespues = EstadoFisico,
-			   --@EstadoMentalDespues = EstadoMental,
 			   @CodDocenteDespues = CodDocente,
 			   @ConcederPermisoDespues = ConcederPermiso
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
-
-		---- Determinar el IdHistorial
-		--DECLARE @IdHistorial INT;
-		--EXEC spuObtenerIdHistorial @IdHistorial OUTPUT;
 
 		-- Declarar e inicializar el IdRegistroAfectado
 		DECLARE @IdRegistroAfectado VARCHAR(20);
@@ -1557,9 +1482,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en CodEstudiante
@@ -1572,9 +1494,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en APaterno
@@ -1587,9 +1506,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en AMaterno
@@ -1602,9 +1518,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Nombre
@@ -1617,9 +1530,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Email
@@ -1632,9 +1542,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Direccion
@@ -1647,9 +1554,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Telefono
@@ -1662,9 +1566,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en CodEscuelaP
@@ -1677,9 +1578,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en PersonaReferencia
@@ -1692,9 +1590,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en TelefonoReferencia
@@ -1707,40 +1602,18 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
-		-- Verificar si el cambio fue en EstadoFisico
-		--IF @EstadoFisicoAntes != @EstadoFisicoDespues
-		--BEGIN
-		--	SET @ValorAnterior = @EstadoFisicoAntes;
-		--	SET @ValorPosterior = @EstadoFisicoDespues;
-
-		--	-- Insertar a la tabla Historial, la tupla con el cambio realizado
-		--	INSERT INTO Historial
-		--	   VALUES(GETDATE(),'TEstudiante','UPDATE',@CodEstudianteAntes,
-		--	          @ValorAnterior,@ValorPosterior);
-
-		--	---- Incrementar el IdHistorial en 1
-		--	--SET @IdHistorial = @IdHistorial + 1;
-		--END;
-
 		-- Verificar si el cambio fue en InformacionPersonal
-		--IF @EstadoMentalAntes != @EstadoMentalDespues
 		IF @InformacionPersonalAntes != @InformacionPersonalDespues
 		BEGIN
-			SET @ValorAnterior = ISNULL(@InformacionPersonalAntes, ''); --@EstadoMentalAntes;
-			SET @ValorPosterior = ISNULL(@InformacionPersonalDespues, ''); --@EstadoMentalDespues;
+			SET @ValorAnterior = ISNULL(@InformacionPersonalAntes, '');
+			SET @ValorPosterior = ISNULL(@InformacionPersonalDespues, '');
 
 			-- Insertar a la tabla Historial, la tupla con el cambio realizado
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en CodTutor
@@ -1753,9 +1626,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en ConcederPermiso
@@ -1768,16 +1638,13 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TEstudiante','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Eliminar las tuplas ya evaluadas de las tablas #DELETED y #INSERTED 
 		DELETE TOP (1) FROM #DELETED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el n�mero de tuplas
+		-- Actualizar el numero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
@@ -1785,7 +1652,7 @@ GO
 
 /* *************************** TRIGGERS PARA LA TABLA DOCENTE *************************** */
 
--- Crear un disparador para guardar el registro de inserci�n de la tabla TDocente en la tabla Historial
+-- Crear un disparador para guardar el registro de insercion de la tabla TDocente en la tabla Historial
 CREATE TRIGGER trDocenteInsercion
 	ON TDocente
 	FOR INSERT
@@ -1814,14 +1681,14 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el n�mero de tuplas de la tabla #INSERTED
+	-- Determinar el numero de tuplas de la tabla #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 
 	-- Recorrer las tuplas de la tabla #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estar�n los atributos de la tabla #INSERTED
+		-- Declarar variables donde estaran los atributos de la tabla #INSERTED
 		DECLARE @Perfil VARBINARY(MAX);
 		DECLARE @CodDocente VARCHAR(5);
 		DECLARE @APaterno VARCHAR(15);
@@ -1852,10 +1719,6 @@ BEGIN
 			   @Horario = Horario
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
 
-		---- Determinar el IdHistorial
-		--DECLARE @IdHistorial INT;
-		--EXEC spuObtenerIdHistorial @IdHistorial OUTPUT;
-
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #INSERTED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','INSERT',@CodDocente,NULL, 
@@ -1867,13 +1730,13 @@ BEGIN
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el n�mero de tuplas
+		-- Actualizar el numero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de eliminaci�n de la tabla TDocente en la tabla Historial
+-- Crear un disparador para guardar el registro de eliminacion de la tabla TDocente en la tabla Historial
 CREATE TRIGGER trDocenteEliminacion
 	ON TDocente
 	FOR DELETE
@@ -1902,14 +1765,14 @@ BEGIN
 		SELECT * 
 			FROM DELETED
 
-	-- Determinar el n�mero de tuplas de la tabla #DELETED
+	-- Determinar el numero de tuplas de la tabla #DELETED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estar�n los atributos de la tabla #DELETED
+		-- Declarar variables donde estaran los atributos de la tabla #DELETED
 		DECLARE @Perfil VARBINARY(MAX);
 		DECLARE @CodDocente VARCHAR(5);
 		DECLARE @APaterno VARCHAR(15);
@@ -1940,10 +1803,6 @@ BEGIN
 			   @Horario = Horario
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
-		---- Determinar el IdHistorial
-		--DECLARE @IdHistorial INT;
-		--EXEC spuObtenerIdHistorial @IdHistorial OUTPUT;
-
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #DELETED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','DELETE',@CodDocente, 
@@ -1955,13 +1814,13 @@ BEGIN
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
 
-		-- Actualizar el n�mero de las tuplas
+		-- Actualizar el numero de las tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de actualizaci�n de la tabla TDocente en la tabla Historial
+-- Crear un disparador para guardar el registro de actualizacion de la tabla TDocente en la tabla Historial
 CREATE TRIGGER trDocenteActualizacion
 	ON TDocente
 	FOR UPDATE
@@ -2013,14 +1872,14 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el n�mero de tuplas de la tabla #DELETED = #INSERTED
+	-- Determinar el numero de tuplas de la tabla #DELETED = #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED = #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estar�n los atributos de la tabla #DELETED (ANTES)
+		-- Declarar variables donde estaran los atributos de la tabla #DELETED (ANTES)
 		DECLARE @PerfilAntes VARBINARY(MAX);
 		DECLARE @CodDocenteAntes VARCHAR(5);
 		DECLARE @APaternoAntes VARCHAR(15);
@@ -2051,7 +1910,7 @@ BEGIN
 			   @HorarioAntes = Horario
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
-		-- Declarar variables donde estar�n los atributos de la tabla #INSERTED (DESPU�S)
+		-- Declarar variables donde estaran los atributos de la tabla #INSERTED (DESPUES)
 		DECLARE @PerfilDespues VARBINARY(MAX);
 		DECLARE @CodDocenteDespues VARCHAR(5);
 		DECLARE @APaternoDespues VARCHAR(15);
@@ -2082,10 +1941,6 @@ BEGIN
 			   @HorarioDespues = Horario
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
 
-		---- Determinar el IdHistorial
-		--DECLARE @IdHistorial INT;
-		--EXEC spuObtenerIdHistorial @IdHistorial OUTPUT;
-
 		-- Declarar e inicializar el IdRegistroAfectado
 		DECLARE @IdRegistroAfectado VARCHAR(20);
 		SET @IdRegistroAfectado = NULL
@@ -2108,9 +1963,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','UPDATE',@CodDocenteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en CodDocente
@@ -2123,9 +1975,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','UPDATE',@CodDocenteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en APaterno
@@ -2138,9 +1987,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','UPDATE',@CodDocenteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en AMaterno
@@ -2153,9 +1999,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','UPDATE',@CodDocenteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Nombre
@@ -2168,9 +2011,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','UPDATE',@CodDocenteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Email
@@ -2183,9 +2023,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','UPDATE',@CodDocenteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Direccion
@@ -2198,9 +2035,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','UPDATE',@CodDocenteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Telefono
@@ -2213,9 +2047,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','UPDATE',@CodDocenteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Categoria
@@ -2228,9 +2059,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','UPDATE',@CodDocenteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Subcategoria
@@ -2243,9 +2071,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','UPDATE',@CodDocenteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Regimen
@@ -2258,9 +2083,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','UPDATE',@CodDocenteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en CodEscuelaP
@@ -2273,9 +2095,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','UPDATE',@CodDocenteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Horario
@@ -2288,16 +2107,13 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TDocente','UPDATE',@CodDocenteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Eliminar las tuplas ya evaluadas de las tablas #DELETED y #INSERTED 
 		DELETE TOP (1) FROM #DELETED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el n�mero de tuplas
+		-- Actualizar el numero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
@@ -2360,10 +2176,6 @@ BEGIN
 			   @Observaciones = Observaciones
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
 
-		---- Determinar el IdHistorial
-		--DECLARE @IdHistorial INT;
-		--EXEC spuObtenerIdHistorial @IdHistorial OUTPUT;
-
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #INSERTED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TFichaTutoria','INSERT',@CodEstudiante,NULL,
@@ -2374,13 +2186,13 @@ BEGIN
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el n�mero de tuplas
+		-- Actualizar el numero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de eliminaci�n de la tabla TFichaTutoria en la tabla Historial
+-- Crear un disparador para guardar el registro de eliminacion de la tabla TFichaTutoria en la tabla Historial
 CREATE TRIGGER trFichaTutoriaEliminacion
 	ON TFichaTutoria
 	FOR DELETE
@@ -2405,14 +2217,14 @@ BEGIN
 		SELECT * 
 			FROM DELETED
 
-	-- Determinar el n�mero de tuplas de la tabla #DELETED
+	-- Determinar el numero de tuplas de la tabla #DELETED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estar�n los atributos de la tabla #DELETED
+		-- Declarar variables donde estaran los atributos de la tabla #DELETED
 		DECLARE @CodFichaTutoria VARCHAR(5);
 		DECLARE @CodDocente VARCHAR(5);
 		DECLARE @CodEstudiante VARCHAR(6);
@@ -2434,12 +2246,6 @@ BEGIN
 			   @Referencia = Referencia,
 			   @Observaciones = Observaciones
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
-
-		---- Determinar el IdHistorial
-		--DECLARE @IdHistorial INT;
-		--EXEC spuObtenerIdHistorial @IdHistorial OUTPUT;
-
-		-- Insertar a la tabla Historial, la tupla insertada de la tabla #DELETED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TFichaTutoria','DELETE',@CodEstudiante,
 					  @CodFichaTutoria + ' ; ' +  @Semestre + ' ; ' + 
@@ -2449,13 +2255,13 @@ BEGIN
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
 
-		-- Actualizar el n�mero de las tuplas
+		-- Actualizar el numero de las tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de actualizaci�n de la tabla TFichaTutoria en la tabla Historial
+-- Crear un disparador para guardar el registro de actualizacion de la tabla TFichaTutoria en la tabla Historial
 CREATE TRIGGER trFichaTutoriaActualizacion
 	ON TFichaTutoria
 	FOR UPDATE
@@ -2499,14 +2305,14 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el n�mero de tuplas de la tabla #DELETED = #INSERTED
+	-- Determinar el numero de tuplas de la tabla #DELETED = #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED = #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estar�n los atributos de la tabla #DELETED (ANTES)
+		-- Declarar variables donde estaran los atributos de la tabla #DELETED (ANTES)
 		DECLARE @CodFichaTutoriaAntes VARCHAR(5);
 		DECLARE @CodDocenteAntes VARCHAR(5);
 		DECLARE @CodEstudianteAntes VARCHAR(6);
@@ -2529,7 +2335,7 @@ BEGIN
 			   @ObservacionesAntes = Observaciones
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
-		-- Declarar variables donde estar�n los atributos de la tabla #INSERTED (DESPU�S)
+		-- Declarar variables donde estaran los atributos de la tabla #INSERTED (DESPUES)
 		DECLARE @CodFichaTutoriaDespues VARCHAR(5);
 		DECLARE @CodDocenteDespues VARCHAR(5);
 		DECLARE @CodEstudianteDespues VARCHAR(6);
@@ -2551,10 +2357,6 @@ BEGIN
 			   @ReferenciaDespues = Referencia,
 			   @ObservacionesDespues = Observaciones
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
-
-		---- Determinar el IdHistorial
-		--DECLARE @IdHistorial INT;
-		--EXEC spuObtenerIdHistorial @IdHistorial OUTPUT;
 
 		-- Declarar e inicializar el IdRegistroAfectado
 		DECLARE @IdRegistroAfectado VARCHAR(20);
@@ -2578,9 +2380,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en CodEstudiante
@@ -2593,9 +2392,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Semestre
@@ -2608,9 +2404,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Fecha
@@ -2623,9 +2416,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Dimension
@@ -2638,9 +2428,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Descripcion
@@ -2653,9 +2440,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Referencia
@@ -2668,9 +2452,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Observaciones
@@ -2683,16 +2464,13 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TFichaTutoria','UPDATE',@CodEstudianteAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Eliminar las tuplas ya evaluadas de las tablas #DELETED y #INSERTED 
 		DELETE TOP (1) FROM #DELETED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el n�mero de tuplas
+		-- Actualizar el numero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
@@ -2700,7 +2478,7 @@ GO
 
 /* *************************** TRIGGERS PARA LA TABLA USUARIO *************************** */
 
--- Crear un disparador para guardar el registro de inserci�n de la tabla TUsuario en la tabla Historial
+-- Crear un disparador para guardar el registro de insercion de la tabla TUsuario en la tabla Historial
 CREATE TRIGGER trUsuarioInsercion
 	ON TUsuario
 	FOR INSERT
@@ -2721,14 +2499,14 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el n�mero de tuplas de la tabla #INSERTED
+	-- Determinar el numero de tuplas de la tabla #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 
 	-- Recorrer las tuplas de la tabla #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estar�n los atributos de la tabla #INSERTED
+		-- Declarar variables donde estaran los atributos de la tabla #INSERTED
 		DECLARE @Perfil VARBINARY(MAX);
 		DECLARE @Usuario VARCHAR(6);
 		DECLARE @Contraseña VARBINARY(MAX);
@@ -2743,10 +2521,6 @@ BEGIN
 			   @Datos = Datos
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
 
-		---- Determinar el IdHistorial
-		--DECLARE @IdHistorial INT;
-		--EXEC spuObtenerIdHistorial @IdHistorial OUTPUT;
-
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #INSERTED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TUsuario','INSERT',@Usuario,NULL, 
@@ -2755,13 +2529,13 @@ BEGIN
 		-- Eliminar la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el n�mero de tuplas
+		-- Actualizar el numero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #INSERTED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de eliminaci�n de la tabla TUsuario en la tabla Historial
+-- Crear un disparador para guardar el registro de eliminacion de la tabla TUsuario en la tabla Historial
 CREATE TRIGGER trUsuarioEliminacion
 	ON TUsuario
 	FOR DELETE
@@ -2782,14 +2556,14 @@ BEGIN
 		SELECT * 
 			FROM DELETED
 
-	-- Determinar el n�mero de tuplas de la tabla #DELETED
+	-- Determinar el numero de tuplas de la tabla #DELETED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estar�n los atributos de la tabla #DELETED
+		-- Declarar variables donde estaran los atributos de la tabla #DELETED
 		DECLARE @Perfil VARBINARY(MAX);
 		DECLARE @Usuario VARCHAR(6);
 		DECLARE @Contraseña VARBINARY(MAX);
@@ -2804,10 +2578,6 @@ BEGIN
 			   @Datos = Datos
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
-		---- Determinar el IdHistorial
-		--DECLARE @IdHistorial INT;
-		--EXEC spuObtenerIdHistorial @IdHistorial OUTPUT;
-
 		-- Insertar a la tabla Historial, la tupla insertada de la tabla #DELETED
 		INSERT INTO Historial
 			   VALUES(GETDATE(),'TUsuario','DELETE',@Usuario,
@@ -2816,13 +2586,13 @@ BEGIN
 		-- Eliminar la tupla insertada de la tabla #DELETED
 		DELETE TOP (1) FROM #DELETED
 
-		-- Actualizar el n�mero de las tuplas
+		-- Actualizar el numero de las tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
 GO
 
--- Crear un disparador para guardar el registro de actualizaci�n de la tabla TUsuario en la tabla Historial
+-- Crear un disparador para guardar el registro de actualizacion de la tabla TUsuario en la tabla Historial
 CREATE TRIGGER trUsuarioActualizacion
 	ON TUsuario
 	FOR UPDATE
@@ -2858,14 +2628,14 @@ BEGIN
 		SELECT * 
 			FROM INSERTED
 
-	-- Determinar el n�mero de tuplas de la tabla #DELETED = #INSERTED
+	-- Determinar el numero de tuplas de la tabla #DELETED = #INSERTED
 	DECLARE @NroTuplas INT;
 	SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 
 	-- Recorrer las tuplas de la tabla #DELETED = #INSERTED
 	WHILE @NroTuplas > 0
 	BEGIN
-		-- Declarar variables donde estar�n los atributos de la tabla #DELETED (ANTES)
+		-- Declarar variables donde estaran los atributos de la tabla #DELETED (ANTES)
 		DECLARE @PerfilAntes VARBINARY(MAX);
 		DECLARE @UsuarioAntes VARCHAR(6);
 		DECLARE @ContraseñaAntes VARBINARY(MAX);
@@ -2880,7 +2650,7 @@ BEGIN
 			   @DatosAntes = Datos
 			FROM (SELECT TOP(1) * FROM #DELETED) AS Eliminado
 
-		-- Declarar variables donde estar�n los atributos de la tabla #INSERTED (DESPU�S)
+		-- Declarar variables donde estaran los atributos de la tabla #INSERTED (DESPUES)
 		DECLARE @PerfilDespues VARBINARY(MAX);
 		DECLARE @UsuarioDespues VARCHAR(6);
 		DECLARE @ContraseñaDespues VARBINARY(MAX);
@@ -2894,10 +2664,6 @@ BEGIN
 			   @AccesoDespues = Acceso,
 			   @DatosDespues = Datos
 			FROM (SELECT TOP(1) * FROM #INSERTED) AS Insertado
-
-		---- Determinar el IdHistorial
-		--DECLARE @IdHistorial INT;
-		--EXEC spuObtenerIdHistorial @IdHistorial OUTPUT;
 
 		-- Declarar e inicializar el IdRegistroAfectado
 		DECLARE @IdRegistroAfectado VARCHAR(20);
@@ -2921,9 +2687,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TUsuario','UPDATE',@UsuarioAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Usuario
@@ -2936,12 +2699,9 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TUsuario','UPDATE',@UsuarioAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
-		-- Verificar si el cambio fue en Contrase�a
+		-- Verificar si el cambio fue en Contraseña
 		IF @ContraseñaAntes != @ContraseñaDespues
 		BEGIN
 			SET @ValorAnterior = CONVERT(VARCHAR(10), @ContraseñaAntes, 2);
@@ -2951,9 +2711,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TUsuario','UPDATE',@UsuarioAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Acceso
@@ -2966,9 +2723,6 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TUsuario','UPDATE',@UsuarioAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Verificar si el cambio fue en Datos
@@ -2981,24 +2735,15 @@ BEGIN
 			INSERT INTO Historial
 			   VALUES(GETDATE(),'TUsuario','UPDATE',@UsuarioAntes,
 			          @ValorAnterior,@ValorPosterior);
-
-			---- Incrementar el IdHistorial en 1
-			--SET @IdHistorial = @IdHistorial + 1;
 		END;
 
 		-- Eliminar las tuplas ya evaluadas de las tablas #DELETED y #INSERTED 
 		DELETE TOP (1) FROM #DELETED
 		DELETE TOP (1) FROM #INSERTED
 
-		-- Actualizar el n�mero de tuplas
+		-- Actualizar el numero de tuplas
 		SELECT @NroTuplas = COUNT(*) FROM #DELETED;
 	END;
 END;
-GO
-
-/* **************************************************************************************************
-   **************************** DML (LENGUAJE DE MANIPULACI�N DE DATOS) *****************************
-   ************************************************************************************************** */
-USE db_a7878d_BDSistemaTutoria
 GO
 

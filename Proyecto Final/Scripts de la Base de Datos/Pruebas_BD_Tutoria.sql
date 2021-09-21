@@ -1,7 +1,8 @@
+/* **************************************************************************************************
+   **************************** DML (LENGUAJE DE MANIPULACION DE DATOS) *****************************
+   ************************************************************************************************** */
 USE db_a7878d_BDSistemaTutoria
 GO
-
-/* INSERTAR DATOS */
 
 -- Escuela Profesional
 insert into TEscuela_Profesional VALUES('IN','INGENIERÍA INFORMÁTICA Y DE SISTEMAS');
