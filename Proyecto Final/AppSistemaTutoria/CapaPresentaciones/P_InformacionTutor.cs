@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.IO;
 using CapaEntidades;
 using CapaNegocios;
 
@@ -15,11 +19,13 @@ namespace CapaPresentaciones
 {
     public partial class P_InformacionTutor : Form
     {
-        public string Usuario = "";
-        public P_InformacionTutor( string pUsuario)
+        // Atributo Usuario
+        public DataTable Datos;
+        // Constructor
+        public P_InformacionTutor( DataTable pDatos)
         {
             InitializeComponent();
-            Usuario = pUsuario;
+            Datos = pDatos;
             CargarDatosTutor();
         }
 
@@ -29,38 +35,69 @@ namespace CapaPresentaciones
         }
         public void CargarDatosTutor()
         {
-            SqlConnection Conexion = new SqlConnection(@"Data Source = localhost\SQLEXPRESS; DataBase = db_a7878d_BDSistemaTutoria; Integrated Security = true");
+            // Buscamos los datos del Tutor 
+            object[] Fila = Datos.Rows[0].ItemArray;
+            // Es la imagen de perfil
+            byte[] imagen;
+            if (Fila.GetValue(0).GetType() == Type.GetType("System.DBNull"))
+                imagen = null;
+            else
+                imagen = (byte[])Fila.GetValue(0);
 
-            try
+            if (imagen == null)
             {
-                SqlCommand cmd = new SqlCommand("SELECT D.APaterno, D.AMaterno, D.Nombre, D.Email, D.Direccion, D.Telefono, " +
-                "D.Categoria, D.Subcategoria, D.Regimen, D.CodEscuelaP, D.Horario FROM((TEstudiante E INNER JOIN TTutoria T " +
-                "ON E.CodEstudiante = T.CodEstudiante) INNER JOIN TDocente D ON T.CodDocente = D.CodDocente) WHERE E.CodEstudiante = @CodEstudiante", Conexion);
-
-                cmd.Parameters.AddWithValue("@CodEstudiante", Usuario);
-                Conexion.Open();
-                SqlDataReader Registro = cmd.ExecuteReader();
-                if (Registro.Read())
-                {
-                    txtAPaterno.Text = Registro["APaterno"].ToString();
-                    txtAMaterno.Text = Registro["AMaterno"].ToString();
-                    txtNombre.Text = Registro["Nombre"].ToString();
-                    txtEmail.Text = Registro["Email"].ToString();
-                    txtDireccion.Text = Registro["Direccion"].ToString();
-                    txtTelefono.Text = Registro["Telefono"].ToString();
-                    txtCategoria.Text = Registro["Categoria"].ToString();
-                    txtSubcategoria.Text = Registro["Subcategoria"].ToString();
-                    txtRegimen.Text = Registro["Regimen"].ToString();
-                    txtEscProfesional.Text = Registro["CodEscuelaP"].ToString();
-                    txtHorario.Text = Registro["Horario"].ToString();
-                }
-                Conexion.Close();
-
+                string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
+                imgPerfil.Image = Image.FromFile(fullImagePath);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                byte[] Perfil = new byte[0];
+                Perfil = imagen;
+                MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
+                imgPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
             }
+            // Asignamos a cada celda los valores correspondientes
+
+            txtDocente.Text = Fila[1].ToString() + " " + Fila[2].ToString() +
+                        " " + Fila[3].ToString();
+            txtEmail.Text = Fila[4].ToString();
+            txtDireccion.Text = Fila[5].ToString();
+            txtTelefono.Text = Fila[6].ToString();
+            txtEscProfesional.Text = Fila[7].ToString();
+            txtHorario.Text = Fila[8].ToString();
+            
+            
+        }
+        // Para hacer la imagen circular
+        public Image HacerImagenCircular(Image img)
+        {
+            int x = img.Width / 2;
+            int y = img.Height / 2;
+            int r = Math.Min(x, y);
+
+            Bitmap tmp = null;
+            tmp = new Bitmap(2 * r, 2 * r);
+            using (Graphics g = Graphics.FromImage(tmp))
+            {
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.TranslateTransform(tmp.Width / 2, tmp.Height / 2);
+                GraphicsPath gp = new GraphicsPath();
+                gp.AddEllipse(0 - r, 0 - r, 2 * r, 2 * r);
+                Region rg = new Region(gp);
+                g.SetClip(rg, CombineMode.Replace);
+                Bitmap bmp = new Bitmap(img);
+                g.DrawImage(bmp, new Rectangle(-r, -r, 2 * r, 2 * r), new Rectangle(x - r, y - r, 2 * r, 2 * r), GraphicsUnit.Pixel);
+            }
+            return tmp;
+        }
+        private void txtTelefono_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEscProfesional_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

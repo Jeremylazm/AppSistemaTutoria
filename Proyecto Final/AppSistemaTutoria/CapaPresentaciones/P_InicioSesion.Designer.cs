@@ -43,7 +43,6 @@
             this.btnIngresar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.Separador2 = new Bunifu.Framework.UI.BunifuSeparator();
             this.Separador1 = new Bunifu.Framework.UI.BunifuSeparator();
-            this.BordeadoMenu = new Bunifu.Framework.UI.BunifuThinButton2();
             this.Movimiento = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.lblRecuperarContraseña = new System.Windows.Forms.LinkLabel();
@@ -65,6 +64,7 @@
             this.txtContraseña.Size = new System.Drawing.Size(191, 19);
             this.txtContraseña.TabIndex = 1;
             this.txtContraseña.UseSystemPasswordChar = true;
+            this.txtContraseña.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContraseña_KeyPress);
             // 
             // txtUsuario
             // 
@@ -215,7 +215,7 @@
             this.btnIngresar.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnIngresar.selected = true;
             this.btnIngresar.Size = new System.Drawing.Size(228, 40);
-            this.btnIngresar.TabIndex = 1;
+            this.btnIngresar.TabIndex = 2;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnIngresar.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
@@ -246,35 +246,6 @@
             this.Separador1.Transparency = 255;
             this.Separador1.Vertical = false;
             // 
-            // BordeadoMenu
-            // 
-            this.BordeadoMenu.ActiveBorderThickness = 1;
-            this.BordeadoMenu.ActiveCornerRadius = 20;
-            this.BordeadoMenu.ActiveFillColor = System.Drawing.Color.White;
-            this.BordeadoMenu.ActiveForecolor = System.Drawing.Color.White;
-            this.BordeadoMenu.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BordeadoMenu.BackColor = System.Drawing.Color.White;
-            this.BordeadoMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoMenu.BackgroundImage")));
-            this.BordeadoMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BordeadoMenu.ButtonText = "Editar Perfil";
-            this.BordeadoMenu.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BordeadoMenu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BordeadoMenu.ForeColor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleBorderThickness = 1;
-            this.BordeadoMenu.IdleCornerRadius = 20;
-            this.BordeadoMenu.IdleFillColor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleForecolor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoMenu.Location = new System.Drawing.Point(-1, 0);
-            this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(5);
-            this.BordeadoMenu.Name = "BordeadoMenu";
-            this.BordeadoMenu.Size = new System.Drawing.Size(416, 261);
-            this.BordeadoMenu.TabIndex = 108;
-            this.BordeadoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Movimiento
             // 
             this.Movimiento.Fixed = true;
@@ -298,7 +269,7 @@
             this.lblRecuperarContraseña.Location = new System.Drawing.Point(193, 226);
             this.lblRecuperarContraseña.Name = "lblRecuperarContraseña";
             this.lblRecuperarContraseña.Size = new System.Drawing.Size(183, 19);
-            this.lblRecuperarContraseña.TabIndex = 110;
+            this.lblRecuperarContraseña.TabIndex = 3;
             this.lblRecuperarContraseña.TabStop = true;
             this.lblRecuperarContraseña.Text = "¿Olvidaste tu contraseña?";
             this.lblRecuperarContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -325,11 +296,11 @@
             this.Controls.Add(this.lblContraseña);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.BordeadoMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_InicioSesion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Iniciar Sesión";
+            this.Text = "Inicio de Sesión";
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgContraseña)).EndInit();
@@ -357,7 +328,6 @@
         private Bunifu.Framework.UI.BunifuDragControl Movimiento;
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
         private Bunifu.Framework.UI.BunifuImageButton btnMinimizar;
-        private Bunifu.Framework.UI.BunifuThinButton2 BordeadoMenu;
         private System.Windows.Forms.LinkLabel lblRecuperarContraseña;
     }
 }

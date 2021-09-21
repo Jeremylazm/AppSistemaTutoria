@@ -108,7 +108,7 @@
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(815, 40);
             this.lblTitulo.TabIndex = 73;
-            this.lblTitulo.Text = "Editar Perfil de Docente";
+            this.lblTitulo.Text = "Editar Perfil de Tutor";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Separador6
@@ -161,7 +161,7 @@
             this.txtTelefono.Location = new System.Drawing.Point(283, 85);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(119, 19);
-            this.txtTelefono.TabIndex = 141;
+            this.txtTelefono.TabIndex = 0;
             // 
             // lblTelefono
             // 
@@ -200,7 +200,7 @@
             this.txtDireccion.Location = new System.Drawing.Point(122, 182);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(280, 19);
-            this.txtDireccion.TabIndex = 138;
+            this.txtDireccion.TabIndex = 1;
             // 
             // lblDireccion
             // 
@@ -585,7 +585,7 @@
             this.txtHorario.Multiline = true;
             this.txtHorario.Name = "txtHorario";
             this.txtHorario.Size = new System.Drawing.Size(312, 70);
-            this.txtHorario.TabIndex = 176;
+            this.txtHorario.TabIndex = 2;
             // 
             // txtRegimen
             // 
@@ -841,6 +841,7 @@
             this.Controls.Add(this.BordeadoHorario);
             this.Controls.Add(this.BordeadoMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_EditarPerfilDocente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar Perfil de Docente";

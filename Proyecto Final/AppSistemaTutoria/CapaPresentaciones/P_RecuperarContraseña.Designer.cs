@@ -35,7 +35,6 @@ namespace CapaPresentaciones
             this.lblTitulo = new System.Windows.Forms.Label();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.btnCerrar = new Bunifu.Framework.UI.BunifuImageButton();
-            this.BordeadoMenu = new Bunifu.Framework.UI.BunifuThinButton2();
             this.lblCorreo = new System.Windows.Forms.Label();
             this.imgLogoUNSAAC = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnRecuperar = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -88,35 +87,6 @@ namespace CapaPresentaciones
             this.btnCerrar.TabStop = false;
             this.btnCerrar.Zoom = 10;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
-            // BordeadoMenu
-            // 
-            this.BordeadoMenu.ActiveBorderThickness = 1;
-            this.BordeadoMenu.ActiveCornerRadius = 20;
-            this.BordeadoMenu.ActiveFillColor = System.Drawing.Color.White;
-            this.BordeadoMenu.ActiveForecolor = System.Drawing.Color.White;
-            this.BordeadoMenu.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BordeadoMenu.BackColor = System.Drawing.Color.White;
-            this.BordeadoMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoMenu.BackgroundImage")));
-            this.BordeadoMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BordeadoMenu.ButtonText = "Editar Perfil";
-            this.BordeadoMenu.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BordeadoMenu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BordeadoMenu.ForeColor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleBorderThickness = 1;
-            this.BordeadoMenu.IdleCornerRadius = 20;
-            this.BordeadoMenu.IdleFillColor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleForecolor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoMenu.Location = new System.Drawing.Point(-1, 0);
-            this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(5);
-            this.BordeadoMenu.Name = "BordeadoMenu";
-            this.BordeadoMenu.Size = new System.Drawing.Size(416, 261);
-            this.BordeadoMenu.TabIndex = 109;
-            this.BordeadoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblCorreo
             // 
@@ -211,7 +181,8 @@ namespace CapaPresentaciones
             this.txtEmail.Location = new System.Drawing.Point(202, 121);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(96, 19);
-            this.txtEmail.TabIndex = 129;
+            this.txtEmail.TabIndex = 0;
+            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
             // imgContraseña
             // 
@@ -242,10 +213,11 @@ namespace CapaPresentaciones
             this.Controls.Add(this.lblCorreo);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.BordeadoMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_RecuperarContraseña";
-            this.Text = "P_RecuperarContraseña";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Recuperar Contraseña";
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgContraseña)).EndInit();
@@ -260,7 +232,6 @@ namespace CapaPresentaciones
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
         private Bunifu.Framework.UI.BunifuImageButton btnCerrar;
         private System.Windows.Forms.Label lblTitulo;
-        private Bunifu.Framework.UI.BunifuThinButton2 BordeadoMenu;
         private System.Windows.Forms.Label lblCorreo;
         private Bunifu.Framework.UI.BunifuImageButton imgLogoUNSAAC;
         private Bunifu.Framework.UI.BunifuFlatButton btnRecuperar;

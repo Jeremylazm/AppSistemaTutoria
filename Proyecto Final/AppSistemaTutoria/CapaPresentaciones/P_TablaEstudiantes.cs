@@ -14,7 +14,6 @@ namespace CapaPresentaciones
     {
         readonly E_Estudiante ObjEntidad = new E_Estudiante();
         readonly N_Estudiante ObjNegocio = new N_Estudiante();
-        string CodEscuelaP = "IN";
 
         public P_TablaEstudiantes()
         {
@@ -38,6 +37,8 @@ namespace CapaPresentaciones
             dgvTabla.Columns[4].Visible = false;
             dgvTabla.Columns[5].Visible = false;
             dgvTabla.Columns[10].Visible = false;
+            dgvTabla.Columns[15].Visible = false;
+            dgvTabla.Columns[16].Visible = false;
 
             dgvTabla.Columns[1].HeaderText = "";
             dgvTabla.Columns[2].HeaderText = "Cod. Estudiante";
@@ -53,13 +54,13 @@ namespace CapaPresentaciones
 
         public void MostrarRegistros()
         {
-            dgvTabla.DataSource = N_Estudiante.MostrarRegistros(CodEscuelaP);
+            dgvTabla.DataSource = N_Estudiante.MostrarRegistros(E_InicioSesion.Usuario);
             AccionesTabla();
         }
 
         public void BuscarRegistros()
         {
-            dgvTabla.DataSource = N_Estudiante.BuscarRegistros(CodEscuelaP, txtBuscar.Text);
+            dgvTabla.DataSource = N_Estudiante.BuscarRegistros(E_InicioSesion.Usuario, txtBuscar.Text);
         }
 
         private void ActualizarDatos(object sender, FormClosedEventArgs e)
