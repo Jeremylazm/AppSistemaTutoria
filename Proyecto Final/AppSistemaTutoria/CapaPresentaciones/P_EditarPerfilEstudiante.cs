@@ -193,7 +193,11 @@ namespace CapaPresentaciones
                         {
                             ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
                             //Encriptar 
-                            ObjEntidad.InformacionPersonal = E_Criptografia.EncriptarRSA(txtIPersonal.Text, Key);
+                            if (txtIPersonal.Text.Trim() != "") //Si es distinto de vacio, encriptar
+                                ObjEntidad.InformacionPersonal = E_Criptografia.EncriptarRSA(txtIPersonal.Text, Key);
+                            else //No se encripta
+                                ObjEntidad.InformacionPersonal = ""; //Guardar caracter vacio
+
 
                             //Guardar estado del permiso
                             if (ckbIPersonal.Checked)
