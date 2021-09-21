@@ -57,8 +57,8 @@ namespace CapaPresentaciones
             this.lblAcceso = new System.Windows.Forms.Label();
             this.lblDatos = new System.Windows.Forms.Label();
             this.pnInferior = new System.Windows.Forms.Panel();
-            this.pnPrincipal = new System.Windows.Forms.Panel();
             this.btnSolicitarCita = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.pnPrincipal = new System.Windows.Forms.Panel();
             this.pnSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
@@ -67,7 +67,6 @@ namespace CapaPresentaciones
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
             this.pnLateral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
-            this.pnInferior.SuspendLayout();
             this.pnPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -208,6 +207,7 @@ namespace CapaPresentaciones
             // pnLateral
             // 
             this.pnLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.pnLateral.Controls.Add(this.btnSolicitarCita);
             this.pnLateral.Controls.Add(this.btnMiTutor);
             this.pnLateral.Controls.Add(this.btnInformeTutorias);
             this.pnLateral.Controls.Add(this.btnTutores);
@@ -583,25 +583,12 @@ namespace CapaPresentaciones
             // pnInferior
             // 
             this.pnInferior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.pnInferior.Controls.Add(this.btnSolicitarCita);
             this.pnInferior.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnInferior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.pnInferior.Location = new System.Drawing.Point(173, 530);
             this.pnInferior.Name = "pnInferior";
             this.pnInferior.Size = new System.Drawing.Size(827, 70);
             this.pnInferior.TabIndex = 5;
-            // 
-            // pnPrincipal
-            // 
-            this.pnPrincipal.Controls.Add(this.pnSuperior);
-            this.pnPrincipal.Controls.Add(this.pnContenedor);
-            this.pnPrincipal.Controls.Add(this.pnInferior);
-            this.pnPrincipal.Controls.Add(this.pnLateral);
-            this.pnPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnPrincipal.Location = new System.Drawing.Point(0, 0);
-            this.pnPrincipal.Name = "pnPrincipal";
-            this.pnPrincipal.Size = new System.Drawing.Size(1000, 600);
-            this.pnPrincipal.TabIndex = 5;
             // 
             // btnSolicitarCita
             // 
@@ -625,7 +612,7 @@ namespace CapaPresentaciones
             this.btnSolicitarCita.IconVisible = true;
             this.btnSolicitarCita.IconZoom = 50D;
             this.btnSolicitarCita.IsTab = false;
-            this.btnSolicitarCita.Location = new System.Drawing.Point(54, 10);
+            this.btnSolicitarCita.Location = new System.Drawing.Point(5, 330);
             this.btnSolicitarCita.Name = "btnSolicitarCita";
             this.btnSolicitarCita.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnSolicitarCita.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -638,6 +625,18 @@ namespace CapaPresentaciones
             this.btnSolicitarCita.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnSolicitarCita.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSolicitarCita.Click += new System.EventHandler(this.btnSolicitarCita_Click);
+            // 
+            // pnPrincipal
+            // 
+            this.pnPrincipal.Controls.Add(this.pnSuperior);
+            this.pnPrincipal.Controls.Add(this.pnContenedor);
+            this.pnPrincipal.Controls.Add(this.pnInferior);
+            this.pnPrincipal.Controls.Add(this.pnLateral);
+            this.pnPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.pnPrincipal.Name = "pnPrincipal";
+            this.pnPrincipal.Size = new System.Drawing.Size(1000, 600);
+            this.pnPrincipal.TabIndex = 5;
             // 
             // P_Menu
             // 
@@ -662,7 +661,6 @@ namespace CapaPresentaciones
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).EndInit();
             this.pnLateral.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).EndInit();
-            this.pnInferior.ResumeLayout(false);
             this.pnPrincipal.ResumeLayout(false);
             this.ResumeLayout(false);
 
