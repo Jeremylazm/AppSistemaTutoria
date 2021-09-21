@@ -31,13 +31,13 @@ namespace CapaPresentaciones
         void Recuperar(string Email, string Dominio)
         {
             // Verificar si hay un usuario asociado al correo puesto en el textbox
-            try
-            {
-                N_InicioSesion InicioSesion = new N_InicioSesion();
-                string Contraseña = InicioSesion.RetornarContraseña(Email);
+            N_InicioSesion InicioSesion = new N_InicioSesion();
+            string Contraseña = InicioSesion.RetornarContraseña(Email);
 
-                // Enviar un correo con la contraseña del usuario si el usuario existe
-                if (Contraseña != "")
+            // Enviar un correo con la contraseña del usuario si el usuario existe
+            if (Contraseña != null)
+            {
+                try
                 {
                     SmtpClient clientDetails = new SmtpClient();
                     clientDetails.Port = 587;
@@ -71,13 +71,15 @@ namespace CapaPresentaciones
 
                     mailDetails.Body = TextoSolicitud;
                     clientDetails.Send(mailDetails);
+                    lblMensaje.Text = "Se te envió un correo electrónico con tu contraseña";
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("No hay ningún usuario asociado a esta cuenta");
+                    MessageBox.Show(ex.Message);
                 }
+
             }
-            catch
+            else
             {
                 MessageBox.Show("No hay ningún usuario asociado a esta cuenta");
             }

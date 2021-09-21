@@ -42,6 +42,7 @@ namespace CapaPresentaciones
             this.Separador5 = new Bunifu.Framework.UI.BunifuSeparator();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.imgContraseña = new Bunifu.Framework.UI.BunifuImageButton();
+            this.lblMensaje = new Bunifu.UI.WinForms.BunifuLabel();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgContraseña)).BeginInit();
@@ -198,12 +199,27 @@ namespace CapaPresentaciones
             this.imgContraseña.TabStop = false;
             this.imgContraseña.Zoom = 10;
             // 
+            // lblMensaje
+            // 
+            this.lblMensaje.AllowParentOverrides = false;
+            this.lblMensaje.AutoEllipsis = false;
+            this.lblMensaje.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblMensaje.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblMensaje.Location = new System.Drawing.Point(171, 221);
+            this.lblMensaje.Name = "lblMensaje";
+            this.lblMensaje.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblMensaje.Size = new System.Drawing.Size(0, 0);
+            this.lblMensaje.TabIndex = 133;
+            this.lblMensaje.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblMensaje.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
             // P_RecuperarContraseña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(416, 257);
+            this.Controls.Add(this.lblMensaje);
             this.Controls.Add(this.imgContraseña);
             this.Controls.Add(this.lblDominioEmail);
             this.Controls.Add(this.Separador5);
@@ -239,5 +255,6 @@ namespace CapaPresentaciones
         private Bunifu.Framework.UI.BunifuSeparator Separador5;
         public System.Windows.Forms.TextBox txtEmail;
         private Bunifu.Framework.UI.BunifuImageButton imgContraseña;
+        private Bunifu.UI.WinForms.BunifuLabel lblMensaje;
     }
 }
