@@ -23,6 +23,11 @@ namespace CapaNegocios
             return new D_Estudiante().BuscarRegistro(CodEstudiante);
         }
 
+        public static DataTable BuscarTutor(string CodEstudiante)
+        {
+            return new D_Estudiante().BuscarTutor(CodEstudiante);
+        }
+
         public static DataTable BuscarRegistros(string CodDocente, string Texto)
         {
             return new D_Estudiante().BuscarRegistros(CodDocente, Texto);
