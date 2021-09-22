@@ -2,7 +2,7 @@
 
 ## Creado por estudiantes de la Universidad Nacional de San Antonio Abad del Cusco
 
-### Datos Academicos 📖
+### Datos Académicos 📖
 
 - **Institucion:** Universidad Nacional de San Antonio Abad del Cusco
 - **Facultad:** Facultad de Ingeniería Eléctrica, Electrónica, Informática y Mecánica
@@ -16,7 +16,7 @@
 
 - Realizar un Sistemas de Tutorías para la Universidad Nacional de San Antonio Abad del Cusco.
 
-## Descripcion
+## Descripción
 - El Sistema de Tutorías es un programa para facilitar la organización y distribución de docentes tutores en la Universidad Nacional de San Antonio Abad del Cusco.
 
 #### Autores:✒️
@@ -31,7 +31,5 @@
 - **Usucachi Ano Isac Anderson** - _Estudiante_ - [IsacAnderson](https://github.com/isacanderson)
 - **Villasante León Amaru** - _Estudiante_ - [Amaru](https://github.com/AmaruVL)
 ---
-
-NOTA: Diculpe las faltas ortográficas tales como tildes, diéresis y demás faltas encontradas a lo largo del cuaderno, esto se debe a que se uso únicamente una distribución de teclado en inglés para escribir el presente el cual no tiene acceso a dichos caracteres.
 
 ## Empezamos... 🚀
