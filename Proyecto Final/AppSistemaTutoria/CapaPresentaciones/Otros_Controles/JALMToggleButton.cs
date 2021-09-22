@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
+﻿using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace CapaPresentaciones.Otros_Controles
 {
@@ -126,6 +126,6 @@ namespace CapaPresentaciones.Otros_Controles
                 pevent.Graphics.FillEllipse(new SolidBrush(offToggleColor),
                   new Rectangle(2, 2, toggleSize, toggleSize));
             }
-        }
+        }  
     }
 }

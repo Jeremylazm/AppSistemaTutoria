@@ -1,9 +1,9 @@
-﻿using CapaEntidades;
-using System;
+﻿using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using CapaEntidades;
 
 
 
@@ -72,7 +72,7 @@ namespace CapaDatos
             }
         }
 
-        public string RetornarContraseña(string Usuario)
+        public string RetornarContrasena(string Usuario)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuRetornarContraseña", Conectar)
@@ -94,9 +94,9 @@ namespace CapaDatos
                 }
                 else
                 {
-                    // MessageBox.Show("El usuario no existe");// No existe el usuario
+                    MessageBox.Show("El usuario no existe");// No existe el usuario
                     return null;
-                }
+                }                
             }
             catch (Exception ex)
             {

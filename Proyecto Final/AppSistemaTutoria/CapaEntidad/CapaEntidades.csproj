@@ -172,15 +172,20 @@
     <Compile Include="E_Acceso.cs" />
     <Compile Include="E_Criptografia.cs" />
     <Compile Include="E_Docente.cs" />
+    <Compile Include="E_EncabezadoInforme.cs" />
     <Compile Include="E_EscuelaProfesional.cs" />
     <Compile Include="E_Estudiante.cs" />
     <Compile Include="E_FichaTutoria.cs" />
+    <Compile Include="E_FilaTabla.cs" />
     <Compile Include="E_InicioSesion.cs" />
+    <Compile Include="E_InformeTutorias.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\CapaEntidades.E_EncabezadoInforme.datasource" />
+    <None Include="Properties\DataSources\CapaEntidades.E_FilaTabla.datasource" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,12 +1,14 @@
-﻿using CapaEntidades;
-using CapaNegocios;
-using System;
+﻿using System;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using CapaEntidades;
+using CapaNegocios;
+using System.Runtime.InteropServices;
+using ImageMagick;
 
 namespace CapaPresentaciones
 {
@@ -16,6 +18,7 @@ namespace CapaPresentaciones
         readonly E_Estudiante ObjEntidadEstudiante = new E_Estudiante();
         readonly N_Estudiante ObjNegocioEstudiante = new N_Estudiante();
         int Regs = 0;
+        string CodEscuelaP = "IN";
 
         public P_TablaTutores()
         {
@@ -173,12 +176,12 @@ namespace CapaPresentaciones
         {
             string file = "";
             DataTable dtaux = new DataTable(); // DataTable auxiliar
-            DataTable dt = new DataTable();
+            DataTable dt = new DataTable(); 
             DataRow row;
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)   // Check if Result == "OK".
             {
-                file = openFileDialog1.FileName;
+                file = openFileDialog1.FileName; 
                 try
                 {
                     Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
@@ -186,8 +189,8 @@ namespace CapaPresentaciones
                     Microsoft.Office.Interop.Excel._Worksheet excelWorksheet = excelWorkbook.Sheets[1];
                     Microsoft.Office.Interop.Excel.Range excelRange = excelWorksheet.UsedRange;
 
-                    int rowCount = excelRange.Rows.Count;
-                    int colCount = excelRange.Columns.Count;
+                    int rowCount = excelRange.Rows.Count; 
+                    int colCount = excelRange.Columns.Count; 
                     for (int i = 1; i <= rowCount; i++)
                     {
                         for (int j = 1; j <= colCount; j++)
@@ -196,13 +199,13 @@ namespace CapaPresentaciones
                         }
                         break;
                     }
-
-                    int rowCounter;
-                    for (int i = 2; i <= rowCount; i++)
+            
+                    int rowCounter;  
+                    for (int i = 2; i <= rowCount; i++) 
                     {
-                        row = dt.NewRow();
+                        row = dt.NewRow(); 
                         rowCounter = 0;
-                        for (int j = 1; j <= colCount; j++)
+                        for (int j = 1; j <= colCount; j++) 
                         {
                             if (excelRange.Cells[i, j] != null && excelRange.Cells[i, j].Value2 != null)
                             {
@@ -239,7 +242,7 @@ namespace CapaPresentaciones
                             string CodEstudiante_ = Row[0].ToString();
                             dtaux = N_Estudiante.BuscarRegistro(CodEstudiante_);
                             if (dtaux.Rows.Count == 0)
-                            {
+                            {                               
                                 string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
                                 Image Img = Image.FromFile(fullImagePath);
                                 byte[] Perfil = new byte[0];
@@ -248,7 +251,7 @@ namespace CapaPresentaciones
                                     Image.FromFile(fullImagePath).Save(MemoriaPerfil, ImageFormat.Bmp);
                                     Perfil = MemoriaPerfil.ToArray();
                                 }
-
+                                
                                 ObjEntidadEstudiante.Perfil = Perfil;
                                 ObjEntidadEstudiante.CodEstudiante = Row[0].ToString();
                                 ObjEntidadEstudiante.APaterno = Row[1].ToString();
