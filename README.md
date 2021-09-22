@@ -52,7 +52,7 @@ Cada usuario definido tiene una serie de funcionalidades particulares que tienen
 # INTERFACES
 ## Formularios para todos los usuarios
 * Form Inicio Sesión:
-![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/InicioSesion.png) {width="200px"}
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/InicioSesion.png) {:width="200px"}
 * Form Recuperar Contraseña:
 ![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/RecuperarContraseña.png | width=100)
 * Form Bienvenida:
