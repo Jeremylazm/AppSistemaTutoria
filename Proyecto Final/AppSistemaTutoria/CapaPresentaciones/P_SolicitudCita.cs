@@ -111,7 +111,7 @@ namespace CapaPresentaciones
                     clientDetails.Send(mailDetails);
                     MessageBox.Show("Solicitud Enviada.", "Estado Solicitud", MessageBoxButtons.OK);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Solicitud no Enviada", "Estado Solicitud", MessageBoxButtons.OK);
                 }
