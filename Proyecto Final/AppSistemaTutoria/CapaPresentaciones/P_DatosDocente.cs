@@ -120,122 +120,136 @@ namespace CapaPresentaciones
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            //if ((txtCodigo.Text.Trim() != "") &&
-            //    (txtAPaterno.Text.Trim() != "") &&
-            //    (txtAMaterno.Text.Trim() != "") &&
-            //    (txtNombre.Text.Trim() != "") &&
-            //    (txtEmail.Text.Trim() != "") &&
-            //    (txtDireccion.Text.Trim() != "") &&
-            //    (txtTelefono.Text.Trim() != ""))
-            //{
-            //    if (Program.Evento == 0)
-            //    {
-            //        try
-            //        {
-            //            byte[] Perfil = new byte[0];
-            //            using (MemoryStream MemoriaPerfil = new MemoryStream())
-            //            {
-            //                imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
-            //                Perfil = MemoriaPerfil.ToArray();
-            //            }
-            //            ObjEntidad.Perfil = Perfil;
-            //            ObjEntidad.CodDocente = txtCodigo.Text;
-            //            ObjEntidad.APaterno = txtAPaterno.Text.ToUpper();
-            //            ObjEntidad.AMaterno = txtAMaterno.Text.ToUpper();
-            //            ObjEntidad.Nombre = txtNombre.Text.ToUpper();
-            //            ObjEntidad.Email = txtEmail.Text + lblDominioEmail.Text;
-            //            ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
-            //            ObjEntidad.Telefono = txtTelefono.Text;
-            //            ObjEntidad.Categoria = cxtCategoria.SelectedItem.ToString();
-            //            ObjEntidad.Subcategoria = cxtSubcategoria.SelectedItem.ToString();
-            //            ObjEntidad.Regimen = cxtRegimen.SelectedItem.ToString();
-            //            ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
-            //            ObjEntidad.Horario = txtHorario.Text.ToUpper();
+            //Validar datos ingresados
+            bool EsValido;
+            string msg = VerificarDatosDocente(out EsValido, txtCodigo.Text, txtAPaterno.Text.ToUpper(), txtAMaterno.Text.ToUpper(), txtNombre.Text.ToUpper()
+                , txtEmail.Text + "unsaac.edu.pe", txtDireccion.Text.ToUpper(), txtTelefono.Text, cxtCategoria.SelectedItem.ToString(),
+                cxtSubcategoria.SelectedItem.ToString(), cxtRegimen.SelectedItem.ToString(), cxtEscuela.SelectedValue.ToString(), txtHorario.Text.ToUpper());
 
-            //            ObjNegocio.InsertarRegistros(ObjEntidad);
-            //            MensajeConfirmacion("Registro insertado exitosamente");
-            //            Program.Evento = 0;
+            if (EsValido) //Si los datos ingresados son validos, insertar
+            {
+                if ((txtCodigo.Text.Trim() != "") &&
+                    (txtAPaterno.Text.Trim() != "") &&
+                    (txtAMaterno.Text.Trim() != "") &&
+                    (txtNombre.Text.Trim() != "") &&
+                    (txtEmail.Text.Trim() != "") &&
+                    (txtDireccion.Text.Trim() != "") &&
+                    (txtTelefono.Text.Trim() != ""))
+                {
+                    if (Program.Evento == 0)
+                    {
+                        try
+                        {
+                            byte[] Perfil = new byte[0];
+                            using (MemoryStream MemoriaPerfil = new MemoryStream())
+                            {
+                                imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
+                                Perfil = MemoriaPerfil.ToArray();
+                            }
+                            ObjEntidad.Perfil = Perfil;
+                            ObjEntidad.CodDocente = txtCodigo.Text;
+                            ObjEntidad.APaterno = txtAPaterno.Text.ToUpper();
+                            ObjEntidad.AMaterno = txtAMaterno.Text.ToUpper();
+                            ObjEntidad.Nombre = txtNombre.Text.ToUpper();
+                            ObjEntidad.Email = txtEmail.Text + lblDominioEmail.Text;
+                            ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
+                            ObjEntidad.Telefono = txtTelefono.Text;
+                            ObjEntidad.Categoria = cxtCategoria.SelectedItem.ToString();
+                            ObjEntidad.Subcategoria = cxtSubcategoria.SelectedItem.ToString();
+                            ObjEntidad.Regimen = cxtRegimen.SelectedItem.ToString();
+                            ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
+                            ObjEntidad.Horario = txtHorario.Text.ToUpper();
 
-            //            N_InicioSesion InicioSesion = new N_InicioSesion();
-            //            string Contrasena = InicioSesion.RetornarContrasena(txtCodigo.Text);
+                            ObjNegocio.InsertarRegistros(ObjEntidad);
+                            MensajeConfirmacion("Registro insertado exitosamente");
+                            Program.Evento = 0;
 
-            //            // Enviar un correo con la contraseña para un nuevo usuario
-            //            try
-            //            {
-            //                SmtpClient clientDetails = new SmtpClient();
-            //                clientDetails.Port = 587;
-            //                clientDetails.Host = "smtp.gmail.com";
-            //                clientDetails.EnableSsl = true;
-            //                clientDetails.DeliveryMethod = SmtpDeliveryMethod.Network;
-            //                clientDetails.UseDefaultCredentials = false;
-            //                clientDetails.Credentials = new NetworkCredential("denisomarcuyottito@gmail.com", "Tutoriasunsaac5");
+                            N_InicioSesion InicioSesion = new N_InicioSesion();
+                            string Contrasena = InicioSesion.RetornarContrasena(txtCodigo.Text);
 
-            //                MailMessage mailDetails = new MailMessage();
-            //                mailDetails.From = new MailAddress("denisomarcuyottito@gmail.com");
-            //                mailDetails.To.Add(ObjEntidad.Email);
-            //                mailDetails.Subject = "Contraseña del Sistema de Tutoría UNSAAC";
-            //                mailDetails.IsBodyHtml = true;
-            //                mailDetails.Body = "Tu contraseña es " + Contrasena;
-            //                clientDetails.Send(mailDetails);
-            //            }
-            //            catch (Exception ex)
-            //            {
-            //                MessageBox.Show(ex.Message);
-            //            }
+                            // Enviar un correo con la contraseña para un nuevo usuario
+                            try
+                            {
+                                SmtpClient clientDetails = new SmtpClient();
+                                clientDetails.Port = 587;
+                                clientDetails.Host = "smtp.gmail.com";
+                                clientDetails.EnableSsl = true;
+                                clientDetails.DeliveryMethod = SmtpDeliveryMethod.Network;
+                                clientDetails.UseDefaultCredentials = false;
+                                clientDetails.Credentials = new NetworkCredential("denisomarcuyottito@gmail.com", "Tutoriasunsaac5");
 
-            //            LimpiarCajas();
-            //            Close();
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            MensajeError("Error al insertar el registro " + ex);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        try
-            //        {
-            //            DialogResult Opcion;
-            //            Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            //            if (Opcion == DialogResult.OK)
-            //            {
-            //                byte[] Perfil = new byte[0];
-            //                using (MemoryStream MemoriaPerfil = new MemoryStream())
-            //                {
-            //                    imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
-            //                    Perfil = MemoriaPerfil.ToArray();
-            //                }
-            //                ObjEntidad.Perfil = Perfil;
-            //                ObjEntidad.CodDocente = txtCodigo.Text;
-            //                ObjEntidad.APaterno = txtAPaterno.Text.ToUpper();
-            //                ObjEntidad.AMaterno = txtAMaterno.Text.ToUpper();
-            //                ObjEntidad.Nombre = txtNombre.Text.ToUpper();
-            //                ObjEntidad.Email = txtEmail.Text + lblDominioEmail.Text;
-            //                ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
-            //                ObjEntidad.Telefono = txtTelefono.Text;
-            //                ObjEntidad.Categoria = cxtCategoria.SelectedItem.ToString();
-            //                ObjEntidad.Subcategoria = cxtSubcategoria.SelectedItem.ToString();
-            //                ObjEntidad.Regimen = cxtRegimen.SelectedItem.ToString();
-            //                ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
-            //                ObjEntidad.Horario = txtHorario.Text.ToUpper();
+                                MailMessage mailDetails = new MailMessage();
+                                mailDetails.From = new MailAddress("denisomarcuyottito@gmail.com");
+                                mailDetails.To.Add(ObjEntidad.Email);
+                                mailDetails.Subject = "Contraseña del Sistema de Tutoría UNSAAC";
+                                mailDetails.IsBodyHtml = true;
+                                mailDetails.Body = "Tu contraseña es " + Contrasena;
+                                clientDetails.Send(mailDetails);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
 
-            //                ObjNegocio.EditarRegistros(ObjEntidad);
-            //                MensajeConfirmacion("Registro editado exitosamente");
-            //                Program.Evento = 0;
-            //                LimpiarCajas();
-            //                Close();
-            //            }
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            MensajeError("Error al editar el registro " + ex);
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    MensajeError("Debe llenar los campos");
-            //}
+                            LimpiarCajas();
+                            Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MensajeError("Error al insertar el registro " + ex);
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            DialogResult Opcion;
+                            Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                            if (Opcion == DialogResult.OK)
+                            {
+                                byte[] Perfil = new byte[0];
+                                using (MemoryStream MemoriaPerfil = new MemoryStream())
+                                {
+                                    imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
+                                    Perfil = MemoriaPerfil.ToArray();
+                                }
+                                ObjEntidad.Perfil = Perfil;
+                                ObjEntidad.CodDocente = txtCodigo.Text;
+                                ObjEntidad.APaterno = txtAPaterno.Text.ToUpper();
+                                ObjEntidad.AMaterno = txtAMaterno.Text.ToUpper();
+                                ObjEntidad.Nombre = txtNombre.Text.ToUpper();
+                                ObjEntidad.Email = txtEmail.Text + lblDominioEmail.Text;
+                                ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
+                                ObjEntidad.Telefono = txtTelefono.Text;
+                                ObjEntidad.Categoria = cxtCategoria.SelectedItem.ToString();
+                                ObjEntidad.Subcategoria = cxtSubcategoria.SelectedItem.ToString();
+                                ObjEntidad.Regimen = cxtRegimen.SelectedItem.ToString();
+                                ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
+                                ObjEntidad.Horario = txtHorario.Text.ToUpper();
+
+                                ObjNegocio.EditarRegistros(ObjEntidad);
+                                MensajeConfirmacion("Registro editado exitosamente");
+                                Program.Evento = 0;
+                                LimpiarCajas();
+                                Close();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MensajeError("Error al editar el registro " + ex);
+                        }
+                    }
+                }
+                else
+                {
+                    MensajeError("Debe llenar los campos");
+                }
+                MensajeError(msg);
+            }
+            else
+            {
+                MessageBox.Show(msg);
+            }
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
