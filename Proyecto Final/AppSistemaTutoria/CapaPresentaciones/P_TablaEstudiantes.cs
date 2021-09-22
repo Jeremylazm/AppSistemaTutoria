@@ -1,10 +1,12 @@
-using CapaEntidades;
-using CapaNegocios;
 using System;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.IO;
 using System.Windows.Forms;
+using CapaEntidades;
+using CapaNegocios;
+using System.IO;
+using System.Drawing.Drawing2D;
+using System.Net.Mail;
+using System.Net;
 
 namespace CapaPresentaciones
 {
@@ -15,7 +17,7 @@ namespace CapaPresentaciones
 
         public P_TablaEstudiantes()
         {
-            InitializeComponent();
+            InitializeComponent();        
         }
 
         private void MensajeConfirmacion(string Mensaje)
@@ -120,7 +122,7 @@ namespace CapaPresentaciones
         private void P_TablaEstudiantes_Load(object sender, EventArgs e)
         {
             MostrarRegistros();
-
+            
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -163,7 +165,7 @@ namespace CapaPresentaciones
                 EditarRegistro.cxtEscuela.SelectedValue = dgvTabla.CurrentRow.Cells[10].Value.ToString();
                 EditarRegistro.txtPReferencia.Text = dgvTabla.CurrentRow.Cells[12].Value.ToString();
                 EditarRegistro.txtTReferencia.Text = dgvTabla.CurrentRow.Cells[13].Value.ToString();
-                EditarRegistro.txtIPersonal.Text = dgvTabla.CurrentRow.Cells[14].Value.ToString();
+                EditarRegistro.txtIPersonal.Text = dgvTabla.CurrentRow.Cells[14].Value.ToString();                
 
                 EditarRegistro.ShowDialog();
             }

@@ -1,5 +1,3 @@
-using CapaEntidades;
-using CapaNegocios;
 using System;
 using System.Data;
 using System.Drawing;
@@ -7,6 +5,8 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
+using CapaEntidades;
+using CapaNegocios;
 
 namespace CapaPresentaciones
 {

@@ -1,6 +1,10 @@
 ﻿using System;
-using System.Security.Cryptography; //Libreria necesaria
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Security.Cryptography; //Libreria necesaria
 
 namespace CapaEntidades
 {

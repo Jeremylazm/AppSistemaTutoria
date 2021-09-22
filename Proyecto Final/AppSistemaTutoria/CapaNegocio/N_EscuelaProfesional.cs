@@ -1,5 +1,6 @@
-﻿using CapaDatos;
-using System.Data;
+﻿using System.Data;
+using CapaDatos;
+using CapaEntidades;
 
 namespace CapaNegocios
 {

@@ -1,14 +1,18 @@
-using CapaEntidades;
-using CapaNegocios;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using CapaEntidades;
+using CapaNegocios;
+
 using System.Net;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
 
 namespace CapaPresentaciones
 {
@@ -28,7 +32,7 @@ namespace CapaPresentaciones
             ValidarPerfil();
         }
 
-        public P_DatosEstudiante(bool pTest)
+        public P_DatosEstudiante(bool pTest) 
         {
             Test = pTest;
         }
@@ -86,8 +90,8 @@ namespace CapaPresentaciones
         }
 
 
-        public string AgregarOModificar(Image Perfil, string Codigo, string APaterno, string AMaterno, string Nombre,
-                                 string Email, string Direccion, string Telefono, string CodEscuelaP,
+        public string AgregarOModificar(Image Perfil, string Codigo, string APaterno, string AMaterno, string Nombre, 
+                                 string Email, string Direccion, string Telefono, string CodEscuelaP, 
                                  string PersonaReferencia, string TelefonoReferencia, string InformacionPersonal)
         {
             string Mensaje = "";
@@ -160,7 +164,7 @@ namespace CapaPresentaciones
                                         N_Estudiante ObjNegocio = new N_Estudiante();
                                         ObjNegocio.InsertarRegistros(ObjEntidad);
                                     }
-
+                                    
                                     Mensaje = "Registro insertado exitosamente";
                                     if (Test == false)
                                         MensajeConfirmacion(Mensaje);
@@ -169,7 +173,7 @@ namespace CapaPresentaciones
                                     if (Test == false)
                                     {
                                         N_InicioSesion InicioSesion = new N_InicioSesion();
-                                        string Contrasena = InicioSesion.RetornarContraseña(Codigo);
+                                        string Contrasena = InicioSesion.RetornarContrasena(Codigo);
 
                                         // Enviar un correo con la contraseña para un nuevo usuario
                                         try
@@ -275,7 +279,7 @@ namespace CapaPresentaciones
                                             N_Estudiante ObjNegocio = new N_Estudiante();
                                             ObjNegocio.EditarRegistros(ObjEntidad);
                                         }
-
+                                        
                                         Mensaje = "Registro editado exitosamente";
                                         if (Test == false)
                                             MensajeConfirmacion(Mensaje);
@@ -337,7 +341,7 @@ namespace CapaPresentaciones
                     Mensaje = "Debe llenar el teléfono";
                     if (Test == false)
                         MensajeError(Mensaje);
-                }
+                }                
             }
 
             return Mensaje;

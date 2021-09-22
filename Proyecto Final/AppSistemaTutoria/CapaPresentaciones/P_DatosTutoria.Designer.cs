@@ -84,8 +84,8 @@
             this.txtCodigoDocente = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.bunifuSeparator6 = new Bunifu.Framework.UI.BunifuSeparator();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtSemestre = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
             this.SuspendLayout();
@@ -787,10 +787,9 @@
             // dateTimeFechaFichaT
             // 
             this.dateTimeFechaFichaT.Enabled = false;
-            this.dateTimeFechaFichaT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimeFechaFichaT.Location = new System.Drawing.Point(535, 76);
             this.dateTimeFechaFichaT.Name = "dateTimeFechaFichaT";
-            this.dateTimeFechaFichaT.Size = new System.Drawing.Size(286, 25);
+            this.dateTimeFechaFichaT.Size = new System.Drawing.Size(272, 22);
             this.dateTimeFechaFichaT.TabIndex = 145;
             // 
             // bunifuSeparator5
@@ -844,18 +843,6 @@
             this.bunifuSeparator6.Transparency = 255;
             this.bunifuSeparator6.Vertical = false;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label6.Location = new System.Drawing.Point(532, 126);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(96, 23);
-            this.label6.TabIndex = 149;
-            this.label6.Text = "Semestre:";
-            // 
             // txtSemestre
             // 
             this.txtSemestre.BackColor = System.Drawing.Color.White;
@@ -867,6 +854,18 @@
             this.txtSemestre.Name = "txtSemestre";
             this.txtSemestre.Size = new System.Drawing.Size(272, 23);
             this.txtSemestre.TabIndex = 150;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.label6.Location = new System.Drawing.Point(532, 126);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(96, 23);
+            this.label6.TabIndex = 149;
+            this.label6.Text = "Semestre:";
             // 
             // P_DatosTutoria
             // 
@@ -997,7 +996,7 @@
         public System.Windows.Forms.TextBox txtCodigoDocente;
         private System.Windows.Forms.Label label5;
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator6;
-        private System.Windows.Forms.Label label6;
         public System.Windows.Forms.TextBox txtSemestre;
+        private System.Windows.Forms.Label label6;
     }
 }

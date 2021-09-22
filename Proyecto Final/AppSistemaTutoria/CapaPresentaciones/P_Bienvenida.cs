@@ -1,6 +1,6 @@
-﻿using CapaEntidades;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using CapaEntidades;
 
 namespace CapaPresentaciones
 {
