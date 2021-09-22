@@ -93,13 +93,15 @@ namespace CapaPresentaciones
                 }
             }
             // Asignamos a cada celda los valores correspondientes
-
-            txtDocente.Text = Docente;
-            txtEmail.Text = Email;
-            txtDireccion.Text = Direccion;
-            txtTelefono.Text = Telefono;
-            txtEscProfesional.Text = EscProfesional;
-            txtHorario.Text = Horario;
+            if (Test == false)
+            {
+                txtDocente.Text = Docente;
+                txtEmail.Text = Email;
+                txtDireccion.Text = Direccion;
+                txtTelefono.Text = Telefono;
+                txtEscProfesional.Text = EscProfesional;
+                txtHorario.Text = Horario;
+            }
 
             // Retornamos el Mensaje
             return Mensaje;
