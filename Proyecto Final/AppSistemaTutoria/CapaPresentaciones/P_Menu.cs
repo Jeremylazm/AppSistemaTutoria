@@ -302,16 +302,9 @@ namespace CapaPresentaciones
 
         private void btnMiTutor_Click(object sender, EventArgs e)
         {
-            DataTable Datos = N_Estudiante.BuscarTutor(E_InicioSesion.Usuario);
-            if (Datos.Rows.Count == 0)
-            {
-                MessageBox.Show("Ud. Aun no tiene un tutor asignado");
-            }
-            else
-            {
-                P_InformacionTutor ITutor = new P_InformacionTutor(Datos);
-                ITutor.Show();
-            }
+           
+            P_InformacionTutor ITutor = new P_InformacionTutor(E_InicioSesion.Usuario);
+            ITutor.Show();
 
         }
 
