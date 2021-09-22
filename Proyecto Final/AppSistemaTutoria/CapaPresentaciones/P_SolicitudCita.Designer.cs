@@ -780,6 +780,7 @@ namespace CapaPresentaciones
             this.Controls.Add(this.BordeadoReferencia);
             this.Controls.Add(this.BordeadoBienvenida);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_SolicitudCita";
             this.Text = "P_SolicitudCita";
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();

@@ -919,6 +919,7 @@
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.BordeadoDatosTutoria);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_DatosTutoria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Datos del Estudiante";
