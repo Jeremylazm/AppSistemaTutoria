@@ -1727,8 +1727,7 @@ BEGIN
 					  @Categoria + ' ; ' + @Subcategoria + ' ; ' + @Regimen + ' ; ' + 
 					  @CodEscuelaP + ' ; ' + ISNULL(@Horario, ''));
 		
-		-- 
-		la tupla insertada de la tabla #INSERTED
+		-- la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
 
 		-- Actualizar el numero de tuplas

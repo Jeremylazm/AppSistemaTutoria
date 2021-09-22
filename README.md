@@ -47,7 +47,7 @@ Inicialmente el sistema contiene una pantalla de inicio que es para el Inicio de
 Cada usuario definido tiene una serie de funcionalidades particulares que tienen como finalidad, todos unidos, lograr el propósito del sistema y lograr el objetivo esperado.
 
 # MODELO RELACIONAL DE LA BASE DE DATOS.
-![Base de datos](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/BaseDeDatos.png)
+![Base de datos](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/BaseDatos.jpeg)
 
 # IMPLEMENTACIÓN DEL SISTEMA.
 ## ACTORES:
