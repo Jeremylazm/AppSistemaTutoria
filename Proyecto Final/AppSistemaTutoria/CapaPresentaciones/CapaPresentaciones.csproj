@@ -7,7 +7,7 @@
     <ProjectGuid>{CA84E170-CAA6-4553-87A0-38A8637D83B1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>CapaPresentaciones</RootNamespace>
-    <AssemblyName>CapaPresentaciones</AssemblyName>
+    <AssemblyName>Sistema Tutoría - UNSAAC</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,6 +32,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Logo UNSAAC.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu.Licensing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=f89b4760ba7dcb6b, processorArchitecture=MSIL">
@@ -407,6 +410,7 @@
     <Content Include="Iconos\Subir Perfil.png" />
     <Content Include="Iconos\Tutorias.png" />
     <Content Include="Iconos\Usuario.png" />
+    <Content Include="Logo UNSAAC.ico" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
