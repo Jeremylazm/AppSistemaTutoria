@@ -450,6 +450,7 @@
     <Content Include="Iconos\Tutorias.png" />
     <Content Include="Iconos\Usuario.png" />
     <Content Include="Logo UNSAAC.ico" />
+    <None Include="Resources\Image1.bmp" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
