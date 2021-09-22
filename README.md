@@ -52,13 +52,13 @@ Cada usuario definido tiene una serie de funcionalidades particulares que tienen
 # INTERFACES
 ## Formularios para todos los usuarios
 * Form Inicio Sesión:
-![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/InicioSesion.png| width=100)
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/InicioSesion.png | width=100)
 * Form Recuperar Contraseña:
-![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/RecuperarContraseña.png| width=100)
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/RecuperarContraseña.png | width=100)
 * Form Bienvenida:
-![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/Bienvenida.png| width=100)
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/Bienvenida.png | width=100)
 * Form Cambiar Contraseña:
-![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/CambiarContraseña.png| width=100)
-![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/CambiarContraseña2.png| width=100)
-![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/CambiarContraseña3.png| width=100)
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/CambiarContraseña.png | width=100)
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/CambiarContraseña2.png | width=100)
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/CambiarContraseña3.png | width=100)
 
