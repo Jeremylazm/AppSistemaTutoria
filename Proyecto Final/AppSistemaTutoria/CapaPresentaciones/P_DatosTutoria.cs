@@ -235,8 +235,7 @@ namespace CapaPresentaciones
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            //AgregarOModificar(txtSemestre.Text, txtCodigoDocente.Text, txtCodigoEstudiante.Text, cxtDimension.Text, txtReferencia.Text,
-            //txtDescripcion.Text, txtObservaciones.Text, dateTimeFechaFichaT.Value.Date);
+            //Agregar ficha tutoria
             if ((txtCodigoDocente.Text.Trim() != "") &&
                 (txtCodigoEstudiante.Text.Trim() != "") &&
             (txtSemestre.Text.Trim() != "") &&
