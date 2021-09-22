@@ -69,6 +69,7 @@
             this.btnSubirPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnRestablecerPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
             this.lblIPersonal = new System.Windows.Forms.Label();
+            this.BordeadoDatosEstudiante = new Bunifu.UI.WinForms.BunifuGroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
@@ -634,6 +635,25 @@
             this.lblIPersonal.TabIndex = 122;
             this.lblIPersonal.Text = "Inf. Personal: ";
             // 
+            // BordeadoDatosEstudiante
+            // 
+            this.BordeadoDatosEstudiante.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BordeadoDatosEstudiante.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoDatosEstudiante.BorderRadius = 8;
+            this.BordeadoDatosEstudiante.BorderThickness = 1;
+            this.BordeadoDatosEstudiante.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BordeadoDatosEstudiante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoDatosEstudiante.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BordeadoDatosEstudiante.LabelIndent = 10;
+            this.BordeadoDatosEstudiante.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
+            this.BordeadoDatosEstudiante.Location = new System.Drawing.Point(-1, 0);
+            this.BordeadoDatosEstudiante.Name = "BordeadoDatosEstudiante";
+            this.BordeadoDatosEstudiante.Size = new System.Drawing.Size(405, 677);
+            this.BordeadoDatosEstudiante.TabIndex = 193;
+            this.BordeadoDatosEstudiante.TabStop = false;
+            // 
             // P_DatosEstudiante
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -678,6 +698,7 @@
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.BordeadoDatosEstudiante);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_DatosEstudiante";
@@ -732,5 +753,6 @@
         public Otros_Controles.JALMCircularPictureBox imgPerfil;
         private Bunifu.Framework.UI.BunifuFlatButton btnRestablecerPerfil;
         private System.Windows.Forms.Label lblIPersonal;
+        private Bunifu.UI.WinForms.BunifuGroupBox BordeadoDatosEstudiante;
     }
 }

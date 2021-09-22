@@ -46,6 +46,7 @@
             this.Movimiento = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.lblRecuperarContraseña = new System.Windows.Forms.LinkLabel();
+            this.BordeadoInicioSesion = new Bunifu.UI.WinForms.BunifuGroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgContraseña)).BeginInit();
@@ -277,6 +278,25 @@
             this.lblRecuperarContraseña.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lblRecuperarContraseña.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblRecuperarContraseña_LinkClicked);
             // 
+            // BordeadoInicioSesion
+            // 
+            this.BordeadoInicioSesion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BordeadoInicioSesion.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoInicioSesion.BorderRadius = 8;
+            this.BordeadoInicioSesion.BorderThickness = 1;
+            this.BordeadoInicioSesion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BordeadoInicioSesion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoInicioSesion.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BordeadoInicioSesion.LabelIndent = 10;
+            this.BordeadoInicioSesion.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
+            this.BordeadoInicioSesion.Location = new System.Drawing.Point(-1, 0);
+            this.BordeadoInicioSesion.Name = "BordeadoInicioSesion";
+            this.BordeadoInicioSesion.Size = new System.Drawing.Size(416, 257);
+            this.BordeadoInicioSesion.TabIndex = 192;
+            this.BordeadoInicioSesion.TabStop = false;
+            // 
             // P_InicioSesion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -297,6 +317,7 @@
             this.Controls.Add(this.lblContraseña);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.BordeadoInicioSesion);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_InicioSesion";
@@ -330,5 +351,6 @@
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
         private Bunifu.Framework.UI.BunifuImageButton btnMinimizar;
         private System.Windows.Forms.LinkLabel lblRecuperarContraseña;
+        private Bunifu.UI.WinForms.BunifuGroupBox BordeadoInicioSesion;
     }
 }

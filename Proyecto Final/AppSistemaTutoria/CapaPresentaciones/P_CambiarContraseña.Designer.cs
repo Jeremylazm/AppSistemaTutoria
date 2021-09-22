@@ -63,6 +63,7 @@ namespace CapaPresentaciones
             this.Separador3 = new Bunifu.Framework.UI.BunifuSeparator();
             this.txtContraseñaAnterior = new System.Windows.Forms.TextBox();
             this.lblContraseñaAnterior = new System.Windows.Forms.Label();
+            this.BordeadoCambiar = new Bunifu.UI.WinForms.BunifuGroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.panelCorreo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgContraseña)).BeginInit();
@@ -547,6 +548,25 @@ namespace CapaPresentaciones
             this.lblContraseñaAnterior.TabIndex = 87;
             this.lblContraseñaAnterior.Text = "Contraseña Anterior:";
             // 
+            // BordeadoCambiar
+            // 
+            this.BordeadoCambiar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BordeadoCambiar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoCambiar.BorderRadius = 8;
+            this.BordeadoCambiar.BorderThickness = 1;
+            this.BordeadoCambiar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BordeadoCambiar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoCambiar.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BordeadoCambiar.LabelIndent = 10;
+            this.BordeadoCambiar.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
+            this.BordeadoCambiar.Location = new System.Drawing.Point(-1, 0);
+            this.BordeadoCambiar.Name = "BordeadoCambiar";
+            this.BordeadoCambiar.Size = new System.Drawing.Size(416, 257);
+            this.BordeadoCambiar.TabIndex = 193;
+            this.BordeadoCambiar.TabStop = false;
+            // 
             // P_CambiarContraseña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -559,6 +579,7 @@ namespace CapaPresentaciones
             this.Controls.Add(this.pbLogo);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.BordeadoCambiar);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -613,5 +634,6 @@ namespace CapaPresentaciones
         private Bunifu.Framework.UI.BunifuSeparator Separador3;
         public System.Windows.Forms.TextBox txtContraseñaAnterior;
         private System.Windows.Forms.Label lblContraseñaAnterior;
+        private Bunifu.UI.WinForms.BunifuGroupBox BordeadoCambiar;
     }
 }
