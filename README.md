@@ -66,3 +66,20 @@ Cada usuario definido tiene una serie de funcionalidades particulares que tienen
 ![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/CambiarContraseña2.png)
 ![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/CambiarContraseña3.png)
 
+## Formularios en común para los usuarios Director de Escuela y Docente
+* Form Editar Perfil Docente:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/EditarPerfilDocente.png)
+
+* Form Tabla Tutorías:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/TablaTutorias.png)
+
+* Form Ficha de Tutoría:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/FichaTutoria.png)
+
+* Form Tabla Tutorados:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/TablaTutorados.png)
+
