@@ -47,7 +47,7 @@ Inicialmente el sistema contiene una pantalla de inicio que es para el Inicio de
 Cada usuario definido tiene una serie de funcionalidades particulares que tienen como finalidad, todos unidos, lograr el propósito del sistema y lograr el objetivo esperado.
 
 # MODELO RELACIONAL DE LA BASE DE DATOS.
-![Base de datos](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/BaseDatos.png)
+![Base de datos](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/BaseDeDatos.png)
 
 # INTERFACES
 ## Formularios para todos los usuarios
@@ -99,4 +99,17 @@ Cada usuario definido tiene una serie de funcionalidades particulares que tienen
 * Form Datos Estudiante (Agregar, Modificar):
 
 ![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormDirector/DatosEstudiante.png)
+
+## Formularios exclusivos para usuario Estudiante:
+* Form Editar Perfil Estudiante:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormEstudiante/EditarPerfil.png)
+* Form Información Tutor:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormEstudiante/InformacionTutor.png)
+* Form Solicitar Cita:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormEstudiante/SolicitarCita.png)
+
+
 
