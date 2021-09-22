@@ -193,6 +193,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDireccion.BackColor = System.Drawing.Color.White;
             this.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDireccion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDireccion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtDireccion.Location = new System.Drawing.Point(122, 182);
