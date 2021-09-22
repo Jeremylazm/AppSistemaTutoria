@@ -33,8 +33,7 @@ namespace CapaPresentaciones
 
             if (E_InicioSesion.Perfil == null)
             {
-                string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
-                imgPerfil.Image = Image.FromFile(fullImagePath);
+                imgPerfil.Image = Properties.Resources.Perfil as Image;
             }
             else
             {
@@ -114,7 +113,7 @@ namespace CapaPresentaciones
 
         private void btnRestablecerPerfil_Click(object sender, EventArgs e)
         {
-            imgPerfil.Image = Image.FromFile("C:/Users/Jeremylazm/Desktop/Documentos/AppSistemaTutoria/CapaPresentaciones/Iconos/Perfil Estudiante.png");
+            imgPerfil.Image = Properties.Resources.Perfil as Image;
         }
 
         private void P_EditarPerfilDocente_Load(object sender, EventArgs e)

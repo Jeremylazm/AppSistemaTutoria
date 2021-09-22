@@ -47,13 +47,13 @@ namespace CapaPresentaciones
             if (E_InicioSesion.Perfil == null)
             {
                 if ((E_InicioSesion.Acceso == "Director de Escuela") || (E_InicioSesion.Acceso == "Administrador"))
-                    imgPerfil.Image = (Image)Properties.Resources.Perfil;
+                    imgPerfil.Image = Properties.Resources.Perfil as Image;
 
                 if (E_InicioSesion.Acceso == "Docente")
-                    imgPerfil.Image = (Image)Properties.Resources.Perfil_Docente;
+                    imgPerfil.Image = Properties.Resources.Perfil_Docente as Image;
 
                 if (E_InicioSesion.Acceso == "Estudiante")
-                    imgPerfil.Image = (Image)Properties.Resources.Perfil_Estudiante;
+                    imgPerfil.Image = Properties.Resources.Perfil_Estudiante as Image;
             }
             else
             {

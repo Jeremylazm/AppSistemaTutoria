@@ -35,8 +35,7 @@ namespace CapaPresentaciones
 
             if (E_InicioSesion.Perfil == null)
             {
-                string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
-                imgPerfil.Image = Image.FromFile(fullImagePath);
+                imgPerfil.Image = Properties.Resources.Perfil_Estudiante as Image;
             }
             else
             {
@@ -137,11 +136,7 @@ namespace CapaPresentaciones
 
         private void btnRestablecerPerfil_Click(object sender, EventArgs e)
         {
-            //Obtener directorio del proyecto
-            string Ruta = Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath));
-            Ruta = Ruta.Replace('\\', '/'); //Intercambiar \ por /
-            //Redirigir al directorio donde está la imagen.
-            imgPerfil.Image = Image.FromFile($"{Ruta}/Iconos/Perfil Estudiante.png");
+            imgPerfil.Image = Properties.Resources.Perfil_Estudiante as Image;
         }
 
         private void P_EditarPerfilEstudiante_Load(object sender, EventArgs e)

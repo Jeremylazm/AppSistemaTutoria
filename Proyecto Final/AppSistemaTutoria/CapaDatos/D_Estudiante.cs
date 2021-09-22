@@ -31,10 +31,10 @@ namespace CapaDatos
             {
                 if (Fila["Perfil2"].GetType() == Type.GetType("System.DBNull"))
                 {
-                    string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
+                    // Mostrar una imagen por defecto para el estudiante
                     using (MemoryStream MemoriaPerfil = new MemoryStream())
                     {
-                        Image.FromFile(fullImagePath).Save(MemoriaPerfil, ImageFormat.Bmp);
+                        (Resources.Perfil_Estudiante as Image).Save(MemoriaPerfil, ImageFormat.Bmp);
                         Fila["Perfil2"] = MemoriaPerfil.ToArray();
                     }
                 }
@@ -78,10 +78,10 @@ namespace CapaDatos
             {
                 if (Fila["Perfil2"].GetType() == Type.GetType("System.DBNull"))
                 {
-                    string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
+                    // Mostrar una imagen por defecto para el estudiante
                     using (MemoryStream MemoriaPerfil = new MemoryStream())
                     {
-                        Image.FromFile(fullImagePath).Save(MemoriaPerfil, ImageFormat.Bmp);
+                        (Resources.Perfil_Estudiante as Image).Save(MemoriaPerfil, ImageFormat.Bmp);
                         Fila["Perfil2"] = MemoriaPerfil.ToArray();
                     }
                 }
@@ -112,10 +112,10 @@ namespace CapaDatos
             {
                 if (Fila["Perfil2"].GetType() == Type.GetType("System.DBNull"))
                 {
-                    string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
+                    // Mostrar una imagen por defecto para el estudiante
                     using (MemoryStream MemoriaPerfil = new MemoryStream())
                     {
-                        Image.FromFile(fullImagePath).Save(MemoriaPerfil, ImageFormat.Bmp);
+                        (Resources.Perfil_Estudiante as Image).Save(MemoriaPerfil, ImageFormat.Bmp);
                         Fila["Perfil2"] = MemoriaPerfil.ToArray();
                     }
                 }

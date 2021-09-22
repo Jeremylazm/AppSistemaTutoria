@@ -47,10 +47,9 @@ namespace CapaDatos
                 if (Fila["Perfil2"].GetType() == Type.GetType("System.DBNull"))
                 {
                     // Mostrar una imgen por defecto para el docente
-                    string RutaImagen = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
                     using (MemoryStream MemoriaPerfil = new MemoryStream())
                     {
-                        Image.FromFile(RutaImagen).Save(MemoriaPerfil, ImageFormat.Bmp);
+                        (Resources.Perfil_Docente as Image).Save(MemoriaPerfil, ImageFormat.Bmp);
                         Fila["Perfil2"] = MemoriaPerfil.ToArray();
                     }
                 }
@@ -130,11 +129,10 @@ namespace CapaDatos
                 // Verificar si el perfil del docente es nulo
                 if (Fila["Perfil2"].GetType() == Type.GetType("System.DBNull"))
                 {
-                    // Mostrar una imgen por defecto para el docente
-                    string RutaImagen = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
+                    // Mostrar una imgen por defecto para el estudiante
                     using (MemoryStream MemoriaPerfil = new MemoryStream())
                     {
-                        Image.FromFile(RutaImagen).Save(MemoriaPerfil, ImageFormat.Bmp);
+                        (Resources.Perfil_Estudiante as Image).Save(MemoriaPerfil, ImageFormat.Bmp);
                         Fila["Perfil2"] = MemoriaPerfil.ToArray();
                     }
                 }
@@ -191,10 +189,9 @@ namespace CapaDatos
                 if (Fila["Perfil2"].GetType() == Type.GetType("System.DBNull"))
                 {
                     // Mostrar una imgen por defecto para el docente
-                    string RutaImagen = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
                     using (MemoryStream MemoriaPerfil = new MemoryStream())
                     {
-                        Image.FromFile(RutaImagen).Save(MemoriaPerfil, ImageFormat.Bmp);
+                        (Resources.Perfil_Docente as Image).Save(MemoriaPerfil, ImageFormat.Bmp);
                         Fila["Perfil2"] = MemoriaPerfil.ToArray();
                     }
                 }
@@ -240,10 +237,9 @@ namespace CapaDatos
                 if (Fila["Perfil2"].GetType() == Type.GetType("System.DBNull"))
                 {
                     // Mostrar una imgen por defecto para el docente
-                    string RutaImagen = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
                     using (MemoryStream MemoriaPerfil = new MemoryStream())
                     {
-                        Image.FromFile(RutaImagen).Save(MemoriaPerfil, ImageFormat.Bmp);
+                        (Resources.Perfil_Docente as Image).Save(MemoriaPerfil, ImageFormat.Bmp);
                         Fila["Perfil2"] = MemoriaPerfil.ToArray();
                     }
                 }
@@ -315,11 +311,10 @@ namespace CapaDatos
                 // Verificar si el perfil del docente es nulo
                 if (Fila["Perfil2"].GetType() == Type.GetType("System.DBNull"))
                 {
-                    // Mostrar una imgen por defecto para el docente
-                    string RutaImagen = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
+                    // Mostrar una imgen por defecto para el estudiante
                     using (MemoryStream MemoriaPerfil = new MemoryStream())
                     {
-                        Image.FromFile(RutaImagen).Save(MemoriaPerfil, ImageFormat.Bmp);
+                        (Resources.Perfil_Estudiante as Image).Save(MemoriaPerfil, ImageFormat.Bmp);
                         Fila["Perfil2"] = MemoriaPerfil.ToArray();
                     }
                 }

@@ -42,8 +42,7 @@ namespace CapaPresentaciones
             if (E_InicioSesion.Perfil == null)
             {
                 // Asignar una imagen por defecto para docente
-                string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
-                imgPerfil.Image = Image.FromFile(fullImagePath);
+                imgPerfil.Image = Properties.Resources.Perfil_Docente as Image;
             }
             else
             {
@@ -149,7 +148,7 @@ namespace CapaPresentaciones
         private void btnRestablecerPerfil_Click(object sender, EventArgs e)
         {
             // Cargar imagen por defecto en el formulario
-            imgPerfil.Image = Image.FromFile("C:/Users/Jeremylazm/Desktop/Documentos/AppSistemaTutoria/CapaPresentaciones/Iconos/Perfil Estudiante.png");
+            imgPerfil.Image = Properties.Resources.Perfil_Docente as Image;
         }
 
         // Evento al cargar el formulario para cargar los datos del docente

@@ -1,6 +1,7 @@
 using CapaEntidades;
 using CapaNegocios;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -58,8 +59,7 @@ namespace CapaPresentaciones
 
         private void ValidarPerfil()
         {
-            string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
-            if (imgPerfil.Image == Image.FromFile(fullImagePath))
+            if (imgPerfil.Image == (Properties.Resources.Perfil_Estudiante as Image))
             {
                 btnRestablecerPerfil.Visible = false;
             }
@@ -157,8 +157,17 @@ namespace CapaPresentaciones
                                     ObjEntidad.InformacionPersonal = E_Criptografia.EncriptarRSA(InformacionPersonal, Key);
                                     if (Test == false)
                                     {
-                                        N_Estudiante ObjNegocio = new N_Estudiante();
-                                        ObjNegocio.InsertarRegistros(ObjEntidad);
+                                        DataTable Resultado = N_Docente.BuscarRegistro(txtCodigo.Text);
+
+                                        if (Resultado.Rows.Count == 0)
+                                        {
+                                            N_Estudiante ObjNegocio = new N_Estudiante();
+                                            ObjNegocio.InsertarRegistros(ObjEntidad);
+                                        }
+                                        else
+                                        {
+                                            MensajeError("Este registro de estudiante ya existe");
+                                        }
                                     }
 
                                     Mensaje = "Registro insertado exitosamente";
@@ -272,8 +281,17 @@ namespace CapaPresentaciones
 
                                         if (Test == false)
                                         {
-                                            N_Estudiante ObjNegocio = new N_Estudiante();
-                                            ObjNegocio.EditarRegistros(ObjEntidad);
+                                            DataTable Resultado = N_Docente.BuscarRegistro(txtCodigo.Text);
+
+                                            if (Resultado.Rows.Count == 0)
+                                            {
+                                                N_Estudiante ObjNegocio = new N_Estudiante();
+                                                ObjNegocio.EditarRegistros(ObjEntidad);
+                                            }
+                                            else
+                                            {
+                                                MensajeError("Este registro de estudiante no existe");
+                                            }
                                         }
 
                                         Mensaje = "Registro editado exitosamente";
@@ -350,119 +368,6 @@ namespace CapaPresentaciones
                               txtNombre.Text.ToUpper(), txtCodigo.Text + "@unsaac.edu.pe", txtDireccion.Text.ToUpper(),
                               txtTelefono.Text, cxtEscuela.SelectedValue.ToString(), txtPReferencia.Text.ToUpper(),
                               txtTReferencia.Text, txtIPersonal.Text);
-            //if ((txtCodigo.Text.Trim() != "") &&
-            //    (txtAPaterno.Text.Trim() != "") &&
-            //    (txtAMaterno.Text.Trim() != "") &&
-            //    (txtNombre.Text.Trim() != "") &&
-            //    (txtDireccion.Text.Trim() != "") &&
-            //    (txtTelefono.Text.Trim() != ""))
-            //{
-            //    if (Program.Evento == 0)
-            //    {
-            //        try
-            //        {
-            //            byte[] Perfil = new byte[0];
-            //            using (MemoryStream MemoriaPerfil = new MemoryStream())
-            //            {
-            //                imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
-            //                Perfil = MemoriaPerfil.ToArray();
-            //            }
-            //            ObjEntidad.Perfil = Perfil;
-            //            ObjEntidad.CodEstudiante = txtCodigo.Text;
-            //            ObjEntidad.APaterno = txtAPaterno.Text.ToUpper();
-            //            ObjEntidad.AMaterno = txtAMaterno.Text.ToUpper();
-            //            ObjEntidad.Nombre = txtNombre.Text.ToUpper();
-            //            ObjEntidad.Email = txtCodigo.Text + "@unsaac.edu.pe";
-            //            ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
-            //            ObjEntidad.Telefono = txtTelefono.Text;
-            //            ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
-            //            ObjEntidad.PersonaReferencia = txtPReferencia.Text.ToUpper();
-            //            ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
-            //            ObjEntidad.InformacionPersonal = EncriptarIPersonal(txtIPersonal.Text,false);
-
-            //            ObjNegocio.InsertarRegistros(ObjEntidad);
-            //            MensajeConfirmacion("Registro insertado exitosamente");
-            //            Program.Evento = 0;
-
-            //            N_InicioSesion InicioSesion = new N_InicioSesion();
-            //            string Contrasena = InicioSesion.RetornarContrasena(txtCodigo.Text);
-
-            //            // Enviar un correo con la contraseña para un nuevo usuario
-            //            try
-            //            {
-            //                SmtpClient clientDetails = new SmtpClient();
-            //                clientDetails.Port = 587;
-            //                clientDetails.Host = "smtp.gmail.com";
-            //                clientDetails.EnableSsl = true;
-            //                clientDetails.DeliveryMethod = SmtpDeliveryMethod.Network;
-            //                clientDetails.UseDefaultCredentials = false;
-            //                clientDetails.Credentials = new NetworkCredential("denisomarcuyottito@gmail.com", "Tutoriasunsaac5");
-
-            //                MailMessage mailDetails = new MailMessage();
-            //                mailDetails.From = new MailAddress("denisomarcuyottito@gmail.com");
-            //                mailDetails.To.Add(ObjEntidad.Email);
-            //                mailDetails.Subject = "Contraseña del Sistema de Tutoría UNSAAC";
-            //                mailDetails.IsBodyHtml = true;
-            //                mailDetails.Body = "Tu contraseña es " + Contrasena;
-            //                clientDetails.Send(mailDetails);
-            //            }
-            //            catch (Exception ex)
-            //            {
-            //                MessageBox.Show(ex.Message);
-            //            }
-
-            //            LimpiarCajas();
-            //            Close();
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            MensajeError("Error al insertar el registro " + ex);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        try
-            //        {
-            //            DialogResult Opcion;
-            //            Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            //            if (Opcion == DialogResult.OK)
-            //            {
-            //                byte[] Perfil = new byte[0];
-            //                using (MemoryStream MemoriaPerfil = new MemoryStream())
-            //                {
-            //                    imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
-            //                    Perfil = MemoriaPerfil.ToArray();
-            //                }
-            //                ObjEntidad.Perfil = Perfil;
-            //                ObjEntidad.CodEstudiante = txtCodigo.Text;
-            //                ObjEntidad.APaterno = txtAPaterno.Text.ToUpper();
-            //                ObjEntidad.AMaterno = txtAMaterno.Text.ToUpper();
-            //                ObjEntidad.Nombre = txtNombre.Text.ToUpper();
-            //                ObjEntidad.Email = txtCodigo.Text + "@unsaac.edu.pe";
-            //                ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
-            //                ObjEntidad.Telefono = txtTelefono.Text;
-            //                ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
-            //                ObjEntidad.PersonaReferencia = txtPReferencia.Text.ToUpper();
-            //                ObjEntidad.TelefonoReferencia = txtTReferencia.Text;
-            //                ObjEntidad.InformacionPersonal = EncriptarIPersonal(txtIPersonal.Text, false);
-
-            //                ObjNegocio.EditarRegistros(ObjEntidad);
-            //                MensajeConfirmacion("Registro editado exitosamente");
-            //                Program.Evento = 0;
-            //                LimpiarCajas();
-            //                Close();
-            //            }
-            //        }
-            //        catch (Exception)
-            //        {
-            //            MensajeError("Error al editar el registro");
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    MensajeError("Debe llenar los campos");
-            //}
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -481,7 +386,6 @@ namespace CapaPresentaciones
             int x = img.Width / 2;
             int y = img.Height / 2;
             int r = Math.Min(x, y);
-            //int r = x;
 
             Bitmap tmp = null;
             tmp = new Bitmap(2 * r, 2 * r);
@@ -522,8 +426,7 @@ namespace CapaPresentaciones
 
         private void btnRestablecerPerfil_Click(object sender, EventArgs e)
         {
-            string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
-            imgPerfil.Image = Image.FromFile(fullImagePath);
+            imgPerfil.Image = Properties.Resources.Perfil_Estudiante as Image;
         }
 
         #endregion

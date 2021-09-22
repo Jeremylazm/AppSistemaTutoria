@@ -81,8 +81,7 @@ namespace CapaPresentaciones
 
                 if (imagen == null)
                 {
-                    string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
-                    imgPerfil.Image = Image.FromFile(fullImagePath);
+                    imgPerfil.Image = Properties.Resources.Perfil_Docente as Image;
                 }
                 else
                 {

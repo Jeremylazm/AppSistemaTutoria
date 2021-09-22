@@ -219,12 +219,10 @@ namespace CapaPresentaciones
                             dtaux = N_Estudiante.BuscarRegistro(CodEstudiante_);
                             if (dtaux.Rows.Count == 0)
                             {
-                                string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
-                                Image Img = Image.FromFile(fullImagePath);
                                 byte[] Perfil = new byte[0];
                                 using (MemoryStream MemoriaPerfil = new MemoryStream())
                                 {
-                                    Image.FromFile(fullImagePath).Save(MemoriaPerfil, ImageFormat.Bmp);
+                                    (Properties.Resources.Perfil_Estudiante as Image).Save(MemoriaPerfil, ImageFormat.Bmp);
                                     Perfil = MemoriaPerfil.ToArray();
                                 }
 

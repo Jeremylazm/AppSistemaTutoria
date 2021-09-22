@@ -142,8 +142,7 @@ namespace CapaPresentaciones
 
                 if (dgvTabla.CurrentRow.Cells[0].Value.GetType() == Type.GetType("System.DBNull"))
                 {
-                    string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
-                    EditarRegistro.imgPerfil.Image = Image.FromFile(fullImagePath);
+                    EditarRegistro.imgPerfil.Image = Properties.Resources.Perfil_Estudiante as Image;
                 }
                 else
                 {
