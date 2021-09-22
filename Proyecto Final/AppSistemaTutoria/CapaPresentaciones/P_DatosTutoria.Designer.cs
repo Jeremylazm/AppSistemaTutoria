@@ -99,7 +99,7 @@
             this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
             this.btnCerrar.ImageActive = null;
-            this.btnCerrar.Location = new System.Drawing.Point(752, 9);
+            this.btnCerrar.Location = new System.Drawing.Point(782, 7);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(24, 24);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -116,7 +116,7 @@
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(785, 40);
+            this.lblTitulo.Size = new System.Drawing.Size(814, 40);
             this.lblTitulo.TabIndex = 75;
             this.lblTitulo.Text = "Ficha de Tutoría";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -132,7 +132,7 @@
             this.Separador1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador1.LineThickness = 1;
             this.Separador1.Location = new System.Drawing.Point(150, 71);
-            this.Separador1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Separador1.Margin = new System.Windows.Forms.Padding(4);
             this.Separador1.Name = "Separador1";
             this.Separador1.Size = new System.Drawing.Size(204, 10);
             this.Separador1.TabIndex = 80;
@@ -168,7 +168,7 @@
             this.Separador2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador2.LineThickness = 1;
             this.Separador2.Location = new System.Drawing.Point(150, 103);
-            this.Separador2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Separador2.Margin = new System.Windows.Forms.Padding(4);
             this.Separador2.Name = "Separador2";
             this.Separador2.Size = new System.Drawing.Size(204, 10);
             this.Separador2.TabIndex = 83;
@@ -204,7 +204,7 @@
             this.Separador4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador4.LineThickness = 1;
             this.Separador4.Location = new System.Drawing.Point(150, 167);
-            this.Separador4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Separador4.Margin = new System.Windows.Forms.Padding(4);
             this.Separador4.Name = "Separador4";
             this.Separador4.Size = new System.Drawing.Size(204, 10);
             this.Separador4.TabIndex = 89;
@@ -240,7 +240,7 @@
             this.Separador3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador3.LineThickness = 1;
             this.Separador3.Location = new System.Drawing.Point(150, 135);
-            this.Separador3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Separador3.Margin = new System.Windows.Forms.Padding(4);
             this.Separador3.Name = "Separador3";
             this.Separador3.Size = new System.Drawing.Size(204, 10);
             this.Separador3.TabIndex = 86;
@@ -287,7 +287,7 @@
             this.Separador8.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador8.LineThickness = 1;
             this.Separador8.Location = new System.Drawing.Point(150, 291);
-            this.Separador8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Separador8.Margin = new System.Windows.Forms.Padding(4);
             this.Separador8.Name = "Separador8";
             this.Separador8.Size = new System.Drawing.Size(204, 10);
             this.Separador8.TabIndex = 98;
@@ -311,7 +311,7 @@
             this.Separador7.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador7.LineThickness = 1;
             this.Separador7.Location = new System.Drawing.Point(150, 262);
-            this.Separador7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Separador7.Margin = new System.Windows.Forms.Padding(4);
             this.Separador7.Name = "Separador7";
             this.Separador7.Size = new System.Drawing.Size(204, 10);
             this.Separador7.TabIndex = 95;
@@ -347,7 +347,7 @@
             this.Separador6.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador6.LineThickness = 1;
             this.Separador6.Location = new System.Drawing.Point(150, 231);
-            this.Separador6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Separador6.Margin = new System.Windows.Forms.Padding(4);
             this.Separador6.Name = "Separador6";
             this.Separador6.Size = new System.Drawing.Size(204, 10);
             this.Separador6.TabIndex = 92;
@@ -400,8 +400,8 @@
             this.btnLimpiar.IconVisible = true;
             this.btnLimpiar.IconZoom = 50D;
             this.btnLimpiar.IsTab = false;
-            this.btnLimpiar.Location = new System.Drawing.Point(392, 449);
-            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLimpiar.Location = new System.Drawing.Point(447, 431);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnLimpiar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -438,8 +438,8 @@
             this.btnGuardar.IconVisible = true;
             this.btnGuardar.IconZoom = 50D;
             this.btnGuardar.IsTab = false;
-            this.btnGuardar.Location = new System.Drawing.Point(260, 449);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardar.Location = new System.Drawing.Point(258, 431);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnGuardar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -460,7 +460,7 @@
             this.imgLogoUNSAAC.Cursor = System.Windows.Forms.Cursors.Hand;
             this.imgLogoUNSAAC.Image = ((System.Drawing.Image)(resources.GetObject("imgLogoUNSAAC.Image")));
             this.imgLogoUNSAAC.ImageActive = null;
-            this.imgLogoUNSAAC.Location = new System.Drawing.Point(15, 0);
+            this.imgLogoUNSAAC.Location = new System.Drawing.Point(-218, 0);
             this.imgLogoUNSAAC.Name = "imgLogoUNSAAC";
             this.imgLogoUNSAAC.Size = new System.Drawing.Size(35, 35);
             this.imgLogoUNSAAC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -474,7 +474,7 @@
             this.Separador9.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador9.LineThickness = 1;
             this.Separador9.Location = new System.Drawing.Point(150, 325);
-            this.Separador9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Separador9.Margin = new System.Windows.Forms.Padding(4);
             this.Separador9.Name = "Separador9";
             this.Separador9.Size = new System.Drawing.Size(204, 10);
             this.Separador9.TabIndex = 112;
@@ -487,7 +487,7 @@
             this.Separador5.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador5.LineThickness = 1;
             this.Separador5.Location = new System.Drawing.Point(150, 200);
-            this.Separador5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Separador5.Margin = new System.Windows.Forms.Padding(4);
             this.Separador5.Name = "Separador5";
             this.Separador5.Size = new System.Drawing.Size(204, 10);
             this.Separador5.TabIndex = 116;
@@ -523,7 +523,7 @@
             this.Separador11.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador11.LineThickness = 1;
             this.Separador11.Location = new System.Drawing.Point(150, 358);
-            this.Separador11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Separador11.Margin = new System.Windows.Forms.Padding(4);
             this.Separador11.Name = "Separador11";
             this.Separador11.Size = new System.Drawing.Size(204, 10);
             this.Separador11.TabIndex = 122;
@@ -566,7 +566,7 @@
             this.Separador12.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador12.LineThickness = 1;
             this.Separador12.Location = new System.Drawing.Point(521, 167);
-            this.Separador12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Separador12.Margin = new System.Windows.Forms.Padding(4);
             this.Separador12.Name = "Separador12";
             this.Separador12.Size = new System.Drawing.Size(204, 10);
             this.Separador12.TabIndex = 126;
@@ -626,7 +626,7 @@
             this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.bunifuSeparator1.LineThickness = 1;
             this.bunifuSeparator1.Location = new System.Drawing.Point(522, 410);
-            this.bunifuSeparator1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bunifuSeparator1.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
             this.bunifuSeparator1.Size = new System.Drawing.Size(204, 10);
             this.bunifuSeparator1.TabIndex = 144;
@@ -662,7 +662,7 @@
             this.bunifuSeparator2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.bunifuSeparator2.LineThickness = 1;
             this.bunifuSeparator2.Location = new System.Drawing.Point(522, 213);
-            this.bunifuSeparator2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bunifuSeparator2.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuSeparator2.Name = "bunifuSeparator2";
             this.bunifuSeparator2.Size = new System.Drawing.Size(204, 10);
             this.bunifuSeparator2.TabIndex = 141;
@@ -697,7 +697,7 @@
             this.bunifuSeparator3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.bunifuSeparator3.LineThickness = 1;
             this.bunifuSeparator3.Location = new System.Drawing.Point(522, 258);
-            this.bunifuSeparator3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bunifuSeparator3.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuSeparator3.Name = "bunifuSeparator3";
             this.bunifuSeparator3.Size = new System.Drawing.Size(204, 10);
             this.bunifuSeparator3.TabIndex = 138;
@@ -732,7 +732,7 @@
             this.bunifuSeparator5.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.bunifuSeparator5.LineThickness = 1;
             this.bunifuSeparator5.Location = new System.Drawing.Point(149, 392);
-            this.bunifuSeparator5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bunifuSeparator5.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuSeparator5.Name = "bunifuSeparator5";
             this.bunifuSeparator5.Size = new System.Drawing.Size(204, 10);
             this.bunifuSeparator5.TabIndex = 148;
@@ -768,7 +768,7 @@
             this.bunifuSeparator6.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.bunifuSeparator6.LineThickness = 1;
             this.bunifuSeparator6.Location = new System.Drawing.Point(522, 123);
-            this.bunifuSeparator6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bunifuSeparator6.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuSeparator6.Name = "bunifuSeparator6";
             this.bunifuSeparator6.Size = new System.Drawing.Size(204, 10);
             this.bunifuSeparator6.TabIndex = 151;
@@ -804,10 +804,10 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.label4.Location = new System.Drawing.Point(532, 87);
+            this.label4.Location = new System.Drawing.Point(399, 62);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 23);
+            this.label4.Size = new System.Drawing.Size(54, 19);
             this.label4.TabIndex = 152;
             this.label4.Text = "Fecha:";
             // 
@@ -816,7 +816,7 @@
             this.bunifuSeparator4.BackColor = System.Drawing.Color.Transparent;
             this.bunifuSeparator4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.bunifuSeparator4.LineThickness = 1;
-            this.bunifuSeparator4.Location = new System.Drawing.Point(696, 113);
+            this.bunifuSeparator4.Location = new System.Drawing.Point(521, 87);
             this.bunifuSeparator4.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuSeparator4.Name = "bunifuSeparator4";
             this.bunifuSeparator4.Size = new System.Drawing.Size(272, 12);
@@ -830,10 +830,10 @@
             this.txtFecha.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFecha.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFecha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtFecha.Location = new System.Drawing.Point(696, 88);
+            this.txtFecha.Location = new System.Drawing.Point(521, 62);
             this.txtFecha.Margin = new System.Windows.Forms.Padding(4);
             this.txtFecha.Name = "txtFecha";
-            this.txtFecha.Size = new System.Drawing.Size(272, 23);
+            this.txtFecha.Size = new System.Drawing.Size(272, 19);
             this.txtFecha.TabIndex = 153;
             // 
             // BordeadoDatosTutoria
@@ -851,8 +851,8 @@
             this.BordeadoDatosTutoria.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
             this.BordeadoDatosTutoria.Location = new System.Drawing.Point(-1, 0);
             this.BordeadoDatosTutoria.Name = "BordeadoDatosTutoria";
-            this.BordeadoDatosTutoria.Size = new System.Drawing.Size(785, 501);
-            this.BordeadoDatosTutoria.TabIndex = 196;
+            this.BordeadoDatosTutoria.Size = new System.Drawing.Size(814, 488);
+            this.BordeadoDatosTutoria.TabIndex = 197;
             this.BordeadoDatosTutoria.TabStop = false;
             // 
             // P_DatosTutoria
@@ -860,7 +860,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1047, 617);
+            this.ClientSize = new System.Drawing.Size(814, 488);
             this.Controls.Add(this.bunifuSeparator4);
             this.Controls.Add(this.txtFecha);
             this.Controls.Add(this.label4);
