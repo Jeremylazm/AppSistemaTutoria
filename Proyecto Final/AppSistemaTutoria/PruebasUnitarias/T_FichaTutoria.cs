@@ -1,5 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using CapaPresentaciones;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Drawing;
 
 namespace PruebasUnitarias
 {
