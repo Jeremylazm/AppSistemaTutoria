@@ -1,25 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using CapaNegocios;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CapaNegocios;
 using System.Net;
 using System.Net.Mail;
-using System.Data.SqlClient;
+using System.Windows.Forms;
 namespace CapaPresentaciones
 {
     public partial class P_SolicitudCita : Form
     {
         public string Usuario = "";
-        public P_SolicitudCita(string pUsuario)
+        public string CorreoTutor = "";
+        public P_SolicitudCita(string pUsuario, DataTable Datos)
         {
-            InitializeComponent();
+            // Buscamos los datos del Tutor
             Usuario = pUsuario;
+            object[] Fila = Datos.Rows[0].ItemArray;
+            CorreoTutor = Fila[4].ToString();
+            InitializeComponent();
             CargarDatosEstudiante();
         }
         public void CargarDatosEstudiante()
@@ -38,7 +35,7 @@ namespace CapaPresentaciones
             txtPReferencia.Text = Fila[12].ToString();
             txtTReferencia.Text = Fila[13].ToString();
         }
-
+        //Cerrar aplicacion
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
@@ -46,6 +43,7 @@ namespace CapaPresentaciones
 
         private void btnEnviar_Click(object sender, EventArgs e)
         {
+            // Algunos restricciones antes de enviar la solicitud
             if (cBoxHora.Text == "")
             {
                 MessageBox.Show("Especifique Hora de Cita");
@@ -106,7 +104,7 @@ namespace CapaPresentaciones
 
                     MailMessage mailDetails = new MailMessage();
                     mailDetails.From = new MailAddress("denisomarcuyottito@gmail.com");
-                    mailDetails.To.Add("182936@unsaac.edu.pe");
+                    mailDetails.To.Add(CorreoTutor);
                     mailDetails.Subject = "Solicitud de Cita de Tutoria";
                     mailDetails.IsBodyHtml = true;
                     mailDetails.Body = TextoSolicitud;
@@ -119,7 +117,7 @@ namespace CapaPresentaciones
                 }
 
             }
-            
+
 
         }
     }

@@ -1,12 +1,10 @@
+using CapaEntidades;
+using CapaNegocios;
 using System;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Windows.Forms;
-using CapaEntidades;
-using CapaNegocios;
-using ImageMagick;
 
 namespace CapaPresentaciones
 {
@@ -197,7 +195,7 @@ namespace CapaPresentaciones
 
                 EditarRegistro.cxtEscuela.SelectedValue = dgvTabla.CurrentRow.Cells[13].Value.ToString();
                 EditarRegistro.txtHorario.Text = dgvTabla.CurrentRow.Cells[15].Value.ToString();
-                
+
 
                 EditarRegistro.ShowDialog();
             }

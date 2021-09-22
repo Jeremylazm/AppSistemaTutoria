@@ -1,10 +1,10 @@
-using System;
-using System.Drawing;
-using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
-using System.IO;
+using System;
+using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
+using System.Windows.Forms;
 
 namespace CapaPresentaciones
 {
@@ -57,7 +57,7 @@ namespace CapaPresentaciones
             dgvTabla.DataSource = N_Docente.MostrarTutorados(E_InicioSesion.Usuario);
             AccionesTabla();
         }
-        
+
 
         public void BuscarRegistros()
         {
@@ -123,11 +123,11 @@ namespace CapaPresentaciones
         {
             P_DatosTutoria EditarRegistro = new P_DatosTutoria();
             EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-            
+
 
             if (dgvTabla.SelectedRows.Count > 0)
             {
-                
+
 
                 EditarRegistro.txtCodigoEstudiante.Text = dgvTabla.CurrentRow.Cells[2].Value.ToString();
                 EditarRegistro.txtAPaterno.Text = dgvTabla.CurrentRow.Cells[3].Value.ToString();
@@ -142,7 +142,7 @@ namespace CapaPresentaciones
                 EditarRegistro.txtCodigoDocente.Text = dgvTabla.CurrentRow.Cells[15].Value.ToString();
 
                 EditarRegistro.ShowDialog();
-                
+
             }
             else
             {

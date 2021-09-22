@@ -1,9 +1,7 @@
-﻿using System;
-using System.Data;
-using System.Windows.Forms;
-using CapaEntidades;
+﻿using CapaEntidades;
 using CapaNegocios;
-using CapaPresentaciones.Reporte;
+using System;
+using System.Windows.Forms;
 
 namespace CapaPresentaciones
 {
@@ -31,14 +29,14 @@ namespace CapaPresentaciones
 
             dgvTabla.Columns[1].HeaderText = "Cod. Ficha";
             dgvTabla.Columns[2].HeaderText = "Fecha";
-            dgvTabla.Columns[3].HeaderText = "Codigo Estudiante";
+            dgvTabla.Columns[3].HeaderText = "Cod. Estudiante";
             dgvTabla.Columns[4].HeaderText = "Estudiante";
             dgvTabla.Columns[5].HeaderText = "Semestre";
             dgvTabla.Columns[7].HeaderText = "Dimensión";
             dgvTabla.Columns[8].HeaderText = "Descripción";
             dgvTabla.Columns[9].HeaderText = "Referencia";
-            dgvTabla.Columns[10].HeaderText = "Observciones";
-            
+            dgvTabla.Columns[10].HeaderText = "Observaciones";
+
         }
         public void MostrarRegistros()
         {
@@ -59,7 +57,7 @@ namespace CapaPresentaciones
         private void P_TablaTutorias_Load(object sender, EventArgs e)
         {
             MostrarRegistros();
-            
+
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -87,62 +85,42 @@ namespace CapaPresentaciones
             BuscarRegistros();
         }
 
-        private void GenerarInforme()
+        private void btnModificar_Click(object sender, EventArgs e)
         {
-            //Hacemos una instancia de la clase E_EncabezadoInforme para
-            //llenarla con los valores contenidos en los controles del formulario
+            P_DatosEstudiante EditarRegistro = new P_DatosEstudiante();
+            EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
 
-            E_EncabezadoInforme informe = new E_EncabezadoInforme();
-            /*informe.CodFicha = "Martha";
-            informe.CodEstudiante = "Tiene un marcapasos";
-            informe.Fecha = "Que le anima el corazon";
-            informe.Estudiante = "AV Los angeles";
-            informe.Semestre = "WE@gmail.com";
-            informe.Dimension = "2396745";
-            informe.Descripcion = "2396745";
-            informe.Referencia= "2396745";
-            informe.Observaciones = "2396745";*/
-            //Recorremos los rows existentes actualmente en el control
-            //DataGridView
-
-            foreach (DataGridViewRow row in dgvTabla.Rows)
+            if (dgvTabla.SelectedRows.Count > 0)
             {
-                E_FilaTabla Fila   = new E_FilaTabla();
-                Fila.CodFicha      = Convert.ToString(row.Cells[1].Value);
-                Fila.Fecha         = Convert.ToString(row.Cells[2].Value);
-                Fila.CodEstudiante  = Convert.ToString(row.Cells[3].Value);
-                Fila.Estudiante    = Convert.ToString(row.Cells[4].Value);
-                Fila.Semestre      = Convert.ToString(row.Cells[5].Value);
-                Fila.Dimension     = Convert.ToString(row.Cells[7].Value);
-                Fila.Descripcion   = Convert.ToString(row.Cells[8].Value);
-                Fila.Referencia    = Convert.ToString(row.Cells[9].Value);
-                Fila.Observaciones = Convert.ToString(row.Cells[10].Value);
+                Program.Evento = 1;
 
 
-                
+                EditarRegistro.txtAPaterno.Text = dgvTabla.CurrentRow.Cells[3].Value.ToString();
+                EditarRegistro.txtAMaterno.Text = dgvTabla.CurrentRow.Cells[4].Value.ToString();
+                EditarRegistro.txtNombre.Text = dgvTabla.CurrentRow.Cells[5].Value.ToString();
+                EditarRegistro.txtDireccion.Text = dgvTabla.CurrentRow.Cells[8].Value.ToString();
+                EditarRegistro.txtTelefono.Text = dgvTabla.CurrentRow.Cells[9].Value.ToString();
+                EditarRegistro.cxtEscuela.SelectedValue = dgvTabla.CurrentRow.Cells[10].Value.ToString();
+                EditarRegistro.txtPReferencia.Text = dgvTabla.CurrentRow.Cells[12].Value.ToString();
+                EditarRegistro.txtTReferencia.Text = dgvTabla.CurrentRow.Cells[13].Value.ToString();
+                EditarRegistro.txtIPersonal.Text = dgvTabla.CurrentRow.Cells[14].Value.ToString();
+                dgvTabla.Columns[1].HeaderText = "Cod. Ficha";
+                dgvTabla.Columns[2].HeaderText = "Fecha";
+                dgvTabla.Columns[3].HeaderText = "Codigo Estudiante";
+                dgvTabla.Columns[4].HeaderText = "Estudiante";
+                dgvTabla.Columns[5].HeaderText = "Semestre";
+                dgvTabla.Columns[7].HeaderText = "Dimensión";
+                dgvTabla.Columns[8].HeaderText = "Descripción";
+                dgvTabla.Columns[9].HeaderText = "Referencia";
+                dgvTabla.Columns[10].HeaderText = "Observciones";
 
-                informe.Filas.Add(Fila);
+                EditarRegistro.ShowDialog();
             }
-
-            //creamos una instancia del formulario que contiene
-            //nuestro report viewer
-
-            ReporteTutoria RTutoria = new ReporteTutoria();
-            RTutoria.Encabezado.Add(informe);
-
-            RTutoria.Filas = informe.Filas;
-            RTutoria.Show();
-                          
-        
-        
-        }
-
-        private void btnExportar_Click(object sender, EventArgs e)
-        {
-            
-
-
-            GenerarInforme();
+            else
+            {
+                MensajeError("Debe seleccionar una fila");
+            }
+            EditarRegistro.Dispose();
         }
     }
 }

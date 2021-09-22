@@ -53,7 +53,7 @@
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(1000, 70);
             this.lblTitulo.TabIndex = 63;
-            this.lblTitulo.Text = "Sistema de Tutoría - Universidad Nacional San Antonio Abad del Cusco";
+            this.lblTitulo.Text = "Sistema de Tutoría - Universidad Nacional de San Antonio Abad del Cusco";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // imgLogoUNSAAC
