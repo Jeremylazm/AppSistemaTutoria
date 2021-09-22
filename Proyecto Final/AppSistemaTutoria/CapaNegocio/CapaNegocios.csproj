@@ -159,7 +159,6 @@
     <Compile Include="N_EscuelaProfesional.cs" />
     <Compile Include="N_Estudiante.cs" />
     <Compile Include="N_FichaTutoria.cs" />
-    <Compile Include="N_InformeTutorias.cs" />
     <Compile Include="N_InicioSesion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

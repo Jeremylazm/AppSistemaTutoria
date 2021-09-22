@@ -174,7 +174,6 @@
     <Compile Include="D_EscuelaProfesional.cs" />
     <Compile Include="D_Estudiante.cs" />
     <Compile Include="D_FichaTutoria.cs" />
-    <Compile Include="D_InformeTutorias.cs" />
     <Compile Include="D_InicioSesion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

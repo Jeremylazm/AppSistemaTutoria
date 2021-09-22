@@ -224,9 +224,9 @@ namespace CapaPresentaciones
             this.lblCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lblCorreo.Location = new System.Drawing.Point(110, 44);
             this.lblCorreo.Name = "lblCorreo";
-            this.lblCorreo.Size = new System.Drawing.Size(153, 19);
+            this.lblCorreo.Size = new System.Drawing.Size(147, 19);
             this.lblCorreo.TabIndex = 133;
-            this.lblCorreo.Text = "Correro Institucional:";
+            this.lblCorreo.Text = "Correo Institucional:";
             // 
             // panelVerificacion
             // 

@@ -1,31 +1,21 @@
 ﻿using System;
-using System.Configuration;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.SqlClient;
 using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 using System.IO;
-using CapaEntidades;
-using CapaNegocios;
+using System.Windows.Forms;
 
 namespace CapaPresentaciones
 {
     public partial class P_InformacionTutor : Form
     {
         // Atributo Usuario
-        public string Usuario = "";
+        public DataTable Datos;
         // Constructor
-        public P_InformacionTutor( string pUsuario)
+        public P_InformacionTutor(DataTable pDatos)
         {
             InitializeComponent();
-            Usuario = pUsuario;
+            Datos = pDatos;
             CargarDatosTutor();
         }
 
@@ -36,7 +26,6 @@ namespace CapaPresentaciones
         public void CargarDatosTutor()
         {
             // Buscamos los datos del Tutor 
-            DataTable Datos = N_Estudiante.BuscarTutor(Usuario);
             object[] Fila = Datos.Rows[0].ItemArray;
             // Es la imagen de perfil
             byte[] imagen;
@@ -66,7 +55,8 @@ namespace CapaPresentaciones
             txtTelefono.Text = Fila[6].ToString();
             txtEscProfesional.Text = Fila[7].ToString();
             txtHorario.Text = Fila[8].ToString();
-            
+
+
         }
         // Para hacer la imagen circular
         public Image HacerImagenCircular(Image img)
