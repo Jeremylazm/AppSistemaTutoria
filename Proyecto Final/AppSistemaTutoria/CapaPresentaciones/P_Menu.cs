@@ -84,14 +84,14 @@ namespace CapaPresentaciones
         {
             if ((Acceso == "Director de Escuela") || (Acceso == "Administrador"))
             {
-                btnTutorias.Visible = true;
-                btnTutorados.Visible = true;
+                btnTutorias.Visible = false;
+                btnTutorados.Visible = false;
                 btnDocentes.Visible = true;
                 btnTutores.Visible = true;
                 btnEstudiantes.Visible = true;
-                btnInformeTutorias.Visible = true;
                 btnMiTutor.Visible = false;
                 btnSolicitarCita.Visible = false;
+                separador.Visible = false;
             }
             else if (Acceso == "Docente")
             {
@@ -100,7 +100,6 @@ namespace CapaPresentaciones
                 btnDocentes.Visible = false;
                 btnTutores.Visible = false;
                 btnEstudiantes.Visible = false;
-                btnInformeTutorias.Visible = false;
                 btnMiTutor.Visible = false;
                 btnSolicitarCita.Visible = false;
             }
@@ -111,7 +110,6 @@ namespace CapaPresentaciones
                 btnDocentes.Visible = false;
                 btnTutores.Visible = false;
                 btnEstudiantes.Visible = false;
-                btnInformeTutorias.Visible = false;
                 btnMiTutor.Visible = true;
                 separador.Visible = false;
                 btnSolicitarCita.Visible = true;

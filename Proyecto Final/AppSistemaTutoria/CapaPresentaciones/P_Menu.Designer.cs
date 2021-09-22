@@ -44,7 +44,6 @@ namespace CapaPresentaciones
             this.pnLateral = new System.Windows.Forms.Panel();
             this.btnSolicitarCita = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnMiTutor = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btnInformeTutorias = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnTutores = new Bunifu.Framework.UI.BunifuFlatButton();
             this.separador = new Bunifu.Framework.UI.BunifuSeparator();
             this.btnTutorados = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -209,7 +208,6 @@ namespace CapaPresentaciones
             this.pnLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.pnLateral.Controls.Add(this.btnSolicitarCita);
             this.pnLateral.Controls.Add(this.btnMiTutor);
-            this.pnLateral.Controls.Add(this.btnInformeTutorias);
             this.pnLateral.Controls.Add(this.btnTutores);
             this.pnLateral.Controls.Add(this.separador);
             this.pnLateral.Controls.Add(this.btnTutorados);
@@ -300,41 +298,6 @@ namespace CapaPresentaciones
             this.btnMiTutor.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMiTutor.Click += new System.EventHandler(this.btnMiTutor_Click);
             // 
-            // btnInformeTutorias
-            // 
-            this.btnInformeTutorias.Active = true;
-            this.btnInformeTutorias.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnInformeTutorias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnInformeTutorias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnInformeTutorias.BorderRadius = 7;
-            this.btnInformeTutorias.ButtonText = "Informe Tutorias";
-            this.btnInformeTutorias.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnInformeTutorias.DisabledColor = System.Drawing.Color.Gray;
-            this.btnInformeTutorias.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnInformeTutorias.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnInformeTutorias.Iconimage")));
-            this.btnInformeTutorias.Iconimage_right = null;
-            this.btnInformeTutorias.Iconimage_right_Selected = null;
-            this.btnInformeTutorias.Iconimage_Selected = null;
-            this.btnInformeTutorias.IconMarginLeft = 0;
-            this.btnInformeTutorias.IconMarginRight = 0;
-            this.btnInformeTutorias.IconRightVisible = true;
-            this.btnInformeTutorias.IconRightZoom = 0D;
-            this.btnInformeTutorias.IconVisible = true;
-            this.btnInformeTutorias.IconZoom = 50D;
-            this.btnInformeTutorias.IsTab = false;
-            this.btnInformeTutorias.Location = new System.Drawing.Point(4, 540);
-            this.btnInformeTutorias.Name = "btnInformeTutorias";
-            this.btnInformeTutorias.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnInformeTutorias.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
-            this.btnInformeTutorias.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnInformeTutorias.selected = true;
-            this.btnInformeTutorias.Size = new System.Drawing.Size(161, 40);
-            this.btnInformeTutorias.TabIndex = 49;
-            this.btnInformeTutorias.Text = "Informe Tutorias";
-            this.btnInformeTutorias.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnInformeTutorias.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnInformeTutorias.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
             // btnTutores
             // 
             this.btnTutores.Active = true;
@@ -357,7 +320,7 @@ namespace CapaPresentaciones
             this.btnTutores.IconVisible = true;
             this.btnTutores.IconZoom = 50D;
             this.btnTutores.IsTab = false;
-            this.btnTutores.Location = new System.Drawing.Point(5, 448);
+            this.btnTutores.Location = new System.Drawing.Point(6, 500);
             this.btnTutores.Name = "btnTutores";
             this.btnTutores.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnTutores.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -458,7 +421,7 @@ namespace CapaPresentaciones
             this.btnDocentes.IconVisible = true;
             this.btnDocentes.IconZoom = 50D;
             this.btnDocentes.IsTab = false;
-            this.btnDocentes.Location = new System.Drawing.Point(5, 402);
+            this.btnDocentes.Location = new System.Drawing.Point(6, 454);
             this.btnDocentes.Name = "btnDocentes";
             this.btnDocentes.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnDocentes.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -494,7 +457,7 @@ namespace CapaPresentaciones
             this.btnEstudiantes.IconVisible = true;
             this.btnEstudiantes.IconZoom = 50D;
             this.btnEstudiantes.IsTab = false;
-            this.btnEstudiantes.Location = new System.Drawing.Point(4, 494);
+            this.btnEstudiantes.Location = new System.Drawing.Point(6, 546);
             this.btnEstudiantes.Name = "btnEstudiantes";
             this.btnEstudiantes.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnEstudiantes.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -691,7 +654,6 @@ namespace CapaPresentaciones
         private System.Windows.Forms.Label lblDatos;
         private Otros_Controles.JALMCircularPictureBox imgPerfil;
         private Bunifu.Framework.UI.BunifuFlatButton btnTutorados;
-        private Bunifu.Framework.UI.BunifuFlatButton btnInformeTutorias;
         private Bunifu.Framework.UI.BunifuFlatButton btnTutores;
         private Bunifu.Framework.UI.BunifuSeparator separador;
         private Bunifu.Framework.UI.BunifuFlatButton btnMiTutor;
