@@ -46,17 +46,14 @@ namespace CapaPresentaciones
         {
             if (E_InicioSesion.Perfil == null)
             {
-                string fullImagePath = "";
                 if ((E_InicioSesion.Acceso == "Director de Escuela") || (E_InicioSesion.Acceso == "Administrador"))
-                    fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"/Iconos/Perfil.png");
+                    imgPerfil.Image = (Image)Properties.Resources.Perfil;
 
                 if (E_InicioSesion.Acceso == "Docente")
-                    fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"/Iconos/Perfil Docente.png");
+                    imgPerfil.Image = (Image)Properties.Resources.Perfil_Docente;
 
                 if (E_InicioSesion.Acceso == "Estudiante")
-                    fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"/Iconos/Perfil Estudiante.png");
-
-                imgPerfil.Image = Image.FromFile(fullImagePath);
+                    imgPerfil.Image = (Image)Properties.Resources.Perfil_Estudiante;
             }
             else
             {
