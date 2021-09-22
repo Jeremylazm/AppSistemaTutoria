@@ -51,8 +51,52 @@ Cada usuario definido tiene una serie de funcionalidades particulares que tienen
 
 # INTERFACES
 ## Formularios para todos los usuarios
-Form Inicio Sesión:
-Form Recuperar Contraseña:
-Form Bienvenida:
-Form Cambiar Contraseña:
+* Form Inicio Sesión:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/InicioSesion.png)
+* Form Recuperar Contraseña:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/RecuperarContraseña.png)
+* Form Bienvenida:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/Bienvenida.png)
+* Form Cambiar Contraseña:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/CambiarContraseña.png)
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/CambiarContraseña2.png)
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormsTodosUsuarios/CambiarContraseña3.png)
+
+## Formularios en común para los usuarios Director de Escuela y Docente
+* Form Editar Perfil Docente:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormDirectorDocente/EditarPerfilDocente.png)
+
+* Form Tabla Tutorías:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormDirectorDocente/TablaTutorias.png)
+
+* Form Ficha de Tutoría:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormDirectorDocente/FichaTutoria.png)
+
+* Form Tabla Tutorados:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormDirectorDocente/Tutorados.png)
+
+## Formularios exclusivos para usuario Director de Escuela:
+* Form Tabla Docentes:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormDirector/TablaDocentes.png)
+* Form Datos Docente (Agregar, Modificar):
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormDirector/DatosDocente.png)
+* Form Tabla Tutores:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormDirector/TablaTutores.png)
+* Form Tabla Estudiantes:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormDirector/TablaEstudiantes.png)
+* Form Datos Estudiante (Agregar, Modificar):
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormDirector/DatosEstudiante.png)
 
