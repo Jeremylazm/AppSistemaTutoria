@@ -44,6 +44,9 @@ Para la realización de este sistema se decidió que se tuvieron 3 tipos de usua
 * Director de Escuela
 * Tutor
 * Estudiante
+
 Inicialmente el sistema contiene una pantalla de inicio que es para el Inicio de sesión de cualquier usuario, adicionalmente se tiene una opción para recuperar la contraseña de un usuario.
 Cada usuario definido tiene una serie de funcionalidades particulares que tienen como finalidad, todos unidos, lograr el propósito del sistema y lograr el objetivo esperado.
+
+# MODELO RELACIONAL DE LA BASE DE DATOS.
 
