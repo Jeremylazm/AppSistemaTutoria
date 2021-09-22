@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="MovimientoMenu.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="MovimientoMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
-  </data>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnMinimizar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
@@ -4351,13 +4351,12 @@
         LLLIIossssjyF4pC8X+J4jeqXvYu7QAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="BordeadoMenu.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="BordeadoMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>166, 17</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.TrayHeight" type="System.Int32, mscorlib">
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
-  </data>
+  </metadata>
   <data name="btnSolicitarCita.Iconimage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
@@ -7344,17 +7343,18 @@
   </data>
   <data name="btnEditarPerfil.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAKEAAAApCAYAAABdskkDAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAAjJJREFUeF7t3L1qFFEYh3FvQBLzue5mZxpbG8HGxkLwCsRKBDsLQYUgooJNEEFF
-        0RiT1ViKlYgXIIIWChZi5Qe4mzWJ3sXr/GdI4rCvCcSdeZun+FV7drd5ODNnOGf2nN07YkAkIkQ4IkQ4
-        IkQ4IkQ4IkS4bSM8NzZq80cn7e1s0z7NzdiP+4n9fpoCO1Iraub9lZYtHpu0C1OjbmPyzwhvH56w7nxi
-        K4+y8Jb9PwJ2lLXTX0ys9zCxzvEpt7WBCFXsm4tNW1lg1sNwqamP11s229pXaq4UoQL8dqdtax3/R4D/
-        9SubGb9mjV1Ot0IsRagZkABRB90vDkSoe0AuwajLz+w+8fnJ6a0ItQrWIsQbDFSllzV37cBYEaGW0FrB
-        eAOBqqw/Tu3l6UYRoZ7l8BgGEb7cahcRfr/bdgcAVVt/khYRri5xKUacPELvA6AuRIhwRIhwRIhwRIhw
-        RIhwRIhwRIhweYR6au19CNQhj5CzI4iUR6gt19rx6g0AqqR9C3mEz05M21qH2RD1e31+fxGh9vvrNJQ3
-        CKhKfyGxe0cmigjlxamG9XW80xkMDJvOMr271CyfMdEW/883ZtwvAMOmxfDGgfjNCEX7/bsPmA1RrW52
-        63fz0Phmd6UIZe7geH72eHXJ/wFgt3QJ1gz4d4AyEKHo0vzqTMN6HAHFMCyn+etkPlxtue+kcSPcoGK1
-        hOY8MnZLR0f0Qi29WMtrTLaNEKgDESIcESIcESIcESLYiP0B8LS15HuT26gAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAAKEAAAApCAYAAABdskkDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIySURBVHhe7dy9ahRRGIdxb0AS87nuZmcaWxvBxsZC8ArE
+        SgQ7C0GFIKKCTRBBRdEYk9VYipWIFyCCFgoWYuUHuJs1id7F6/xnSOKwrwnEnXmbp/hVe3a3eTgzZzhn
+        9pzdO2JAJCJEOCJEOCJEOCJEOCJEuG0jPDc2avNHJ+3tbNM+zc3Yj/uJ/X6aAjtSK2rm/ZWWLR6btAtT
+        o25j8s8Ibx+esO58YiuPsvCW/T8CdpS1019MrPcwsc7xKbe1gQhV7JuLTVtZYNbDcKmpj9dbNtvaV2qu
+        FKEC/HanbWsd/0eA//Urmxm/Zo1dTrdCLEWoGZAAUQfdLw5EqHtALsGoy8/sPvH5yemtCLUK1iLEGwxU
+        pZc1d+3AWBGhltBawXgDgaqsP07t5elGEaGe5fAYBhG+3GoXEX6/23YHAFVbf5IWEa4ucSlGnDxC7wOg
+        LkSIcESIcESIcESIcESIcESIcESIcHmEemrtfQjUIY+QsyOIlEeoLdfa8eoNAKqkfQt5hM9OTNtah9kQ
+        9Xt9fn8Rofb76zSUNwioSn8hsXtHJooI5cWphvV1vNMZDAybzjK9u9QsnzHRFv/PN2bcLwDDpsXwxoH4
+        zQhF+/27D5gNUa1udut389D4ZnelCGXu4Hh+9nh1yf8BYLd0CdYM+HeAMhCh6NL86kzDehwBxTAsp/nr
+        ZD5cbbnvpHEj3KBitYTmPDJ2S0dH9EItvVjLa0y2jRCoAxEiHBEiHBEiHBEi2Ij9AfC0teR7k9uoAAAA
+        AElFTkSuQmCC
 </value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -10878,7 +10878,7 @@
         ///////////////////+AAAA/////////////////////////////////gAAAA==
 </value>
   </data>
-  <data name="BordeadoContenedor.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="BordeadoContenedor.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>302, 17</value>
-  </data>
+  </metadata>
 </root>
