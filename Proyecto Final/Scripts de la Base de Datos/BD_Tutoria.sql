@@ -1725,7 +1725,8 @@ BEGIN
 					  @Categoria + ' ; ' + @Subcategoria + ' ; ' + @Regimen + ' ; ' + 
 					  @CodEscuelaP + ' ; ' + ISNULL(@Horario, ''));
 		
-		-- Eliminar la tupla insertada de la tabla #INSERTED
+		-- 
+		la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
 
 		-- Actualizar el numero de tuplas
@@ -2291,7 +2292,7 @@ BEGIN
 		CodDocente VARCHAR(5),
 		CodEstudiante VARCHAR(6),
 		Semestre VARCHAR(7),
-		Fecha DATETIME,
+		Fecha VARCHAR(15),
 		Dimension VARCHAR(15),
 		Descripcion VARCHAR(100),
 		Referencia VARCHAR(100),

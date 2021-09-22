@@ -257,7 +257,8 @@ namespace CapaPresentaciones
                         ObjEntidad.Dimension = cxtDimension.Text;
                         ObjEntidad.Descripcion = txtDescripcion.Text;
                         ObjEntidad.Observaciones = txtObservaciones.Text;
-                        ObjEntidad.Fecha = dateTimeFechaFichaT.Value.ToString("dd/MM/yyyy");
+                        DateTime thisDay = DateTime.Today;
+                        ObjEntidad.Fecha = thisDay.ToString("d");
 
                         ObjNegocio.InsertarRegistros(ObjEntidad);
                         MensajeConfirmacion("Registro insertado exitosamente");
