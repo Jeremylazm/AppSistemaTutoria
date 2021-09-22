@@ -166,6 +166,7 @@ namespace CapaPresentaciones
             // 
             this.txtAPaterno.BackColor = System.Drawing.Color.White;
             this.txtAPaterno.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAPaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtAPaterno.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAPaterno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtAPaterno.Location = new System.Drawing.Point(137, 285);
@@ -200,6 +201,7 @@ namespace CapaPresentaciones
             // 
             this.txtNombre.BackColor = System.Drawing.Color.White;
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNombre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtNombre.Location = new System.Drawing.Point(137, 349);
@@ -234,6 +236,7 @@ namespace CapaPresentaciones
             // 
             this.txtAMaterno.BackColor = System.Drawing.Color.White;
             this.txtAMaterno.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAMaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtAMaterno.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAMaterno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtAMaterno.Location = new System.Drawing.Point(137, 317);
@@ -336,6 +339,7 @@ namespace CapaPresentaciones
             // 
             this.txtDireccion.BackColor = System.Drawing.Color.White;
             this.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDireccion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDireccion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtDireccion.Location = new System.Drawing.Point(137, 414);
