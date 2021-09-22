@@ -44,7 +44,6 @@ namespace CapaPresentaciones
             this.pnLateral = new System.Windows.Forms.Panel();
             this.btnSolicitarCita = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnMiTutor = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btnInformeTutorias = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnTutores = new Bunifu.Framework.UI.BunifuFlatButton();
             this.separador = new Bunifu.Framework.UI.BunifuSeparator();
             this.btnTutorados = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -210,7 +209,6 @@ namespace CapaPresentaciones
             this.pnLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.pnLateral.Controls.Add(this.btnSolicitarCita);
             this.pnLateral.Controls.Add(this.btnMiTutor);
-            this.pnLateral.Controls.Add(this.btnInformeTutorias);
             this.pnLateral.Controls.Add(this.btnTutores);
             this.pnLateral.Controls.Add(this.separador);
             this.pnLateral.Controls.Add(this.btnTutorados);
@@ -358,7 +356,7 @@ namespace CapaPresentaciones
             this.btnTutores.IconVisible = true;
             this.btnTutores.IconZoom = 50D;
             this.btnTutores.IsTab = false;
-            this.btnTutores.Location = new System.Drawing.Point(5, 448);
+            this.btnTutores.Location = new System.Drawing.Point(6, 500);
             this.btnTutores.Name = "btnTutores";
             this.btnTutores.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnTutores.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -459,7 +457,7 @@ namespace CapaPresentaciones
             this.btnDocentes.IconVisible = true;
             this.btnDocentes.IconZoom = 50D;
             this.btnDocentes.IsTab = false;
-            this.btnDocentes.Location = new System.Drawing.Point(5, 402);
+            this.btnDocentes.Location = new System.Drawing.Point(6, 454);
             this.btnDocentes.Name = "btnDocentes";
             this.btnDocentes.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnDocentes.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -495,7 +493,7 @@ namespace CapaPresentaciones
             this.btnEstudiantes.IconVisible = true;
             this.btnEstudiantes.IconZoom = 50D;
             this.btnEstudiantes.IsTab = false;
-            this.btnEstudiantes.Location = new System.Drawing.Point(4, 494);
+            this.btnEstudiantes.Location = new System.Drawing.Point(6, 546);
             this.btnEstudiantes.Name = "btnEstudiantes";
             this.btnEstudiantes.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnEstudiantes.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -712,7 +710,6 @@ namespace CapaPresentaciones
         private System.Windows.Forms.Label lblDatos;
         private Otros_Controles.JALMCircularPictureBox imgPerfil;
         private Bunifu.Framework.UI.BunifuFlatButton btnTutorados;
-        private Bunifu.Framework.UI.BunifuFlatButton btnInformeTutorias;
         private Bunifu.Framework.UI.BunifuFlatButton btnTutores;
         private Bunifu.Framework.UI.BunifuSeparator separador;
         private Bunifu.Framework.UI.BunifuFlatButton btnMiTutor;
