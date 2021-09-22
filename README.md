@@ -49,4 +49,4 @@ Inicialmente el sistema contiene una pantalla de inicio que es para el Inicio de
 Cada usuario definido tiene una serie de funcionalidades particulares que tienen como finalidad, todos unidos, lograr el propósito del sistema y lograr el objetivo esperado.
 
 # MODELO RELACIONAL DE LA BASE DE DATOS.
-
+[Base de datos](https://lh5.googleusercontent.com/Ori0td5b2wVQB0AWdSDP8WGcUH01uPkdt_n75W9LFdcXtBqBosjtKwMAf1BBz22IBoeScbP9YO1VI4wZbHIJ32tBDhJ3zgp5gZjv72JAzL3P5PnHJWrysXV9ZSobkCwm-nQxeXp0r1o9Ao75Gw=s0)
