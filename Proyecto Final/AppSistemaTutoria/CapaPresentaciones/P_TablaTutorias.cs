@@ -1,12 +1,7 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-using CapaEntidades;
+﻿using CapaEntidades;
 using CapaNegocios;
-using System.IO;
-using System.Drawing.Drawing2D;
-using System.Net.Mail;
-using System.Net;
+using System;
+using System.Windows.Forms;
 
 namespace CapaPresentaciones
 {
@@ -41,7 +36,7 @@ namespace CapaPresentaciones
             dgvTabla.Columns[8].HeaderText = "Descripción";
             dgvTabla.Columns[9].HeaderText = "Referencia";
             dgvTabla.Columns[10].HeaderText = "Observaciones";
-            
+
         }
         public void MostrarRegistros()
         {
@@ -62,7 +57,7 @@ namespace CapaPresentaciones
         private void P_TablaTutorias_Load(object sender, EventArgs e)
         {
             MostrarRegistros();
-            
+
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -99,7 +94,7 @@ namespace CapaPresentaciones
             {
                 Program.Evento = 1;
 
-                
+
                 EditarRegistro.txtAPaterno.Text = dgvTabla.CurrentRow.Cells[3].Value.ToString();
                 EditarRegistro.txtAMaterno.Text = dgvTabla.CurrentRow.Cells[4].Value.ToString();
                 EditarRegistro.txtNombre.Text = dgvTabla.CurrentRow.Cells[5].Value.ToString();

@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿using CapaNegocios;
+using System;
 using System.Net;
 using System.Net.Mail;
-using System.Data.SqlClient;
-using CapaNegocios;
+using System.Windows.Forms;
 
 namespace CapaPresentaciones
 {
@@ -31,13 +22,13 @@ namespace CapaPresentaciones
         void Recuperar(string Email, string Dominio)
         {
             // Verificar si hay un usuario asociado al correo puesto en el textbox
-            try
-            {
-                N_InicioSesion InicioSesion = new N_InicioSesion();
-                string Contraseña = InicioSesion.RetornarContraseña(Email);
+            N_InicioSesion InicioSesion = new N_InicioSesion();
+            string Contraseña = InicioSesion.RetornarContraseña(Email);
 
-                // Enviar un correo con la contraseña del usuario si el usuario existe
-                if (Contraseña != "")
+            // Enviar un correo con la contraseña del usuario si el usuario existe
+            if (Contraseña != null)
+            {
+                try
                 {
                     SmtpClient clientDetails = new SmtpClient();
                     clientDetails.Port = 587;
@@ -71,13 +62,14 @@ namespace CapaPresentaciones
 
                     mailDetails.Body = TextoSolicitud;
                     clientDetails.Send(mailDetails);
+                    lblMensaje.Visible = true;
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("No hay ningún usuario asociado a esta cuenta");
+                    MessageBox.Show(ex.Message);
                 }
             }
-            catch
+            else
             {
                 MessageBox.Show("No hay ningún usuario asociado a esta cuenta");
             }

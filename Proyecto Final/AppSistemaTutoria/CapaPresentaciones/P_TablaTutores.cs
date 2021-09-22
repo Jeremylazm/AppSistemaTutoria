@@ -1,14 +1,13 @@
-﻿using System;
+﻿using CapaEntidades;
+using CapaNegocios;
+using System;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Windows.Forms;
-using CapaEntidades;
-using CapaNegocios;
 using System.Runtime.InteropServices;
-using ImageMagick;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace CapaPresentaciones
 {
@@ -37,7 +36,6 @@ namespace CapaPresentaciones
         public void AccionesTablaTutores()
         {
             // Tabla Tutores
-
             dgvTablaTutores.Columns[0].HeaderText = "Cod. Tutor";
             dgvTablaTutores.Columns[1].HeaderText = "Ap. Paterno";
             dgvTablaTutores.Columns[2].HeaderText = "Ap. Materno";
@@ -175,12 +173,12 @@ namespace CapaPresentaciones
         {
             string file = "";
             DataTable dtaux = new DataTable(); // DataTable auxiliar
-            DataTable dt = new DataTable(); 
+            DataTable dt = new DataTable();
             DataRow row;
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)   // Check if Result == "OK".
             {
-                file = openFileDialog1.FileName; 
+                file = openFileDialog1.FileName;
                 try
                 {
                     Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
@@ -188,8 +186,8 @@ namespace CapaPresentaciones
                     Microsoft.Office.Interop.Excel._Worksheet excelWorksheet = excelWorkbook.Sheets[1];
                     Microsoft.Office.Interop.Excel.Range excelRange = excelWorksheet.UsedRange;
 
-                    int rowCount = excelRange.Rows.Count; 
-                    int colCount = excelRange.Columns.Count; 
+                    int rowCount = excelRange.Rows.Count;
+                    int colCount = excelRange.Columns.Count;
                     for (int i = 1; i <= rowCount; i++)
                     {
                         for (int j = 1; j <= colCount; j++)
@@ -198,13 +196,13 @@ namespace CapaPresentaciones
                         }
                         break;
                     }
-            
-                    int rowCounter;  
-                    for (int i = 2; i <= rowCount; i++) 
+
+                    int rowCounter;
+                    for (int i = 2; i <= rowCount; i++)
                     {
-                        row = dt.NewRow(); 
+                        row = dt.NewRow();
                         rowCounter = 0;
-                        for (int j = 1; j <= colCount; j++) 
+                        for (int j = 1; j <= colCount; j++)
                         {
                             if (excelRange.Cells[i, j] != null && excelRange.Cells[i, j].Value2 != null)
                             {
@@ -241,7 +239,7 @@ namespace CapaPresentaciones
                             string CodEstudiante_ = Row[0].ToString();
                             dtaux = N_Estudiante.BuscarRegistro(CodEstudiante_);
                             if (dtaux.Rows.Count == 0)
-                            {                               
+                            {
                                 string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Estudiante.png");
                                 Image Img = Image.FromFile(fullImagePath);
                                 byte[] Perfil = new byte[0];
@@ -250,7 +248,7 @@ namespace CapaPresentaciones
                                     Image.FromFile(fullImagePath).Save(MemoriaPerfil, ImageFormat.Bmp);
                                     Perfil = MemoriaPerfil.ToArray();
                                 }
-                                
+
                                 ObjEntidadEstudiante.Perfil = Perfil;
                                 ObjEntidadEstudiante.CodEstudiante = Row[0].ToString();
                                 ObjEntidadEstudiante.APaterno = Row[1].ToString();
@@ -333,7 +331,16 @@ namespace CapaPresentaciones
             if (textBoxTotalRegistros.Text == "") Regs = 0;
             else
             {
-                Regs = Int32.Parse(textBoxTotalRegistros.Text);
+                Regex PatronRegs = new Regex(@"\A[0-9]*\Z");
+                if (!PatronRegs.IsMatch(textBoxTotalRegistros.Text))
+                {
+                    string mensaje = "Debe ingresar un carácter numerico";
+                    MessageBox.Show(mensaje, "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    Regs = Int32.Parse(textBoxTotalRegistros.Text);
+                }
             }
             if (labelEstudiantes.Visible == true)
             {
@@ -371,17 +378,17 @@ namespace CapaPresentaciones
         {
             try
             {
-                if (labelEstudiantes.Visible == true && dgvTablaEstudiantes.Rows.Count > 0)
+                if (labelEstudiantes.Visible == true)
                 {
-                    DialogResult Opcion;
-                    string mensaje;
-                    if (textBoxSeleccionarTutor.Text == "")
+                    int tutorados = dgvTablaEstudiantes.Rows.Count;
+                    if (tutorados == 0)
                     {
-                        MensajeError("No se ha seleccionado un tutor");
+                        MensajeError("No hay estudiantes para asignar.");
                     }
                     else
                     {
-                        int tutorados = dgvTablaEstudiantes.Rows.Count;
+                        DialogResult Opcion;
+                        string mensaje;
                         if (tutorados == 1)
                         {
                             mensaje = "Se va asignar 1 nuevo tutorado.";
@@ -414,28 +421,35 @@ namespace CapaPresentaciones
         {
             try
             {
-                if (labelTutorados.Visible == true && dgvTablaEstudiantes.Rows.Count > 0)
+                if (labelTutorados.Visible == true)
                 {
-                    DialogResult Opcion;
-                    string mensaje;
                     int tutorados = dgvTablaEstudiantes.Rows.Count;
-                    if (tutorados == 1)
+                    if (tutorados == 0)
                     {
-                        mensaje = "Se va eliminar 1 tutorado asignado.";
+                        MensajeError("No hay tutorados para eliminar.");
                     }
                     else
                     {
-                        mensaje = "Se van eliminar " + tutorados.ToString() + " tutorados asignados.";
-                    }
-                    Opcion = MessageBox.Show(mensaje, "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                    if (Opcion == DialogResult.OK)
-                    {
-                        for (int i = 0; i < dgvTablaEstudiantes.Rows.Count; i++)
+                        DialogResult Opcion;
+                        string mensaje;
+                        if (tutorados == 1)
                         {
-                            string CodEstudiante = dgvTablaEstudiantes.Rows[i].Cells[2].Value.ToString();
-                            ObjNegocioEstudiante.EliminarTutor(CodEstudiante);
+                            mensaje = "Se va eliminar 1 tutorado asignado.";
                         }
-                        MensajeConfirmacion("La operación se realizo con éxito.");
+                        else
+                        {
+                            mensaje = "Se van eliminar " + tutorados.ToString() + " tutorados asignados.";
+                        }
+                        Opcion = MessageBox.Show(mensaje, "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                        if (Opcion == DialogResult.OK)
+                        {
+                            for (int i = 0; i < dgvTablaEstudiantes.Rows.Count; i++)
+                            {
+                                string CodEstudiante = dgvTablaEstudiantes.Rows[i].Cells[2].Value.ToString();
+                                ObjNegocioEstudiante.EliminarTutor(CodEstudiante);
+                            }
+                            MensajeConfirmacion("La operación se realizo con éxito.");
+                        }
                     }
                 }
                 BuscarRegistroTutor();

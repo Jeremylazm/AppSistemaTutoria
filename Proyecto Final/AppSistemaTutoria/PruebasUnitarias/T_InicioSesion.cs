@@ -26,7 +26,7 @@ namespace PruebasUnitarias
             string MensajeEsperado = "Llenar el campo usuario";
             Assert.AreEqual(MensajePrueba, MensajeEsperado);
         }
-        
+
         // Caso de Prueba: Campo de texto de la contraseña vacío
         [TestMethod]
         public void CampoContraseñaVacio()

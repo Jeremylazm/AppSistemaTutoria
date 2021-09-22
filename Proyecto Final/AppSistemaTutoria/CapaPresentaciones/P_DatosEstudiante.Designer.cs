@@ -69,6 +69,7 @@
             this.btnSubirPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnRestablecerPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
             this.lblIPersonal = new System.Windows.Forms.Label();
+            this.BordeadoDatosEstudiante = new Bunifu.UI.WinForms.BunifuGroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
@@ -158,6 +159,7 @@
             // 
             this.txtAPaterno.BackColor = System.Drawing.Color.White;
             this.txtAPaterno.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAPaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtAPaterno.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAPaterno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtAPaterno.Location = new System.Drawing.Point(138, 283);
@@ -192,6 +194,7 @@
             // 
             this.txtNombre.BackColor = System.Drawing.Color.White;
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNombre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtNombre.Location = new System.Drawing.Point(138, 347);
@@ -226,6 +229,7 @@
             // 
             this.txtAMaterno.BackColor = System.Drawing.Color.White;
             this.txtAMaterno.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAMaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtAMaterno.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAMaterno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtAMaterno.Location = new System.Drawing.Point(138, 315);
@@ -342,6 +346,7 @@
             // 
             this.txtDireccion.BackColor = System.Drawing.Color.White;
             this.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDireccion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDireccion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtDireccion.Location = new System.Drawing.Point(138, 379);
@@ -514,6 +519,7 @@
             // 
             this.txtPReferencia.BackColor = System.Drawing.Color.White;
             this.txtPReferencia.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPReferencia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPReferencia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPReferencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtPReferencia.Location = new System.Drawing.Point(138, 476);
@@ -634,6 +640,25 @@
             this.lblIPersonal.TabIndex = 122;
             this.lblIPersonal.Text = "Inf. Personal: ";
             // 
+            // BordeadoDatosEstudiante
+            // 
+            this.BordeadoDatosEstudiante.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BordeadoDatosEstudiante.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoDatosEstudiante.BorderRadius = 8;
+            this.BordeadoDatosEstudiante.BorderThickness = 1;
+            this.BordeadoDatosEstudiante.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BordeadoDatosEstudiante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoDatosEstudiante.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BordeadoDatosEstudiante.LabelIndent = 10;
+            this.BordeadoDatosEstudiante.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
+            this.BordeadoDatosEstudiante.Location = new System.Drawing.Point(-1, 0);
+            this.BordeadoDatosEstudiante.Name = "BordeadoDatosEstudiante";
+            this.BordeadoDatosEstudiante.Size = new System.Drawing.Size(405, 677);
+            this.BordeadoDatosEstudiante.TabIndex = 193;
+            this.BordeadoDatosEstudiante.TabStop = false;
+            // 
             // P_DatosEstudiante
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -678,6 +703,7 @@
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.BordeadoDatosEstudiante);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_DatosEstudiante";
@@ -732,5 +758,6 @@
         public Otros_Controles.JALMCircularPictureBox imgPerfil;
         private Bunifu.Framework.UI.BunifuFlatButton btnRestablecerPerfil;
         private System.Windows.Forms.Label lblIPersonal;
+        private Bunifu.UI.WinForms.BunifuGroupBox BordeadoDatosEstudiante;
     }
 }

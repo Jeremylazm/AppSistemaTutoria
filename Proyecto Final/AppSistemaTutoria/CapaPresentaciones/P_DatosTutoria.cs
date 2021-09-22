@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using CapaEntidades;
+﻿using CapaEntidades;
 using CapaNegocios;
-using System.Net;
-using System.Net.Mail;
+using System;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace CapaPresentaciones
 {
@@ -24,6 +15,8 @@ namespace CapaPresentaciones
         {
             InitializeComponent();
             cxtDimension.SelectedIndex = 0;
+            DateTime thisDay = DateTime.Today;
+            txtFecha.Text = thisDay.ToString("d");
         }
         public P_DatosTutoria(bool pTest)
         {
@@ -41,12 +34,12 @@ namespace CapaPresentaciones
         }
         private void LimpiarCajas()
         {
-            
-            cxtDimension.SelectedIndex=0;
+
+            cxtDimension.SelectedIndex = 0;
             txtReferencia.Clear();
             txtDescripcion.Clear();
             txtObservaciones.Clear();
-          
+
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -59,19 +52,19 @@ namespace CapaPresentaciones
             LimpiarCajas();
         }
 
-        public string AgregarOModificar(string semestre,string CodDocente, string CodEstudiante, string Dimension, string Referencia, string Descripcion,
+        public string AgregarOModificar(string semestre, string CodDocente, string CodEstudiante, string Dimension, string Referencia, string Descripcion,
                                  string Observaciones, string Fecha)
         {
             string Mensaje = "";
 
-            if ((semestre.Trim()!="")&&
+            if ((semestre.Trim() != "") &&
                 (CodDocente.Trim() != "") &&
                 (CodEstudiante.Trim() != "") &&
                 (Dimension.Trim() != "") &&
                 (Referencia.Trim() != "") &&
                 (Descripcion.Trim() != "") &&
                 (Observaciones.Trim() != ""))
-                
+
             {
                 Regex PatronCodigo = new Regex(@"\A[0-9]{6}\Z");
                 Regex PatronTelefono = new Regex(@"\A[0-9]{9}\Z");
@@ -83,16 +76,16 @@ namespace CapaPresentaciones
                     {
                         ObjEntidad.CodEstudiante = CodDocente;
                         ObjEntidad.Semestre = semestre;
-                        
+
                         ObjEntidad.Dimension = Dimension;
                         ObjEntidad.Referencia = Referencia;
                         ObjEntidad.Descripcion = Descripcion;
                         ObjEntidad.Observaciones = Observaciones;
                         ObjEntidad.Fecha = Fecha;
-                        
+
 
                         if (Test == false)
-                        { 
+                        {
                             ObjNegocio.InsertarRegistros(ObjEntidad);
                         }
 
@@ -244,8 +237,7 @@ namespace CapaPresentaciones
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            //AgregarOModificar(txtSemestre.Text, txtCodigoDocente.Text, txtCodigoEstudiante.Text, cxtDimension.Text, txtReferencia.Text,
-            //txtDescripcion.Text, txtObservaciones.Text, dateTimeFechaFichaT.Value.Date);
+            //Agregar ficha tutoria
             if ((txtCodigoDocente.Text.Trim() != "") &&
                 (txtCodigoEstudiante.Text.Trim() != "") &&
             (txtSemestre.Text.Trim() != "") &&
@@ -253,13 +245,13 @@ namespace CapaPresentaciones
             (txtDescripcion.Text.Trim() != "") &&
             (cxtDimension.Text.Trim() != "") &&
             (txtObservaciones.Text.Trim() != "") &&
-            (dateTimeFechaFichaT.Text.Trim() != ""))
+            (txtFecha.Text.Trim() != ""))
             {
                 if (Program.Evento == 0)
                 {
                     try
                     {
-                        
+
                         //ObjEntidad.CodDocente = txtCodigoDocente.Text;
                         ObjEntidad.CodEstudiante = txtCodigoEstudiante.Text;
                         ObjEntidad.Semestre = txtSemestre.Text;
@@ -267,11 +259,12 @@ namespace CapaPresentaciones
                         ObjEntidad.Dimension = cxtDimension.Text;
                         ObjEntidad.Descripcion = txtDescripcion.Text;
                         ObjEntidad.Observaciones = txtObservaciones.Text;
-                        ObjEntidad.Fecha = dateTimeFechaFichaT.Value.ToString("dd/MM/yyyy");
-                        
+                        DateTime thisDay = DateTime.Today;
+                        ObjEntidad.Fecha = thisDay.ToString("d");
+
                         ObjNegocio.InsertarRegistros(ObjEntidad);
                         MensajeConfirmacion("Registro insertado exitosamente");
-                        
+
                         Program.Evento = 0;
 
                         N_InicioSesion InicioSesion = new N_InicioSesion();
@@ -326,7 +319,8 @@ namespace CapaPresentaciones
                             ObjEntidad.Dimension = cxtDimension.Text;
                             ObjEntidad.Descripcion = txtDescripcion.Text;
                             ObjEntidad.Observaciones = txtObservaciones.Text;
-                            ObjEntidad.Fecha = dateTimeFechaFichaT.Value.ToString("dd/MM/yyyy");
+                            DateTime thisDay = DateTime.Today;
+                            ObjEntidad.Fecha = thisDay.ToString("d");
 
                             ObjNegocio.EditarRegistros(ObjEntidad);
                             MensajeConfirmacion("Registro editado exitosamente");
@@ -343,7 +337,7 @@ namespace CapaPresentaciones
             }
             else
             {
-                MensajeError("Debe llenar los campos");
+                MensajeError("Debe llenar todos los campos");
             }
         }
     }

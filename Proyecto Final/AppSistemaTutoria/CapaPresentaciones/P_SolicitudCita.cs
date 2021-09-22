@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using CapaNegocios;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CapaNegocios;
 using System.Net;
 using System.Net.Mail;
-using System.Data.SqlClient;
+using System.Windows.Forms;
 namespace CapaPresentaciones
 {
     public partial class P_SolicitudCita : Form
@@ -118,13 +111,13 @@ namespace CapaPresentaciones
                     clientDetails.Send(mailDetails);
                     MessageBox.Show("Solicitud Enviada.", "Estado Solicitud", MessageBoxButtons.OK);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Solicitud no Enviada", "Estado Solicitud", MessageBoxButtons.OK);
                 }
 
             }
-            
+
 
         }
     }

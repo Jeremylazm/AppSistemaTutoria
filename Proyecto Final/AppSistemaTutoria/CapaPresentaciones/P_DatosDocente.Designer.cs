@@ -77,6 +77,7 @@ namespace CapaPresentaciones
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.txtHorario = new System.Windows.Forms.TextBox();
             this.DragControlDocente = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.BordeadoDatosDocente = new Bunifu.UI.WinForms.BunifuGroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
@@ -166,6 +167,7 @@ namespace CapaPresentaciones
             // 
             this.txtAPaterno.BackColor = System.Drawing.Color.White;
             this.txtAPaterno.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAPaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtAPaterno.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAPaterno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtAPaterno.Location = new System.Drawing.Point(137, 285);
@@ -200,6 +202,7 @@ namespace CapaPresentaciones
             // 
             this.txtNombre.BackColor = System.Drawing.Color.White;
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNombre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtNombre.Location = new System.Drawing.Point(137, 349);
@@ -234,6 +237,7 @@ namespace CapaPresentaciones
             // 
             this.txtAMaterno.BackColor = System.Drawing.Color.White;
             this.txtAMaterno.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAMaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtAMaterno.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAMaterno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtAMaterno.Location = new System.Drawing.Point(137, 317);
@@ -336,6 +340,7 @@ namespace CapaPresentaciones
             // 
             this.txtDireccion.BackColor = System.Drawing.Color.White;
             this.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDireccion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDireccion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtDireccion.Location = new System.Drawing.Point(137, 414);
@@ -753,6 +758,25 @@ namespace CapaPresentaciones
             this.DragControlDocente.TargetControl = this.lblTitulo;
             this.DragControlDocente.Vertical = true;
             // 
+            // BordeadoDatosDocente
+            // 
+            this.BordeadoDatosDocente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BordeadoDatosDocente.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoDatosDocente.BorderRadius = 8;
+            this.BordeadoDatosDocente.BorderThickness = 1;
+            this.BordeadoDatosDocente.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BordeadoDatosDocente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoDatosDocente.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BordeadoDatosDocente.LabelIndent = 10;
+            this.BordeadoDatosDocente.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
+            this.BordeadoDatosDocente.Location = new System.Drawing.Point(-1, 0);
+            this.BordeadoDatosDocente.Name = "BordeadoDatosDocente";
+            this.BordeadoDatosDocente.Size = new System.Drawing.Size(396, 755);
+            this.BordeadoDatosDocente.TabIndex = 194;
+            this.BordeadoDatosDocente.TabStop = false;
+            // 
             // P_DatosDocente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -804,6 +828,7 @@ namespace CapaPresentaciones
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.BordeadoDatosDocente);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_DatosDocente";
@@ -866,5 +891,6 @@ namespace CapaPresentaciones
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
         public System.Windows.Forms.TextBox txtHorario;
         private Bunifu.Framework.UI.BunifuDragControl DragControlDocente;
+        private Bunifu.UI.WinForms.BunifuGroupBox BordeadoDatosDocente;
     }
 }

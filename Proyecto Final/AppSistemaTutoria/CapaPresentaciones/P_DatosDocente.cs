@@ -1,14 +1,13 @@
-﻿using System;
+﻿using CapaEntidades;
+using CapaNegocios;
+using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using CapaEntidades;
-using CapaNegocios;
 
 namespace CapaPresentaciones
 {
@@ -272,7 +271,7 @@ namespace CapaPresentaciones
 
             if (cxtCategoria.SelectedItem.ToString() == "NOMBRADO")
             {
-                
+
                 cxtSubcategoria.Items.Add("PRINCIPAL");
                 cxtSubcategoria.Items.Add("ASOCIADO");
                 cxtSubcategoria.Items.Add("AUXILIAR");
@@ -288,7 +287,7 @@ namespace CapaPresentaciones
                 cxtSubcategoria.Items.Add("B1");
                 cxtSubcategoria.Items.Add("B2");
                 cxtSubcategoria.Items.Add("B3");
-                
+
                 cxtRegimen.Enabled = false;
             }
 
@@ -340,7 +339,7 @@ namespace CapaPresentaciones
             try
             {
                 OpenFileDialog Archivo = new OpenFileDialog();
-                Archivo.Filter = "Archivos de Imagen | *.jpg; *.jpeg; *.png; *.gif; *.tif"; 
+                Archivo.Filter = "Archivos de Imagen | *.jpg; *.jpeg; *.png; *.gif; *.tif";
                 Archivo.Title = "Subir Perfil";
 
                 if (Archivo.ShowDialog() == DialogResult.OK)

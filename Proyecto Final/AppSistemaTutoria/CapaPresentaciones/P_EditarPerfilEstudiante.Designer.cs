@@ -54,23 +54,19 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.txtEscuelaP = new System.Windows.Forms.TextBox();
-            this.BordeadoDatos = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.gbxDatos = new System.Windows.Forms.Label();
-            this.gbxReferencia = new System.Windows.Forms.Label();
-            this.BordeadoReferencia = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.gbxEstado = new System.Windows.Forms.Label();
-            this.BordeadoInformacion = new Bunifu.Framework.UI.BunifuThinButton2();
             this.btnRestablecerPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnSubirPerfil = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.gbxPermisos = new System.Windows.Forms.Label();
-            this.BordeadoPermiso = new Bunifu.Framework.UI.BunifuThinButton2();
             this.btnCambiarContraseña = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnGuardar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.lblPermisoInformacion = new System.Windows.Forms.Label();
+            this.txtIPersonal = new System.Windows.Forms.TextBox();
+            this.gbxDatos = new Bunifu.UI.WinForms.BunifuGroupBox();
+            this.gbxReferencia = new Bunifu.UI.WinForms.BunifuGroupBox();
+            this.gbxInformacion = new Bunifu.UI.WinForms.BunifuGroupBox();
+            this.gbxPermiso = new Bunifu.UI.WinForms.BunifuGroupBox();
+            this.BordeadoPerfilEstudiante = new Bunifu.UI.WinForms.BunifuGroupBox();
             this.ckbIPersonal = new CapaPresentaciones.Otros_Controles.JALMToggleButton();
             this.imgPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
-            this.txtIPersonal = new System.Windows.Forms.TextBox();
-            this.BordeadoMenu = new Bunifu.Framework.UI.BunifuThinButton2();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
             this.SuspendLayout();
@@ -270,6 +266,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDireccion.BackColor = System.Drawing.Color.White;
             this.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDireccion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDireccion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtDireccion.Location = new System.Drawing.Point(117, 147);
@@ -382,131 +379,6 @@
             this.txtEscuelaP.Size = new System.Drawing.Size(280, 19);
             this.txtEscuelaP.TabIndex = 158;
             // 
-            // BordeadoDatos
-            // 
-            this.BordeadoDatos.ActiveBorderThickness = 1;
-            this.BordeadoDatos.ActiveCornerRadius = 20;
-            this.BordeadoDatos.ActiveFillColor = System.Drawing.Color.White;
-            this.BordeadoDatos.ActiveForecolor = System.Drawing.Color.White;
-            this.BordeadoDatos.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoDatos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BordeadoDatos.BackColor = System.Drawing.Color.White;
-            this.BordeadoDatos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoDatos.BackgroundImage")));
-            this.BordeadoDatos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BordeadoDatos.ButtonText = "Editar Perfil";
-            this.BordeadoDatos.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BordeadoDatos.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BordeadoDatos.ForeColor = System.Drawing.Color.White;
-            this.BordeadoDatos.IdleBorderThickness = 1;
-            this.BordeadoDatos.IdleCornerRadius = 20;
-            this.BordeadoDatos.IdleFillColor = System.Drawing.Color.White;
-            this.BordeadoDatos.IdleForecolor = System.Drawing.Color.White;
-            this.BordeadoDatos.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoDatos.Location = new System.Drawing.Point(21, 58);
-            this.BordeadoDatos.Margin = new System.Windows.Forms.Padding(5);
-            this.BordeadoDatos.Name = "BordeadoDatos";
-            this.BordeadoDatos.Size = new System.Drawing.Size(396, 174);
-            this.BordeadoDatos.TabIndex = 160;
-            this.BordeadoDatos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // gbxDatos
-            // 
-            this.gbxDatos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbxDatos.AutoSize = true;
-            this.gbxDatos.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxDatos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.gbxDatos.Location = new System.Drawing.Point(29, 54);
-            this.gbxDatos.Name = "gbxDatos";
-            this.gbxDatos.Size = new System.Drawing.Size(49, 19);
-            this.gbxDatos.TabIndex = 161;
-            this.gbxDatos.Text = "Datos";
-            // 
-            // gbxReferencia
-            // 
-            this.gbxReferencia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbxReferencia.AutoSize = true;
-            this.gbxReferencia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxReferencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.gbxReferencia.Location = new System.Drawing.Point(29, 238);
-            this.gbxReferencia.Name = "gbxReferencia";
-            this.gbxReferencia.Size = new System.Drawing.Size(83, 19);
-            this.gbxReferencia.TabIndex = 163;
-            this.gbxReferencia.Text = "Referencia";
-            // 
-            // BordeadoReferencia
-            // 
-            this.BordeadoReferencia.ActiveBorderThickness = 1;
-            this.BordeadoReferencia.ActiveCornerRadius = 20;
-            this.BordeadoReferencia.ActiveFillColor = System.Drawing.Color.White;
-            this.BordeadoReferencia.ActiveForecolor = System.Drawing.Color.White;
-            this.BordeadoReferencia.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoReferencia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BordeadoReferencia.BackColor = System.Drawing.Color.White;
-            this.BordeadoReferencia.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoReferencia.BackgroundImage")));
-            this.BordeadoReferencia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BordeadoReferencia.ButtonText = "Editar Perfil";
-            this.BordeadoReferencia.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BordeadoReferencia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BordeadoReferencia.ForeColor = System.Drawing.Color.White;
-            this.BordeadoReferencia.IdleBorderThickness = 1;
-            this.BordeadoReferencia.IdleCornerRadius = 20;
-            this.BordeadoReferencia.IdleFillColor = System.Drawing.Color.White;
-            this.BordeadoReferencia.IdleForecolor = System.Drawing.Color.White;
-            this.BordeadoReferencia.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoReferencia.Location = new System.Drawing.Point(21, 242);
-            this.BordeadoReferencia.Margin = new System.Windows.Forms.Padding(5);
-            this.BordeadoReferencia.Name = "BordeadoReferencia";
-            this.BordeadoReferencia.Size = new System.Drawing.Size(396, 77);
-            this.BordeadoReferencia.TabIndex = 162;
-            this.BordeadoReferencia.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // gbxEstado
-            // 
-            this.gbxEstado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbxEstado.AutoSize = true;
-            this.gbxEstado.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.gbxEstado.Location = new System.Drawing.Point(29, 325);
-            this.gbxEstado.Name = "gbxEstado";
-            this.gbxEstado.Size = new System.Drawing.Size(150, 19);
-            this.gbxEstado.TabIndex = 165;
-            this.gbxEstado.Text = "Información personal";
-            // 
-            // BordeadoInformacion
-            // 
-            this.BordeadoInformacion.ActiveBorderThickness = 1;
-            this.BordeadoInformacion.ActiveCornerRadius = 20;
-            this.BordeadoInformacion.ActiveFillColor = System.Drawing.Color.White;
-            this.BordeadoInformacion.ActiveForecolor = System.Drawing.Color.White;
-            this.BordeadoInformacion.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoInformacion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BordeadoInformacion.BackColor = System.Drawing.Color.White;
-            this.BordeadoInformacion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoInformacion.BackgroundImage")));
-            this.BordeadoInformacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BordeadoInformacion.ButtonText = "Editar Perfil";
-            this.BordeadoInformacion.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BordeadoInformacion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BordeadoInformacion.ForeColor = System.Drawing.Color.White;
-            this.BordeadoInformacion.IdleBorderThickness = 1;
-            this.BordeadoInformacion.IdleCornerRadius = 20;
-            this.BordeadoInformacion.IdleFillColor = System.Drawing.Color.White;
-            this.BordeadoInformacion.IdleForecolor = System.Drawing.Color.White;
-            this.BordeadoInformacion.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoInformacion.Location = new System.Drawing.Point(21, 329);
-            this.BordeadoInformacion.Margin = new System.Windows.Forms.Padding(5);
-            this.BordeadoInformacion.Name = "BordeadoInformacion";
-            this.BordeadoInformacion.Size = new System.Drawing.Size(396, 105);
-            this.BordeadoInformacion.TabIndex = 164;
-            this.BordeadoInformacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // btnRestablecerPerfil
             // 
             this.btnRestablecerPerfil.Active = true;
@@ -580,45 +452,6 @@
             this.btnSubirPerfil.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnSubirPerfil.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubirPerfil.Click += new System.EventHandler(this.btnSubirPerfil_Click);
-            // 
-            // gbxPermisos
-            // 
-            this.gbxPermisos.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.gbxPermisos.AutoSize = true;
-            this.gbxPermisos.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxPermisos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.gbxPermisos.Location = new System.Drawing.Point(461, 270);
-            this.gbxPermisos.Name = "gbxPermisos";
-            this.gbxPermisos.Size = new System.Drawing.Size(63, 19);
-            this.gbxPermisos.TabIndex = 170;
-            this.gbxPermisos.Text = "Permiso";
-            // 
-            // BordeadoPermiso
-            // 
-            this.BordeadoPermiso.ActiveBorderThickness = 1;
-            this.BordeadoPermiso.ActiveCornerRadius = 20;
-            this.BordeadoPermiso.ActiveFillColor = System.Drawing.Color.White;
-            this.BordeadoPermiso.ActiveForecolor = System.Drawing.Color.White;
-            this.BordeadoPermiso.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoPermiso.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.BordeadoPermiso.BackColor = System.Drawing.Color.White;
-            this.BordeadoPermiso.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoPermiso.BackgroundImage")));
-            this.BordeadoPermiso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BordeadoPermiso.ButtonText = "Editar Perfil";
-            this.BordeadoPermiso.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BordeadoPermiso.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BordeadoPermiso.ForeColor = System.Drawing.Color.White;
-            this.BordeadoPermiso.IdleBorderThickness = 1;
-            this.BordeadoPermiso.IdleCornerRadius = 20;
-            this.BordeadoPermiso.IdleFillColor = System.Drawing.Color.White;
-            this.BordeadoPermiso.IdleForecolor = System.Drawing.Color.White;
-            this.BordeadoPermiso.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoPermiso.Location = new System.Drawing.Point(453, 274);
-            this.BordeadoPermiso.Margin = new System.Windows.Forms.Padding(5);
-            this.BordeadoPermiso.Name = "BordeadoPermiso";
-            this.BordeadoPermiso.Size = new System.Drawing.Size(324, 81);
-            this.BordeadoPermiso.TabIndex = 169;
-            this.BordeadoPermiso.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnCambiarContraseña
             // 
@@ -705,6 +538,109 @@
             this.lblPermisoInformacion.TabIndex = 175;
             this.lblPermisoInformacion.Text = "Conceder al tutor que se visualice la información personal.\r\n";
             // 
+            // txtIPersonal
+            // 
+            this.txtIPersonal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtIPersonal.BackColor = System.Drawing.Color.White;
+            this.txtIPersonal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtIPersonal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtIPersonal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.txtIPersonal.Location = new System.Drawing.Point(34, 349);
+            this.txtIPersonal.Multiline = true;
+            this.txtIPersonal.Name = "txtIPersonal";
+            this.txtIPersonal.Size = new System.Drawing.Size(371, 69);
+            this.txtIPersonal.TabIndex = 4;
+            // 
+            // gbxDatos
+            // 
+            this.gbxDatos.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gbxDatos.BorderRadius = 15;
+            this.gbxDatos.BorderThickness = 1;
+            this.gbxDatos.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxDatos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gbxDatos.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.gbxDatos.LabelIndent = 10;
+            this.gbxDatos.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
+            this.gbxDatos.Location = new System.Drawing.Point(21, 58);
+            this.gbxDatos.Name = "gbxDatos";
+            this.gbxDatos.Size = new System.Drawing.Size(396, 173);
+            this.gbxDatos.TabIndex = 177;
+            this.gbxDatos.TabStop = false;
+            this.gbxDatos.Text = "Datos";
+            // 
+            // gbxReferencia
+            // 
+            this.gbxReferencia.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gbxReferencia.BorderRadius = 15;
+            this.gbxReferencia.BorderThickness = 1;
+            this.gbxReferencia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxReferencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gbxReferencia.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.gbxReferencia.LabelIndent = 10;
+            this.gbxReferencia.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
+            this.gbxReferencia.Location = new System.Drawing.Point(21, 238);
+            this.gbxReferencia.Name = "gbxReferencia";
+            this.gbxReferencia.Size = new System.Drawing.Size(396, 78);
+            this.gbxReferencia.TabIndex = 178;
+            this.gbxReferencia.TabStop = false;
+            this.gbxReferencia.Text = "Referencia";
+            // 
+            // gbxInformacion
+            // 
+            this.gbxInformacion.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gbxInformacion.BorderRadius = 15;
+            this.gbxInformacion.BorderThickness = 1;
+            this.gbxInformacion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxInformacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gbxInformacion.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.gbxInformacion.LabelIndent = 10;
+            this.gbxInformacion.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
+            this.gbxInformacion.Location = new System.Drawing.Point(21, 325);
+            this.gbxInformacion.Name = "gbxInformacion";
+            this.gbxInformacion.Size = new System.Drawing.Size(396, 104);
+            this.gbxInformacion.TabIndex = 179;
+            this.gbxInformacion.TabStop = false;
+            this.gbxInformacion.Text = "Información Personal";
+            // 
+            // gbxPermiso
+            // 
+            this.gbxPermiso.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gbxPermiso.BorderRadius = 15;
+            this.gbxPermiso.BorderThickness = 1;
+            this.gbxPermiso.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxPermiso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gbxPermiso.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.gbxPermiso.LabelIndent = 10;
+            this.gbxPermiso.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
+            this.gbxPermiso.Location = new System.Drawing.Point(453, 268);
+            this.gbxPermiso.Name = "gbxPermiso";
+            this.gbxPermiso.Size = new System.Drawing.Size(324, 82);
+            this.gbxPermiso.TabIndex = 180;
+            this.gbxPermiso.TabStop = false;
+            this.gbxPermiso.Text = "Permiso";
+            // 
+            // BordeadoPerfilEstudiante
+            // 
+            this.BordeadoPerfilEstudiante.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BordeadoPerfilEstudiante.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoPerfilEstudiante.BorderRadius = 8;
+            this.BordeadoPerfilEstudiante.BorderThickness = 1;
+            this.BordeadoPerfilEstudiante.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BordeadoPerfilEstudiante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoPerfilEstudiante.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BordeadoPerfilEstudiante.LabelIndent = 10;
+            this.BordeadoPerfilEstudiante.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
+            this.BordeadoPerfilEstudiante.Location = new System.Drawing.Point(-1, 0);
+            this.BordeadoPerfilEstudiante.Name = "BordeadoPerfilEstudiante";
+            this.BordeadoPerfilEstudiante.Size = new System.Drawing.Size(815, 448);
+            this.BordeadoPerfilEstudiante.TabIndex = 178;
+            this.BordeadoPerfilEstudiante.TabStop = false;
+            // 
             // ckbIPersonal
             // 
             this.ckbIPersonal.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -740,51 +676,6 @@
             this.imgPerfil.TabIndex = 166;
             this.imgPerfil.TabStop = false;
             // 
-            // txtIPersonal
-            // 
-            this.txtIPersonal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtIPersonal.BackColor = System.Drawing.Color.White;
-            this.txtIPersonal.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtIPersonal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtIPersonal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtIPersonal.Location = new System.Drawing.Point(34, 349);
-            this.txtIPersonal.Multiline = true;
-            this.txtIPersonal.Name = "txtIPersonal";
-            this.txtIPersonal.Size = new System.Drawing.Size(371, 69);
-            this.txtIPersonal.TabIndex = 4;
-            // 
-            // BordeadoMenu
-            // 
-            this.BordeadoMenu.ActiveBorderThickness = 1;
-            this.BordeadoMenu.ActiveCornerRadius = 20;
-            this.BordeadoMenu.ActiveFillColor = System.Drawing.Color.White;
-            this.BordeadoMenu.ActiveForecolor = System.Drawing.Color.White;
-            this.BordeadoMenu.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BordeadoMenu.BackColor = System.Drawing.Color.White;
-            this.BordeadoMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoMenu.BackgroundImage")));
-            this.BordeadoMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BordeadoMenu.ButtonText = "Editar Perfil";
-            this.BordeadoMenu.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BordeadoMenu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BordeadoMenu.ForeColor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleBorderThickness = 1;
-            this.BordeadoMenu.IdleCornerRadius = 20;
-            this.BordeadoMenu.IdleFillColor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleForecolor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoMenu.Location = new System.Drawing.Point(-1, 0);
-            this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(5);
-            this.BordeadoMenu.Name = "BordeadoMenu";
-            this.BordeadoMenu.Size = new System.Drawing.Size(815, 452);
-            this.BordeadoMenu.TabIndex = 177;
-            this.BordeadoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // P_EditarPerfilEstudiante
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -796,14 +687,9 @@
             this.Controls.Add(this.ckbIPersonal);
             this.Controls.Add(this.btnCambiarContraseña);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.gbxPermisos);
-            this.Controls.Add(this.BordeadoPermiso);
             this.Controls.Add(this.btnRestablecerPerfil);
             this.Controls.Add(this.btnSubirPerfil);
             this.Controls.Add(this.imgPerfil);
-            this.Controls.Add(this.gbxEstado);
-            this.Controls.Add(this.gbxReferencia);
-            this.Controls.Add(this.gbxDatos);
             this.Controls.Add(this.txtEscuelaP);
             this.Controls.Add(this.Separador7);
             this.Controls.Add(this.txtTReferencia);
@@ -827,10 +713,11 @@
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.BordeadoDatos);
-            this.Controls.Add(this.BordeadoReferencia);
-            this.Controls.Add(this.BordeadoInformacion);
-            this.Controls.Add(this.BordeadoMenu);
+            this.Controls.Add(this.gbxDatos);
+            this.Controls.Add(this.gbxReferencia);
+            this.Controls.Add(this.gbxInformacion);
+            this.Controls.Add(this.gbxPermiso);
+            this.Controls.Add(this.BordeadoPerfilEstudiante);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_EditarPerfilEstudiante";
@@ -870,14 +757,6 @@
         private Bunifu.Framework.UI.BunifuSeparator Separador1;
         public System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label lblCodigo;
-        private System.Windows.Forms.Label gbxEstado;
-        private System.Windows.Forms.Label gbxReferencia;
-        private System.Windows.Forms.Label gbxDatos;
-        private Bunifu.Framework.UI.BunifuThinButton2 BordeadoDatos;
-        private Bunifu.Framework.UI.BunifuThinButton2 BordeadoReferencia;
-        private Bunifu.Framework.UI.BunifuThinButton2 BordeadoInformacion;
-        private System.Windows.Forms.Label gbxPermisos;
-        private Bunifu.Framework.UI.BunifuThinButton2 BordeadoPermiso;
         private Bunifu.Framework.UI.BunifuFlatButton btnRestablecerPerfil;
         private Bunifu.Framework.UI.BunifuFlatButton btnSubirPerfil;
         public Otros_Controles.JALMCircularPictureBox imgPerfil;
@@ -886,6 +765,10 @@
         private System.Windows.Forms.Label lblPermisoInformacion;
         public Bunifu.Framework.UI.BunifuFlatButton btnGuardar;
         public System.Windows.Forms.TextBox txtIPersonal;
-        private Bunifu.Framework.UI.BunifuThinButton2 BordeadoMenu;
+        private Bunifu.UI.WinForms.BunifuGroupBox gbxDatos;
+        private Bunifu.UI.WinForms.BunifuGroupBox gbxPermiso;
+        private Bunifu.UI.WinForms.BunifuGroupBox gbxReferencia;
+        private Bunifu.UI.WinForms.BunifuGroupBox gbxInformacion;
+        private Bunifu.UI.WinForms.BunifuGroupBox BordeadoPerfilEstudiante;
     }
 }
