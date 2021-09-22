@@ -51,9 +51,9 @@ namespace CapaPresentaciones
             string Telefono, string EscProfesional, string Horario)
         {
             // Cadena que nos servira para los test
-            string Mensaje;
+            string Mensaje = "";
             // Mostramos mensasje si se tiene o no tutor
-            if ((Docente != "") &&
+            if ((Docente.Trim() != "") &&
                 (Email.Trim() != "") &&
                 (Direccion != "") &&
                 (Telefono.Trim() != "") &&
@@ -61,13 +61,13 @@ namespace CapaPresentaciones
                 (Horario.Trim() != ""))
             {
                 Mensaje = "Datos de Tutor Cargados Exitosamente";
-                if(!Test)
+                if(Test == false)
                     MessageBox.Show(Mensaje);
             }
             else
             {
                 Mensaje = "Ud. Aun no tiene un tutor asignado";
-                if (!Test)
+                if (Test == false)
                     MessageBox.Show(Mensaje);
             }
                 // Datos de la imagen de perfil
