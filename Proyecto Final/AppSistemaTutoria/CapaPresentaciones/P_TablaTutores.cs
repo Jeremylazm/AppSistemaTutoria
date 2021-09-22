@@ -77,51 +77,30 @@ namespace CapaPresentaciones
 
         public void MostrarRegistrosTutores()
         {
-            try
-            {
-                dgvTablaTutores.DataSource = N_Docente.MostrarTutores(E_InicioSesion.Usuario);
-                AccionesTablaTutores();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            dgvTablaTutores.DataSource = N_Docente.MostrarTutores(E_InicioSesion.Usuario);
+            AccionesTablaTutores();
         }
 
         public void MostrarRegistrosEstudiantesSinTutor()
         {
-            try
-            {
-                labelTutorados.Visible = false;
-                labelEstudiantes.Visible = true;
-                btnEstudiantes.Visible = false;
-                textBoxBuscar.Text = "";
-                dgvTablaEstudiantes.DataSource = N_Estudiante.MostrarEstudiantesSinTutor(E_InicioSesion.Usuario);
-                textBoxTotalRegistros.Text = dgvTablaEstudiantes.Rows.Count.ToString();
-                AccionesTablaEstudiantesSinTutor();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            labelTutorados.Visible = false;
+            labelEstudiantes.Visible = true;
+            btnEstudiantes.Visible = false;
+            textBoxBuscar.Text = "";
+            dgvTablaEstudiantes.DataSource = N_Estudiante.MostrarEstudiantesSinTutor(E_InicioSesion.Usuario);
+            textBoxTotalRegistros.Text = dgvTablaEstudiantes.Rows.Count.ToString();
+            AccionesTablaEstudiantesSinTutor();
         }
 
         public void MostrarRegistrosTutorados()
         {
-            try
-            {
-                labelEstudiantes.Visible = false;
-                labelTutorados.Visible = true;
-                btnEstudiantes.Visible = true;
-                dgvTablaEstudiantes.DataSource = N_Docente.MostrarTutorados(textBoxSeleccionarTutor.Text);
-                textBoxTotalRegistros.Text = dgvTablaEstudiantes.Rows.Count.ToString();
-                textBoxBuscar.Text = "";
-                AccionesTablaTutorados();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            labelEstudiantes.Visible = false;
+            labelTutorados.Visible = true;
+            btnEstudiantes.Visible = true;
+            dgvTablaEstudiantes.DataSource = N_Docente.MostrarTutorados(textBoxSeleccionarTutor.Text);
+            textBoxTotalRegistros.Text = dgvTablaEstudiantes.Rows.Count.ToString();
+            textBoxBuscar.Text = "";
+            AccionesTablaTutorados();
         }
 
         public void BuscarRegistroTutor()
@@ -303,7 +282,7 @@ namespace CapaPresentaciones
 
         private void textBoxSeleccionarTutor_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxBuscar.Text == "" && textBoxTotalRegistros.Text == "")
+            if (textBoxBuscar.Text == "")
             {
                 MostrarRegistrosEstudiantesSinTutor();
             }
