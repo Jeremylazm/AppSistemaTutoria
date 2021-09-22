@@ -15,6 +15,8 @@ namespace CapaPresentaciones
         {
             InitializeComponent();
             cxtDimension.SelectedIndex = 0;
+            DateTime thisDay = DateTime.Today;
+            txtFecha.Text = thisDay.ToString("d");
         }
         public P_DatosTutoria(bool pTest)
         {
@@ -243,7 +245,7 @@ namespace CapaPresentaciones
             (txtDescripcion.Text.Trim() != "") &&
             (cxtDimension.Text.Trim() != "") &&
             (txtObservaciones.Text.Trim() != "") &&
-            (dateTimeFechaFichaT.Text.Trim() != ""))
+            (txtFecha.Text.Trim() != ""))
             {
                 if (Program.Evento == 0)
                 {
@@ -317,7 +319,8 @@ namespace CapaPresentaciones
                             ObjEntidad.Dimension = cxtDimension.Text;
                             ObjEntidad.Descripcion = txtDescripcion.Text;
                             ObjEntidad.Observaciones = txtObservaciones.Text;
-                            ObjEntidad.Fecha = dateTimeFechaFichaT.Value.ToString("dd/MM/yyyy");
+                            DateTime thisDay = DateTime.Today;
+                            ObjEntidad.Fecha = thisDay.ToString("d");
 
                             ObjNegocio.EditarRegistros(ObjEntidad);
                             MensajeConfirmacion("Registro editado exitosamente");
@@ -334,7 +337,7 @@ namespace CapaPresentaciones
             }
             else
             {
-                MensajeError("Debe llenar los campos");
+                MensajeError("Debe llenar todos los campos");
             }
         }
     }
