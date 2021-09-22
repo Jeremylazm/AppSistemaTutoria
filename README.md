@@ -49,6 +49,15 @@ Cada usuario definido tiene una serie de funcionalidades particulares que tienen
 # MODELO RELACIONAL DE LA BASE DE DATOS.
 ![Base de datos](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/BaseDeDatos.png)
 
+#IMPLEMENTACIÓN DEL SISTEMA.
+##ACTORES:
+* DOCENTE: 
+Este actor interactúa con el actor estudiante a través de las tutorías. Si cumple con los requisitos para ser tutor, las acciones que puede realizar es buscar, agregar, modificar y eliminar fichas de tutoría además de ver la relación de tutorados correspondientes.
+* DIRECTOR DE ESCUELA: 
+Este actor tiene las mismas características que el actor docente y además de las realizar las mismas acciones, tiene privilegios para administrar el sistema de tutorías y realizar operaciones de buscar, agregar, modificar y eliminar usuarios. Otras acciones incluyen la asignación de tutorados a los docentes que cumplen con los requisitos para ser tutores y ver un informe sobre las tutorías realizadas bajo diferentes criterios.
+* ESTUDIANTE: 
+Este actor interactúa con el actor docente que es tutora través de las tutorías. Puede solicitar tutorías.
+
 # INTERFACES
 ## Formularios para todos los usuarios
 * Form Inicio Sesión:
