@@ -81,5 +81,22 @@ Cada usuario definido tiene una serie de funcionalidades particulares que tienen
 
 * Form Tabla Tutorados:
 
-![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormDirectorDocente/TablaTutorados.png)
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormDirectorDocente/Tutorados.png)
+
+## Formularios exclusivos para usuario Director de Escuela:
+* Form Tabla Docentes:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormDirector/TablaDocentes.png)
+* Form Datos Docente (Agregar, Modificar):
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormDirector/DatosDocente.png)
+* Form Tabla Tutores:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormDirector/TablaTutores.png)
+* Form Tabla Estudiantes:
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormDirector/TablaEstudiantes.png)
+* Form Datos Estudiante (Agregar, Modificar):
+
+![](https://raw.githubusercontent.com/Jeremylazm/AppSistemaTutoria/main/Screenshots/FormDirector/DatosEstudiante.png)
 
