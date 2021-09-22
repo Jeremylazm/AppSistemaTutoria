@@ -859,6 +859,7 @@ END;
 GO
 
 -- Crear un procedimiento para buscar tutorias por cualquier atributo
+
 CREATE PROCEDURE spuBuscarFichaTutorias @CodDocente VARCHAR(5) ,@Texto VARCHAR(20)
 AS
 BEGIN
@@ -873,6 +874,7 @@ BEGIN
 			 T.CodEstudiante = E.CodEstudiante) INNER JOIN TDocente D ON
 			 E.CodDocente = D.CodDocente
 		WHERE (T.CodFichaTutoria LIKE (@Texto + '%') OR
+			  T.CodEstudiante LIKE (@Texto + '%') OR
 			  E.APaterno LIKE (@Texto + '%') OR
 			  E.AMaterno LIKE (@Texto + '%') OR
 			  E.Nombre LIKE (@Texto + '%') OR
