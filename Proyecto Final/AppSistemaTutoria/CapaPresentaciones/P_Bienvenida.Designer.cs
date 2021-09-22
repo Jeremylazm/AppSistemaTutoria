@@ -40,6 +40,7 @@
             this.ProgresoCircular = new CircularProgressBar.CircularProgressBar();
             this.Movimiento = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.BordeadoBienvenida = new Bunifu.UI.WinForms.BunifuGroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
             this.SuspendLayout();
             // 
@@ -159,6 +160,25 @@
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this;
             // 
+            // BordeadoBienvenida
+            // 
+            this.BordeadoBienvenida.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BordeadoBienvenida.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoBienvenida.BorderRadius = 8;
+            this.BordeadoBienvenida.BorderThickness = 1;
+            this.BordeadoBienvenida.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BordeadoBienvenida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoBienvenida.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BordeadoBienvenida.LabelIndent = 10;
+            this.BordeadoBienvenida.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
+            this.BordeadoBienvenida.Location = new System.Drawing.Point(-1, 0);
+            this.BordeadoBienvenida.Name = "BordeadoBienvenida";
+            this.BordeadoBienvenida.Size = new System.Drawing.Size(1000, 600);
+            this.BordeadoBienvenida.TabIndex = 193;
+            this.BordeadoBienvenida.TabStop = false;
+            // 
             // P_Bienvenida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -171,6 +191,7 @@
             this.Controls.Add(this.lblBienvenida);
             this.Controls.Add(this.imgLogoUNSAAC);
             this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.BordeadoBienvenida);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_Bienvenida";
@@ -195,5 +216,6 @@
         private CircularProgressBar.CircularProgressBar ProgresoCircular;
         private Bunifu.Framework.UI.BunifuDragControl Movimiento;
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
+        private Bunifu.UI.WinForms.BunifuGroupBox BordeadoBienvenida;
     }
 }

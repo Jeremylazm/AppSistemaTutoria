@@ -54,6 +54,7 @@ namespace CapaPresentaciones
             this.lblTitulo = new System.Windows.Forms.Label();
             this.txtEscProfesional = new System.Windows.Forms.TextBox();
             this.imgPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
+            this.BordeadoDatosTutor = new Bunifu.UI.WinForms.BunifuGroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
@@ -341,6 +342,25 @@ namespace CapaPresentaciones
             this.imgPerfil.TabIndex = 178;
             this.imgPerfil.TabStop = false;
             // 
+            // BordeadoDatosTutor
+            // 
+            this.BordeadoDatosTutor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BordeadoDatosTutor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoDatosTutor.BorderRadius = 8;
+            this.BordeadoDatosTutor.BorderThickness = 1;
+            this.BordeadoDatosTutor.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BordeadoDatosTutor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoDatosTutor.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BordeadoDatosTutor.LabelIndent = 10;
+            this.BordeadoDatosTutor.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
+            this.BordeadoDatosTutor.Location = new System.Drawing.Point(-1, 0);
+            this.BordeadoDatosTutor.Name = "BordeadoDatosTutor";
+            this.BordeadoDatosTutor.Size = new System.Drawing.Size(531, 582);
+            this.BordeadoDatosTutor.TabIndex = 195;
+            this.BordeadoDatosTutor.TabStop = false;
+            // 
             // P_InformacionTutor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -369,6 +389,7 @@ namespace CapaPresentaciones
             this.Controls.Add(this.lblDocente);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.BordeadoDatosTutor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_InformacionTutor";
@@ -407,5 +428,6 @@ namespace CapaPresentaciones
         private Bunifu.Framework.UI.BunifuImageButton btnCerrar;
         private System.Windows.Forms.Label lblTitulo;
         public System.Windows.Forms.TextBox txtEscProfesional;
+        private Bunifu.UI.WinForms.BunifuGroupBox BordeadoDatosTutor;
     }
 }

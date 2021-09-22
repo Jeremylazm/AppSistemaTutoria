@@ -58,7 +58,6 @@ namespace CapaPresentaciones
             this.lblTitulo = new System.Windows.Forms.Label();
             this.BordeadoDatos = new Bunifu.Framework.UI.BunifuThinButton2();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.BordeadoMenu = new Bunifu.Framework.UI.BunifuThinButton2();
             this.btnEnviar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.labelDatosCita = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -75,6 +74,7 @@ namespace CapaPresentaciones
             this.BordeadoReferencia = new Bunifu.Framework.UI.BunifuThinButton2();
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.txtDescripcionCita = new System.Windows.Forms.TextBox();
+            this.BordeadoBienvenida = new Bunifu.UI.WinForms.BunifuGroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -403,7 +403,7 @@ namespace CapaPresentaciones
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(919, 40);
             this.lblTitulo.TabIndex = 184;
-            this.lblTitulo.Text = "Formulario para Solicitud de una Cita";
+            this.lblTitulo.Text = "Solicitud de Cita";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BordeadoDatos
@@ -415,7 +415,7 @@ namespace CapaPresentaciones
             this.BordeadoDatos.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.BordeadoDatos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.BordeadoDatos.BackColor = System.Drawing.SystemColors.Control;
+            this.BordeadoDatos.BackColor = System.Drawing.Color.White;
             this.BordeadoDatos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoDatos.BackgroundImage")));
             this.BordeadoDatos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.BordeadoDatos.ButtonText = "Editar Perfil";
@@ -438,35 +438,6 @@ namespace CapaPresentaciones
             // 
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this;
-            // 
-            // BordeadoMenu
-            // 
-            this.BordeadoMenu.ActiveBorderThickness = 1;
-            this.BordeadoMenu.ActiveCornerRadius = 20;
-            this.BordeadoMenu.ActiveFillColor = System.Drawing.Color.White;
-            this.BordeadoMenu.ActiveForecolor = System.Drawing.Color.White;
-            this.BordeadoMenu.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BordeadoMenu.BackColor = System.Drawing.SystemColors.Control;
-            this.BordeadoMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoMenu.BackgroundImage")));
-            this.BordeadoMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BordeadoMenu.ButtonText = "Editar Perfil";
-            this.BordeadoMenu.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BordeadoMenu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BordeadoMenu.ForeColor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleBorderThickness = 1;
-            this.BordeadoMenu.IdleCornerRadius = 20;
-            this.BordeadoMenu.IdleFillColor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleForecolor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoMenu.Location = new System.Drawing.Point(-1, 0);
-            this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(5);
-            this.BordeadoMenu.Name = "BordeadoMenu";
-            this.BordeadoMenu.Size = new System.Drawing.Size(920, 456);
-            this.BordeadoMenu.TabIndex = 217;
-            this.BordeadoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnEnviar
             // 
@@ -568,7 +539,7 @@ namespace CapaPresentaciones
             this.bunifuThinButton21.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.bunifuThinButton21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.bunifuThinButton21.BackColor = System.Drawing.SystemColors.Control;
+            this.bunifuThinButton21.BackColor = System.Drawing.Color.White;
             this.bunifuThinButton21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuThinButton21.BackgroundImage")));
             this.bunifuThinButton21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.bunifuThinButton21.ButtonText = "Editar Perfil";
@@ -697,7 +668,7 @@ namespace CapaPresentaciones
             this.BordeadoReferencia.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.BordeadoReferencia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.BordeadoReferencia.BackColor = System.Drawing.SystemColors.Control;
+            this.BordeadoReferencia.BackColor = System.Drawing.Color.White;
             this.BordeadoReferencia.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoReferencia.BackgroundImage")));
             this.BordeadoReferencia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.BordeadoReferencia.ButtonText = "Editar Perfil";
@@ -740,10 +711,30 @@ namespace CapaPresentaciones
             this.txtDescripcionCita.Size = new System.Drawing.Size(276, 98);
             this.txtDescripcionCita.TabIndex = 259;
             // 
+            // BordeadoBienvenida
+            // 
+            this.BordeadoBienvenida.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BordeadoBienvenida.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoBienvenida.BorderRadius = 8;
+            this.BordeadoBienvenida.BorderThickness = 1;
+            this.BordeadoBienvenida.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BordeadoBienvenida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoBienvenida.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BordeadoBienvenida.LabelIndent = 10;
+            this.BordeadoBienvenida.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
+            this.BordeadoBienvenida.Location = new System.Drawing.Point(-1, 0);
+            this.BordeadoBienvenida.Name = "BordeadoBienvenida";
+            this.BordeadoBienvenida.Size = new System.Drawing.Size(919, 452);
+            this.BordeadoBienvenida.TabIndex = 260;
+            this.BordeadoBienvenida.TabStop = false;
+            // 
             // P_SolicitudCita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(919, 452);
             this.Controls.Add(this.txtDescripcionCita);
             this.Controls.Add(this.bunifuSeparator1);
@@ -787,7 +778,7 @@ namespace CapaPresentaciones
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.BordeadoDatos);
             this.Controls.Add(this.BordeadoReferencia);
-            this.Controls.Add(this.BordeadoMenu);
+            this.Controls.Add(this.BordeadoBienvenida);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "P_SolicitudCita";
             this.Text = "P_SolicitudCita";
@@ -825,7 +816,6 @@ namespace CapaPresentaciones
         private System.Windows.Forms.Label lblTitulo;
         private Bunifu.Framework.UI.BunifuThinButton2 BordeadoDatos;
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
-        private Bunifu.Framework.UI.BunifuThinButton2 BordeadoMenu;
         public Bunifu.Framework.UI.BunifuFlatButton btnEnviar;
         private System.Windows.Forms.Label labelDatosCita;
         public System.Windows.Forms.TextBox textBox1;
@@ -842,5 +832,6 @@ namespace CapaPresentaciones
         private Bunifu.Framework.UI.BunifuThinButton2 BordeadoReferencia;
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
         private System.Windows.Forms.TextBox txtDescripcionCita;
+        private Bunifu.UI.WinForms.BunifuGroupBox BordeadoBienvenida;
     }
 }

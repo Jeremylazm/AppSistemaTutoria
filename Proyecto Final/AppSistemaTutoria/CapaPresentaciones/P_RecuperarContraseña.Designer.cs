@@ -43,6 +43,7 @@ namespace CapaPresentaciones
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.imgContraseña = new Bunifu.Framework.UI.BunifuImageButton();
             this.lblMensaje = new Bunifu.UI.WinForms.BunifuLabel();
+            this.BordeadoRecuperar = new Bunifu.UI.WinForms.BunifuGroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgContraseña)).BeginInit();
@@ -204,6 +205,7 @@ namespace CapaPresentaciones
             this.lblMensaje.AllowParentOverrides = false;
             this.lblMensaje.AutoEllipsis = false;
             this.lblMensaje.AutoSize = false;
+            this.lblMensaje.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblMensaje.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblMensaje.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblMensaje.Location = new System.Drawing.Point(183, 223);
@@ -215,6 +217,25 @@ namespace CapaPresentaciones
             this.lblMensaje.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblMensaje.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             this.lblMensaje.Visible = false;
+            // 
+            // BordeadoRecuperar
+            // 
+            this.BordeadoRecuperar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BordeadoRecuperar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoRecuperar.BorderRadius = 8;
+            this.BordeadoRecuperar.BorderThickness = 1;
+            this.BordeadoRecuperar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BordeadoRecuperar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoRecuperar.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BordeadoRecuperar.LabelIndent = 10;
+            this.BordeadoRecuperar.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
+            this.BordeadoRecuperar.Location = new System.Drawing.Point(-1, 0);
+            this.BordeadoRecuperar.Name = "BordeadoRecuperar";
+            this.BordeadoRecuperar.Size = new System.Drawing.Size(416, 257);
+            this.BordeadoRecuperar.TabIndex = 193;
+            this.BordeadoRecuperar.TabStop = false;
             // 
             // P_RecuperarContraseña
             // 
@@ -232,6 +253,7 @@ namespace CapaPresentaciones
             this.Controls.Add(this.lblCorreo);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.BordeadoRecuperar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_RecuperarContraseña";
@@ -259,5 +281,6 @@ namespace CapaPresentaciones
         public System.Windows.Forms.TextBox txtEmail;
         private Bunifu.Framework.UI.BunifuImageButton imgContraseña;
         private Bunifu.UI.WinForms.BunifuLabel lblMensaje;
+        private Bunifu.UI.WinForms.BunifuGroupBox BordeadoRecuperar;
     }
 }

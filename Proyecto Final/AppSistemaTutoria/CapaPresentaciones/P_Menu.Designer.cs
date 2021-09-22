@@ -59,6 +59,7 @@ namespace CapaPresentaciones
             this.lblDatos = new System.Windows.Forms.Label();
             this.pnInferior = new System.Windows.Forms.Panel();
             this.pnPrincipal = new System.Windows.Forms.Panel();
+            this.BordeadoInicioSesion = new Bunifu.UI.WinForms.BunifuGroupBox();
             this.pnSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
@@ -632,11 +633,31 @@ namespace CapaPresentaciones
             this.pnPrincipal.Controls.Add(this.pnContenedor);
             this.pnPrincipal.Controls.Add(this.pnInferior);
             this.pnPrincipal.Controls.Add(this.pnLateral);
+            this.pnPrincipal.Controls.Add(this.BordeadoInicioSesion);
             this.pnPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnPrincipal.Location = new System.Drawing.Point(0, 0);
             this.pnPrincipal.Name = "pnPrincipal";
             this.pnPrincipal.Size = new System.Drawing.Size(1000, 600);
             this.pnPrincipal.TabIndex = 5;
+            // 
+            // BordeadoInicioSesion
+            // 
+            this.BordeadoInicioSesion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BordeadoInicioSesion.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoInicioSesion.BorderRadius = 8;
+            this.BordeadoInicioSesion.BorderThickness = 1;
+            this.BordeadoInicioSesion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BordeadoInicioSesion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoInicioSesion.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BordeadoInicioSesion.LabelIndent = 10;
+            this.BordeadoInicioSesion.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
+            this.BordeadoInicioSesion.Location = new System.Drawing.Point(-1, 0);
+            this.BordeadoInicioSesion.Name = "BordeadoInicioSesion";
+            this.BordeadoInicioSesion.Size = new System.Drawing.Size(1000, 600);
+            this.BordeadoInicioSesion.TabIndex = 193;
+            this.BordeadoInicioSesion.TabStop = false;
             // 
             // P_Menu
             // 
@@ -696,5 +717,6 @@ namespace CapaPresentaciones
         private Bunifu.Framework.UI.BunifuSeparator separador;
         private Bunifu.Framework.UI.BunifuFlatButton btnMiTutor;
         private Bunifu.Framework.UI.BunifuFlatButton btnSolicitarCita;
+        private Bunifu.UI.WinForms.BunifuGroupBox BordeadoInicioSesion;
     }
 }

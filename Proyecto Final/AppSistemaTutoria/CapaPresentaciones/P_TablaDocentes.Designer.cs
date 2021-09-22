@@ -35,7 +35,6 @@
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.btnCerrar = new Bunifu.Framework.UI.BunifuImageButton();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.BordeadoMenu = new Bunifu.Framework.UI.BunifuThinButton2();
             this.lblBuscar = new System.Windows.Forms.Label();
             this.Separador1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.txtBuscar = new System.Windows.Forms.TextBox();
@@ -44,6 +43,7 @@
             this.btnEliminar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnExportar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.dgvTabla = new System.Windows.Forms.DataGridView();
+            this.BordeadoTablaDocentes = new Bunifu.UI.WinForms.BunifuGroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTabla)).BeginInit();
             this.SuspendLayout();
@@ -81,35 +81,6 @@
             this.lblTitulo.TabIndex = 73;
             this.lblTitulo.Text = "Tabla de Docentes";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // BordeadoMenu
-            // 
-            this.BordeadoMenu.ActiveBorderThickness = 1;
-            this.BordeadoMenu.ActiveCornerRadius = 20;
-            this.BordeadoMenu.ActiveFillColor = System.Drawing.Color.White;
-            this.BordeadoMenu.ActiveForecolor = System.Drawing.Color.White;
-            this.BordeadoMenu.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BordeadoMenu.BackColor = System.Drawing.Color.White;
-            this.BordeadoMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BordeadoMenu.BackgroundImage")));
-            this.BordeadoMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BordeadoMenu.ButtonText = "Editar Perfil";
-            this.BordeadoMenu.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BordeadoMenu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BordeadoMenu.ForeColor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleBorderThickness = 1;
-            this.BordeadoMenu.IdleCornerRadius = 20;
-            this.BordeadoMenu.IdleFillColor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleForecolor = System.Drawing.Color.White;
-            this.BordeadoMenu.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.BordeadoMenu.Location = new System.Drawing.Point(-1, 0);
-            this.BordeadoMenu.Margin = new System.Windows.Forms.Padding(5);
-            this.BordeadoMenu.Name = "BordeadoMenu";
-            this.BordeadoMenu.Size = new System.Drawing.Size(815, 452);
-            this.BordeadoMenu.TabIndex = 34;
-            this.BordeadoMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblBuscar
             // 
@@ -339,6 +310,25 @@
             this.dgvTabla.TabIndex = 82;
             this.dgvTabla.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTabla_CellFormatting);
             // 
+            // BordeadoTablaDocentes
+            // 
+            this.BordeadoTablaDocentes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BordeadoTablaDocentes.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoTablaDocentes.BorderRadius = 8;
+            this.BordeadoTablaDocentes.BorderThickness = 1;
+            this.BordeadoTablaDocentes.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BordeadoTablaDocentes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BordeadoTablaDocentes.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BordeadoTablaDocentes.LabelIndent = 10;
+            this.BordeadoTablaDocentes.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
+            this.BordeadoTablaDocentes.Location = new System.Drawing.Point(-1, 0);
+            this.BordeadoTablaDocentes.Name = "BordeadoTablaDocentes";
+            this.BordeadoTablaDocentes.Size = new System.Drawing.Size(815, 448);
+            this.BordeadoTablaDocentes.TabIndex = 194;
+            this.BordeadoTablaDocentes.TabStop = false;
+            // 
             // P_TablaDocentes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -355,7 +345,7 @@
             this.Controls.Add(this.lblBuscar);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.BordeadoMenu);
+            this.Controls.Add(this.BordeadoTablaDocentes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "P_TablaDocentes";
@@ -374,7 +364,6 @@
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
         private Bunifu.Framework.UI.BunifuImageButton btnCerrar;
         private System.Windows.Forms.Label lblTitulo;
-        private Bunifu.Framework.UI.BunifuThinButton2 BordeadoMenu;
         private System.Windows.Forms.Label lblBuscar;
         private Bunifu.Framework.UI.BunifuSeparator Separador1;
         public System.Windows.Forms.TextBox txtBuscar;
@@ -383,5 +372,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnAgregar;
         private Bunifu.Framework.UI.BunifuFlatButton btnExportar;
         private System.Windows.Forms.DataGridView dgvTabla;
+        private Bunifu.UI.WinForms.BunifuGroupBox BordeadoTablaDocentes;
     }
 }
