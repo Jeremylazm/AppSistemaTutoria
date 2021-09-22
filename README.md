@@ -50,3 +50,11 @@ Cada usuario definido tiene una serie de funcionalidades particulares que tienen
 
 # MODELO RELACIONAL DE LA BASE DE DATOS.
 ![Base de datos](https://lh5.googleusercontent.com/Ori0td5b2wVQB0AWdSDP8WGcUH01uPkdt_n75W9LFdcXtBqBosjtKwMAf1BBz22IBoeScbP9YO1VI4wZbHIJ32tBDhJ3zgp5gZjv72JAzL3P5PnHJWrysXV9ZSobkCwm-nQxeXp0r1o9Ao75Gw=s0)
+
+# INTERFACES
+## Formularios para todos los usuarios
+Form Inicio Sesión:
+Form Recuperar Contraseña:
+Form Bienvenida:
+Form Cambiar Contraseña:
+
