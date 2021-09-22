@@ -8,6 +8,7 @@ namespace PruebasUnitarias
     [TestClass]
     public class T_FichaTutoria
     {
+        //Falta adaptar Ficha Tutoria
         // Definir variables globales para las pruebas unitarias
         readonly P_DatosEstudiante Estudiante = new P_DatosEstudiante(true);
         readonly string RutaImagenEstudiante = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../../CapaPresentaciones/Iconos/Perfil Estudiante.png");
