@@ -75,6 +75,7 @@ namespace CapaPresentaciones
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.txtDescripcionCita = new System.Windows.Forms.TextBox();
             this.BordeadoBienvenida = new Bunifu.UI.WinForms.BunifuGroupBox();
+            this.Movimiento = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -730,6 +731,13 @@ namespace CapaPresentaciones
             this.BordeadoBienvenida.TabIndex = 260;
             this.BordeadoBienvenida.TabStop = false;
             // 
+            // Movimiento
+            // 
+            this.Movimiento.Fixed = true;
+            this.Movimiento.Horizontal = true;
+            this.Movimiento.TargetControl = this.lblTitulo;
+            this.Movimiento.Vertical = true;
+            // 
             // P_SolicitudCita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -834,5 +842,6 @@ namespace CapaPresentaciones
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
         private System.Windows.Forms.TextBox txtDescripcionCita;
         private Bunifu.UI.WinForms.BunifuGroupBox BordeadoBienvenida;
+        private Bunifu.Framework.UI.BunifuDragControl Movimiento;
     }
 }
