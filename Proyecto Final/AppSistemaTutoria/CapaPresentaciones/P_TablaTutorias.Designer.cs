@@ -39,7 +39,6 @@
             this.lblBuscar = new System.Windows.Forms.Label();
             this.Separador1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.btnModificar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnEliminar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnExportar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.dgvTabla = new System.Windows.Forms.DataGridView();
@@ -60,7 +59,7 @@
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
             this.btnCerrar.ImageActive = null;
             this.btnCerrar.Location = new System.Drawing.Point(1043, 11);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(32, 30);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -130,10 +129,10 @@
             this.Separador1.BackColor = System.Drawing.Color.Transparent;
             this.Separador1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador1.LineThickness = 1;
-            this.Separador1.Location = new System.Drawing.Point(89, 95);
-            this.Separador1.Margin = new System.Windows.Forms.Padding(5);
+            this.Separador1.Location = new System.Drawing.Point(89, 97);
+            this.Separador1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Separador1.Name = "Separador1";
-            this.Separador1.Size = new System.Drawing.Size(272, 12);
+            this.Separador1.Size = new System.Drawing.Size(496, 10);
             this.Separador1.TabIndex = 77;
             this.Separador1.Transparency = 255;
             this.Separador1.Vertical = false;
@@ -147,49 +146,11 @@
             this.txtBuscar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtBuscar.Location = new System.Drawing.Point(89, 71);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(272, 23);
+            this.txtBuscar.Size = new System.Drawing.Size(490, 23);
             this.txtBuscar.TabIndex = 76;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.Active = true;
-            this.btnModificar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnModificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnModificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnModificar.BorderRadius = 7;
-            this.btnModificar.ButtonText = "Modificar";
-            this.btnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnModificar.DisabledColor = System.Drawing.Color.Gray;
-            this.btnModificar.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnModificar.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnModificar.Iconimage")));
-            this.btnModificar.Iconimage_right = null;
-            this.btnModificar.Iconimage_right_Selected = null;
-            this.btnModificar.Iconimage_Selected = null;
-            this.btnModificar.IconMarginLeft = 0;
-            this.btnModificar.IconMarginRight = 0;
-            this.btnModificar.IconRightVisible = true;
-            this.btnModificar.IconRightZoom = 0D;
-            this.btnModificar.IconVisible = true;
-            this.btnModificar.IconZoom = 50D;
-            this.btnModificar.IsTab = false;
-            this.btnModificar.Location = new System.Drawing.Point(551, 63);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(5);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnModificar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
-            this.btnModificar.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnModificar.selected = true;
-            this.btnModificar.Size = new System.Drawing.Size(168, 49);
-            this.btnModificar.TabIndex = 79;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnModificar.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnModificar.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
@@ -215,7 +176,7 @@
             this.btnEliminar.IconZoom = 50D;
             this.btnEliminar.IsTab = false;
             this.btnEliminar.Location = new System.Drawing.Point(727, 63);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(5);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnEliminar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -253,7 +214,7 @@
             this.btnExportar.IconZoom = 50D;
             this.btnExportar.IsTab = false;
             this.btnExportar.Location = new System.Drawing.Point(903, 63);
-            this.btnExportar.Margin = new System.Windows.Forms.Padding(5);
+            this.btnExportar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnExportar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
@@ -288,12 +249,12 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvTabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvTabla.ColumnHeadersHeight = 34;
+            this.dgvTabla.ColumnHeadersHeight = 40;
             this.dgvTabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvTabla.EnableHeadersVisualStyles = false;
             this.dgvTabla.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.dgvTabla.Location = new System.Drawing.Point(16, 119);
-            this.dgvTabla.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvTabla.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvTabla.Name = "dgvTabla";
             this.dgvTabla.ReadOnly = true;
             this.dgvTabla.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -318,7 +279,6 @@
             this.Controls.Add(this.dgvTabla);
             this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.Separador1);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.lblBuscar);
@@ -327,7 +287,7 @@
             this.Controls.Add(this.BordeadoMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "P_TablaTutorias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabla de Fichas de Tutorías";
@@ -349,7 +309,6 @@
         private Bunifu.Framework.UI.BunifuSeparator Separador1;
         public System.Windows.Forms.TextBox txtBuscar;
         private Bunifu.Framework.UI.BunifuFlatButton btnEliminar;
-        private Bunifu.Framework.UI.BunifuFlatButton btnModificar;
         private Bunifu.Framework.UI.BunifuFlatButton btnExportar;
         private System.Windows.Forms.DataGridView dgvTabla;
     }

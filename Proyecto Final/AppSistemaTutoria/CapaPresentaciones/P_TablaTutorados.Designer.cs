@@ -213,7 +213,7 @@ namespace CapaPresentaciones
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvTabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvTabla.ColumnHeadersHeight = 38;
+            this.dgvTabla.ColumnHeadersHeight = 40;
             this.dgvTabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvTabla.EnableHeadersVisualStyles = false;
             this.dgvTabla.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
