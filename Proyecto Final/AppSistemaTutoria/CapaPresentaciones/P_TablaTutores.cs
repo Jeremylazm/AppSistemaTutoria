@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
 using System.Runtime.InteropServices;
-using ImageMagick;
+using System.Text.RegularExpressions;
 
 namespace CapaPresentaciones
 {
@@ -38,7 +37,6 @@ namespace CapaPresentaciones
         public void AccionesTablaTutores()
         {
             // Tabla Tutores
-
             dgvTablaTutores.Columns[0].HeaderText = "Cod. Tutor";
             dgvTablaTutores.Columns[1].HeaderText = "Ap. Paterno";
             dgvTablaTutores.Columns[2].HeaderText = "Ap. Materno";
@@ -334,7 +332,16 @@ namespace CapaPresentaciones
             if (textBoxTotalRegistros.Text == "") Regs = 0;
             else
             {
-                Regs = Int32.Parse(textBoxTotalRegistros.Text);
+                Regex PatronRegs = new Regex(@"\A[0-9]*\Z");
+                if (!PatronRegs.IsMatch(textBoxTotalRegistros.Text))
+                {
+                    string mensaje = "Debe ingresar un carácter numerico";
+                    MessageBox.Show(mensaje, "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    Regs = Int32.Parse(textBoxTotalRegistros.Text);
+                }
             }
             if (labelEstudiantes.Visible == true)
             {
@@ -372,17 +379,17 @@ namespace CapaPresentaciones
         {
             try
             {
-                if (labelEstudiantes.Visible == true && dgvTablaEstudiantes.Rows.Count > 0)
+                if (labelEstudiantes.Visible == true)
                 {
-                    DialogResult Opcion;
-                    string mensaje;
-                    if (textBoxSeleccionarTutor.Text == "")
+                    int tutorados = dgvTablaEstudiantes.Rows.Count;
+                    if (tutorados == 0)
                     {
-                        MensajeError("No se ha seleccionado un tutor");
+                        MensajeError("No hay estudiantes para asignar.");
                     }
                     else
                     {
-                        int tutorados = dgvTablaEstudiantes.Rows.Count;
+                        DialogResult Opcion;
+                        string mensaje;
                         if (tutorados == 1)
                         {
                             mensaje = "Se va asignar 1 nuevo tutorado.";
@@ -415,28 +422,35 @@ namespace CapaPresentaciones
         {
             try
             {
-                if (labelTutorados.Visible == true && dgvTablaEstudiantes.Rows.Count > 0)
+                if (labelTutorados.Visible == true)
                 {
-                    DialogResult Opcion;
-                    string mensaje;
                     int tutorados = dgvTablaEstudiantes.Rows.Count;
-                    if (tutorados == 1)
+                    if (tutorados == 0)
                     {
-                        mensaje = "Se va eliminar 1 tutorado asignado.";
+                        MensajeError("No hay tutorados para eliminar.");
                     }
                     else
                     {
-                        mensaje = "Se van eliminar " + tutorados.ToString() + " tutorados asignados.";
-                    }
-                    Opcion = MessageBox.Show(mensaje, "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                    if (Opcion == DialogResult.OK)
-                    {
-                        for (int i = 0; i < dgvTablaEstudiantes.Rows.Count; i++)
+                        DialogResult Opcion;
+                        string mensaje;
+                        if (tutorados == 1)
                         {
-                            string CodEstudiante = dgvTablaEstudiantes.Rows[i].Cells[2].Value.ToString();
-                            ObjNegocioEstudiante.EliminarTutor(CodEstudiante);
+                            mensaje = "Se va eliminar 1 tutorado asignado.";
                         }
-                        MensajeConfirmacion("La operación se realizo con éxito.");
+                        else
+                        {
+                            mensaje = "Se van eliminar " + tutorados.ToString() + " tutorados asignados.";
+                        }
+                        Opcion = MessageBox.Show(mensaje, "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                        if (Opcion == DialogResult.OK)
+                        {
+                            for (int i = 0; i < dgvTablaEstudiantes.Rows.Count; i++)
+                            {
+                                string CodEstudiante = dgvTablaEstudiantes.Rows[i].Cells[2].Value.ToString();
+                                ObjNegocioEstudiante.EliminarTutor(CodEstudiante);
+                            }
+                            MensajeConfirmacion("La operación se realizo con éxito.");
+                        }
                     }
                 }
                 BuscarRegistroTutor();
