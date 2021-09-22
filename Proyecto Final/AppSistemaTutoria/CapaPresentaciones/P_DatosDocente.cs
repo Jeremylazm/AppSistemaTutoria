@@ -14,12 +14,15 @@ namespace CapaPresentaciones
 {
     public partial class P_DatosDocente : Form
     {
-        readonly E_Docente ObjEntidad = new E_Docente();
-        readonly N_Docente ObjNegocio = new N_Docente();
+        readonly E_Docente ObjEntidad;// = new E_Docente();
+        readonly N_Docente ObjNegocio;// = new N_Docente();
         public bool Test { get; set; }
 
         public P_DatosDocente()
         {
+            ObjEntidad = new E_Docente();
+            ObjNegocio = new N_Docente();
+
             InitializeComponent();
             LlenarComboBox();
             ValidarPerfil();
@@ -97,10 +100,6 @@ namespace CapaPresentaciones
             Regex PatronCodigo = new Regex(@"\A[0-9]{5}\Z");
             Regex PatronTelefono = new Regex(@"\A[0-9]{9}\Z");
 
-            //Verificado si los datos son validos
-            if (!PatronCodigo.IsMatch(Codigo)) return "El formato del código es incorrecto";
-            if (!PatronTelefono.IsMatch(Telefono)) return "El formato del teléfono es incorrecto";
-
             //Verificando textbox vacios
             if (Codigo.Trim() == "") return "Debe llenar el código";
             if (APaterno.Trim() == "") return "Debe llenar el apellido paterno";
@@ -112,6 +111,10 @@ namespace CapaPresentaciones
             if (Categoria.Trim() == "") return "Debe elegir la categoría";
             if (Subcategoria.Trim() == "") return "Debe elegir la subcategoría";
             if (Regimen.Trim() == "") return "Debe elegir el régimen";
+
+            //Verificado si los datos son validos
+            if (!PatronCodigo.IsMatch(Codigo)) return "El formato del código es incorrecto";
+            if (!PatronTelefono.IsMatch(Telefono)) return "El formato del teléfono es incorrecto";
 
             //Si paso todo sin problema
             EsValido = true; //Los datos son válidos

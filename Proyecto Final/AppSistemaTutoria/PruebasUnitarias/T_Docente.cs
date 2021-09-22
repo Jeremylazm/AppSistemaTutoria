@@ -22,12 +22,12 @@ namespace PruebasUnitarias
             string MensajePrueba = Docente.VerificarDatosDocente(
                 out EsValido, "", "TICONA", "PARI", "GUZMAN", "63321@unsaac.edu.pe",
                 "AV. BOLIVAR 211", "984589033", "NOMBRADO", "ASOCIADO", "DEDICACIÓN EXCLUSIVA", "IN", "DISPONIBLE");
-
             // Mensaje de prueba esperado
             string MensajeEsperado = "Debe llenar el código";
-
             //Verificar si los mensajes pasan la prueba
             Assert.AreEqual(MensajeEsperado, MensajePrueba);
+            //Verificar variable EsValido da el valor correcto
+            Assert.AreEqual(false, EsValido);
         }
         //								
         [TestMethod]
@@ -38,12 +38,12 @@ namespace PruebasUnitarias
             string MensajePrueba = Docente.VerificarDatosDocente(
                 out EsValido, "63321", "", "PARI", "GUZMAN", "63321@unsaac.edu.pe",
                 "AV. BOLIVAR 211", "984589033", "NOMBRADO", "ASOCIADO", "DEDICACIÓN EXCLUSIVA", "IN", "DISPONIBLE");
-
             // Mensaje de prueba esperado
             string MensajeEsperado = "Debe llenar el apellido paterno";
-
             //Verificar si los mensajes pasan la prueba
             Assert.AreEqual(MensajeEsperado, MensajePrueba);
+            //Verificar variable EsValido da el valor correcto
+            Assert.AreEqual(false, EsValido);
         }
 
         [TestMethod]
@@ -54,12 +54,12 @@ namespace PruebasUnitarias
             string MensajePrueba = Docente.VerificarDatosDocente(
                 out EsValido, "63321", "TICONA", "", "GUZMAN", "63321@unsaac.edu.pe",
                 "AV. BOLIVAR 211", "984589033", "NOMBRADO", "ASOCIADO", "DEDICACIÓN EXCLUSIVA", "IN", "DISPONIBLE");
-
             // Mensaje de prueba esperado
             string MensajeEsperado = "Debe llenar el apellido materno";
-
             //Verificar si los mensajes pasan la prueba
             Assert.AreEqual(MensajeEsperado, MensajePrueba);
+            //Verificar variable EsValido da el valor correcto
+            Assert.AreEqual(false, EsValido);
         }
         [TestMethod]
         public void NombreVacio()
@@ -69,12 +69,12 @@ namespace PruebasUnitarias
             string MensajePrueba = Docente.VerificarDatosDocente(
                 out EsValido, "63321", "TICONA", "PARI", "", "63321@unsaac.edu.pe",
                 "AV. BOLIVAR 211", "984589033", "NOMBRADO", "ASOCIADO", "DEDICACIÓN EXCLUSIVA", "IN", "DISPONIBLE");
-
             // Mensaje de prueba esperado
             string MensajeEsperado = "Debe llenar el nombre";
-
             //Verificar si los mensajes pasan la prueba
             Assert.AreEqual(MensajeEsperado, MensajePrueba);
+            //Verificar variable EsValido da el valor correcto
+            Assert.AreEqual(false, EsValido);
         }
         [TestMethod]
         public void EmailVacio()
@@ -84,12 +84,12 @@ namespace PruebasUnitarias
             string MensajePrueba = Docente.VerificarDatosDocente(
                 out EsValido, "63321", "TICONA", "PARI", "GUZMAN", "",
                 "AV. BOLIVAR 211", "984589033", "NOMBRADO", "ASOCIADO", "DEDICACIÓN EXCLUSIVA", "IN", "DISPONIBLE");
-
             // Mensaje de prueba esperado
             string MensajeEsperado = "Debe llenar el email";
-
             //Verificar si los mensajes pasan la prueba
             Assert.AreEqual(MensajeEsperado, MensajePrueba);
+            //Verificar variable EsValido da el valor correcto
+            Assert.AreEqual(false, EsValido);
         }
         [TestMethod]
         public void DireccionVacio()
@@ -99,12 +99,12 @@ namespace PruebasUnitarias
             string MensajePrueba = Docente.VerificarDatosDocente(
                 out EsValido, "63321", "TICONA", "PARI", "GUZMAN", "63321@unsaac.edu.pe",
                 "", "984589033", "NOMBRADO", "ASOCIADO", "DEDICACIÓN EXCLUSIVA", "IN", "DISPONIBLE");
-
             // Mensaje de prueba esperado
             string MensajeEsperado = "Debe llenar la dirección";
-
             //Verificar si los mensajes pasan la prueba
             Assert.AreEqual(MensajeEsperado, MensajePrueba);
+            //Verificar variable EsValido da el valor correcto
+            Assert.AreEqual(false, EsValido);
         }
         [TestMethod]
         public void TelefonoVacio()
@@ -114,12 +114,12 @@ namespace PruebasUnitarias
             string MensajePrueba = Docente.VerificarDatosDocente(
                 out EsValido, "63321", "TICONA", "PARI", "GUZMAN", "63321@unsaac.edu.pe",
                 "AV. BOLIVAR 211", "", "NOMBRADO", "ASOCIADO", "DEDICACIÓN EXCLUSIVA", "IN", "DISPONIBLE");
-
             // Mensaje de prueba esperado
             string MensajeEsperado = "Debe llenar el telefono";
-
             //Verificar si los mensajes pasan la prueba
             Assert.AreEqual(MensajeEsperado, MensajePrueba);
+            //Verificar variable EsValido da el valor correcto
+            Assert.AreEqual(false, EsValido);
         }
         [TestMethod]
         public void CategoriaVacio()
@@ -129,12 +129,12 @@ namespace PruebasUnitarias
             string MensajePrueba = Docente.VerificarDatosDocente(
                 out EsValido, "63321", "TICONA", "PARI", "GUZMAN", "63321@unsaac.edu.pe",
                 "AV. BOLIVAR 211", "984589033", "", "ASOCIADO", "DEDICACIÓN EXCLUSIVA", "IN", "DISPONIBLE");
-
             // Mensaje de prueba esperado
             string MensajeEsperado = "Debe elegir la categoría";
-
             //Verificar si los mensajes pasan la prueba
             Assert.AreEqual(MensajeEsperado, MensajePrueba);
+            //Verificar variable EsValido da el valor correcto
+            Assert.AreEqual(false, EsValido);
         }
         [TestMethod]
         public void SubcategoriaVacio()
@@ -144,12 +144,12 @@ namespace PruebasUnitarias
             string MensajePrueba = Docente.VerificarDatosDocente(
                 out EsValido, "63321", "TICONA", "PARI", "GUZMAN", "63321@unsaac.edu.pe",
                 "AV. BOLIVAR 211", "984589033", "NOMBRADO", "", "DEDICACIÓN EXCLUSIVA", "IN", "DISPONIBLE");
-
             // Mensaje de prueba esperado
             string MensajeEsperado = "Debe elegir la subcategoría";
-
             //Verificar si los mensajes pasan la prueba
             Assert.AreEqual(MensajeEsperado, MensajePrueba);
+            //Verificar variable EsValido da el valor correcto
+            Assert.AreEqual(false, EsValido);
         }
         [TestMethod]
         public void RegimenVacio()
@@ -159,12 +159,12 @@ namespace PruebasUnitarias
             string MensajePrueba = Docente.VerificarDatosDocente(
                 out EsValido, "63321", "TICONA", "PARI", "GUZMAN", "63321@unsaac.edu.pe",
                 "AV. BOLIVAR 211", "984589033", "NOMBRADO", "ASOCIADO", "", "IN", "DISPONIBLE");
-
             // Mensaje de prueba esperado
             string MensajeEsperado = "Debe elegir el régimen";
-
             //Verificar si los mensajes pasan la prueba
             Assert.AreEqual(MensajeEsperado, MensajePrueba);
+            //Verificar variable EsValido da el valor correcto
+            Assert.AreEqual(false, EsValido);
         }
         [TestMethod]
         public void CodigoInvalido()
@@ -174,12 +174,12 @@ namespace PruebasUnitarias
             string MensajePrueba = Docente.VerificarDatosDocente(
                 out EsValido, "633a1", "TICONA", "PARI", "GUZMAN", "63321@unsaac.edu.pe",
                 "AV. BOLIVAR 211", "984589033", "NOMBRADO", "ASOCIADO", "DEDICACIÓN EXCLUSIVA", "IN", "DISPONIBLE");
-
             // Mensaje de prueba esperado
             string MensajeEsperado = "El formato del código es incorrecto";
-
             //Verificar si los mensajes pasan la prueba
             Assert.AreEqual(MensajeEsperado, MensajePrueba);
+            //Verificar variable EsValido da el valor correcto
+            Assert.AreEqual(false, EsValido);
         }
         [TestMethod]
         public void TelefonoInvalido()
@@ -189,12 +189,12 @@ namespace PruebasUnitarias
             string MensajePrueba = Docente.VerificarDatosDocente(
                 out EsValido, "63321", "TICONA", "PARI", "GUZMAN", "63321@unsaac.edu.pe",
                 "AV. BOLIVAR 211", "98459033", "NOMBRADO", "ASOCIADO", "DEDICACIÓN EXCLUSIVA", "IN", "DISPONIBLE");
-
             // Mensaje de prueba esperado
             string MensajeEsperado = "El formato del teléfono es incorrecto";
-
             //Verificar si los mensajes pasan la prueba
             Assert.AreEqual(MensajeEsperado, MensajePrueba);
+            //Verificar variable EsValido da el valor correcto
+            Assert.AreEqual(false, EsValido);
         }
         [TestMethod]
         public void InsertarDatosValidos()
@@ -204,12 +204,12 @@ namespace PruebasUnitarias
             string MensajePrueba = Docente.VerificarDatosDocente(
                 out EsValido, "63321", "TICONA", "PARI", "GUZMAN", "63321@unsaac.edu.pe",
                 "AV. BOLIVAR 211", "984589033", "NOMBRADO", "ASOCIADO", "DEDICACIÓN EXCLUSIVA", "IN", "DISPONIBLE");
-
             // Mensaje de prueba esperado
             string MensajeEsperado = "Registro insertado correctamente";
-
             //Verificar si los mensajes pasan la prueba
             Assert.AreEqual(MensajeEsperado, MensajePrueba);
+            //Verificar variable EsValido da el valor correcto
+            Assert.AreEqual(true, EsValido);
         }
 
     }
