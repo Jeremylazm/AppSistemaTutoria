@@ -1,15 +1,29 @@
 ﻿using System;
+using System.Configuration;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.IO;
+<<<<<<< HEAD
+using System.Windows.Forms;
+=======
+using CapaEntidades;
+>>>>>>> parent of 09b56f7 (Merge pull request #105 from Jeremylazm/revert-103-Raisa18)
 using CapaNegocios;
 
 namespace CapaPresentaciones
 {
     public partial class P_InformacionTutor : Form
     {
+<<<<<<< HEAD
         // Atributo para copnfirmar Test
         public bool Test { get; set; }
 
@@ -40,6 +54,16 @@ namespace CapaPresentaciones
         public P_InformacionTutor(bool pTest)
         {
             Test = pTest;
+=======
+        // Atributo Usuario
+        public string Usuario = "";
+        // Constructor
+        public P_InformacionTutor( string pUsuario)
+        {
+            InitializeComponent();
+            Usuario = pUsuario;
+            CargarDatosTutor();
+>>>>>>> parent of 09b56f7 (Merge pull request #105 from Jeremylazm/revert-103-Raisa18)
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -50,6 +74,7 @@ namespace CapaPresentaciones
         public string CargarDatosTutor(object pPerfil, string Docente, string Email, string Direccion, 
             string Telefono, string EscProfesional, string Horario)
         {
+<<<<<<< HEAD
             // Cadena que nos servira para los test
             string Mensaje = "";
             // Mostramos mensasje si se tiene o no tutor
@@ -59,6 +84,19 @@ namespace CapaPresentaciones
                 (Telefono.Trim() != "") &&
                 (EscProfesional.Trim() != "") &&
                 (Horario.Trim() != ""))
+=======
+            // Buscamos los datos del Tutor 
+            DataTable Datos = N_Estudiante.BuscarTutor(Usuario);
+            object[] Fila = Datos.Rows[0].ItemArray;
+            // Es la imagen de perfil
+            byte[] imagen;
+            if (Fila.GetValue(0).GetType() == Type.GetType("System.DBNull"))
+                imagen = null;
+            else
+                imagen = (byte[])Fila.GetValue(0);
+
+            if (imagen == null)
+>>>>>>> parent of 09b56f7 (Merge pull request #105 from Jeremylazm/revert-103-Raisa18)
             {
                 Mensaje = "Datos de Tutor Cargados Exitosamente";
                 if(Test == false)
@@ -79,6 +117,7 @@ namespace CapaPresentaciones
                 else
                     imagen = (byte[])pPerfil;
 
+<<<<<<< HEAD
                 if (imagen == null)
                 {
                     string fullImagePath = System.IO.Path.Combine(Application.StartupPath, @"../../Iconos/Perfil Docente.png");
@@ -103,6 +142,16 @@ namespace CapaPresentaciones
 
             // Retornamos el Mensaje
             return Mensaje;
+=======
+            txtDocente.Text = Fila[1].ToString() + " " + Fila[2].ToString() +
+                        " " + Fila[3].ToString();
+            txtEmail.Text = Fila[4].ToString();
+            txtDireccion.Text = Fila[5].ToString();
+            txtTelefono.Text = Fila[6].ToString();
+            txtEscProfesional.Text = Fila[7].ToString();
+            txtHorario.Text = Fila[8].ToString();
+            
+>>>>>>> parent of 09b56f7 (Merge pull request #105 from Jeremylazm/revert-103-Raisa18)
         }
         // Para hacer la imagen circular
         public Image HacerImagenCircular(Image img)

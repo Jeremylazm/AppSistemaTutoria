@@ -1,12 +1,12 @@
-﻿using CapaEntidades;
-using ImageMagick;
-using System;
+﻿using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
+using CapaEntidades;
+using ImageMagick;
+using System.Drawing.Imaging;
 using System.Windows.Forms;
 
 namespace CapaDatos
@@ -39,7 +39,7 @@ namespace CapaDatos
 
             // Asignar los resultados a la tabla de datos
             Data.Fill(Resultado);
-
+            
             // Recorrer las filas de la tabla de datos
             foreach (DataRow Fila in Resultado.Rows)
             {
@@ -62,7 +62,7 @@ namespace CapaDatos
                     Fila["Perfil2"] = PerfilNuevo.ToByteArray();
                 }
             }
-
+            
             // Retornar la tabla de datos con los docentes de un determinado director de escuela
             return Resultado;
         }
@@ -150,7 +150,7 @@ namespace CapaDatos
                 if (Fila["ConcederPermiso"].Equals("SÍ"))
                 {
                     // Desencriptar la informacion personal del estudiante
-                    Fila["InformacionPersonal"] = E_Criptografia.DesencriptarRSA(Fila["InformacionPersonal"].ToString(), Key);
+                    Fila["InformacionPersonal"] = E_Criptografia.DesencriptarRSA(Fila["InformacionPersonal"].ToString(),Key);
                 }
                 else
                 {

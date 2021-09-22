@@ -167,8 +167,11 @@
     <Compile Include="T_Estudiante.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="T_InicioSesion.cs" />
+<<<<<<< HEAD
     <Compile Include="T_InformacionTutor.cs" />
     <Compile Include="T_FichaTutoria.cs" />
+=======
+>>>>>>> parent of 09b56f7 (Merge pull request #105 from Jeremylazm/revert-103-Raisa18)
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CapaPresentaciones\CapaPresentaciones.csproj">
