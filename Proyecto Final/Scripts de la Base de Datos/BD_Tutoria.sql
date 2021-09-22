@@ -142,7 +142,7 @@ CREATE TABLE TFichaTutoria
 	CodFichaTutoria tyCodFichaTutoria,
 	CodEstudiante tyCodEstudiante,
 	Semestre VARCHAR(7),
-	Fecha DATETIME NOT NULL,
+	Fecha VARCHAR(15) NOT NULL,
 	Dimension VARCHAR(15) DEFAULT 'ACADÉMICA' CHECK (Dimension IN ('ACADÉMICA',
 																   'PERSONAL',
 																   'PROFESIONAL')),
@@ -888,9 +888,10 @@ END;
 GO
 
 -- Crear un procedimiento para insertar una tutoria
+
 CREATE PROCEDURE spuInsertarFichaTutoria @CodEstudiante VARCHAR(6),
 										 @Semestre VARCHAR(7),
-										 @Fecha DATETIME,
+										 @Fecha VARCHAR(15),
 										 @Dimension VARCHAR(15),
 										 @Descripcion VARCHAR(100),
 										 @Referencia VARCHAR(100),
@@ -907,7 +908,7 @@ GO
 CREATE PROCEDURE spuActualizarFichaTutoria @CodTutoria INT,
 										   @CodEstudiante VARCHAR(6),
 										   @Semestre VARCHAR(7),
-										   @Fecha DATETIME,
+										   @Fecha VARCHAR(15),
 										   @Dimension VARCHAR(15),
 										   @Descripcion VARCHAR(100),
 										   @Referencia VARCHAR(100),
@@ -1724,7 +1725,8 @@ BEGIN
 					  @Categoria + ' ; ' + @Subcategoria + ' ; ' + @Regimen + ' ; ' + 
 					  @CodEscuelaP + ' ; ' + ISNULL(@Horario, ''));
 		
-		-- Eliminar la tupla insertada de la tabla #INSERTED
+		-- 
+		la tupla insertada de la tabla #INSERTED
 		DELETE TOP (1) FROM #INSERTED
 
 		-- Actualizar el numero de tuplas
@@ -2131,7 +2133,7 @@ BEGIN
 		CodDocente VARCHAR(5),
 		CodEstudiante VARCHAR(6),
 		Semestre VARCHAR(7),
-		Fecha DATETIME,
+		Fecha VARCHAR(15),
 		Dimension VARCHAR(15),
 		Descripcion VARCHAR(100),
 		Referencia VARCHAR(100),
@@ -2155,7 +2157,7 @@ BEGIN
 		DECLARE @CodDocente VARCHAR(5);
 		DECLARE @CodEstudiante VARCHAR(6);
 		DECLARE @Semestre VARCHAR(7);
-		DECLARE @Fecha DATETIME;
+		DECLARE @Fecha VARCHAR(15);
 		DECLARE @Dimension VARCHAR(15);
 		DECLARE @Descripcion VARCHAR(100);
 		DECLARE @Referencia VARCHAR(100);
@@ -2202,7 +2204,7 @@ BEGIN
 		CodDocente VARCHAR(5),
 		CodEstudiante VARCHAR(6),
 		Semestre VARCHAR(7),
-		Fecha DATETIME,
+		Fecha VARCHAR(15),
 		Dimension VARCHAR(15),
 		Descripcion VARCHAR(100),
 		Referencia VARCHAR(100),
@@ -2226,7 +2228,7 @@ BEGIN
 		DECLARE @CodDocente VARCHAR(5);
 		DECLARE @CodEstudiante VARCHAR(6);
 		DECLARE @Semestre VARCHAR(7);
-		DECLARE @Fecha DATETIME;
+		DECLARE @Fecha VARCHAR(15);
 		DECLARE @Dimension VARCHAR(15);
 		DECLARE @Descripcion VARCHAR(100);
 		DECLARE @Referencia VARCHAR(100);
@@ -2271,7 +2273,7 @@ BEGIN
 		CodDocente VARCHAR(5),
 		CodEstudiante VARCHAR(6),
 		Semestre VARCHAR(7),
-		Fecha DATETIME,
+		Fecha VARCHAR(15),
 		Dimension VARCHAR(15),
 		Descripcion VARCHAR(100),
 		Referencia VARCHAR(100),
@@ -2290,7 +2292,7 @@ BEGIN
 		CodDocente VARCHAR(5),
 		CodEstudiante VARCHAR(6),
 		Semestre VARCHAR(7),
-		Fecha DATETIME,
+		Fecha VARCHAR(15),
 		Dimension VARCHAR(15),
 		Descripcion VARCHAR(100),
 		Referencia VARCHAR(100),
@@ -2314,7 +2316,7 @@ BEGIN
 		DECLARE @CodDocenteAntes VARCHAR(5);
 		DECLARE @CodEstudianteAntes VARCHAR(6);
 		DECLARE @SemestreAntes VARCHAR(7);
-		DECLARE @FechaAntes DATETIME;
+		DECLARE @FechaAntes VARCHAR(15);
 		DECLARE @DimensionAntes VARCHAR(15);
 		DECLARE @DescripcionAntes VARCHAR(100);
 		DECLARE @ReferenciaAntes VARCHAR(100);
@@ -2337,7 +2339,7 @@ BEGIN
 		DECLARE @CodDocenteDespues VARCHAR(5);
 		DECLARE @CodEstudianteDespues VARCHAR(6);
 		DECLARE @SemestreDespues VARCHAR(7);
-		DECLARE @FechaDespues DATETIME;
+		DECLARE @FechaDespues VARCHAR(15);
 		DECLARE @DimensionDespues VARCHAR(15);
 		DECLARE @DescripcionDespues VARCHAR(100);
 		DECLARE @ReferenciaDespues VARCHAR(100);

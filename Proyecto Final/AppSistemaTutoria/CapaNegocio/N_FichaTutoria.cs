@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CapaDatos;
+﻿using CapaDatos;
 using CapaEntidades;
 using System.Data;
 
@@ -11,7 +6,7 @@ namespace CapaNegocios
 {
     public class N_FichaTutoria
     {
-        
+
         readonly D_FichaTutoria ObjFichaTutoria = new D_FichaTutoria();
 
         public static DataTable MostrarRegistros(string CodDocente)

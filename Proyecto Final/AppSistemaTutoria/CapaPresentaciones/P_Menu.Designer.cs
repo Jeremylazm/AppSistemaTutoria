@@ -94,13 +94,13 @@ namespace CapaPresentaciones
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblTitulo.Location = new System.Drawing.Point(86, 26);
+            this.lblTitulo.Location = new System.Drawing.Point(86, 24);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(639, 24);
+            this.lblTitulo.Size = new System.Drawing.Size(628, 23);
             this.lblTitulo.TabIndex = 64;
-            this.lblTitulo.Text = "Sistema de Tutoría - Universidad Nacional San Antonio Abad del Cusco";
+            this.lblTitulo.Text = "Sistema de Tutoría - Universidad Nacional de San Antonio Abad del Cusco";
             // 
             // btnMinimizar
             // 
@@ -297,6 +297,41 @@ namespace CapaPresentaciones
             this.btnMiTutor.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnMiTutor.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMiTutor.Click += new System.EventHandler(this.btnMiTutor_Click);
+            // 
+            // btnInformeTutorias
+            // 
+            this.btnInformeTutorias.Active = true;
+            this.btnInformeTutorias.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnInformeTutorias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnInformeTutorias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnInformeTutorias.BorderRadius = 7;
+            this.btnInformeTutorias.ButtonText = "Informe Tutorías";
+            this.btnInformeTutorias.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInformeTutorias.DisabledColor = System.Drawing.Color.Gray;
+            this.btnInformeTutorias.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnInformeTutorias.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnInformeTutorias.Iconimage")));
+            this.btnInformeTutorias.Iconimage_right = null;
+            this.btnInformeTutorias.Iconimage_right_Selected = null;
+            this.btnInformeTutorias.Iconimage_Selected = null;
+            this.btnInformeTutorias.IconMarginLeft = 0;
+            this.btnInformeTutorias.IconMarginRight = 0;
+            this.btnInformeTutorias.IconRightVisible = true;
+            this.btnInformeTutorias.IconRightZoom = 0D;
+            this.btnInformeTutorias.IconVisible = true;
+            this.btnInformeTutorias.IconZoom = 50D;
+            this.btnInformeTutorias.IsTab = false;
+            this.btnInformeTutorias.Location = new System.Drawing.Point(4, 540);
+            this.btnInformeTutorias.Name = "btnInformeTutorias";
+            this.btnInformeTutorias.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnInformeTutorias.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
+            this.btnInformeTutorias.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnInformeTutorias.selected = true;
+            this.btnInformeTutorias.Size = new System.Drawing.Size(161, 40);
+            this.btnInformeTutorias.TabIndex = 49;
+            this.btnInformeTutorias.Text = "Informe Tutorías";
+            this.btnInformeTutorias.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInformeTutorias.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnInformeTutorias.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // btnTutores
             // 
