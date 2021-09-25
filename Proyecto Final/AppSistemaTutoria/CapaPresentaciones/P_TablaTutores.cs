@@ -364,25 +364,32 @@ namespace CapaPresentaciones
                     }
                     else
                     {
-                        DialogResult Opcion;
-                        string mensaje;
-                        if (tutorados == 1)
+                        if (textBoxSeleccionarTutor.Text != "" && dgvTablaTutores.Rows.Count == 1)
                         {
-                            mensaje = "Se va asignar 1 nuevo tutorado.";
+                            DialogResult Opcion;
+                            string mensaje;
+                            if (tutorados == 1)
+                            {
+                                mensaje = "Se va asignar 1 nuevo tutorado.";
+                            }
+                            else
+                            {
+                                mensaje = "Se van asignar " + tutorados.ToString() + " nuevos tutorados.";
+                            }
+                            Opcion = MessageBox.Show(mensaje, "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                            if (Opcion == DialogResult.OK)
+                            {
+                                for (int i = 0; i < dgvTablaEstudiantes.Rows.Count; i++)
+                                {
+                                    string CodEstudiante = dgvTablaEstudiantes.Rows[i].Cells[0].Value.ToString();
+                                    ObjNegocioEstudiante.AsignarTutor(CodEstudiante, textBoxSeleccionarTutor.Text);
+                                }
+                                MensajeConfirmacion("La operación se realizo con éxito.");
+                            }
                         }
                         else
                         {
-                            mensaje = "Se van asignar " + tutorados.ToString() + " nuevos tutorados.";
-                        }
-                        Opcion = MessageBox.Show(mensaje, "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                        if (Opcion == DialogResult.OK)
-                        {
-                            for (int i = 0; i < dgvTablaEstudiantes.Rows.Count; i++)
-                            {
-                                string CodEstudiante = dgvTablaEstudiantes.Rows[i].Cells[0].Value.ToString();
-                                ObjNegocioEstudiante.AsignarTutor(CodEstudiante, textBoxSeleccionarTutor.Text);
-                            }
-                            MensajeConfirmacion("La operación se realizo con éxito.");
+                            MensajeError("Debe seleccionar un tutor primero");
                         }
                     }
                 }
