@@ -299,9 +299,6 @@ namespace CapaPresentaciones
             this.btnMiTutor.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMiTutor.Click += new System.EventHandler(this.btnMiTutor_Click);
             // 
-            // btnInformeTutorias
-            // 
-            
             // btnTutores
             // 
             this.btnTutores.Active = true;
