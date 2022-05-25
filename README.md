@@ -4,13 +4,13 @@
 
 ### Datos Académicos 📖
 
-- **Institucion:** Universidad Nacional de San Antonio Abad del Cusco
+- **:** Universidad Nacional de San Antonio Abad del Cusco
 - **Facultad:** Facultad de Ingeniería Eléctrica, Electrónica, Informática y Mecánica
 - **Escuela Prof:** Ingeniería Informática y de Sistemas
 
 #### Docente:
 
-- **Roxana Lisette Quintanilla Portugal** - _Docente_ - [Concytec](http://directorio.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do;jsessionid=a64a00668b861c4a52fdead99791?id_investigador=40930).
+- **Roxana Quintanilla Portugal** - _Docente_ - [Concytec](http://directorio.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do;jsessionid=a64a00668b861c4a52fdead99791?id_investigador=40930).
 
 #### Trabajo:
 
