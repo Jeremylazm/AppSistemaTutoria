@@ -10,7 +10,7 @@
 
 #### Docente:
 
-- **Roxana Lisette Quintanilla Portugal** - _Docente_ - [Concytec](http://directorio.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do;jsessionid=a64a00668b861c4a52fdead99791?id_investigador=40930).
+- **Roxana L. Quintanilla Portugal** - _Docente_ - [Concytec](http://directorio.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do;jsessionid=a64a00668b861c4a52fdead99791?id_investigador=40930).
 
 #### Trabajo:
 
