@@ -25,7 +25,7 @@
 - **Cuyo Ttito Denis Omar** - _Estudiante_ - [DenisOmar](https://github.com/denisomarcuyottito)
 - **Estrella Vilca James Kevin** - _Estudiante_ - [JamesKevin](https://github.com/JamesKevinStar)
 - **Huaman Mendoza Elvis Jorge** - _Estudiante_ - [ElvisJorge](https://github.com/ElvisJorge17)
-- **Huaman Mendoza Johan Wilfredo** - _Estudiante_ - [JohanWilfredo](https://github.com/jhn-cde)
+- **Johan** _Estudiante_
 - **Lazo Mendoza Jeremy Axl** - _Estudiante_ - [JeremyAxl](https://github.com/Jeremylazm)
 - **Peña Luque Raisa Melina** - _Estudiante_ - [RaisaMelina](https://github.com/Raisa18)
 - **Usucachi Ano Isac Anderson** - _Estudiante_ - [IsacAnderson](https://github.com/isacanderson)
